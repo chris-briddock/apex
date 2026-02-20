@@ -1,0 +1,124 @@
+// ============================================================================
+// CSS Reset
+// ============================================================================
+
+// Box sizing reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margins
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote,
+pre,
+code {
+  margin: 0;
+}
+
+// Remove default padding from lists
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+// Remove default border - padding removed to avoid conflict with normalize
+fieldset {
+  border: 0;
+  margin: 0;
+}
+
+// Remove default outline
+:focus {
+  outline: none;
+}
+
+// Font reset - color removed to avoid conflict with base styles
+address,
+cite,
+dfn,
+em,
+i,
+var {
+  font-style: normal;
+}
+
+// Remove default border - margin/padding removed to avoid conflict with base
+hr {
+  border: 0;
+}
+
+// Remove default cursor
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+// Remove default appearance
+input,
+textarea,
+select,
+button {
+  appearance: none;
+}
+
+// Remove default border radius
+input,
+textarea,
+select {
+  border-radius: 0;
+}
+
+// Remove default autofill background
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
+// Remove default selection color
+::selection {
+  background-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+// Remove default scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}

@@ -1,0 +1,1555 @@
+{
+  "metadata": {
+    "title": "Documentation Apex - Framework CSS Utility-First",
+    "description": "Apex - Un framework CSS utility-first complet avec plus de 500 classes utilitaires pour un développement UI rapide"
+  },
+  "pages": {
+    "components": {
+      "title": "Composants",
+      "description": "Composants préconstruits pour les modèles UI courants."
+    },
+    "gettingStarted": {
+      "title": "Commencer",
+      "description": "Apprenez à commencer avec Apex",
+      "prerequisites": {
+        "title": "Prérequis",
+        "content": "Avant de commencer, assurez-vous d'avoir Node.js 16 ou ultérieur installé sur votre machine."
+      },
+      "installation": {
+        "title": "Installation",
+        "viaCdn": {
+          "title": "Via CDN",
+          "description": "Le moyen le plus rapide de commencer est d'utiliser le lien CDN :"
+        },
+        "viaNpm": {
+          "title": "Via NPM",
+          "description": "Installez Apex en utilisant npm :",
+          "import": "Puis importez-le dans votre fichier CSS ou JavaScript :"
+        }
+      },
+      "frameworkIntegration": {
+        "title": "Intégration de Framework",
+        "react": {
+          "title": "React / Next.js",
+          "description": "Importez Apex dans votre fichier CSS principal :"
+        },
+        "vue": {
+          "title": "Vue.js",
+          "description": "Importez dans votre main.js ou main.ts :"
+        },
+        "angular": {
+          "title": "Angular",
+          "description": "Ajoutez à angular.json :"
+        }
+      },
+      "firstSteps": {
+        "title": "Premiers Pas",
+        "description": "Commencez à utiliser les classes utilitaires dans votre HTML :",
+        "congratulations": "Félicitations ! Vous êtes maintenant prêt à commencer à construire avec Apex."
+      }
+    },
+    "accessibility": {
+      "title": "Accessibilité",
+      "description": "Fonctionnalités d'accessibilité dans Apex",
+      "wcagCompliance": {
+        "title": "Conformité WCAG",
+        "content": "Apex est conçu avec l'accessibilité à l'esprit et vise à respecter les normes WCAG 2.1 AA."
+      },
+      "screenReaderClasses": {
+        "title": "Classes de lecteur d'écran",
+        "description": "Masquer le contenu visuellement tout en le gardant accessible aux technologies d'assistance:"
+      },
+      "focusManagement": {
+        "title": "Gestion du focus",
+        "description": "Apex inclut des styles focus-visible pour la navigation au clavier:"
+      },
+      "reducedMotion": {
+        "title": "Mouvement réduit",
+        "description": "Respecter les préférences de l'utilisateur pour un mouvement réduit:"
+      }
+    },
+    "apiReference": {
+      "title": "Référence API",
+      "description": "Référence complète pour les classes et utilitaires Apex.",
+      "searchAvailable": {
+        "title": "Recherche disponible",
+        "content": "Utilisez la zone de recherche dans la barre latérale pour trouver rapidement des utilitaires spécifiques."
+      },
+      "layout": {
+        "title": "Mise en page",
+        "class": "Classe",
+        "description": "Description"
+      },
+      "spacing": {
+        "title": "Espacement",
+        "class": "Classe",
+        "description": "Description"
+      }
+    },
+    "browserSupport": {
+      "title": "Support navigateur",
+      "description": "Apex prend en charge tous les navigateurs modernes.",
+      "progressiveEnhancement": {
+        "title": "Amélioration progressive",
+        "content": "Apex utilise des fonctionnalités CSS modernes avec des alternatives pour les navigateurs plus anciens."
+      },
+      "supportedBrowsers": {
+        "title": "Navigateurs pris en charge"
+      },
+      "notSupported": {
+        "title": "Non pris en charge"
+      }
+    },
+    "changelog": {
+      "title": "Journal des modifications",
+      "description": "Suivez les changements, mises à jour et améliorations d'Apex.",
+      "newVersionAvailable": {
+        "title": "Nouvelle version disponible",
+        "content": "Vous consultez la documentation pour v{version}.",
+        "viewLatest": "Voir les derniers changements"
+      },
+      "quickStats": {
+        "totalVersions": "Total des versions",
+        "stableReleases": "Versions stables",
+        "betaReleases": "Versions bêta",
+        "latest": "Dernière"
+      },
+      "changes": "Modifications",
+      "breakingChangesDetected": "Changements majeurs détectés.",
+      "viewMigrationGuide": "Voir le guide de migration",
+      "stayUpdated": {
+        "title": "Restez informé",
+        "description": "Abonnez-vous à nos versions GitHub pour être notifié des nouvelles versions.",
+        "viewOnGitHub": "Voir sur GitHub"
+      },
+      "typeLabels": {
+        "major": "Majeure",
+        "minor": "Mineure",
+        "patch": "Correctif",
+        "beta": "Bêta"
+      },
+      "changeTypeLabels": {
+        "feature": "Fonctionnalité",
+        "fix": "Correction",
+        "breaking": "Majeur",
+        "deprecation": "Obsolète"
+      }
+    },
+    "cheatsheet": {
+      "title": "Aide-mémoire",
+      "description": "Référence rapide pour les classes utilitaires Apex. Imprimez ou enregistrez cette page pour une utilisation hors ligne.",
+      "print": "Imprimer",
+      "spacingScale": {
+        "title": "Échelle d'espacement"
+      },
+      "exampleUsage": {
+        "title": "Exemple d'utilisation"
+      },
+      "footer": "Aide-mémoire Apex • apexcss.com • Généré le {date}",
+      "sections": {
+        "spacing": "Espacement",
+        "layout": "Mise en page",
+        "flexbox": "Flexbox",
+        "grid": "Grille",
+        "typography": "Typographie",
+        "colors": "Couleurs",
+        "borders": "Bordures",
+        "sizing": "Taille",
+        "position": "Position",
+        "effects": "Effets",
+        "transitions": "Transitions",
+        "responsive": "Responsive"
+      }
+    },
+    "community": {
+      "title": "Communauté",
+      "description": "Rejoignez la communauté Apex et connectez-vous avec d'autres développeurs.",
+      "showcase": {
+        "title": "Vitrine",
+        "description": "Voyez ce que les autres construisent avec Apex. Soumettez votre projet pour être mis en avant!",
+        "submitProject": "Soumettre votre projet"
+      },
+      "links": {
+        "github": {
+          "title": "GitHub",
+          "description": "Donnez-nous une étoile sur GitHub et contribuez au projet"
+        },
+        "discord": {
+          "title": "Discord",
+          "description": "Rejoignez notre communauté Discord pour des discussions et du support"
+        },
+        "twitter": {
+          "title": "Twitter",
+          "description": "Suivez-nous pour les mises à jour et les annonces"
+        }
+      }
+    },
+    "configuration": {
+      "title": "Configuration",
+      "description": "Personnalisez Apex pour répondre aux besoins de votre projet.",
+      "configurationFile": {
+        "title": "Fichier de configuration",
+        "content": "Créez un fichier config.js à la racine de votre projet pour personnaliser Apex."
+      },
+      "basicConfiguration": {
+        "title": "Configuration de base"
+      },
+      "prefix": {
+        "title": "Préfixe",
+        "description": "Ajoutez un préfixe personnalisé à toutes les classes utilitaires:",
+        "note": "Avec cette configuration, p-4 devient apex-p-4."
+      },
+      "enableDisableUtilities": {
+        "title": "Activer/Désactiver les utilitaires",
+        "description": "Contrôlez quels utilitaires sont générés:"
+      }
+    },
+    "contributing": {
+      "title": "Contribuer",
+      "description": "Merci de votre intérêt pour contribuer à Apex!",
+      "codeOfConduct": {
+        "title": "Code de conduite",
+        "content": "Veuillez lire notre code de conduite avant de contribuer. Nous nous engageons à fournir une expérience accueillante et inclusive pour tous."
+      },
+      "gettingStarted": {
+        "title": "Commencer",
+        "steps": {
+          "fork": "Fork le dépôt sur GitHub",
+          "clone": "Clonez votre fork localement",
+          "install": "Installez les dépendances avec npm install",
+          "branch": "Créez une nouvelle branche pour vos modifications",
+          "makeChanges": "Apportez vos modifications",
+          "submit": "Soumettez une pull request"
+        }
+      },
+      "developmentSetup": {
+        "title": "Configuration de développement"
+      },
+      "pullRequestGuidelines": {
+        "title": "Directives de pull request",
+        "steps": {
+          "style": "Assurez-vous que votre code suit nos directives de style",
+          "commits": "Écrivez des messages de commit clairs",
+          "tests": "Incluez des tests pour les nouvelles fonctionnalités",
+          "docs": "Mettez à jour la documentation si nécessaire",
+          "issues": "Liez tous les problèmes connexes"
+        }
+      }
+    },
+    "customization": {
+      "title": "Personnalisation",
+      "description": "Adaptez Apex pour correspondre à votre marque et aux exigences de votre projet.",
+      "cssVariables": {
+        "title": "Variables CSS",
+        "content": "Apex utilise des propriétés personnalisées CSS (variables) pour une personnalisation facile."
+      },
+      "customColors": {
+        "title": "Couleurs personnalisées",
+        "description": "Remplacez la palette de couleurs par défaut:"
+      },
+      "customSpacing": {
+        "title": "Espacement personnalisé",
+        "description": "Définissez votre propre échelle d'espacement:"
+      },
+      "customTypography": {
+        "title": "Typographie personnalisée",
+        "description": "Personnalisez les familles et tailles de police:"
+      }
+    },
+    "darkMode": {
+      "title": "Mode sombre",
+      "description": "Apex fournit un support intégré pour le mode sombre avec changement automatique.",
+      "automaticDarkMode": {
+        "title": "Mode sombre automatique",
+        "description": "Le mode sombre change automatiquement en fonction des préférences système de l'utilisateur:"
+      },
+      "darkModeClasses": {
+        "title": "Classes de mode sombre",
+        "description": "Utilisez le préfixe dark: pour appliquer des styles en mode sombre:"
+      },
+      "customizingDarkMode": {
+        "title": "Personnaliser le mode sombre",
+        "description": "Remplacez les variables CSS pour les couleurs de mode sombre personnalisées:"
+      }
+    },
+    "designSystem": {
+      "title": "Système de conception",
+      "description": "Apex fournit un système de conception complet avec des couleurs, une typographie, un espacement et plus encore cohérents.",
+      "colors": {
+        "title": "Couleurs",
+        "description": "Un système de couleur sémantique avec des couleurs primaires, secondaires, de succès, d'avertissement et d'erreur."
+      },
+      "typography": {
+        "title": "Typographie",
+        "description": "Échelle de typographie cohérente pour les titres et le texte du corps:"
+      },
+      "spacing": {
+        "title": "Espacement",
+        "description": "Échelle d'espacement cohérente pour les marges et le remplissage:"
+      },
+      "borderRadius": {
+        "title": "Rayon de bordure",
+        "description": "Échelle de rayon de bordure cohérente:"
+      },
+      "shadows": {
+        "title": "Ombres",
+        "description": "Échelle d'ombre cohérente pour l'élévation:"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "description": "Questions courantes sur Apex.",
+      "questions": {
+        "whatIs": {
+          "question": "Qu'est-ce qu'Apex?",
+          "answer": "Apex est un framework CSS utility-first complet avec plus de 500 classes utilitaires conçues pour un développement UI rapide. Il fournit un ensemble de classes utilitaires de bas niveau qui vous permettent de construire des designs entièrement personnalisés sans quitter votre HTML."
+        },
+        "productionReady": {
+          "question": "Apex est-il prêt pour la production?",
+          "answer": "Oui! Apex est stable et prêt pour la production. Il est utilisé par de nombreux projets dans des environnements de production."
+        },
+        "newSyntax": {
+          "question": "Dois-je apprendre une nouvelle syntaxe?",
+          "answer": "Non, Apex utilise des noms de classe CSS standard. Si vous êtes familier avec CSS utility-first, vous vous sentirez comme chez vous."
+        },
+        "customize": {
+          "question": "Puis-je personnaliser le framework?",
+          "answer": "Absolument! Apex est hautement personnalisable via des variables CSS et des options de configuration. Vous pouvez changer les couleurs, les échelles d'espacement et plus encore."
+        },
+        "darkMode": {
+          "question": "Apex prend-il en charge le mode sombre?",
+          "answer": "Oui, Apex dispose d'un support intégré pour le mode sombre avec le préfixe de variante dark:, ce qui facilite le style de vos composants pour les thèmes clairs et sombres."
+        },
+        "rtl": {
+          "question": "Y a-t-il un support RTL?",
+          "answer": "Oui, Apex inclut un support RTL complet (de droite à gauche) pour l'internationalisation."
+        }
+      }
+    },
+    "responsiveDesign": {
+      "title": "Design responsive",
+      "description": "Créez des mises en page responsive avec les classes utilitaires Apex.",
+      "mobileFirst": {
+        "title": "Mobile-First",
+        "content": "Apex suit une approche mobile-first. Les styles de base s'appliquent à toutes les tailles d'écran et les points de rupture ciblent les écrans plus grands."
+      },
+      "breakpoints": {
+        "title": "Points de rupture",
+        "description": "Apex comprend cinq points de rupture par défaut:"
+      },
+      "responsiveModifiers": {
+        "title": "Modificateurs responsive",
+        "description": "Utilisez des préfixes responsive pour appliquer des styles à des points de rupture spécifiques:"
+      },
+      "responsiveTypography": {
+        "title": "Typographie responsive",
+        "description": "Ajustez la taille du texte en fonction de la fenêtre d'affichage:"
+      },
+      "hideShowElements": {
+        "title": "Masquer/Afficher les éléments",
+        "description": "Affichez ou masquez des éléments à différents points de rupture:",
+        "desktopOnly": "Contenu bureau uniquement",
+        "mobileOnly": "Contenu mobile uniquement"
+      }
+    },
+    "utilities": {
+      "title": "Utilitaires",
+      "description": "Classes utilitaires pour l'espacement, la typographie, les couleurs et plus dans Apex"
+    },
+    "migration": {
+      "title": "Guides de Migration",
+      "description": "Guides étape par étape pour migrer depuis d'autres frameworks CSS vers Apex.",
+      "guides": {
+        "fromTailwind": {
+          "title": "Depuis Tailwind CSS",
+          "description": "Migrez votre projet depuis Tailwind CSS vers Apex"
+        },
+        "fromBootstrap": {
+          "title": "Depuis Bootstrap",
+          "description": "Migrez votre projet depuis Bootstrap vers Apex"
+        },
+        "fromBulma": {
+          "title": "Depuis Bulma",
+          "description": "Migrez votre projet depuis Bulma vers Apex"
+        }
+      }
+    },
+    "plugins": {
+      "title": "Développement de Plugins",
+      "description": "Étendez Apex avec des plugins personnalisés.",
+      "pluginApi": {
+        "title": "API de Plugins",
+        "content": "L'API de plugins est actuellement en bêta. Les API peuvent changer dans les futures versions."
+      },
+      "creatingPlugin": {
+        "title": "Créer un Plugin",
+        "description": "Créez un fichier JavaScript qui exporte un objet de plugin :"
+      },
+      "usingPlugins": {
+        "title": "Utiliser des Plugins",
+        "description": "Ajoutez des plugins à votre configuration :"
+      },
+      "officialPlugins": {
+        "title": "Plugins Officiels",
+        "forms": "@apexcss/forms - Styles d'éléments de formulaire",
+        "typography": "@apexcss/typography - Styles de prose et d'articles",
+        "aspectRatio": "@apexcss/aspect-ratio - Utilitaires de ratio d'aspect",
+        "lineClamp": "@apexcss/line-clamp - Utilitaires de troncation de lignes"
+      }
+    },
+    "performance": {
+      "title": "Performance",
+      "description": "Meilleures pratiques pour une performance optimale avec Apex.",
+      "buildOptimization": {
+        "title": "Optimisation du Build",
+        "content": "Apex purge automatiquement les styles non utilisés dans les builds de production."
+      },
+      "fileSize": {
+        "title": "Taille de Fichier",
+        "content": "Le build complet d'Apex fait environ 15KB minifié et gzippé. Avec la purge activée, votre bundle CSS n'inclura que les utilitaires que vous utilisez réellement."
+      },
+      "purgecss": {
+        "title": "PurgeCSS",
+        "content": "Apex utilise PurgeCSS pour supprimer les styles non utilisés. Configurez vos options de purge dans le fichier de configuration."
+      },
+      "bestPractices": {
+        "title": "Meilleures Pratiques",
+        "steps": {
+          "cdn": "Utilisez le CDN pour les prototypes, npm pour la production",
+          "purge": "Activez la purge en production",
+          "disable": "Désactivez les utilitaires dont vous n'avez pas besoin",
+          "components": "Utilisez des composants personnalisés pour les modèles répétitifs"
+        }
+      }
+    },
+    "rtl": {
+      "title": "Support RTL",
+      "description": "Apex inclut un support RTL (de droite à gauche) intégré pour l'internationalisation. Parfait pour l'arabe, l'hébreu et d'autres langues RTL.",
+      "howItWorks": {
+        "title": "Comment ça marche",
+        "content": "Apex utilise des propriétés logiques qui s'adaptent automatiquement à la direction du document. Lorsque vous définissez dir=\"rtl\" sur votre élément HTML, toutes les utilitaires avec des propriétés directionnelles seront retournés automatiquement."
+      },
+      "automaticFlipping": {
+        "title": "Retournement Automatique",
+        "marginLeft": "margin-left → margin-right",
+        "paddingLeft": "padding-left → padding-right",
+        "left": "left → right",
+        "borderLeft": "border-left → border-right"
+      },
+      "logicalProperties": {
+        "title": "Propriétés Logiques",
+        "start": "start (inline-start)",
+        "end": "end (inline-end)",
+        "insetInlineStart": "inset-inline-start",
+        "textAlignStart": "text-align: start"
+      },
+      "examples": {
+        "title": "Exemples RTL",
+        "layout": {
+          "title": "Mise en page RTL",
+          "description": "Voyez comment les utilitaires de mise en page se retournent automatiquement en mode RTL.",
+          "content": "Contenu RTL",
+          "flowsRightToLeft": "Ce contenu coule de droite à gauche",
+          "button": "Bouton"
+        },
+        "spacing": {
+          "title": "Espacement RTL",
+          "description": "Les utilitaires de marge et de remplissage s'adaptent automatiquement à la direction du texte.",
+          "ml4Becomes": "ml-4 (devient mr-4 en RTL)",
+          "mr4Becomes": "mr-4 (devient ml-4 en RTL)",
+          "ltrMargin": "LTR: margin-left: 1rem",
+          "rtlMargin": "RTL: margin-right: 1rem",
+          "marginStart": "Marge Début (logique)",
+          "marginEnd": "Marge Fin (logique)",
+          "physicalLeft": "Bordure gauche physique"
+        },
+        "flexbox": {
+          "title": "Flexbox RTL",
+          "description": "Les mises en page Flexbox maintiennent leur structure visuelle en mode RTL.",
+          "start": "Début",
+          "center": "Centre",
+          "end": "Fin",
+          "visualRight": "Début (visuellement à droite en RTL)",
+          "visualLeft": "Fin (visuellement à gauche en RTL)"
+        },
+        "textAlignment": {
+          "title": "Alignement de Texte RTL",
+          "description": "Les utilitaires d'alignement de texte fonctionnent avec des propriétés logiques.",
+          "textLeft": "text-left (en RTL = droite)",
+          "textRight": "text-right (en RTL = gauche)",
+          "textStart": "text-start (logique)",
+          "textEnd": "text-end (logique)",
+          "textLeftBecomes": "Texte à gauche (devient à droite en RTL)",
+          "textRightBecomes": "Texte à droite (devient à gauche en RTL)",
+          "textStartLogical": "Texte début (logique)",
+          "textEndLogical": "Texte fin (logique)"
+        }
+      },
+      "implementation": {
+        "title": "Implémentation",
+        "setHtmlDirection": {
+          "title": "1. Définir la Direction HTML",
+          "inHtmlHead": "Dans l'en-tête de votre HTML",
+          "orSetDynamically": "Ou définir dynamiquement avec JavaScript"
+        },
+        "reactNextjs": {
+          "title": "2. React/Next.js avec next-intl",
+          "automaticallyHandles": "Gère automatiquement RTL pour l'arabe et l'hébreu",
+          "dirAttributeSet": "L'attribut dir est défini selon la locale"
+        },
+        "importantConsiderations": {
+          "title": "Considérations Importantes",
+          "useLogical": "Utilisez des propriétés logiques (start/end) quand c'est possible pour un meilleur support RTL",
+          "iconsImages": "Les icônes et images peuvent nécessiter un ajustement manuel dans les mises en page RTL",
+          "testWithActual": "Testez avec du contenu RTL réel, pas seulement du texte LTR retourné",
+          "considerBidirectional": "Considérez le texte bidirectionnel avec du contenu mixte"
+        }
+      },
+      "supportedLanguages": {
+        "title": "Langages Supportés",
+        "arabic": "Arabe",
+        "hebrew": "Hébreu",
+        "persian": "Persan",
+        "urdu": "Ourdou"
+      },
+      "documentation": "Documentation RTL"
+    },
+    "migrationPages": {
+      "fromBootstrap": {
+        "title": "Migration depuis Bootstrap",
+        "description": "Un guide complet pour migrer votre projet depuis Bootstrap vers Apex.",
+        "alert": {
+          "type": "warning",
+          "title": "Changements Majeurs",
+          "message": "Migrer depuis Bootstrap vers Apex nécessite des changements significatifs dans votre structure HTML et vos noms de classes."
+        },
+        "gridSystem": {
+          "title": "Migration du Système de Grille",
+          "description": "Bootstrap utilise une grille à 12 colonnes, tandis qu'Apex utilise une approche basée sur des utilitaires flexible :",
+          "bootstrapLabel": "Bootstrap",
+          "apexcssLabel": "Apex"
+        },
+        "component": {
+          "title": "Migration des Composants",
+          "description": "Les composants Bootstrap doivent être reconstruits en utilisant des classes utilitaires :",
+          "bootstrapButton": "Bouton Bootstrap",
+          "apexcssButton": "Apex"
+        },
+        "spacing": {
+          "title": "Migration de l'Espacement",
+          "description": "Bootstrap utilise un espacement numéroté (1-5), tandis qu'Apex utilise un nommage basé sur la taille :",
+          "bootstrapLabel": "Bootstrap",
+          "apexcssLabel": "Apex"
+        }
+      },
+      "fromBulma": {
+        "title": "Migration depuis Bulma",
+        "description": "Un guide complet pour migrer votre projet depuis Bulma vers Apex.",
+        "alert": {
+          "type": "info",
+          "title": "Philosophie Similaire",
+          "message": "Bulma et Apex sont tous deux des frameworks CSS uniquement avec une philosophie similaire d'utilitaires d'abord."
+        },
+        "grid": {
+          "title": "Migration de Grille",
+          "description": "Bulma et Apex utilisent tous deux CSS Grid :",
+          "bulmaLabel": "Bulma",
+          "apexcssLabel": "Apex"
+        },
+        "componentClasses": {
+          "title": "Classes de Composants",
+          "description": "Remplacez les classes de composants Bulma par des combinaisons d'utilitaires Apex :",
+          "bulmaButton": "Bouton Bulma",
+          "apexcssButton": "Apex"
+        },
+        "modifierClasses": {
+          "title": "Classes Modificateurs",
+          "description": "Les modificateurs Bulma deviennent des variantes responsives dans Apex :",
+          "bulmaResponsive": "Responsive Bulma",
+          "apexcssResponsive": "Apex"
+        }
+      },
+      "fromTailwind": {
+        "title": "Migration depuis Tailwind CSS",
+        "description": "Un guide complet pour migrer votre projet depuis Tailwind CSS vers Apex.",
+        "alert": {
+          "type": "info",
+          "title": "Syntaxe Similaire",
+          "message": "Apex utilise une syntaxe très similaire à Tailwind CSS, rendant la migration simple."
+        },
+        "classNameChanges": {
+          "title": "Changements de Noms de Classes",
+          "description": "La plupart des noms de classes sont identiques entre Tailwind et Apex. Voici quelques différences :",
+          "tailwindHeader": "Tailwind",
+          "apexcssHeader": "Apex"
+        },
+        "configuration": {
+          "title": "Configuration",
+          "description": "Mettez à jour votre fichier de configuration :",
+          "oldConfig": "tailwind.config.js (ancien)",
+          "newConfig": "config.js (nouveau)"
+        },
+        "buildProcess": {
+          "title": "Processus de Build",
+          "description": "Mettez à jour vos scripts de build :",
+          "packageJson": "package.json"
+        }
+      },
+      "v1ToV1_1": {
+        "title": "Migration depuis v1.0 vers v1.1",
+        "description": "Ce guide vous aidera à mettre à jour depuis Apex v1.0 vers v1.1 en douceur.",
+        "overview": {
+          "title": "Changements Non Rupturants",
+          "message": "Ceci est une version mineure avec de nouvelles fonctionnalités et améliorations. Aucun changement ruptif n'est inclus."
+        },
+        "whatsNew": {
+          "title": "Nouveautés",
+          "newSpacingScale": {
+            "title": "Nouvelle Échelle d'Espacement",
+            "description": "Ajout de valeurs d'espacement supplémentaires de 0.5 à 96 pour un contrôle plus granulaire.",
+            "comment": "Nouvelles valeurs d'espacement disponibles"
+          },
+          "improvedFocusVisible": {
+            "title": "focus-visible amélioré",
+            "description": "Nouvelles utilitaires focus-visible qui ne s'affichent qu'avec la navigation au clavier.",
+            "comment": "Focus uniquement sur la navigation au clavier",
+            "buttonText": "Bouton Accessible"
+          },
+          "ariaHelperUtilities": {
+            "title": "Utilitaires d'Aide ARIA",
+            "description": "Nouvelles utilitaires pour le texte de lecteur d'écran et l'accessibilité.",
+            "srOnlyComment": "Texte uniquement pour lecteur d'écran",
+            "srOnlyText": "S'ouvre dans une nouvelle fenêtre",
+            "ariaHiddenComment": "Pas pour les lecteurs d'écran"
+          }
+        },
+        "upgradeSteps": {
+          "title": "Étapes de Mise à Jour",
+          "step1": {
+            "title": "Mettre à Jour le Paquet",
+            "description": "Mettez à jour Apex vers v1.1 via votre gestionnaire de paquets :",
+            "npm": "npm",
+            "yarn": "yarn",
+            "pnpm": "pnpm"
+          },
+          "step2": {
+            "title": "Construire Votre Projet",
+            "description": "Reconstruisez votre projet pour inclure les nouvelles classes utilitaires :"
+          },
+          "step3": {
+            "title": "Optionnel : Utiliser les Nouvelles Fonctionnalités",
+            "description": "Votre code existant continuera à fonctionner. Vous pouvez maintenant utiliser les nouvelles fonctionnalités."
+          }
+        },
+        "knownIssues": {
+          "title": "Problèmes Connus et Solutions",
+          "cssPurging": {
+            "title": "Purge CSS",
+            "description": "Si vous utilisez PurgeCSS ou des outils similaires, vous devrez peut-être mettre à jour votre liste sécurisée pour inclure les nouvelles classes utilitaires.",
+            "configFile": "purgecss.config.js",
+            "comment": "Ajouter de nouvelles classes d'espacement si nécessaire"
+          }
+        },
+        "nextSteps": {
+          "title": "Prochaines Étapes",
+          "viewChangelog": "Voir le Journal des Modifications Complet",
+          "backToDocs": "Retour à la Documentation"
+        }
+      }
+    },
+    "componentPages": {
+      "alerts": {
+        "title": "Alertes",
+        "description": "Composants d'alerte pour afficher des notifications, des avertissements et des messages de feedback.",
+        "interactiveDemo": {
+          "title": "Démo Interactive d'Alertes",
+          "description": "Personnalisez les variantes, tailles et options d'alertes pour voir leur apparence."
+        },
+        "basicUsage": {
+          "title": "Utilisation de Base"
+        },
+        "variants": {
+          "title": "Variantes",
+          "info": "Bleu - Messages informatifs",
+          "success": "Vert - Messages de succès",
+          "warning": "Jaune - Messages d'avertissement",
+          "error": "Rouge - Messages d'erreur"
+        },
+        "sizes": {
+          "title": "Tailles",
+          "sm": "Remplissage et texte petits",
+          "md": "Remplissage et texte moyens (par défaut)",
+          "lg": "Remplissage et texte grands"
+        },
+        "dismissible": {
+          "title": "Alertes Dismissibles"
+        },
+        "accessibility": {
+          "title": "Accessibilité",
+          "roleAlert": "Utilisez toujours role=\"alert\" pour les messages importants",
+          "ariaLabel": "Incluez aria-label sur les boutons de fermeture",
+          "colorContrast": "Utilisez un contraste de couleur approprié pour toutes les variantes",
+          "ariaLive": "Envisagez d'utiliser aria-live pour les alertes insérées dynamiquement"
+        }
+      },
+      "buttons": {
+        "title": "Boutons",
+        "description": "Styles et variantes de boutons interactifs. Utilisez la démo ci-dessous pour personnaliser et générer du code de boutons.",
+        "interactiveDemo": {
+          "title": "Démo Interactive"
+        },
+        "basicButton": {
+          "title": "Bouton de Base"
+        },
+        "variants": {
+          "title": "Variantes",
+          "solid": "Solide (Par défaut)",
+          "outline": "Contour",
+          "ghost": "Fantôme",
+          "soft": "Doux"
+        },
+        "sizes": {
+          "title": "Tailles",
+          "extraSmall": "Très Petit",
+          "small": "Petit",
+          "medium": "Moyen (Par défaut)",
+          "large": "Grand",
+          "extraLarge": "Très Grand"
+        },
+        "states": {
+          "title": "États",
+          "disabled": "Désactivé",
+          "loading": "Chargement...",
+          "fullWidth": "Bouton Pleine Largeur"
+        }
+      },
+      "cards": {
+        "title": "Cartes",
+        "description": "Composants de carte flexibles pour afficher du contenu groupé.",
+        "interactiveDemo": {
+          "title": "Démo Interactive de Cartes",
+          "description": "Personnalisez les variantes, tailles et sections de contenu des cartes."
+        },
+        "basicUsage": {
+          "title": "Utilisation de Base"
+        },
+        "variants": {
+          "title": "Variantes",
+          "default": "Carte avec bordure par défaut",
+          "outlined": "Transparente avec bordure colorée",
+          "elevated": "Carte basée sur l'ombre"
+        },
+        "sizes": {
+          "title": "Tailles",
+          "sm": "Petite carte (max-w-xs)",
+          "md": "Carte moyenne (max-w-sm, par défaut)",
+          "lg": "Grande carte (max-w-md)"
+        },
+        "withImage": {
+          "title": "Avec Image"
+        }
+      },
+      "forms": {
+        "title": "Forms",
+        "description": "Form components for user input.",
+        "interactiveDemo": {
+          "title": "Démo Interactive",
+          "description": "Expérimentez différents composants de formulaire."
+        },
+        "basicInput": {
+          "title": "Saisie de Base",
+          "emailLabel": "Adresse E-mail",
+          "emailPlaceholder": "Entrez votre e-mail"
+        },
+        "inputVariants": {
+          "title": "Variantes de Saisie",
+          "default": "Style par défaut",
+          "filled": "Style rempli",
+          "outlined": "Style délimité"
+        },
+        "sizes": {
+          "title": "Tailles de Saisie",
+          "sm": "Petite saisie",
+          "md": "Saisie moyenne (par défaut)",
+          "lg": "Grande saisie"
+        },
+        "withIcon": {
+          "title": "Saisie avec Icône",
+          "searchLabel": "Rechercher",
+          "searchPlaceholder": "Rechercher..."
+        },
+        "validationStates": {
+          "title": "États de Validation",
+          "errorState": "État d'Erreur",
+          "successState": "État de Succès",
+          "emailLabel": "Adresse E-mail",
+          "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+          "usernameLabel": "Nom d'utilisateur",
+          "usernameAvailable": "Nom d'utilisateur disponible"
+        },
+        "checkboxesRadios": {
+          "title": "Cases à Cocher et Boutons Radio",
+          "checkbox": "Case à cocher",
+          "radio": "Bouton radio",
+          "rememberMe": "Se souvenir de moi",
+          "option1": "Option 1",
+          "option2": "Option 2"
+        }
+      },
+      "badges": {
+        "title": "Badges",
+        "description": "Les badges sont de petits composants de comptage et d'étiquetage utilisés pour mettre en évidence des informations supplémentaires.",
+        "basicBadge": {
+          "title": "Badge de Base",
+          "description": "Un badge simple avec un style par défaut."
+        },
+        "colorVariants": {
+          "title": "Variantes de Couleur",
+          "description": "Les badges sont disponibles dans différentes variantes de couleur."
+        },
+        "solidBadges": {
+          "title": "Badges Pleins",
+          "description": "Badges pleins avec du texte blanc pour un meilleur contraste."
+        },
+        "outlineBadges": {
+          "title": "Badges avec Contour",
+          "description": "Badges avec un style de contour."
+        },
+        "sizes": {
+          "title": "Tailles",
+          "description": "Les badges sont disponibles dans différentes tailles."
+        },
+        "withIcons": {
+          "title": "Avec Icônes",
+          "description": "Les badges peuvent inclure des icônes pour un contexte supplémentaire."
+        },
+        "notificationBadge": {
+          "title": "Badge de Notification",
+          "description": "Utilisez les badges comme indicateurs de notification sur les boutons ou les icônes."
+        },
+        "pillVsRounded": {
+          "title": "Pilule vs Arrondi",
+          "description": "Choisissez entre des badges pilule (complètement arrondis) ou légèrement arrondis."
+        }
+      },
+      "tables": {
+        "title": "Tableaux",
+        "description": "Les tableaux sont utilisés pour afficher des données en lignes et colonnes avec diverses options de style.",
+        "basicTable": {
+          "title": "Tableau de Base",
+          "description": "Un tableau simple avec un style de base."
+        },
+        "stripedTable": {
+          "title": "Tableau Rayé",
+          "description": "Ajoutez des rayures de zèbre aux lignes du tableau pour une meilleure lisibilité."
+        },
+        "hoverableTable": {
+          "title": "Tableau avec Survol",
+          "description": "Ajoutez un effet de survol aux lignes du tableau pour une meilleure interactivité."
+        },
+        "borderedTable": {
+          "title": "Tableau avec Bordure",
+          "description": "Ajoutez des bordures à toutes les cellules pour une structure de tableau plus définie."
+        },
+        "compactTable": {
+          "title": "Tableau Compact",
+          "description": "Un tableau plus compact avec un remplissage réduit."
+        },
+        "tableWithActions": {
+          "title": "Tableau avec Actions",
+          "description": "Ajoutez des boutons d'action aux lignes du tableau pour une fonctionnalité interactive."
+        },
+        "responsiveTable": {
+          "title": "Tableau Responsive",
+          "description": "Faites défiler les tableaux horizontalement sur les petits écrans."
+        }
+      },
+      "tabs": {
+        "title": "Onglets",
+        "description": "Les onglets sont utilisés pour organiser le contenu en panneaux séparés entre lesquels les utilisateurs peuvent basculer.",
+        "basicTabs": {
+          "title": "Onglets de Base",
+          "description": "Un composant d'onglet simple avec un style de base."
+        },
+        "pillTabs": {
+          "title": "Onglets Pilule",
+          "description": "Onglets avec un style pilule pour un look plus moderne."
+        },
+        "underlineTabs": {
+          "title": "Onglets Soulignés",
+          "description": "Onglets minimaux avec un indicateur de soulignement pour l'onglet actif."
+        },
+        "verticalTabs": {
+          "title": "Onglets Verticaux",
+          "description": "Onglets disposés verticalement pour une mise en page de contenu côte à côte."
+        },
+        "tabsWithIcons": {
+          "title": "Onglets avec Icônes",
+          "description": "Ajoutez des icônes aux onglets pour un contexte visuel."
+        },
+        "coloredTabs": {
+          "title": "Onglets Colorés",
+          "description": "Onglets avec différents thèmes de couleur."
+        },
+        "disabledTab": {
+          "title": "Onglet Désactivé",
+          "description": "Désactivez les onglets qui ne sont pas disponibles pour l'interaction."
+        }
+      },
+      "modals": {
+        "title": "Modales",
+        "description": "Les modales sont des boîtes de dialogue qui apparaissent sur le contenu de la page pour focaliser l'attention de l'utilisateur sur des informations ou des actions importantes.",
+        "basicModal": {
+          "title": "Modale de Base",
+          "description": "Une modale simple avec des sections d'en-tête, de corps et de pied de page."
+        },
+        "centeredModal": {
+          "title": "Modale Centrée",
+          "description": "Une modale centrée à la fois verticalement et horizontalement."
+        },
+        "fullScreenModal": {
+          "title": "Modale Plein Écran",
+          "description": "Une modale qui occupe tout l'écran."
+        },
+        "modalSizes": {
+          "title": "Tailles de Modale",
+          "description": "Les modales sont disponibles dans différentes tailles."
+        },
+        "modalWithoutHeader": {
+          "title": "Modale sans En-tête",
+          "description": "Une modale minimale sans section d'en-tête."
+        },
+        "scrollableModal": {
+          "title": "Modale Défilable",
+          "description": "Une modale avec une zone de contenu défilable."
+        },
+        "confirmationModal": {
+          "title": "Modale de Confirmation",
+          "description": "Une modale pour confirmer des actions destructrices ou importantes."
+        },
+        "modalWithForm": {
+          "title": "Modale avec Formulaire",
+          "description": "Une modale contenant un formulaire pour la saisie utilisateur."
+        }
+      },
+      "dropdowns": {
+        "title": "Menus Déroulants",
+        "description": "Les menus déroulants sont des superpositions contextuelles basculables pour afficher des listes de liens et plus encore.",
+        "basicDropdown": {
+          "title": "Menu Déroulant de Base",
+          "description": "Un menu déroulant simple avec un bouton de déclenchement et des éléments de menu."
+        },
+        "dropdownWithDivider": {
+          "title": "Menu Déroulant avec Diviseur",
+          "description": "Ajoutez des diviseurs pour séparer les éléments du menu déroulant en groupes."
+        },
+        "dropdownWithIcons": {
+          "title": "Menu Déroulant avec Icônes",
+          "description": "Ajoutez des icônes aux éléments du menu déroulant pour un contexte visuel."
+        },
+        "dropdownWithHeader": {
+          "title": "Menu Déroulant avec En-tête",
+          "description": "Ajoutez une section d'en-tête au menu déroulant pour un contexte supplémentaire."
+        },
+        "dropdownPositions": {
+          "title": "Positions de Menu Déroulant",
+          "description": "Positionnez le menu déroulant dans différentes directions."
+        },
+        "dropdownSizes": {
+          "title": "Tailles de Menu Déroulant",
+          "description": "Les menus déroulants sont disponibles dans différentes tailles."
+        },
+        "splitButtonDropdown": {
+          "title": "Menu Déroulant à Bouton Divisé",
+          "description": "Un bouton avec un déclencheur de menu déroulant séparé."
+        },
+        "disabledDropdownItem": {
+          "title": "Élément de Menu Déroulant Désactivé",
+          "description": "Désactivez les éléments individuels du menu déroulant."
+        }
+      },
+      "accordion": {
+        "title": "Accordéon",
+        "description": "Les accordéons sont des éléments empilés verticalement qui peuvent être développés et réduits pour afficher ou masquer du contenu.",
+        "basicAccordion": {
+          "title": "Accordéon de Base",
+          "description": "Un accordéon simple avec des éléments extensibles et réductibles."
+        },
+        "borderedAccordion": {
+          "title": "Accordéon avec Bordure",
+          "description": "Éléments d'accordéon avec des bordures individuelles."
+        },
+        "accordionWithIcons": {
+          "title": "Accordéon avec Icônes",
+          "description": "Ajoutez des icônes aux en-têtes d'accordéon pour un contexte visuel."
+        },
+        "flushAccordion": {
+          "title": "Accordéon Flush",
+          "description": "Accordéon sans bordures pour un look plus épuré."
+        },
+        "alwaysOpenAccordion": {
+          "title": "Accordéon Toujours Ouvert",
+          "description": "Permettez à plusieurs éléments d'accordéon d'être ouverts en même temps."
+        },
+        "accordionWithDescription": {
+          "title": "Accordéon avec Description",
+          "description": "Ajoutez une description sous le titre de l'accordéon."
+        },
+        "compactAccordion": {
+          "title": "Accordéon Compact",
+          "description": "Un accordéon plus compact avec un remplissage réduit."
+        },
+        "disabledAccordionItem": {
+          "title": "Élément d'Accordéon Désactivé",
+          "description": "Désactivez les éléments individuels de l'accordéon."
+        }
+      }
+    },
+    "utilityPages": {
+      "typography": {
+        "title": "Typographie",
+        "description": "Utilitaires de typographie pour contrôler la taille de police, le poids, la hauteur de ligne, l'alignement et plus encore.",
+        "fontSizes": {
+          "title": "Tailles de Police",
+          "description": "Contrôlez la taille de police d'un élément à l'aide des utilitaires de taille de texte."
+        },
+        "fontWeights": {
+          "title": "Poids de Police",
+          "description": "Contrôlez le poids de police d'un élément."
+        },
+        "lineHeights": {
+          "title": "Hauteurs de Ligne",
+          "description": "Contrôlez la hauteur de ligne d'un élément."
+        },
+        "textAlignments": {
+          "title": "Alignement du Texte",
+          "description": "Contrôlez l'alignement du texte d'un élément."
+        },
+        "textDecoration": {
+          "title": "Décoration du Texte",
+          "description": "Contrôlez la décoration du texte d'un élément."
+        },
+        "textTransform": {
+          "title": "Transformation du Texte",
+          "description": "Contrôlez la capitalisation du texte."
+        },
+        "letterSpacing": {
+          "title": "Espacement des Lettres",
+          "description": "Contrôlez l'espacement des lettres d'un élément."
+        },
+        "textColors": {
+          "title": "Couleurs du Texte",
+          "description": "Contrôlez la couleur du texte d'un élément."
+        }
+      },
+      "sizing": {
+        "title": "Tailles",
+        "description": "Utilitaires de taille pour contrôler la largeur, la hauteur et la largeur/hauteur maximale des éléments.",
+        "width": {
+          "title": "Largeur",
+          "description": "Contrôlez la largeur d'un élément à l'aide des utilitaires de largeur."
+        },
+        "fixedWidth": {
+          "title": "Largeur Fixe",
+          "description": "Définissez une largeur fixe en utilisant les valeurs de l'échelle d'espacement."
+        },
+        "maxWidth": {
+          "title": "Largeur Maximale",
+          "description": "Contrôlez la largeur maximale d'un élément."
+        },
+        "height": {
+          "title": "Hauteur",
+          "description": "Contrôlez la hauteur d'un élément à l'aide des utilitaires de hauteur."
+        },
+        "fixedHeight": {
+          "title": "Hauteur Fixe",
+          "description": "Définissez une hauteur fixe en utilisant les valeurs de l'échelle d'espacement."
+        },
+        "maxHeight": {
+          "title": "Hauteur Maximale",
+          "description": "Contrôlez la hauteur maximale d'un élément."
+        },
+        "aspectRatio": {
+          "title": "Ratio d'Aspect",
+          "description": "Contrôlez le ratio d'aspect d'un élément."
+        }
+      },
+      "borders": {
+        "title": "Bordures",
+        "description": "Utilitaires de bordures pour contrôler la largeur, les côtés, le rayon, les couleurs et les diviseurs des bordures.",
+        "borderWidth": {
+          "title": "Largeur de Bordure",
+          "description": "Ajoutez des bordures aux éléments avec différentes largeurs."
+        },
+        "borderSides": {
+          "title": "Côtés de Bordure",
+          "description": "Ajoutez des bordures à des côtés spécifiques d'un élément."
+        },
+        "borderRadius": {
+          "title": "Rayon de Bordure",
+          "description": "Ajoutez des coins arrondis aux éléments."
+        },
+        "borderColors": {
+          "title": "Couleurs de Bordure",
+          "description": "Changez la couleur des bordures."
+        },
+        "divide": {
+          "title": "Diviser",
+          "description": "Ajoutez des bordures entre les éléments enfants."
+        }
+      }
+    },
+    "troubleshooting": {
+      "title": "Dépannage",
+      "description": "Problèmes courants et comment les résoudre.",
+      "needMoreHelp": {
+        "title": "Besoin d'aide ?",
+        "content": "Si vous ne trouvez pas de solution ici, veuillez consulter la FAQ ou rejoindre notre Discord communautaire."
+      },
+      "issues": {
+        "stylesNotApplying": {
+          "title": "Les styles ne s'appliquent pas",
+          "solution": "Assurez-vous d'avoir importé le fichier CSS Apex dans votre projet. Vérifiez que le chemin vers le fichier CSS est correct."
+        },
+        "darkModeNotWorking": {
+          "title": "Le mode sombre ne fonctionne pas",
+          "solution": "Assurez-vous d'avoir la classe dark sur votre élément HTML ou que votre préférence système est configurée en mode sombre."
+        },
+        "customColorsNotAppearing": {
+          "title": "Les couleurs personnalisées n'apparaissent pas",
+          "solution": "Vérifiez votre fichier de configuration et assurez-vous d'avoir reconstruit le CSS après avoir apporté des modifications."
+        },
+        "rtlLayoutIssues": {
+          "title": "Problèmes de mise en page RTL",
+          "solution": "Vérifiez que vous avez défini dir=\"rtl\" sur votre élément HTML et que vous utilisez des utilitaires compatibles RTL comme ms- et me- au lieu de ml- et mr-."
+        },
+        "buildErrors": {
+          "title": "Erreurs de build",
+          "solution": "Assurez-vous d'avoir la dernière version d'Apex installée. Essayez de supprimer node_modules et d'exécuter npm install à nouveau."
+        }
+      }
+    }
+  },
+  "navigation": {
+    "search": "Rechercher dans la documentation...",
+    "skipToContent": "Passer au contenu principal",
+    "toggleMenu": "Basculer le menu de navigation",
+    "toggleTheme": "Basculer le mode sombre",
+    "toggleLanguage": "Changer de langue"
+  },
+  "sidebar": {
+    "gettingStarted": "Commencer",
+    "coreConcepts": "Concepts Fondamentaux",
+    "utilities": "Utilitaires",
+    "components": "Composants",
+    "advanced": "Avancé",
+    "reference": "Référence",
+    "migration": "Migration",
+    "help": "Aide",
+    "community": "Communauté",
+    "tools": "Outils"
+  },
+  "common": {
+    "copy": "Copier",
+    "copied": "Copié !",
+    "preview": "Aperçu",
+    "code": "Code",
+    "usage": "Utilisation",
+    "installation": "Installation",
+    "props": "Propriétés",
+    "accessibility": "Accessibilité",
+    "examples": "Exemples",
+    "default": "Par défaut",
+    "variants": "Variantes",
+    "sizes": "Tailles",
+    "colors": "Couleurs",
+    "states": "États"
+  },
+  "feedback": {
+    "title": "Cela vous a-t-il été utile ?",
+    "thankYou": "Merci !",
+    "placeholder": "Parlez-nous de votre expérience...",
+    "submit": "Envoyer un commentaire",
+    "sending": "Envoi en cours..."
+  },
+  "playground": {
+    "title": "Playground",
+    "description": "Testez les utilitaires Apex directement dans votre navigateur. Modifiez le HTML et voyez le résultat instantanément.",
+    "editor": "Éditeur",
+    "reset": "Réinitialiser",
+    "share": "Partager",
+    "download": "Télécharger",
+    "proTip": "Conseil pro",
+    "tabIndent": "Appuyez sur Tab pour indenter et Shift+Tab pour désindenter",
+    "generatedCode": "Code généré"
+  },
+  "version": {
+    "select": "Sélectionner la version",
+    "stable": "Stable",
+    "beta": "Bêta",
+    "viewChangelog": "Voir le journal des modifications",
+    "whatsNew": "Nouveautés",
+    "migrationGuide": "Guide de migration"
+  },
+  "rtl": {
+    "title": "Support RTL",
+    "description": "Apex inclut un support RTL (de droite à gauche) intégré pour l'internationalisation.",
+    "example": "Exemple RTL",
+    "layout": "Mise en page RTL",
+    "spacing": "Espacement RTL",
+    "flexbox": "Flexbox RTL",
+    "text": "Alignement du texte RTL"
+  },
+  "search": {
+    "placeholder": "Rechercher dans la documentation...",
+    "noResults": "Aucun résultat trouvé",
+    "tryDifferent": "Essayez d'autres mots-clés",
+    "typeToSearch": "Tapez pour rechercher dans la documentation",
+    "searchFor": "Recherchez des utilitaires, composants, guides et plus encore",
+    "results": "résultats"
+  },
+  "keyboard": {
+    "title": "Raccourcis clavier",
+    "showHelp": "Afficher les raccourcis clavier",
+    "focusSearch": "Focus recherche",
+    "openSearch": "Ouvrir la recherche",
+    "close": "Fermer la recherche / modales",
+    "navigate": "pour naviguer",
+    "select": "pour sélectionner",
+    "toNavigate": "pour naviguer",
+    "toSelect": "pour sélectionner"
+  },
+  "component": {
+    "propsTable": {
+      "name": "Nom",
+      "type": "Type",
+      "default": "Par défaut",
+      "description": "Description",
+      "required": "Requis"
+    },
+    "accessibility": {
+      "title": "Accessibilité",
+      "keyboard": "Support clavier",
+      "screenReader": "Lecteur d'écran",
+      "aria": "Attributs ARIA",
+      "focus": "Gestion du focus"
+    }
+  },
+  "home": {
+    "title": "Apex",
+    "description": "Un framework CSS utility-first complet avec plus de 500 classes utilitaires pour un développement UI rapide.",
+    "welcomeAlert": {
+      "title": "Bienvenue !",
+      "content": "Bienvenue dans la documentation Apex. Ce framework utility-first fournit un ensemble complet de classes CSS pour un développement UI rapide, incluant l'espacement, la typographie, les couleurs, flexbox, grid, les animations, les transformations, les filtres et bien plus encore."
+    },
+    "gettingStarted": {
+      "title": "Commencer",
+      "description": "Commencez avec Apex en l'incluant dans votre projet.",
+      "quickStart": {
+        "title": "Démarrage Rapide",
+        "description": "Incluez le fichier CSS du framework dans votre HTML :"
+      },
+      "npmInstallation": {
+        "title": "Installation NPM",
+        "description": "Installez via npm :"
+      }
+    },
+    "utilities": {
+      "title": "Utilitaires",
+      "description": "Le framework inclut une large gamme de classes utilitaires pour l'espacement, la typographie, les couleurs, flexbox, grid et plus encore.",
+      "spacing": "Espacement",
+      "typography": "Typographie",
+      "colors": "Couleurs",
+      "exploreAlert": "Ce ne sont que quelques exemples. Explorez la section Utilitaires pour voir toutes les classes disponibles."
+    },
+    "components": {
+      "title": "Composants",
+      "description": "Apex fournit une collection de composants préconstruits pour les modèles UI courants.",
+      "viewAll": "Voir Tous les Composants"
+    },
+    "themes": {
+      "title": "Thèmes",
+      "description": "Apex inclut un support intégré pour les thèmes clair, sombre et personnalisés.",
+      "darkMode": {
+        "title": "Mode Sombre",
+        "description": "Activez le mode sombre automatique ou configurez des thèmes personnalisés :"
+      },
+      "customThemes": {
+        "title": "Thèmes Personnalisés",
+        "description": "Créez votre propre thème en remplaçant les variables CSS :"
+      }
+    },
+    "accessibility": {
+      "title": "Accessibilité",
+      "description": "Apex privilégie l'accessibilité avec un support intégré pour les lecteurs d'écran, la gestion du focus et la navigation au clavier.",
+      "screenReaderClasses": {
+        "title": "Classes de Lecteur d'Écran",
+        "description": "Masquez le contenu visuellement tout en le gardant accessible aux technologies d'assistance :"
+      },
+      "learnMore": "En Savoir Plus sur l'Accessibilité"
+    },
+    "configuration": {
+      "title": "Configuration",
+      "description": "Personnalisez Apex en modifiant le fichier de configuration pour activer ou désactiver les utilitaires, changer les préfixes et plus encore.",
+      "guide": "Guide de Configuration"
+    },
+    "responsiveDesign": {
+      "title": "Design Responsif",
+      "description": "Construisez des mises en page responsives avec les classes d'utilité d'Apex.",
+      "mobileFirst": {
+        "title": "Mobile-First",
+        "content": "Apex suit une approche mobile-first. Les styles de base s'appliquent à toutes les tailles d'écran, et les points de rupture ciblent les écrans plus grands."
+      },
+      "breakpoints": {
+        "title": "Points de Rupture",
+        "description": "Apex inclut cinq points de rupture par défaut :"
+      },
+      "responsiveModifiers": {
+        "title": "Modificateurs Responsifs",
+        "description": "Utilisez des préfixes responsifs pour appliquer des styles à des points de rupture spécifiques :"
+      },
+      "responsiveTypography": {
+        "title": "Typographie Responsive",
+        "description": "Ajustez la taille du texte en fonction du viewport :"
+      },
+      "hideShowElements": {
+        "title": "Masquer/Afficher des Éléments",
+        "description": "Affichez ou masquez des éléments à différents points de rupture :",
+        "desktopOnly": "Contenu uniquement bureau",
+        "mobileOnly": "Contenu uniquement mobile"
+      }
+    },
+    "rtl": {
+      "title": "Support RTL",
+      "description": "Apex inclut un support RTL (de droite à gauche) intégré pour l'internationalisation. Parfait pour l'arabe, l'hébreu et d'autres langues RTL.",
+      "documentation": "Documentation RTL"
+    },
+    "forms": {
+      "title": "Formulaires",
+      "description": "Composants de formulaire incluant des entrées, des étiquettes, des cases à cocher et des états de validation.",
+      "interactiveDemo": {
+        "title": "Démo Interactive de Formulaires",
+        "description": "Personnalisez les variantes, tailles et états d'entrée."
+      },
+      "basicInput": {
+        "title": "Entrée de Base",
+        "emailLabel": "Adresse E-mail",
+        "emailPlaceholder": "Entrez votre e-mail"
+      },
+      "inputVariants": {
+        "title": "Variantes d'Entrée",
+        "default": "Entrée avec bordure par défaut",
+        "filled": "Style de fond rempli",
+        "outlined": "Contour avec bordure plus épaisse"
+      },
+      "sizes": {
+        "title": "Tailles",
+        "sm": "Petite entrée",
+        "md": "Entrée moyenne (par défaut)",
+        "lg": "Grande entrée"
+      },
+      "withIcon": {
+        "title": "Avec Icône",
+        "searchLabel": "Rechercher",
+        "searchPlaceholder": "Rechercher..."
+      },
+      "validationStates": {
+        "title": "États de Validation",
+        "errorState": "État d'erreur",
+        "emailLabel": "E-mail",
+        "invalidEmail": "Adresse e-mail invalide",
+        "successState": "État de succès",
+        "usernameLabel": "Nom d'utilisateur",
+        "usernameAvailable": "Le nom d'utilisateur est disponible"
+      },
+      "checkboxesRadios": {
+        "title": "Cases à Cocher et Radios",
+        "checkbox": "Case à cocher",
+        "rememberMe": "Se souvenir de moi",
+        "radio": "Radio",
+        "option1": "Option 1",
+        "option2": "Option 2"
+      }
+    },
+    "utilityPages": {
+      "colors": {
+        "title": "Couleurs",
+        "description": "Explorez la palette de couleurs complète. Cliquez sur n'importe quelle couleur pour copier son nom de classe."
+      },
+      "flexbox": {
+        "title": "Flexbox",
+        "description": "Utilitaires Flexbox pour créer des mises en page flexibles et responsives.",
+        "interactivePlayground": {
+          "title": "Playground Interactif Flexbox",
+          "description": "Expérimentez avec différentes propriétés Flexbox et voyez les résultats en temps réel."
+        },
+        "display": {
+          "title": "Affichage",
+          "enableFlex": "Activer le conteneur flex",
+          "enableInlineFlex": "Activer le conteneur inline-flex"
+        },
+        "flexDirection": {
+          "title": "Direction Flex"
+        },
+        "justifyContent": {
+          "title": "Justifier le Contenu"
+        },
+        "alignItems": {
+          "title": "Aligner les Éléments"
+        },
+        "flexWrap": {
+          "title": "Retour à la ligne Flex"
+        },
+        "flexGrowShrink": {
+          "title": "Croissance et Réduction Flex"
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "centerEverything": "Centrer Tout",
+          "centeredContent": "Contenu centré",
+          "horizontalNavigation": "Navigation Horizontale",
+          "logo": "Logo",
+          "home": "Accueil",
+          "about": "À propos",
+          "contact": "Contact",
+          "cardLayout": "Mise en page de Carte",
+          "content": "Contenu",
+          "footer": "Pied de page"
+        }
+      },
+      "grid": {
+        "title": "Grille",
+        "description": "Constructeur de grille interactif. Personnalisez les colonnes, les espaces et générez du code CSS Grid instantanément.",
+        "gridBuilder": {
+          "title": "Constructeur de Grille"
+        },
+        "basicGrid": {
+          "title": "Grille de Base",
+          "description": "Créez une grille de base avec des colonnes de largeur égale."
+        },
+        "responsiveGrid": {
+          "title": "Grille Responsive",
+          "description": "Utilisez des préfixes responsifs pour changer le nombre de colonnes à différents points d'arrêt."
+        },
+        "autoFitGrid": {
+          "title": "Grille Auto-fit",
+          "description": "Créez une grille responsive qui ajuste automatiquement les colonnes en fonction de la largeur minimale de l'élément."
+        },
+        "columnSpan": {
+          "title": "Étendue de Colonne",
+          "description": "Faites en sorte que les éléments s'étendent sur plusieurs colonnes.",
+          "spans2Columns": "S'étend sur 2 colonnes",
+          "spans3Columns": "S'étend sur 3 colonnes"
+        },
+        "rowSpan": {
+          "title": "Étendue de Ligne",
+          "description": "Faites en sorte que les éléments s'étendent sur plusieurs lignes.",
+          "spans2Rows": "S'étend sur 2 lignes"
+        },
+        "gapSizes": {
+          "title": "Tailles d'Espace",
+          "smallGap": "Petit espace",
+          "mediumGap": "Espace moyen (par défaut)",
+          "largeGap": "Grand espace",
+          "gapXAndY": "Espace X et Y séparément"
+        }
+      },
+      "spacing": {
+        "title": "Espacement",
+        "description": "Explorateur d'espacement interactif. Ajustez les contrôles pour voir comment différentes valeurs d'espacement affectent votre mise en page."
+      },
+      "typography": {
+        "title": "Typographie",
+        "description": "Utilitaires de typographie pour contrôler la taille de police, le poids, la hauteur de ligne, l'alignement et plus encore.",
+        "fontSizes": {
+          "title": "Tailles de Police",
+          "description": "Contrôlez la taille de police d'un élément en utilisant les utilitaires de taille de texte."
+        },
+        "fontWeights": {
+          "title": "Poids de Police",
+          "description": "Contrôlez le poids de police d'un élément."
+        },
+        "lineHeights": {
+          "title": "Hauteurs de Ligne",
+          "description": "Contrôlez la hauteur de ligne d'un élément."
+        },
+        "textAlignments": {
+          "title": "Alignement de Texte",
+          "description": "Contrôlez l'alignement de texte d'un élément."
+        },
+        "textDecoration": {
+          "title": "Décoration de Texte",
+          "description": "Contrôlez la décoration de texte d'un élément."
+        },
+        "textTransform": {
+          "title": "Transformation de Texte",
+          "description": "Contrôlez la capitalisation du texte."
+        },
+        "letterSpacing": {
+          "title": "Espacement des Lettres",
+          "description": "Contrôlez l'espacement des lettres d'un élément."
+        },
+        "textColors": {
+          "title": "Couleurs de Texte",
+          "description": "Contrôlez la couleur de texte d'un élément."
+        }
+      },
+      "sizing": {
+        "title": "Tailles",
+        "description": "Utilitaires de taille pour contrôler la largeur, la hauteur et la largeur/hauteur maximale des éléments.",
+        "width": {
+          "title": "Largeur",
+          "description": "Contrôlez la largeur d'un élément en utilisant les utilitaires de largeur."
+        },
+        "fixedWidth": {
+          "title": "Largeur Fixe",
+          "description": "Définissez une largeur fixe en utilisant les valeurs de l'échelle d'espacement."
+        },
+        "maxWidth": {
+          "title": "Largeur Maximale",
+          "description": "Contrôlez la largeur maximale d'un élément."
+        },
+        "height": {
+          "title": "Hauteur",
+          "description": "Contrôlez la hauteur d'un élément en utilisant les utilitaires de hauteur."
+        },
+        "fixedHeight": {
+          "title": "Hauteur Fixe",
+          "description": "Définissez une hauteur fixe en utilisant les valeurs de l'échelle d'espacement."
+        },
+        "maxHeight": {
+          "title": "Hauteur Maximale",
+          "description": "Contrôlez la hauteur maximale d'un élément."
+        },
+        "aspectRatio": {
+          "title": "Ratio d'Aspect",
+          "description": "Contrôlez le ratio d'aspect d'un élément."
+        }
+      },
+      "borders": {
+        "title": "Bordures",
+        "description": "Utilitaires de bordures pour contrôler la largeur, les côtés, le rayon, les couleurs et les diviseurs des bordures.",
+        "borderWidth": {
+          "title": "Largeur de Bordure",
+          "description": "Ajoutez des bordures aux éléments avec différentes largeurs."
+        },
+        "borderSides": {
+          "title": "Côtés de Bordure",
+          "description": "Ajoutez des bordures à des côtés spécifiques d'un élément."
+        },
+        "borderRadius": {
+          "title": "Rayon de Bordure",
+          "description": "Ajoutez des coins arrondis aux éléments."
+        },
+        "borderColors": {
+          "title": "Couleurs de Bordure",
+          "description": "Changez la couleur des bordures."
+        },
+        "divide": {
+          "title": "Diviser",
+          "description": "Ajoutez des bordures entre les éléments enfants."
+        }
+      }
+    }
+  }
+}

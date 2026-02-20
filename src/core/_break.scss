@@ -1,0 +1,44 @@
+// ============================================================================
+// Break (Inside, Before, After) Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-break == true {
+  // Break inside
+  .break-inside-auto { break-inside: auto; }
+  .break-inside-avoid { break-inside: avoid; }
+  .break-inside-avoid-page { break-inside: avoid-page; }
+  .break-inside-avoid-column { break-inside: avoid-column; }
+  .break-inside-avoid-region { break-inside: avoid-region; }
+
+  // Break before
+  .break-before-auto { break-before: auto; }
+  .break-before-avoid { break-before: avoid; }
+  .break-before-all { break-before: all; }
+  .break-before-avoid-page { break-before: avoid-page; }
+  .break-before-page { break-before: page; }
+  .break-before-left { break-before: left; }
+  .break-before-right { break-before: right; }
+  .break-before-column { break-before: column; }
+  .break-before-avoid-column { break-before: avoid-column; }
+  .break-before-region { break-before: region; }
+  .break-before-avoid-region { break-before: avoid-region; }
+
+  // Break after
+  .break-after-auto { break-after: auto; }
+  .break-after-avoid { break-after: avoid; }
+  .break-after-all { break-after: all; }
+  .break-after-avoid-page { break-after: avoid-page; }
+  .break-after-page { break-after: page; }
+  .break-after-left { break-after: left; }
+  .break-after-right { break-after: right; }
+  .break-after-column { break-after: column; }
+  .break-after-avoid-column { break-after: avoid-column; }
+  .break-after-region { break-after: region; }
+  .break-after-avoid-region { break-after: avoid-region; }
+
+  // Box decoration break
+  .box-decoration-clone { box-decoration-break: clone; }
+  .box-decoration-slice { box-decoration-break: slice; }
+}

@@ -1,0 +1,128 @@
+// ============================================================================
+// Component Mixins
+// ============================================================================
+
+@use 'sass:color';
+@use '../config/settings' as settings;
+
+// Button variant mixin
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover {
+    color: $color;
+    background-color: color.adjust($background, $lightness: -5%);
+    border-color: color.adjust($border, $lightness: -5%);
+  }
+
+  &:focus {
+    color: $color;
+    background-color: color.adjust($background, $lightness: -5%);
+    border-color: color.adjust($border, $lightness: -5%);
+    box-shadow: 0 0 0 3px rgba($border, 0.25);
+  }
+
+  &:active {
+    color: $color;
+    background-color: color.adjust($background, $lightness: -10%);
+    border-color: color.adjust($border, $lightness: -10%);
+  }
+
+  &:disabled {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+    opacity: 0.65;
+  }
+}
+
+// Button size mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+// Alert variant mixin
+@mixin alert-variant($background, $border, $text) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+
+  hr {
+    border-top-color: color.adjust($border, $lightness: -5%);
+  }
+
+  .alert-link {
+    color: color.adjust($text, $lightness: -10%);
+  }
+}
+
+// Badge variant mixin
+@mixin badge-variant($background, $text) {
+  color: $text;
+  background-color: $background;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      color: $text;
+      background-color: color.adjust($background, $lightness: -5%);
+      text-decoration: none;
+    }
+  }
+}
+
+// Card mixin
+@mixin card-variant($border-color, $card-cap-bg, $card-cap-color) {
+  border-color: $border-color;
+
+  .card-header,
+  .card-footer {
+    background-color: $card-cap-bg;
+    color: $card-cap-color;
+  }
+}
+
+// Form control mixin
+@mixin form-control-variant($color, $border-color, $focus-border-color, $focus-box-shadow) {
+  color: $color;
+  background-color: #fff;
+  border-color: $border-color;
+
+  &:focus {
+    color: $color;
+    background-color: #fff;
+    border-color: $focus-border-color;
+    outline: none;
+    box-shadow: $focus-box-shadow;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+  }
+}
+
+// Table variant mixin
+@mixin table-variant($background, $border) {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        background-color: $background;
+        border-color: $border;
+      }
+    }
+  }
+}

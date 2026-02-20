@@ -1,0 +1,77 @@
+// ============================================================================
+// Utility-First CSS Framework - Consolidated Build File
+// ============================================================================
+
+// Configuration
+@use '../config/settings';
+@use '../config/breakpoints';
+@use '../config/prefix';
+
+// Base
+@use '../base/variables';
+@use '../base/reset';
+@use '../base/normalize';
+@use '../base/base';
+
+// Mixins
+@use '../mixins/responsive';
+@use '../mixins/utilities';
+@use '../mixins/states';
+@use '../mixins/components';
+
+// Core Utilities
+@use '../core/spacing';
+@use '../core/sizing';
+@use '../core/typography';
+@use '../core/flexbox';
+@use '../core/grid';
+@use '../core/positioning';
+@use '../core/display';
+@use '../core/borders';
+@use '../core/shadows';
+@use '../core/opacity';
+@use '../core/overflow';
+@use '../core/visibility';
+@use '../core/transitions';
+@use '../core/cursor';
+@use '../core/interaction';
+@use '../core/svg';
+@use '../core/columns';
+@use '../core/break';
+@use '../core/isolation';
+@use '../core/list';
+@use '../core/float';
+@use '../core/vertical-align';
+@use '../core/text-indent';
+@use '../core/object-fit';
+@use '../core/table';
+@use '../core/outline';
+@use '../core/appearance';
+@use '../core/user-select';
+@use '../core/will-change';
+@use '../core/accent-color';
+@use '../core/place-items';
+@use '../core/space-between';
+
+// States
+@use '../states/hover';
+@use '../states/focus';
+@use '../states/active';
+@use '../states/disabled';
+
+// Themes
+@use '../themes/default';
+@use '../themes/dark';
+
+// RTL Support
+@use '../rtl/spacing' as rtl-spacing;
+
+// Accessibility
+@use '../accessibility/screen-reader';
+@use '../accessibility/focus' as a11y-focus;
+
+// Extended Utilities
+@use '../extended/animations';
+@use '../extended/transforms';
+@use '../extended/filters';
+@use '../extended/aspect-ratio';

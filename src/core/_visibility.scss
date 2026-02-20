@@ -1,0 +1,11 @@
+// ============================================================================
+// Visibility Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-visibility == true {
+  .visible { visibility: visible; }
+  .invisible { visibility: hidden; }
+  .collapse { visibility: collapse; }
+}

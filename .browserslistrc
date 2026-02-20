@@ -1,0 +1,4 @@
+# Default browsers
+defaults
+not IE 11
+not op_mini all

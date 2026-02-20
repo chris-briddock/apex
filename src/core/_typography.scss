@@ -1,0 +1,123 @@
+// ============================================================================
+// Typography Utilities
+// ============================================================================
+
+@use 'sass:map';
+@use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
+@use '../mixins/utilities' as utilities;
+@use '../mixins/responsive' as responsive;
+
+@if settings.$enable-typography == true {
+  // Font sizes
+  $font-sizes: (
+    xs: 0.75rem,
+    sm: 0.875rem,
+    base: 1rem,
+    lg: 1.125rem,
+    xl: 1.25rem,
+    '2xl': 1.5rem,
+    '3xl': 1.875rem,
+    '4xl': 2.25rem,
+    '5xl': 3rem,
+    '6xl': 3.75rem
+  );
+  @include utilities.generate-from-map('text', 'font-size', $font-sizes);
+
+  // Font weights
+  $font-weights: (
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700
+  );
+  @include utilities.generate-from-map('font', 'font-weight', $font-weights);
+
+  // Line heights
+  $line-heights: (
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2
+  );
+  @include utilities.generate-from-map('leading', 'line-height', $line-heights);
+
+  // Letter spacing
+  $letter-spacing: (
+    tighter: -0.05em,
+    tight: -0.025em,
+    normal: 0,
+    wide: 0.025em,
+    wider: 0.05em,
+    widest: 0.1em
+  );
+  @include utilities.generate-from-map('tracking', 'letter-spacing', $letter-spacing);
+
+  // Text alignment
+  $text-align: (
+    left: left,
+    center: center,
+    right: right,
+    justify: justify,
+    start: start,
+    end: end
+  );
+  @include utilities.generate-from-map('text', 'text-align', $text-align);
+
+  // Text decoration
+  .underline { text-decoration: underline; }
+  .overline { text-decoration: overline; }
+  .line-through { text-decoration: line-through; }
+  .no-underline { text-decoration: none; }
+
+  // Font styles
+  .italic { font-style: italic; }
+  .not-italic { font-style: normal; }
+
+  // Text transform
+  .uppercase { text-transform: uppercase; }
+  .lowercase { text-transform: lowercase; }
+  .capitalize { text-transform: capitalize; }
+  .normal-case { text-transform: none; }
+
+  // Text overflow
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .overflow-ellipsis { text-overflow: ellipsis; }
+  .overflow-clip { text-overflow: clip; }
+
+  // Word break
+  .break-normal {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .break-words { overflow-wrap: break-word; }
+  .break-all { word-break: break-all; }
+
+  // White space
+  .whitespace-normal { white-space: normal; }
+  .whitespace-nowrap { white-space: nowrap; }
+  .whitespace-pre { white-space: pre; }
+  .whitespace-pre-line { white-space: pre-line; }
+  .whitespace-pre-wrap { white-space: pre-wrap; }
+
+  // Responsive typography variants
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include responsive.respond-above($breakpoint) {
+      @each $key, $value in $font-sizes {
+        .#{$breakpoint}\:text-#{$key} { font-size: $value; }
+      }
+      @each $key, $value in $font-weights {
+        .#{$breakpoint}\:font-#{$key} { font-weight: $value; }
+      }
+      @each $key, $value in $text-align {
+        .#{$breakpoint}\:text-#{$key} { text-align: $value; }
+      }
+    }
+  }
+}

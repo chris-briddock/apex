@@ -1,0 +1,440 @@
+// Visual Regression Tests for Components
+// Tests that components render correctly across different states
+
+// Button Component Tests
+.test-button {
+  .btn-primary {
+    @include display(inline-block);
+    @include padding-y(2);
+    @include padding-x(4);
+    @include background-color(blue-500);
+    @include text-color(white);
+    @include border-radius(md);
+    @include font-weight(semi-bold);
+    @include text-decoration(none);
+    @include cursor(pointer);
+    @include transition(background-color, 0.2s, ease);
+
+    &:hover {
+      @include background-color(blue-600);
+    }
+
+    &:focus {
+      @include outline(none);
+      @include box-shadow(outline, 0 0 0 3px rgba(59, 130, 246, 0.5));
+    }
+
+    &:disabled {
+      @include opacity(50);
+      @include cursor(not-allowed);
+    }
+  }
+
+  .btn-secondary {
+    @extend .btn-primary;
+    @include background-color(gray-500);
+
+    &:hover {
+      @include background-color(gray-600);
+    }
+  }
+
+  .btn-success {
+    @extend .btn-primary;
+    @include background-color(green-500);
+
+    &:hover {
+      @include background-color(green-600);
+    }
+  }
+
+  .btn-danger {
+    @extend .btn-primary;
+    @include background-color(red-500);
+
+    &:hover {
+      @include background-color(red-600);
+    }
+  }
+
+  .btn-outline {
+    @extend .btn-primary;
+    @include background-color(transparent);
+    @include border-width(2px);
+    @include border-style(solid);
+    @include border-color(blue-500);
+    @include text-color(blue-500);
+
+    &:hover {
+      @include background-color(blue-500);
+      @include text-color(white);
+    }
+  }
+
+  .btn-sm {
+    @include padding-y(1);
+    @include padding-x(2);
+    @include font-size(sm);
+  }
+
+  .btn-lg {
+    @include padding-y(3);
+    @include padding-x(6);
+    @include font-size(lg);
+  }
+}
+
+// Card Component Tests
+.test-card {
+  .card {
+    @include background-color(white);
+    @include border-radius(lg);
+    @include box-shadow(md);
+    @include overflow(hidden);
+  }
+
+  .card-header {
+    @include padding(4);
+    @include border-bottom-width(1px);
+    @include border-bottom-style(solid);
+    @include border-bottom-color(gray-200);
+    @include font-size(xl);
+    @include font-weight(bold);
+  }
+
+  .card-body {
+    @include padding(4);
+  }
+
+  .card-footer {
+    @include padding(4);
+    @include border-top-width(1px);
+    @include border-top-style(solid);
+    @include border-top-color(gray-200);
+    @include background-color(gray-50);
+  }
+}
+
+// Form Component Tests
+.test-form {
+  .form-group {
+    @include margin-bottom(4);
+  }
+
+  .form-label {
+    @include display(block);
+    @include margin-bottom(2);
+    @include font-weight(medium);
+    @include text-color(gray-700);
+  }
+
+  .form-input {
+    @include display(block);
+    @include width(full);
+    @include padding(3);
+    @include border-width(1px);
+    @include border-style(solid);
+    @include border-color(gray-300);
+    @include border-radius(md);
+    @include font-size(base);
+    @include transition(border-color, 0.2s, ease);
+
+    &:focus {
+      @include outline(none);
+      @include border-color(blue-500);
+      @include box-shadow(outline, 0 0 0 3px rgba(59, 130, 246, 0.1));
+    }
+
+    &::placeholder {
+      @include text-color(gray-400);
+    }
+  }
+
+  .form-textarea {
+    @extend .form-input;
+    @include min-height(100px);
+    @include resize(vertical);
+  }
+
+  .form-select {
+    @extend .form-input;
+    @include appearance(none);
+    @include background-image(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"));
+    @include background-position(right 0.5rem center);
+    @include background-size(1.5em 1.5em);
+    @include background-repeat(no-repeat);
+    @include padding-right(10);
+  }
+
+  .form-checkbox {
+    @include display(inline-flex);
+    @include align-items(center);
+    @include cursor(pointer);
+
+    input {
+      @include width(4);
+      @include height(4);
+      @include margin-right(2);
+      @include border-radius(sm);
+      @include border-width(2px);
+      @include border-style(solid);
+      @include border-color(gray-300);
+      @include appearance(none);
+      @include background-color(white);
+      @include cursor(pointer);
+
+      &:checked {
+        @include background-color(blue-500);
+        @include border-color(blue-500);
+        @include background-image(url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e"));
+      }
+
+      &:focus {
+        @include outline(none);
+        @include box-shadow(outline, 0 0 0 3px rgba(59, 130, 246, 0.1));
+      }
+    }
+  }
+
+  .form-error {
+    @include margin-top(1);
+    @include text-color(red-500);
+    @include font-size(sm);
+  }
+
+  .form-help {
+    @include margin-top(1);
+    @include text-color(gray-500);
+    @include font-size(sm);
+  }
+}
+
+// Alert Component Tests
+.test-alert {
+  .alert {
+    @include padding(4);
+    @include border-radius(md);
+    @include border-width(1px);
+    @include border-style(solid);
+  }
+
+  .alert-info {
+    @extend .alert;
+    @include background-color(blue-50);
+    @include border-color(blue-200);
+    @include text-color(blue-800);
+  }
+
+  .alert-success {
+    @extend .alert;
+    @include background-color(green-50);
+    @include border-color(green-200);
+    @include text-color(green-800);
+  }
+
+  .alert-warning {
+    @extend .alert;
+    @include background-color(yellow-50);
+    @include border-color(yellow-200);
+    @include text-color(yellow-800);
+  }
+
+  .alert-danger {
+    @extend .alert;
+    @include background-color(red-50);
+    @include border-color(red-200);
+    @include text-color(red-800);
+  }
+}
+
+// Badge Component Tests
+.test-badge {
+  .badge {
+    @include display(inline-flex);
+    @include align-items(center);
+    @include padding-x(2);
+    @include padding-y(1);
+    @include font-size(sm);
+    @include font-weight(medium);
+    @include border-radius(full);
+  }
+
+  .badge-primary {
+    @extend .badge;
+    @include background-color(blue-100);
+    @include text-color(blue-800);
+  }
+
+  .badge-secondary {
+    @extend .badge;
+    @include background-color(gray-100);
+    @include text-color(gray-800);
+  }
+
+  .badge-success {
+    @extend .badge;
+    @include background-color(green-100);
+    @include text-color(green-800);
+  }
+
+  .badge-danger {
+    @extend .badge;
+    @include background-color(red-100);
+    @include text-color(red-800);
+  }
+}
+
+// Table Component Tests
+.test-table {
+  .table-container {
+    @include overflow-x(auto);
+    @include border-radius(md);
+    @include box-shadow(sm);
+  }
+
+  .table {
+    @include display(table);
+    @include width(full);
+    @include text-align(left);
+    @include border-collapse(collapse);
+  }
+
+  .tablethead {
+    @include display(table-header-group);
+    @include background-color(gray-50);
+  }
+
+  .tableth {
+    @include padding(3);
+    @include font-weight(semi-bold);
+    @include text-color(gray-700);
+    @include border-bottom-width(2px);
+    @include border-bottom-style(solid);
+    @include border-bottom-color(gray-200);
+  }
+
+  .tabletbody {
+    @include display(table-row-group);
+  }
+
+  .tablerow {
+    @include display(table-row);
+
+    &:hover {
+      @include background-color(gray-50);
+    }
+  }
+
+  .tablecell {
+    @include padding(3);
+    @include border-bottom-width(1px);
+    @include border-bottom-style(solid);
+    @include border-bottom-color(gray-200);
+    @include text-color(gray-600);
+  }
+}
+
+// List Component Tests
+.test-list {
+  .list-group {
+    @include border-radius(md);
+    @include overflow(hidden);
+  }
+
+  .list-item {
+    @include padding(4);
+    @include border-bottom-width(1px);
+    @include border-bottom-style(solid);
+    @include border-bottom-color(gray-200);
+    @include background-color(white);
+
+    &:last-child {
+      @include border-bottom-width(0);
+    }
+
+    &:hover {
+      @include background-color(gray-50);
+    }
+  }
+
+  .list-item-heading {
+    @include font-weight(semi-bold);
+    @include text-color(gray-900);
+    @include margin-bottom(1);
+  }
+
+  .list-item-text {
+    @include text-color(gray-600);
+    @include font-size(sm);
+  }
+}
+
+// Modal Component Tests
+.test-modal {
+  .modal-overlay {
+    @include position(fixed);
+    @include top(0);
+    @include left(0);
+    @include width(full);
+    @include height(full);
+    @include background-color(rgba(0, 0, 0, 50));
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    @include z-index(1000);
+  }
+
+  .modal {
+    @include background-color(white);
+    @include border-radius(lg);
+    @include box-shadow(xl);
+    @include max-width(500px);
+    @include width(full);
+    @include overflow(hidden);
+  }
+
+  .modal-header {
+    @include padding(4);
+    @include border-bottom-width(1px);
+    @include border-bottom-style(solid);
+    @include border-bottom-color(gray-200);
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  .modal-title {
+    @include font-size(lg);
+    @include font-weight(semi-bold);
+    @include text-color(gray-900);
+  }
+
+  .modal-close {
+    @include width(5);
+    @include height(5);
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    @include border-radius(full);
+    @include cursor(pointer);
+    @include transition(background-color, 0.2s, ease);
+
+    &:hover {
+      @include background-color(gray-100);
+    }
+  }
+
+  .modal-body {
+    @include padding(4);
+  }
+
+  .modal-footer {
+    @include padding(4);
+    @include border-top-width(1px);
+    @include border-top-style(solid);
+    @include border-top-color(gray-200);
+    @include display(flex);
+    @include justify-content(flex-end);
+    @include gap(2);
+  }
+}

@@ -1,0 +1,12 @@
+// ============================================================================
+// User Select Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-user-select == true {
+  .select-none { user-select: none; }
+  .select-text { user-select: text; }
+  .select-all { user-select: all; }
+  .select-auto { user-select: auto; }
+}

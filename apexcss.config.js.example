@@ -1,0 +1,401 @@
+/**
+ * ApexCSS Configuration File Example
+ *
+ * This is an example configuration file showing all available options.
+ * Copy this file to apexcss.config.js and customize as needed.
+ *
+ * Usage:
+ *   1. Copy: cp apexcss.config.js.example apexcss.config.js
+ *   2. Edit: Customize the values below
+ *   3. Build: npm run config:build
+ *
+ * For full documentation, see: https://apexcss.dev/docs/configuration
+ */
+
+export default {
+  // ============================================================================
+  // Core Settings
+  // ============================================================================
+  core: {
+    // Add prefix to all classes (e.g., 'apex-' -> .apex-flex, .apex-text-center)
+    // Useful for avoiding conflicts with other CSS libraries
+    prefix: '',
+
+    // Add !important to all utility declarations
+    // Recommended when integrating with existing projects that have conflicting styles
+    important: false,
+
+    // Separator for responsive/variant prefixes
+    // Examples: md:flex, hover:text-blue-500, dark:bg-gray-800
+    separator: ':',
+
+    // Dark mode strategy: 'class', 'media', or false
+    // 'class': Toggle dark mode by adding/removing 'dark' class on html element
+    // 'media': Uses prefers-color-scheme media query (auto-detects system preference)
+    // false: Disable dark mode utilities
+    darkMode: 'class',
+
+    // Enable RTL (Right-to-Left) support
+    // Adds RTL variants of spacing utilities
+    rtl: false
+  },
+
+  // ============================================================================
+  // Feature Toggles
+  // ============================================================================
+  // Disable features you don't need to reduce bundle size
+  // Each feature adds ~2-15KB to the compiled CSS
+
+  features: {
+    // Layout & Sizing
+    spacing: true,      // margin, padding utilities
+    sizing: true,       // width, height utilities
+    display: true,      // block, flex, grid, etc.
+    positioning: true,  // absolute, relative, fixed, etc.
+    overflow: true,     // overflow, overflow-x, overflow-y
+    visibility: true,   // visible, invisible, collapse
+
+    // Flexbox & Grid
+    flexbox: true,      // flex, flex-row, justify-center, etc.
+    grid: true,         // grid, grid-cols, col-span, etc.
+    columns: true,      // column utilities
+    placeItems: true,   // place-content, place-items, etc.
+    spaceBetween: true, // space-x, space-y utilities
+
+    // Typography
+    typography: true,   // font-size, font-weight, text-align, etc.
+    textIndent: true,   // text-indent utilities
+    verticalAlign: true,// vertical-align utilities
+    list: true,         // list-style utilities
+    break: true,        // word-break, overflow-wrap
+
+    // Visual
+    colors: true,       // text colors, background colors
+    borders: true,      // border, border-radius
+    shadows: true,      // box-shadow utilities
+    opacity: true,      // opacity utilities
+    outline: true,      // outline utilities
+
+    // Effects & Transforms
+    transitions: true,  // transition utilities
+    transforms: true,   // transform, rotate, scale, etc.
+    filters: true,      // blur, brightness, contrast, etc.
+    animations: true,   // animation utilities
+
+    // Misc
+    cursor: true,       // cursor utilities
+    isolation: true,    // isolation utilities
+    objectFit: true,    // object-fit utilities
+    table: true,        // table layout utilities
+    float: true,        // float utilities
+    appearance: true,   // appearance utilities
+    userSelect: true,   // user-select utilities
+    willChange: true,   // will-change utilities
+    accentColor: true,  // accent-color utilities
+    svg: true,          // SVG fill, stroke utilities
+
+    // State variants
+    states: true,       // Enable state variants
+    hover: true,        // hover: variants
+    focus: true,        // focus: variants
+    active: true,       // active: variants
+    disabled: true,     // disabled: variants
+
+    // Accessibility
+    accessibility: true   // sr-only, focus-ring utilities
+  },
+
+  // ============================================================================
+  // Responsive Breakpoints
+  // ============================================================================
+  // Customize or add breakpoints for responsive design
+  // Use format: {prefix}: '{value}'
+  // Generates: sm:flex, md:grid-cols-2, lg:px-8, etc.
+
+  breakpoints: {
+    sm: '640px',      // Small devices (phones)
+    md: '768px',      // Medium devices (tablets)
+    lg: '1024px',     // Large devices (laptops)
+    xl: '1280px',     // Extra large devices (desktops)
+    '2xl': '1536px'   // 2X Extra large devices
+  },
+
+  // ============================================================================
+  // Spacing Scale
+  // ============================================================================
+  // Default spacing scale in rem units
+  // Used by: margin, padding, gap, space-x/y, translate, etc.
+
+  spacing: {
+    0: '0',
+    px: '1px',
+    0.5: '0.125rem',  // 2px
+    1: '0.25rem',     // 4px
+    1.5: '0.375rem',  // 6px
+    2: '0.5rem',      // 8px
+    2.5: '0.625rem',  // 10px
+    3: '0.75rem',     // 12px
+    3.5: '0.875rem',  // 14px
+    4: '1rem',        // 16px
+    5: '1.25rem',     // 20px
+    6: '1.5rem',      // 24px
+    7: '1.75rem',     // 28px
+    8: '2rem',        // 32px
+    9: '2.25rem',     // 36px
+    10: '2.5rem',     // 40px
+    11: '2.75rem',    // 44px
+    12: '3rem',       // 48px
+    14: '3.5rem',     // 56px
+    16: '4rem',       // 64px
+    20: '5rem',       // 80px
+    24: '6rem',       // 96px
+    28: '7rem',       // 112px
+    32: '8rem',       // 128px
+    36: '9rem',       // 144px
+    40: '10rem',      // 160px
+    44: '11rem',      // 176px
+    48: '12rem',      // 192px
+    52: '13rem',      // 208px
+    56: '14rem',      // 224px
+    60: '15rem',      // 240px
+    64: '16rem',      // 256px
+    72: '18rem',      // 288px
+    80: '20rem',      // 320px
+    96: '24rem'       // 384px
+  },
+
+  // ============================================================================
+  // Color Palette
+  // ============================================================================
+  // Define your brand colors and semantic colors
+  // Each color can have shades from 50 (lightest) to 950 (darkest)
+
+  colors: {
+    // Primary brand colors
+    primary: {
+      50: '#eff6ff',
+      100: '#dbeafe',
+      200: '#bfdbfe',
+      300: '#93c5fd',
+      400: '#60a5fa',
+      500: '#3b82f6',  // Main brand color
+      600: '#2563eb',
+      700: '#1d4ed8',
+      800: '#1e40af',
+      900: '#1e3a8a',
+      950: '#172554'
+    },
+
+    // Gray scale - neutral colors
+    gray: {
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827',
+      950: '#030712'
+    },
+
+    // Semantic colors - success states
+    success: {
+      50: '#f0fdf4',
+      100: '#dcfce7',
+      200: '#bbf7d0',
+      300: '#86efac',
+      400: '#4ade80',
+      500: '#22c55e',
+      600: '#16a34a',
+      700: '#15803d',
+      800: '#166534',
+      900: '#14532d'
+    },
+
+    // Semantic colors - warning states
+    warning: {
+      50: '#fffbeb',
+      100: '#fef3c7',
+      200: '#fde68a',
+      300: '#fcd34d',
+      400: '#fbbf24',
+      500: '#f59e0b',
+      600: '#d97706',
+      700: '#b45309',
+      800: '#92400e',
+      900: '#78350f'
+    },
+
+    // Semantic colors - error states
+    error: {
+      50: '#fef2f2',
+      100: '#fee2e2',
+      200: '#fecaca',
+      300: '#fca5a5',
+      400: '#f87171',
+      500: '#ef4444',
+      600: '#dc2626',
+      700: '#b91c1c',
+      800: '#991b1b',
+      900: '#7f1d1d'
+    },
+
+    // Semantic colors - info states
+    info: {
+      50: '#f0f9ff',
+      100: '#e0f2fe',
+      200: '#bae6fd',
+      300: '#7dd3fc',
+      400: '#38bdf8',
+      500: '#0ea5e9',
+      600: '#0284c7',
+      700: '#0369a1',
+      800: '#075985',
+      900: '#0c4a6e'
+    },
+
+    // Add your custom brand colors
+    // brand: {
+    //   50: '#fff1f2',
+    //   500: '#f43f5e',
+    //   900: '#881337'
+    // }
+  },
+
+  // ============================================================================
+  // Typography
+  // ============================================================================
+  typography: {
+    // Font families
+    fontFamily: {
+      // Default sans-serif stack (good for body text)
+      sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont',
+             'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+
+      // Serif fonts (good for headings, articles)
+      serif: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+
+      // Monospace fonts (good for code)
+      mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas',
+             'Liberation Mono', 'Courier New', 'monospace']
+    },
+
+    // Font sizes with line heights
+    fontSize: {
+      xs: ['0.75rem', { lineHeight: '1rem' }],         // 12px
+      sm: ['0.875rem', { lineHeight: '1.25rem' }],     // 14px
+      base: ['1rem', { lineHeight: '1.5rem' }],       // 16px
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],    // 18px
+      xl: ['1.25rem', { lineHeight: '1.75rem' }],     // 20px
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],       // 24px
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 30px
+      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],   // 36px
+      '5xl': ['3rem', { lineHeight: '1' }],           // 48px
+      '6xl': ['3.75rem', { lineHeight: '1' }],        // 60px
+      '7xl': ['4.5rem', { lineHeight: '1' }],         // 72px
+      '8xl': ['6rem', { lineHeight: '1' }],           // 96px
+      '9xl': ['8rem', { lineHeight: '1' }]            // 128px
+    },
+
+    // Font weights
+    fontWeight: {
+      thin: '100',
+      extralight: '200',
+      light: '300',
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      extrabold: '800',
+      black: '900'
+    },
+
+    // Letter spacing
+    letterSpacing: {
+      tighter: '-0.05em',
+      tight: '-0.025em',
+      normal: '0em',
+      wide: '0.025em',
+      wider: '0.05em',
+      widest: '0.1em'
+    },
+
+    // Line heights
+    lineHeight: {
+      none: '1',
+      tight: '1.25',
+      snug: '1.375',
+      normal: '1.5',
+      relaxed: '1.625',
+      loose: '2'
+    }
+  },
+
+  // ============================================================================
+  // Border Radius
+  // ============================================================================
+  borderRadius: {
+    none: '0',
+    sm: '0.125rem',   // 2px
+    DEFAULT: '0.25rem', // 4px (default)
+    md: '0.375rem',   // 6px
+    lg: '0.5rem',     // 8px
+    xl: '0.75rem',    // 12px
+    '2xl': '1rem',    // 16px
+    '3xl': '1.5rem',  // 24px
+    full: '9999px'    // Full circle/pill shape
+  },
+
+  // ============================================================================
+  // Shadows
+  // ============================================================================
+  shadows: {
+    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+    DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+    none: 'none'
+  },
+
+  // ============================================================================
+  // Transitions
+  // ============================================================================
+  transition: {
+    duration: {
+      75: '75ms',
+      100: '100ms',
+      150: '150ms',
+      200: '200ms',
+      300: '300ms',
+      500: '500ms',
+      700: '700ms',
+      1000: '1000ms'
+    },
+    timing: {
+      linear: 'linear',
+      DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      in: 'cubic-bezier(0.4, 0, 1, 1)',
+      out: 'cubic-bezier(0, 0, 0.2, 1)',
+      'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)'
+    }
+  },
+
+  // ============================================================================
+  // Z-Index Scale
+  // ============================================================================
+  zIndex: {
+    auto: 'auto',
+    0: '0',
+    10: '10',
+    20: '20',
+    30: '30',
+    40: '40',
+    50: '50'
+  }
+};

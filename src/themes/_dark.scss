@@ -1,0 +1,252 @@
+// ============================================================================
+// Dark Mode Theme
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-dark-mode == true {
+  // Dark mode using media query (system preference)
+  @media (prefers-color-scheme: dark) {
+    :root {
+      // Colors
+      --color-primary: #60a5fa;
+      --color-secondary: #94a3b8;
+      --color-success: #4ade80;
+      --color-danger: #f87171;
+      --color-warning: #fbbf24;
+      --color-info: #38bdf8;
+      --color-light: #1f2937;
+      --color-dark: #f3f4f6;
+      --color-white: #111827;
+      --color-black: #fff;
+
+      // Gray colors
+      --color-gray-50: #1f2937;
+      --color-gray-100: #374151;
+      --color-gray-200: #4b5563;
+      --color-gray-300: #6b7280;
+      --color-gray-400: #9ca3af;
+      --color-gray-500: #d1d5db;
+      --color-gray-600: #e5e7eb;
+      --color-gray-700: #f3f4f6;
+      --color-gray-800: #f9fafb;
+      --color-gray-900: #fff;
+    }
+  }
+
+  // Dark mode using class (manual toggle)
+  .dark {
+    // Colors
+    --color-primary: #60a5fa;
+    --color-secondary: #94a3b8;
+    --color-success: #4ade80;
+    --color-danger: #f87171;
+    --color-warning: #fbbf24;
+    --color-info: #38bdf8;
+    --color-light: #1f2937;
+    --color-dark: #f3f4f6;
+    --color-white: #111827;
+    --color-black: #fff;
+
+    // Gray colors
+    --color-gray-50: #1f2937;
+    --color-gray-100: #374151;
+    --color-gray-200: #4b5563;
+    --color-gray-300: #6b7280;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #d1d5db;
+    --color-gray-600: #e5e7eb;
+    --color-gray-700: #f3f4f6;
+    --color-gray-800: #f9fafb;
+    --color-gray-900: #fff;
+  }
+
+  // Dark mode text color utilities - auto dark mode
+  .dark\:text-primary { @media (prefers-color-scheme: dark) { color: var(--color-primary); } }
+  .dark\:text-secondary { @media (prefers-color-scheme: dark) { color: var(--color-secondary); } }
+  .dark\:text-success { @media (prefers-color-scheme: dark) { color: var(--color-success); } }
+  .dark\:text-danger { @media (prefers-color-scheme: dark) { color: var(--color-danger); } }
+  .dark\:text-warning { @media (prefers-color-scheme: dark) { color: var(--color-warning); } }
+  .dark\:text-info { @media (prefers-color-scheme: dark) { color: var(--color-info); } }
+  .dark\:text-light { @media (prefers-color-scheme: dark) { color: var(--color-light); } }
+  .dark\:text-dark { @media (prefers-color-scheme: dark) { color: var(--color-dark); } }
+  .dark\:text-white { @media (prefers-color-scheme: dark) { color: var(--color-white); } }
+  .dark\:text-black { @media (prefers-color-scheme: dark) { color: var(--color-black); } }
+  .dark\:text-gray-50 { @media (prefers-color-scheme: dark) { color: var(--color-gray-50); } }
+  .dark\:text-gray-100 { @media (prefers-color-scheme: dark) { color: var(--color-gray-100); } }
+  .dark\:text-gray-200 { @media (prefers-color-scheme: dark) { color: var(--color-gray-200); } }
+  .dark\:text-gray-300 { @media (prefers-color-scheme: dark) { color: var(--color-gray-300); } }
+  .dark\:text-gray-400 { @media (prefers-color-scheme: dark) { color: var(--color-gray-400); } }
+  .dark\:text-gray-500 { @media (prefers-color-scheme: dark) { color: var(--color-gray-500); } }
+  .dark\:text-gray-600 { @media (prefers-color-scheme: dark) { color: var(--color-gray-600); } }
+  .dark\:text-gray-700 { @media (prefers-color-scheme: dark) { color: var(--color-gray-700); } }
+  .dark\:text-gray-800 { @media (prefers-color-scheme: dark) { color: var(--color-gray-800); } }
+  .dark\:text-gray-900 { @media (prefers-color-scheme: dark) { color: var(--color-gray-900); } }
+
+  // Dark mode text color utilities - manual .dark class
+  .dark\:text-primary.dark,
+  .dark .dark\:text-primary { color: var(--color-primary); }
+  .dark\:text-secondary.dark,
+  .dark .dark\:text-secondary { color: var(--color-secondary); }
+  .dark\:text-success.dark,
+  .dark .dark\:text-success { color: var(--color-success); }
+  .dark\:text-danger.dark,
+  .dark .dark\:text-danger { color: var(--color-danger); }
+  .dark\:text-warning.dark,
+  .dark .dark\:text-warning { color: var(--color-warning); }
+  .dark\:text-info.dark,
+  .dark .dark\:text-info { color: var(--color-info); }
+  .dark\:text-light.dark,
+  .dark .dark\:text-light { color: var(--color-light); }
+  .dark\:text-dark.dark,
+  .dark .dark\:text-dark { color: var(--color-dark); }
+  .dark\:text-white.dark,
+  .dark .dark\:text-white { color: var(--color-white); }
+  .dark\:text-black.dark,
+  .dark .dark\:text-black { color: var(--color-black); }
+  .dark\:text-gray-50.dark,
+  .dark .dark\:text-gray-50 { color: var(--color-gray-50); }
+  .dark\:text-gray-100.dark,
+  .dark .dark\:text-gray-100 { color: var(--color-gray-100); }
+  .dark\:text-gray-200.dark,
+  .dark .dark\:text-gray-200 { color: var(--color-gray-200); }
+  .dark\:text-gray-300.dark,
+  .dark .dark\:text-gray-300 { color: var(--color-gray-300); }
+  .dark\:text-gray-400.dark,
+  .dark .dark\:text-gray-400 { color: var(--color-gray-400); }
+  .dark\:text-gray-500.dark,
+  .dark .dark\:text-gray-500 { color: var(--color-gray-500); }
+  .dark\:text-gray-600.dark,
+  .dark .dark\:text-gray-600 { color: var(--color-gray-600); }
+  .dark\:text-gray-700.dark,
+  .dark .dark\:text-gray-700 { color: var(--color-gray-700); }
+  .dark\:text-gray-800.dark,
+  .dark .dark\:text-gray-800 { color: var(--color-gray-800); }
+  .dark\:text-gray-900.dark,
+  .dark .dark\:text-gray-900 { color: var(--color-gray-900); }
+
+  // Dark mode background color utilities - auto dark mode
+  .dark\:bg-primary { @media (prefers-color-scheme: dark) { background-color: var(--color-primary); } }
+  .dark\:bg-secondary { @media (prefers-color-scheme: dark) { background-color: var(--color-secondary); } }
+  .dark\:bg-success { @media (prefers-color-scheme: dark) { background-color: var(--color-success); } }
+  .dark\:bg-danger { @media (prefers-color-scheme: dark) { background-color: var(--color-danger); } }
+  .dark\:bg-warning { @media (prefers-color-scheme: dark) { background-color: var(--color-warning); } }
+  .dark\:bg-info { @media (prefers-color-scheme: dark) { background-color: var(--color-info); } }
+  .dark\:bg-light { @media (prefers-color-scheme: dark) { background-color: var(--color-light); } }
+  .dark\:bg-dark { @media (prefers-color-scheme: dark) { background-color: var(--color-dark); } }
+  .dark\:bg-white { @media (prefers-color-scheme: dark) { background-color: var(--color-white); } }
+  .dark\:bg-black { @media (prefers-color-scheme: dark) { background-color: var(--color-black); } }
+  .dark\:bg-gray-50 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-50); } }
+  .dark\:bg-gray-100 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-100); } }
+  .dark\:bg-gray-200 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-200); } }
+  .dark\:bg-gray-300 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-300); } }
+  .dark\:bg-gray-400 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-400); } }
+  .dark\:bg-gray-500 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-500); } }
+  .dark\:bg-gray-600 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-600); } }
+  .dark\:bg-gray-700 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-700); } }
+  .dark\:bg-gray-800 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-800); } }
+  .dark\:bg-gray-900 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-900); } }
+
+  // Dark mode background color utilities - manual .dark class
+  .dark\:bg-primary.dark,
+  .dark .dark\:bg-primary { background-color: var(--color-primary); }
+  .dark\:bg-secondary.dark,
+  .dark .dark\:bg-secondary { background-color: var(--color-secondary); }
+  .dark\:bg-success.dark,
+  .dark .dark\:bg-success { background-color: var(--color-success); }
+  .dark\:bg-danger.dark,
+  .dark .dark\:bg-danger { background-color: var(--color-danger); }
+  .dark\:bg-warning.dark,
+  .dark .dark\:bg-warning { background-color: var(--color-warning); }
+  .dark\:bg-info.dark,
+  .dark .dark\:bg-info { background-color: var(--color-info); }
+  .dark\:bg-light.dark,
+  .dark .dark\:bg-light { background-color: var(--color-light); }
+  .dark\:bg-dark.dark,
+  .dark .dark\:bg-dark { background-color: var(--color-dark); }
+  .dark\:bg-white.dark,
+  .dark .dark\:bg-white { background-color: var(--color-white); }
+  .dark\:bg-black.dark,
+  .dark .dark\:bg-black { background-color: var(--color-black); }
+  .dark\:bg-gray-50.dark,
+  .dark .dark\:bg-gray-50 { background-color: var(--color-gray-50); }
+  .dark\:bg-gray-100.dark,
+  .dark .dark\:bg-gray-100 { background-color: var(--color-gray-100); }
+  .dark\:bg-gray-200.dark,
+  .dark .dark\:bg-gray-200 { background-color: var(--color-gray-200); }
+  .dark\:bg-gray-300.dark,
+  .dark .dark\:bg-gray-300 { background-color: var(--color-gray-300); }
+  .dark\:bg-gray-400.dark,
+  .dark .dark\:bg-gray-400 { background-color: var(--color-gray-400); }
+  .dark\:bg-gray-500.dark,
+  .dark .dark\:bg-gray-500 { background-color: var(--color-gray-500); }
+  .dark\:bg-gray-600.dark,
+  .dark .dark\:bg-gray-600 { background-color: var(--color-gray-600); }
+  .dark\:bg-gray-700.dark,
+  .dark .dark\:bg-gray-700 { background-color: var(--color-gray-700); }
+  .dark\:bg-gray-800.dark,
+  .dark .dark\:bg-gray-800 { background-color: var(--color-gray-800); }
+  .dark\:bg-gray-900.dark,
+  .dark .dark\:bg-gray-900 { background-color: var(--color-gray-900); }
+
+  // Dark mode border color utilities - auto dark mode
+  .dark\:border-primary { @media (prefers-color-scheme: dark) { border-color: var(--color-primary); } }
+  .dark\:border-secondary { @media (prefers-color-scheme: dark) { border-color: var(--color-secondary); } }
+  .dark\:border-success { @media (prefers-color-scheme: dark) { border-color: var(--color-success); } }
+  .dark\:border-danger { @media (prefers-color-scheme: dark) { border-color: var(--color-danger); } }
+  .dark\:border-warning { @media (prefers-color-scheme: dark) { border-color: var(--color-warning); } }
+  .dark\:border-info { @media (prefers-color-scheme: dark) { border-color: var(--color-info); } }
+  .dark\:border-light { @media (prefers-color-scheme: dark) { border-color: var(--color-light); } }
+  .dark\:border-dark { @media (prefers-color-scheme: dark) { border-color: var(--color-dark); } }
+  .dark\:border-white { @media (prefers-color-scheme: dark) { border-color: var(--color-white); } }
+  .dark\:border-gray-50 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-50); } }
+  .dark\:border-gray-100 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-100); } }
+  .dark\:border-gray-200 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-200); } }
+  .dark\:border-gray-300 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-300); } }
+  .dark\:border-gray-400 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-400); } }
+  .dark\:border-gray-500 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-500); } }
+  .dark\:border-gray-600 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-600); } }
+  .dark\:border-gray-700 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-700); } }
+  .dark\:border-gray-800 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-800); } }
+  .dark\:border-gray-900 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-900); } }
+
+  // Dark mode border color utilities - manual .dark class
+  .dark\:border-primary.dark,
+  .dark .dark\:border-primary { border-color: var(--color-primary); }
+  .dark\:border-secondary.dark,
+  .dark .dark\:border-secondary { border-color: var(--color-secondary); }
+  .dark\:border-success.dark,
+  .dark .dark\:border-success { border-color: var(--color-success); }
+  .dark\:border-danger.dark,
+  .dark .dark\:border-danger { border-color: var(--color-danger); }
+  .dark\:border-warning.dark,
+  .dark .dark\:border-warning { border-color: var(--color-warning); }
+  .dark\:border-info.dark,
+  .dark .dark\:border-info { border-color: var(--color-info); }
+  .dark\:border-light.dark,
+  .dark .dark\:border-light { border-color: var(--color-light); }
+  .dark\:border-dark.dark,
+  .dark .dark\:border-dark { border-color: var(--color-dark); }
+  .dark\:border-white.dark,
+  .dark .dark\:border-white { border-color: var(--color-white); }
+  .dark\:border-gray-50.dark,
+  .dark .dark\:border-gray-50 { border-color: var(--color-gray-50); }
+  .dark\:border-gray-100.dark,
+  .dark .dark\:border-gray-100 { border-color: var(--color-gray-100); }
+  .dark\:border-gray-200.dark,
+  .dark .dark\:border-gray-200 { border-color: var(--color-gray-200); }
+  .dark\:border-gray-300.dark,
+  .dark .dark\:border-gray-300 { border-color: var(--color-gray-300); }
+  .dark\:border-gray-400.dark,
+  .dark .dark\:border-gray-400 { border-color: var(--color-gray-400); }
+  .dark\:border-gray-500.dark,
+  .dark .dark\:border-gray-500 { border-color: var(--color-gray-500); }
+  .dark\:border-gray-600.dark,
+  .dark .dark\:border-gray-600 { border-color: var(--color-gray-600); }
+  .dark\:border-gray-700.dark,
+  .dark .dark\:border-gray-700 { border-color: var(--color-gray-700); }
+  .dark\:border-gray-800.dark,
+  .dark .dark\:border-gray-800 { border-color: var(--color-gray-800); }
+  .dark\:border-gray-900.dark,
+  .dark .dark\:border-gray-900 { border-color: var(--color-gray-900); }
+}

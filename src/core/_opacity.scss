@@ -1,0 +1,28 @@
+// ============================================================================
+// Opacity Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
+@use '../mixins/utilities' as utilities;
+@use '../mixins/responsive' as responsive;
+
+@if settings.$enable-opacity == true {
+  // Generate opacity utilities from settings
+  @each $key, $value in settings.$opacity-scale {
+    .opacity-#{$key} {
+      opacity: $value;
+    }
+  }
+
+  // Responsive opacity variants
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include responsive.respond-above($breakpoint) {
+      @each $key, $value in settings.$opacity-scale {
+        .#{$breakpoint}\:opacity-#{$key} {
+          opacity: $value;
+        }
+      }
+    }
+  }
+}

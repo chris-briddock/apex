@@ -1,0 +1,19 @@
+// ============================================================================
+// Float Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-float == true {
+  .float-left { float: left; }
+  .float-right { float: right; }
+  .float-none { float: none; }
+  .float-start { float: inline-start; }
+  .float-end { float: inline-end; }
+
+  // Clear
+  .clear-left { clear: left; }
+  .clear-right { clear: right; }
+  .clear-both { clear: both; }
+  .clear-none { clear: none; }
+}

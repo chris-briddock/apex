@@ -1,0 +1,1765 @@
+{
+  "metadata": {
+    "title": "توثيق Apex - إطار عمل CSS أولي الأدوات",
+    "description": "Apex - إطار عمل شامل أولي الأدوات CSS مع أكثر من 500 فئة أداة لتطوير واجهة المستخدم بسرعة"
+  },
+  "pages": {
+    "components": {
+      "title": "المكونات",
+      "description": "مكونات مبنية مسبقاً لأنماط واجهة المستخدم الشائعة."
+    },
+    "gettingStarted": {
+      "title": "البدء",
+      "description": "تعلم كيفية البدء مع Apex",
+      "prerequisites": {
+        "title": "المتطلبات المسبقة",
+        "content": "قبل البدء، تأكد من تثبيت Node.js 16 أو أحدث على جهازك."
+      },
+      "installation": {
+        "title": "التثبيت",
+        "viaCdn": {
+          "title": "عبر CDN",
+          "description": "أسرع طريقة للبدء هي استخدام رابط CDN:"
+        },
+        "viaNpm": {
+          "title": "عبر NPM",
+          "description": "قم بتثبيت Apex باستخدام npm:",
+          "import": "ثم قم باستيراده في ملف CSS أو JavaScript الخاص بك:"
+        }
+      },
+      "frameworkIntegration": {
+        "title": "تكامل الإطار",
+        "react": {
+          "title": "React / Next.js",
+          "description": "قم باستيراد Apex في ملف CSS الرئيسي الخاص بك:"
+        },
+        "vue": {
+          "title": "Vue.js",
+          "description": "قم بالاستيراد في main.js أو main.ts الخاص بك:"
+        },
+        "angular": {
+          "title": "Angular",
+          "description": "أضف إلى angular.json:"
+        }
+      },
+      "firstSteps": {
+        "title": "الخطوات الأولى",
+        "description": "ابدأ باستخدام فئات الأدوات في HTML الخاص بك:",
+        "congratulations": "تهانينا! أنت الآن جاهز للبدء في البناء مع Apex."
+      }
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "description": "ميزات إمكانية الوصول في Apex",
+      "wcagCompliance": {
+        "title": "الامتثال لـ WCAG",
+        "content": "تم تصميم Apex مع مراعاة إمكانية الوصول ويهدف إلى تلبية معايير WCAG 2.1 AA."
+      },
+      "screenReaderClasses": {
+        "title": "فئات قارئ الشاشة",
+        "description": "إخفاء المحتوى بصريًا مع الحفاظ على إمكانية الوصول إليه للتقنيات المساعدة:"
+      },
+      "focusManagement": {
+        "title": "إدارة التركيز",
+        "description": "يتضمن Apex أنماط focus-visible للتنقل عبر لوحة المفاتيح:"
+      },
+      "reducedMotion": {
+        "title": "تقليل الحركة",
+        "description": "احترام تفضيلات المستخدم لتقليل الحركة:"
+      }
+    },
+    "apiReference": {
+      "title": "مرجع API",
+      "description": "مرجع كامل لفئات وأدوات Apex.",
+      "searchAvailable": {
+        "title": "البحث المتاح",
+        "content": "استخدم مربع البحث في الشريط الجانبي للعثور بسرعة على أدوات محددة."
+      },
+      "layout": {
+        "title": "التخطيط",
+        "class": "الفئة",
+        "description": "الوصف"
+      },
+      "spacing": {
+        "title": "التباعد",
+        "class": "الفئة",
+        "description": "الوصف"
+      }
+    },
+    "browserSupport": {
+      "title": "دعم المتصفح",
+      "description": "يدعم Apex جميع المتصفحات الحديثة.",
+      "progressiveEnhancement": {
+        "title": "التحسين التدريجي",
+        "content": "يستخدم Apex ميزات CSS الحديثة مع بدائل للمتصفحات القديمة."
+      },
+      "supportedBrowsers": {
+        "title": "المتصفحات المدعومة"
+      },
+      "notSupported": {
+        "title": "غير مدعوم"
+      }
+    },
+    "changelog": {
+      "title": "سجل التغييرات",
+      "description": "تتبع التغييرات والتحديثات والتحسينات على Apex.",
+      "newVersionAvailable": {
+        "title": "إصدار جديد متاح",
+        "content": "أنت تشاهد التوثيق للإصدار v{version}.",
+        "viewLatest": "عرض أحدث التغييرات"
+      },
+      "quickStats": {
+        "totalVersions": "إجمالي الإصدارات",
+        "stableReleases": "الإصدارات المستقرة",
+        "betaReleases": "إصدارات بيتا",
+        "latest": "الأحدث"
+      },
+      "changes": "التغييرات",
+      "breakingChangesDetected": "تم اكتشاف تغييرات فاصلة.",
+      "viewMigrationGuide": "عرض دليل الترحيل",
+      "stayUpdated": {
+        "title": "ابق على اطلاع",
+        "description": "اشترك في إصدارات GitHub للحصول على إشعارات حول الإصدارات الجديدة.",
+        "viewOnGitHub": "عرض على GitHub"
+      },
+      "typeLabels": {
+        "major": "رئيسي",
+        "minor": "ثانوي",
+        "patch": "تصحيح",
+        "beta": "بيتا"
+      },
+      "changeTypeLabels": {
+        "feature": "ميزة",
+        "fix": "إصلاح",
+        "breaking": "فاصل",
+        "deprecation": "مهمل"
+      }
+    },
+    "cheatsheet": {
+      "title": "ورقة الغش",
+      "description": "مرجع سريع لفئات أدوات Apex. اطبع أو احفظ هذه الصفحة للاستخدام دون اتصال.",
+      "print": "طباعة",
+      "spacingScale": {
+        "title": "مقياس التباعد"
+      },
+      "exampleUsage": {
+        "title": "مثال على الاستخدام"
+      },
+      "footer": "ورقة غش Apex • apexcss.com • تم إنشاؤها في {date}",
+      "sections": {
+        "spacing": "التباعد",
+        "layout": "التخطيط",
+        "flexbox": "Flexbox",
+        "grid": "الشبكة",
+        "typography": "الطباعة",
+        "colors": "الألوان",
+        "borders": "الحدود",
+        "sizing": "الحجم",
+        "position": "الموضع",
+        "effects": "التأثيرات",
+        "transitions": "الانتقالات",
+        "responsive": "متجاوب"
+      }
+    },
+    "community": {
+      "title": "المجتمع",
+      "description": "انضم إلى مجتمع Apex وتواصل مع المطورين الآخرين.",
+      "showcase": {
+        "title": "معرض الأعمال",
+        "description": "شاهد ما يبنيه الآخرون باستخدام Apex. قدم مشروعك ليتم تمييزه!",
+        "submitProject": "قدم مشروعك"
+      },
+      "links": {
+        "github": {
+          "title": "GitHub",
+          "description": "أعطنا نجمة على GitHub وساهم في المشروع"
+        },
+        "discord": {
+          "title": "Discord",
+          "description": "انضم إلى مجتمع Discord الخاص بنا للمناقشات والدعم"
+        },
+        "twitter": {
+          "title": "Twitter",
+          "description": "تابعنا للحصول على التحديثات والإعلانات"
+        }
+      }
+    },
+    "configuration": {
+      "title": "التكوين",
+      "description": "خصص Apex لتناسب احتياجات مشروعك.",
+      "configurationFile": {
+        "title": "ملف التكوين",
+        "content": "أنشئ ملف config.js في جذر مشروعك لتخصيص Apex."
+      },
+      "basicConfiguration": {
+        "title": "التكوين الأساسي"
+      },
+      "prefix": {
+        "title": "البادئة",
+        "description": "أضف بادئة مخصصة لجميع فئات الأدوات:",
+        "note": "مع هذا التكوين، يصبح p-4 هو apex-p-4."
+      },
+      "enableDisableUtilities": {
+        "title": "تمكين/تعطيل الأدوات",
+        "description": "التحكم في الأدوات التي يتم إنشاؤها:"
+      }
+    },
+    "contributing": {
+      "title": "المساهمة",
+      "description": "شكرًا لاهتمامك بالمساهمة في Apex!",
+      "codeOfConduct": {
+        "title": "قواعد السلوك",
+        "content": "يرجى قراءة قواعد السلوك الخاصة بنا قبل المساهمة. نحن ملتزمون بتوفير تجربة ترحيبية وشاملة للجميع."
+      },
+      "gettingStarted": {
+        "title": "البدء",
+        "steps": {
+          "fork": "قم بعمل fork للمستودع على GitHub",
+          "clone": "استنسخ fork الخاص بك محليًا",
+          "install": "قم بتثبيت التبعيات باستخدام npm install",
+          "branch": "أنشئ فرعًا جديدًا لتغييراتك",
+          "makeChanges": "قم بإجراء التغييرات",
+          "submit": "قدم طلب سحب"
+        }
+      },
+      "developmentSetup": {
+        "title": "إعداد التطوير"
+      },
+      "pullRequestGuidelines": {
+        "title": "إرشادات طلب السحب",
+        "steps": {
+          "style": "تأكد من أن الكود الخاص بك يتبع إرشادات النمط الخاصة بنا",
+          "commits": "اكتب رسائل واضحة للالتزام",
+          "tests": "قم بتضمين اختبارات للميزات الجديدة",
+          "docs": "قم بتحديث التوثيق إذا لزم الأمر",
+          "issues": "اربط أي مشاكل ذات صلة"
+        }
+      }
+    },
+    "customization": {
+      "title": "التخصيص",
+      "description": "خصص Apex ليتطابق مع علامتك التجارية ومتطلبات مشروعك.",
+      "cssVariables": {
+        "title": "متغيرات CSS",
+        "content": "يستخدم Apex خصائص CSS المخصصة (المتغيرات) للتخصيص السهل."
+      },
+      "customColors": {
+        "title": "ألوان مخصصة",
+        "description": "تجاوز لوحة الألوان الافتراضية:"
+      },
+      "customSpacing": {
+        "title": "تباعد مخصص",
+        "description": "حدد مقياس التباعد الخاص بك:"
+      },
+      "customTypography": {
+        "title": "طباعة مخصصة",
+        "description": "خصص عائلات الخطوط والأحجام:"
+      }
+    },
+    "darkMode": {
+      "title": "الوضع المظلم",
+      "description": "يوفر Apex دعمًا مدمجًا للوضع المظلم مع التبديل التلقائي.",
+      "automaticDarkMode": {
+        "title": "الوضع المظلم التلقائي",
+        "description": "يتم تبديل الوضع المظلم تلقائيًا بناءً على تفضيلات نظام المستخدم:"
+      },
+      "darkModeClasses": {
+        "title": "فئات الوضع المظلم",
+        "description": "استخدم البادئة dark: لتطبيق الأنماط في الوضع المظلم:"
+      },
+      "customizingDarkMode": {
+        "title": "تخصيص الوضع المظلم",
+        "description": "تجاوز متغيرات CSS لألوان الوضع المظلم المخصصة:"
+      }
+    },
+    "designSystem": {
+      "title": "نظام التصميم",
+      "description": "يوفر Apex نظام تصميم شامل مع ألوان وطباعة وتباعد متسقين والمزيد.",
+      "colors": {
+        "title": "الألوان",
+        "description": "نظام ألوان دلالي مع ألوان أساسية وثانوية والنجاح والتحذير والخطأ."
+      },
+      "typography": {
+        "title": "الطباعة",
+        "description": "مقياس طباعة متسق للعناوين ونص النص:"
+      },
+      "spacing": {
+        "title": "التباعد",
+        "description": "مقياس تباعد متسق للهوامش والحشو:"
+      },
+      "borderRadius": {
+        "title": "نصف قطر الحد",
+        "description": "مقياس نصف قطر الحد المتسق:"
+      },
+      "shadows": {
+        "title": "الظلال",
+        "description": "مقياس ظل متسق للارتفاع:"
+      }
+    },
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "description": "أسئلة شائعة حول Apex.",
+      "questions": {
+        "whatIs": {
+          "question": "ما هو Apex؟",
+          "answer": "Apex هو إطار عمل CSS شامل أولي الأدوات مع أكثر من 500 فئة أداة مصممة لتطوير واجهة المستخدم بسرعة. يوفر مجموعة من فئات الأدوات منخفضة المستوى تتيح لك بناء تصاميم مخصصة بالكامل دون مغادرة HTML."
+        },
+        "productionReady": {
+          "question": "هل Apex جاهز للإنتاج؟",
+          "answer": "نعم! Apex مستقر وجاهز للإنتاج. يتم استخدامه من قبل العديد من المشاريع في بيئات الإنتاج."
+        },
+        "newSyntax": {
+          "question": "هل أحتاج إلى تعلم بناء جملة جديد؟",
+          "answer": "لا، يستخدم Apex أسماء فئات CSS القياسية. إذا كنت معتادًا على CSS أولي الأدوات، ستشعر بالراحة."
+        },
+        "customize": {
+          "question": "هل يمكنني تخصيص الإطار؟",
+          "answer": "بالتأكيد! Apex قابل للتخصيص بدرجة عالية من خلال متغيرات CSS وخيارات التكوين. يمكنك تغيير الألوان ومقاييس التباعد والمزيد."
+        },
+        "darkMode": {
+          "question": "هل يدعم Apex الوضع المظلم؟",
+          "answer": "نعم، يحتوي Apex على دعم مدمج للوضع المظلم مع بادئة المتغير dark:، مما يجعل من السهل تصميم مكوناتك لكل من السمات الفاتحة والداكنة."
+        },
+        "rtl": {
+          "question": "هل هناك دعم RTL؟",
+          "answer": "نعم، يتضمن Apex دعم RTL الكامل (من اليمين إلى اليسار) للتدويل."
+        }
+      }
+    },
+    "responsiveDesign": {
+      "title": "التصميم المتجاوب",
+      "description": "بناء تخطيطات متجاوبة باستخدام فئات أدوات Apex.",
+      "mobileFirst": {
+        "title": "الجوال أولاً",
+        "content": "يتبع Apex نهج الجوال أولاً. تنطبق الأنماط الأساسية على جميع أحجام الشاشات، وتستهدف نقاط التوقف الشاشات الأكبر."
+      },
+      "breakpoints": {
+        "title": "نقاط التوقف",
+        "description": "يتضمن Apex خمس نقاط توقف افتراضية:"
+      },
+      "responsiveModifiers": {
+        "title": "المعدلات المتجاوبة",
+        "description": "استخدم البادئات المتجاوبة لتطبيق الأنماط عند نقاط توقف محددة:"
+      },
+      "responsiveTypography": {
+        "title": "الطباعة المتجاوبة",
+        "description": "ضبط حجم النص بناءً على إطار العرض:"
+      },
+      "hideShowElements": {
+        "title": "إخفاء/إظهار العناصر",
+        "description": "إظهار أو إخفاء العناصر عند نقاط توقف مختلفة:",
+        "desktopOnly": "محتوى سطح المكتب فقط",
+        "mobileOnly": "محتوى الجوال فقط"
+      }
+    },
+    "utilities": {
+      "title": "الأدوات المساعدة",
+      "description": "فئات الأدوات المساعدة للمسافات والطباعة والألوان والمزيد في Apex"
+    },
+    "migration": {
+      "title": "أدلة الترحيل",
+      "description": "أدلة خطوة بخطوة للترحيل من أطر عمل CSS أخرى إلى Apex.",
+      "guides": {
+        "fromTailwind": {
+          "title": "من Tailwind CSS",
+          "description": "قم بترحيل مشروعك من Tailwind CSS إلى Apex"
+        },
+        "fromBootstrap": {
+          "title": "من Bootstrap",
+          "description": "قم بترحيل مشروعك من Bootstrap إلى Apex"
+        },
+        "fromBulma": {
+          "title": "من Bulma",
+          "description": "قم بترحيل مشروعك من Bulma إلى Apex"
+        }
+      }
+    },
+    "plugins": {
+      "title": "تطوير الإضافات",
+      "description": "قم بتوسيع Apex باستخدام إضافات مخصصة.",
+      "pluginApi": {
+        "title": "واجهة برمجة تطبيقات الإضافات",
+        "content": "واجهة برمجة تطبيقات الإضافات حالياً في مرحلة بيتا. قد تتغير واجهات برمجة التطبيقات في الإصدارات المستقبلية."
+      },
+      "creatingPlugin": {
+        "title": "إنشاء إضافة",
+        "description": "قم بإنشاء ملف JavaScript يصدر كائن إضافة:"
+      },
+      "usingPlugins": {
+        "title": "استخدام الإضافات",
+        "description": "أضف الإضافات إلى التكوين الخاص بك:"
+      },
+      "officialPlugins": {
+        "title": "الإضافات الرسمية",
+        "forms": "@apexcss/forms - أنماط عناصر النموذج",
+        "typography": "@apexcss/typography - أنماط النثر والمقالات",
+        "aspectRatio": "@apexcss/aspect-ratio - أدوات نسبة العرض إلى الارتفاع",
+        "lineClamp": "@apexcss/line-clamp - أدوات قصر الأسطر"
+      }
+    },
+    "performance": {
+      "title": "الأداء",
+      "description": "أفضل الممارسات للأداء الأمثل مع Apex.",
+      "buildOptimization": {
+        "title": "تحسين البناء",
+        "content": "يقوم Apex تلقائياً بإزالة الأنماط غير المستخدمة في عمليات بناء الإنتاج."
+      },
+      "fileSize": {
+        "title": "حجم الملف",
+        "content": "يبلغ حجم بناء Apex الكامل حوالي 15 كيلوبايت مضغوط ومضغوط بـ gzip. مع تمكين الإزالة، سيحتوي حزمة CSS الخاص بك فقط على الأدوات التي تستخدمها بالفعل."
+      },
+      "purgecss": {
+        "title": "PurgeCSS",
+        "content": "يستخدم Apex PurgeCSS لإزالة الأنماط غير المستخدمة. قم بتكوين خيارات الإزالة في ملف التكوين."
+      },
+      "bestPractices": {
+        "title": "أفضل الممارسات",
+        "steps": {
+          "cdn": "استخدم CDN للنماذج الأولية، و npm للإنتاج",
+          "purge": "قم بتمكين الإزالة في الإنتاج",
+          "disable": "قم بتعطيل الأدوات التي لا تحتاجها",
+          "components": "استخدم مكونات مخصصة للأنماط المتكررة"
+        }
+      }
+    },
+    "rtl": {
+      "title": "دعم RTL",
+      "description": "يتضمن Apex دعم RTL (من اليمين إلى اليسار) مدمج للتدويل. مثالي للعربية والعبرية ولغات RTL الأخرى.",
+      "howItWorks": {
+        "title": "كيف يعمل",
+        "content": "يستخدم Apex خصائص منطقية تتكيف تلقائيًا مع اتجاه المستند. عند تعيين dir=\"rtl\" على عنصر HTML الخاص بك، سيتم قلب جميع الأدوات المساعدة ذات الخصائص الاتجاهية تلقائيًا."
+      },
+      "automaticFlipping": {
+        "title": "القلب التلقائي",
+        "marginLeft": "margin-left → margin-right",
+        "paddingLeft": "padding-left → padding-right",
+        "left": "left → right",
+        "borderLeft": "border-left → border-right"
+      },
+      "logicalProperties": {
+        "title": "الخصائص المنطقية",
+        "start": "start (inline-start)",
+        "end": "end (inline-end)",
+        "insetInlineStart": "inset-inline-start",
+        "textAlignStart": "text-align: start"
+      },
+      "examples": {
+        "title": "أمثلة RTL",
+        "layout": {
+          "title": "تخطيط RTL",
+          "description": "شاهد كيف يتم قلب أدوات التخطيط تلقائيًا في وضع RTL.",
+          "content": "محتوى RTL",
+          "flowsRightToLeft": "هذا المحتوى يتدفق من اليمين إلى اليسار",
+          "button": "زر"
+        },
+        "spacing": {
+          "title": "تباعد RTL",
+          "description": "تتكيف أدوات الهامش والحشو تلقائيًا مع اتجاه النص.",
+          "ml4Becomes": "ml-4 (يصبح mr-4 في RTL)",
+          "mr4Becomes": "mr-4 (يصبح ml-4 في RTL)",
+          "ltrMargin": "LTR: margin-left: 1rem",
+          "rtlMargin": "RTL: margin-right: 1rem",
+          "marginStart": "هامش البداية (منطقي)",
+          "marginEnd": "هامش النهاية (منطقي)",
+          "physicalLeft": "حد يساري مادي"
+        },
+        "flexbox": {
+          "title": "Flexbox RTL",
+          "description": "تحافظ تخطيطات Flexbox على هيكلها البصري في وضع RTL.",
+          "start": "البداية",
+          "center": "المركز",
+          "end": "النهاية",
+          "visualRight": "البداية (بصريًا على اليمين في RTL)",
+          "visualLeft": "النهاية (بصريًا على اليسار في RTL)"
+        },
+        "textAlignment": {
+          "title": "محاذاة النص RTL",
+          "description": "تعمل أدوات محاذاة النص مع الخصائص المنطقية.",
+          "textLeft": "text-left (في RTL = يمين)",
+          "textRight": "text-right (في RTL = يسار)",
+          "textStart": "text-start (منطقي)",
+          "textEnd": "text-end (منطقي)",
+          "textLeftBecomes": "النص على اليسار (يصبح على اليمين في RTL)",
+          "textRightBecomes": "النص على اليمين (يصبح على اليسار في RTL)",
+          "textStartLogical": "نص البداية (منطقي)",
+          "textEndLogical": "نص النهاية (منطقي)"
+        }
+      },
+      "implementation": {
+        "title": "التنفيذ",
+        "setHtmlDirection": {
+          "title": "1. تعيين اتجاه HTML",
+          "inHtmlHead": "في رأس HTML الخاص بك",
+          "orSetDynamically": "أو تعيين ديناميكيًا باستخدام JavaScript"
+        },
+        "reactNextjs": {
+          "title": "2. React/Next.js مع next-intl",
+          "automaticallyHandles": "يتعامل تلقائيًا مع RTL للعربية والعبرية",
+          "dirAttributeSet": "يتم تعيين سمة dir بناءً على اللغة"
+        },
+        "importantConsiderations": {
+          "title": "اعتبارات مهمة",
+          "useLogical": "استخدم الخصائص المنطقية (start/end) عند الإمكان للحصول على دعم RTL أفضل",
+          "iconsImages": "قد تحتاج الرموز والصور إلى تعديل يدوي في تخطيطات RTL",
+          "testWithActual": "اختبر باستخدام محتوى RTL فعلي، وليس فقط نص LTR مقلوب",
+          "considerBidirectional": "فكر في النص ثنائي الاتجاه مع محتوى مختلط"
+        }
+      },
+      "supportedLanguages": {
+        "title": "اللغات المدعومة",
+        "arabic": "العربية",
+        "hebrew": "العبرية",
+        "persian": "الفارسية",
+        "urdu": "الأردية"
+      },
+      "documentation": "توثيق RTL"
+    },
+    "migrationPages": {
+      "fromBootstrap": {
+        "title": "الترحيل من Bootstrap",
+        "description": "دليل شامل لترحيل مشروعك من Bootstrap إلى Apex.",
+        "alert": {
+          "type": "warning",
+          "title": "تغييرات رئيسية",
+          "message": "الترحيل من Bootstrap إلى Apex يتطلب تغييرات كبيرة في هيكل HTML وأسماء الفئات."
+        },
+        "gridSystem": {
+          "title": "ترحيل نظام الشبكة",
+          "description": "يستخدم Bootstrap شبكة من 12 عمودًا، بينما يستخدم Apex نهجًا مرنًا يعتمد على الأدوات المساعدة:",
+          "bootstrapLabel": "Bootstrap",
+          "apexcssLabel": "Apex"
+        },
+        "component": {
+          "title": "ترحيل المكونات",
+          "description": "يجب إعادة بناء مكونات Bootstrap باستخدام فئات الأدوات المساعدة:",
+          "bootstrapButton": "زر Bootstrap",
+          "apexcssButton": "Apex"
+        },
+        "spacing": {
+          "title": "ترحيل التباعد",
+          "description": "يستخدم Bootstrap تباعدًا مرقمًا (1-5)، بينما يستخدم Apex أسماء تعتمد على الحجم:",
+          "bootstrapLabel": "Bootstrap",
+          "apexcssLabel": "Apex"
+        }
+      },
+      "fromBulma": {
+        "title": "الترحيل من Bulma",
+        "description": "دليل شامل لترحيل مشروعك من Bulma إلى Apex.",
+        "alert": {
+          "type": "info",
+          "title": "فلسفة مشابهة",
+          "message": "كل من Bulma و Apex هما أطر عمل CSS فقط بفلسفة مشابهة للأدوات المساعدة أولاً."
+        },
+        "grid": {
+          "title": "ترحيل الشبكة",
+          "description": "يستخدم كل من Bulma و Apex CSS Grid:",
+          "bulmaLabel": "Bulma",
+          "apexcssLabel": "Apex"
+        },
+        "componentClasses": {
+          "title": "فئات المكونات",
+          "description": "استبدل فئات مكونات Bulma بمجموعات أدوات Apex المساعدة:",
+          "bulmaButton": "زر Bulma",
+          "apexcssButton": "Apex"
+        },
+        "modifierClasses": {
+          "title": "فئات المعدلات",
+          "description": "تصبح معدلات Bulma متغيرات متجاوبة في Apex:",
+          "bulmaResponsive": "Bulma المتجاوب",
+          "apexcssResponsive": "Apex"
+        }
+      },
+      "fromTailwind": {
+        "title": "الترحيل من Tailwind CSS",
+        "description": "دليل شامل لترحيل مشروعك من Tailwind CSS إلى Apex.",
+        "alert": {
+          "type": "info",
+          "title": "بناء جملة مشابه",
+          "message": "يستخدم Apex بناء جملة مشابه جدًا لـ Tailwind CSS، مما يجعل الترحيل بسيطًا."
+        },
+        "classNameChanges": {
+          "title": "تغييرات أسماء الفئات",
+          "description": "معظم أسماء الفئات متطابقة بين Tailwind و Apex. إليك بعض الاختلافات:",
+          "tailwindHeader": "Tailwind",
+          "apexcssHeader": "Apex"
+        },
+        "configuration": {
+          "title": "التكوين",
+          "description": "قم بتحديث ملف التكوين الخاص بك:",
+          "oldConfig": "tailwind.config.js (قديم)",
+          "newConfig": "config.js (جديد)"
+        },
+        "buildProcess": {
+          "title": "عملية البناء",
+          "description": "قم بتحديث نصوص البناء الخاصة بك:",
+          "packageJson": "package.json"
+        }
+      },
+      "v1ToV1_1": {
+        "title": "الترحيل من v1.0 إلى v1.1",
+        "description": "سيساعدك هذا الدليل على الترقية من Apex v1.0 إلى v1.1 بسلاسة.",
+        "overview": {
+          "title": "تغييرات غير فاصلة",
+          "message": "هذه إصدار ثانوي مع ميزات وتحسينات جديدة. لا تتضمن أي تغييرات فاصلة."
+        },
+        "whatsNew": {
+          "title": "ما الجديد",
+          "newSpacingScale": {
+            "title": "مقياس تباعد جديد",
+            "description": "تمت إضافة قيم تباعد إضافية من 0.5 إلى 96 للتحكم الأكثر دقة.",
+            "comment": "قيم تباعد جديدة متاحة"
+          },
+          "improvedFocusVisible": {
+            "title": "تحسين focus-visible",
+            "description": "أدوات مساعدة جديدة لـ focus-visible تظهر فقط عند التنقل عبر لوحة المفاتيح.",
+            "comment": "التركيز فقط عند التنقل عبر لوحة المفاتيح",
+            "buttonText": "زر متاح"
+          },
+          "ariaHelperUtilities": {
+            "title": "أدوات مساعدة ARIA",
+            "description": "أدوات مساعدة جديدة لنص قارئ الشاشة وإمكانية الوصول.",
+            "srOnlyComment": "نص لقارئ الشاشة فقط",
+            "srOnlyText": "يفتح في نافذة جديدة",
+            "ariaHiddenComment": "ليس لقارئات الشاشة"
+          }
+        },
+        "upgradeSteps": {
+          "title": "خطوات الترقية",
+          "step1": {
+            "title": "تحديث الحزمة",
+            "description": "قم بتحديث Apex إلى v1.1 عبر مدير الحزم الخاص بك:",
+            "npm": "npm",
+            "yarn": "yarn",
+            "pnpm": "pnpm"
+          },
+          "step2": {
+            "title": "بناء مشروعك",
+            "description": "أعد بناء مشروعك لتضمين فئات الأدوات المساعدة الجديدة:"
+          },
+          "step3": {
+            "title": "اختياري: استخدام الميزات الجديدة",
+            "description": "سيستمر الكود الموجود لديك في العمل. يمكنك الآن استخدام الميزات الجديدة اختياريًا."
+          }
+        },
+        "knownIssues": {
+          "title": "المشاكل المعروفة والحلول",
+          "cssPurging": {
+            "title": "مسح CSS",
+            "description": "إذا كنت تستخدم PurgeCSS أو أدوات مشابهة، فقد تحتاج إلى تحديث القائمة الآمنة لتضمين فئات الأدوات المساعدة الجديدة.",
+            "configFile": "purgecss.config.js",
+            "comment": "إضافة فئات تباعد جديدة إذا لزم الأمر"
+          }
+        },
+        "nextSteps": {
+          "title": "الخطوات التالية",
+          "viewChangelog": "عرض سجل التغييرات الكامل",
+          "backToDocs": "العودة إلى الوثائق"
+        }
+      }
+    },
+    "componentPages": {
+      "alerts": {
+        "title": "التنبيهات",
+        "description": "مكونات التنبيه لعرض الإشعارات والتحذيرات ورسائل الملاحظات.",
+        "interactiveDemo": {
+          "title": "عرض تفاعلي للتنبيهات",
+          "description": "خصص متغيرات التنبيه وأحجامها وخياراتها لرؤية كيف تبدو."
+        },
+        "basicUsage": {
+          "title": "الاستخدام الأساسي"
+        },
+        "variants": {
+          "title": "المتغيرات",
+          "info": "أزرق - رسائل معلوماتية",
+          "success": "أخضر - رسائل نجاح",
+          "warning": "أصفر - رسائل تحذير",
+          "error": "أحمر - رسائل خطأ"
+        },
+        "sizes": {
+          "title": "الأحجام",
+          "sm": "حشو ونص صغير",
+          "md": "حشو ونص متوسط (افتراضي)",
+          "lg": "حشو ونص كبير"
+        },
+        "dismissible": {
+          "title": "تنبيهات قابلة للإغلاق"
+        },
+        "accessibility": {
+          "title": "إمكانية الوصول",
+          "roleAlert": "استخدم دائمًا role=\"alert\" للرسائل المهمة",
+          "ariaLabel": "أضف aria-label على أزرار الإغلاق",
+          "colorContrast": "استخدم تباين لون مناسب لجميع المتغيرات",
+          "ariaLive": "فكر في استخدام aria-live للتنبيهات المدرجة ديناميكيًا"
+        }
+      },
+      "buttons": {
+        "title": "الأزرار",
+        "description": "أنماط ومتغيرات الأزرار التفاعلية. استخدم العرض التوضيحي أدناه لتخصيص وإنشاء كود الأزرار.",
+        "interactiveDemo": {
+          "title": "عرض تفاعلي"
+        },
+        "basicButton": {
+          "title": "زر أساسي"
+        },
+        "variants": {
+          "title": "المتغيرات",
+          "solid": "صلب (افتراضي)",
+          "outline": "مخطط",
+          "ghost": "شبح",
+          "soft": "ناعم"
+        },
+        "sizes": {
+          "title": "الأحجام",
+          "extraSmall": "صغير جدًا",
+          "small": "صغير",
+          "medium": "متوسط (افتراضي)",
+          "large": "كبير",
+          "extraLarge": "كبير جدًا"
+        },
+        "states": {
+          "title": "الحالات",
+          "disabled": "معطل",
+          "loading": "جاري التحميل...",
+          "fullWidth": "زر العرض الكامل"
+        }
+      },
+      "cards": {
+        "title": "البطاقات",
+        "description": "مكونات البطاقات المرنة لعرض المحتوى المجمّع.",
+        "interactiveDemo": {
+          "title": "عرض تفاعلي للبطاقات",
+          "description": "خصص متغيرات وأحجام وأقسام محتوى البطاقات."
+        },
+        "basicUsage": {
+          "title": "الاستخدام الأساسي"
+        },
+        "variants": {
+          "title": "المتغيرات",
+          "default": "بطاقة بحد افتراضي",
+          "outlined": "شفافة مع حدود ملونة",
+          "elevated": "بطاقة تعتمد على الظل"
+        },
+        "sizes": {
+          "title": "الأحجام",
+          "sm": "بطاقة صغيرة (max-w-xs)",
+          "md": "بطاقة متوسطة (max-w-sm، افتراضي)",
+          "lg": "بطاقة كبيرة (max-w-md)"
+        },
+        "withImage": {
+          "title": "مع صورة"
+        }
+      },
+      "forms": {
+        "title": "Forms",
+        "description": "Form components for user input.",
+        "interactiveDemo": {
+          "title": "عرض تفاعلي",
+          "description": "جرب مكونات النماذج المختلفة وشاهد كيف تبدو."
+        },
+        "basicInput": {
+          "title": "إدخال أساسي",
+          "emailLabel": "عنوان البريد الإلكتروني",
+          "emailPlaceholder": "أدخل بريدك الإلكتروني"
+        },
+        "inputVariants": {
+          "title": "متغيرات الإدخال",
+          "default": "النمط الافتراضي",
+          "filled": "نمط ممتلئ",
+          "outlined": "نمط محدد"
+        },
+        "sizes": {
+          "title": "أحجام الإدخال",
+          "sm": "إدخال صغير",
+          "md": "إدخال متوسط (افتراضي)",
+          "lg": "إدخال كبير"
+        },
+        "withIcon": {
+          "title": "إدخال مع أيقونة",
+          "searchLabel": "بحث",
+          "searchPlaceholder": "بحث..."
+        },
+        "validationStates": {
+          "title": "حالات التحقق",
+          "errorState": "حالة الخطأ",
+          "successState": "حالة النجاح",
+          "emailLabel": "عنوان البريد الإلكتروني",
+          "invalidEmail": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+          "usernameLabel": "اسم المستخدم",
+          "usernameAvailable": "اسم المستخدم متاح"
+        },
+        "checkboxesRadios": {
+          "title": "مربعات الاختيار والأزرار",
+          "checkbox": "مربع اختيار",
+          "radio": "زر اختيار",
+          "rememberMe": "تذكرني",
+          "option1": "الخيار 1",
+          "option2": "الخيار 2"
+        }
+      },
+      "badges": {
+        "title": "الشارات",
+        "description": "الشارات هي مكونات صغيرة للعد والتسمية تستخدم لإبراز معلومات إضافية.",
+        "basicBadge": {
+          "title": "شارة أساسية",
+          "description": "شارة بسيطة بتنسيق افتراضي."
+        },
+        "colorVariants": {
+          "title": "متغيرات الألوان",
+          "description": "الشارات متوفرة بمتغيرات ألوان مختلفة."
+        },
+        "solidBadges": {
+          "title": "شارات صلبة",
+          "description": "شارات صلبة بنص أبيض لتباين أعلى."
+        },
+        "outlineBadges": {
+          "title": "شارات محددة",
+          "description": "شارات محددة بتنسيق حدود."
+        },
+        "sizes": {
+          "title": "الأحجام",
+          "description": "الشارات متوفرة بأحجام مختلفة."
+        },
+        "withIcons": {
+          "title": "مع الأيقونات",
+          "description": "يمكن أن تتضمن الشارات أيقونات لسياق إضافي."
+        },
+        "notificationBadge": {
+          "title": "شارة الإشعار",
+          "description": "استخدم الشارات كمؤشرات إشعار على الأزرار أو الأيقونات."
+        },
+        "pillVsRounded": {
+          "title": "حبوب مقابل مستدير",
+          "description": "اختر بين الشارات المستديرة بالكامل أو المستديرة قليلاً."
+        }
+      },
+      "tables": {
+        "title": "الجداول",
+        "description": "الجداول تستخدم لعرض البيانات في صفوف وأعمدة مع خيارات تنسيق متنوعة.",
+        "basicTable": {
+          "title": "جدول أساسي",
+          "description": "جدول بسيط بتنسيق أساسي."
+        },
+        "stripedTable": {
+          "title": "جدول مخطط",
+          "description": "أضف تخطيطاً متناوباً لصفوف الجدول لتحسين القراءة."
+        },
+        "hoverableTable": {
+          "title": "جدول قابل للتمرير",
+          "description": "أضف تأثير التمرير لصفوف الجدول لتحسين التفاعل."
+        },
+        "borderedTable": {
+          "title": "جدول محدد",
+          "description": "أضف حدوداً لجميع الخلايا للحصول على هيكل جدول أكثر تحديداً."
+        },
+        "compactTable": {
+          "title": "جدول مضغوط",
+          "description": "جدول أكثر إحكاماً بحشوة مخفضة."
+        },
+        "tableWithActions": {
+          "title": "جدول مع إجراءات",
+          "description": "أضف أزرار إجراءات لصفوف الجدول لوظائف تفاعلية."
+        },
+        "responsiveTable": {
+          "title": "جدول متجاوب",
+          "description": "اجعل الجداول تتمرير أفقياً على الشاشات الصغيرة."
+        }
+      },
+      "tabs": {
+        "title": "التبويبات",
+        "description": "التبويبات تستخدم لتنظيم المحتوى في لوحات منفصلة يمكن للمستخدم التبديل بينها.",
+        "basicTabs": {
+          "title": "تبويبات أساسية",
+          "description": "مكون تبويب بسيط بتنسيق أساسي."
+        },
+        "pillTabs": {
+          "title": "تبويبات حبوب",
+          "description": "تبويبات بتنسيق على شكل حبوب لمظهر أكثر حداثة."
+        },
+        "underlineTabs": {
+          "title": "تبويبات تحتها خط",
+          "description": "تبويبات بسيطة مع مؤشر تحته خط للتبويب النشط."
+        },
+        "verticalTabs": {
+          "title": "تبويبات عمودية",
+          "description": "تبويبات مرتبة عمودياً لتخطيط المحتوى جنبًا إلى جنب."
+        },
+        "tabsWithIcons": {
+          "title": "تبويبات مع أيقونات",
+          "description": "أضف أيقونات للتبويبات للسياق البصري."
+        },
+        "coloredTabs": {
+          "title": "تبويبات ملونة",
+          "description": "تبويبات بموضوعات ألوان مختلفة."
+        },
+        "disabledTab": {
+          "title": "تبويب معطل",
+          "description": "عطل التبويبات غير المتاحة للتفاعل."
+        }
+      },
+      "modals": {
+        "title": "النوافذ المنبثقة",
+        "description": "النوافذ المنبثقة هي مربعات حوار تظهر فوق محتوى الصفحة لتركيز انتباه المستخدم على معلومات أو إجراءات مهمة.",
+        "basicModal": {
+          "title": "نافذة منبثقة أساسية",
+          "description": "نافذة منبثقة بسيطة مع أقسام الرأس والجسم والتذييل."
+        },
+        "centeredModal": {
+          "title": "نافذة منبثقة مركزية",
+          "description": "نافذة منبثقة مركزية عمودياً وأفقياً."
+        },
+        "fullScreenModal": {
+          "title": "نافذة منبثقة بملء الشاشة",
+          "description": "نافذة منبثقة تشغل الشاشة بالكامل."
+        },
+        "modalSizes": {
+          "title": "أحجام النوافذ المنبثقة",
+          "description": "النوافذ المنبثقة متوفرة بأحجام مختلفة."
+        },
+        "modalWithoutHeader": {
+          "title": "نافذة منبثقة بدون رأس",
+          "description": "نافذة منبثقة بسيطة بدون قسم رأس."
+        },
+        "scrollableModal": {
+          "title": "نافذة منبثقة قابلة للتمرير",
+          "description": "نافذة منبثقة مع منطقة محتوى قابلة للتمرير."
+        },
+        "confirmationModal": {
+          "title": "نافذة منبثقة للتأكيد",
+          "description": "نافذة منبثقة لتأكيد الإجراءات المدمرة أو المهمة."
+        },
+        "modalWithForm": {
+          "title": "نافذة منبثقة مع نموذج",
+          "description": "نافذة منبثقة تحتوي على نموذج لإدخال المستخدم."
+        }
+      },
+      "dropdowns": {
+        "title": "القوائم المنسدلة",
+        "description": "القوائم المنسدلة هي تراكبات قابلة للتبديل وسياقية لعرض قوائم الروابط والمزيد.",
+        "basicDropdown": {
+          "title": "قائمة منسدلة أساسية",
+          "description": "قائمة منسدلة بسيطة مع زر تشغيل وعناصر قائمة."
+        },
+        "dropdownWithDivider": {
+          "title": "قائمة منسدلة مع فاصل",
+          "description": "أضف فواصل لفصل عناصر القائمة المنسدلة إلى مجموعات."
+        },
+        "dropdownWithIcons": {
+          "title": "قائمة منسدلة مع أيقونات",
+          "description": "أضف أيقونات لعناصر القائمة المنسدلة للسياق البصري."
+        },
+        "dropdownWithHeader": {
+          "title": "قائمة منسدلة مع رأس",
+          "description": "أضف قسم رأس للقائمة المنسدلة لسياق إضافي."
+        },
+        "dropdownPositions": {
+          "title": "مواضع القائمة المنسدلة",
+          "description": "ضع القائمة المنسدلة في اتجاهات مختلفة."
+        },
+        "dropdownSizes": {
+          "title": "أحجام القائمة المنسدلة",
+          "description": "القوائم المنسدلة متوفرة بأحجام مختلفة."
+        },
+        "splitButtonDropdown": {
+          "title": "قائمة منسدلة بزر منفصل",
+          "description": "زر مع مشغل قائمة منسدلة منفصل."
+        },
+        "disabledDropdownItem": {
+          "title": "عنصر قائمة منسدلة معطل",
+          "description": "عطل عناصر القائمة المنسدلة الفردية."
+        }
+      },
+      "accordion": {
+        "title": "الأكورديون",
+        "description": "الأكورديون هي عناصر مكدسة عمودياً يمكن توسيعها وطيها لإظهار أو إخفاء المحتوى.",
+        "basicAccordion": {
+          "title": "أكورديون أساسي",
+          "description": "أكورديون بسيط مع عناصر قابلة للتوسيع والطي."
+        },
+        "borderedAccordion": {
+          "title": "أكورديون محدد",
+          "description": "عناصر الأكورديون بحدود فردية."
+        },
+        "accordionWithIcons": {
+          "title": "أكورديون مع أيقونات",
+          "description": "أضف أيقونات لرؤوس الأكورديون للسياق البصري."
+        },
+        "flushAccordion": {
+          "title": "أكورديون مسطح",
+          "description": "أكورديون بدون حدود لمظهر أنظف."
+        },
+        "alwaysOpenAccordion": {
+          "title": "أكورديون مفتوح دائماً",
+          "description": "السماح بفتح عناصر الأكورديون المتعددة في نفس الوقت."
+        },
+        "accordionWithDescription": {
+          "title": "أكورديون مع وصف",
+          "description": "أضف وصفاً أسفل عنوان الأكورديون."
+        },
+        "compactAccordion": {
+          "title": "أكورديون مضغوط",
+          "description": "أكورديون أكثر إحكاماً بحشوة مخفضة."
+        },
+        "disabledAccordionItem": {
+          "title": "عنصر أكورديون معطل",
+          "description": "عطل عناصر الأكورديون الفردية."
+        }
+      }
+    },
+    "utilityPages": {
+      "typography": {
+        "title": "الطباعة",
+        "description": "أدوات الطباعة للتحكم في حجم الخط، الوزن، الارتفاع، المحاذاة، الزخرفة، التحويل، تباعد الأحرف، والألوان.",
+        "fontSizes": {
+          "title": "أحجام الخطوط",
+          "description": "التحكم في حجم خط العنصر باستخدام أدوات حجم النص."
+        },
+        "fontWeights": {
+          "title": "أوزان الخطوط",
+          "description": "التحكم في وزن خط العنصر."
+        },
+        "lineHeights": {
+          "title": "ارتفاعات الأسطر",
+          "description": "التحكم في ارتفاع سطر العنصر."
+        },
+        "textAlignments": {
+          "title": "محاذاة النص",
+          "description": "التحكم في محاذاة نص العنصر."
+        },
+        "textDecoration": {
+          "title": "زخرفة النص",
+          "description": "التحكم في زخرفة نص العنصر."
+        },
+        "textTransform": {
+          "title": "تحويل النص",
+          "description": "التحكم في تكبير النص."
+        },
+        "letterSpacing": {
+          "title": "تباعد الأحرف",
+          "description": "التحكم في تباعد أحرف العنصر."
+        },
+        "textColors": {
+          "title": "ألوان النص",
+          "description": "التحكم في لون نص العنصر."
+        }
+      },
+      "sizing": {
+        "title": "الأحجام",
+        "description": "أدوات الأحجام للتحكم في العرض، الارتفاع، الحد الأقصى للعرض، والحد الأقصى للارتفاع.",
+        "width": {
+          "title": "العرض",
+          "description": "التحكم في عرض العنصر باستخدام أدوات العرض."
+        },
+        "fixedWidth": {
+          "title": "عرض ثابت",
+          "description": "تعيين عرض ثابت باستخدام قيم مقياس المسافات."
+        },
+        "maxWidth": {
+          "title": "الحد الأقصى للعرض",
+          "description": "التحكم في الحد الأقصى لعرض العنصر."
+        },
+        "height": {
+          "title": "الارتفاع",
+          "description": "التحكم في ارتفاع العنصر باستخدام أدوات الارتفاع."
+        },
+        "fixedHeight": {
+          "title": "ارتفاع ثابت",
+          "description": "تعيين ارتفاع ثابت باستخدام قيم مقياس المسافات."
+        },
+        "maxHeight": {
+          "title": "الحد الأقصى للارتفاع",
+          "description": "التحكم في الحد الأقصى لارتفاع العنصر."
+        },
+        "aspectRatio": {
+          "title": "نسبة العرض إلى الارتفاع",
+          "description": "التحكم في نسبة العرض إلى الارتفاع للعنصر."
+        }
+      },
+      "borders": {
+        "title": "الحدود",
+        "description": "أدوات الحدود للتحكم في عرض الحدود، الجوانب، نصف القطر، الألوان، والمقسمات.",
+        "borderWidth": {
+          "title": "عرض الحدود",
+          "description": "أضف حدوداً للعناصر بعرض مختلف."
+        },
+        "borderSides": {
+          "title": "جوانب الحدود",
+          "description": "أضف حدوداً لجوانب محددة من العنصر."
+        },
+        "borderRadius": {
+          "title": "نصف قطر الحدود",
+          "description": "أضف زوايا مستديرة للعناصر."
+        },
+        "borderColors": {
+          "title": "ألوان الحدود",
+          "description": "غيّر لون الحدود."
+        },
+        "divide": {
+          "title": "تقسيم",
+          "description": "أضف حدوداً بين العناصر الفرعية."
+        }
+      }
+    },
+    "troubleshooting": {
+      "title": "استكشاف الأخطاء وإصلاحها",
+      "description": "المشاكل الشائعة وكيفية حلها.",
+      "needMoreHelp": {
+        "title": "هل تحتاج إلى مزيد من المساعدة؟",
+        "content": "إذا لم تجد حلاً هنا، يرجى التحقق من الأسئلة الشائعة أو الانضمام إلى Discord المجتمعي الخاص بنا."
+      },
+      "issues": {
+        "stylesNotApplying": {
+          "title": "الأنماط لا يتم تطبيقها",
+          "solution": "تأكد من استيراد ملف CSS الخاص بـ Apex في مشروعك. تحقق من أن المسار إلى ملف CSS صحيح."
+        },
+        "darkModeNotWorking": {
+          "title": "الوضع الداكن لا يعمل",
+          "solution": "تأكد من وجود الفئة dark على عنصر HTML الخاص بك أو أن تفضيل النظام الخاص بك مضبوط على الوضع الداكن."
+        },
+        "customColorsNotAppearing": {
+          "title": "الألوان المخصصة لا تظهر",
+          "solution": "تحقق من ملف التكوين الخاص بك وتأكد من إعادة بناء CSS بعد إجراء التغييرات."
+        },
+        "rtlLayoutIssues": {
+          "title": "مشاكل تخطيط RTL",
+          "solution": "تحقق من أنك قمت بتعيين dir=\"rtl\" على عنصر HTML الخاص بك وأنك تستخدم أدوات متوافقة مع RTL مثل ms- و me- بدلاً من ml- و mr-."
+        },
+        "buildErrors": {
+          "title": "أخطاء البناء",
+          "solution": "تأكد من تثبيت أحدث إصدار من Apex. حاول حذف node_modules وتشغيل npm install مرة أخرى."
+        }
+      }
+    }
+  },
+  "navigation": {
+    "search": "البحث في التوثيق...",
+    "skipToContent": "تخطي إلى المحتوى الرئيسي",
+    "toggleMenu": "تبديل قائمة التنقل",
+    "toggleTheme": "تبديل الوضع المظلم",
+    "toggleLanguage": "تغيير اللغة"
+  },
+  "sidebar": {
+    "gettingStarted": "البدء",
+    "coreConcepts": "المفاهيم الأساسية",
+    "utilities": "الأدوات",
+    "components": "المكونات",
+    "advanced": "متقدم",
+    "reference": "مرجع",
+    "migration": "الترحيل",
+    "help": "مساعدة",
+    "community": "المجتمع",
+    "tools": "الأدوات"
+  },
+  "common": {
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "preview": "معاينة",
+    "code": "كود",
+    "usage": "الاستخدام",
+    "installation": "التثبيت",
+    "props": "الخواص",
+    "accessibility": "إمكانية الوصول",
+    "examples": "أمثلة",
+    "default": "افتراضي",
+    "variants": "المتغيرات",
+    "sizes": "الأحجام",
+    "colors": "الألوان",
+    "states": "الحالات"
+  },
+  "feedback": {
+    "title": "هل كان هذا مفيداً؟",
+    "thankYou": "شكراً لك!",
+    "placeholder": "أخبرنا المزيد عن تجربتك...",
+    "submit": "إرسال الملاحظات",
+    "sending": "جاري الإرسال..."
+  },
+  "playground": {
+    "title": "ملعب التجربة",
+    "description": "جرب أدوات Apex مباشرة في متصفحك. عدل HTML وشاهد النتيجة فوراً.",
+    "editor": "المحرر",
+    "reset": "إعادة تعيين",
+    "share": "مشاركة",
+    "download": "تحميل",
+    "proTip": "نصيحة احترافية",
+    "tabIndent": "اضغط Tab للمسافة البادئة وShift+Tab للإزالة",
+    "generatedCode": "الكود المُنشأ"
+  },
+  "version": {
+    "select": "اختيار الإصدار",
+    "stable": "مستقر",
+    "beta": "بيتا",
+    "viewChangelog": "عرض سجل التغييرات",
+    "whatsNew": "ما الجديد",
+    "migrationGuide": "دليل الترحيل"
+  },
+  "rtl": {
+    "title": "دعم RTL",
+    "description": "يتضمن Apex دعم RTL (من اليمين إلى اليسار) المدمج للتدويل.",
+    "example": "مثال RTL",
+    "layout": "تخطيط RTL",
+    "spacing": "التباعد RTL",
+    "flexbox": "Flexbox RTL",
+    "text": "محاذاة النص RTL"
+  },
+  "search": {
+    "placeholder": "البحث في التوثيق...",
+    "noResults": "لم يتم العثور على نتائج",
+    "tryDifferent": "جرب كلمات مفتاحية مختلفة",
+    "typeToSearch": "اكتب للبحث في التوثيق",
+    "searchFor": "ابحث عن الأدوات والمكونات والأدلة والمزيد",
+    "results": "نتيجة"
+  },
+  "keyboard": {
+    "title": "اختصارات لوحة المفاتيح",
+    "showHelp": "عرض اختصارات لوحة المفاتيح",
+    "focusSearch": "تركيز البحث",
+    "openSearch": "فتح البحث",
+    "close": "إغلاق البحث / النوافذ المنبثقة",
+    "navigate": "للتنقل",
+    "select": "للاختيار",
+    "toNavigate": "للتنقل",
+    "toSelect": "للاختيار"
+  },
+  "component": {
+    "propsTable": {
+      "name": "الاسم",
+      "type": "النوع",
+      "default": "افتراضي",
+      "description": "الوصف",
+      "required": "مطلوب"
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "keyboard": "دعم لوحة المفاتيح",
+      "screenReader": "قارئ الشاشة",
+      "aria": "سمات ARIA",
+      "focus": "إدارة التركيز"
+    }
+  },
+  "home": {
+    "title": "Apex",
+    "description": "إطار عمل شامل أولي الأدوات CSS مع أكثر من 500 فئة أداة لتطوير واجهة المستخدم بسرعة.",
+    "welcomeAlert": {
+      "title": "مرحباً!",
+      "content": "مرحباً بك في توثيق Apex. يوفر هذا الإطار العمل الأولي الأدوات مجموعة شاملة من فئات CSS لتطوير واجهة المستخدم بسرعة، بما في ذلك التباعد، والطباعة، والألوان، وflexbox، وgrid، والرسوم المتحركة، والتحويلات، والفلاتر، والمزيد."
+    },
+    "gettingStarted": {
+      "title": "البدء",
+      "description": "ابدأ مع Apex عن طريق تضمينه في مشروعك.",
+      "quickStart": {
+        "title": "بدء سريع",
+        "description": "قم بتضمين ملف CSS للإطار في HTML الخاص بك:"
+      },
+      "npmInstallation": {
+        "title": "تثبيت NPM",
+        "description": "التثبيت عبر npm:"
+      }
+    },
+    "utilities": {
+      "title": "الأدوات",
+      "description": "يتضمن الإطار مجموعة واسعة من فئات الأدوات للتباعد، والطباعة، والألوان، وflexbox، وgrid، والمزيد.",
+      "spacing": "التباعد",
+      "typography": "الطباعة",
+      "colors": "الألوان",
+      "exploreAlert": "هذه مجرد أمثلة قليلة. استكشف قسم الأدوات لرؤية جميع الفئات المتاحة."
+    },
+    "components": {
+      "title": "المكونات",
+      "description": "يوفر Apex مجموعة من المكونات المبنية مسبقاً لأنماط واجهة المستخدم الشائعة.",
+      "viewAll": "عرض جميع المكونات"
+    },
+    "themes": {
+      "title": "المظاهر",
+      "description": "يتضمن Apex دعماً مدمجاً للمظاهر الفاتحة والداكنة والمخصصة.",
+      "darkMode": {
+        "title": "الوضع المظلم",
+        "description": "قم بتمكين الوضع المظلم التلقائي أو قم بتكوين مظاهر مخصصة:"
+      },
+      "customThemes": {
+        "title": "مظاهر مخصصة",
+        "description": "قم بإنشاء مظهر خاص بك عن طريق تجاوز متغيرات CSS:"
+      }
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "description": "يولي Apex أولوية لإمكانية الوصول مع دعم مدمج لقارئات الشاشة، وإدارة التركيز، والتنقل عبر لوحة المفاتيح.",
+      "screenReaderClasses": {
+        "title": "فئات قارئ الشاشة",
+        "description": "إخفاء المحتوى بصرياً مع الحفاظ على إمكانية الوصول إليه لتقنيات المساعدة:"
+      },
+      "learnMore": "تعلم المزيد عن إمكانية الوصول"
+    },
+    "configuration": {
+      "title": "التكوين",
+      "description": "قم بتخصيص Apex عن طريق تعديل ملف التكوين لتمكين أو تعطيل الأدوات، وتغيير البادئات، والمزيد.",
+      "guide": "دليل التكوين"
+    },
+    "responsiveDesign": {
+      "title": "التصميم المتجاوب",
+      "description": "قم بإنشاء تخطيطات متجاوبة باستخدام فئات أدوات Apex.",
+      "mobileFirst": {
+        "title": "المحمول أولاً",
+        "content": "يتبع Apex نهج المحمول أولاً. تنطبق الأنماط الأساسية على جميع أحجام الشاشة، وتستهدف نقاط التوقف الشاشات الأكبر."
+      },
+      "breakpoints": {
+        "title": "نقاط التوقف",
+        "description": "يتضمن Apex خمس نقاط توقف افتراضية:"
+      },
+      "responsiveModifiers": {
+        "title": "المعدلات المتجاوبة",
+        "description": "استخدم البادئات المتجاوبة لتطبيق الأنماط عند نقاط توقف محددة:"
+      },
+      "responsiveTypography": {
+        "title": "الطباعة المتجاوبة",
+        "description": "اضبط حجم النص بناءً على إطار العرض:"
+      },
+      "hideShowElements": {
+        "title": "إخفاء/إظهار العناصر",
+        "description": "أظهر أو أخفِ العناصر عند نقاط توقف مختلفة:",
+        "desktopOnly": "محتوى سطح المكتب فقط",
+        "mobileOnly": "محتوى الجوال فقط"
+      }
+    },
+    "rtl": {
+      "title": "دعم RTL",
+      "description": "يتضمن Apex دعمًا مدمجًا لـ RTL (من اليمين إلى اليسار) للتدويل. مثالي للعربية والعبرية ولغات RTL الأخرى.",
+      "documentation": "توثيق RTL"
+    },
+    "forms": {
+      "title": "النماذج",
+      "description": "مكونات النماذج بما في ذلك المدخلات والتسميات ومربعات الاختيار وحالات التحقق.",
+      "interactiveDemo": {
+        "title": "عرض تفاعلي للنماذج",
+        "description": "خصص متغيرات وأحجام وحالات المدخلات."
+      },
+      "basicInput": {
+        "title": "إدخال أساسي",
+        "emailLabel": "عنوان البريد الإلكتروني",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني"
+      },
+      "inputVariants": {
+        "title": "متغيرات الإدخال",
+        "default": "إدخال بحد افتراضي",
+        "filled": "نمط خلفية مملوءة",
+        "outlined": "مخطط بحد أكثر سماكة"
+      },
+      "sizes": {
+        "title": "الأحجام",
+        "sm": "إدخال صغير",
+        "md": "إدخال متوسط (افتراضي)",
+        "lg": "إدخال كبير"
+      },
+      "withIcon": {
+        "title": "مع أيقونة",
+        "searchLabel": "بحث",
+        "searchPlaceholder": "بحث..."
+      },
+      "validationStates": {
+        "title": "حالات التحقق",
+        "errorState": "حالة الخطأ",
+        "emailLabel": "البريد الإلكتروني",
+        "invalidEmail": "عنوان بريد إلكتروني غير صالح",
+        "successState": "حالة النجاح",
+        "usernameLabel": "اسم المستخدم",
+        "usernameAvailable": "اسم المستخدم متاح"
+      },
+      "checkboxesRadios": {
+        "title": "مربعات الاختيار والراديو",
+        "checkbox": "مربع اختيار",
+        "rememberMe": "تذكرني",
+        "radio": "راديو",
+        "option1": "الخيار 1",
+        "option2": "الخيار 2"
+      }
+    },
+    "utilityPages": {
+      "colors": {
+        "title": "الألوان",
+        "description": "استكشف لوحة الألوان الكاملة. انقر على أي لون لنسخ اسم فئته."
+      },
+      "flexbox": {
+        "title": "Flexbox",
+        "description": "أدوات Flexbox لإنشاء تخطيطات مرنة ومتجاوبة.",
+        "interactivePlayground": {
+          "title": "ساحة تفاعلية لـ Flexbox",
+          "description": "جرب خصائص Flexbox المختلفة وشاهد النتائج في الوقت الفعلي."
+        },
+        "display": {
+          "title": "العرض",
+          "enableFlex": "تمكين حاوية flex",
+          "enableInlineFlex": "تمكين حاوية inline-flex"
+        },
+        "flexDirection": {
+          "title": "اتجاه Flex"
+        },
+        "justifyContent": {
+          "title": "محاذاة المحتوى"
+        },
+        "alignItems": {
+          "title": "محاذاة العناصر"
+        },
+        "flexWrap": {
+          "title": "التفاف Flex"
+        },
+        "flexGrowShrink": {
+          "title": "نمو وتقلص Flex"
+        },
+        "commonPatterns": {
+          "title": "الأنماط الشائعة",
+          "centerEverything": "توسيط كل شيء",
+          "centeredContent": "محتوى مركز",
+          "horizontalNavigation": "التنقل الأفقي",
+          "logo": "الشعار",
+          "home": "الرئيسية",
+          "about": "حول",
+          "contact": "اتصل",
+          "cardLayout": "تخطيط البطاقة",
+          "content": "المحتوى",
+          "footer": "التذييل"
+        }
+      },
+      "grid": {
+        "title": "Grid",
+        "description": "منشئ Grid تفاعلي. قم بتخصيص الأعمدة والمسافات وقم بإنشاء كود CSS Grid فوراً.",
+        "gridBuilder": {
+          "title": "منشئ Grid"
+        },
+        "basicGrid": {
+          "title": "Grid الأساسي",
+          "description": "قم بإنشاء Grid أساسي بأعمدة متساوية العرض."
+        },
+        "responsiveGrid": {
+          "title": "Grid متجاوب",
+          "description": "استخدم البادئات المتجاوبة لتغيير عدد الأعمدة عند نقاط التوقف المختلفة."
+        },
+        "autoFitGrid": {
+          "title": "Grid Auto-fit",
+          "description": "قم بإنشاء Grid متجاوب يقوم بضبط الأعمدة تلقائياً بناءً على الحد الأدنى لعرض العنصر."
+        },
+        "columnSpan": {
+          "title": "امتداد العمود",
+          "description": "اجعل العناصر تمتد عبر أعمدة متعددة.",
+          "spans2Columns": "يمتد عبر عمودين",
+          "spans3Columns": "يمتد عبر ثلاثة أعمدة"
+        },
+        "rowSpan": {
+          "title": "امتداد الصف",
+          "description": "اجعل العناصر تمتد عبر صفوف متعددة.",
+          "spans2Rows": "يمتد عبر صفين"
+        },
+        "gapSizes": {
+          "title": "أحجام المسافات",
+          "smallGap": "مسافة صغيرة",
+          "mediumGap": "مسافة متوسطة (افتراضي)",
+          "largeGap": "مسافة كبيرة",
+          "gapXAndY": "مسافة X و Y بشكل منفصل"
+        }
+      },
+      "spacing": {
+        "title": "المسافات",
+        "description": "مستكشف مسافات تفاعلي. اضبط عناصر التحكم لرؤية كيف تؤثر قيم المسافات المختلفة على تخطيطك."
+      },
+      "typography": {
+        "title": "الطباعة",
+        "description": "أدوات الطباعة للتحكم في حجم الخط، الوزن، الارتفاع، المحاذاة، الزخرفة، التحويل، تباعد الأحرف، والألوان.",
+        "fontSizes": {
+          "title": "أحجام الخطوط",
+          "description": "التحكم في حجم خط العنصر باستخدام أدوات حجم النص."
+        },
+        "fontWeights": {
+          "title": "أوزان الخطوط",
+          "description": "التحكم في وزن خط العنصر."
+        },
+        "lineHeights": {
+          "title": "ارتفاعات الأسطر",
+          "description": "التحكم في ارتفاع سطر العنصر."
+        },
+        "textAlignments": {
+          "title": "محاذاة النص",
+          "description": "التحكم في محاذاة نص العنصر."
+        },
+        "textDecoration": {
+          "title": "زخرفة النص",
+          "description": "التحكم في زخرفة نص العنصر."
+        },
+        "textTransform": {
+          "title": "تحويل النص",
+          "description": "التحكم في تكبير النص."
+        },
+        "letterSpacing": {
+          "title": "تباعد الأحرف",
+          "description": "التحكم في تباعد أحرف العنصر."
+        },
+        "textColors": {
+          "title": "ألوان النص",
+          "description": "التحكم في لون نص العنصر."
+        }
+      },
+      "sizing": {
+        "title": "الأحجام",
+        "description": "أدوات الأحجام للتحكم في العرض، الارتفاع، الحد الأقصى للعرض، والحد الأقصى للارتفاع.",
+        "width": {
+          "title": "العرض",
+          "description": "التحكم في عرض العنصر باستخدام أدوات العرض."
+        },
+        "fixedWidth": {
+          "title": "عرض ثابت",
+          "description": "تعيين عرض ثابت باستخدام قيم مقياس المسافات."
+        },
+        "maxWidth": {
+          "title": "الحد الأقصى للعرض",
+          "description": "التحكم في الحد الأقصى لعرض العنصر."
+        },
+        "height": {
+          "title": "الارتفاع",
+          "description": "التحكم في ارتفاع العنصر باستخدام أدوات الارتفاع."
+        },
+        "fixedHeight": {
+          "title": "ارتفاع ثابت",
+          "description": "تعيين ارتفاع ثابت باستخدام قيم مقياس المسافات."
+        },
+        "maxHeight": {
+          "title": "الحد الأقصى للارتفاع",
+          "description": "التحكم في الحد الأقصى لارتفاع العنصر."
+        },
+        "aspectRatio": {
+          "title": "نسبة العرض إلى الارتفاع",
+          "description": "التحكم في نسبة العرض إلى الارتفاع للعنصر."
+        }
+      },
+      "borders": {
+        "title": "الحدود",
+        "description": "أدوات الحدود للتحكم في عرض الحدود، الجوانب، نصف القطر، الألوان، والمقسمات.",
+        "borderWidth": {
+          "title": "عرض الحدود",
+          "description": "أضف حدوداً للعناصر بعرض مختلف."
+        },
+        "borderSides": {
+          "title": "جوانب الحدود",
+          "description": "أضف حدوداً لجوانب محددة من العنصر."
+        },
+        "borderRadius": {
+          "title": "نصف قطر الحدود",
+          "description": "أضف زوايا مستديرة للعناصر."
+        },
+        "borderColors": {
+          "title": "ألوان الحدود",
+          "description": "غيّر لون الحدود."
+        },
+        "divide": {
+          "title": "تقسيم",
+          "description": "أضف حدوداً بين العناصر الفرعية."
+        }
+      }
+    },
+    "componentPages": {
+      "badges": {
+        "title": "الشارات",
+        "description": "الشارات هي مكونات صغيرة للعد والتسمية تستخدم لإبراز معلومات إضافية.",
+        "basicBadge": {
+          "title": "شارة أساسية",
+          "description": "شارة بسيطة بتنسيق افتراضي."
+        },
+        "colorVariants": {
+          "title": "متغيرات الألوان",
+          "description": "الشارات متوفرة بمتغيرات ألوان مختلفة."
+        },
+        "solidBadges": {
+          "title": "شارات صلبة",
+          "description": "شارات صلبة بنص أبيض لتباين أعلى."
+        },
+        "outlineBadges": {
+          "title": "شارات محددة",
+          "description": "شارات محددة بتنسيق حدود."
+        },
+        "sizes": {
+          "title": "الأحجام",
+          "description": "الشارات متوفرة بأحجام مختلفة."
+        },
+        "withIcons": {
+          "title": "مع الأيقونات",
+          "description": "يمكن أن تتضمن الشارات أيقونات لسياق إضافي."
+        },
+        "notificationBadge": {
+          "title": "شارة الإشعار",
+          "description": "استخدم الشارات كمؤشرات إشعار على الأزرار أو الأيقونات."
+        },
+        "pillVsRounded": {
+          "title": "حبوب مقابل مستدير",
+          "description": "اختر بين الشارات المستديرة بالكامل أو المستديرة قليلاً."
+        }
+      },
+      "tables": {
+        "title": "الجداول",
+        "description": "الجداول تستخدم لعرض البيانات في صفوف وأعمدة مع خيارات تنسيق متنوعة.",
+        "basicTable": {
+          "title": "جدول أساسي",
+          "description": "جدول بسيط بتنسيق أساسي."
+        },
+        "stripedTable": {
+          "title": "جدول مخطط",
+          "description": "أضف تخطيطاً متناوباً لصفوف الجدول لتحسين القراءة."
+        },
+        "hoverableTable": {
+          "title": "جدول قابل للتمرير",
+          "description": "أضف تأثير التمرير لصفوف الجدول لتحسين التفاعل."
+        },
+        "borderedTable": {
+          "title": "جدول محدد",
+          "description": "أضف حدوداً لجميع الخلايا للحصول على هيكل جدول أكثر تحديداً."
+        },
+        "compactTable": {
+          "title": "جدول مضغوط",
+          "description": "جدول أكثر إحكاماً بحشوة مخفضة."
+        },
+        "tableWithActions": {
+          "title": "جدول مع إجراءات",
+          "description": "أضف أزرار إجراءات لصفوف الجدول لوظائف تفاعلية."
+        },
+        "responsiveTable": {
+          "title": "جدول متجاوب",
+          "description": "اجعل الجداول تتمرير أفقياً على الشاشات الصغيرة."
+        }
+      },
+      "tabs": {
+        "title": "التبويبات",
+        "description": "التبويبات تستخدم لتنظيم المحتوى في لوحات منفصلة يمكن للمستخدم التبديل بينها.",
+        "basicTabs": {
+          "title": "تبويبات أساسية",
+          "description": "مكون تبويب بسيط بتنسيق أساسي."
+        },
+        "pillTabs": {
+          "title": "تبويبات حبوب",
+          "description": "تبويبات بتنسيق على شكل حبوب لمظهر أكثر حداثة."
+        },
+        "underlineTabs": {
+          "title": "تبويبات تحتها خط",
+          "description": "تبويبات بسيطة مع مؤشر تحته خط للتبويب النشط."
+        },
+        "verticalTabs": {
+          "title": "تبويبات عمودية",
+          "description": "تبويبات مرتبة عمودياً لتخطيط المحتوى جنبًا إلى جنب."
+        },
+        "tabsWithIcons": {
+          "title": "تبويبات مع أيقونات",
+          "description": "أضف أيقونات للتبويبات للسياق البصري."
+        },
+        "coloredTabs": {
+          "title": "تبويبات ملونة",
+          "description": "تبويبات بموضوعات ألوان مختلفة."
+        },
+        "disabledTab": {
+          "title": "تبويب معطل",
+          "description": "عطل التبويبات غير المتاحة للتفاعل."
+        }
+      },
+      "modals": {
+        "title": "النوافذ المنبثقة",
+        "description": "النوافذ المنبثقة هي مربعات حوار تظهر فوق محتوى الصفحة لتركيز انتباه المستخدم على معلومات أو إجراءات مهمة.",
+        "basicModal": {
+          "title": "نافذة منبثقة أساسية",
+          "description": "نافذة منبثقة بسيطة مع أقسام الرأس والجسم والتذييل."
+        },
+        "centeredModal": {
+          "title": "نافذة منبثقة مركزية",
+          "description": "نافذة منبثقة مركزية عمودياً وأفقياً."
+        },
+        "fullScreenModal": {
+          "title": "نافذة منبثقة بملء الشاشة",
+          "description": "نافذة منبثقة تشغل الشاشة بالكامل."
+        },
+        "modalSizes": {
+          "title": "أحجام النوافذ المنبثقة",
+          "description": "النوافذ المنبثقة متوفرة بأحجام مختلفة."
+        },
+        "modalWithoutHeader": {
+          "title": "نافذة منبثقة بدون رأس",
+          "description": "نافذة منبثقة بسيطة بدون قسم رأس."
+        },
+        "scrollableModal": {
+          "title": "نافذة منبثقة قابلة للتمرير",
+          "description": "نافذة منبثقة مع منطقة محتوى قابلة للتمرير."
+        },
+        "confirmationModal": {
+          "title": "نافذة منبثقة للتأكيد",
+          "description": "نافذة منبثقة لتأكيد الإجراءات المدمرة أو المهمة."
+        },
+        "modalWithForm": {
+          "title": "نافذة منبثقة مع نموذج",
+          "description": "نافذة منبثقة تحتوي على نموذج لإدخال المستخدم."
+        }
+      },
+      "dropdowns": {
+        "title": "القوائم المنسدلة",
+        "description": "القوائم المنسدلة هي تراكبات قابلة للتبديل وسياقية لعرض قوائم الروابط والمزيد.",
+        "basicDropdown": {
+          "title": "قائمة منسدلة أساسية",
+          "description": "قائمة منسدلة بسيطة مع زر تشغيل وعناصر قائمة."
+        },
+        "dropdownWithDivider": {
+          "title": "قائمة منسدلة مع فاصل",
+          "description": "أضف فواصل لفصل عناصر القائمة المنسدلة إلى مجموعات."
+        },
+        "dropdownWithIcons": {
+          "title": "قائمة منسدلة مع أيقونات",
+          "description": "أضف أيقونات لعناصر القائمة المنسدلة للسياق البصري."
+        },
+        "dropdownWithHeader": {
+          "title": "قائمة منسدلة مع رأس",
+          "description": "أضف قسم رأس للقائمة المنسدلة لسياق إضافي."
+        },
+        "dropdownPositions": {
+          "title": "مواضع القائمة المنسدلة",
+          "description": "ضع القائمة المنسدلة في اتجاهات مختلفة."
+        },
+        "dropdownSizes": {
+          "title": "أحجام القائمة المنسدلة",
+          "description": "القوائم المنسدلة متوفرة بأحجام مختلفة."
+        },
+        "splitButtonDropdown": {
+          "title": "قائمة منسدلة بزر منفصل",
+          "description": "زر مع مشغل قائمة منسدلة منفصل."
+        },
+        "disabledDropdownItem": {
+          "title": "عنصر قائمة منسدلة معطل",
+          "description": "عطل عناصر القائمة المنسدلة الفردية."
+        }
+      },
+      "accordion": {
+        "title": "الأكورديون",
+        "description": "الأكورديون هي عناصر مكدسة عمودياً يمكن توسيعها وطيها لإظهار أو إخفاء المحتوى.",
+        "basicAccordion": {
+          "title": "أكورديون أساسي",
+          "description": "أكورديون بسيط مع عناصر قابلة للتوسيع والطي."
+        },
+        "borderedAccordion": {
+          "title": "أكورديون محدد",
+          "description": "عناصر الأكورديون بحدود فردية."
+        },
+        "accordionWithIcons": {
+          "title": "أكورديون مع أيقونات",
+          "description": "أضف أيقونات لرؤوس الأكورديون للسياق البصري."
+        },
+        "flushAccordion": {
+          "title": "أكورديون مسطح",
+          "description": "أكورديون بدون حدود لمظهر أنظف."
+        },
+        "alwaysOpenAccordion": {
+          "title": "أكورديون مفتوح دائماً",
+          "description": "السماح بفتح عناصر الأكورديون المتعددة في نفس الوقت."
+        },
+        "accordionWithDescription": {
+          "title": "أكورديون مع وصف",
+          "description": "أضف وصفاً أسفل عنوان الأكورديون."
+        },
+        "compactAccordion": {
+          "title": "أكورديون مضغوط",
+          "description": "أكورديون أكثر إحكاماً بحشوة مخفضة."
+        },
+        "disabledAccordionItem": {
+          "title": "عنصر أكورديون معطل",
+          "description": "عطل عناصر الأكورديون الفردية."
+        }
+      }
+    }
+  }
+}

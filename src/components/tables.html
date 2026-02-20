@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Components</title>
+  <link rel="stylesheet" href="../dist/framework.css">
+</head>
+<body class="p-8 bg-gray-50">
+  <h1 class="text-3xl font-bold mb-8 text-gray-800">Table Components</h1>
+
+  <!-- Section: Basic Table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Basic Table</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-gray-100 border-b border-gray-200">
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">ID</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Name</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Email</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Role</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600">1</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">John Doe</td>
+            <td class="px-4 py-3 text-sm text-gray-600">john@example.com</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Admin</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600">2</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Jane Smith</td>
+            <td class="px-4 py-3 text-sm text-gray-600">jane@example.com</td>
+            <td class="px-4 py-3 text-sm text-gray-600">User</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600">3</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Bob Johnson</td>
+            <td class="px-4 py-3 text-sm text-gray-600">bob@example.com</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Editor</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: Striped Table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Striped Table</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th class="px-4 py-3 text-sm font-semibold">ID</th>
+            <th class="px-4 py-3 text-sm font-semibold">Product</th>
+            <th class="px-4 py-3 text-sm font-semibold">Price</th>
+            <th class="px-4 py-3 text-sm font-semibold">Stock</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="even:bg-gray-50 hover:bg-gray-100">
+            <td class="px-4 py-3 text-sm text-gray-600">1</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Laptop</td>
+            <td class="px-4 py-3 text-sm text-gray-600">$999.99</td>
+            <td class="px-4 py-3 text-sm text-gray-600">In Stock</td>
+          </tr>
+          <tr class="even:bg-gray-50 hover:bg-gray-100">
+            <td class="px-4 py-3 text-sm text-gray-600">2</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Mouse</td>
+            <td class="px-4 py-3 text-sm text-gray-600">$29.99</td>
+            <td class="px-4 py-3 text-sm text-gray-600">In Stock</td>
+          </tr>
+          <tr class="even:bg-gray-50 hover:bg-gray-100">
+            <td class="px-4 py-3 text-sm text-gray-600">3</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Keyboard</td>
+            <td class="px-4 py-3 text-sm text-gray-600">$79.99</td>
+            <td class="px-4 py-3 text-sm text-danger">Out of Stock</td>
+          </tr>
+          <tr class="even:bg-gray-50 hover:bg-gray-100">
+            <td class="px-4 py-3 text-sm text-gray-600">4</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Monitor</td>
+            <td class="px-4 py-3 text-sm text-gray-600">$349.99</td>
+            <td class="px-4 py-3 text-sm text-gray-600">In Stock</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: Bordered Table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Bordered Table</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-gray-50 border-b-2 border-gray-300">
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 border-r border-gray-200">Order ID</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 border-r border-gray-200">Customer</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 border-r border-gray-200">Date</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-300">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">#ORD-001</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium border-r border-gray-200">Alice Brown</td>
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">Jan 15, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success text-white">
+                Delivered
+              </span>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">#ORD-002</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium border-r border-gray-200">Charlie Davis</td>
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">Jan 16, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-warning text-white">
+                Pending
+              </span>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">#ORD-003</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium border-r border-gray-200">Eva Wilson</td>
+            <td class="px-4 py-3 text-sm text-gray-600 border-r border-gray-200">Jan 17, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-info text-white">
+                Shipped
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: Table with Actions -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Table with Actions</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-gray-100 border-b border-gray-200">
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Name</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Email</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Status</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">John Doe</td>
+            <td class="px-4 py-3 text-sm text-gray-600">john@example.com</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success text-white">
+                Active
+              </span>
+            </td>
+            <td class="px-4 py-3 text-sm text-right">
+              <button class="inline-flex items-center justify-center w-8 h-8 text-primary hover:bg-primary-light rounded-full transition-colors cursor-pointer" aria-label="Edit">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              </button>
+              <button class="inline-flex items-center justify-center w-8 h-8 text-danger hover:bg-danger-light rounded-full transition-colors cursor-pointer" aria-label="Delete">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium">Jane Smith</td>
+            <td class="px-4 py-3 text-sm text-gray-600">jane@example.com</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-warning text-white">
+                Inactive
+              </span>
+            </td>
+            <td class="px-4 py-3 text-sm text-right">
+              <button class="inline-flex items-center justify-center w-8 h-8 text-primary hover:bg-primary-light rounded-full transition-colors cursor-pointer" aria-label="Edit">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+              </button>
+              <button class="inline-flex items-center justify-center w-8 h-8 text-danger hover:bg-danger-light rounded-full transition-colors cursor-pointer" aria-label="Delete">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: Table with Checkboxes -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Table with Checkboxes</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-gray-100 border-b border-gray-200">
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 w-10">
+              <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+            </th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Task</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Assignee</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Due Date</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800">Priority</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3">
+              <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+            </td>
+            <td class="px-4 py-3 text-sm text-gray-800">Design homepage</td>
+            <td class="px-4 py-3 text-sm text-gray-600">John Doe</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Jan 20, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-danger text-white">High</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3">
+              <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary" checked>
+            </td>
+            <td class="px-4 py-3 text-sm text-gray-800 line-through">Fix login bug</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Jane Smith</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Jan 15, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-warning text-white">Medium</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3">
+              <input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+            </td>
+            <td class="px-4 py-3 text-sm text-gray-800">Update documentation</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Bob Johnson</td>
+            <td class="px-4 py-3 text-sm text-gray-600">Jan 25, 2024</td>
+            <td class="px-4 py-3 text-sm">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-info text-white">Low</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: Responsive Table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Responsive Table (Horizontal Scroll)</h2>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+      <table class="w-full text-left border-collapse min-w-600">
+        <thead>
+          <tr class="bg-gray-100 border-b border-gray-200">
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">ID</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">Name</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">Email</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">Phone</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">Address</th>
+            <th class="px-4 py-3 text-sm font-semibold text-gray-800 whitespace-nowrap">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">1</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium whitespace-nowrap">John Doe</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">john@example.com</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">+1 234 567 890</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">123 Main St, City</td>
+            <td class="px-4 py-3 text-sm whitespace-nowrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success text-white">Active</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">2</td>
+            <td class="px-4 py-3 text-sm text-gray-800 font-medium whitespace-nowrap">Jane Smith</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">jane@example.com</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">+1 234 567 891</td>
+            <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">456 Oak Ave, Town</td>
+            <td class="px-4 py-3 text-sm whitespace-nowrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-warning text-white">Pending</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>

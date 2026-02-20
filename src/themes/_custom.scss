@@ -1,0 +1,177 @@
+// ============================================================================
+// Custom Theme Support
+// ============================================================================
+// This file provides utilities for creating custom themes.
+// Use CSS custom properties to define theme colors.
+
+// Custom Theme Variables
+// ============================================================================
+:root {
+  // Custom theme colors
+  --theme-primary: #{$color-primary};
+  --theme-secondary: #{$color-secondary};
+  --theme-success: #{$color-success};
+  --theme-danger: #{$color-danger};
+  --theme-warning: #{$color-warning};
+  --theme-info: #{$color-info};
+  --theme-light: #{$color-light};
+  --theme-dark: #{$color-dark};
+
+  // Custom theme fonts
+  --theme-font-sans: #{$font-sans};
+  --theme-font-serif: #{$font-serif};
+  --theme-font-mono: #{$font-mono};
+
+  // Custom theme spacing
+  --theme-spacing-xs: #{$spacing-1};
+  --theme-spacing-sm: #{$spacing-2};
+  --theme-spacing-md: #{$spacing-4};
+  --theme-spacing-lg: #{$spacing-6};
+  --theme-spacing-xl: #{$spacing-8};
+}
+
+// Theme Classes
+// ============================================================================
+.theme-primary {
+  --tw-text-opacity: 1;
+  color: rgba($color-primary, var(--tw-text-opacity));
+}
+
+.theme-secondary {
+  --tw-text-opacity: 1;
+  color: rgba($color-secondary, var(--tw-text-opacity));
+}
+
+.theme-success {
+  --tw-text-opacity: 1;
+  color: rgba($color-success, var(--tw-text-opacity));
+}
+
+.theme-danger {
+  --tw-text-opacity: 1;
+  color: rgba($color-danger, var(--tw-text-opacity));
+}
+
+.theme-warning {
+  --tw-text-opacity: 1;
+  color: rgba($color-warning, var(--tw-text-opacity));
+}
+
+.theme-info {
+  --tw-text-opacity: 1;
+  color: rgba($color-info, var(--tw-text-opacity));
+}
+
+.theme-light {
+  --tw-text-opacity: 1;
+  color: rgba($color-light, var(--tw-text-opacity));
+}
+
+.theme-dark {
+  --tw-text-opacity: 1;
+  color: rgba($color-dark, var(--tw-text-opacity));
+}
+
+// Background Theme Classes
+// ============================================================================
+.bg-theme-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-primary, var(--tw-bg-opacity));
+}
+
+.bg-theme-secondary {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-secondary, var(--tw-bg-opacity));
+}
+
+.bg-theme-success {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-success, var(--tw-bg-opacity));
+}
+
+.bg-theme-danger {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-danger, var(--tw-bg-opacity));
+}
+
+.bg-theme-warning {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-warning, var(--tw-bg-opacity));
+}
+
+.bg-theme-info {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-info, var(--tw-bg-opacity));
+}
+
+.bg-theme-light {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-light, var(--tw-bg-opacity));
+}
+
+.bg-theme-dark {
+  --tw-bg-opacity: 1;
+  background-color: rgba($color-dark, var(--tw-bg-opacity));
+}
+
+// Border Theme Classes
+// ============================================================================
+.border-theme-primary {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-primary, var(--tw-border-opacity));
+}
+
+.border-theme-secondary {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-secondary, var(--tw-border-opacity));
+}
+
+.border-theme-success {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-success, var(--tw-border-opacity));
+}
+
+.border-theme-danger {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-danger, var(--tw-border-opacity));
+}
+
+.border-theme-warning {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-warning, var(--tw-border-opacity));
+}
+
+.border-theme-info {
+  --tw-border-opacity: 1;
+  border-color: rgba($color-info, var(--tw-border-opacity));
+}
+
+// Theme Color Variables for Dynamic Theming
+// ============================================================================
+[data-theme="primary"] {
+  --color-current: #{$color-primary};
+}
+
+[data-theme="secondary"] {
+  --color-current: #{$color-secondary};
+}
+
+[data-theme="success"] {
+  --color-current: #{$color-success};
+}
+
+[data-theme="danger"] {
+  --color-current: #{$color-danger};
+}
+
+[data-theme="warning"] {
+  --color-current: #{$color-warning};
+}
+
+[data-theme="info"] {
+  --color-current: #{$color-info};
+}
+
+// ============================================================================
+// End of Custom Theme
+// ============================================================================

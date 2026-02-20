@@ -1,0 +1,102 @@
+// ============================================================================
+// Border Utilities
+// ============================================================================
+
+@use 'sass:map';
+@use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
+@use '../mixins/utilities' as utilities;
+@use '../mixins/responsive' as responsive;
+
+@if settings.$enable-borders == true {
+  // Border width
+  $border-widths: (
+    0: 0,
+    DEFAULT: 1px,
+    2: 2px,
+    4: 4px,
+    8: 8px
+  );
+  @include utilities.generate-from-map('border', 'border-width', $border-widths);
+
+  // Border style
+  $border-styles: (
+    solid: solid,
+    dashed: dashed,
+    dotted: dotted,
+    double: double,
+    none: none
+  );
+  @include utilities.generate-from-map('border', 'border-style', $border-styles);
+
+  // Border radius
+  @include utilities.generate-borders();
+
+  // Border radius sides
+  @each $key, $value in settings.$border-radius-scale {
+    .rounded-t-#{$key} {
+      border-top-left-radius: $value;
+      border-top-right-radius: $value;
+    }
+    .rounded-r-#{$key} {
+      border-top-right-radius: $value;
+      border-bottom-right-radius: $value;
+    }
+    .rounded-b-#{$key} {
+      border-bottom-left-radius: $value;
+      border-bottom-right-radius: $value;
+    }
+    .rounded-l-#{$key} {
+      border-top-left-radius: $value;
+      border-bottom-left-radius: $value;
+    }
+
+    // Individual corners
+    .rounded-tl-#{$key} { border-top-left-radius: $value; }
+    .rounded-tr-#{$key} { border-top-right-radius: $value; }
+    .rounded-br-#{$key} { border-bottom-right-radius: $value; }
+    .rounded-bl-#{$key} { border-bottom-left-radius: $value; }
+  }
+
+  // Border color utilities
+  $border-colors: (
+    primary: #3b82f6,
+    secondary: #64748b,
+    success: #22c55e,
+    danger: #ef4444,
+    warning: #f59e0b,
+    info: #0ea5e9,
+    light: #f3f4f6,
+    dark: #1f2937,
+    white: #fff,
+    black: #000,
+    transparent: transparent,
+    current: currentcolor
+  );
+  @include utilities.generate-from-map('border', 'border-color', $border-colors);
+
+  // Responsive border radius
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include responsive.respond-above($breakpoint) {
+      @each $key, $value in settings.$border-radius-scale {
+        .#{$breakpoint}\:rounded-#{$key} { border-radius: $value; }
+        .#{$breakpoint}\:rounded-t-#{$key} {
+          border-top-left-radius: $value;
+          border-top-right-radius: $value;
+        }
+        .#{$breakpoint}\:rounded-r-#{$key} {
+          border-top-right-radius: $value;
+          border-bottom-right-radius: $value;
+        }
+        .#{$breakpoint}\:rounded-b-#{$key} {
+          border-bottom-left-radius: $value;
+          border-bottom-right-radius: $value;
+        }
+        .#{$breakpoint}\:rounded-l-#{$key} {
+          border-top-left-radius: $value;
+          border-bottom-left-radius: $value;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+// ============================================================================
+// Spacing Utilities
+// ============================================================================
+
+@use 'sass:map';
+@use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
+@use '../mixins/utilities' as utilities;
+
+@if settings.$enable-spacing == true {
+  // Generate margin utilities
+  @include utilities.generate-from-map('m', 'margin', settings.$spacing-scale);
+  @include utilities.generate-from-map('mt', 'margin-top', settings.$spacing-scale);
+  @include utilities.generate-from-map('mr', 'margin-right', settings.$spacing-scale);
+  @include utilities.generate-from-map('mb', 'margin-bottom', settings.$spacing-scale);
+  @include utilities.generate-from-map('ml', 'margin-left', settings.$spacing-scale);
+
+  // Generate margin-x utilities (left + right)
+  @each $key, $value in settings.$spacing-scale {
+    .mx-#{$key} {
+      margin-left: $value;
+      margin-right: $value;
+    }
+  }
+
+  // Generate margin-y utilities (top + bottom)
+  @each $key, $value in settings.$spacing-scale {
+    .my-#{$key} {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+  }
+
+  // Generate padding utilities
+  @include utilities.generate-from-map('p', 'padding', settings.$spacing-scale);
+  @include utilities.generate-from-map('pt', 'padding-top', settings.$spacing-scale);
+  @include utilities.generate-from-map('pr', 'padding-right', settings.$spacing-scale);
+  @include utilities.generate-from-map('pb', 'padding-bottom', settings.$spacing-scale);
+  @include utilities.generate-from-map('pl', 'padding-left', settings.$spacing-scale);
+
+  // Generate padding-x utilities (left + right)
+  @each $key, $value in settings.$spacing-scale {
+    .px-#{$key} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+  }
+
+  // Generate padding-y utilities (top + bottom)
+  @each $key, $value in settings.$spacing-scale {
+    .py-#{$key} {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+
+  // Gap utilities for flexbox and grid
+  @include utilities.generate-from-map('gap', 'gap', settings.$spacing-scale);
+  @include utilities.generate-from-map('gap-x', 'column-gap', settings.$spacing-scale);
+  @include utilities.generate-from-map('gap-y', 'row-gap', settings.$spacing-scale);
+}

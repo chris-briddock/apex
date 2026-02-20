@@ -1,0 +1,10 @@
+// ============================================================================
+// Isolation Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+
+@if settings.$enable-isolation == true {
+  .isolate { isolation: isolate; }
+  .isolation-auto { isolation: auto; }
+}

@@ -1,0 +1,23 @@
+// ============================================================================
+// Shadow Utilities
+// ============================================================================
+
+@use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
+@use '../mixins/utilities' as utilities;
+@use '../mixins/responsive' as responsive;
+
+@if settings.$enable-shadows == true {
+  // Generate shadow utilities
+  @include utilities.generate-shadows();
+
+  // Responsive shadow variants
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include responsive.respond-above($breakpoint) {
+      @each $key, $value in settings.$shadows {
+        $suffix: if($key == 'DEFAULT', '', '-#{$key}');
+        .#{$breakpoint}\:shadow#{$suffix} { box-shadow: $value; }
+      }
+    }
+  }
+}

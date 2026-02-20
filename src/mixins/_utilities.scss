@@ -1,0 +1,205 @@
+// ============================================================================
+// Utility Generation Mixins
+// ============================================================================
+
+@use 'sass:list';
+@use 'sass:map';
+@use '../config/settings' as settings;
+
+// Generate spacing utilities
+@mixin generate-spacing($prefix: 'm', $values: ()) {
+  $spacing-map: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+    16: 4rem,
+    20: 5rem,
+    24: 6rem,
+    auto: auto
+  );
+  $sides: (top, right, bottom, left);
+  $directions: (x, y);
+
+  // Margin and padding all sides
+  @each $key, $value in $spacing-map {
+    .#{$prefix}-#{$key} {
+      margin: $value;
+    }
+    .p#{$key} {
+      padding: $value;
+    }
+  }
+
+  // Margin and padding by side
+  @each $side in $sides {
+    $side-abbr: string.slice($side, 1, 1);
+
+    @each $key, $value in $spacing-map {
+      .#{$prefix}#{$side-abbr}-#{$key} {
+        margin-#{$side}: $value;
+      }
+      .p#{$side-abbr}-#{$key} {
+        padding-#{$side}: $value;
+      }
+    }
+  }
+
+  // Margin and padding by direction
+  @each $direction in $directions {
+    @each $key, $value in $spacing-map {
+      @if $direction == x {
+        .#{$prefix}x-#{$key} {
+          margin-left: $value;
+          margin-right: $value;
+        }
+        .px-#{$key} {
+          padding-left: $value;
+          padding-right: $value;
+        }
+      } @else {
+        .#{$prefix}y-#{$key} {
+          margin-top: $value;
+          margin-bottom: $value;
+        }
+        .py-#{$key} {
+          padding-top: $value;
+          padding-bottom: $value;
+        }
+      }
+    }
+  }
+}
+
+// Generate color utilities
+@mixin generate-colors($property, $prefix: '', $colors: ()) {
+  $color-map: (
+    primary: #3b82f6,
+    secondary: #64748b,
+    success: #22c55e,
+    danger: #ef4444,
+    warning: #f59e0b,
+    info: #0ea5e9,
+    light: #f3f4f6,
+    dark: #1f2937,
+    white: #fff,
+    black: #000
+  );
+
+  @each $name, $color in $color-map {
+    .#{$prefix}#{$name} {
+      #{$property}: $color;
+    }
+  }
+}
+
+// Generate typography utilities
+@mixin generate-typography($prefix: '', $sizes: ()) {
+  $size-map: (
+    xs: 0.75rem,
+    sm: 0.875rem,
+    base: 1rem,
+    lg: 1.125rem,
+    xl: 1.25rem,
+    2xl: 1.5rem,
+    3xl: 1.875rem,
+    4xl: 2.25rem,
+    5xl: 3rem
+  );
+
+  // Font sizes
+  @each $name, $size in $size-map {
+    .#{$prefix}text-#{$name} {
+      font-size: $size;
+    }
+  }
+
+  // Font weights
+  $weights: (normal: 400, medium: 500, semibold: 600, bold: 700);
+
+  @each $name, $weight in $weights {
+    .#{$prefix}font-#{$name} {
+      font-weight: $weight;
+    }
+  }
+
+  // Line heights
+  $line-heights: (tight: 1.25, snug: 1.375, normal: 1.5, relaxed: 1.625, loose: 2);
+
+  @each $name, $height in $line-heights {
+    .#{$prefix}leading-#{$name} {
+      line-height: $height;
+    }
+  }
+}
+
+// Generate border utilities
+@mixin generate-borders($prefix: '', $radii: ()) {
+  $radius-map: (
+    none: 0,
+    sm: 0.125rem,
+    base: 0.25rem,
+    md: 0.375rem,
+    lg: 0.5rem,
+    xl: 0.75rem,
+    2xl: 1rem,
+    full: 9999px
+  );
+
+  @each $name, $radius in $radius-map {
+    .#{$prefix}rounded-#{$name} {
+      border-radius: $radius;
+    }
+  }
+}
+
+// Generate shadow utilities
+@mixin generate-shadows($prefix: '', $shadows: ()) {
+  $shadow-map: (
+    sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    base: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+    md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    2xl: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+    none: "none"
+  );
+
+  @each $name, $shadow in $shadow-map {
+    .#{$prefix}shadow-#{$name} {
+      box-shadow: $shadow;
+    }
+  }
+}
+
+// Generate opacity utilities
+@mixin generate-opacity($prefix: '') {
+  $opacity-map: (
+    0: 0,
+    25: 0.25,
+    50: 0.5,
+    75: 0.75,
+    100: 1
+  );
+
+  @each $name, $opacity in $opacity-map {
+    .#{$prefix}opacity-#{$name} {
+      opacity: $opacity;
+    }
+  }
+}
+
+// Generate utilities from a map
+@mixin generate-from-map($class-name, $property, $value-map, $prefix: '') {
+  @each $name, $value in $value-map {
+    .#{$prefix}#{$class-name}-#{$name} {
+      #{$property}: $value;
+    }
+  }
+}

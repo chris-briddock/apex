@@ -1,0 +1,51 @@
+{
+  "name": "apexcss",
+  "version": "1.0.0",
+  "description": "ApexCSS - A comprehensive utility-first CSS framework with 500+ utility classes",
+  "type": "module",
+  "main": "dist/framework.css",
+  "module": "dist/framework.css",
+  "style": "dist/framework.css",
+  "files": [
+    "dist/framework.css",
+    "dist/framework.css.map",
+    "src/**/*.scss"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run config:build && vite build && mv dist/framework2.css dist/framework.css",
+    "preview": "vite preview",
+    "watch": "vite build --watch",
+    "lint": "stylelint 'src/**/*.scss'",
+    "clean": "rm -rf dist",
+    "config:init": "node tools/config-builder.js --init",
+    "config:build": "node tools/config-builder.js",
+    "config:watch": "node tools/config-builder.js --watch",
+    "config:css": "node tools/config-builder.js --css"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "utility-first",
+    "sass",
+    "scss",
+    "apexcss",
+    "tailwind",
+    "bootstrap-alternative"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^6.0.0",
+    "postcss": "^8.4.0",
+    "postcss-scss": "^4.0.0",
+    "sass": "^1.69.0",
+    "sass-lint": "^1.13.0",
+    "stylelint": "17.3.0",
+    "stylelint-config-standard-scss": "17.0.0",
+    "vite": "^5.0.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-sass": "^0.1.0"
+  }
+}

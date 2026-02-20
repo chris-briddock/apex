@@ -1,0 +1,31 @@
+// ============================================================================
+// Unit Tests - Variables
+// ============================================================================
+// Tests for Sass variables and their values
+
+// Test: Color variables exist
+$test-color-primary: map-has-key($colors, primary);
+$test-color-secondary: map-has-key($colors, secondary);
+$test-color-success: map-has-key($colors, success);
+$test-color-danger: map-has-key($colors, danger);
+$test-color-warning: map-has-key($colors, warning);
+$test-color-info: map-has-key($colors, info);
+
+// Test: Spacing variables exist
+$test-spacing-1: variable-exists(spacing-1);
+$test-spacing-2: variable-exists(spacing-2);
+$test-spacing-4: variable-exists(spacing-4);
+
+// Test: Typography variables exist
+$test-font-size-sm: variable-exists(text-sm);
+$test-font-size-base: variable-exists(text-base);
+$test-font-size-lg: variable-exists(text-lg);
+
+// Test: Breakpoint variables exist
+$test-breakpoint-sm: variable-exists(sm);
+$test-breakpoint-md: variable-exists(md);
+$test-breakpoint-lg: variable-exists(lg);
+
+// ============================================================================
+// End of Unit Tests - Variables
+// ============================================================================
