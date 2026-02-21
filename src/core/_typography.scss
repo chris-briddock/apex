@@ -1,6 +1,7 @@
 // ============================================================================
-// Typography Utilities
+// Typography Utilities (CSS Custom Properties)
 // ============================================================================
+// All typography values use CSS custom properties for runtime customization
 
 @use 'sass:map';
 @use '../config/settings' as settings;
@@ -9,80 +10,123 @@
 @use '../mixins/responsive' as responsive;
 
 @if settings.$enable-typography == true {
-  // Font sizes
+  // ============================================================================
+  // Font Sizes (CSS Custom Properties)
+  // ============================================================================
   $font-sizes: (
-    xs: 0.75rem,
-    sm: 0.875rem,
-    base: 1rem,
-    lg: 1.125rem,
-    xl: 1.25rem,
-    '2xl': 1.5rem,
-    '3xl': 1.875rem,
-    '4xl': 2.25rem,
-    '5xl': 3rem,
-    '6xl': 3.75rem
+    xs: var(--font-size-xs),
+    sm: var(--font-size-sm),
+    base: var(--font-size-base),
+    lg: var(--font-size-lg),
+    xl: var(--font-size-xl),
+    '2xl': var(--font-size-2xl),
+    '3xl': var(--font-size-3xl),
+    '4xl': var(--font-size-4xl),
+    '5xl': var(--font-size-5xl),
+    '6xl': var(--font-size-6xl),
+    '7xl': var(--font-size-7xl),
+    '8xl': var(--font-size-8xl),
+    '9xl': var(--font-size-9xl)
   );
-  @include utilities.generate-from-map('text', 'font-size', $font-sizes);
 
-  // Font weights
+  @each $name, $size in $font-sizes {
+    .text-#{$name} {
+      font-size: $size;
+    }
+  }
+
+  // ============================================================================
+  // Font Weights (CSS Custom Properties)
+  // ============================================================================
   $font-weights: (
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700
+    thin: var(--font-weight-thin),
+    extralight: var(--font-weight-extralight),
+    light: var(--font-weight-light),
+    normal: var(--font-weight-normal),
+    medium: var(--font-weight-medium),
+    semibold: var(--font-weight-semibold),
+    bold: var(--font-weight-bold),
+    extrabold: var(--font-weight-extrabold),
+    'black': var(--font-weight-black)
   );
-  @include utilities.generate-from-map('font', 'font-weight', $font-weights);
 
-  // Line heights
+  @each $name, $weight in $font-weights {
+    .font-#{$name} {
+      font-weight: $weight;
+    }
+  }
+
+  // ============================================================================
+  // Line Heights (CSS Custom Properties)
+  // ============================================================================
   $line-heights: (
-    none: 1,
-    tight: 1.25,
-    snug: 1.375,
-    normal: 1.5,
-    relaxed: 1.625,
-    loose: 2
+    none: var(--line-height-none),
+    tight: var(--line-height-tight),
+    snug: var(--line-height-snug),
+    normal: var(--line-height-normal),
+    relaxed: var(--line-height-relaxed),
+    loose: var(--line-height-loose)
   );
-  @include utilities.generate-from-map('leading', 'line-height', $line-heights);
 
-  // Letter spacing
+  @each $name, $height in $line-heights {
+    .leading-#{$name} {
+      line-height: $height;
+    }
+  }
+
+  // ============================================================================
+  // Letter Spacing (CSS Custom Properties)
+  // ============================================================================
   $letter-spacing: (
-    tighter: -0.05em,
-    tight: -0.025em,
-    normal: 0,
-    wide: 0.025em,
-    wider: 0.05em,
-    widest: 0.1em
+    tighter: var(--letter-spacing-tighter),
+    tight: var(--letter-spacing-tight),
+    normal: var(--letter-spacing-normal),
+    wide: var(--letter-spacing-wide),
+    wider: var(--letter-spacing-wider),
+    widest: var(--letter-spacing-widest)
   );
-  @include utilities.generate-from-map('tracking', 'letter-spacing', $letter-spacing);
 
-  // Text alignment
-  $text-align: (
-    left: left,
-    center: center,
-    right: right,
-    justify: justify,
-    start: start,
-    end: end
-  );
-  @include utilities.generate-from-map('text', 'text-align', $text-align);
+  @each $name, $spacing in $letter-spacing {
+    .tracking-#{$name} {
+      letter-spacing: $spacing;
+    }
+  }
 
-  // Text decoration
+  // ============================================================================
+  // Text Alignment
+  // ============================================================================
+  .text-left { text-align: left; }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  .text-justify { text-align: justify; }
+  .text-start { text-align: start; }
+  .text-end { text-align: end; }
+
+  // ============================================================================
+  // Text Decoration
+  // ============================================================================
   .underline { text-decoration: underline; }
   .overline { text-decoration: overline; }
   .line-through { text-decoration: line-through; }
   .no-underline { text-decoration: none; }
 
-  // Font styles
+  // ============================================================================
+  // Font Styles
+  // ============================================================================
   .italic { font-style: italic; }
   .not-italic { font-style: normal; }
 
-  // Text transform
+  // ============================================================================
+  // Text Transform
+  // ============================================================================
   .uppercase { text-transform: uppercase; }
   .lowercase { text-transform: lowercase; }
   .capitalize { text-transform: capitalize; }
   .normal-case { text-transform: none; }
 
-  // Text overflow
+  // ============================================================================
+  // Text Overflow
+  // ============================================================================
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -91,7 +135,9 @@
   .overflow-ellipsis { text-overflow: ellipsis; }
   .overflow-clip { text-overflow: clip; }
 
-  // Word break
+  // ============================================================================
+  // Word Break
+  // ============================================================================
   .break-normal {
     overflow-wrap: normal;
     word-break: normal;
@@ -99,25 +145,183 @@
   .break-words { overflow-wrap: break-word; }
   .break-all { word-break: break-all; }
 
-  // White space
+  // ============================================================================
+  // White Space
+  // ============================================================================
   .whitespace-normal { white-space: normal; }
   .whitespace-nowrap { white-space: nowrap; }
   .whitespace-pre { white-space: pre; }
   .whitespace-pre-line { white-space: pre-line; }
   .whitespace-pre-wrap { white-space: pre-wrap; }
 
-  // Font families
+  // ============================================================================
+  // Font Families (CSS Custom Properties)
+  // ============================================================================
   .font-mono {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+    font-family: var(--font-family-mono);
   }
   .font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-family-sans);
   }
   .font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: var(--font-family-serif);
   }
 
-  // Responsive typography variants for xxl breakpoint
+  // ============================================================================
+  // Responsive Typography Variants
+  // ============================================================================
+  @media (min-width: bp.$breakpoint-sm) {
+    // Font sizes
+    @each $name, $size in $font-sizes {
+      .sm\:text-#{$name} { font-size: $size; }
+    }
+
+    // Font weights
+    @each $name, $weight in $font-weights {
+      .sm\:font-#{$name} { font-weight: $weight; }
+    }
+
+    // Line heights
+    @each $name, $height in $line-heights {
+      .sm\:leading-#{$name} { line-height: $height; }
+    }
+
+    // Letter spacing
+    @each $name, $spacing in $letter-spacing {
+      .sm\:tracking-#{$name} { letter-spacing: $spacing; }
+    }
+
+    // Text alignment
+    .sm\:text-left { text-align: left; }
+    .sm\:text-center { text-align: center; }
+    .sm\:text-right { text-align: right; }
+    .sm\:text-justify { text-align: justify; }
+    .sm\:text-start { text-align: start; }
+    .sm\:text-end { text-align: end; }
+
+    // Text decoration
+    .sm\:underline { text-decoration: underline; }
+    .sm\:overline { text-decoration: overline; }
+    .sm\:line-through { text-decoration: line-through; }
+    .sm\:no-underline { text-decoration: none; }
+
+    // Font styles
+    .sm\:italic { font-style: italic; }
+    .sm\:not-italic { font-style: normal; }
+
+    // Text transform
+    .sm\:uppercase { text-transform: uppercase; }
+    .sm\:lowercase { text-transform: lowercase; }
+    .sm\:capitalize { text-transform: capitalize; }
+    .sm\:normal-case { text-transform: none; }
+
+    // Text overflow
+    .sm\:truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Word break
+    .sm\:break-words { overflow-wrap: break-word; }
+    .sm\:break-all { word-break: break-all; }
+
+    // White space
+    .sm\:whitespace-nowrap { white-space: nowrap; }
+  }
+
+  @media (min-width: bp.$breakpoint-md) {
+    // Font sizes
+    @each $name, $size in $font-sizes {
+      .md\:text-#{$name} { font-size: $size; }
+    }
+
+    // Font weights
+    @each $name, $weight in $font-weights {
+      .md\:font-#{$name} { font-weight: $weight; }
+    }
+
+    // Line heights
+    @each $name, $height in $line-heights {
+      .md\:leading-#{$name} { line-height: $height; }
+    }
+
+    // Text alignment
+    .md\:text-left { text-align: left; }
+    .md\:text-center { text-align: center; }
+    .md\:text-right { text-align: right; }
+    .md\:text-justify { text-align: justify; }
+
+    // Text decoration
+    .md\:underline { text-decoration: underline; }
+    .md\:line-through { text-decoration: line-through; }
+    .md\:no-underline { text-decoration: none; }
+
+    // Font styles
+    .md\:italic { font-style: italic; }
+    .md\:not-italic { font-style: normal; }
+
+    // Text overflow
+    .md\:truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  @media (min-width: bp.$breakpoint-lg) {
+    // Font sizes
+    @each $name, $size in $font-sizes {
+      .lg\:text-#{$name} { font-size: $size; }
+    }
+
+    // Font weights
+    @each $name, $weight in $font-weights {
+      .lg\:font-#{$name} { font-weight: $weight; }
+    }
+
+    // Line heights
+    @each $name, $height in $line-heights {
+      .lg\:leading-#{$name} { line-height: $height; }
+    }
+
+    // Text alignment
+    .lg\:text-left { text-align: left; }
+    .lg\:text-center { text-align: center; }
+    .lg\:text-right { text-align: right; }
+    .lg\:text-justify { text-align: justify; }
+
+    // Text overflow
+    .lg\:truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  @media (min-width: bp.$breakpoint-xl) {
+    // Font sizes
+    @each $name, $size in $font-sizes {
+      .xl\:text-#{$name} { font-size: $size; }
+    }
+
+    // Font weights
+    @each $name, $weight in $font-weights {
+      .xl\:font-#{$name} { font-weight: $weight; }
+    }
+
+    // Line heights
+    @each $name, $height in $line-heights {
+      .xl\:leading-#{$name} { line-height: $height; }
+    }
+
+    // Text alignment
+    .xl\:text-left { text-align: left; }
+    .xl\:text-center { text-align: center; }
+    .xl\:text-right { text-align: right; }
+    .xl\:text-justify { text-align: justify; }
+  }
+
   @media (min-width: bp.$breakpoint-xxl) {
     // Font sizes
     @each $name, $size in $font-sizes {
@@ -140,9 +344,12 @@
     }
 
     // Text alignment
-    @each $name, $align in $text-align {
-      .xxl\:text-#{$name} { text-align: $align; }
-    }
+    .xxl\:text-left { text-align: left; }
+    .xxl\:text-center { text-align: center; }
+    .xxl\:text-right { text-align: right; }
+    .xxl\:text-justify { text-align: justify; }
+    .xxl\:text-start { text-align: start; }
+    .xxl\:text-end { text-align: end; }
 
     // Text decoration
     .xxl\:underline { text-decoration: underline; }

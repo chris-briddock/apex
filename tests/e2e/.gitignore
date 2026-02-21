@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Visual regression screenshots
+# Screenshots are stored locally, only commit intentional baselines
+screenshots/actual/
+screenshots/diff/
+# Uncomment below to track baseline screenshots in version control
+# screenshots/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# TypeScript
+*.tsbuildinfo

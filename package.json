@@ -21,7 +21,10 @@
     "config:init": "node tools/config-builder.js --init",
     "config:build": "node tools/config-builder.js",
     "config:watch": "node tools/config-builder.js --watch",
-    "config:css": "node tools/config-builder.js --css"
+    "config:css": "node tools/config-builder.js --css",
+    "test:e2e": "cd tests/e2e && npm run test:e2e",
+    "test:e2e:ui": "cd tests/e2e && npm run test:e2e:ui",
+    "test:e2e:install": "cd tests/e2e && npm install && npx playwright install chromium"
   },
   "keywords": [
     "css",
@@ -38,10 +41,12 @@
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "cssnano": "^6.0.0",
+    "mocha": "^11.7.5",
     "postcss": "^8.4.0",
     "postcss-scss": "^4.0.0",
     "sass": "^1.69.0",
     "sass-lint": "^1.13.0",
+    "sass-true": "^10.1.0",
     "stylelint": "17.3.0",
     "stylelint-config-standard-scss": "17.0.0",
     "vite": "^7.3.1",

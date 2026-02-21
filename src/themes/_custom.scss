@@ -1,182 +1,363 @@
 // ============================================================================
-// Custom Theme Support
+// Custom Theme Support (CSS Custom Properties)
 // ============================================================================
-// This file provides utilities for creating custom themes.
-// Use CSS custom properties to define theme colors.
+// This file provides utilities for creating custom themes at runtime.
+// Use CSS custom properties and data attributes to define theme colors.
 
-// Custom Theme Variables
 // ============================================================================
-:root {
-  // Custom theme colors
-  --theme-primary: #{$color-primary};
-  --theme-secondary: #{$color-secondary};
-  --theme-success: #{$color-success};
-  --theme-danger: #{$color-danger};
-  --theme-warning: #{$color-warning};
-  --theme-info: #{$color-info};
-  --theme-light: #{$color-light};
-  --theme-dark: #{$color-dark};
-
-  // Custom theme fonts
-  --theme-font-sans: #{$font-sans};
-  --theme-font-serif: #{$font-serif};
-  --theme-font-mono: #{$font-mono};
-
-  // Custom theme spacing
-  --theme-spacing-xs: #{$spacing-1};
-  --theme-spacing-sm: #{$spacing-2};
-  --theme-spacing-md: #{$spacing-4};
-  --theme-spacing-lg: #{$spacing-6};
-  --theme-spacing-xl: #{$spacing-8};
-
-  // Opacity variables
-  --apex-text-opacity: 1;
-  --apex-bg-opacity: 1;
-  --apex-border-opacity: 1;
-}
-
-// Theme Classes
+// Theme Configuration Classes
 // ============================================================================
-.theme-primary {
-  --apex-text-opacity: 1;
-  color: rgba($color-primary, var(--apex-text-opacity));
-}
+// Apply these classes to scope theme overrides to specific sections
 
-.theme-secondary {
-  --apex-text-opacity: 1;
-  color: rgba($color-secondary, var(--apex-text-opacity));
-}
-
-.theme-success {
-  --apex-text-opacity: 1;
-  color: rgba($color-success, var(--apex-text-opacity));
-}
-
-.theme-danger {
-  --apex-text-opacity: 1;
-  color: rgba($color-danger, var(--apex-text-opacity));
-}
-
-.theme-warning {
-  --apex-text-opacity: 1;
-  color: rgba($color-warning, var(--apex-text-opacity));
-}
-
-.theme-info {
-  --apex-text-opacity: 1;
-  color: rgba($color-info, var(--apex-text-opacity));
-}
-
-.theme-light {
-  --apex-text-opacity: 1;
-  color: rgba($color-light, var(--apex-text-opacity));
-}
-
-.theme-dark {
-  --apex-text-opacity: 1;
-  color: rgba($color-dark, var(--apex-text-opacity));
-}
-
-// Background Theme Classes
-// ============================================================================
-.bg-theme-primary {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-primary, var(--apex-bg-opacity));
-}
-
-.bg-theme-secondary {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-secondary, var(--apex-bg-opacity));
-}
-
-.bg-theme-success {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-success, var(--apex-bg-opacity));
-}
-
-.bg-theme-danger {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-danger, var(--apex-bg-opacity));
-}
-
-.bg-theme-warning {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-warning, var(--apex-bg-opacity));
-}
-
-.bg-theme-info {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-info, var(--apex-bg-opacity));
-}
-
-.bg-theme-light {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-light, var(--apex-bg-opacity));
-}
-
-.bg-theme-dark {
-  --apex-bg-opacity: 1;
-  background-color: rgba($color-dark, var(--apex-bg-opacity));
-}
-
-// Border Theme Classes
-// ============================================================================
-.border-theme-primary {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-primary, var(--apex-border-opacity));
-}
-
-.border-theme-secondary {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-secondary, var(--apex-border-opacity));
-}
-
-.border-theme-success {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-success, var(--apex-border-opacity));
-}
-
-.border-theme-danger {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-danger, var(--apex-border-opacity));
-}
-
-.border-theme-warning {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-warning, var(--apex-border-opacity));
-}
-
-.border-theme-info {
-  --apex-border-opacity: 1;
-  border-color: rgba($color-info, var(--apex-border-opacity));
-}
-
-// Theme Color Variables for Dynamic Theming
-// ============================================================================
-[data-theme="primary"] {
-  --color-current: #{$color-primary};
-}
-
-[data-theme="secondary"] {
-  --color-current: #{$color-secondary};
-}
-
-[data-theme="success"] {
-  --color-current: #{$color-success};
-}
-
-[data-theme="danger"] {
-  --color-current: #{$color-danger};
-}
-
-[data-theme="warning"] {
-  --color-current: #{$color-warning};
-}
-
-[data-theme="info"] {
-  --color-current: #{$color-info};
+// Default theme (inherits from :root)
+.theme-default {
+  // No overrides - uses :root defaults
 }
 
 // ============================================================================
-// End of Custom Theme
+// Data Attribute Theme Selectors
 // ============================================================================
+// These allow runtime theme switching via data attributes
+
+// Primary color themes
+[data-theme-primary="blue"] {
+  --color-primary: var(--color-blue-500);
+  --color-primary-light: var(--color-blue-400);
+  --color-primary-dark: var(--color-blue-600);
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+}
+
+[data-theme-primary="green"] {
+  --color-primary: var(--color-green-500);
+  --color-primary-light: var(--color-green-400);
+  --color-primary-dark: var(--color-green-600);
+  --color-primary-50: var(--color-green-50);
+  --color-primary-100: var(--color-green-100);
+  --color-primary-200: var(--color-green-200);
+  --color-primary-300: var(--color-green-300);
+  --color-primary-400: var(--color-green-400);
+  --color-primary-500: var(--color-green-500);
+  --color-primary-600: var(--color-green-600);
+  --color-primary-700: var(--color-green-700);
+  --color-primary-800: var(--color-green-800);
+  --color-primary-900: var(--color-green-900);
+}
+
+[data-theme-primary="purple"] {
+  --color-primary: var(--color-purple-500);
+  --color-primary-light: var(--color-purple-400);
+  --color-primary-dark: var(--color-purple-600);
+  --color-primary-50: var(--color-purple-50);
+  --color-primary-100: var(--color-purple-100);
+  --color-primary-200: var(--color-purple-200);
+  --color-primary-300: var(--color-purple-300);
+  --color-primary-400: var(--color-purple-400);
+  --color-primary-500: var(--color-purple-500);
+  --color-primary-600: var(--color-purple-600);
+  --color-primary-700: var(--color-purple-700);
+  --color-primary-800: var(--color-purple-800);
+  --color-primary-900: var(--color-purple-900);
+}
+
+[data-theme-primary="red"] {
+  --color-primary: var(--color-red-500);
+  --color-primary-light: var(--color-red-400);
+  --color-primary-dark: var(--color-red-600);
+  --color-primary-50: var(--color-red-50);
+  --color-primary-100: var(--color-red-100);
+  --color-primary-200: var(--color-red-200);
+  --color-primary-300: var(--color-red-300);
+  --color-primary-400: var(--color-red-400);
+  --color-primary-500: var(--color-red-500);
+  --color-primary-600: var(--color-red-600);
+  --color-primary-700: var(--color-red-700);
+  --color-primary-800: var(--color-red-800);
+  --color-primary-900: var(--color-red-900);
+}
+
+[data-theme-primary="yellow"] {
+  --color-primary: var(--color-yellow-500);
+  --color-primary-light: var(--color-yellow-400);
+  --color-primary-dark: var(--color-yellow-600);
+  --color-primary-50: var(--color-yellow-50);
+  --color-primary-100: var(--color-yellow-100);
+  --color-primary-200: var(--color-yellow-200);
+  --color-primary-300: var(--color-yellow-300);
+  --color-primary-400: var(--color-yellow-400);
+  --color-primary-500: var(--color-yellow-500);
+  --color-primary-600: var(--color-yellow-600);
+  --color-primary-700: var(--color-yellow-700);
+  --color-primary-800: var(--color-yellow-800);
+  --color-primary-900: var(--color-yellow-900);
+}
+
+// ============================================================================
+// Density Themes (Spacing Overrides)
+// ============================================================================
+[data-theme-density="compact"] {
+  --spacing-1: 0.125rem;
+  --spacing-2: 0.25rem;
+  --spacing-3: 0.375rem;
+  --spacing-4: 0.5rem;
+  --spacing-5: 0.75rem;
+  --spacing-6: 1rem;
+  --spacing-8: 1.5rem;
+  --spacing-10: 2rem;
+  --spacing-12: 2.5rem;
+  --spacing-16: 3rem;
+  --spacing-20: 4rem;
+  --spacing-24: 5rem;
+
+  --border-radius-base: 0.1875rem;
+  --border-radius-md: 0.3125rem;
+  --border-radius-lg: 0.4375rem;
+}
+
+[data-theme-density="spacious"] {
+  --spacing-1: 0.375rem;
+  --spacing-2: 0.75rem;
+  --spacing-3: 1rem;
+  --spacing-4: 1.5rem;
+  --spacing-5: 2rem;
+  --spacing-6: 2.5rem;
+  --spacing-8: 3.5rem;
+  --spacing-10: 4.5rem;
+  --spacing-12: 6rem;
+  --spacing-16: 8rem;
+  --spacing-20: 10rem;
+  --spacing-24: 12rem;
+
+  --border-radius-base: 0.375rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+}
+
+// ============================================================================
+// Typography Themes
+// ============================================================================
+[data-theme-typography="compact"] {
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-xl: 1.125rem;
+  --font-size-2xl: 1.375rem;
+  --font-size-3xl: 1.625rem;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.325;
+  --line-height-normal: 1.45;
+  --line-height-relaxed: 1.575;
+  --line-height-loose: 1.9;
+}
+
+[data-theme-typography="spacious"] {
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.9375rem;
+  --font-size-base: 1.0625rem;
+  --font-size-lg: 1.1875rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.625rem;
+  --font-size-3xl: 2rem;
+
+  --line-height-tight: 1.3;
+  --line-height-snug: 1.425;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.725;
+  --line-height-loose: 2.1;
+}
+
+// ============================================================================
+// Border Radius Themes
+// ============================================================================
+[data-theme-radius="sharp"] {
+  --border-radius-none: 0;
+  --border-radius-sm: 0;
+  --border-radius-base: 0;
+  --border-radius-md: 0.125rem;
+  --border-radius-lg: 0.25rem;
+  --border-radius-xl: 0.375rem;
+  --border-radius-2xl: 0.5rem;
+  --border-radius-3xl: 0.75rem;
+  --border-radius-full: 9999px;
+}
+
+[data-theme-radius="rounded"] {
+  --border-radius-none: 0;
+  --border-radius-sm: 0.25rem;
+  --border-radius-base: 0.375rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-2xl: 1.25rem;
+  --border-radius-3xl: 1.5rem;
+  --border-radius-full: 9999px;
+}
+
+[data-theme-radius="pill"] {
+  --border-radius-none: 0;
+  --border-radius-sm: 0.25rem;
+  --border-radius-base: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.25rem;
+  --border-radius-2xl: 1.5rem;
+  --border-radius-3xl: 2rem;
+  --border-radius-full: 9999px;
+}
+
+// ============================================================================
+// Shadow Themes
+// ============================================================================
+[data-theme-shadow="flat"] {
+  --shadow-sm: none;
+  --shadow-base: none;
+  --shadow-md: 0 1px 2px 0 rgba(var(--shadow-color), 0.05);
+  --shadow-lg: 0 2px 4px 0 rgba(var(--shadow-color), 0.05);
+  --shadow-xl: 0 4px 6px -1px rgba(var(--shadow-color), 0.05);
+  --shadow-2xl: 0 8px 12px -2px rgba(var(--shadow-color), 0.05);
+}
+
+[data-theme-shadow="elevated"] {
+  --shadow-sm: 0 1px 2px 0 rgba(var(--shadow-color), 0.1);
+  --shadow-base: 0 2px 4px 0 rgba(var(--shadow-color), 0.15), 0 1px 2px 0 rgba(var(--shadow-color), 0.1);
+  --shadow-md: 0 6px 8px -1px rgba(var(--shadow-color), 0.15), 0 3px 6px -1px rgba(var(--shadow-color), 0.1);
+  --shadow-lg: 0 12px 16px -3px rgba(var(--shadow-color), 0.15), 0 6px 8px -2px rgba(var(--shadow-color), 0.1);
+  --shadow-xl: 0 24px 32px -5px rgba(var(--shadow-color), 0.15), 0 12px 16px -5px rgba(var(--shadow-color), 0.1);
+  --shadow-2xl: 0 32px 64px -12px rgba(var(--shadow-color), 0.25);
+}
+
+// ============================================================================
+// Theme Context Classes
+// ============================================================================
+// Apply these classes to change theme context for child elements
+
+// High contrast mode (accessibility)
+.theme-high-contrast {
+  --color-primary: #005fcc;
+  --color-primary-light: #0078ff;
+  --color-primary-dark: #004499;
+  --color-text: #000000;
+  --color-bg: #ffffff;
+  --color-border: #000000;
+}
+
+// Color blind friendly theme
+.theme-colorblind {
+  --color-primary: #0055ff;
+  --color-success: #008800;
+  --color-danger: #cc0000;
+  --color-warning: #ffcc00;
+  --color-info: #0066cc;
+}
+
+// ============================================================================
+// Component-Specific Themes
+// ============================================================================
+// These can be applied to specific components for theming
+
+[data-component-theme="card"] {
+  --component-bg: var(--color-white);
+  --component-border: var(--color-gray-200);
+  --component-radius: var(--border-radius-lg);
+  --component-shadow: var(--shadow-base);
+  --component-padding: var(--spacing-6);
+}
+
+[data-component-theme="modal"] {
+  --component-bg: var(--color-white);
+  --component-border: var(--color-gray-300);
+  --component-radius: var(--border-radius-xl);
+  --component-shadow: var(--shadow-2xl);
+  --component-padding: var(--spacing-8);
+}
+
+[data-component-theme="input"] {
+  --component-bg: var(--color-white);
+  --component-border: var(--color-gray-300);
+  --component-border-focus: var(--color-primary);
+  --component-radius: var(--border-radius-md);
+  --component-padding: var(--spacing-3);
+}
+
+// ============================================================================
+// Animation Preferences
+// ============================================================================
+[data-animations="none"] {
+  --transition-duration-75: 0ms;
+  --transition-duration-100: 0ms;
+  --transition-duration-150: 0ms;
+  --transition-duration-200: 0ms;
+  --transition-duration-300: 0ms;
+  --transition-duration-500: 0ms;
+  --transition-duration-700: 0ms;
+  --transition-duration-1000: 0ms;
+}
+
+[data-animations="reduced"] {
+  --transition-duration-75: 25ms;
+  --transition-duration-100: 50ms;
+  --transition-duration-150: 75ms;
+  --transition-duration-200: 100ms;
+  --transition-duration-300: 150ms;
+  --transition-duration-500: 250ms;
+  --transition-duration-700: 350ms;
+  --transition-duration-1000: 500ms;
+}
+
+// ============================================================================
+// Focus Mode Themes
+// ============================================================================
+[data-focus-mode="visible"] {
+  --focus-ring-width: 2px;
+  --focus-ring-style: solid;
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-offset: 2px;
+}
+
+[data-focus-mode="subtle"] {
+  --focus-ring-width: 1px;
+  --focus-ring-style: solid;
+  --focus-ring-color: var(--color-gray-400);
+  --focus-ring-offset: 1px;
+}
+
+// ============================================================================
+// Print Theme (for print media)
+// ============================================================================
+@media print {
+  :root {
+    --color-primary: #000000;
+    --color-secondary: #333333;
+    --color-success: #000000;
+    --color-danger: #000000;
+    --color-warning: #000000;
+    --color-info: #000000;
+    --color-text: #000000;
+    --color-bg: #ffffff;
+
+    --shadow-sm: none;
+    --shadow-base: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+    --shadow-2xl: none;
+
+    --transition-duration-75: 0ms;
+    --transition-duration-100: 0ms;
+    --transition-duration-150: 0ms;
+    --transition-duration-200: 0ms;
+    --transition-duration-300: 0ms;
+    --transition-duration-500: 0ms;
+  }
+}

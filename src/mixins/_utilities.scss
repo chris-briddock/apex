@@ -1,12 +1,220 @@
 // ============================================================================
-// Utility Generation Mixins
+// Utility Generation Mixins (CSS Custom Properties)
 // ============================================================================
+// These mixins generate utility classes using CSS custom properties
+// for runtime customization and theming support.
 
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:string';
 @use '../config/settings' as settings;
+@use '../config/breakpoints' as bp;
 
-// Generate spacing utilities
+// ============================================================================
+// Generate utilities from a CSS variable map
+// ============================================================================
+// This mixin creates utility classes that reference CSS custom properties
+// instead of hardcoded values, enabling runtime theming.
+//
+// Usage:
+//   @include generate-from-css-vars('text', 'font-size', (
+//     sm: '--font-size-sm',
+//     base: '--font-size-base'
+//   ));
+//
+// Output:
+//   .text-sm { font-size: var(--font-size-sm); }
+//   .text-base { font-size: var(--font-size-base); }
+
+@mixin generate-from-css-vars($class-name, $property, $var-map, $prefix: '') {
+  @each $name, $var-name in $var-map {
+    .#{$prefix}#{$class-name}-#{$name} {
+      #{$property}: var(#{$var-name});
+    }
+  }
+}
+
+// ============================================================================
+// Generate color utilities from CSS variables
+// ============================================================================
+// Creates text, background, and border color utilities using CSS custom properties
+//
+// Usage:
+//   @include generate-color-utilities('primary', '--color-primary');
+//
+// Output:
+//   .text-primary { color: var(--color-primary); }
+//   .bg-primary { background-color: var(--color-primary); }
+//   .border-primary { border-color: var(--color-primary); }
+
+@mixin generate-color-utilities($color-name, $var-name) {
+  .text-#{$color-name} {
+    color: var(#{$var-name});
+  }
+  .bg-#{$color-name} {
+    background-color: var(#{$var-name});
+  }
+  .border-#{$color-name} {
+    border-color: var(#{$var-name});
+  }
+}
+
+// ============================================================================
+// Generate spacing utilities from CSS variables
+// ============================================================================
+// Creates margin and padding utilities using CSS custom properties
+//
+// Usage:
+//   @include generate-spacing-utilities('m', 'margin', (
+//     1: '--spacing-1',
+//     2: '--spacing-2'
+//   ));
+//
+// Output:
+//   .m-1 { margin: var(--spacing-1); }
+//   .m-2 { margin: var(--spacing-2); }
+//   .mt-1 { margin-top: var(--spacing-1); }
+//   etc.
+
+@mixin generate-spacing-utilities($prefix, $property, $var-map) {
+  // All sides
+  @each $name, $var-name in $var-map {
+    .#{$prefix}-#{$name} {
+      #{$property}: var(#{$var-name});
+    }
+  }
+
+  // Individual sides
+  $sides: (
+    t: top,
+    r: right,
+    b: bottom,
+    l: left
+  );
+
+  @each $side-abbr, $side-name in $sides {
+    @each $name, $var-name in $var-map {
+      .#{$prefix}#{$side-abbr}-#{$name} {
+        #{$property}-#{$side-name}: var(#{$var-name});
+      }
+    }
+  }
+
+  // X axis (left and right)
+  @each $name, $var-name in $var-map {
+    .#{$prefix}x-#{$name} {
+      #{$property}-left: var(#{$var-name});
+      #{$property}-right: var(#{$var-name});
+    }
+  }
+
+  // Y axis (top and bottom)
+  @each $name, $var-name in $var-map {
+    .#{$prefix}y-#{$name} {
+      #{$property}-top: var(#{$var-name});
+      #{$property}-bottom: var(#{$var-name});
+    }
+  }
+}
+
+// ============================================================================
+// Generate responsive utilities from CSS variables
+// ============================================================================
+// Creates responsive variants of utilities at all breakpoints
+//
+// Usage:
+//   @include generate-responsive-css-vars('text', 'font-size', (
+//     sm: '--font-size-sm',
+//     base: '--font-size-base'
+//   ));
+
+@mixin generate-responsive-css-vars($class-name, $property, $var-map) {
+  $breakpoints: (
+    sm: bp.$breakpoint-sm,
+    md: bp.$breakpoint-md,
+    lg: bp.$breakpoint-lg,
+    xl: bp.$breakpoint-xl,
+    xxl: bp.$breakpoint-xxl
+  );
+
+  @each $bp-name, $bp-value in $breakpoints {
+    @media (min-width: $bp-value) {
+      @each $name, $var-name in $var-map {
+        .#{$bp-name}\:#{$class-name}-#{$name} {
+          #{$property}: var(#{$var-name});
+        }
+      }
+    }
+  }
+}
+
+// ============================================================================
+// Generate dark mode utilities from CSS variables
+// ============================================================================
+// Creates dark mode variants that swap colors automatically
+//
+// Usage:
+//   @include generate-dark-mode-utilities('primary', '--color-primary');
+
+@mixin generate-dark-mode-utilities($color-name, $var-name) {
+  @media (prefers-color-scheme: dark) {
+    .dark\:text-#{$color-name} {
+      color: var(#{$var-name});
+    }
+    .dark\:bg-#{$color-name} {
+      background-color: var(#{$var-name});
+    }
+    .dark\:border-#{$color-name} {
+      border-color: var(#{$var-name});
+    }
+  }
+
+  .dark .dark\:text-#{$color-name},
+  .dark\:text-#{$color-name}.dark {
+    color: var(#{$var-name});
+  }
+  .dark .dark\:bg-#{$color-name},
+  .dark\:bg-#{$color-name}.dark {
+    background-color: var(#{$var-name});
+  }
+  .dark .dark\:border-#{$color-name},
+  .dark\:border-#{$color-name}.dark {
+    border-color: var(#{$var-name});
+  }
+}
+
+// ============================================================================
+// Generate opacity variants using color-mix()
+// ============================================================================
+// Creates opacity variants using CSS color-mix() function
+// This is more modern than rgba() and works with CSS variables
+//
+// Usage:
+//   @include generate-opacity-variants('bg-primary', 'var(--color-primary)');
+
+@mixin generate-opacity-variants($class-name, $color-var, $opacities: (0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95)) {
+  @each $opacity in $opacities {
+    .#{$class-name}\/#{$opacity} {
+      background-color: color-mix(in srgb, #{$color-var} #{$opacity * 1%}, transparent);
+    }
+  }
+}
+
+// ============================================================================
+// Legacy mixins (for backwards compatibility)
+// These use hardcoded values but are kept for compatibility
+// ============================================================================
+
+// Generate utilities from a map (legacy - uses hardcoded values)
+@mixin generate-from-map($class-name, $property, $value-map, $prefix: '') {
+  @each $name, $value in $value-map {
+    .#{$prefix}#{$class-name}-#{$name} {
+      #{$property}: $value;
+    }
+  }
+}
+
+// Generate spacing utilities (legacy)
 @mixin generate-spacing($prefix: 'm', $values: ()) {
   $spacing-map: (
     0: 0,
@@ -77,19 +285,19 @@
   }
 }
 
-// Generate color utilities
+// Generate color utilities (legacy)
 @mixin generate-colors($property, $prefix: '', $colors: ()) {
   $color-map: (
-    primary: #3b82f6,
-    secondary: #64748b,
-    success: #22c55e,
-    danger: #ef4444,
-    warning: #f59e0b,
-    info: #0ea5e9,
-    light: #f3f4f6,
-    dark: #1f2937,
-    "white": #fff,
-    "black": #000
+    primary: var(--color-primary),
+    secondary: var(--color-secondary),
+    success: var(--color-success),
+    danger: var(--color-danger),
+    warning: var(--color-warning),
+    info: var(--color-info),
+    light: var(--color-light),
+    dark: var(--color-dark),
+    "white": var(--color-white),
+    "black": var(--color-black)
   );
 
   @each $name, $color in $color-map {
@@ -99,18 +307,18 @@
   }
 }
 
-// Generate typography utilities
+// Generate typography utilities (legacy - updated to use CSS vars)
 @mixin generate-typography($prefix: '', $sizes: ()) {
   $size-map: (
-    xs: 0.75rem,
-    sm: 0.875rem,
-    base: 1rem,
-    lg: 1.125rem,
-    xl: 1.25rem,
-    2xl: 1.5rem,
-    3xl: 1.875rem,
-    4xl: 2.25rem,
-    5xl: 3rem
+    xs: var(--font-size-xs),
+    sm: var(--font-size-sm),
+    base: var(--font-size-base),
+    lg: var(--font-size-lg),
+    xl: var(--font-size-xl),
+    2xl: var(--font-size-2xl),
+    3xl: var(--font-size-3xl),
+    4xl: var(--font-size-4xl),
+    5xl: var(--font-size-5xl)
   );
 
   // Font sizes
@@ -121,7 +329,12 @@
   }
 
   // Font weights
-  $weights: (normal: 400, medium: 500, semibold: 600, bold: 700);
+  $weights: (
+    normal: var(--font-weight-normal),
+    medium: var(--font-weight-medium),
+    semibold: var(--font-weight-semibold),
+    bold: var(--font-weight-bold)
+  );
 
   @each $name, $weight in $weights {
     .#{$prefix}font-#{$name} {
@@ -130,7 +343,13 @@
   }
 
   // Line heights
-  $line-heights: (tight: 1.25, snug: 1.375, normal: 1.5, relaxed: 1.625, loose: 2);
+  $line-heights: (
+    tight: var(--line-height-tight),
+    snug: var(--line-height-snug),
+    normal: var(--line-height-normal),
+    relaxed: var(--line-height-relaxed),
+    loose: var(--line-height-loose)
+  );
 
   @each $name, $height in $line-heights {
     .#{$prefix}leading-#{$name} {
@@ -139,17 +358,17 @@
   }
 }
 
-// Generate border utilities
+// Generate border utilities (legacy - updated to use CSS vars)
 @mixin generate-borders($prefix: '', $radii: ()) {
   $radius-map: (
-    none: 0,
-    sm: 0.125rem,
-    base: 0.25rem,
-    md: 0.375rem,
-    lg: 0.5rem,
-    xl: 0.75rem,
-    2xl: 1rem,
-    full: 9999px
+    none: var(--border-radius-none),
+    sm: var(--border-radius-sm),
+    base: var(--border-radius-base),
+    md: var(--border-radius-md),
+    lg: var(--border-radius-lg),
+    xl: var(--border-radius-xl),
+    2xl: var(--border-radius-2xl),
+    full: var(--border-radius-full)
   );
 
   @each $name, $radius in $radius-map {
@@ -159,16 +378,17 @@
   }
 }
 
-// Generate shadow utilities
-@mixin generate-shadows($prefix: '', $shadows: ()) {
+// Generate shadow utilities (legacy - updated to use CSS vars)
+@mixin generate-shadows($prefix: '') {
   $shadow-map: (
-    sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-    base: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-    md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-    lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-    xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    xxl: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-    none: "none"
+    sm: var(--shadow-sm),
+    base: var(--shadow-base),
+    md: var(--shadow-md),
+    lg: var(--shadow-lg),
+    xl: var(--shadow-xl),
+    2xl: var(--shadow-2xl),
+    none: var(--shadow-none),
+    inner: var(--shadow-inner)
   );
 
   @each $name, $shadow in $shadow-map {
@@ -181,11 +401,11 @@
 // Generate opacity utilities
 @mixin generate-opacity($prefix: '') {
   $opacity-map: (
-    0: 0,
-    25: 0.25,
-    50: 0.5,
-    75: 0.75,
-    100: 1
+    0: var(--apex-opacity-0),
+    25: var(--apex-opacity-25),
+    50: var(--apex-opacity-50),
+    75: var(--apex-opacity-75),
+    100: var(--apex-opacity-100)
   );
 
   @each $name, $opacity in $opacity-map {
@@ -195,11 +415,19 @@
   }
 }
 
-// Generate utilities from a map
-@mixin generate-from-map($class-name, $property, $value-map, $prefix: '') {
-  @each $name, $value in $value-map {
-    .#{$prefix}#{$class-name}-#{"#{$name}"} {
-      #{$property}: $value;
-    }
-  }
+// ============================================================================
+// Helper function to convert kebab-case to valid CSS class name
+// ============================================================================
+@function to-class-name($string) {
+  @return $string;
+}
+
+// ============================================================================
+// Generate complete utility set for a component
+// ============================================================================
+// Combines multiple mixins to create a complete utility set
+
+@mixin generate-component-utilities($component-name) {
+  // This is a placeholder for component-specific utility generation
+  // Can be extended as needed for specific components
 }

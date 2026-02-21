@@ -51,6 +51,18 @@ $enable-transforms: true !default;
 $enable-filters: true !default;
 $enable-aspect-ratio: true !default;
 $enable-accessibility: true !default;
+$enable-overscroll-behavior: true !default;
+$enable-justify-items: true !default;
+$enable-sizing-logical: true !default;
+$enable-typography-extended: true !default;
+$enable-backgrounds: true !default;
+$enable-text-shadow: true !default;
+$enable-blend-modes: true !default;
+$enable-masks: true !default;
+$enable-transition-behavior: true !default;
+$enable-transforms-3d: true !default;
+$enable-color-scheme: true !default;
+$enable-field-sizing: true !default;
 
 // Spacing scale
 $spacing-scale: (

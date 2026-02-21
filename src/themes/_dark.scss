@@ -1,6 +1,8 @@
 // ============================================================================
-// Dark Mode Theme
+// Dark Mode Theme (CSS Custom Properties)
 // ============================================================================
+// This file provides dark mode theming via CSS custom properties.
+// All colors are overridden in dark mode using CSS variables.
 
 @use '../config/settings' as settings;
 
@@ -10,37 +12,51 @@
   // ============================================================================
   @media (prefers-color-scheme: dark) {
     :root {
-      // Colors
+      // Semantic Colors
       --color-primary: #60a5fa;
+      --color-primary-light: #93c5fd;
+      --color-primary-dark: #3b82f6;
       --color-secondary: #94a3b8;
+      --color-secondary-light: #cbd5e1;
+      --color-secondary-dark: #64748b;
       --color-success: #4ade80;
+      --color-success-light: #86efac;
+      --color-success-dark: #22c55e;
       --color-danger: #f87171;
+      --color-danger-light: #fca5a5;
+      --color-danger-dark: #ef4444;
       --color-warning: #fbbf24;
+      --color-warning-light: #fcd34d;
+      --color-warning-dark: #f59e0b;
       --color-info: #38bdf8;
+      --color-info-light: #7dd3fc;
+      --color-info-dark: #0ea5e9;
       --color-light: #1f2937;
       --color-dark: #f3f4f6;
       --color-white: #111827;
-      --color-black: #fff;
+      --color-black: #ffffff;
 
-      // Gray colors
-      --color-gray-50: #1f2937;
-      --color-gray-100: #374151;
-      --color-gray-200: #4b5563;
-      --color-gray-300: #6b7280;
-      --color-gray-400: #9ca3af;
-      --color-gray-500: #d1d5db;
-      --color-gray-600: #e5e7eb;
-      --color-gray-700: #f3f4f6;
-      --color-gray-800: #f9fafb;
-      --color-gray-900: #fff;
+      // Gray Scale (inverted for dark mode)
+      --color-gray-50: #111827;
+      --color-gray-100: #1f2937;
+      --color-gray-200: #374151;
+      --color-gray-300: #4b5563;
+      --color-gray-400: #6b7280;
+      --color-gray-500: #9ca3af;
+      --color-gray-600: #d1d5db;
+      --color-gray-700: #e5e7eb;
+      --color-gray-800: #f3f4f6;
+      --color-gray-900: #f9fafb;
 
-      // Shadows (adjusted for dark mode)
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-      --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      // Shadows (adjusted opacity for dark mode)
+      --shadow-color: 0 0 0;
+      --shadow-sm: 0 1px 2px 0 rgba(var(--shadow-color), 0.3);
+      --shadow-base: 0 1px 3px 0 rgba(var(--shadow-color), 0.4), 0 1px 2px 0 rgba(var(--shadow-color), 0.2);
+      --shadow-md: 0 4px 6px -1px rgba(var(--shadow-color), 0.4), 0 2px 4px -1px rgba(var(--shadow-color), 0.2);
+      --shadow-lg: 0 10px 15px -3px rgba(var(--shadow-color), 0.4), 0 4px 6px -2px rgba(var(--shadow-color), 0.2);
+      --shadow-xl: 0 20px 25px -5px rgba(var(--shadow-color), 0.4), 0 10px 10px -5px rgba(var(--shadow-color), 0.2);
+      --shadow-2xl: 0 25px 50px -12px rgba(var(--shadow-color), 0.5);
+      --shadow-inner: inset 0 2px 4px 0 rgba(var(--shadow-color), 0.15);
     }
   }
 
@@ -48,47 +64,63 @@
   // CSS Custom Properties - Manual Dark Mode (.dark class)
   // ============================================================================
   .dark {
-    // Colors
+    // Semantic Colors
     --color-primary: #60a5fa;
+    --color-primary-light: #93c5fd;
+    --color-primary-dark: #3b82f6;
     --color-secondary: #94a3b8;
+    --color-secondary-light: #cbd5e1;
+    --color-secondary-dark: #64748b;
     --color-success: #4ade80;
+    --color-success-light: #86efac;
+    --color-success-dark: #22c55e;
     --color-danger: #f87171;
+    --color-danger-light: #fca5a5;
+    --color-danger-dark: #ef4444;
     --color-warning: #fbbf24;
+    --color-warning-light: #fcd34d;
+    --color-warning-dark: #f59e0b;
     --color-info: #38bdf8;
+    --color-info-light: #7dd3fc;
+    --color-info-dark: #0ea5e9;
     --color-light: #1f2937;
     --color-dark: #f3f4f6;
     --color-white: #111827;
-    --color-black: #fff;
+    --color-black: #ffffff;
 
-    // Gray colors
-    --color-gray-50: #1f2937;
-    --color-gray-100: #374151;
-    --color-gray-200: #4b5563;
-    --color-gray-300: #6b7280;
-    --color-gray-400: #9ca3af;
-    --color-gray-500: #d1d5db;
-    --color-gray-600: #e5e7eb;
-    --color-gray-700: #f3f4f6;
-    --color-gray-800: #f9fafb;
-    --color-gray-900: #fff;
+    // Gray Scale (inverted for dark mode)
+    --color-gray-50: #111827;
+    --color-gray-100: #1f2937;
+    --color-gray-200: #374151;
+    --color-gray-300: #4b5563;
+    --color-gray-400: #6b7280;
+    --color-gray-500: #9ca3af;
+    --color-gray-600: #d1d5db;
+    --color-gray-700: #e5e7eb;
+    --color-gray-800: #f3f4f6;
+    --color-gray-900: #f9fafb;
 
-    // Shadows (adjusted for dark mode)
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    // Shadows (adjusted opacity for dark mode)
+    --shadow-color: 0 0 0;
+    --shadow-sm: 0 1px 2px 0 rgba(var(--shadow-color), 0.3);
+    --shadow-base: 0 1px 3px 0 rgba(var(--shadow-color), 0.4), 0 1px 2px 0 rgba(var(--shadow-color), 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(var(--shadow-color), 0.4), 0 2px 4px -1px rgba(var(--shadow-color), 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(var(--shadow-color), 0.4), 0 4px 6px -2px rgba(var(--shadow-color), 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(var(--shadow-color), 0.4), 0 10px 10px -5px rgba(var(--shadow-color), 0.2);
+    --shadow-2xl: 0 25px 50px -12px rgba(var(--shadow-color), 0.5);
+    --shadow-inner: inset 0 2px 4px 0 rgba(var(--shadow-color), 0.15);
   }
 
   // ============================================================================
-  // Dark Mode Utility Classes - Automatic (prefers-color-scheme)
-  // These work WITHOUT the .dark class, responding to system preference
+  // Dark Mode Utility Classes (using CSS custom properties)
   // ============================================================================
+  // These utilities reference the CSS variables that change in dark mode
 
-  // Dark mode text color utilities - auto dark mode via media query
+  // ============================================================================
+  // Dark Mode Text Colors - Automatic (prefers-color-scheme)
+  // ============================================================================
   @media (prefers-color-scheme: dark) {
-    // Primary semantic colors
+    // Semantic colors
     .dark\:text-primary { color: var(--color-primary); }
     .dark\:text-secondary { color: var(--color-secondary); }
     .dark\:text-success { color: var(--color-success); }
@@ -145,6 +177,8 @@
     .dark\:border-info { border-color: var(--color-info); }
     .dark\:border-light { border-color: var(--color-light); }
     .dark\:border-dark { border-color: var(--color-dark); }
+    .dark\:border-white { border-color: var(--color-white); }
+    .dark\:border-black { border-color: var(--color-black); }
 
     // Gray borders
     .dark\:border-gray-50 { border-color: var(--color-gray-50); }
@@ -157,14 +191,23 @@
     .dark\:border-gray-700 { border-color: var(--color-gray-700); }
     .dark\:border-gray-800 { border-color: var(--color-gray-800); }
     .dark\:border-gray-900 { border-color: var(--color-gray-900); }
+
+    // Shadows
+    .dark\:shadow-sm { box-shadow: var(--shadow-sm); }
+    .dark\:shadow { box-shadow: var(--shadow-base); }
+    .dark\:shadow-md { box-shadow: var(--shadow-md); }
+    .dark\:shadow-lg { box-shadow: var(--shadow-lg); }
+    .dark\:shadow-xl { box-shadow: var(--shadow-xl); }
+    .dark\:shadow-2xl { box-shadow: var(--shadow-2xl); }
+    .dark\:shadow-none { box-shadow: var(--shadow-none); }
+    .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
   }
 
   // ============================================================================
   // Dark Mode Utility Classes - Manual (.dark class)
-  // These work when parent has .dark class or element has .dark class
   // ============================================================================
 
-  // Dark mode text colors - manual .dark class
+  // Text colors - manual
   .dark .dark\:text-primary,
   .dark\:text-primary.dark { color: var(--color-primary); }
   .dark .dark\:text-secondary,
@@ -187,26 +230,10 @@
   .dark\:text-black.dark { color: var(--color-black); }
 
   // Gray text colors - manual
-  .dark .dark\:text-gray-50,
-  .dark\:text-gray-50.dark { color: var(--color-gray-50); }
-  .dark .dark\:text-gray-100,
-  .dark\:text-gray-100.dark { color: var(--color-gray-100); }
-  .dark .dark\:text-gray-200,
-  .dark\:text-gray-200.dark { color: var(--color-gray-200); }
-  .dark .dark\:text-gray-300,
-  .dark\:text-gray-300.dark { color: var(--color-gray-300); }
-  .dark .dark\:text-gray-400,
-  .dark\:text-gray-400.dark { color: var(--color-gray-400); }
-  .dark .dark\:text-gray-500,
-  .dark\:text-gray-500.dark { color: var(--color-gray-500); }
-  .dark .dark\:text-gray-600,
-  .dark\:text-gray-600.dark { color: var(--color-gray-600); }
-  .dark .dark\:text-gray-700,
-  .dark\:text-gray-700.dark { color: var(--color-gray-700); }
-  .dark .dark\:text-gray-800,
-  .dark\:text-gray-800.dark { color: var(--color-gray-800); }
-  .dark .dark\:text-gray-900,
-  .dark\:text-gray-900.dark { color: var(--color-gray-900); }
+  @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+    .dark .dark\:text-gray-#{$key},
+    .dark\:text-gray-#{$key}.dark { color: var(--color-gray-#{$key}); }
+  }
 
   // Background colors - manual
   .dark .dark\:bg-primary,
@@ -231,26 +258,10 @@
   .dark\:bg-black.dark { background-color: var(--color-black); }
 
   // Gray backgrounds - manual
-  .dark .dark\:bg-gray-50,
-  .dark\:bg-gray-50.dark { background-color: var(--color-gray-50); }
-  .dark .dark\:bg-gray-100,
-  .dark\:bg-gray-100.dark { background-color: var(--color-gray-100); }
-  .dark .dark\:bg-gray-200,
-  .dark\:bg-gray-200.dark { background-color: var(--color-gray-200); }
-  .dark .dark\:bg-gray-300,
-  .dark\:bg-gray-300.dark { background-color: var(--color-gray-300); }
-  .dark .dark\:bg-gray-400,
-  .dark\:bg-gray-400.dark { background-color: var(--color-gray-400); }
-  .dark .dark\:bg-gray-500,
-  .dark\:bg-gray-500.dark { background-color: var(--color-gray-500); }
-  .dark .dark\:bg-gray-600,
-  .dark\:bg-gray-600.dark { background-color: var(--color-gray-600); }
-  .dark .dark\:bg-gray-700,
-  .dark\:bg-gray-700.dark { background-color: var(--color-gray-700); }
-  .dark .dark\:bg-gray-800,
-  .dark\:bg-gray-800.dark { background-color: var(--color-gray-800); }
-  .dark .dark\:bg-gray-900,
-  .dark\:bg-gray-900.dark { background-color: var(--color-gray-900); }
+  @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+    .dark .dark\:bg-gray-#{$key},
+    .dark\:bg-gray-#{$key}.dark { background-color: var(--color-gray-#{$key}); }
+  }
 
   // Border colors - manual
   .dark .dark\:border-primary,
@@ -269,26 +280,32 @@
   .dark\:border-light.dark { border-color: var(--color-light); }
   .dark .dark\:border-dark,
   .dark\:border-dark.dark { border-color: var(--color-dark); }
+  .dark .dark\:border-white,
+  .dark\:border-white.dark { border-color: var(--color-white); }
+  .dark .dark\:border-black,
+  .dark\:border-black.dark { border-color: var(--color-black); }
 
   // Gray borders - manual
-  .dark .dark\:border-gray-50,
-  .dark\:border-gray-50.dark { border-color: var(--color-gray-50); }
-  .dark .dark\:border-gray-100,
-  .dark\:border-gray-100.dark { border-color: var(--color-gray-100); }
-  .dark .dark\:border-gray-200,
-  .dark\:border-gray-200.dark { border-color: var(--color-gray-200); }
-  .dark .dark\:border-gray-300,
-  .dark\:border-gray-300.dark { border-color: var(--color-gray-300); }
-  .dark .dark\:border-gray-400,
-  .dark\:border-gray-400.dark { border-color: var(--color-gray-400); }
-  .dark .dark\:border-gray-500,
-  .dark\:border-gray-500.dark { border-color: var(--color-gray-500); }
-  .dark .dark\:border-gray-600,
-  .dark\:border-gray-600.dark { border-color: var(--color-gray-600); }
-  .dark .dark\:border-gray-700,
-  .dark\:border-gray-700.dark { border-color: var(--color-gray-700); }
-  .dark .dark\:border-gray-800,
-  .dark\:border-gray-800.dark { border-color: var(--color-gray-800); }
-  .dark .dark\:border-gray-900,
-  .dark\:border-gray-900.dark { border-color: var(--color-gray-900); }
+  @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+    .dark .dark\:border-gray-#{$key},
+    .dark\:border-gray-#{$key}.dark { border-color: var(--color-gray-#{$key}); }
+  }
+
+  // Shadows - manual
+  .dark .dark\:shadow-sm,
+  .dark\:shadow-sm.dark { box-shadow: var(--shadow-sm); }
+  .dark .dark\:shadow,
+  .dark\:shadow.dark { box-shadow: var(--shadow-base); }
+  .dark .dark\:shadow-md,
+  .dark\:shadow-md.dark { box-shadow: var(--shadow-md); }
+  .dark .dark\:shadow-lg,
+  .dark\:shadow-lg.dark { box-shadow: var(--shadow-lg); }
+  .dark .dark\:shadow-xl,
+  .dark\:shadow-xl.dark { box-shadow: var(--shadow-xl); }
+  .dark .dark\:shadow-2xl,
+  .dark\:shadow-2xl.dark { box-shadow: var(--shadow-2xl); }
+  .dark .dark\:shadow-none,
+  .dark\:shadow-none.dark { box-shadow: var(--shadow-none); }
+  .dark .dark\:shadow-inner,
+  .dark\:shadow-inner.dark { box-shadow: var(--shadow-inner); }
 }

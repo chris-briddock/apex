@@ -1,6 +1,7 @@
 // ============================================================================
 // Color Utilities (Text, Background, Border)
 // ============================================================================
+// All colors use CSS custom properties for runtime theming support
 
 @use 'sass:color';
 @use '../config/settings' as settings;
@@ -45,19 +46,19 @@
   }
 
   // ============================================================================
-  // Blue Colors
+  // Blue Colors (CSS Custom Properties)
   // ============================================================================
   $blues: (
-    50: #eff6ff,
-    100: #dbeafe,
-    200: #bfdbfe,
-    300: #93c5fd,
-    400: #60a5fa,
-    500: #3b82f6,
-    600: #2563eb,
-    700: #1d4ed8,
-    800: #1e40af,
-    900: #1e3a8a,
+    50: var(--color-blue-50),
+    100: var(--color-blue-100),
+    200: var(--color-blue-200),
+    300: var(--color-blue-300),
+    400: var(--color-blue-400),
+    500: var(--color-blue-500),
+    600: var(--color-blue-600),
+    700: var(--color-blue-700),
+    800: var(--color-blue-800),
+    900: var(--color-blue-900),
   );
 
   @each $key, $value in $blues {
@@ -73,19 +74,19 @@
   }
 
   // ============================================================================
-  // Green Colors
+  // Green Colors (CSS Custom Properties)
   // ============================================================================
   $greens: (
-    50: #f0fdf4,
-    100: #dcfce7,
-    200: #bbf7d0,
-    300: #86efac,
-    400: #4ade80,
-    500: #22c55e,
-    600: #16a34a,
-    700: #15803d,
-    800: #166534,
-    900: #14532d,
+    50: var(--color-green-50),
+    100: var(--color-green-100),
+    200: var(--color-green-200),
+    300: var(--color-green-300),
+    400: var(--color-green-400),
+    500: var(--color-green-500),
+    600: var(--color-green-600),
+    700: var(--color-green-700),
+    800: var(--color-green-800),
+    900: var(--color-green-900),
   );
 
   @each $key, $value in $greens {
@@ -101,19 +102,19 @@
   }
 
   // ============================================================================
-  // Red Colors
+  // Red Colors (CSS Custom Properties)
   // ============================================================================
   $reds: (
-    50: #fef2f2,
-    100: #fee2e2,
-    200: #fecaca,
-    300: #fca5a5,
-    400: #f87171,
-    500: #ef4444,
-    600: #dc2626,
-    700: #b91c1c,
-    800: #991b1b,
-    900: #7f1d1d,
+    50: var(--color-red-50),
+    100: var(--color-red-100),
+    200: var(--color-red-200),
+    300: var(--color-red-300),
+    400: var(--color-red-400),
+    500: var(--color-red-500),
+    600: var(--color-red-600),
+    700: var(--color-red-700),
+    800: var(--color-red-800),
+    900: var(--color-red-900),
   );
 
   @each $key, $value in $reds {
@@ -129,19 +130,19 @@
   }
 
   // ============================================================================
-  // Yellow Colors
+  // Yellow Colors (CSS Custom Properties)
   // ============================================================================
   $yellows: (
-    50: #fefce8,
-    100: #fef9c3,
-    200: #fef08a,
-    300: #fde047,
-    400: #facc15,
-    500: #eab308,
-    600: #ca8a04,
-    700: #a16207,
-    800: #854d0e,
-    900: #713f12,
+    50: var(--color-yellow-50),
+    100: var(--color-yellow-100),
+    200: var(--color-yellow-200),
+    300: var(--color-yellow-300),
+    400: var(--color-yellow-400),
+    500: var(--color-yellow-500),
+    600: var(--color-yellow-600),
+    700: var(--color-yellow-700),
+    800: var(--color-yellow-800),
+    900: var(--color-yellow-900),
   );
 
   @each $key, $value in $yellows {
@@ -157,19 +158,19 @@
   }
 
   // ============================================================================
-  // Purple Colors
+  // Purple Colors (CSS Custom Properties)
   // ============================================================================
   $purples: (
-    50: #faf5ff,
-    100: #f3e8ff,
-    200: #e9d5ff,
-    300: #d8b4fe,
-    400: #c084fc,
-    500: #a855f7,
-    600: #9333ea,
-    700: #7c3aed,
-    800: #6b21a8,
-    900: #581c87,
+    50: var(--color-purple-50),
+    100: var(--color-purple-100),
+    200: var(--color-purple-200),
+    300: var(--color-purple-300),
+    400: var(--color-purple-400),
+    500: var(--color-purple-500),
+    600: var(--color-purple-600),
+    700: var(--color-purple-700),
+    800: var(--color-purple-800),
+    900: var(--color-purple-900),
   );
 
   @each $key, $value in $purples {
@@ -185,79 +186,108 @@
   }
 
   // ============================================================================
-  // White and Black
+  // Semantic Colors (CSS Custom Properties)
   // ============================================================================
-  .text-white { color: #fff; }
-  .text-black { color: #000; }
-  .bg-white { background-color: #fff; }
-  .bg-black { background-color: #000; }
-  .bg-transparent { background-color: transparent; }
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-success { color: var(--color-success); }
+  .text-danger { color: var(--color-danger); }
+  .text-warning { color: var(--color-warning); }
+  .text-info { color: var(--color-info); }
+  .text-light { color: var(--color-light); }
+  .text-dark { color: var(--color-dark); }
+  .text-white { color: var(--color-white); }
+  .text-black { color: var(--color-black); }
+  .text-transparent { color: var(--color-transparent); }
+  .text-current { color: var(--color-current); }
+
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-secondary { background-color: var(--color-secondary); }
+  .bg-success { background-color: var(--color-success); }
+  .bg-danger { background-color: var(--color-danger); }
+  .bg-warning { background-color: var(--color-warning); }
+  .bg-info { background-color: var(--color-info); }
+  .bg-light { background-color: var(--color-light); }
+  .bg-dark { background-color: var(--color-dark); }
+  .bg-white { background-color: var(--color-white); }
+  .bg-black { background-color: var(--color-black); }
+  .bg-transparent { background-color: var(--color-transparent); }
+  .bg-current { background-color: var(--color-current); }
+
+  .border-primary { border-color: var(--color-primary); }
+  .border-secondary { border-color: var(--color-secondary); }
+  .border-success { border-color: var(--color-success); }
+  .border-danger { border-color: var(--color-danger); }
+  .border-warning { border-color: var(--color-warning); }
+  .border-info { border-color: var(--color-info); }
+  .border-light { border-color: var(--color-light); }
+  .border-dark { border-color: var(--color-dark); }
+  .border-white { border-color: var(--color-white); }
+  .border-black { border-color: var(--color-black); }
+  .border-transparent { border-color: var(--color-transparent); }
+  .border-current { border-color: var(--color-current); }
 
   // ============================================================================
-  // Opacity Variants (for backgrounds)
+  // Opacity Variants (for backgrounds with CSS variables)
   // ============================================================================
+  // Opacity values using CSS custom properties
   $opacity-values: (
-    0: 0,
-    5: 0.05,
-    10: 0.1,
-    15: 0.15,
-    20: 0.2,
-    25: 0.25,
-    30: 0.3,
-    35: 0.35,
-    40: 0.4,
-    45: 0.45,
-    50: 0.5,
-    55: 0.55,
-    60: 0.6,
-    65: 0.65,
-    70: 0.7,
-    75: 0.75,
-    80: 0.8,
-    85: 0.85,
-    90: 0.9,
-    95: 0.95,
-    100: 1
+    0: var(--apex-opacity-0),
+    5: var(--apex-opacity-5),
+    10: var(--apex-opacity-10),
+    15: var(--apex-opacity-15),
+    20: var(--apex-opacity-20),
+    25: var(--apex-opacity-25),
+    30: var(--apex-opacity-30),
+    35: var(--apex-opacity-35),
+    40: var(--apex-opacity-40),
+    45: var(--apex-opacity-45),
+    50: var(--apex-opacity-50),
+    55: var(--apex-opacity-55),
+    60: var(--apex-opacity-60),
+    65: var(--apex-opacity-65),
+    70: var(--apex-opacity-70),
+    75: var(--apex-opacity-75),
+    80: var(--apex-opacity-80),
+    85: var(--apex-opacity-85),
+    90: var(--apex-opacity-90),
+    95: var(--apex-opacity-95),
+    100: var(--apex-opacity-100)
   );
 
-  // Gray hex values for fractional opacity
-  $grays-hex: (
-    50: #f9fafb,
-    100: #f3f4f6,
-    200: #e5e7eb,
-    300: #d1d5db,
-    400: #9ca3af,
-    500: #6b7280,
-    600: #4b5563,
-    700: #374151,
-    800: #1f2937,
-    900: #111827,
-  );
-
-  // Light mode opacity backgrounds
-  @each $shade, $color in $grays-hex {
-    @each $opacity-name, $opacity-value in $opacity-values {
-      @if $opacity-value < 1 {
-        .bg-gray-#{$shade}\/#{$opacity-name} {
-          background-color: rgba(
-            color.channel($color, "red", $space: rgb),
-            color.channel($color, "green", $space: rgb),
-            color.channel($color, "blue", $space: rgb),
-            $opacity-value
-          );
-        }
-      }
-    }
-  }
-
-  // White and black opacity backgrounds
+  // CSS variable-based opacity backgrounds for semantic colors
   @each $opacity-name, $opacity-value in $opacity-values {
-    @if $opacity-value < 1 {
+    @if $opacity-name != 100 {
+      .bg-primary\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-secondary\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-success\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-success) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-danger\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-danger) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-warning\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-warning) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-info\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
+      }
       .bg-white\/#{$opacity-name} {
-        background-color: rgba(255, 255, 255, $opacity-value);
+        background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
       }
       .bg-black\/#{$opacity-name} {
-        background-color: rgba(0, 0, 0, $opacity-value);
+        background-color: color-mix(in srgb, var(--color-black) #{$opacity-name * 1%}, transparent);
+      }
+
+      // Gray opacity variants using color-mix
+      @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+        .bg-gray-#{$shade}\/#{$opacity-name} {
+          background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
+        }
       }
     }
   }
@@ -265,246 +295,157 @@
   // ============================================================================
   // AUTOMATIC DARK MODE UTILITIES
   // ============================================================================
-  // These utilities automatically respond to:
-  // 1. System preference (prefers-color-scheme: dark)
-  // 2. Manual .dark class toggle
-  // ============================================================================
   @if settings.$enable-dark-mode == true {
 
     // ============================================================================
     // Dark Mode Gray Colors (using CSS custom properties)
     // ============================================================================
-    $dark-grays-hex: (
-      50: #1f2937,
-      100: #374151,
-      200: #4b5563,
-      300: #6b7280,
-      400: #9ca3af,
-      500: #d1d5db,
-      600: #e5e7eb,
-      700: #f3f4f6,
-      800: #f9fafb,
-      900: #ffffff,
-    );
+    // In dark mode, grays automatically swap via CSS variable redefinition
+    // No need to redefine - the CSS variables in _dark.scss handle it
 
-    // Dark mode text colors (gray scale)
-    @each $key, $dark-value in $dark-grays-hex {
+    // Dark mode text colors (gray scale) - using CSS variables
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
       // Dark mode via media query (system preference)
       @media (prefers-color-scheme: dark) {
         .dark\:text-gray-#{$key} {
-          color: $dark-value;
+          color: var(--color-gray-#{$key});
         }
       }
       // Dark mode via .dark class (manual toggle)
       .dark .dark\:text-gray-#{$key},
       .dark\:text-gray-#{$key}.dark {
-        color: $dark-value;
+        color: var(--color-gray-#{$key});
       }
     }
 
     // Dark mode background colors (gray scale)
-    @each $key, $dark-value in $dark-grays-hex {
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
       @media (prefers-color-scheme: dark) {
         .dark\:bg-gray-#{$key} {
-          background-color: $dark-value;
+          background-color: var(--color-gray-#{$key});
         }
       }
       .dark .dark\:bg-gray-#{$key},
       .dark\:bg-gray-#{$key}.dark {
-        background-color: $dark-value;
+        background-color: var(--color-gray-#{$key});
       }
     }
 
     // Dark mode border colors (gray scale)
-    @each $key, $dark-value in $dark-grays-hex {
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
       @media (prefers-color-scheme: dark) {
         .dark\:border-gray-#{$key} {
-          border-color: $dark-value;
+          border-color: var(--color-gray-#{$key});
         }
       }
       .dark .dark\:border-gray-#{$key},
       .dark\:border-gray-#{$key}.dark {
-        border-color: $dark-value;
+        border-color: var(--color-gray-#{$key});
       }
     }
 
-    // Dark mode white/black
+    // Dark mode semantic colors
+    @each $color in (primary, secondary, success, danger, warning, info, light, dark) {
+      @media (prefers-color-scheme: dark) {
+        .dark\:text-#{$color} { color: var(--color-#{$color}); }
+        .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
+        .dark\:border-#{$color} { border-color: var(--color-#{$color}); }
+      }
+      .dark .dark\:text-#{$color},
+      .dark\:text-#{$color}.dark { color: var(--color-#{$color}); }
+      .dark .dark\:bg-#{$color},
+      .dark\:bg-#{$color}.dark { background-color: var(--color-#{$color}); }
+      .dark .dark\:border-#{$color},
+      .dark\:border-#{$color}.dark { border-color: var(--color-#{$color}); }
+    }
+
+    // Dark mode white/black (swapped in dark mode)
     @media (prefers-color-scheme: dark) {
-      .dark\:text-white { color: #111827; }
-      .dark\:text-black { color: #fff; }
-      .dark\:bg-white { background-color: #111827; }
-      .dark\:bg-black { background-color: #fff; }
+      .dark\:text-white { color: var(--color-black); }
+      .dark\:text-black { color: var(--color-white); }
+      .dark\:bg-white { background-color: var(--color-black); }
+      .dark\:bg-black { background-color: var(--color-white); }
     }
     .dark .dark\:text-white,
-    .dark\:text-white.dark { color: #111827; }
+    .dark\:text-white.dark { color: var(--color-black); }
     .dark .dark\:text-black,
-    .dark\:text-black.dark { color: #fff; }
+    .dark\:text-black.dark { color: var(--color-white); }
     .dark .dark\:bg-white,
-    .dark\:bg-white.dark { background-color: #111827; }
+    .dark\:bg-white.dark { background-color: var(--color-black); }
     .dark .dark\:bg-black,
-    .dark\:bg-black.dark { background-color: #fff; }
+    .dark\:bg-black.dark { background-color: var(--color-white); }
 
     // ============================================================================
-    // Dark Mode Opacity Variants (for backgrounds)
+    // Dark Mode Extended Color Scales (Blue, Green, Red, Yellow, Purple)
+    // Using CSS variables - they automatically adjust in dark mode
     // ============================================================================
-    @each $shade, $dark-color in $dark-grays-hex {
-      @each $opacity-name, $opacity-value in $opacity-values {
-        @if $opacity-value < 1 {
-          @media (prefers-color-scheme: dark) {
-            .dark\:bg-gray-#{$shade}\/#{$opacity-name} {
-              background-color: rgba(
-                color.channel($dark-color, "red", $space: rgb),
-                color.channel($dark-color, "green", $space: rgb),
-                color.channel($dark-color, "blue", $space: rgb),
-                $opacity-value
-              );
-            }
-          }
-          .dark .dark\:bg-gray-#{$shade}\/#{$opacity-name},
-          .dark\:bg-gray-#{$shade}\/#{$opacity-name}.dark {
-            background-color: rgba(
-              color.channel($dark-color, "red", $space: rgb),
-              color.channel($dark-color, "green", $space: rgb),
-              color.channel($dark-color, "blue", $space: rgb),
-              $opacity-value
-            );
-          }
+    @each $color-family in ('blue', 'green', 'red', 'yellow', 'purple') {
+      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+        @media (prefers-color-scheme: dark) {
+          .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
+          .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
+          .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
         }
+        .dark .dark\:text-#{$color-family}-#{$key},
+        .dark\:text-#{$color-family}-#{$key}.dark { color: var(--color-#{$color-family}-#{$key}); }
+        .dark .dark\:bg-#{$color-family}-#{$key},
+        .dark\:bg-#{$color-family}-#{$key}.dark { background-color: var(--color-#{$color-family}-#{$key}); }
+        .dark .dark\:border-#{$color-family}-#{$key},
+        .dark\:border-#{$color-family}-#{$key}.dark { border-color: var(--color-#{$color-family}-#{$key}); }
       }
     }
 
     // ============================================================================
-    // Dark Mode Hover States
+    // Dark Mode Hover States (using CSS variables)
     // ============================================================================
-    @each $shade, $dark-color in $dark-grays-hex {
+    @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
       // Base hover state
       .dark\:hover\:bg-gray-#{$shade}:hover {
-        background-color: $dark-color;
+        background-color: var(--color-gray-#{$shade});
       }
       // Media query hover
       @media (prefers-color-scheme: dark) {
         .dark\:hover\:bg-gray-#{$shade}:hover {
-          background-color: $dark-color;
+          background-color: var(--color-gray-#{$shade});
         }
       }
       // .dark class hover
       .dark .dark\:hover\:bg-gray-#{$shade}:hover,
       .dark\:hover\:bg-gray-#{$shade}.dark:hover {
-        background-color: $dark-color;
+        background-color: var(--color-gray-#{$shade});
       }
 
-      // Opacity hover variants
-      @each $opacity-name, $opacity-value in $opacity-values {
-        @if $opacity-value < 1 {
+      // Opacity hover variants using color-mix
+      @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
+        .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover {
+          background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
+        }
+        @media (prefers-color-scheme: dark) {
           .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover {
-            background-color: rgba(
-              color.channel($dark-color, "red", $space: rgb),
-              color.channel($dark-color, "green", $space: rgb),
-              color.channel($dark-color, "blue", $space: rgb),
-              $opacity-value
-            );
+            background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
           }
-          @media (prefers-color-scheme: dark) {
-            .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover {
-              background-color: rgba(
-                color.channel($dark-color, "red", $space: rgb),
-                color.channel($dark-color, "green", $space: rgb),
-                color.channel($dark-color, "blue", $space: rgb),
-                $opacity-value
-              );
-            }
-          }
-          .dark .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover,
-          .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}.dark:hover {
-            background-color: rgba(
-              color.channel($dark-color, "red", $space: rgb),
-              color.channel($dark-color, "green", $space: rgb),
-              color.channel($dark-color, "blue", $space: rgb),
-              $opacity-value
-            );
-          }
+        }
+        .dark .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover,
+        .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}.dark:hover {
+          background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
         }
       }
     }
 
-    // ============================================================================
-    // Dark Mode Color Scales (Blue, Green, Red, Yellow, Purple)
-    // Text colors get lightened, backgrounds get darkened
-    // ============================================================================
-
-    // Blue colors in dark mode
-    @each $key, $value in $blues {
-      $dark-text: color.scale($value, $lightness: 10%);
-      $dark-bg: color.scale($value, $lightness: -20%);
-
-      @media (prefers-color-scheme: dark) {
-        .dark\:text-blue-#{$key} { color: $dark-text; }
-        .dark\:bg-blue-#{$key} { background-color: $dark-bg; }
+    // Semantic color hover states
+    @each $color in (primary, secondary, success, danger, warning, info) {
+      .dark\:hover\:bg-#{$color}:hover {
+        background-color: var(--color-#{$color});
       }
-      .dark .dark\:text-blue-#{$key},
-      .dark\:text-blue-#{$key}.dark { color: $dark-text; }
-      .dark .dark\:bg-blue-#{$key},
-      .dark\:bg-blue-#{$key}.dark { background-color: $dark-bg; }
-    }
-
-    // Green colors in dark mode
-    @each $key, $value in $greens {
-      $dark-text: color.scale($value, $lightness: 10%);
-      $dark-bg: color.scale($value, $lightness: -20%);
-
       @media (prefers-color-scheme: dark) {
-        .dark\:text-green-#{$key} { color: $dark-text; }
-        .dark\:bg-green-#{$key} { background-color: $dark-bg; }
+        .dark\:hover\:bg-#{$color}:hover {
+          background-color: var(--color-#{$color});
+        }
       }
-      .dark .dark\:text-green-#{$key},
-      .dark\:text-green-#{$key}.dark { color: $dark-text; }
-      .dark .dark\:bg-green-#{$key},
-      .dark\:bg-green-#{$key}.dark { background-color: $dark-bg; }
-    }
-
-    // Red colors in dark mode
-    @each $key, $value in $reds {
-      $dark-text: color.scale($value, $lightness: 10%);
-      $dark-bg: color.scale($value, $lightness: -20%);
-
-      @media (prefers-color-scheme: dark) {
-        .dark\:text-red-#{$key} { color: $dark-text; }
-        .dark\:bg-red-#{$key} { background-color: $dark-bg; }
+      .dark .dark\:hover\:bg-#{$color}:hover,
+      .dark\:hover\:bg-#{$color}.dark:hover {
+        background-color: var(--color-#{$color});
       }
-      .dark .dark\:text-red-#{$key},
-      .dark\:text-red-#{$key}.dark { color: $dark-text; }
-      .dark .dark\:bg-red-#{$key},
-      .dark\:bg-red-#{$key}.dark { background-color: $dark-bg; }
-    }
-
-    // Yellow colors in dark mode
-    @each $key, $value in $yellows {
-      $dark-text: color.scale($value, $lightness: 10%);
-      $dark-bg: color.scale($value, $lightness: -20%);
-
-      @media (prefers-color-scheme: dark) {
-        .dark\:text-yellow-#{$key} { color: $dark-text; }
-        .dark\:bg-yellow-#{$key} { background-color: $dark-bg; }
-      }
-      .dark .dark\:text-yellow-#{$key},
-      .dark\:text-yellow-#{$key}.dark { color: $dark-text; }
-      .dark .dark\:bg-yellow-#{$key},
-      .dark\:bg-yellow-#{$key}.dark { background-color: $dark-bg; }
-    }
-
-    // Purple colors in dark mode
-    @each $key, $value in $purples {
-      $dark-text: color.scale($value, $lightness: 10%);
-      $dark-bg: color.scale($value, $lightness: -20%);
-
-      @media (prefers-color-scheme: dark) {
-        .dark\:text-purple-#{$key} { color: $dark-text; }
-        .dark\:bg-purple-#{$key} { background-color: $dark-bg; }
-      }
-      .dark .dark\:text-purple-#{$key},
-      .dark\:text-purple-#{$key}.dark { color: $dark-text; }
-      .dark .dark\:bg-purple-#{$key},
-      .dark\:bg-purple-#{$key}.dark { background-color: $dark-bg; }
     }
   }
 }

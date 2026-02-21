@@ -55,6 +55,18 @@
 @use '../core/accent-color';
 @use '../core/place-items';
 @use '../core/space-between';
+@use '../core/overscroll-behavior';
+@use '../core/justify-items';
+@use '../core/sizing-logical';
+@use '../core/typography-extended';
+@use '../core/backgrounds';
+@use '../core/text-shadow';
+@use '../core/blend-modes';
+@use '../core/masks';
+@use '../core/transition-behavior';
+@use '../core/transforms-3d';
+@use '../core/color-scheme';
+@use '../core/field-sizing';
 
 // States
 @use '../states/hover';

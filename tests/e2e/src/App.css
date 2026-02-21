@@ -1,0 +1,105 @@
+/* ApexCSS E2E Test Suite Styles */
+
+/* Page container */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Test grid for display items */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.test-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+/* Section styles */
+section {
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* Test element base styles */
+[data-testid] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for test containers */
+.overflow-auto::-webkit-scrollbar,
+.overflow-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-track,
+.overflow-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb,
+.overflow-scroll::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover,
+.overflow-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .page-container {
+  color: #f3f4f6;
+}
+
+.dark section h2 {
+  color: #f3f4f6;
+}
+
+.dark .test-item {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+/* Fix for fixed position element */
+[data-testid="position-fixed"] {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+/* Code display */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

@@ -1,119 +1,194 @@
 // ============================================================================
-// Spacing Utilities
+// Spacing Utilities (CSS Custom Properties)
 // ============================================================================
+// All spacing values use CSS custom properties for runtime customization
 
 @use 'sass:map';
+@use 'sass:string';
 @use '../config/settings' as settings;
 @use '../config/breakpoints' as bp;
 @use '../mixins/utilities';
 
 @if settings.$enable-spacing == true {
-  // Standard spacing scale (using mixin)
-  @include utilities.generate-from-map('m', 'margin', settings.$spacing-scale);
-  @include utilities.generate-from-map('mt', 'margin-top', settings.$spacing-scale);
-  @include utilities.generate-from-map('mr', 'margin-right', settings.$spacing-scale);
-  @include utilities.generate-from-map('mb', 'margin-bottom', settings.$spacing-scale);
-  @include utilities.generate-from-map('ml', 'margin-left', settings.$spacing-scale);
+  // ============================================================================
+  // CSS Variable-based Spacing Scale (Integer values only)
+  // ============================================================================
+  $spacing-scale-int: (
+    0: var(--spacing-0),
+    1: var(--spacing-1),
+    2: var(--spacing-2),
+    3: var(--spacing-3),
+    4: var(--spacing-4),
+    5: var(--spacing-5),
+    6: var(--spacing-6),
+    7: var(--spacing-7),
+    8: var(--spacing-8),
+    9: var(--spacing-9),
+    10: var(--spacing-10),
+    11: var(--spacing-11),
+    12: var(--spacing-12),
+    14: var(--spacing-14),
+    16: var(--spacing-16),
+    20: var(--spacing-20),
+    24: var(--spacing-24),
+    28: var(--spacing-28),
+    32: var(--spacing-32),
+    36: var(--spacing-36),
+    40: var(--spacing-40),
+    44: var(--spacing-44),
+    48: var(--spacing-48),
+    52: var(--spacing-52),
+    56: var(--spacing-56),
+    60: var(--spacing-60),
+    64: var(--spacing-64),
+    72: var(--spacing-72),
+    80: var(--spacing-80),
+    96: var(--spacing-96)
+  );
 
-  // Margin-x and margin-y for standard scale
-  @each $key, $value in settings.$spacing-scale {
-    .mx-#{$key} {
-      margin-left: $value;
-      margin-right: $value;
-    }
-    .my-#{$key} {
-      margin-top: $value;
-      margin-bottom: $value;
-    }
+  // ============================================================================
+  // Integer Spacing Utilities
+  // ============================================================================
+  // Margin all sides
+  @each $key, $value in $spacing-scale-int {
+    .m-#{$key} { margin: $value; }
+    .mt-#{$key} { margin-top: $value; }
+    .mr-#{$key} { margin-right: $value; }
+    .mb-#{$key} { margin-bottom: $value; }
+    .ml-#{$key} { margin-left: $value; }
+    .mx-#{$key} { margin-left: $value; margin-right: $value; }
+    .my-#{$key} { margin-top: $value; margin-bottom: $value; }
   }
 
-  // Padding utilities (using mixin)
-  @include utilities.generate-from-map('p', 'padding', settings.$spacing-scale);
-  @include utilities.generate-from-map('pt', 'padding-top', settings.$spacing-scale);
-  @include utilities.generate-from-map('pr', 'padding-right', settings.$spacing-scale);
-  @include utilities.generate-from-map('pb', 'padding-bottom', settings.$spacing-scale);
-  @include utilities.generate-from-map('pl', 'padding-left', settings.$spacing-scale);
-
-  // Padding-x and padding-y for standard scale
-  @each $key, $value in settings.$spacing-scale {
-    .px-#{$key} {
-      padding-left: $value;
-      padding-right: $value;
-    }
-    .py-#{$key} {
-      padding-top: $value;
-      padding-bottom: $value;
-    }
+  // Padding all sides
+  @each $key, $value in $spacing-scale-int {
+    .p-#{$key} { padding: $value; }
+    .pt-#{$key} { padding-top: $value; }
+    .pr-#{$key} { padding-right: $value; }
+    .pb-#{$key} { padding-bottom: $value; }
+    .pl-#{$key} { padding-left: $value; }
+    .px-#{$key} { padding-left: $value; padding-right: $value; }
+    .py-#{$key} { padding-top: $value; padding-bottom: $value; }
   }
 
-  // Gap utilities for flexbox and grid
-  @include utilities.generate-from-map('gap', 'gap', settings.$spacing-scale);
-  @include utilities.generate-from-map('gap-x', 'column-gap', settings.$spacing-scale);
-  @include utilities.generate-from-map('gap-y', 'row-gap', settings.$spacing-scale);
+  // Gap utilities
+  @each $key, $value in $spacing-scale-int {
+    .gap-#{$key} { gap: $value; }
+    .gap-x-#{$key} { column-gap: $value; }
+    .gap-y-#{$key} { row-gap: $value; }
+  }
 
-  // Manual fractional spacing utilities (keys that can't be used in generate-from-map)
-  // m-0.5, mt-0.5, etc
-  .m-0\.5 { margin: 0.125rem; }
-  .mt-0\.5 { margin-top: 0.125rem; }
-  .mr-0\.5 { margin-right: 0.125rem; }
-  .mb-0\.5 { margin-bottom: 0.125rem; }
-  .ml-0\.5 { margin-left: 0.125rem; }
-  .mx-0\.5 { margin-left: 0.125rem; margin-right: 0.125rem; }
-  .my-0\.5 { margin-top: 0.125rem; margin-bottom: 0.125rem; }
+  // ============================================================================
+  // Fractional Spacing Utilities (Manual with escaped class names)
+  // ============================================================================
+  // px spacing
+  .m-px { margin: var(--spacing-px); }
+  .mt-px { margin-top: var(--spacing-px); }
+  .mr-px { margin-right: var(--spacing-px); }
+  .mb-px { margin-bottom: var(--spacing-px); }
+  .ml-px { margin-left: var(--spacing-px); }
+  .mx-px { margin-left: var(--spacing-px); margin-right: var(--spacing-px); }
+  .my-px { margin-top: var(--spacing-px); margin-bottom: var(--spacing-px); }
 
-  // m-1.5, mt-1.5, etc
-  .m-1\.5 { margin: 0.375rem; }
-  .mt-1\.5 { margin-top: 0.375rem; }
-  .mr-1\.5 { margin-right: 0.375rem; }
-  .mb-1\.5 { margin-bottom: 0.375rem; }
-  .ml-1\.5 { margin-left: 0.375rem; }
-  .mx-1\.5 { margin-left: 0.375rem; margin-right: 0.375rem; }
-  .my-1\.5 { margin-top: 0.375rem; margin-bottom: 0.375rem; }
+  .p-px { padding: var(--spacing-px); }
+  .pt-px { padding-top: var(--spacing-px); }
+  .pr-px { padding-right: var(--spacing-px); }
+  .pb-px { padding-bottom: var(--spacing-px); }
+  .pl-px { padding-left: var(--spacing-px); }
+  .px-px { padding-left: var(--spacing-px); padding-right: var(--spacing-px); }
+  .py-px { padding-top: var(--spacing-px); padding-bottom: var(--spacing-px); }
 
-  // m-2.5, mt-2.5, etc
-  .m-2\.5 { margin: 0.625rem; }
-  .mt-2\.5 { margin-top: 0.625rem; }
-  .mr-2\.5 { margin-right: 0.625rem; }
-  .mb-2\.5 { margin-bottom: 0.625rem; }
-  .ml-2\.5 { margin-left: 0.625rem; }
-  .mx-2\.5 { margin-left: 0.625rem; margin-right: 0.625rem; }
-  .my-2\.5 { margin-top: 0.625rem; margin-bottom: 0.625rem; }
+  .gap-px { gap: var(--spacing-px); }
+  .gap-x-px { column-gap: var(--spacing-px); }
+  .gap-y-px { row-gap: var(--spacing-px); }
 
-  // Padding fractional
-  .p-0\.5 { padding: 0.125rem; }
-  .pt-0\.5 { padding-top: 0.125rem; }
-  .pr-0\.5 { padding-right: 0.125rem; }
-  .pb-0\.5 { padding-bottom: 0.125rem; }
-  .pl-0\.5 { padding-left: 0.125rem; }
-  .px-0\.5 { padding-left: 0.125rem; padding-right: 0.125rem; }
-  .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+  // 0.5 spacing (using literal class name with dot escape)
+  .#{string.unquote('m-0\\.5')} { margin: var(--spacing-0-5); }
+  .#{string.unquote('mt-0\\.5')} { margin-top: var(--spacing-0-5); }
+  .#{string.unquote('mr-0\\.5')} { margin-right: var(--spacing-0-5); }
+  .#{string.unquote('mb-0\\.5')} { margin-bottom: var(--spacing-0-5); }
+  .#{string.unquote('ml-0\\.5')} { margin-left: var(--spacing-0-5); }
+  .#{string.unquote('mx-0\\.5')} { margin-left: var(--spacing-0-5); margin-right: var(--spacing-0-5); }
+  .#{string.unquote('my-0\\.5')} { margin-top: var(--spacing-0-5); margin-bottom: var(--spacing-0-5); }
 
-  .p-1\.5 { padding: 0.375rem; }
-  .pt-1\.5 { padding-top: 0.375rem; }
-  .pr-1\.5 { padding-right: 0.375rem; }
-  .pb-1\.5 { padding-bottom: 0.375rem; }
-  .pl-1\.5 { padding-left: 0.375rem; }
-  .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
-  .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+  .#{string.unquote('p-0\\.5')} { padding: var(--spacing-0-5); }
+  .#{string.unquote('pt-0\\.5')} { padding-top: var(--spacing-0-5); }
+  .#{string.unquote('pr-0\\.5')} { padding-right: var(--spacing-0-5); }
+  .#{string.unquote('pb-0\\.5')} { padding-bottom: var(--spacing-0-5); }
+  .#{string.unquote('pl-0\\.5')} { padding-left: var(--spacing-0-5); }
+  .#{string.unquote('px-0\\.5')} { padding-left: var(--spacing-0-5); padding-right: var(--spacing-0-5); }
+  .#{string.unquote('py-0\\.5')} { padding-top: var(--spacing-0-5); padding-bottom: var(--spacing-0-5); }
 
+  .#{string.unquote('gap-0\\.5')} { gap: var(--spacing-0-5); }
+  .#{string.unquote('gap-x-0\\.5')} { column-gap: var(--spacing-0-5); }
+  .#{string.unquote('gap-y-0\\.5')} { row-gap: var(--spacing-0-5); }
 
-  .p-2\.5 { padding: 0.625rem; }
-  .pt-2\.5 { padding-top: 0.625rem; }
-  .pr-2\.5 { padding-right: 0.625rem; }
-  .pb-2\.5 { padding-bottom: 0.625rem; }
-  .pl-2\.5 { padding-left: 0.625rem; }
-  .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
-  .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+  // 1.5 spacing
+  .#{string.unquote('m-1\\.5')} { margin: var(--spacing-1-5); }
+  .#{string.unquote('mt-1\\.5')} { margin-top: var(--spacing-1-5); }
+  .#{string.unquote('mr-1\\.5')} { margin-right: var(--spacing-1-5); }
+  .#{string.unquote('mb-1\\.5')} { margin-bottom: var(--spacing-1-5); }
+  .#{string.unquote('ml-1\\.5')} { margin-left: var(--spacing-1-5); }
+  .#{string.unquote('mx-1\\.5')} { margin-left: var(--spacing-1-5); margin-right: var(--spacing-1-5); }
+  .#{string.unquote('my-1\\.5')} { margin-top: var(--spacing-1-5); margin-bottom: var(--spacing-1-5); }
 
-  .p-3\.5 { padding: 0.875rem; }
-  .pt-3\.5 { padding-top: 0.875rem; }
-  .pr-3\.5 { padding-right: 0.875rem; }
-  .pb-3\.5 { padding-bottom: 0.875rem; }
-  .pl-3\.5 { padding-left: 0.875rem; }
-  .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
-  .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+  .#{string.unquote('p-1\\.5')} { padding: var(--spacing-1-5); }
+  .#{string.unquote('pt-1\\.5')} { padding-top: var(--spacing-1-5); }
+  .#{string.unquote('pr-1\\.5')} { padding-right: var(--spacing-1-5); }
+  .#{string.unquote('pb-1\\.5')} { padding-bottom: var(--spacing-1-5); }
+  .#{string.unquote('pl-1\\.5')} { padding-left: var(--spacing-1-5); }
+  .#{string.unquote('px-1\\.5')} { padding-left: var(--spacing-1-5); padding-right: var(--spacing-1-5); }
+  .#{string.unquote('py-1\\.5')} { padding-top: var(--spacing-1-5); padding-bottom: var(--spacing-1-5); }
 
-  // Auto margins
+  .#{string.unquote('gap-1\\.5')} { gap: var(--spacing-1-5); }
+  .#{string.unquote('gap-x-1\\.5')} { column-gap: var(--spacing-1-5); }
+  .#{string.unquote('gap-y-1\\.5')} { row-gap: var(--spacing-1-5); }
+
+  // 2.5 spacing
+  .#{string.unquote('m-2\\.5')} { margin: var(--spacing-2-5); }
+  .#{string.unquote('mt-2\\.5')} { margin-top: var(--spacing-2-5); }
+  .#{string.unquote('mr-2\\.5')} { margin-right: var(--spacing-2-5); }
+  .#{string.unquote('mb-2\\.5')} { margin-bottom: var(--spacing-2-5); }
+  .#{string.unquote('ml-2\\.5')} { margin-left: var(--spacing-2-5); }
+  .#{string.unquote('mx-2\\.5')} { margin-left: var(--spacing-2-5); margin-right: var(--spacing-2-5); }
+  .#{string.unquote('my-2\\.5')} { margin-top: var(--spacing-2-5); margin-bottom: var(--spacing-2-5); }
+
+  .#{string.unquote('p-2\\.5')} { padding: var(--spacing-2-5); }
+  .#{string.unquote('pt-2\\.5')} { padding-top: var(--spacing-2-5); }
+  .#{string.unquote('pr-2\\.5')} { padding-right: var(--spacing-2-5); }
+  .#{string.unquote('pb-2\\.5')} { padding-bottom: var(--spacing-2-5); }
+  .#{string.unquote('pl-2\\.5')} { padding-left: var(--spacing-2-5); }
+  .#{string.unquote('px-2\\.5')} { padding-left: var(--spacing-2-5); padding-right: var(--spacing-2-5); }
+  .#{string.unquote('py-2\\.5')} { padding-top: var(--spacing-2-5); padding-bottom: var(--spacing-2-5); }
+
+  .#{string.unquote('gap-2\\.5')} { gap: var(--spacing-2-5); }
+  .#{string.unquote('gap-x-2\\.5')} { column-gap: var(--spacing-2-5); }
+  .#{string.unquote('gap-y-2\\.5')} { row-gap: var(--spacing-2-5); }
+
+  // 3.5 spacing
+  .#{string.unquote('m-3\\.5')} { margin: var(--spacing-3-5); }
+  .#{string.unquote('mt-3\\.5')} { margin-top: var(--spacing-3-5); }
+  .#{string.unquote('mr-3\\.5')} { margin-right: var(--spacing-3-5); }
+  .#{string.unquote('mb-3\\.5')} { margin-bottom: var(--spacing-3-5); }
+  .#{string.unquote('ml-3\\.5')} { margin-left: var(--spacing-3-5); }
+  .#{string.unquote('mx-3\\.5')} { margin-left: var(--spacing-3-5); margin-right: var(--spacing-3-5); }
+  .#{string.unquote('my-3\\.5')} { margin-top: var(--spacing-3-5); margin-bottom: var(--spacing-3-5); }
+
+  .#{string.unquote('p-3\\.5')} { padding: var(--spacing-3-5); }
+  .#{string.unquote('pt-3\\.5')} { padding-top: var(--spacing-3-5); }
+  .#{string.unquote('pr-3\\.5')} { padding-right: var(--spacing-3-5); }
+  .#{string.unquote('pb-3\\.5')} { padding-bottom: var(--spacing-3-5); }
+  .#{string.unquote('pl-3\\.5')} { padding-left: var(--spacing-3-5); }
+  .#{string.unquote('px-3\\.5')} { padding-left: var(--spacing-3-5); padding-right: var(--spacing-3-5); }
+  .#{string.unquote('py-3\\.5')} { padding-top: var(--spacing-3-5); padding-bottom: var(--spacing-3-5); }
+
+  .#{string.unquote('gap-3\\.5')} { gap: var(--spacing-3-5); }
+  .#{string.unquote('gap-x-3\\.5')} { column-gap: var(--spacing-3-5); }
+  .#{string.unquote('gap-y-3\\.5')} { row-gap: var(--spacing-3-5); }
+
+  // ============================================================================
+  // Auto Margins
+  // ============================================================================
   .mx-auto { margin-left: auto; margin-right: auto; }
   .my-auto { margin-top: auto; margin-bottom: auto; }
   .mt-auto { margin-top: auto; }
@@ -122,12 +197,11 @@
   .ml-auto { margin-left: auto; }
   .m-auto { margin: auto; }
 
-  // Specific spacing values commonly used
-  .ml-64 { margin-left: 16rem; }
-
-  // Responsive spacing utilities for sm, md, lg, xl
+  // ============================================================================
+  // Responsive Spacing Utilities
+  // ============================================================================
   @media (min-width: bp.$breakpoint-sm) {
-    @each $key, $value in settings.$spacing-scale {
+    @each $key, $value in $spacing-scale-int {
       .sm\:m-#{$key} { margin: $value; }
       .sm\:mt-#{$key} { margin-top: $value; }
       .sm\:mr-#{$key} { margin-right: $value; }
@@ -143,14 +217,24 @@
       .sm\:pl-#{$key} { padding-left: $value; }
       .sm\:px-#{$key} { padding-left: $value; padding-right: $value; }
       .sm\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+      .sm\:gap-#{$key} { gap: $value; }
+      .sm\:gap-x-#{$key} { column-gap: $value; }
+      .sm\:gap-y-#{$key} { row-gap: $value; }
     }
+
+    // Auto margins
     .sm\:mx-auto { margin-left: auto; margin-right: auto; }
-    .sm\:ml-auto { margin-left: auto; }
+    .sm\:my-auto { margin-top: auto; margin-bottom: auto; }
+    .sm\:mt-auto { margin-top: auto; }
     .sm\:mr-auto { margin-right: auto; }
+    .sm\:mb-auto { margin-bottom: auto; }
+    .sm\:ml-auto { margin-left: auto; }
+    .sm\:m-auto { margin: auto; }
   }
 
   @media (min-width: bp.$breakpoint-md) {
-    @each $key, $value in settings.$spacing-scale {
+    @each $key, $value in $spacing-scale-int {
       .md\:m-#{$key} { margin: $value; }
       .md\:mt-#{$key} { margin-top: $value; }
       .md\:mr-#{$key} { margin-right: $value; }
@@ -166,16 +250,23 @@
       .md\:pl-#{$key} { padding-left: $value; }
       .md\:px-#{$key} { padding-left: $value; padding-right: $value; }
       .md\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+      .md\:gap-#{$key} { gap: $value; }
+      .md\:gap-x-#{$key} { column-gap: $value; }
+      .md\:gap-y-#{$key} { row-gap: $value; }
     }
+
+    // Auto margins
     .md\:mx-auto { margin-left: auto; margin-right: auto; }
-    .md\:ml-auto { margin-left: auto; }
+    .md\:mt-auto { margin-top: auto; }
     .md\:mr-auto { margin-right: auto; }
-    .md\:ml-64 { margin-left: 16rem; }
-    .md\:p-8 { padding: 2rem; }
+    .md\:mb-auto { margin-bottom: auto; }
+    .md\:ml-auto { margin-left: auto; }
+    .md\:m-auto { margin: auto; }
   }
 
   @media (min-width: bp.$breakpoint-lg) {
-    @each $key, $value in settings.$spacing-scale {
+    @each $key, $value in $spacing-scale-int {
       .lg\:m-#{$key} { margin: $value; }
       .lg\:mt-#{$key} { margin-top: $value; }
       .lg\:mr-#{$key} { margin-right: $value; }
@@ -191,14 +282,23 @@
       .lg\:pl-#{$key} { padding-left: $value; }
       .lg\:px-#{$key} { padding-left: $value; padding-right: $value; }
       .lg\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+      .lg\:gap-#{$key} { gap: $value; }
+      .lg\:gap-x-#{$key} { column-gap: $value; }
+      .lg\:gap-y-#{$key} { row-gap: $value; }
     }
+
+    // Auto margins
     .lg\:mx-auto { margin-left: auto; margin-right: auto; }
-    .lg\:ml-auto { margin-left: auto; }
+    .lg\:mt-auto { margin-top: auto; }
     .lg\:mr-auto { margin-right: auto; }
+    .lg\:mb-auto { margin-bottom: auto; }
+    .lg\:ml-auto { margin-left: auto; }
+    .lg\:m-auto { margin: auto; }
   }
 
   @media (min-width: bp.$breakpoint-xl) {
-    @each $key, $value in settings.$spacing-scale {
+    @each $key, $value in $spacing-scale-int {
       .xl\:m-#{$key} { margin: $value; }
       .xl\:mt-#{$key} { margin-top: $value; }
       .xl\:mr-#{$key} { margin-right: $value; }
@@ -214,14 +314,23 @@
       .xl\:pl-#{$key} { padding-left: $value; }
       .xl\:px-#{$key} { padding-left: $value; padding-right: $value; }
       .xl\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+      .xl\:gap-#{$key} { gap: $value; }
+      .xl\:gap-x-#{$key} { column-gap: $value; }
+      .xl\:gap-y-#{$key} { row-gap: $value; }
     }
+
+    // Auto margins
     .xl\:mx-auto { margin-left: auto; margin-right: auto; }
-    .xl\:ml-auto { margin-left: auto; }
+    .xl\:mt-auto { margin-top: auto; }
     .xl\:mr-auto { margin-right: auto; }
+    .xl\:mb-auto { margin-bottom: auto; }
+    .xl\:ml-auto { margin-left: auto; }
+    .xl\:m-auto { margin: auto; }
   }
 
   @media (min-width: bp.$breakpoint-xxl) {
-    @each $key, $value in settings.$spacing-scale {
+    @each $key, $value in $spacing-scale-int {
       .xxl\:m-#{$key} { margin: $value; }
       .xxl\:mt-#{$key} { margin-top: $value; }
       .xxl\:mr-#{$key} { margin-right: $value; }
@@ -237,9 +346,18 @@
       .xxl\:pl-#{$key} { padding-left: $value; }
       .xxl\:px-#{$key} { padding-left: $value; padding-right: $value; }
       .xxl\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+      .xxl\:gap-#{$key} { gap: $value; }
+      .xxl\:gap-x-#{$key} { column-gap: $value; }
+      .xxl\:gap-y-#{$key} { row-gap: $value; }
     }
+
+    // Auto margins
     .xxl\:mx-auto { margin-left: auto; margin-right: auto; }
-    .xxl\:ml-auto { margin-left: auto; }
+    .xxl\:mt-auto { margin-top: auto; }
     .xxl\:mr-auto { margin-right: auto; }
+    .xxl\:mb-auto { margin-bottom: auto; }
+    .xxl\:ml-auto { margin-left: auto; }
+    .xxl\:m-auto { margin: auto; }
   }
 }
