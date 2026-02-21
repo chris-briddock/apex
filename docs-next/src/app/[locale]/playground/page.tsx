@@ -7,13 +7,13 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { PlaygroundShare } from "@/components/PlaygroundShare";
 import { RotateCcw, Download } from "lucide-react";
 
-const defaultTemplate = `<div class="min-h-[200px] p-8 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
+const defaultTemplate = `<div class="min-h-[200px] p-8 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-primary to-secondary rounded-xl">
   <h1 class="text-3xl font-bold text-white">Hello Apex!</h1>
   <p class="text-white/80 text-center max-w-md">
     Try editing the HTML above to experiment with Apex utilities.
   </p>
   <div class="flex gap-2 mt-4">
-    <button class="px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-white/90 transition-colors">
+    <button class="px-4 py-2 bg-white text-primary rounded-lg font-medium hover:bg-white/90 transition-colors">
       Get Started
     </button>
     <button class="px-4 py-2 bg-white/20 text-white rounded-lg font-medium hover:bg-white/30 transition-colors">
@@ -26,19 +26,19 @@ const exampleSnippets = [
   {
     name: "Button Variants",
     html: `<div class="flex flex-wrap gap-4 p-8 items-center justify-center">
-  <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+  <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary transition-colors">
     Primary
   </button>
   <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">
     Secondary
   </button>
-  <button class="px-4 py-2 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors">
+  <button class="px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
     Outline
   </button>
-  <button class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+  <button class="px-4 py-2 bg-success text-white rounded-lg hover:bg-success transition-colors">
     Success
   </button>
-  <button class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+  <button class="px-4 py-2 bg-danger text-white rounded-lg hover:bg-danger transition-colors">
     Danger
   </button>
 </div>`,
@@ -47,13 +47,13 @@ const exampleSnippets = [
     name: "Card Component",
     html: `<div class="p-8 bg-gray-50 flex items-center justify-center">
   <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-sm">
-    <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+    <div class="h-48 bg-gradient-to-r from-primary to-secondary"></div>
     <div class="p-6">
       <h2 class="text-xl font-bold text-gray-900 mb-2">Card Title</h2>
       <p class="text-gray-600 mb-4">This is a sample card component built with Apex utility classes.</p>
       <div class="flex gap-2">
-        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">Design</span>
-        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm">Development</span>
+        <span class="px-2 py-1 bg-primary/10 text-primary rounded text-sm">Design</span>
+        <span class="px-2 py-1 bg-secondary/10 text-secondary rounded text-sm">Development</span>
       </div>
     </div>
   </div>
@@ -63,17 +63,17 @@ const exampleSnippets = [
     name: "Grid Layout",
     html: `<div class="p-8">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div class="p-6 bg-blue-500 rounded-xl text-white">
+    <div class="p-6 bg-primary rounded-xl text-white">
       <h3 class="font-bold text-lg">Feature 1</h3>
-      <p class="text-blue-100 mt-2">Description of the first feature.</p>
+      <p class="text-white/80 mt-2">Description of the first feature.</p>
     </div>
-    <div class="p-6 bg-purple-500 rounded-xl text-white">
+    <div class="p-6 bg-secondary rounded-xl text-white">
       <h3 class="font-bold text-lg">Feature 2</h3>
-      <p class="text-purple-100 mt-2">Description of the second feature.</p>
+      <p class="text-white/80 mt-2">Description of the second feature.</p>
     </div>
-    <div class="p-6 bg-green-500 rounded-xl text-white">
+    <div class="p-6 bg-success rounded-xl text-white">
       <h3 class="font-bold text-lg">Feature 3</h3>
-      <p class="text-green-100 mt-2">Description of the third feature.</p>
+      <p class="text-white/80 mt-2">Description of the third feature.</p>
     </div>
   </div>
 </div>`,
@@ -84,13 +84,13 @@ const exampleSnippets = [
   <form class="space-y-4">
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-      <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="you@example.com">
+      <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="you@example.com">
     </div>
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-      <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="••••••••">
+      <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="••••••••">
     </div>
-    <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+    <button type="submit" class="w-full py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary transition-colors font-medium">
       Sign In
     </button>
   </form>

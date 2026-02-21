@@ -301,3 +301,10 @@ export async function expectShadow(
     expect(actualValue).toBe(expected);
   }
 }
+
+/**
+ * Waits for styles to be applied
+ */
+export async function waitForStyles(page: Page, delay: number = 100): Promise<void> {
+  await page.waitForTimeout(delay);
+}
