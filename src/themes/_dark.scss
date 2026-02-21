@@ -25,6 +25,9 @@
       --color-danger: #f87171;
       --color-danger-light: #fca5a5;
       --color-danger-dark: #ef4444;
+      --color-error: #f87171;
+      --color-error-light: #fca5a5;
+      --color-error-dark: #ef4444;
       --color-warning: #fbbf24;
       --color-warning-light: #fcd34d;
       --color-warning-dark: #f59e0b;
@@ -33,20 +36,8 @@
       --color-info-dark: #0ea5e9;
       --color-light: #1f2937;
       --color-dark: #f3f4f6;
-      --color-white: #111827;
-      --color-black: #ffffff;
-
-      // Gray Scale (inverted for dark mode)
-      --color-gray-50: #111827;
-      --color-gray-100: #1f2937;
-      --color-gray-200: #374151;
-      --color-gray-300: #4b5563;
-      --color-gray-400: #6b7280;
-      --color-gray-500: #9ca3af;
-      --color-gray-600: #d1d5db;
-      --color-gray-700: #e5e7eb;
-      --color-gray-800: #f3f4f6;
-      --color-gray-900: #f9fafb;
+      --color-white: #ffffff;
+      --color-black: #111827;
 
       // Shadows (adjusted opacity for dark mode)
       --shadow-color: 0 0 0;
@@ -77,6 +68,9 @@
     --color-danger: #f87171;
     --color-danger-light: #fca5a5;
     --color-danger-dark: #ef4444;
+    --color-error: #f87171;
+    --color-error-light: #fca5a5;
+    --color-error-dark: #ef4444;
     --color-warning: #fbbf24;
     --color-warning-light: #fcd34d;
     --color-warning-dark: #f59e0b;
@@ -85,20 +79,8 @@
     --color-info-dark: #0ea5e9;
     --color-light: #1f2937;
     --color-dark: #f3f4f6;
-    --color-white: #111827;
-    --color-black: #ffffff;
-
-    // Gray Scale (inverted for dark mode)
-    --color-gray-50: #111827;
-    --color-gray-100: #1f2937;
-    --color-gray-200: #374151;
-    --color-gray-300: #4b5563;
-    --color-gray-400: #6b7280;
-    --color-gray-500: #9ca3af;
-    --color-gray-600: #d1d5db;
-    --color-gray-700: #e5e7eb;
-    --color-gray-800: #f3f4f6;
-    --color-gray-900: #f9fafb;
+    --color-white: #ffffff;
+    --color-black: #111827;
 
     // Shadows (adjusted opacity for dark mode)
     --shadow-color: 0 0 0;

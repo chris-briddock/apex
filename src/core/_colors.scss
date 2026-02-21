@@ -200,6 +200,7 @@
   .text-black { color: var(--color-black); }
   .text-transparent { color: var(--color-transparent); }
   .text-current { color: var(--color-current); }
+  .text-error { color: var(--color-error); }
 
   .bg-primary { background-color: var(--color-primary); }
   .bg-secondary { background-color: var(--color-secondary); }
@@ -213,6 +214,7 @@
   .bg-black { background-color: var(--color-black); }
   .bg-transparent { background-color: var(--color-transparent); }
   .bg-current { background-color: var(--color-current); }
+  .bg-error { background-color: var(--color-error); }
 
   .border-primary { border-color: var(--color-primary); }
   .border-secondary { border-color: var(--color-secondary); }
@@ -226,6 +228,7 @@
   .border-black { border-color: var(--color-black); }
   .border-transparent { border-color: var(--color-transparent); }
   .border-current { border-color: var(--color-current); }
+  .border-error { border-color: var(--color-error); }
 
   // ============================================================================
   // Opacity Variants (for backgrounds with CSS variables)
@@ -275,6 +278,9 @@
       }
       .bg-info\/#{$opacity-name} {
         background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
+      }
+      .bg-error\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-error) #{$opacity-name * 1%}, transparent);
       }
       .bg-white\/#{$opacity-name} {
         background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
@@ -345,7 +351,7 @@
     }
 
     // Dark mode semantic colors
-    @each $color in (primary, secondary, success, danger, warning, info, light, dark) {
+    @each $color in (primary, secondary, success, danger, error, warning, info, light, dark) {
       @media (prefers-color-scheme: dark) {
         .dark\:text-#{$color} { color: var(--color-#{$color}); }
         .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
@@ -433,7 +439,7 @@
     }
 
     // Semantic color hover states
-    @each $color in (primary, secondary, success, danger, warning, info) {
+    @each $color in (primary, secondary, success, danger, error, warning, info) {
       .dark\:hover\:bg-#{$color}:hover {
         background-color: var(--color-#{$color});
       }
