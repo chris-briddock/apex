@@ -1,0 +1,47 @@
+// ============================================================================
+// Transition Variables
+// ============================================================================
+
+// Transition durations
+$transition-base: 150ms !default;
+$transition-fast: 75ms !default;
+$transition-slow: 300ms !default;
+
+$transition-duration: (
+  75: $transition-fast,
+  150: $transition-base,
+  300: $transition-slow
+) !default;
+
+// Transition timing functions
+$transition-timing-function-ease: ease !default;
+$transition-timing-function-linear: linear !default;
+$transition-timing-function-ease-in: ease-in !default;
+$transition-timing-function-ease-out: ease-out !default;
+$transition-timing-function-ease-in-out: ease-in-out !default;
+
+$transition-timing-functions: (
+  ease: $transition-timing-function-ease,
+  linear: $transition-timing-function-linear,
+  ease-in: $transition-timing-function-ease-in,
+  ease-out: $transition-timing-function-ease-out,
+  ease-in-out: $transition-timing-function-ease-in-out
+) !default;
+
+// ============================================================================
+// CSS Custom Properties (for runtime theming)
+// ============================================================================
+
+:root {
+  // Transition durations
+  --transition-duration-75: #{$transition-fast};
+  --transition-duration-150: #{$transition-base};
+  --transition-duration-300: #{$transition-slow};
+
+  // Transition timing functions
+  --transition-timing-function-ease: #{$transition-timing-function-ease};
+  --transition-timing-function-linear: #{$transition-timing-function-linear};
+  --transition-timing-function-ease-in: #{$transition-timing-function-ease-in};
+  --transition-timing-function-ease-out: #{$transition-timing-function-ease-out};
+  --transition-timing-function-ease-in-out: #{$transition-timing-function-ease-in-out};
+}

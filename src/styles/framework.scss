@@ -17,17 +17,20 @@
 @use '../mixins/responsive';
 @use '../mixins/utilities';
 @use '../mixins/states';
-@use '../mixins/components';
+@use '../mixins/dark-mode';
 
 // Core Utilities
 @use '../core/spacing';
 @use '../core/sizing';
 @use '../core/typography';
+@use '../core/colors';
 @use '../core/flexbox';
 @use '../core/grid';
 @use '../core/positioning';
 @use '../core/display';
 @use '../core/borders';
+@use '../core/ring';
+@use '../core/divide';
 @use '../core/shadows';
 @use '../core/opacity';
 @use '../core/overflow';

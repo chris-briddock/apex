@@ -28,122 +28,127 @@
   --theme-spacing-md: #{$spacing-4};
   --theme-spacing-lg: #{$spacing-6};
   --theme-spacing-xl: #{$spacing-8};
+
+  // Opacity variables
+  --apex-text-opacity: 1;
+  --apex-bg-opacity: 1;
+  --apex-border-opacity: 1;
 }
 
 // Theme Classes
 // ============================================================================
 .theme-primary {
-  --tw-text-opacity: 1;
-  color: rgba($color-primary, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-primary, var(--apex-text-opacity));
 }
 
 .theme-secondary {
-  --tw-text-opacity: 1;
-  color: rgba($color-secondary, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-secondary, var(--apex-text-opacity));
 }
 
 .theme-success {
-  --tw-text-opacity: 1;
-  color: rgba($color-success, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-success, var(--apex-text-opacity));
 }
 
 .theme-danger {
-  --tw-text-opacity: 1;
-  color: rgba($color-danger, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-danger, var(--apex-text-opacity));
 }
 
 .theme-warning {
-  --tw-text-opacity: 1;
-  color: rgba($color-warning, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-warning, var(--apex-text-opacity));
 }
 
 .theme-info {
-  --tw-text-opacity: 1;
-  color: rgba($color-info, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-info, var(--apex-text-opacity));
 }
 
 .theme-light {
-  --tw-text-opacity: 1;
-  color: rgba($color-light, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-light, var(--apex-text-opacity));
 }
 
 .theme-dark {
-  --tw-text-opacity: 1;
-  color: rgba($color-dark, var(--tw-text-opacity));
+  --apex-text-opacity: 1;
+  color: rgba($color-dark, var(--apex-text-opacity));
 }
 
 // Background Theme Classes
 // ============================================================================
 .bg-theme-primary {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-primary, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-primary, var(--apex-bg-opacity));
 }
 
 .bg-theme-secondary {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-secondary, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-secondary, var(--apex-bg-opacity));
 }
 
 .bg-theme-success {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-success, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-success, var(--apex-bg-opacity));
 }
 
 .bg-theme-danger {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-danger, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-danger, var(--apex-bg-opacity));
 }
 
 .bg-theme-warning {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-warning, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-warning, var(--apex-bg-opacity));
 }
 
 .bg-theme-info {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-info, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-info, var(--apex-bg-opacity));
 }
 
 .bg-theme-light {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-light, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-light, var(--apex-bg-opacity));
 }
 
 .bg-theme-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgba($color-dark, var(--tw-bg-opacity));
+  --apex-bg-opacity: 1;
+  background-color: rgba($color-dark, var(--apex-bg-opacity));
 }
 
 // Border Theme Classes
 // ============================================================================
 .border-theme-primary {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-primary, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-primary, var(--apex-border-opacity));
 }
 
 .border-theme-secondary {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-secondary, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-secondary, var(--apex-border-opacity));
 }
 
 .border-theme-success {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-success, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-success, var(--apex-border-opacity));
 }
 
 .border-theme-danger {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-danger, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-danger, var(--apex-border-opacity));
 }
 
 .border-theme-warning {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-warning, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-warning, var(--apex-border-opacity));
 }
 
 .border-theme-info {
-  --tw-border-opacity: 1;
-  border-color: rgba($color-info, var(--tw-border-opacity));
+  --apex-border-opacity: 1;
+  border-color: rgba($color-info, var(--apex-border-opacity));
 }
 
 // Theme Color Variables for Dynamic Theming

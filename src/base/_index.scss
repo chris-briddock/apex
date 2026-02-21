@@ -2,7 +2,18 @@
 // Base Styles Entry Point
 // ============================================================================
 
+// Design tokens (individual imports)
+@forward 'colors' as color-*;
+@forward 'spacing' as spacing-*;
+@forward 'typography' as typography-*;
+@forward 'effects' as effects-*;
+@forward 'transitions' as transitions-*;
+@forward 'z-index' as z-index-*;
+
+// Legacy variables forward (for backwards compatibility)
 @forward 'variables' as var-*;
+
+// Base styles
 @forward 'reset';
 @forward 'normalize';
 @forward 'base';

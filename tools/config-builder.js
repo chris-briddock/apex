@@ -72,6 +72,8 @@ const defaultConfig = {
     focus: true,
     active: true,
     disabled: true,
+    darkMode: true,
+    rtl: true,
     animations: true,
     transforms: true,
     filters: true,

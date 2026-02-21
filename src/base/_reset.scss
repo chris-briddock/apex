@@ -2,6 +2,8 @@
 // CSS Reset
 // ============================================================================
 
+@use '../config/settings' as settings;
+
 // Box sizing reset
 *,
 *::before,
@@ -102,6 +104,19 @@ select:-webkit-autofill:focus {
 ::selection {
   background-color: #bfdbfe;
   color: #1e3a8a;
+
+  // Automatic dark mode for selection
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      background-color: #1e40af;
+      color: #bfdbfe;
+    }
+
+    .dark & {
+      background-color: #1e40af;
+      color: #bfdbfe;
+    }
+  }
 }
 
 // Remove default scrollbar
@@ -112,13 +127,63 @@ select:-webkit-autofill:focus {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+
+  // Automatic dark mode for scrollbar track
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      background: #1f2937;
+    }
+
+    .dark & {
+      background: #1f2937;
+    }
+  }
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
+
+  // Automatic dark mode for scrollbar thumb
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      background: #4b5563;
+    }
+
+    .dark & {
+      background: #4b5563;
+    }
+  }
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
+
+  // Automatic dark mode for scrollbar thumb hover
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      background: #6b7280;
+    }
+
+    .dark & {
+      background: #6b7280;
+    }
+  }
+}
+
+// Firefox scrollbar support
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+
+  // Automatic dark mode for Firefox scrollbar
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      scrollbar-color: #4b5563 #1f2937;
+    }
+
+    .dark & {
+      scrollbar-color: #4b5563 #1f2937;
+    }
+  }
 }

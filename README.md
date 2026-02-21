@@ -49,6 +49,7 @@ npm install apexcss
 ## Core Utilities
 
 ### Spacing
+
 Control margin, padding, and gap with consistent scale values.
 
 ```html
@@ -75,6 +76,7 @@ Control margin, padding, and gap with consistent scale values.
 ```
 
 ### Typography
+
 Complete typography control including fonts, sizes, weights, and text styling.
 
 ```html
@@ -134,6 +136,7 @@ Complete typography control including fonts, sizes, weights, and text styling.
 ```
 
 ### Colors
+
 Semantic color system with full gray scale.
 
 ```html
@@ -160,6 +163,7 @@ Semantic color system with full gray scale.
 ```
 
 ### Flexbox
+
 Complete flexbox control with all modern properties.
 
 ```html
@@ -216,6 +220,7 @@ Complete flexbox control with all modern properties.
 ```
 
 ### Grid
+
 CSS Grid utilities for complex layouts.
 
 ```html
@@ -250,6 +255,7 @@ CSS Grid utilities for complex layouts.
 ```
 
 ### Sizing
+
 Width, height, min/max sizing utilities.
 
 ```html
@@ -283,6 +289,7 @@ Width, height, min/max sizing utilities.
 ```
 
 ### Positioning
+
 Position and z-index utilities.
 
 ```html
@@ -315,6 +322,7 @@ Position and z-index utilities.
 ```
 
 ### Borders
+
 Border width, style, color, and radius.
 
 ```html
@@ -355,6 +363,7 @@ Border width, style, color, and radius.
 ```
 
 ### Shadows
+
 Box shadow utilities.
 
 ```html
@@ -369,6 +378,7 @@ Box shadow utilities.
 ```
 
 ### Display
+
 Display utilities for all common values.
 
 ```html
@@ -389,6 +399,7 @@ Display utilities for all common values.
 ```
 
 ### Opacity
+
 Opacity utilities with fine-grained control.
 
 ```html
@@ -424,6 +435,7 @@ Overflow control utilities.
 ```
 
 ### Visibility
+
 Visibility control.
 
 ```html
@@ -433,6 +445,7 @@ Visibility control.
 ```
 
 ### Transitions
+
 Animation and transition utilities.
 
 ```html
@@ -466,6 +479,7 @@ Animation and transition utilities.
 ```
 
 ### Cursor
+
 Cursor utilities for all common values.
 
 ```html
@@ -495,6 +509,7 @@ Text selection control.
 ```
 
 ### Pointer Events
+
 Pointer event control.
 
 ```html
@@ -503,6 +518,7 @@ Pointer event control.
 ```
 
 ### Resize
+
 Element resize control.
 
 ```html
@@ -513,6 +529,7 @@ Element resize control.
 ```
 
 ### Appearance
+
 Form element appearance reset.
 
 ```html
@@ -521,6 +538,7 @@ Form element appearance reset.
 ```
 
 ### List Style
+
 List styling utilities.
 
 ```html
@@ -532,6 +550,7 @@ List styling utilities.
 ```
 
 ### Object Fit
+
 Image/object fitting.
 
 ```html
@@ -550,6 +569,7 @@ Image/object fitting.
 ```
 
 ### Float
+
 Float utilities.
 
 ```html
@@ -565,6 +585,7 @@ Float utilities.
 ```
 
 ### Vertical Align
+
 Vertical alignment for inline elements.
 
 ```html
@@ -577,6 +598,7 @@ Vertical alignment for inline elements.
 ```
 
 ### Outline
+
 Focus outline styling.
 
 ```html
@@ -587,6 +609,7 @@ Focus outline styling.
 ```
 
 ### Isolation
+
 Stacking context control.
 
 ```html
@@ -595,6 +618,7 @@ Stacking context control.
 ```
 
 ### Will Change
+
 Performance hint for animations.
 
 ```html
@@ -606,6 +630,7 @@ Performance hint for animations.
 ## Extended Utilities
 
 ### Transforms
+
 CSS transform utilities.
 
 ```html
@@ -645,6 +670,7 @@ CSS transform utilities.
 ```
 
 ### Animations
+
 Extended animation library.
 
 ```html
@@ -679,6 +705,7 @@ Extended animation library.
 ```
 
 ### Filters
+
 CSS filter utilities.
 
 ```html
@@ -732,6 +759,7 @@ CSS filter utilities.
 ```
 
 ### Aspect Ratio
+
 Aspect ratio utilities.
 
 ```html

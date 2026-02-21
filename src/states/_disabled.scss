@@ -90,4 +90,88 @@
   .disabled\:select-all.disabled { user-select: all; }
   .disabled\:select-auto:disabled,
   .disabled\:select-auto.disabled { user-select: auto; }
+
+  // Dark mode disabled states
+  @if settings.$enable-dark-mode == true {
+    // Dark mode disabled text colors
+    @media (prefers-color-scheme: dark) {
+      .dark\:disabled\:text-primary:disabled,
+      .dark\:disabled\:text-primary.disabled { color: #60a5fa; }
+      .dark\:disabled\:text-secondary:disabled,
+      .dark\:disabled\:text-secondary.disabled { color: #94a3b8; }
+      .dark\:disabled\:text-success:disabled,
+      .dark\:disabled\:text-success.disabled { color: #4ade80; }
+      .dark\:disabled\:text-danger:disabled,
+      .dark\:disabled\:text-danger.disabled { color: #f87171; }
+      .dark\:disabled\:text-warning:disabled,
+      .dark\:disabled\:text-warning.disabled { color: #fbbf24; }
+      .dark\:disabled\:text-muted:disabled,
+      .dark\:disabled\:text-muted.disabled { color: #6b7280; }
+    }
+
+    .dark {
+      .dark\:disabled\:text-primary:disabled,
+      .dark\:disabled\:text-primary.disabled { color: #60a5fa; }
+      .dark\:disabled\:text-secondary:disabled,
+      .dark\:disabled\:text-secondary.disabled { color: #94a3b8; }
+      .dark\:disabled\:text-success:disabled,
+      .dark\:disabled\:text-success.disabled { color: #4ade80; }
+      .dark\:disabled\:text-danger:disabled,
+      .dark\:disabled\:text-danger.disabled { color: #f87171; }
+      .dark\:disabled\:text-warning:disabled,
+      .dark\:disabled\:text-warning.disabled { color: #fbbf24; }
+      .dark\:disabled\:text-muted:disabled,
+      .dark\:disabled\:text-muted.disabled { color: #6b7280; }
+    }
+
+    // Dark mode disabled background colors
+    @media (prefers-color-scheme: dark) {
+      .dark\:disabled\:bg-primary:disabled,
+      .dark\:disabled\:bg-primary.disabled { background-color: #60a5fa; }
+      .dark\:disabled\:bg-secondary:disabled,
+      .dark\:disabled\:bg-secondary.disabled { background-color: #94a3b8; }
+      .dark\:disabled\:bg-success:disabled,
+      .dark\:disabled\:bg-success.disabled { background-color: #4ade80; }
+      .dark\:disabled\:bg-danger:disabled,
+      .dark\:disabled\:bg-danger.disabled { background-color: #f87171; }
+      .dark\:disabled\:bg-warning:disabled,
+      .dark\:disabled\:bg-warning.disabled { background-color: #fbbf24; }
+      .dark\:disabled\:bg-muted:disabled,
+      .dark\:disabled\:bg-muted.disabled { background-color: #374151; }
+    }
+
+    .dark {
+      .dark\:disabled\:bg-primary:disabled,
+      .dark\:disabled\:bg-primary.disabled { background-color: #60a5fa; }
+      .dark\:disabled\:bg-secondary:disabled,
+      .dark\:disabled\:bg-secondary.disabled { background-color: #94a3b8; }
+      .dark\:disabled\:bg-success:disabled,
+      .dark\:disabled\:bg-success.disabled { background-color: #4ade80; }
+      .dark\:disabled\:bg-danger:disabled,
+      .dark\:disabled\:bg-danger.disabled { background-color: #f87171; }
+      .dark\:disabled\:bg-warning:disabled,
+      .dark\:disabled\:bg-warning.disabled { background-color: #fbbf24; }
+      .dark\:disabled\:bg-muted:disabled,
+      .dark\:disabled\:bg-muted.disabled { background-color: #374151; }
+    }
+
+    // Dark mode disabled border colors
+    @media (prefers-color-scheme: dark) {
+      .dark\:disabled\:border-primary:disabled,
+      .dark\:disabled\:border-primary.disabled { border-color: #60a5fa; }
+      .dark\:disabled\:border-secondary:disabled,
+      .dark\:disabled\:border-secondary.disabled { border-color: #94a3b8; }
+      .dark\:disabled\:border-muted:disabled,
+      .dark\:disabled\:border-muted.disabled { border-color: #4b5563; }
+    }
+
+    .dark {
+      .dark\:disabled\:border-primary:disabled,
+      .dark\:disabled\:border-primary.disabled { border-color: #60a5fa; }
+      .dark\:disabled\:border-secondary:disabled,
+      .dark\:disabled\:border-secondary.disabled { border-color: #94a3b8; }
+      .dark\:disabled\:border-muted:disabled,
+      .dark\:disabled\:border-muted.disabled { border-color: #4b5563; }
+    }
+  }
 }

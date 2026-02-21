@@ -68,35 +68,37 @@
     info: #0ea5e9,
     light: #f3f4f6,
     dark: #1f2937,
-    white: #fff,
-    black: #000,
-    transparent: transparent,
+    "white": #fff,
+    "black": #000,
+    "transparent": transparent,
     current: currentcolor
   );
   @include utilities.generate-from-map('border', 'border-color', $border-colors);
 
   // Responsive border radius
-  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-    @include responsive.respond-above($breakpoint) {
-      @each $key, $value in settings.$border-radius-scale {
-        .#{$breakpoint}\:rounded-#{$key} { border-radius: $value; }
-        .#{$breakpoint}\:rounded-t-#{$key} {
-          border-top-left-radius: $value;
-          border-top-right-radius: $value;
-        }
-        .#{$breakpoint}\:rounded-r-#{$key} {
-          border-top-right-radius: $value;
-          border-bottom-right-radius: $value;
-        }
-        .#{$breakpoint}\:rounded-b-#{$key} {
-          border-bottom-left-radius: $value;
-          border-bottom-right-radius: $value;
-        }
-        .#{$breakpoint}\:rounded-l-#{$key} {
-          border-top-left-radius: $value;
-          border-bottom-left-radius: $value;
-        }
+  @media (min-width: bp.$breakpoint-xxl) {
+    @each $key, $value in settings.$border-radius-scale {
+      .xxl\:rounded-#{$key} { border-radius: $value; }
+      .xxl\:rounded-t-#{$key} {
+        border-top-left-radius: $value;
+        border-top-right-radius: $value;
       }
+      .xxl\:rounded-r-#{$key} {
+        border-top-right-radius: $value;
+        border-bottom-right-radius: $value;
+      }
+      .xxl\:rounded-b-#{$key} {
+        border-bottom-left-radius: $value;
+        border-bottom-right-radius: $value;
+      }
+      .xxl\:rounded-l-#{$key} {
+        border-top-left-radius: $value;
+        border-bottom-left-radius: $value;
+      }
+      .xxl\:rounded-tl-#{$key} { border-top-left-radius: $value; }
+      .xxl\:rounded-tr-#{$key} { border-top-right-radius: $value; }
+      .xxl\:rounded-br-#{$key} { border-bottom-right-radius: $value; }
+      .xxl\:rounded-bl-#{$key} { border-bottom-left-radius: $value; }
     }
   }
 }

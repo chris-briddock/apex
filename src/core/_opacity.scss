@@ -15,13 +15,11 @@
     }
   }
 
-  // Responsive opacity variants
-  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-    @include responsive.respond-above($breakpoint) {
-      @each $key, $value in settings.$opacity-scale {
-        .#{$breakpoint}\:opacity-#{$key} {
-          opacity: $value;
-        }
+  // Responsive opacity variants for xxl breakpoint
+  @media (min-width: bp.$breakpoint-xxl) {
+    @each $key, $value in settings.$opacity-scale {
+      .xxl\:opacity-#{$key} {
+        opacity: $value;
       }
     }
   }
