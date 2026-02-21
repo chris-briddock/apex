@@ -70,7 +70,6 @@ export const navigation: NavSection[] = [
     items: [
       { title: "Community", href: "/community" },
       { title: "Contributing", href: "/contributing" },
-      { title: "Changelog", href: "/changelog" },
     ],
   },
   {

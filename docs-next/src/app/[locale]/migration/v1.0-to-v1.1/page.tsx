@@ -181,13 +181,6 @@ module.exports = {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("nextSteps.title")}</h2>
         <div className="flex flex-wrap gap-4">
           <Link
-            href="/changelog"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            {t("nextSteps.viewChangelog")}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
             href="/"
             className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >

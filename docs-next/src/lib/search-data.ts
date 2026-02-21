@@ -162,13 +162,6 @@ export const searchData: SearchItem[] = [
     keywords: ["contribute", "contribution", "developer", "open source"],
   },
   {
-    title: "Changelog",
-    description: "Release history and changes.",
-    href: "/changelog/",
-    category: "Community",
-    keywords: ["changelog", "release", "version", "history"],
-  },
-  {
     title: "Playground",
     description: "Try Apex utilities directly in your browser.",
     href: "/playground/",

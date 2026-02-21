@@ -104,14 +104,6 @@ export function VersionSwitcher() {
               </button>
             ))}
           </div>
-          <div className="border-t border-gray-200 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800/50">
-            <Link
-              href="/changelog"
-              className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
-            >
-              View Changelog →
-            </Link>
-          </div>
         </div>
       )}
     </div>

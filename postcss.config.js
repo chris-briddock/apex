@@ -20,107 +20,107 @@ export default {
       flexbox: 'no-2009'
     }),
 
-    // Remove unused CSS in production
-    // NOTE: Disable PurgeCSS if you need all classes available
-    // PurgeCSS only keeps classes found in your HTML/JSX files
-    ...(false && isProduction ? [
-      purgeCSSPlugin({
-        // Scan these files for used CSS classes
-        content: [
-          './**/*.html',
-          './**/*.htm',
-          './**/*.js',
-          './**/*.jsx',
-          './**/*.ts',
-          './**/*.tsx',
-          './**/*.vue',
-          './**/*.svelte',
-          './**/*.php',
-          './**/*.rb',
-          './**/*.erb',
-          './docs/**/*',
-          './docs-next/**/*',
-          './tests/e2e/**/*'
-        ],
+    // // Remove unused CSS in production
+    // // NOTE: Disable PurgeCSS if you need all classes available
+    // // PurgeCSS only keeps classes found in your HTML/JSX files
+    // ...(false && isProduction ? [
+    //   purgeCSSPlugin({
+    //     // Scan these files for used CSS classes
+    //     content: [
+    //       './**/*.html',
+    //       './**/*.htm',
+    //       './**/*.js',
+    //       './**/*.jsx',
+    //       './**/*.ts',
+    //       './**/*.tsx',
+    //       './**/*.vue',
+    //       './**/*.svelte',
+    //       './**/*.php',
+    //       './**/*.rb',
+    //       './**/*.erb',
+    //       './docs/**/*',
+    //       './docs-next/**/*',
+    //       './tests/e2e/**/*'
+    //     ],
 
-        // CSS selectors to always keep (safelist)
-        safelist: [
-          // Base HTML elements
-          /^(html|body|head|title|meta|link|script|style)$/,
+    //     // CSS selectors to always keep (safelist)
+    //     safelist: [
+    //       // Base HTML elements
+    //       /^(html|body|head|title|meta|link|script|style)$/,
 
-          // ApexCSS utility patterns that might be dynamically constructed
-          /^apex-/,
+    //       // ApexCSS utility patterns that might be dynamically constructed
+    //       /^apex-/,
 
-          // State variants (hover, focus, etc.)
-          /-(hover|focus|active|disabled|visited|before|after|first|last|odd|even|group-hover|group-focus|focus-within|focus-visible)$/,
-          /^-(hover|focus|active|disabled):/,
+    //       // State variants (hover, focus, etc.)
+    //       /-(hover|focus|active|disabled|visited|before|after|first|last|odd|even|group-hover|group-focus|focus-within|focus-visible)$/,
+    //       /^-(hover|focus|active|disabled):/,
 
-          // Responsive prefixes
-          /^(sm|md|lg|xl|xxl):/,
+    //       // Responsive prefixes
+    //       /^(sm|md|lg|xl|xxl):/,
 
-          // Dark mode
-          /^dark:/,
-          /^dark/,
+    //       // Dark mode
+    //       /^dark:/,
+    //       /^dark/,
 
-          // RTL
-          /^rtl:/,
+    //       // RTL
+    //       /^rtl:/,
 
-          // Animation
-          /^animate-/,
-          /^transition-/,
+    //       // Animation
+    //       /^animate-/,
+    //       /^transition-/,
 
-          // Screen reader utilities
-          /^sr-only/,
-          /^not-sr-only/,
+    //       // Screen reader utilities
+    //       /^sr-only/,
+    //       /^not-sr-only/,
 
-          // Common dynamic patterns
-          /^col-(start|end)-/,
-          /^row-(start|end)-/,
+    //       // Common dynamic patterns
+    //       /^col-(start|end)-/,
+    //       /^row-(start|end)-/,
 
-          // Opacity modifiers (color/opacity) - matches bg-gray-800/50, text-white/75, etc.
-          /\/(5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100)$/,
+    //       // Opacity modifiers (color/opacity) - matches bg-gray-800/50, text-white/75, etc.
+    //       /\/(5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100)$/,
 
-          // Dark mode with opacity modifiers - matches dark:bg-gray-800/50, etc.
-          /^dark:bg-.*\/\d+$/,
-          /^dark:text-.*\/\d+$/,
-          /^dark:border-.*\/\d+$/,
+    //       // Dark mode with opacity modifiers - matches dark:bg-gray-800/50, etc.
+    //       /^dark:bg-.*\/\d+$/,
+    //       /^dark:text-.*\/\d+$/,
+    //       /^dark:border-.*\/\d+$/,
 
-          // Arbitrary values
-          /\[.*\]/,
+    //       // Arbitrary values
+    //       /\[.*\]/,
 
-          // Data attributes commonly used
-          /\[data-.*\]/,
+    //       // Data attributes commonly used
+    //       /\[data-.*\]/,
 
-          // Container queries
-          /@container/,
+    //       // Container queries
+    //       /@container/,
 
-        ],
+    //     ],
 
-        // Extract CSS classes from content
-        extractors: [
-          {
-            extractor: (content) => {
-              // Match class names including Tailwind-like arbitrary values
-              const matches = content.match(/[^<>'"`\s]*[^<>'"`\s:]/g) || [];
-              return [...new Set(matches)];
-            },
-            extensions: ['html', 'htm', 'js', 'jsx', 'ts', 'tsx', 'vue', 'svelte', 'php', 'rb', 'erb']
-          }
-        ],
+    //     // Extract CSS classes from content
+    //     extractors: [
+    //       {
+    //         extractor: (content) => {
+    //           // Match class names including Tailwind-like arbitrary values
+    //           const matches = content.match(/[^<>'"`\s]*[^<>'"`\s:]/g) || [];
+    //           return [...new Set(matches)];
+    //         },
+    //         extensions: ['html', 'htm', 'js', 'jsx', 'ts', 'tsx', 'vue', 'svelte', 'php', 'rb', 'erb']
+    //       }
+    //     ],
 
-        // Options
-        rejected: true, // Log removed selectors
+    //     // Options
+    //     rejected: true, // Log removed selectors
 
-        // Remove unused @font-face rules
-        fontFace: true,
+    //     // Remove unused @font-face rules
+    //     fontFace: true,
 
-        // Remove unused @keyframes
-        keyframes: true,
+    //     // Remove unused @keyframes
+    //     keyframes: true,
 
-        // Remove unused CSS variables
-        variables: true,
-      })
-    ] : []),
+    //     // Remove unused CSS variables
+    //     variables: true,
+    //   })
+    // ] : []),
 
     // Minify CSS in production
     ...(false && isProduction ? [

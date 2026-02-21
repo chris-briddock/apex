@@ -7,7 +7,6 @@ const pageRoutes = {
     '/accessibility',
     '/api-reference',
     '/browser-support',
-    '/changelog',
     '/cheatsheet',
     '/community',
     '/components',

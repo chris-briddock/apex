@@ -45,8 +45,5 @@ export async function setVersionPreference(version: string) {
   // In production, this could update user preferences in a database
   console.log("Version preference set:", version);
 
-  // Revalidate the changelog page
-  revalidatePath("/changelog");
-
   return { success: true };
 }
