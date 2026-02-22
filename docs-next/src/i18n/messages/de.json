@@ -501,26 +501,42 @@
     },
     "designSystem": {
       "title": "Design-System",
-      "description": "Apex bietet ein umfassendes Design-System mit konsistenten Farben, Typografie, Abständen und mehr.",
+      "description": "Erkunden Sie das Apex Design-System mit interaktiven Farbpaletten, Abstandsskalen, Typografie-Mustern und Live-Themen-Anpassung. Alle Design-Tokens verwenden CSS-Custom-Properties für einfache Anpassung.",
       "colors": {
         "title": "Farben",
-        "description": "Ein semantisches Farbsystem mit primären, sekundären, Erfolgs-, Warn- und Fehlerfarben."
+        "description": "Ein umfassendes Farbsystem mit semantischen Farben und vollständigen Paletten. Klicken Sie auf eine Farbe, um ihre CSS-Variable zu kopieren.",
+        "semantic": "Semantische Farben",
+        "palettes": "Farbpaletten",
+        "contrast": "Kontrast-Prüfer",
+        "contrastDescription": "Überprüfen Sie die Barrierefreiheit-Kontrastverhältnisse zwischen Farben, um die WCAG-Konformität sicherzustellen."
       },
       "typography": {
         "title": "Typografie",
-        "description": "Konsistente Typografieskala für Überschriften und Fließtext:"
+        "description": "Ein vollständiges Typografie-System mit Schriftgrößen, Gewichten, Zeilenhöhen und Zeichenabständen. Änderungen live anzeigen und CSS-Variablen kopieren."
       },
       "spacing": {
         "title": "Abstand",
-        "description": "Konsistente Abstandsskala für Ränder und Padding:"
+        "description": "34 Abstandswerte von 0 bis 24rem. Verwendung für Ränder, Padding, Abstände und mehr. Anzeige in Listen-, Stapel- oder Vergleichsansicht."
       },
       "borderRadius": {
-        "title": "Border-Radius",
-        "description": "Konsistente Border-Radius-Skala:"
+        "title": "Rahmen & Schatten",
+        "description": "Border-Radius- und Schattenskalen für konsistente Erhöhung und Rundung. Enthält individuelle Ecken-Utilities."
       },
       "shadows": {
         "title": "Schatten",
-        "description": "Konsistente Schattenskala für Erhöhung:"
+        "description": "8 Ebenen von Box-Schatten von none bis 2xl. Verwenden Sie Schatten, um Tiefe und Erhöhung in Ihren Designs zu erzeugen."
+      },
+      "themePlayground": {
+        "title": "Themen-Spielplatz",
+        "description": "Passen Sie Farben, Border-Radius und Schatten in Echtzeit an. Kopieren Sie das generierte CSS, um es in Ihrem Projekt zu verwenden."
+      },
+      "cssVariables": {
+        "title": "CSS-Variablen",
+        "description": "Alle Apex Design-Tokens sind als CSS-Custom-Properties verfügbar. Überschreiben Sie sie, um Ihr Thema anzupassen."
+      },
+      "quickReference": {
+        "title": "Schnellreferenz",
+        "description": "Schnelle Nachschlagetabelle für häufige Utility-Klassen-Muster und ihre CSS-Entsprechungen."
       }
     },
     "faq": {

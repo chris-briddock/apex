@@ -461,26 +461,42 @@
     },
     "designSystem": {
       "title": "Design System",
-      "description": "Apex provides a comprehensive design system with consistent colors, typography, spacing, and more.",
+      "description": "Explore the Apex design system with interactive color palettes, spacing scales, typography specimens, and live theme customization. All design tokens use CSS custom properties for easy customization.",
       "colors": {
         "title": "Colors",
-        "description": "A semantic color system with primary, secondary, success, warning, and error colors."
+        "description": "A comprehensive color system with semantic colors and full palettes. Click any color to copy its CSS variable.",
+        "semantic": "Semantic Colors",
+        "palettes": "Color Palettes",
+        "contrast": "Contrast Checker",
+        "contrastDescription": "Check accessibility contrast ratios between colors to ensure WCAG compliance."
       },
       "typography": {
         "title": "Typography",
-        "description": "Consistent typography scale for headings and body text:"
+        "description": "A complete typography system with font sizes, weights, line heights, and letter spacing. Preview changes live and copy CSS variables."
       },
       "spacing": {
         "title": "Spacing",
-        "description": "Consistent spacing scale for margins and padding:"
+        "description": "34 spacing values from 0 to 24rem. Use for margins, padding, gaps, and more. View in list, stack, or comparison modes."
       },
       "borderRadius": {
-        "title": "Border Radius",
-        "description": "Consistent border radius scale:"
+        "title": "Borders & Shadows",
+        "description": "Border radius and shadow scales for consistent elevation and rounding. Includes individual corner utilities."
       },
       "shadows": {
         "title": "Shadows",
-        "description": "Consistent shadow scale for elevation:"
+        "description": "8 levels of box shadows from none to 2xl. Use shadows to create depth and elevation in your designs."
+      },
+      "themePlayground": {
+        "title": "Theme Playground",
+        "description": "Customize colors, border radius, and shadows in real-time. Copy the generated CSS to use in your project."
+      },
+      "cssVariables": {
+        "title": "CSS Variables",
+        "description": "All Apex design tokens are available as CSS custom properties. Override them to customize your theme."
+      },
+      "quickReference": {
+        "title": "Quick Reference",
+        "description": "Quick lookup table for common utility class patterns and their CSS equivalents."
       }
     },
     "faq": {

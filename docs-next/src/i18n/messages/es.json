@@ -500,27 +500,43 @@
       }
     },
     "designSystem": {
-      "title": "Sistema de diseño",
-      "description": "Apex proporciona un sistema de diseño completo con colores, tipografía, espaciado y más consistentes.",
+      "title": "Sistema de Diseño",
+      "description": "Explore el sistema de diseño Apex con paletas de colores interactivas, escalas de espaciado, especímenes tipográficos y personalización de temas en vivo. Todos los tokens de diseño utilizan propiedades CSS personalizadas para una fácil personalización.",
       "colors": {
         "title": "Colores",
-        "description": "Un sistema de color semántico con colores primarios, secundarios, de éxito, advertencia y error."
+        "description": "Un sistema de color completo con colores semánticos y paletas completas. Haga clic en cualquier color para copiar su variable CSS.",
+        "semantic": "Colores Semánticos",
+        "palettes": "Paletas de Color",
+        "contrast": "Verificador de Contraste",
+        "contrastDescription": "Verifique las relaciones de contraste de accesibilidad entre colores para garantizar el cumplimiento de WCAG."
       },
       "typography": {
         "title": "Tipografía",
-        "description": "Escala de tipografía consistente para encabezados y texto del cuerpo:"
+        "description": "Un sistema tipográfico completo con tamaños de fuente, pesos, alturas de línea y espaciado entre letras. Vista previa de cambios en vivo y copie variables CSS."
       },
       "spacing": {
         "title": "Espaciado",
-        "description": "Escala de espaciado consistente para márgenes y relleno:"
+        "description": "34 valores de espaciado de 0 a 24rem. Uso para márgenes, relleno, espacios y más. Ver en modos de lista, pila o comparación."
       },
       "borderRadius": {
-        "title": "Radio de borde",
-        "description": "Escala de radio de borde consistente:"
+        "title": "Bordes y Sombras",
+        "description": "Escalas de radio de borde y sombras para elevación y redondeo consistentes. Incluye utilidades de esquinas individuales."
       },
       "shadows": {
         "title": "Sombras",
-        "description": "Escala de sombra consistente para elevación:"
+        "description": "8 niveles de sombras de caja de none a 2xl. Use sombras para crear profundidad y elevación en sus diseños."
+      },
+      "themePlayground": {
+        "title": "Área de Juegos de Temas",
+        "description": "Personalice colores, radio de borde y sombras en tiempo real. Copie el CSS generado para usarlo en su proyecto."
+      },
+      "cssVariables": {
+        "title": "Variables CSS",
+        "description": "Todos los tokens de diseño Apex están disponibles como propiedades CSS personalizadas. Sobrescribalas para personalizar su tema."
+      },
+      "quickReference": {
+        "title": "Referencia Rápida",
+        "description": "Tabla de referencia rápida para patrones comunes de clases de utilidad y sus equivalentes CSS."
       }
     },
     "faq": {
