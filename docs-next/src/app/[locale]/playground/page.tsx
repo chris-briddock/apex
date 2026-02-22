@@ -32,7 +32,7 @@ const exampleSnippets = [
   <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">
     Secondary
   </button>
-  <button class="px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+  <button class="px-4 py-2 border-2 border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
     Outline
   </button>
   <button class="px-4 py-2 bg-success text-white rounded-lg hover:bg-success transition-colors">

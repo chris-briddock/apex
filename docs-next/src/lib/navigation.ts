@@ -27,6 +27,7 @@ export const navigation: NavSection[] = [
   {
     title: "Core Concepts",
     items: [
+      { title: "Base Styles", href: "/base" },
       { title: "Utilities", href: "/utilities" },
       { title: "Components", href: "/components" },
       { title: "Responsive Design", href: "/responsive-design" },
@@ -102,6 +103,12 @@ export const utilityLinks = [
   { title: "Grid", href: "/utilities/grid", description: "Grid layout utilities" },
   { title: "Borders", href: "/utilities/borders", description: "Border utilities" },
   { title: "Sizing", href: "/utilities/sizing", description: "Width and height utilities" },
+  { title: "Positioning", href: "/utilities/positioning", description: "Position, inset, and z-index utilities" },
+  { title: "Display", href: "/utilities/display", description: "Display property utilities" },
+  { title: "Opacity", href: "/utilities/opacity", description: "Transparency and opacity utilities" },
+  { title: "Shadows", href: "/utilities/shadows", description: "Box shadow and elevation utilities" },
+  { title: "Transitions", href: "/utilities/transitions", description: "Transitions and animations" },
+  { title: "Visibility", href: "/utilities/visibility", description: "Visibility without affecting layout" },
 ];
 
 /**

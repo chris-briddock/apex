@@ -50,22 +50,206 @@
     },
     "accessibility": {
       "title": "Accessibilité",
-      "description": "Fonctionnalités d'accessibilité dans Apex",
+      "description": "Fonctionnalités complètes d'accessibilité dans le Framework CSS Apex incluant le support pour lecteurs d'écran, la gestion du focus, les préférences de mouvement réduit et les utilitaires de mode de contraste élevé.",
       "wcagCompliance": {
         "title": "Conformité WCAG",
-        "content": "Apex est conçu avec l'accessibilité à l'esprit et vise à respecter les normes WCAG 2.1 AA."
+        "content": "Apex est conçu avec l'accessibilité à l'esprit et vise à respecter les normes WCAG 2.1 AA. Toutes les utilitaires d'accessibilité sont optionnelles et peuvent être activées ou désactivées via la configuration."
       },
       "screenReaderClasses": {
         "title": "Classes de lecteur d'écran",
-        "description": "Masquer le contenu visuellement tout en le gardant accessible aux technologies d'assistance:"
+        "description": "Masquer le contenu visuellement tout en le gardant accessible aux technologies d'assistance. Ces utilitaires suivent le modèle standard de contenu visuellement caché utilisé sur le web.",
+        "srOnly": {
+          "title": ".sr-only",
+          "description": "Masque un élément visuellement tout en le gardant disponible pour les lecteurs d'écran. Utilisez ceci pour du texte qui ne doit être annoncé que par les technologies d'assistance, comme les boutons avec icônes seules ou les éléments décoratifs avec un contenu significatif."
+        },
+        "notSrOnly": {
+          "title": ".not-sr-only",
+          "description": "Rend un élément à nouveau visible. Souvent utilisé en combinaison avec .sr-only pour révéler le contenu au focus, comme les liens d'accès rapide qui deviennent visibles au focus."
+        },
+        "focusable": {
+          "title": ".sr-only-focusable",
+          "description": "Masque le contenu visuellement mais le rend visible au focus. Parfait pour les liens d'accès rapide qui aident les utilisateurs clavier à naviguer directement vers le contenu principal."
+        }
       },
       "focusManagement": {
         "title": "Gestion du focus",
-        "description": "Apex inclut des styles focus-visible pour la navigation au clavier:"
+        "description": "Apex fournit des utilitaires complets de gestion du focus pour la navigation au clavier. Ceux-ci aident à créer des indicateurs de focus clairs et visibles qui répondent aux exigences WCAG.",
+        "focusVisible": {
+          "title": "Focus Visible (:focus-visible)",
+          "description": "Appliquez des styles uniquement lorsqu'un élément reçoit le focus via la navigation au clavier (pas au clic de souris). Cela crée une expérience plus propre pour les utilisateurs de souris tout en maintenant l'accessibilité pour les utilisateurs clavier."
+        },
+        "focusWithin": {
+          "title": "Focus Within (:focus-within)",
+          "description": "Appliquez des styles à un élément parent lorsque l'un de ses enfants a le focus. Utile pour mettre en évidence des groupes de formulaires, des cartes ou des conteneurs lorsque l'utilisateur interagit avec les éléments contenus."
+        },
+        "skipLink": {
+          "title": "Lien d'accès rapide (.skip-link)",
+          "description": "Un composant de lien d'accès rapide préconstruit qui apparaît au focus, permettant aux utilisateurs clavier de contourner la navigation et d'accéder directement au contenu principal. Positionnez-le comme le premier élément focusable sur la page."
+        }
       },
       "reducedMotion": {
         "title": "Mouvement réduit",
-        "description": "Respecter les préférences de l'utilisateur pour un mouvement réduit:"
+        "description": "Respectez les préférences utilisateur pour un mouvement réduit avec des utilitaires basés sur les media queries. Celles-ci répondent automatiquement au paramètre système prefers-reduced-motion.",
+        "motionReduce": {
+          "title": "Motion Reduce",
+          "description": "Supprimez les animations, transitions et transformations lorsque l'utilisateur a demandé un mouvement réduit. Ces classes sont appliquées automatiquement via media query."
+        },
+        "motionSafe": {
+          "title": "Motion Safe",
+          "description": "Appliquez des styles uniquement lorsque le mouvement est sûr (l'utilisateur n'a pas demandé de mouvement réduit). Utilisez-les pour activer des animations qui pourraient autrement être distrayantes."
+        }
+      },
+      "highContrast": {
+        "title": "Mode de contraste élevé",
+        "description": "Support pour le Mode de Contraste Élevé Windows et les media queries prefers-contrast. Ces utilitaires aident à garantir que votre contenu reste accessible dans les environnements de contraste élevé et faible.",
+        "contrastHigh": {
+          "title": "Contraste élevé",
+          "description": "S'applique automatiquement lorsque l'utilisateur a sélectionné le mode de contraste élevé. Ajoute des bordures et contours en utilisant currentColor pour garantir la visibilité."
+        },
+        "contrastLow": {
+          "title": "Contraste faible",
+          "description": "S'applique lorsque l'utilisateur préfère un contraste faible. Utilise des bordures et contours plus subtils."
+        }
+      },
+      "focusRings": {
+        "title": "Utilitaires d'anneaux de focus",
+        "description": "Référence complète des utilitaires d'anneaux de focus et de contour disponibles dans Apex. Toutes les utilitaires focus-visible ne s'appliquent qu'au focus clavier.",
+        "classHeader": "Classe",
+        "descriptionHeader": "Description",
+        "ring": "Anneau de focus par défaut (3px) avec couleur bleue",
+        "ring2": "Anneau de focus de 2px",
+        "ring4": "Anneau de focus de 4px",
+        "ring8": "Anneau de focus de 8px",
+        "ringInset": "Anneau de focus en retrait (à l'intérieur de l'élément)",
+        "outline": "Contour solide de 2px avec décalage",
+        "outlineNone": "Supprimer le contour par défaut (utiliser avec des styles de focus personnalisés)"
+      },
+      "bestPractices": {
+        "title": "Meilleures pratiques d'accessibilité",
+        "practice1": "Incluez toujours des indicateurs de focus visibles pour les éléments interactifs",
+        "practice2": "Utilisez .sr-only pour le texte qui décrit des icônes ou éléments visuels",
+        "practice3": "Testez avec la navigation au clavier et les lecteurs d'écran",
+        "practice4": "Respectez les paramètres prefers-reduced-motion et prefers-contrast",
+        "practice5": "Incluez un lien d'accès rapide comme premier élément focusable sur la page"
+      },
+      "colorBlindTheme": {
+        "title": "Thème Adapté aux Daltoniens",
+        "description": "Apex inclut un thème intégré adapté aux daltoniens qui ajuste la palette de couleurs pour être plus discernable pour les utilisateurs souffrant de divers types de déficiences de la vision des couleurs.",
+        "whyItMatters": {
+          "title": "Pourquoi l'Accessibilité aux Daltoniens est Importante",
+          "description": "Environ 8% des hommes et 0,5% des femmes souffrent d'une forme de déficience de la vision des couleurs. L'utilisation de palettes adaptées aux daltoniens garantit que votre interface reste utilisable et claire pour ces utilisateurs."
+        },
+        "howToUse": {
+          "title": "Comment Utiliser",
+          "description": "Appliquez la classe theme-colorblind à votre élément HTML ou à n'importe quel conteneur pour activer les couleurs adaptées aux daltoniens:"
+        },
+        "colorAdjustments": {
+          "title": "Ajustements des Couleurs",
+          "description": "Le thème daltonien ajuste les couleurs sémantiques pour avoir des valeurs de luminance plus distinctes et des séparations de teinte:",
+          "colorHeader": "Couleur",
+          "defaultHeader": "Par défaut",
+          "colorblindHeader": "Daltonien",
+          "primary": "Primaire",
+          "success": "Succès",
+          "danger": "Danger",
+          "warning": "Avertissement",
+          "info": "Info"
+        },
+        "bestPractices": {
+          "title": "Meilleures Pratiques pour l'Accessibilité des Couleurs",
+          "practice1": "Ne vous fiez jamais uniquement à la couleur pour transmettre l'information - incluez toujours des icônes ou des étiquettes textuelles",
+          "practice2": "Utilisez des motifs ou des textures en plus des couleurs pour les graphiques et diagrammes",
+          "practice3": "Testez vos designs avec des outils de simulation de daltonisme",
+          "practice4": "Fournissez une option permettant aux utilisateurs d'activer le mode daltonien si désiré"
+        }
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "Les utilitaires d'accessibilité peuvent être activés ou désactivés dans votre configuration SCSS. Par défaut, toutes les fonctions d'accessibilité sont activées."
+      }
+    },
+    "base": {
+      "title": "Styles de Base",
+      "description": "Styles de base qui fournissent une base cohérente pour votre application. Inclut le reset CSS, les styles de normalisation, les valeurs par défaut des éléments et les tokens de design.",
+      "overview": {
+        "title": "Vue d'ensemble",
+        "description": "Les styles de base d'Apex fournissent une base solide pour votre application. Ils incluent:",
+        "cssReset": "CSS Reset - Supprime le style par défaut du navigateur pour un comportement cohérent entre navigateurs",
+        "normalize": "Styles de Normalisation - Fait rendre les navigateurs tous les éléments de manière plus cohérente",
+        "baseElements": "Styles d'Éléments de Base - Style par défaut pour les éléments HTML courants",
+        "designTokens": "Tokens de Design - Propriétés CSS personnalisées pour les couleurs, l'espacement, la typographie et plus"
+      },
+      "cssReset": {
+        "title": "CSS Reset",
+        "description": "Le reset CSS supprime les marges, padding et bordures par défaut des éléments pour fournir une base propre pour le style.",
+        "boxSizing": "Box Sizing",
+        "resetElements": "Éléments Reset",
+        "resetElementsDescription": "Les éléments suivants ont leurs marges et padding réinitialisés:",
+        "formElements": "Éléments de Formulaire",
+        "scrollbar": "Style de Scrollbar",
+        "scrollbarDescription": "Des styles de scrollbar personnalisés sont appliqués pour les navigateurs WebKit et Firefox:"
+      },
+      "normalize": {
+        "title": "Styles de Normalisation",
+        "description": "Basés sur normalize.css, ces styles assurent la cohérence entre navigateurs pour les éléments HTML.",
+        "documentDefaults": "Valeurs par Défaut du Document",
+        "textElements": "Éléments de Texte",
+        "formElements": "Éléments de Formulaire"
+      },
+      "baseElements": {
+        "title": "Styles d'Éléments de Base",
+        "description": "Style par défaut appliqué aux éléments HTML pour une apparence soignée immédiate.",
+        "body": "Body",
+        "headings": "Titres",
+        "links": "Liens",
+        "images": "Images",
+        "lists": "Listes",
+        "blockquotes": "Blocquotes",
+        "code": "Code",
+        "tables": "Tableaux",
+        "forms": "Entrées de Formulaire",
+        "focusVisible": "Focus Visible"
+      },
+      "designTokens": {
+        "title": "Tokens de Design",
+        "description": "Propriétés CSS personnalisées qui définissent le système de design. Celles-ci peuvent être personnalisées à l'exécution pour les thèmes.",
+        "colors": "Couleurs",
+        "spacing": "Espacement",
+        "typography": "Typographie",
+        "effects": "Effets",
+        "table": {
+          "token": "Token",
+          "value": "Valeur",
+          "rem": "Rem",
+          "pixels": "Pixels",
+          "category": "Catégorie",
+          "fontSizes": "Tailles de Police",
+          "fontWeights": "Graisses de Police",
+          "lineHeights": "Hauteurs de Ligne",
+          "letterSpacing": "Espacement des Lettres",
+          "shadows": "Ombres",
+          "borderRadius": "Rayon de Bordure",
+          "opacity": "Opacité",
+          "transitionDuration": "Durée de Transition",
+          "transitionTiming": "Fonction de Temps",
+          "zIndex": "Index Z"
+        }
+      },
+      "usage": {
+        "title": "Utiliser les Tokens de Design",
+        "description": "Les tokens de design peuvent être utilisés directement dans votre CSS ou styles en ligne:"
+      },
+      "darkMode": {
+        "title": "Support du Mode Sombre",
+        "description": "Tous les styles de base s'adaptent automatiquement au mode sombre lorsqu'il est activé. Les styles répondent aux deux:",
+        "system": "Media query prefers-color-scheme: dark (préférence système)",
+        "manual": "Attribut [data-theme=\"dark\"] (basculer manuellement)",
+        "elements": "Les éléments comme body, titres, liens, tableaux, formulaires et blocs de code ajustent automatiquement leurs couleurs pour le mode sombre."
+      },
+      "import": {
+        "title": "Importer les Styles de Base",
+        "description": "Pour utiliser les styles de base dans votre projet, importez le fichier index de base:",
+        "individual": "Ou importez des modules individuels:"
       }
     },
     "apiReference": {
@@ -186,22 +370,65 @@
     },
     "configuration": {
       "title": "Configuration",
-      "description": "Personnalisez Apex pour répondre aux besoins de votre projet.",
-      "configurationFile": {
-        "title": "Fichier de configuration",
-        "content": "Créez un fichier config.js à la racine de votre projet pour personnaliser Apex."
+      "description": "Personnalisez Apex selon les besoins de votre projet en modifiant les variables SCSS et les feature flags.",
+      "scssConfiguration": {
+        "title": "Configuration SCSS",
+        "content": "Apex utilise des variables SCSS pour la configuration. Remplacez ces variables avant d'importer le framework."
       },
-      "basicConfiguration": {
-        "title": "Configuration de base"
+      "coreSettings": {
+        "title": "Paramètres de base",
+        "description": "Configurez le comportement fondamental d'Apex avec ces paramètres principaux."
       },
       "prefix": {
         "title": "Préfixe",
-        "description": "Ajoutez un préfixe personnalisé à toutes les classes utilitaires:",
-        "note": "Avec cette configuration, p-4 devient apex-p-4."
+        "description": "Ajoutez un préfixe personnalisé à toutes les classes utilitaires pour éviter les conflits de noms:",
+        "note": "Avec cette configuration, les classes utilitaires auront votre préfixe personnalisé.",
+        "example": "Exemple",
+        "becomes": "devient"
       },
-      "enableDisableUtilities": {
-        "title": "Activer/Désactiver les utilitaires",
-        "description": "Contrôlez quels utilitaires sont générés:"
+      "breakpoints": {
+        "title": "Points d'arrêt",
+        "description": "Définissez des points d'arrêt responsive pour votre projet. Ils sont utilisés pour les variantes d'utilitaires responsive.",
+        "breakpoint": "Point d'arrêt",
+        "minWidth": "Largeur min",
+        "css": "CSS"
+      },
+      "featureFlags": {
+        "title": "Feature Flags",
+        "description": "Activez ou désactivez des catégories d'utilitaires spécifiques pour réduire la taille du bundle CSS. Réglez sur false pour désactiver les utilitaires dont vous n'avez pas besoin."
+      },
+      "spacingScale": {
+        "title": "Échelle d'espacement",
+        "description": "Personnalisez l'échelle d'espacement utilisée pour les utilitaires de marge, padding et gap.",
+        "usage": "Utilisé par: utilitaires m-, p-, gap-, space-x-, space-y-"
+      },
+      "sizingScale": {
+        "title": "Échelle de taille",
+        "description": "Personnalisez l'échelle de taille utilisée pour les utilitaires de largeur, hauteur et taille max/min.",
+        "usage": "Utilisé par: utilitaires w-, h-, min-w-, max-w-, min-h-, max-h-"
+      },
+      "borderRadius": {
+        "title": "Échelle de rayon de bordure",
+        "description": "Personnalisez l'échelle de rayon de bordure utilisée pour les coins arrondis."
+      },
+      "shadows": {
+        "title": "Ombres",
+        "description": "Personnalisez les valeurs d'ombre utilisées pour les utilitaires d'élévation."
+      },
+      "transitions": {
+        "title": "Transitions",
+        "description": "Personnalisez les échelles de durée de transition et de fonction de temps."
+      },
+      "customizing": {
+        "title": "Personnaliser votre build",
+        "description": "Créez un fichier de configuration personnalisé pour remplacer les valeurs par défaut avant d'importer Apex:"
+      },
+      "bestPractices": {
+        "title": "Meilleures pratiques de configuration",
+        "practice1": "Désactivez les utilitaires que vous n'utilisez pas pour réduire la taille du bundle CSS",
+        "practice2": "Personnalisez les points d'arrêt pour correspondre à vos exigences de conception",
+        "practice3": "Utilisez un préfixe si vous intégrez Apex avec d'autres frameworks CSS",
+        "practice4": "Gardez votre fichier de configuration personnalisé sous contrôle de version pour la cohérence de l'équipe"
       }
     },
     "contributing": {
@@ -410,7 +637,43 @@
       },
       "purgecss": {
         "title": "PurgeCSS",
-        "content": "Apex utilise PurgeCSS pour supprimer les styles non utilisés. Configurez vos options de purge dans le fichier de configuration."
+        "content": "Apex utilise PurgeCSS pour supprimer les styles non utilisés. Configurez vos options de purge dans le fichier de configuration.",
+        "whatIs": {
+          "title": "Qu'est-ce que PurgeCSS ?",
+          "description": "PurgeCSS analyse vos fichiers de contenu et supprime les règles CSS non utilisées. Cela peut réduire la taille de votre bundle CSS de 80 à 95%."
+        },
+        "configuration": {
+          "title": "Configuration",
+          "description": "Créez un fichier purgecss.config.js à la racine de votre projet pour configurer PurgeCSS."
+        },
+        "installation": {
+          "title": "Installation",
+          "description": "Installez PurgeCSS en tant que plugin PostCSS ou outil autonome."
+        },
+        "postcss": {
+          "title": "Intégration PostCSS",
+          "description": "Intégrez PurgeCSS à votre pipeline de build PostCSS."
+        },
+        "safelist": {
+          "title": "Configuration de la Safelist",
+          "description": "Définissez des modèles pour les classes qui ne doivent jamais être supprimées, même si elles semblent inutilisées."
+        },
+        "buildIntegration": {
+          "title": "Intégration avec les Outils de Build",
+          "description": "PurgeCSS peut être intégré aux outils de build populaires comme Vite, webpack et Rollup."
+        },
+        "cli": {
+          "title": "Utilisation CLI",
+          "description": "Utilisez la CLI PurgeCSS pour traiter les fichiers CSS directement depuis la ligne de commande."
+        },
+        "bestPractices": {
+          "title": "Meilleures Pratiques PurgeCSS",
+          "practice1": "Toujours inclure les utilitaires d'accessibilité comme sr-only et focus-visible dans la safelist",
+          "practice2": "Inclure les classes dynamiques ajoutées via JavaScript dans la safelist",
+          "practice3": "Inclure tous les fichiers de template dans le tableau content",
+          "practice4": "Tester votre site minutieusement après la purge",
+          "practice5": "Utiliser des motifs regex pour la safelist pour correspondre à plusieurs variantes"
+        }
       },
       "bestPractices": {
         "title": "Meilleures Pratiques",
@@ -1139,7 +1402,9 @@
   },
   "sidebar": {
     "gettingStarted": "Commencer",
+    "designSystem": "Système de Design",
     "coreConcepts": "Concepts Fondamentaux",
+    "baseStyles": "Styles de Base",
     "utilities": "Utilitaires",
     "components": "Composants",
     "advanced": "Avancé",
@@ -1147,7 +1412,26 @@
     "migration": "Migration",
     "help": "Aide",
     "community": "Communauté",
-    "tools": "Outils"
+    "tools": "Outils",
+    "introduction": "Introduction",
+    "customization": "Personnalisation",
+    "responsiveDesign": "Design Responsif",
+    "darkMode": "Mode Sombre",
+    "apiReference": "Référence API",
+    "browserSupport": "Support Navigateur",
+    "migrationGuides": "Guides de Migration",
+    "fromTailwind": "Depuis Tailwind",
+    "fromBootstrap": "Depuis Bootstrap",
+    "fromBulma": "Depuis Bulma",
+    "pluginDevelopment": "Développement de Plugins",
+    "performance": "Performance",
+    "accessibility": "Accessibilité",
+    "rtlSupport": "Support RTL",
+    "troubleshooting": "Dépannage",
+    "faq": "FAQ",
+    "contributing": "Contribuer",
+    "playground": "Playground",
+    "configuration": "Configuration"
   },
   "common": {
     "copy": "Copier",
@@ -1548,6 +1832,219 @@
         "divide": {
           "title": "Diviser",
           "description": "Ajoutez des bordures entre les éléments enfants."
+        }
+      },
+      "positioning": {
+        "title": "Positionnement",
+        "description": "Utilitaires de positionnement pour contrôler la position des éléments, le z-index et les valeurs d'inset.",
+        "positionTypes": {
+          "title": "Types de Position",
+          "description": "Contrôlez comment un élément est positionné dans le flux du document."
+        },
+        "inset": {
+          "title": "Inset",
+          "description": "Raccourci pour définir simultanément les propriétés top, right, bottom et left."
+        },
+        "top": {
+          "title": "Haut",
+          "description": "Définissez la position verticale d'un élément positionné depuis le haut."
+        },
+        "right": {
+          "title": "Droite",
+          "description": "Définissez la position horizontale d'un élément positionné depuis la droite."
+        },
+        "bottom": {
+          "title": "Bas",
+          "description": "Définissez la position verticale d'un élément positionné depuis le bas."
+        },
+        "left": {
+          "title": "Gauche",
+          "description": "Définissez la position horizontale d'un élément positionné depuis la gauche."
+        },
+        "zIndex": {
+          "title": "Z-Index",
+          "description": "Contrôlez l'ordre d'empilement des éléments positionnés."
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "centeredOverlay": "Superposition Centrée",
+          "fixedHeader": "En-tête Fixe",
+          "stickySidebar": "Barre Latérale Sticky",
+          "positionedBadge": "Badge Positionné"
+        }
+      },
+      "display": {
+        "title": "Affichage",
+        "description": "Utilitaires d'affichage pour contrôler la propriété display des éléments.",
+        "basicDisplay": {
+          "title": "Valeurs d'Affichage de Base",
+          "description": "Contrôlez le type d'affichage d'un élément."
+        },
+        "flexGrid": {
+          "title": "Flex et Grid",
+          "description": "Utilitaires d'affichage pour les layouts flexbox et grid."
+        },
+        "tableDisplay": {
+          "title": "Affichage de Tableau",
+          "description": "Utilitaires d'affichage pour les éléments liés aux tableaux."
+        },
+        "otherDisplay": {
+          "title": "Autres Valeurs d'Affichage",
+          "description": "Utilitaires d'affichage supplémentaires pour les cas d'usage spéciaux."
+        },
+        "responsive": {
+          "title": "Affichage Responsive",
+          "description": "Appliquez les utilitaires d'affichage à des points de rupture spécifiques."
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "hideOnMobile": "Masquer sur Mobile",
+          "hideOnDesktop": "Masquer sur Bureau",
+          "inlineForm": "Formulaire Inline",
+          "responsiveGrid": "Grille Responsive"
+        }
+      },
+      "opacity": {
+        "title": "Opacité",
+        "description": "Utilitaires d'opacité pour contrôler la transparence des éléments.",
+        "opacityScale": {
+          "title": "Échelle d'Opacité",
+          "description": "Contrôlez l'opacité/transparence d'un élément de 0 (invisible) à 100 (complètement opaque)."
+        },
+        "responsive": {
+          "title": "Opacité Responsive",
+          "description": "Appliquez les utilitaires d'opacité à des points de rupture spécifiques."
+        },
+        "visualExamples": {
+          "title": "Exemples Visuels"
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "hoverEffect": "Effet d'Opacité au Survol",
+          "disabledState": "État Désactivé",
+          "loadingOverlay": "Superposition de Chargement",
+          "imageOverlay": "Effet de Superposition d'Image"
+        }
+      },
+      "shadows": {
+        "title": "Ombres",
+        "description": "Utilitaires d'ombres pour contrôler les ombres de boîte et l'élévation.",
+        "shadowScale": {
+          "title": "Échelle d'Ombres",
+          "description": "Appliquez des ombres de boîte aux éléments avec différentes tailles et intensités."
+        },
+        "shadowColors": {
+          "title": "Couleurs d'Ombre",
+          "description": "Personnalisez la couleur des ombres de boîte."
+        },
+        "colorExamples": {
+          "title": "Exemples de Couleurs d'Ombre"
+        },
+        "responsive": {
+          "title": "Ombres Responsive",
+          "description": "Appliquez les utilitaires d'ombre à des points de rupture spécifiques."
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "cardElevation": "Élévation de Carte au Survol",
+          "modalOverlay": "Modal avec Ombre Prominente",
+          "dropdownMenu": "Ombre de Menu Déroulant",
+          "insetInputs": "Entrée avec Ombre Inset"
+        }
+      },
+      "transitions": {
+        "title": "Transitions et Animations",
+        "description": "Utilitaires de transition et d'animation pour contrôler les transitions d'éléments, la temporisation et les animations.",
+        "transitionProperty": {
+          "title": "Propriété de Transition",
+          "description": "Spécifiez quelles propriétés CSS doivent avoir une transition."
+        },
+        "duration": {
+          "title": "Durée de Transition",
+          "description": "Contrôlez la durée des transitions."
+        },
+        "timing": {
+          "title": "Temporisation de Transition",
+          "description": "Contrôlez la fonction de temporisation (easing) des transitions."
+        },
+        "delay": {
+          "title": "Délai de Transition",
+          "description": "Ajoutez un délai avant le début de la transition."
+        },
+        "animations": {
+          "title": "Animations",
+          "description": "Animations intégrées pour les cas d'usage courants."
+        },
+        "animationDetails": {
+          "title": "Détails des Animations",
+          "spin": {
+            "title": "Animation de Rotation",
+            "description": "Animation de rotation continue, parfaite pour les indicateurs de chargement."
+          },
+          "ping": {
+            "title": "Animation de Ping",
+            "description": "Animation d'échelle et de fondu, idéale pour les badges de notification."
+          },
+          "pulse": {
+            "title": "Animation de Pulse",
+            "description": "Animation de pulse d'opacité, excellente pour les chargeurs squelettes."
+          },
+          "bounce": {
+            "title": "Animation de Rebond",
+            "description": "Animation de rebond pour attirer l'attention."
+          }
+        },
+        "responsive": {
+          "title": "Transitions Responsive",
+          "description": "Appliquez les utilitaires de transition à des points de rupture spécifiques."
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "buttonHover": "Effet de Bouton au Survol",
+          "fadeIn": "Fondu au Survol",
+          "scaleTransform": "Transformation d'Échelle",
+          "cardHover": "Effet de Carte au Survol"
+        },
+        "reducedMotion": {
+          "title": "Support du Mouvement Réduit",
+          "description": "Respectez les préférences de l'utilisateur pour le mouvement réduit en utilisant les utilitaires motion-reduce."
+        }
+      },
+      "visibility": {
+        "title": "Visibilité",
+        "description": "Utilitaires de visibilité pour contrôler la visibilité des éléments sans affecter la mise en page.",
+        "visibilityValues": {
+          "title": "Valeurs de Visibilité",
+          "description": "Contrôlez si un élément est visible ou invisible."
+        },
+        "vsDisplay": {
+          "title": "Visibilité vs Affichage",
+          "description": "Comprendre la différence entre les utilitaires de visibilité et d'affichage.",
+          "class": "Classe",
+          "space": "Prend de l'Espace",
+          "clickable": "Cliquable",
+          "useCase": "Cas d'Usage",
+          "yes": "Oui",
+          "no": "Non",
+          "default": "État par défaut",
+          "hideKeepSpace": "Masquer mais garder l'espace",
+          "removeLayout": "Retirer de la mise en page",
+          "tableRows": "Réduire les lignes de tableau"
+        },
+        "responsive": {
+          "title": "Visibilité Responsive",
+          "description": "Appliquez les utilitaires de visibilité à des points de rupture spécifiques."
+        },
+        "print": {
+          "title": "Visibilité d'Impression",
+          "description": "Contrôlez la visibilité lors de l'impression."
+        },
+        "commonPatterns": {
+          "title": "Motifs Courants",
+          "toggleVisibility": "Basculer la Visibilité au Survol",
+          "loadingState": "État de Chargement",
+          "tableRows": "Réduire les Lignes de Tableau",
+          "printOnly": "Masquer de l'Impression"
         }
       }
     }

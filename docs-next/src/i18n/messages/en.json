@@ -6,22 +6,206 @@
   "pages": {
     "accessibility": {
       "title": "Accessibility",
-      "description": "Accessibility features in Apex",
+      "description": "Comprehensive accessibility features in Apex CSS Framework including screen reader support, focus management, reduced motion preferences, and high contrast mode utilities.",
       "wcagCompliance": {
         "title": "WCAG Compliance",
-        "content": "Apex is designed with accessibility in mind and aims to meet WCAG 2.1 AA standards."
+        "content": "Apex is designed with accessibility in mind and aims to meet WCAG 2.1 AA standards. All accessibility utilities are optional and can be enabled or disabled via configuration."
       },
       "screenReaderClasses": {
         "title": "Screen Reader Classes",
-        "description": "Hide content visually while keeping it accessible to assistive technologies:"
+        "description": "Hide content visually while keeping it accessible to assistive technologies. These utilities follow the standard visually hidden pattern used across the web.",
+        "srOnly": {
+          "title": ".sr-only",
+          "description": "Hides an element visually while keeping it available to screen readers. Use this for text that should only be announced to assistive technologies, like icon-only buttons or decorative elements with meaningful content."
+        },
+        "notSrOnly": {
+          "title": ".not-sr-only",
+          "description": "Makes an element visible again. Often used in combination with .sr-only to reveal content on focus, such as skip navigation links that become visible when focused."
+        },
+        "focusable": {
+          "title": ".sr-only-focusable",
+          "description": "Hides content visually but makes it visible when focused. Perfect for skip links that help keyboard users navigate directly to main content."
+        }
       },
       "focusManagement": {
         "title": "Focus Management",
-        "description": "Apex includes focus-visible styles for keyboard navigation:"
+        "description": "Apex provides comprehensive focus management utilities for keyboard navigation. These help create clear, visible focus indicators that meet WCAG requirements.",
+        "focusVisible": {
+          "title": "Focus Visible (:focus-visible)",
+          "description": "Apply styles only when an element receives focus via keyboard navigation (not on mouse click). This creates a cleaner experience for mouse users while maintaining accessibility for keyboard users."
+        },
+        "focusWithin": {
+          "title": "Focus Within (:focus-within)",
+          "description": "Apply styles to a parent element when any of its children have focus. Useful for highlighting form groups, cards, or containers when the user is interacting with contained elements."
+        },
+        "skipLink": {
+          "title": "Skip Link (.skip-link)",
+          "description": "A pre-built skip link component that appears when focused, allowing keyboard users to bypass navigation and jump directly to main content. Position it as the first focusable element on the page."
+        }
       },
       "reducedMotion": {
         "title": "Reduced Motion",
-        "description": "Respect user preferences for reduced motion:"
+        "description": "Respect user preferences for reduced motion with media query-based utilities. These automatically respond to the prefers-reduced-motion system setting.",
+        "motionReduce": {
+          "title": "Motion Reduce",
+          "description": "Remove animations, transitions, and transforms when the user has requested reduced motion. These classes are applied automatically via media query."
+        },
+        "motionSafe": {
+          "title": "Motion Safe",
+          "description": "Only apply styles when motion is safe (user has not requested reduced motion). Use these to opt-in to animations that might otherwise be distracting."
+        }
+      },
+      "highContrast": {
+        "title": "High Contrast Mode",
+        "description": "Support for Windows High Contrast Mode and prefers-contrast media queries. These utilities help ensure your content remains accessible in high and low contrast environments.",
+        "contrastHigh": {
+          "title": "High Contrast",
+          "description": "Applied automatically when the user has selected high contrast mode. Adds borders and outlines using currentColor to ensure visibility."
+        },
+        "contrastLow": {
+          "title": "Low Contrast",
+          "description": "Applied when the user prefers low contrast. Uses subtler borders and outlines."
+        }
+      },
+      "focusRings": {
+        "title": "Focus Ring Utilities",
+        "description": "Complete reference of focus ring and outline utilities available in Apex. All focus-visible utilities only apply on keyboard focus.",
+        "classHeader": "Class",
+        "descriptionHeader": "Description",
+        "ring": "Default focus ring (3px) with blue color",
+        "ring2": "2px focus ring",
+        "ring4": "4px focus ring",
+        "ring8": "8px focus ring",
+        "ringInset": "Inset focus ring (inside element)",
+        "outline": "2px solid outline with offset",
+        "outlineNone": "Remove default outline (use with custom focus styles)"
+      },
+      "bestPractices": {
+        "title": "Accessibility Best Practices",
+        "practice1": "Always include visible focus indicators for interactive elements",
+        "practice2": "Use .sr-only for text that describes icons or visual elements",
+        "practice3": "Test with keyboard navigation and screen readers",
+        "practice4": "Respect prefers-reduced-motion and prefers-contrast settings",
+        "practice5": "Include a skip link as the first focusable element on the page"
+      },
+      "colorBlindTheme": {
+        "title": "Color Blind Friendly Theme",
+        "description": "Apex includes a built-in color blind friendly theme that adjusts the color palette to be more distinguishable for users with various types of color vision deficiencies.",
+        "whyItMatters": {
+          "title": "Why Color Blind Accessibility Matters",
+          "description": "Approximately 8% of men and 0.5% of women have some form of color vision deficiency. Using color blind friendly palettes ensures your interface remains usable and clear for these users."
+        },
+        "howToUse": {
+          "title": "How to Use",
+          "description": "Apply the theme-colorblind class to your HTML element or any container to enable color blind friendly colors:"
+        },
+        "colorAdjustments": {
+          "title": "Color Adjustments",
+          "description": "The color blind theme adjusts semantic colors to have more distinct luminance values and hue separations:",
+          "colorHeader": "Color",
+          "defaultHeader": "Default",
+          "colorblindHeader": "Color Blind",
+          "primary": "Primary",
+          "success": "Success",
+          "danger": "Danger",
+          "warning": "Warning",
+          "info": "Info"
+        },
+        "bestPractices": {
+          "title": "Best Practices for Color Accessibility",
+          "practice1": "Never rely on color alone to convey information - always include icons or text labels",
+          "practice2": "Use patterns or textures in addition to colors for charts and graphs",
+          "practice3": "Test your designs with color blind simulation tools",
+          "practice4": "Provide a toggle for users to enable color blind mode if desired"
+        }
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "Accessibility utilities can be enabled or disabled in your SCSS configuration. By default, all accessibility features are enabled."
+      }
+    },
+    "base": {
+      "title": "Base Styles",
+      "description": "Foundation styles that provide a consistent baseline for your application. Includes CSS reset, normalize styles, element defaults, and design tokens.",
+      "overview": {
+        "title": "Overview",
+        "description": "Apex's base styles provide a solid foundation for your application. They include:",
+        "cssReset": "CSS Reset - Removes default browser styling for consistent cross-browser behavior",
+        "normalize": "Normalize Styles - Makes browsers render all elements more consistently",
+        "baseElements": "Base Element Styles - Default styling for common HTML elements",
+        "designTokens": "Design Tokens - CSS custom properties for colors, spacing, typography, and more"
+      },
+      "cssReset": {
+        "title": "CSS Reset",
+        "description": "The CSS reset removes default margins, padding, and borders from elements to provide a clean slate for styling.",
+        "boxSizing": "Box Sizing",
+        "resetElements": "Reset Elements",
+        "resetElementsDescription": "The following elements have their margins and padding reset:",
+        "formElements": "Form Elements",
+        "scrollbar": "Scrollbar Styling",
+        "scrollbarDescription": "Custom scrollbar styles are applied for WebKit browsers and Firefox:"
+      },
+      "normalize": {
+        "title": "Normalize Styles",
+        "description": "Based on normalize.css, these styles ensure cross-browser consistency for HTML elements.",
+        "documentDefaults": "Document Defaults",
+        "textElements": "Text Elements",
+        "formElements": "Form Elements"
+      },
+      "baseElements": {
+        "title": "Base Element Styles",
+        "description": "Default styling applied to HTML elements for a polished look out of the box.",
+        "body": "Body",
+        "headings": "Headings",
+        "links": "Links",
+        "images": "Images",
+        "lists": "Lists",
+        "blockquotes": "Blockquotes",
+        "code": "Code",
+        "tables": "Tables",
+        "forms": "Form Inputs",
+        "focusVisible": "Focus Visible"
+      },
+      "designTokens": {
+        "title": "Design Tokens",
+        "description": "CSS custom properties that define the design system. These can be customized at runtime for theming.",
+        "colors": "Colors",
+        "spacing": "Spacing",
+        "typography": "Typography",
+        "effects": "Effects",
+        "table": {
+          "token": "Token",
+          "value": "Value",
+          "rem": "Rem",
+          "pixels": "Pixels",
+          "category": "Category",
+          "fontSizes": "Font Sizes",
+          "fontWeights": "Font Weights",
+          "lineHeights": "Line Heights",
+          "letterSpacing": "Letter Spacing",
+          "shadows": "Shadows",
+          "borderRadius": "Border Radius",
+          "opacity": "Opacity",
+          "transitionDuration": "Transition Duration",
+          "transitionTiming": "Transition Timing",
+          "zIndex": "Z-Index"
+        }
+      },
+      "usage": {
+        "title": "Using Design Tokens",
+        "description": "Design tokens can be used directly in your CSS or inline styles:"
+      },
+      "darkMode": {
+        "title": "Dark Mode Support",
+        "description": "All base styles automatically adapt to dark mode when enabled. Styles respond to both:",
+        "system": "prefers-color-scheme: dark media query (system preference)",
+        "manual": "[data-theme=\"dark\"] attribute (manual toggle)",
+        "elements": "Elements like body, headings, links, tables, forms, and code blocks automatically adjust their colors for dark mode."
+      },
+      "import": {
+        "title": "Importing Base Styles",
+        "description": "To use the base styles in your project, import the base index file:",
+        "individual": "Or import individual modules:"
       }
     },
     "apiReference": {
@@ -146,22 +330,65 @@
     },
     "configuration": {
       "title": "Configuration",
-      "description": "Customize Apex to fit your project needs.",
-      "configurationFile": {
-        "title": "Configuration File",
-        "content": "Create a config.js file in your project root to customize Apex."
+      "description": "Customize Apex to fit your project needs by modifying SCSS variables and feature flags.",
+      "scssConfiguration": {
+        "title": "SCSS Configuration",
+        "content": "Apex uses SCSS variables for configuration. Override these variables before importing the framework."
       },
-      "basicConfiguration": {
-        "title": "Basic Configuration"
+      "coreSettings": {
+        "title": "Core Settings",
+        "description": "Configure the fundamental behavior of Apex with these core settings."
       },
       "prefix": {
         "title": "Prefix",
-        "description": "Add a custom prefix to all utility classes:",
-        "note": "With this configuration, p-4 becomes apex-p-4."
+        "description": "Add a custom prefix to all utility classes to avoid naming conflicts:",
+        "note": "With this configuration, utility classes will have your custom prefix.",
+        "example": "Example",
+        "becomes": "becomes"
       },
-      "enableDisableUtilities": {
-        "title": "Enable/Disable Utilities",
-        "description": "Control which utilities are generated:"
+      "breakpoints": {
+        "title": "Breakpoints",
+        "description": "Define responsive breakpoints for your project. These are used for responsive utility variants.",
+        "breakpoint": "Breakpoint",
+        "minWidth": "Min Width",
+        "css": "CSS"
+      },
+      "featureFlags": {
+        "title": "Feature Flags",
+        "description": "Enable or disable specific utility categories to reduce CSS bundle size. Set to false to disable utilities you don't need."
+      },
+      "spacingScale": {
+        "title": "Spacing Scale",
+        "description": "Customize the spacing scale used for margin, padding, and gap utilities.",
+        "usage": "Used by: m-, p-, gap-, space-x-, space-y- utilities"
+      },
+      "sizingScale": {
+        "title": "Sizing Scale",
+        "description": "Customize the sizing scale used for width, height, and max/min sizing utilities.",
+        "usage": "Used by: w-, h-, min-w-, max-w-, min-h-, max-h- utilities"
+      },
+      "borderRadius": {
+        "title": "Border Radius Scale",
+        "description": "Customize the border radius scale used for rounded corners."
+      },
+      "shadows": {
+        "title": "Shadows",
+        "description": "Customize the shadow values used for elevation utilities."
+      },
+      "transitions": {
+        "title": "Transitions",
+        "description": "Customize transition duration and timing function scales."
+      },
+      "customizing": {
+        "title": "Customizing Your Build",
+        "description": "Create a custom configuration file to override default values before importing Apex:"
+      },
+      "bestPractices": {
+        "title": "Configuration Best Practices",
+        "practice1": "Disable utilities you don't use to reduce CSS bundle size",
+        "practice2": "Customize breakpoints to match your design requirements",
+        "practice3": "Use a prefix if integrating Apex with other CSS frameworks",
+        "practice4": "Keep your custom config file version controlled for team consistency"
       }
     },
     "contributing": {
@@ -410,7 +637,43 @@
       },
       "purgecss": {
         "title": "PurgeCSS",
-        "content": "Apex uses PurgeCSS to remove unused styles. Configure your purge options in the configuration file."
+        "content": "Apex uses PurgeCSS to remove unused styles. Configure your purge options in the configuration file.",
+        "whatIs": {
+          "title": "What is PurgeCSS?",
+          "description": "PurgeCSS analyzes your content files (HTML, JSX, Vue, etc.) and removes unused CSS rules. This can reduce your CSS bundle size by 80-95%."
+        },
+        "configuration": {
+          "title": "Configuration",
+          "description": "Create a purgecss.config.js file in your project root to configure PurgeCSS."
+        },
+        "installation": {
+          "title": "Installation",
+          "description": "Install PurgeCSS as a PostCSS plugin or standalone tool."
+        },
+        "postcss": {
+          "title": "PostCSS Integration",
+          "description": "Integrate PurgeCSS with your PostCSS build pipeline."
+        },
+        "safelist": {
+          "title": "Safelist Configuration",
+          "description": "Define patterns for classes that should never be removed, even if they appear unused. This is important for dynamic classes and JavaScript-generated content."
+        },
+        "buildIntegration": {
+          "title": "Build Tool Integration",
+          "description": "PurgeCSS can be integrated with popular build tools like Vite, webpack, and Rollup."
+        },
+        "cli": {
+          "title": "CLI Usage",
+          "description": "Use the PurgeCSS CLI to process CSS files directly from the command line."
+        },
+        "bestPractices": {
+          "title": "PurgeCSS Best Practices",
+          "practice1": "Always safelist accessibility utilities like sr-only and focus-visible",
+          "practice2": "Safelist dynamic classes that are added via JavaScript",
+          "practice3": "Include all template files in the content array",
+          "practice4": "Test your site thoroughly after purging to ensure no styles are missing",
+          "practice5": "Use regex patterns for safelist to match multiple variants"
+        }
       },
       "bestPractices": {
         "title": "Best Practices",
@@ -1006,6 +1269,279 @@
       }
     },
     "utilityPages": {
+      "accentColor": {
+        "title": "Accent Color",
+        "description": "Accent color utilities for styling form controls like checkboxes, radio buttons, and progress bars.",
+        "basicUsage": {
+          "title": "Basic Usage",
+          "description": "Use accent color utilities to style form controls with semantic colors."
+        },
+        "availableColors": {
+          "title": "Available Colors",
+          "description": "Choose from a range of semantic and utility colors:",
+          "classHeader": "Class",
+          "descriptionHeader": "Description",
+          "previewHeader": "Preview",
+          "auto": "Browser default",
+          "primary": "Primary brand color",
+          "secondary": "Secondary color",
+          "success": "Success green",
+          "danger": "Danger red",
+          "warning": "Warning yellow",
+          "info": "Info blue",
+          "white": "White color",
+          "black": "Black color",
+          "transparent": "Transparent"
+        },
+        "supportedElements": {
+          "title": "Supported Elements",
+          "description": "Accent color affects these form controls:",
+          "checkbox": "Checkboxes",
+          "radio": "Radio buttons",
+          "range": "Range sliders",
+          "progress": "Progress bars"
+        },
+        "examples": {
+          "title": "Examples",
+          "customCheckbox": {
+            "title": "Custom Checkbox"
+          },
+          "coloredRadio": {
+            "title": "Colored Radio Buttons"
+          }
+        }
+      },
+      "backgrounds": {
+        "title": "Backgrounds",
+        "description": "Background utilities for controlling background images, gradients, clip, origin, position, repeat, and size.",
+        "backgroundAttachment": {
+          "title": "Background Attachment",
+          "description": "Control how a background image behaves when scrolling:",
+          "fixed": "Fixed to viewport",
+          "local": "Scrolls with element content",
+          "scroll": "Scrolls with element (default)"
+        },
+        "backgroundClip": {
+          "title": "Background Clip",
+          "description": "Control how background extends beyond element padding:",
+          "border": "Clip to border box",
+          "padding": "Clip to padding box",
+          "content": "Clip to content box",
+          "text": "Clip to text (gradient text)"
+        },
+        "backgroundPosition": {
+          "title": "Background Position",
+          "description": "Position background images within their container."
+        },
+        "backgroundRepeat": {
+          "title": "Background Repeat",
+          "description": "Control how background images repeat:",
+          "repeat": "Repeat both directions",
+          "noRepeat": "No repeat",
+          "repeatX": "Repeat horizontally",
+          "repeatY": "Repeat vertically",
+          "round": "Round to fit",
+          "space": "Space to fill"
+        },
+        "backgroundSize": {
+          "title": "Background Size",
+          "description": "Control background image size:",
+          "auto": "Original size",
+          "cover": "Cover entire area",
+          "contain": "Fit within area"
+        },
+        "gradients": {
+          "title": "Gradients",
+          "description": "Create linear gradients with directional modifiers."
+        },
+        "gradientDirections": {
+          "title": "Gradient Directions",
+          "description": "Available gradient directions:"
+        },
+        "gradientColors": {
+          "title": "Gradient Colors",
+          "description": "Use from-*, via-*, and to-* utilities to define gradient colors."
+        }
+      },
+      "blendModes": {
+        "title": "Blend Modes",
+        "description": "Blend mode utilities for controlling how elements blend with their backdrop.",
+        "basicUsage": {
+          "title": "Basic Usage",
+          "description": "Apply blend modes to elements using mix-blend-* or bg-blend-* utilities."
+        },
+        "mixBlendMode": {
+          "title": "Mix Blend Mode",
+          "description": "Controls how an element blends with elements behind it:"
+        },
+        "bgBlendMode": {
+          "title": "Background Blend Mode",
+          "description": "Controls how background images blend with each other:"
+        },
+        "table": {
+          "classHeader": "Class",
+          "descriptionHeader": "Description"
+        },
+        "mixBlendModes": {
+          "normal": "Normal blending",
+          "multiply": "Multiply colors",
+          "screen": "Screen blend",
+          "overlay": "Overlay blend",
+          "darken": "Darken blend",
+          "lighten": "Lighten blend",
+          "colorDodge": "Color dodge",
+          "colorBurn": "Color burn",
+          "hardLight": "Hard light",
+          "softLight": "Soft light",
+          "difference": "Difference blend",
+          "exclusion": "Exclusion blend",
+          "hue": "Hue blend",
+          "saturation": "Saturation blend",
+          "color": "Color blend",
+          "luminosity": "Luminosity blend",
+          "plusDarker": "Plus darker",
+          "plusLighter": "Plus lighter"
+        },
+        "bgBlendModes": {
+          "normal": "Normal blending",
+          "multiply": "Multiply colors",
+          "screen": "Screen blend",
+          "overlay": "Overlay blend",
+          "darken": "Darken blend",
+          "lighten": "Lighten blend",
+          "colorDodge": "Color dodge",
+          "colorBurn": "Color burn",
+          "hardLight": "Hard light",
+          "softLight": "Soft light",
+          "difference": "Difference blend",
+          "exclusion": "Exclusion blend",
+          "hue": "Hue blend",
+          "saturation": "Saturation blend",
+          "color": "Color blend",
+          "luminosity": "Luminosity blend"
+        },
+        "examples": {
+          "title": "Examples",
+          "duotone": {
+            "title": "Duotone Effect"
+          },
+          "textOverlay": {
+            "title": "Text Overlay Blend"
+          }
+        }
+      },
+      "break": {
+        "title": "Break",
+        "description": "Break utilities for controlling page breaks and column breaks in print and multi-column layouts.",
+        "printNote": {
+          "title": "Print Styles",
+          "content": "These utilities are most useful for print stylesheets and multi-column layouts."
+        },
+        "breakInside": {
+          "title": "Break Inside",
+          "description": "Control how page/column breaks within an element:",
+          "auto": "Allow breaks inside",
+          "avoid": "Avoid breaks inside",
+          "avoidPage": "Avoid page breaks inside",
+          "avoidColumn": "Avoid column breaks inside",
+          "avoidRegion": "Avoid region breaks inside"
+        },
+        "breakBefore": {
+          "title": "Break Before",
+          "description": "Control page/column breaks before an element:",
+          "auto": "Automatic breaks",
+          "avoid": "Avoid breaks before",
+          "all": "Force all breaks",
+          "page": "Page break before",
+          "left": "Left page break",
+          "right": "Right page break",
+          "column": "Column break before",
+          "region": "Region break before"
+        },
+        "breakAfter": {
+          "title": "Break After",
+          "description": "Control page/column breaks after an element:",
+          "auto": "Automatic breaks",
+          "avoid": "Avoid breaks after",
+          "all": "Force all breaks",
+          "page": "Page break after",
+          "left": "Left page break",
+          "right": "Right page break",
+          "column": "Column break after"
+        },
+        "boxDecoration": {
+          "title": "Box Decoration Break",
+          "description": "Control box decoration across fragments:",
+          "clone": "Clone decorations",
+          "slice": "Slice decorations"
+        },
+        "table": {
+          "classHeader": "Class",
+          "descriptionHeader": "Description"
+        },
+        "examples": {
+          "title": "Examples",
+          "preventBreak": {
+            "title": "Prevent Content from Breaking"
+          },
+          "pageBreak": {
+            "title": "Force Page Break"
+          }
+        }
+      },
+      "cursor": {
+        "title": "Cursor",
+        "description": "Cursor utilities for controlling the mouse cursor display.",
+        "basicUsage": {
+          "title": "Basic Usage",
+          "description": "Use cursor utilities to indicate interactive elements or specific actions."
+        },
+        "availableCursors": {
+          "title": "Available Cursors",
+          "description": "Choose from a wide variety of cursor styles:",
+          "classHeader": "Class",
+          "descriptionHeader": "Description",
+          "previewHeader": "Preview"
+        },
+        "cursors": {
+          "auto": "Browser default",
+          "default": "Default cursor",
+          "pointer": "Pointer (clickable)",
+          "wait": "Wait/loading",
+          "text": "Text select",
+          "move": "Move",
+          "help": "Help",
+          "notAllowed": "Not allowed",
+          "none": "No cursor",
+          "contextMenu": "Context menu",
+          "progress": "Progress",
+          "cell": "Table cell select",
+          "crosshair": "Crosshair",
+          "verticalText": "Vertical text",
+          "alias": "Alias",
+          "copy": "Copy",
+          "noDrop": "No drop",
+          "grab": "Grab",
+          "grabbing": "Grabbing",
+          "allScroll": "Scroll all directions",
+          "colResize": "Column resize",
+          "rowResize": "Row resize",
+          "zoomIn": "Zoom in",
+          "zoomOut": "Zoom out"
+        },
+        "commonUseCases": {
+          "title": "Common Use Cases",
+          "buttons": {
+            "title": "Buttons"
+          },
+          "loading": {
+            "title": "Loading States"
+          },
+          "draggable": {
+            "title": "Draggable Elements"
+          }
+        }
+      },
       "typography": {
         "title": "Typography",
         "description": "Typography utilities for controlling font size, weight, line height, alignment, and more.",
@@ -1097,6 +1633,219 @@
           "title": "Divide",
           "description": "Add borders between child elements."
         }
+      },
+      "positioning": {
+        "title": "Positioning",
+        "description": "Positioning utilities for controlling element position, z-index, and inset values.",
+        "positionTypes": {
+          "title": "Position Types",
+          "description": "Control how an element is positioned in the document flow."
+        },
+        "inset": {
+          "title": "Inset",
+          "description": "Shorthand for setting top, right, bottom, and left properties simultaneously."
+        },
+        "top": {
+          "title": "Top",
+          "description": "Set the vertical position of a positioned element from the top."
+        },
+        "right": {
+          "title": "Right",
+          "description": "Set the horizontal position of a positioned element from the right."
+        },
+        "bottom": {
+          "title": "Bottom",
+          "description": "Set the vertical position of a positioned element from the bottom."
+        },
+        "left": {
+          "title": "Left",
+          "description": "Set the horizontal position of a positioned element from the left."
+        },
+        "zIndex": {
+          "title": "Z-Index",
+          "description": "Control the stack order of positioned elements."
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "centeredOverlay": "Centered Overlay",
+          "fixedHeader": "Fixed Header",
+          "stickySidebar": "Sticky Sidebar",
+          "positionedBadge": "Positioned Badge"
+        }
+      },
+      "display": {
+        "title": "Display",
+        "description": "Display utilities for controlling the display property of elements.",
+        "basicDisplay": {
+          "title": "Basic Display Values",
+          "description": "Control the display type of an element."
+        },
+        "flexGrid": {
+          "title": "Flex and Grid",
+          "description": "Display utilities for flexbox and grid layouts."
+        },
+        "tableDisplay": {
+          "title": "Table Display",
+          "description": "Display utilities for table-related elements."
+        },
+        "otherDisplay": {
+          "title": "Other Display Values",
+          "description": "Additional display utilities for special use cases."
+        },
+        "responsive": {
+          "title": "Responsive Display",
+          "description": "Apply display utilities at specific breakpoints."
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "hideOnMobile": "Hide on Mobile",
+          "hideOnDesktop": "Hide on Desktop",
+          "inlineForm": "Inline Form",
+          "responsiveGrid": "Responsive Grid"
+        }
+      },
+      "opacity": {
+        "title": "Opacity",
+        "description": "Opacity utilities for controlling the transparency of elements.",
+        "opacityScale": {
+          "title": "Opacity Scale",
+          "description": "Control the opacity/transparency of an element from 0 (invisible) to 100 (fully opaque)."
+        },
+        "responsive": {
+          "title": "Responsive Opacity",
+          "description": "Apply opacity utilities at specific breakpoints."
+        },
+        "visualExamples": {
+          "title": "Visual Examples"
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "hoverEffect": "Hover Opacity Effect",
+          "disabledState": "Disabled State",
+          "loadingOverlay": "Loading Overlay",
+          "imageOverlay": "Image Overlay Effect"
+        }
+      },
+      "shadows": {
+        "title": "Shadows",
+        "description": "Shadow utilities for controlling box shadows and elevation.",
+        "shadowScale": {
+          "title": "Shadow Scale",
+          "description": "Apply box shadows to elements with different sizes and intensities."
+        },
+        "shadowColors": {
+          "title": "Shadow Colors",
+          "description": "Customize the color of box shadows."
+        },
+        "colorExamples": {
+          "title": "Shadow Color Examples"
+        },
+        "responsive": {
+          "title": "Responsive Shadows",
+          "description": "Apply shadow utilities at specific breakpoints."
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "cardElevation": "Card Elevation on Hover",
+          "modalOverlay": "Modal with Prominent Shadow",
+          "dropdownMenu": "Dropdown Menu Shadow",
+          "insetInputs": "Inset Shadow Input"
+        }
+      },
+      "transitions": {
+        "title": "Transitions & Animations",
+        "description": "Transition and animation utilities for controlling element transitions, timing, and animations.",
+        "transitionProperty": {
+          "title": "Transition Property",
+          "description": "Specify which CSS properties should transition."
+        },
+        "duration": {
+          "title": "Transition Duration",
+          "description": "Control the duration of transitions."
+        },
+        "timing": {
+          "title": "Transition Timing",
+          "description": "Control the timing function (easing) of transitions."
+        },
+        "delay": {
+          "title": "Transition Delay",
+          "description": "Add a delay before the transition starts."
+        },
+        "animations": {
+          "title": "Animations",
+          "description": "Built-in animations for common use cases."
+        },
+        "animationDetails": {
+          "title": "Animation Details",
+          "spin": {
+            "title": "Spin Animation",
+            "description": "Continuous rotation animation, perfect for loading indicators."
+          },
+          "ping": {
+            "title": "Ping Animation",
+            "description": "Scale and fade animation, ideal for notification badges."
+          },
+          "pulse": {
+            "title": "Pulse Animation",
+            "description": "Opacity pulse animation, great for skeleton loaders."
+          },
+          "bounce": {
+            "title": "Bounce Animation",
+            "description": "Bouncing animation for drawing attention."
+          }
+        },
+        "responsive": {
+          "title": "Responsive Transitions",
+          "description": "Apply transition utilities at specific breakpoints."
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "buttonHover": "Button Hover Effect",
+          "fadeIn": "Fade In on Hover",
+          "scaleTransform": "Scale Transform",
+          "cardHover": "Card Hover Effect"
+        },
+        "reducedMotion": {
+          "title": "Reduced Motion Support",
+          "description": "Respect user preferences for reduced motion using motion-reduce utilities."
+        }
+      },
+      "visibility": {
+        "title": "Visibility",
+        "description": "Visibility utilities for controlling element visibility without affecting layout.",
+        "visibilityValues": {
+          "title": "Visibility Values",
+          "description": "Control whether an element is visible or invisible."
+        },
+        "vsDisplay": {
+          "title": "Visibility vs Display",
+          "description": "Understanding the difference between visibility and display utilities.",
+          "class": "Class",
+          "space": "Takes Space",
+          "clickable": "Clickable",
+          "useCase": "Use Case",
+          "yes": "Yes",
+          "no": "No",
+          "default": "Default state",
+          "hideKeepSpace": "Hide but keep space",
+          "removeLayout": "Remove from layout",
+          "tableRows": "Table row collapse"
+        },
+        "responsive": {
+          "title": "Responsive Visibility",
+          "description": "Apply visibility utilities at specific breakpoints."
+        },
+        "print": {
+          "title": "Print Visibility",
+          "description": "Control visibility when printing."
+        },
+        "commonPatterns": {
+          "title": "Common Patterns",
+          "toggleVisibility": "Toggle Visibility on Hover",
+          "loadingState": "Loading State Placeholder",
+          "tableRows": "Collapse Table Rows",
+          "printOnly": "Hide from Print"
+        }
       }
     },
     "troubleshooting": {
@@ -1139,7 +1888,9 @@
   },
   "sidebar": {
     "gettingStarted": "Getting Started",
+    "designSystem": "Design System",
     "coreConcepts": "Core Concepts",
+    "baseStyles": "Base Styles",
     "utilities": "Utilities",
     "components": "Components",
     "advanced": "Advanced",
@@ -1147,7 +1898,26 @@
     "migration": "Migration",
     "help": "Help",
     "community": "Community",
-    "tools": "Tools"
+    "tools": "Tools",
+    "introduction": "Introduction",
+    "customization": "Customization",
+    "responsiveDesign": "Responsive Design",
+    "darkMode": "Dark Mode",
+    "apiReference": "API Reference",
+    "browserSupport": "Browser Support",
+    "migrationGuides": "Migration Guides",
+    "fromTailwind": "From Tailwind",
+    "fromBootstrap": "From Bootstrap",
+    "fromBulma": "From Bulma",
+    "pluginDevelopment": "Plugin Development",
+    "performance": "Performance",
+    "accessibility": "Accessibility",
+    "rtlSupport": "RTL Support",
+    "troubleshooting": "Troubleshooting",
+    "faq": "FAQ",
+    "contributing": "Contributing",
+    "playground": "Playground",
+    "configuration": "Configuration"
   },
   "common": {
     "copy": "Copy",

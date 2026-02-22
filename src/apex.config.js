@@ -1,7 +1,7 @@
 // ============================================================================
-// ApexCSS Configuration System
+// Apex Configuration System
 // ============================================================================
-// A comprehensive configuration system supporting:
+//  Configuration system supporting:
 // 1. Runtime CSS Custom Properties (client-side theming)
 // 2. Build-time SCSS generation (compile-time optimization)
 // 3. JavaScript Configuration API (dynamic feature toggling)
@@ -19,8 +19,6 @@
 //   createCustomTheme('my-theme', { colors: { primary: '#6366f1' } });
 //
 // ============================================================================
-
-import './framework.scss';
 
 // ============================================================================
 // Default Configuration
@@ -89,7 +87,7 @@ export const defaultConfig = {
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    '2xl': '1536px'
+    xxl: '1536px'
   },
 
   // Spacing scale (in rem units)

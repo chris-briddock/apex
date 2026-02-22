@@ -1,6 +1,6 @@
 # ApexCSS E2E Tests
 
-Comprehensive end-to-end testing suite for the ApexCSS utility-first CSS framework using React, Vite, TypeScript, and Playwright.
+End-to-end testing suite for the ApexCSS utility-first CSS framework using React, Vite, TypeScript, and Playwright.
 
 **New:** Visual regression testing support with Playwright's screenshot comparison.
 

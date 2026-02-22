@@ -9,7 +9,7 @@ export interface SearchItem {
 export const searchData: SearchItem[] = [
   {
     title: "Introduction",
-    description: "Welcome to the Apex documentation. This utility-first framework provides a comprehensive set of CSS classes for rapid UI development.",
+    description: "Welcome to the Apex documentation. This utility-first framework provides a large set of CSS classes for rapid UI development.",
     href: "/",
     category: "Getting Started",
     keywords: ["introduction", "getting started", "overview", "welcome"],
@@ -23,7 +23,7 @@ export const searchData: SearchItem[] = [
   },
   {
     title: "Design System",
-    description: "Apex provides a comprehensive design system with consistent colors, typography, spacing, and more.",
+    description: "Apex provides a design system with consistent colors, typography, spacing, and more.",
     href: "/design-system/",
     category: "Design System",
     keywords: ["colors", "typography", "spacing", "shadows", "design tokens"],
