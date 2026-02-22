@@ -87,7 +87,9 @@
 @use '../accessibility/focus' as a11y-focus;
 
 // Extended Utilities
-@use '../extended/animations';
 @use '../extended/transforms';
 @use '../extended/filters';
 @use '../extended/aspect-ratio';
+
+// Plugins
+@use '../plugins/animations';

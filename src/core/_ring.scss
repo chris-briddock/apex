@@ -60,7 +60,7 @@
       }
     }
 
-    .dark {
+    [data-theme="dark"] {
       @each $key, $value in $ring-widths {
         .dark\:ring-#{$key} {
           --apex-ring-offset-shadow: 0 0 #0000;
@@ -97,7 +97,7 @@
       }
     }
 
-    .dark {
+    [data-theme="dark"] {
       @each $key, $value in $ring-widths {
         .dark\:ring-offset-#{$key} {
           --apex-ring-offset-width: #{$value};
@@ -182,7 +182,7 @@
       }
     }
 
-    .dark {
+    [data-theme="dark"] {
       @each $key, $value in $dark-ring-colors {
         .dark\:ring-#{"#{$key}"} {
           --apex-ring-color: #{$value};
@@ -237,7 +237,7 @@
       }
     }
 
-    .dark {
+    [data-theme="dark"] {
       @each $key, $value in $dark-ring-offset-colors {
         .dark\:ring-offset-#{"#{$key}"} {
           --apex-ring-offset-color: #{$value};
@@ -259,7 +259,7 @@
       }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:ring-inset {
         --apex-ring-inset: inset;
       }
@@ -283,7 +283,7 @@
       .dark\:ring-opacity-100 { --apex-ring-opacity: 1; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:ring-opacity-0 { --apex-ring-opacity: 0; }
       .dark\:ring-opacity-25 { --apex-ring-opacity: 0.25; }
       .dark\:ring-opacity-50 { --apex-ring-opacity: 0.5; }

@@ -35,8 +35,8 @@
       .dark\:hover\:text-black:hover { color: #fff; }
     }
 
-    // Dark mode hover text colors - via .dark class
-    .dark {
+    // Dark mode hover text colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       .dark\:hover\:text-primary:hover { color: #60a5fa; }
       .dark\:hover\:text-secondary:hover { color: #94a3b8; }
       .dark\:hover\:text-success:hover { color: #4ade80; }
@@ -56,8 +56,8 @@
       }
     }
 
-    // Dark mode hover gray text colors - via .dark class
-    .dark {
+    // Dark mode hover gray text colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
       }
@@ -97,8 +97,8 @@
       .dark\:hover\:bg-transparent:hover { background-color: transparent; }
     }
 
-    // Dark mode hover background colors - via .dark class
-    .dark {
+    // Dark mode hover background colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       .dark\:hover\:bg-primary:hover { background-color: #60a5fa; }
       .dark\:hover\:bg-secondary:hover { background-color: #94a3b8; }
       .dark\:hover\:bg-success:hover { background-color: #4ade80; }
@@ -118,8 +118,8 @@
       }
     }
 
-    // Dark mode hover gray background colors - via .dark class
-    .dark {
+    // Dark mode hover gray background colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
       }
@@ -157,8 +157,8 @@
       .dark\:hover\:border-white:hover { border-color: #111827; }
     }
 
-    // Dark mode hover border colors - via .dark class
-    .dark {
+    // Dark mode hover border colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       .dark\:hover\:border-primary:hover { border-color: #60a5fa; }
       .dark\:hover\:border-secondary:hover { border-color: #94a3b8; }
       .dark\:hover\:border-success:hover { border-color: #4ade80; }
@@ -177,8 +177,8 @@
       }
     }
 
-    // Dark mode hover gray border colors - via .dark class
-    .dark {
+    // Dark mode hover gray border colors - via data-theme="dark" attribute
+    [data-theme="dark"] {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
       }
@@ -207,7 +207,7 @@
       .dark\:hover\:text-purple-500:hover { color: #c084fc; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:hover\:text-blue-500:hover { color: #60a5fa; }
       .dark\:hover\:text-green-500:hover { color: #4ade80; }
       .dark\:hover\:text-red-500:hover { color: #f87171; }
@@ -242,7 +242,7 @@
       .dark\:hover\:shadow-none:hover { box-shadow: none; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:hover\:shadow-sm:hover { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3); }
       .dark\:hover\:shadow:hover { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2); }
       .dark\:hover\:shadow-md:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }

@@ -109,7 +109,7 @@
       .dark\:disabled\:text-muted.disabled { color: #6b7280; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:disabled\:text-primary:disabled,
       .dark\:disabled\:text-primary.disabled { color: #60a5fa; }
       .dark\:disabled\:text-secondary:disabled,
@@ -140,7 +140,7 @@
       .dark\:disabled\:bg-muted.disabled { background-color: #374151; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:disabled\:bg-primary:disabled,
       .dark\:disabled\:bg-primary.disabled { background-color: #60a5fa; }
       .dark\:disabled\:bg-secondary:disabled,
@@ -165,7 +165,7 @@
       .dark\:disabled\:border-muted.disabled { border-color: #4b5563; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:disabled\:border-primary:disabled,
       .dark\:disabled\:border-primary.disabled { border-color: #60a5fa; }
       .dark\:disabled\:border-secondary:disabled,

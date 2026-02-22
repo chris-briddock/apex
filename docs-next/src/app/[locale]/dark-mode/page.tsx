@@ -66,7 +66,7 @@ export default function DarkModePage() {
           {t("customizingDarkMode.description")}
         </p>
         <CodeBlock
-          code={`.dark {
+          code={`[data-theme="dark"] {
   --color-primary: #60a5fa;
   --color-secondary: #a78bfa;
   --color-background: #111827;

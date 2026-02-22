@@ -317,9 +317,8 @@
           color: var(--color-gray-#{$key});
         }
       }
-      // Dark mode via .dark class (manual toggle)
-      .dark .dark\:text-gray-#{$key},
-      .dark\:text-gray-#{$key}.dark {
+      // Dark mode via data-theme="dark" attribute (manual toggle)
+      [data-theme="dark"] .dark\:text-gray-#{$key} {
         color: var(--color-gray-#{$key});
       }
     }
@@ -331,8 +330,7 @@
           background-color: var(--color-gray-#{$key});
         }
       }
-      .dark .dark\:bg-gray-#{$key},
-      .dark\:bg-gray-#{$key}.dark {
+      [data-theme="dark"] .dark\:bg-gray-#{$key} {
         background-color: var(--color-gray-#{$key});
       }
     }
@@ -344,8 +342,7 @@
           border-color: var(--color-gray-#{$key});
         }
       }
-      .dark .dark\:border-gray-#{$key},
-      .dark\:border-gray-#{$key}.dark {
+      [data-theme="dark"] .dark\:border-gray-#{$key} {
         border-color: var(--color-gray-#{$key});
       }
     }
@@ -357,12 +354,9 @@
         .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
         .dark\:border-#{$color} { border-color: var(--color-#{$color}); }
       }
-      .dark .dark\:text-#{$color},
-      .dark\:text-#{$color}.dark { color: var(--color-#{$color}); }
-      .dark .dark\:bg-#{$color},
-      .dark\:bg-#{$color}.dark { background-color: var(--color-#{$color}); }
-      .dark .dark\:border-#{$color},
-      .dark\:border-#{$color}.dark { border-color: var(--color-#{$color}); }
+      [data-theme="dark"] .dark\:text-#{$color} { color: var(--color-#{$color}); }
+      [data-theme="dark"] .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
+      [data-theme="dark"] .dark\:border-#{$color} { border-color: var(--color-#{$color}); }
     }
 
     // Dark mode white/black (swapped in dark mode)
@@ -372,14 +366,10 @@
       .dark\:bg-white { background-color: var(--color-black); }
       .dark\:bg-black { background-color: var(--color-white); }
     }
-    .dark .dark\:text-white,
-    .dark\:text-white.dark { color: var(--color-black); }
-    .dark .dark\:text-black,
-    .dark\:text-black.dark { color: var(--color-white); }
-    .dark .dark\:bg-white,
-    .dark\:bg-white.dark { background-color: var(--color-black); }
-    .dark .dark\:bg-black,
-    .dark\:bg-black.dark { background-color: var(--color-white); }
+    [data-theme="dark"] .dark\:text-white { color: var(--color-black); }
+    [data-theme="dark"] .dark\:text-black { color: var(--color-white); }
+    [data-theme="dark"] .dark\:bg-white { background-color: var(--color-black); }
+    [data-theme="dark"] .dark\:bg-black { background-color: var(--color-white); }
 
     // ============================================================================
     // Dark Mode Extended Color Scales (Blue, Green, Red, Yellow, Purple)
@@ -392,12 +382,9 @@
           .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
           .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
         }
-        .dark .dark\:text-#{$color-family}-#{$key},
-        .dark\:text-#{$color-family}-#{$key}.dark { color: var(--color-#{$color-family}-#{$key}); }
-        .dark .dark\:bg-#{$color-family}-#{$key},
-        .dark\:bg-#{$color-family}-#{$key}.dark { background-color: var(--color-#{$color-family}-#{$key}); }
-        .dark .dark\:border-#{$color-family}-#{$key},
-        .dark\:border-#{$color-family}-#{$key}.dark { border-color: var(--color-#{$color-family}-#{$key}); }
+        [data-theme="dark"] .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
+        [data-theme="dark"] .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
+        [data-theme="dark"] .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
       }
     }
 
@@ -415,9 +402,8 @@
           background-color: var(--color-gray-#{$shade});
         }
       }
-      // .dark class hover
-      .dark .dark\:hover\:bg-gray-#{$shade}:hover,
-      .dark\:hover\:bg-gray-#{$shade}.dark:hover {
+      // data-theme="dark" hover
+      [data-theme="dark"] .dark\:hover\:bg-gray-#{$shade}:hover {
         background-color: var(--color-gray-#{$shade});
       }
 
@@ -431,8 +417,7 @@
             background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
           }
         }
-        .dark .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover,
-        .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}.dark:hover {
+        [data-theme="dark"] .dark\:hover\:bg-gray-#{$shade}\/#{$opacity-name}:hover {
           background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
         }
       }
@@ -448,8 +433,7 @@
           background-color: var(--color-#{$color});
         }
       }
-      .dark .dark\:hover\:bg-#{$color}:hover,
-      .dark\:hover\:bg-#{$color}.dark:hover {
+      [data-theme="dark"] .dark\:hover\:bg-#{$color}:hover {
         background-color: var(--color-#{$color});
       }
     }

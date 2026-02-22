@@ -24,7 +24,7 @@
       .dark\:focus\:ring-inset:focus { outline: none; box-shadow: inset 0 0 0 2px rgba(96, 165, 250, 0.5); }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:ring:focus { outline: none; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5); }
       .dark\:focus\:ring-0:focus { outline: none; box-shadow: none; }
       .dark\:focus\:ring-2:focus { outline: none; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.5); }
@@ -53,7 +53,7 @@
       .dark\:focus\:ring-info:focus { outline: none; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.5); }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:ring-primary:focus { outline: none; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5); }
       .dark\:focus\:ring-secondary:focus { outline: none; box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.5); }
       .dark\:focus\:ring-success:focus { outline: none; box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.5); }
@@ -78,7 +78,7 @@
       .dark\:focus\:outline-black:focus { outline: 2px solid #fff; outline-offset: 2px; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:outline-none:focus { outline: none; }
       .dark\:focus\:outline:focus { outline: 2px solid #60a5fa; outline-offset: 2px; }
       .dark\:focus\:outline-white:focus { outline: 2px solid #111827; outline-offset: 2px; }
@@ -105,7 +105,7 @@
       .dark\:focus\:text-info:focus { color: #38bdf8; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:text-primary:focus { color: #60a5fa; }
       .dark\:focus\:text-secondary:focus { color: #94a3b8; }
       .dark\:focus\:text-success:focus { color: #4ade80; }
@@ -134,7 +134,7 @@
       .dark\:focus\:bg-info:focus { background-color: #38bdf8; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:bg-primary:focus { background-color: #60a5fa; }
       .dark\:focus\:bg-secondary:focus { background-color: #94a3b8; }
       .dark\:focus\:bg-success:focus { background-color: #4ade80; }
@@ -163,7 +163,7 @@
       .dark\:focus\:border-info:focus { border-color: #38bdf8; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus\:border-primary:focus { border-color: #60a5fa; }
       .dark\:focus\:border-secondary:focus { border-color: #94a3b8; }
       .dark\:focus\:border-success:focus { border-color: #4ade80; }
@@ -190,7 +190,7 @@
       .dark\:focus-visible\:outline-none:focus-visible { outline: none; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus-visible\:ring:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5); }
       .dark\:focus-visible\:ring-0:focus-visible { outline: none; box-shadow: none; }
       .dark\:focus-visible\:ring-2:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.5); }
@@ -216,7 +216,7 @@
       .dark\:focus-within\:outline-none:focus-within { outline: none; }
     }
 
-    .dark {
+    [data-theme="dark"] {
       .dark\:focus-within\:ring:focus-within { outline: none; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5); }
       .dark\:focus-within\:ring-0:focus-within { outline: none; box-shadow: none; }
       .dark\:focus-within\:ring-2:focus-within { outline: none; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.5); }

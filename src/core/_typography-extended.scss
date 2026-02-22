@@ -4,6 +4,7 @@
 // ============================================================================
 
 @use '../config/settings' as settings;
+@use '../base/colors' as *;
 
 @if settings.$enable-typography-extended ==true {
 

@@ -151,7 +151,7 @@ export default function HomePage() {
   --color-primary: #3b82f6;
 }
 
-.dark {
+[data-theme="dark"] {
   --color-primary: #60a5fa;
 }`}
           language="css"

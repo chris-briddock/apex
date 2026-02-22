@@ -25,9 +25,8 @@
     }
   }
 
-  // Dark mode via .dark class (manual toggle)
-  .dark .#{$class-name},
-  .#{$class-name}.dark {
+  // Dark mode via data-theme="dark" attribute (manual toggle)
+  [data-theme="dark"] .#{$class-name} {
     #{$property}: $dark-value;
   }
 }
@@ -47,9 +46,8 @@
       }
     }
 
-    // Dark mode via .dark class (manual toggle)
-    .dark .#{$class-name},
-    .#{$class-name}.dark {
+    // Dark mode via data-theme="dark" attribute (manual toggle)
+    [data-theme="dark"] .#{$class-name} {
       #{$property}: $dark-value;
     }
   }
@@ -77,9 +75,8 @@
       }
     }
 
-    // Dark mode via .dark class (manual toggle)
-    .dark .#{$class-name},
-    .#{$class-name}.dark {
+    // Dark mode via data-theme="dark" attribute (manual toggle)
+    [data-theme="dark"] .#{$class-name} {
       #{$property}: $dark-value;
     }
   }
@@ -104,9 +101,8 @@
         }
       }
 
-      // Dark mode via .dark class (manual toggle)
-      .dark .#{$class-name},
-      .#{$class-name}.dark {
+      // Dark mode via data-theme="dark" attribute (manual toggle)
+      [data-theme="dark"] .#{$class-name} {
         #{$property}: rgba(
           red($base-dark-color),
           green($base-dark-color),
@@ -121,11 +117,6 @@
 // Generate hover state dark mode utilities
 // Usage: @include dark-mode-hover-utilities('bg-gray-50', 'background-color', $dark-color);
 @mixin dark-mode-hover-utilities($class-prefix, $property, $dark-value, $opacity-values: ()) {
-  // Base hover state for manual .dark class
-  .dark\:hover\:#{$class-prefix}:hover {
-    #{$property}: $dark-value;
-  }
-
   // Dark mode via media query (system preference)
   @media (prefers-color-scheme: dark) {
     .#{$class-prefix}:hover {
@@ -133,9 +124,8 @@
     }
   }
 
-  // Dark mode via .dark class (manual toggle)
-  .dark .#{$class-prefix}:hover,
-  .#{$class-prefix}.dark:hover {
+  // Dark mode via data-theme="dark" attribute (manual toggle)
+  [data-theme="dark"] .#{$class-prefix}:hover {
     #{$property}: $dark-value;
   }
 
@@ -143,16 +133,6 @@
   @each $opacity-name, $opacity-value in $opacity-values {
     @if $opacity-value < 1 {
       $escaped-name: '#{$class-prefix}\\/#{$opacity-name}';
-
-      // Base hover with opacity
-      .dark\:hover\:#{$escaped-name}:hover {
-        #{$property}: rgba(
-          red($dark-value),
-          green($dark-value),
-          blue($dark-value),
-          $opacity-value
-        );
-      }
 
       // Media query hover with opacity
       @media (prefers-color-scheme: dark) {
@@ -166,9 +146,8 @@
         }
       }
 
-      // .dark class hover with opacity
-      .dark .#{$escaped-name}:hover,
-      .#{$escaped-name}.dark:hover {
+      // data-theme="dark" hover with opacity
+      [data-theme="dark"] .#{$escaped-name}:hover {
         #{$property}: rgba(
           red($dark-value),
           green($dark-value),
@@ -197,8 +176,7 @@
         }
       }
 
-      .dark .#{$class-name},
-      .#{$class-name}.dark {
+      [data-theme="dark"] .#{$class-name} {
         #{$property}: $dark-value;
       }
     } @else if $property == 'background-color' {
@@ -211,8 +189,7 @@
         }
       }
 
-      .dark .#{$class-name},
-      .#{$class-name}.dark {
+      [data-theme="dark"] .#{$class-name} {
         #{$property}: $dark-value;
       }
     }

@@ -52,9 +52,9 @@
   }
 
   // ============================================================================
-  // CSS Custom Properties - Manual Dark Mode (.dark class)
+  // CSS Custom Properties - Manual Dark Mode (data-theme="dark" attribute)
   // ============================================================================
-  .dark {
+  [data-theme="dark"] {
     // Semantic Colors
     --color-primary: #60a5fa;
     --color-primary-light: #93c5fd;
@@ -186,108 +186,67 @@
   }
 
   // ============================================================================
-  // Dark Mode Utility Classes - Manual (.dark class)
+  // Dark Mode Utility Classes - Manual (data-theme="dark" attribute)
   // ============================================================================
 
   // Text colors - manual
-  .dark .dark\:text-primary,
-  .dark\:text-primary.dark { color: var(--color-primary); }
-  .dark .dark\:text-secondary,
-  .dark\:text-secondary.dark { color: var(--color-secondary); }
-  .dark .dark\:text-success,
-  .dark\:text-success.dark { color: var(--color-success); }
-  .dark .dark\:text-danger,
-  .dark\:text-danger.dark { color: var(--color-danger); }
-  .dark .dark\:text-warning,
-  .dark\:text-warning.dark { color: var(--color-warning); }
-  .dark .dark\:text-info,
-  .dark\:text-info.dark { color: var(--color-info); }
-  .dark .dark\:text-light,
-  .dark\:text-light.dark { color: var(--color-light); }
-  .dark .dark\:text-dark,
-  .dark\:text-dark.dark { color: var(--color-dark); }
-  .dark .dark\:text-white,
-  .dark\:text-white.dark { color: var(--color-white); }
-  .dark .dark\:text-black,
-  .dark\:text-black.dark { color: var(--color-black); }
+  [data-theme="dark"] .dark\:text-primary { color: var(--color-primary); }
+  [data-theme="dark"] .dark\:text-secondary { color: var(--color-secondary); }
+  [data-theme="dark"] .dark\:text-success { color: var(--color-success); }
+  [data-theme="dark"] .dark\:text-danger { color: var(--color-danger); }
+  [data-theme="dark"] .dark\:text-warning { color: var(--color-warning); }
+  [data-theme="dark"] .dark\:text-info { color: var(--color-info); }
+  [data-theme="dark"] .dark\:text-light { color: var(--color-light); }
+  [data-theme="dark"] .dark\:text-dark { color: var(--color-dark); }
+  [data-theme="dark"] .dark\:text-white { color: var(--color-white); }
+  [data-theme="dark"] .dark\:text-black { color: var(--color-black); }
 
   // Gray text colors - manual
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-    .dark .dark\:text-gray-#{$key},
-    .dark\:text-gray-#{$key}.dark { color: var(--color-gray-#{$key}); }
+    [data-theme="dark"] .dark\:text-gray-#{$key} { color: var(--color-gray-#{$key}); }
   }
 
   // Background colors - manual
-  .dark .dark\:bg-primary,
-  .dark\:bg-primary.dark { background-color: var(--color-primary); }
-  .dark .dark\:bg-secondary,
-  .dark\:bg-secondary.dark { background-color: var(--color-secondary); }
-  .dark .dark\:bg-success,
-  .dark\:bg-success.dark { background-color: var(--color-success); }
-  .dark .dark\:bg-danger,
-  .dark\:bg-danger.dark { background-color: var(--color-danger); }
-  .dark .dark\:bg-warning,
-  .dark\:bg-warning.dark { background-color: var(--color-warning); }
-  .dark .dark\:bg-info,
-  .dark\:bg-info.dark { background-color: var(--color-info); }
-  .dark .dark\:bg-light,
-  .dark\:bg-light.dark { background-color: var(--color-light); }
-  .dark .dark\:bg-dark,
-  .dark\:bg-dark.dark { background-color: var(--color-dark); }
-  .dark .dark\:bg-white,
-  .dark\:bg-white.dark { background-color: var(--color-white); }
-  .dark .dark\:bg-black,
-  .dark\:bg-black.dark { background-color: var(--color-black); }
+  [data-theme="dark"] .dark\:bg-primary { background-color: var(--color-primary); }
+  [data-theme="dark"] .dark\:bg-secondary { background-color: var(--color-secondary); }
+  [data-theme="dark"] .dark\:bg-success { background-color: var(--color-success); }
+  [data-theme="dark"] .dark\:bg-danger { background-color: var(--color-danger); }
+  [data-theme="dark"] .dark\:bg-warning { background-color: var(--color-warning); }
+  [data-theme="dark"] .dark\:bg-info { background-color: var(--color-info); }
+  [data-theme="dark"] .dark\:bg-light { background-color: var(--color-light); }
+  [data-theme="dark"] .dark\:bg-dark { background-color: var(--color-dark); }
+  [data-theme="dark"] .dark\:bg-white { background-color: var(--color-white); }
+  [data-theme="dark"] .dark\:bg-black { background-color: var(--color-black); }
 
   // Gray backgrounds - manual
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-    .dark .dark\:bg-gray-#{$key},
-    .dark\:bg-gray-#{$key}.dark { background-color: var(--color-gray-#{$key}); }
+    [data-theme="dark"] .dark\:bg-gray-#{$key} { background-color: var(--color-gray-#{$key}); }
   }
 
   // Border colors - manual
-  .dark .dark\:border-primary,
-  .dark\:border-primary.dark { border-color: var(--color-primary); }
-  .dark .dark\:border-secondary,
-  .dark\:border-secondary.dark { border-color: var(--color-secondary); }
-  .dark .dark\:border-success,
-  .dark\:border-success.dark { border-color: var(--color-success); }
-  .dark .dark\:border-danger,
-  .dark\:border-danger.dark { border-color: var(--color-danger); }
-  .dark .dark\:border-warning,
-  .dark\:border-warning.dark { border-color: var(--color-warning); }
-  .dark .dark\:border-info,
-  .dark\:border-info.dark { border-color: var(--color-info); }
-  .dark .dark\:border-light,
-  .dark\:border-light.dark { border-color: var(--color-light); }
-  .dark .dark\:border-dark,
-  .dark\:border-dark.dark { border-color: var(--color-dark); }
-  .dark .dark\:border-white,
-  .dark\:border-white.dark { border-color: var(--color-white); }
-  .dark .dark\:border-black,
-  .dark\:border-black.dark { border-color: var(--color-black); }
+  [data-theme="dark"] .dark\:border-primary { border-color: var(--color-primary); }
+  [data-theme="dark"] .dark\:border-secondary { border-color: var(--color-secondary); }
+  [data-theme="dark"] .dark\:border-success { border-color: var(--color-success); }
+  [data-theme="dark"] .dark\:border-danger { border-color: var(--color-danger); }
+  [data-theme="dark"] .dark\:border-warning { border-color: var(--color-warning); }
+  [data-theme="dark"] .dark\:border-info { border-color: var(--color-info); }
+  [data-theme="dark"] .dark\:border-light { border-color: var(--color-light); }
+  [data-theme="dark"] .dark\:border-dark { border-color: var(--color-dark); }
+  [data-theme="dark"] .dark\:border-white { border-color: var(--color-white); }
+  [data-theme="dark"] .dark\:border-black { border-color: var(--color-black); }
 
   // Gray borders - manual
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-    .dark .dark\:border-gray-#{$key},
-    .dark\:border-gray-#{$key}.dark { border-color: var(--color-gray-#{$key}); }
+    [data-theme="dark"] .dark\:border-gray-#{$key} { border-color: var(--color-gray-#{$key}); }
   }
 
   // Shadows - manual
-  .dark .dark\:shadow-sm,
-  .dark\:shadow-sm.dark { box-shadow: var(--shadow-sm); }
-  .dark .dark\:shadow,
-  .dark\:shadow.dark { box-shadow: var(--shadow-base); }
-  .dark .dark\:shadow-md,
-  .dark\:shadow-md.dark { box-shadow: var(--shadow-md); }
-  .dark .dark\:shadow-lg,
-  .dark\:shadow-lg.dark { box-shadow: var(--shadow-lg); }
-  .dark .dark\:shadow-xl,
-  .dark\:shadow-xl.dark { box-shadow: var(--shadow-xl); }
-  .dark .dark\:shadow-2xl,
-  .dark\:shadow-2xl.dark { box-shadow: var(--shadow-2xl); }
-  .dark .dark\:shadow-none,
-  .dark\:shadow-none.dark { box-shadow: var(--shadow-none); }
-  .dark .dark\:shadow-inner,
-  .dark\:shadow-inner.dark { box-shadow: var(--shadow-inner); }
+  [data-theme="dark"] .dark\:shadow-sm { box-shadow: var(--shadow-sm); }
+  [data-theme="dark"] .dark\:shadow { box-shadow: var(--shadow-base); }
+  [data-theme="dark"] .dark\:shadow-md { box-shadow: var(--shadow-md); }
+  [data-theme="dark"] .dark\:shadow-lg { box-shadow: var(--shadow-lg); }
+  [data-theme="dark"] .dark\:shadow-xl { box-shadow: var(--shadow-xl); }
+  [data-theme="dark"] .dark\:shadow-2xl { box-shadow: var(--shadow-2xl); }
+  [data-theme="dark"] .dark\:shadow-none { box-shadow: var(--shadow-none); }
+  [data-theme="dark"] .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
 }

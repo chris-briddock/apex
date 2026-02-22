@@ -235,47 +235,37 @@
     }
   }
 
-  // Class-based dark mode
-  .dark .dark\:bg-gray-800\/50,
-  .dark\:bg-gray-800\/50.dark {
+  // Attribute-based dark mode (data-theme="dark")
+  [data-theme="dark"] .dark\:bg-gray-800\/50 {
     background-color: color-mix(in srgb, var(--color-gray-800) 50%, transparent);
   }
-  .dark .dark\:bg-gray-800\/75,
-  .dark\:bg-gray-800\/75.dark {
+  [data-theme="dark"] .dark\:bg-gray-800\/75 {
     background-color: color-mix(in srgb, var(--color-gray-800) 75%, transparent);
   }
-  .dark .dark\:bg-gray-700\/50,
-  .dark\:bg-gray-700\/50.dark {
+  [data-theme="dark"] .dark\:bg-gray-700\/50 {
     background-color: color-mix(in srgb, var(--color-gray-700) 50%, transparent);
   }
-  .dark .dark\:bg-gray-900\/50,
-  .dark\:bg-gray-900\/50.dark {
+  [data-theme="dark"] .dark\:bg-gray-900\/50 {
     background-color: color-mix(in srgb, var(--color-gray-900) 50%, transparent);
   }
 
-  .dark .dark\:text-white\/50,
-  .dark\:text-white\/50.dark {
+  [data-theme="dark"] .dark\:text-white\/50 {
     color: color-mix(in srgb, var(--color-white) 50%, transparent);
   }
-  .dark .dark\:text-white\/75,
-  .dark\:text-white\/75.dark {
+  [data-theme="dark"] .dark\:text-white\/75 {
     color: color-mix(in srgb, var(--color-white) 75%, transparent);
   }
-  .dark .dark\:text-gray-300\/50,
-  .dark\:text-gray-300\/50.dark {
+  [data-theme="dark"] .dark\:text-gray-300\/50 {
     color: color-mix(in srgb, var(--color-gray-300) 50%, transparent);
   }
-  .dark .dark\:text-gray-300\/75,
-  .dark\:text-gray-300\/75.dark {
+  [data-theme="dark"] .dark\:text-gray-300\/75 {
     color: color-mix(in srgb, var(--color-gray-300) 75%, transparent);
   }
 
-  .dark .dark\:border-gray-700\/50,
-  .dark\:border-gray-700\/50.dark {
+  [data-theme="dark"] .dark\:border-gray-700\/50 {
     border-color: color-mix(in srgb, var(--color-gray-700) 50%, transparent);
   }
-  .dark .dark\:border-gray-700\/25,
-  .dark\:border-gray-700\/25.dark {
+  [data-theme="dark"] .dark\:border-gray-700\/25 {
     border-color: color-mix(in srgb, var(--color-gray-700) 25%, transparent);
   }
 

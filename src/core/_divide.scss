@@ -94,7 +94,7 @@
 
   // Dark mode divide colors
   @if settings.$enable-dark-mode == true {
-    .dark {
+    [data-theme="dark"] {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:divide-gray-#{$key} > :not([hidden]) ~ :not([hidden]) {
           border-color: var(--color-gray-#{$key});
