@@ -1,12 +1,12 @@
 {
   "metadata": {
     "title": "Apex Documentation - Utility-First CSS Framework",
-    "description": "Apex - A comprehensive utility-first CSS framework with 500+ utility classes for rapid UI development"
+    "description": "Apex - A utility-first CSS framework with 500+ utility classes for rapid UI development"
   },
   "pages": {
     "accessibility": {
       "title": "Accessibility",
-      "description": "Comprehensive accessibility features in Apex CSS Framework including screen reader support, focus management, reduced motion preferences, and high contrast mode utilities.",
+      "description": "Accessibility features in Apex CSS Framework including screen reader support, focus management, reduced motion preferences, and high contrast mode utilities.",
       "wcagCompliance": {
         "title": "WCAG Compliance",
         "content": "Apex is designed with accessibility in mind and aims to meet WCAG 2.1 AA standards. All accessibility utilities are optional and can be enabled or disabled via configuration."
@@ -29,7 +29,7 @@
       },
       "focusManagement": {
         "title": "Focus Management",
-        "description": "Apex provides comprehensive focus management utilities for keyboard navigation. These help create clear, visible focus indicators that meet WCAG requirements.",
+        "description": "Apex provides focus management utilities for keyboard navigation. These help create clear, visible focus indicators that meet WCAG requirements.",
         "focusVisible": {
           "title": "Focus Visible (:focus-visible)",
           "description": "Apply styles only when an element receives focus via keyboard navigation (not on mouse click). This creates a cleaner experience for mouse users while maintaining accessibility for keyboard users."
@@ -447,7 +447,7 @@
       "customSpacing": {
         "title": "Custom Spacing",
         "description": "Define your own spacing scale for margins, padding, and gaps.",
-        "intro": "Apex provides a comprehensive spacing scale based on rem units. All spacing utilities use these CSS variables internally.",
+        "intro": "Apex provides a spacing scale based on rem units. All spacing utilities use these CSS variables internally.",
         "noteTitle": "Note",
         "noteContent": "Spacing in Apex is defined via SCSS maps at build time. While you can override CSS variables for runtime theming, adding new spacing values requires SCSS configuration."
       },
@@ -511,7 +511,7 @@
       "description": "Explore the Apex design system with interactive color palettes, spacing scales, typography specimens, and live theme customization. All design tokens use CSS custom properties for easy customization.",
       "colors": {
         "title": "Colors",
-        "description": "A comprehensive color system with semantic colors and full palettes. Click any color to copy its CSS variable.",
+        "description": "A color system with semantic colors and full palettes. Click any color to copy its CSS variable.",
         "semantic": "Semantic Colors",
         "palettes": "Color Palettes",
         "contrast": "Contrast Checker",
@@ -552,7 +552,7 @@
       "questions": {
         "whatIs": {
           "question": "What is Apex?",
-          "answer": "Apex is a comprehensive utility-first CSS framework with 500+ utility classes designed for rapid UI development. It provides a set of low-level utility classes that let you build completely custom designs without leaving your HTML."
+          "answer": "Apex is a utility-first CSS framework with 500+ utility classes designed for rapid UI development. It provides a set of low-level utility classes that let you build completely custom designs without leaving your HTML."
         },
         "productionReady": {
           "question": "Is Apex production-ready?",
@@ -843,7 +843,7 @@
     "migrationPages": {
       "fromBootstrap": {
         "title": "Migration from Bootstrap",
-        "description": "A comprehensive guide for migrating your project from Bootstrap to Apex.",
+        "description": "A guide for migrating your project from Bootstrap to Apex.",
         "alert": {
           "type": "warning",
           "title": "Major Changes",
@@ -870,7 +870,7 @@
       },
       "fromBulma": {
         "title": "Migration from Bulma",
-        "description": "A comprehensive guide for migrating your project from Bulma to Apex.",
+        "description": "A guide for migrating your project from Bulma to Apex.",
         "alert": {
           "type": "info",
           "title": "Similar Philosophy",
@@ -897,7 +897,7 @@
       },
       "fromTailwind": {
         "title": "Migration from Tailwind CSS",
-        "description": "A comprehensive guide for migrating your project from Tailwind CSS to Apex.",
+        "description": "A guide for migrating your project from Tailwind CSS to Apex.",
         "alert": {
           "type": "info",
           "title": "Similar Syntax",
@@ -2070,10 +2070,10 @@
   },
   "home": {
     "title": "Apex",
-    "description": "A comprehensive utility-first CSS framework with 500+ utility classes for rapid UI development.",
+    "description": "A utility-first CSS framework with 500+ utility classes for rapid UI development.",
     "welcomeAlert": {
       "title": "Welcome!",
-      "content": "Welcome to the Apex documentation. This utility-first framework provides a comprehensive set of CSS classes for rapid UI development, including spacing, typography, colors, flexbox, grid, animations, transforms, filters, and much more."
+      "content": "Welcome to the Apex documentation. This utility-first framework provides a large set of CSS classes for rapid UI development, including spacing, typography, colors, flexbox, grid, animations, transforms, filters, and much more."
     },
     "gettingStarted": {
       "title": "Getting Started",

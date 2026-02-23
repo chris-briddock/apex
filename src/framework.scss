@@ -1,25 +1,4 @@
 // ============================================================================
-// ApexCSS Framework - Main Entry Point
-// ============================================================================
-// A modular, utility-first CSS framework with three core modules:
-//
-// 1. CONFIG    - Framework settings, breakpoints, and configuration
-// 2. BASE      - CSS reset, normalize, and base element styles
-// 3. THEMES    - CSS custom properties for theming support
-// 4. UTILITIES - All utility classes (core, extended, states, accessibility)
-//
-// Usage:
-//   @use 'framework';
-//
-// Or import modules individually:
-//   @use 'config';
-//   @use 'base';
-//   @use 'themes';
-//   @use 'utilities';
-//
-// ============================================================================
-
-// ============================================================================
 // 1. Configuration
 // ============================================================================
 // Settings, breakpoints, and prefix configuration must come first
@@ -28,20 +7,21 @@
 @use 'config';
 
 // ============================================================================
-// 2. Base Styles
+// 2. Themes (CSS Custom Properties)
+// ============================================================================
+// CSS custom properties for runtime theming MUST be defined before utilities
+// so that the variables are available when utility classes are parsed.
+// Themes define color palettes, spacing scales, and other design tokens.
+
+@use 'themes';
+
+// ============================================================================
+// 3. Base Styles
 // ============================================================================
 // Reset, normalize, and base element styles. These provide a consistent
 // foundation across browsers.
 
 @use 'base';
-
-// ============================================================================
-// 3. Themes
-// ============================================================================
-// CSS custom properties for runtime theming. Themes define color palettes,
-// spacing scales, and other design tokens as CSS variables.
-
-@use 'themes';
 
 // ============================================================================
 // 4. Utilities

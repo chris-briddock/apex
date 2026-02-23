@@ -4,14 +4,6 @@
 
 @use '../../config/settings' as settings;
 
-// Default gradient stops (will be overridden by from-*, via-*, to-* utilities)
-:root {
-  --gradient-from: #000;
-  --gradient-via: transparent;
-  --gradient-to: transparent;
-  --gradient-stops: var(--gradient-from), var(--gradient-via), var(--gradient-to);
-}
-
 @if settings.$enable-backgrounds == true {
   // Background attachment
   .bg-fixed { background-attachment: fixed; }

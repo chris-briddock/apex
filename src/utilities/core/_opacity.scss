@@ -16,7 +16,7 @@
   }
 
   // Responsive opacity variants for xxl breakpoint
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     @each $key, $value in settings.$opacity-scale {
       .xxl\:opacity-#{$key} {
         opacity: $value;

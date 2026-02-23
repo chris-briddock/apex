@@ -600,7 +600,7 @@
     .xl\:rounded-full { border-radius: var(--border-radius-full); }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     // Border width
     .xxl\:border-0 { border-width: var(--border-width-0); }
     .xxl\:border { border-width: var(--border-width-default); }

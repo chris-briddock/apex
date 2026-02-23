@@ -142,20 +142,20 @@ const defaultConfig = {
   vw: [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100],
   // Custom values (for calc, special units)
   custom: [
-    'calc(100%-1rem)',
-    'calc(100%-2rem)',
-    'calc(100%-3rem)',
-    'calc(100%-4rem)',
-    'calc(100%-20px)',
-    'calc(100%-40px)',
-    'calc(100%-60px)',
-    'calc(100vh-1rem)',
-    'calc(100vh-2rem)',
-    'calc(100vh-3rem)',
-    'calc(100vw-1rem)',
-    'calc(100vw-2rem)',
-    'calc(50%-0.5rem)',
-    'calc(50%-1rem)',
+    'calc(100% - 1rem)',
+    'calc(100% - 2rem)',
+    'calc(100% - 3rem)',
+    'calc(100% - 4rem)',
+    'calc(100% - 20px)',
+    'calc(100% - 40px)',
+    'calc(100% - 60px)',
+    'calc(100vh - 1rem)',
+    'calc(100vh - 2rem)',
+    'calc(100vh - 3rem)',
+    'calc(100vw - 1rem)',
+    'calc(100vw - 2rem)',
+    'calc(50% - 0.5rem)',
+    'calc(50% - 1rem)',
     'min-content',
     'max-content',
     'fit-content',
@@ -253,7 +253,7 @@ function generateArbitrarySCSS(config) {
   lines.push('    md: bp.$breakpoint-md,');
   lines.push('    lg: bp.$breakpoint-lg,');
   lines.push('    xl: bp.$breakpoint-xl,');
-  lines.push('    2xl: bp.$breakpoint-2xl');
+  lines.push('    xxl: bp.$breakpoint-xxl');
   lines.push('  );');
   lines.push('');
 

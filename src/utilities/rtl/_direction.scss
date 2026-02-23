@@ -281,8 +281,8 @@
 .rtl\:selection-primary {
   &[dir="rtl"],
   .rtl & {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
   }
 }
 

@@ -116,8 +116,8 @@ export const BordersPage: React.FC = () => {
                     <div data-testid="border-warning" className="border-4 border-warning bg-gray-100 w-24 h-24 flex items-center justify-center">
                         warning
                     </div>
-                    <div data-testid="border-error" className="border-4 border-error bg-gray-100 w-24 h-24 flex items-center justify-center">
-                        error
+                    <div data-testid="border-danger" className="border-4 border-danger bg-gray-100 w-24 h-24 flex items-center justify-center">
+                        danger
                     </div>
                     <div data-testid="border-gray-300" className="border-4 border-gray-300 bg-gray-100 w-24 h-24 flex items-center justify-center">
                         gray-300

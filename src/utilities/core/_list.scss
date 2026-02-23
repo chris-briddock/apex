@@ -5,11 +5,6 @@
 @use '../../config/settings' as settings;
 
 @if settings.$enable-list == true {
-  // Define marker color CSS variable on :root
-  :root {
-    --apex-marker-color: currentColor;
-  }
-
   // List style type
   .list-none { list-style-type: none; }
   .list-disc { list-style-type: disc; }
@@ -35,17 +30,17 @@
   .list-image-none { list-style-image: none; }
 
   // Marker
-  .marker-color-primary { --apex-marker-color: #3b82f6; }
-  .marker-color-secondary { --apex-marker-color: #64748b; }
-  .marker-color-success { --apex-marker-color: #22c55e; }
-  .marker-color-danger { --apex-marker-color: #ef4444; }
-  .marker-color-warning { --apex-marker-color: #f59e0b; }
-  .marker-color-info { --apex-marker-color: #0ea5e9; }
-  .marker-color-white { --apex-marker-color: #fff; }
-  .marker-color-black { --apex-marker-color: #000; }
+  .marker-color-primary { --list-marker-color: var(--color-primary); }
+  .marker-color-secondary { --list-marker-color: var(--color-secondary); }
+  .marker-color-success { --list-marker-color: var(--color-success); }
+  .marker-color-danger { --list-marker-color: var(--color-danger); }
+  .marker-color-warning { --list-marker-color: var(--color-warning); }
+  .marker-color-info { --list-marker-color: var(--color-info); }
+  .marker-color-white { --list-marker-color: var(--color-white); }
+  .marker-color-black { --list-marker-color: var(--color-black); }
 
   // Apply marker color
   ::marker {
-    color: var(--apex-marker-color);
+    color: var(--list-marker-color);
   }
 }

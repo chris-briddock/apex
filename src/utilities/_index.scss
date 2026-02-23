@@ -47,6 +47,7 @@
 @forward 'core/user-select';
 @forward 'core/will-change';
 @forward 'core/accent-color';
+@forward 'core/colors';
 @forward 'core/place-items';
 @forward 'core/space-between';
 @forward 'core/overscroll-behavior';
@@ -67,7 +68,6 @@
 
 // Extended Utilities
 // ============================================================================
-@forward 'extended/animations';
 @forward 'extended/transforms';
 @forward 'extended/filters';
 @forward 'extended/aspect-ratio';

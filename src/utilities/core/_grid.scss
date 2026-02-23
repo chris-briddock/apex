@@ -277,7 +277,7 @@
     .xl\:col-span-full { grid-column: 1 / -1; }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     .xxl\:grid { display: grid; }
     .xxl\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .xxl\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

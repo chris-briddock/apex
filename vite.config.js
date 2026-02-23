@@ -10,7 +10,7 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       input: {
-        main: 'src/styles/index.js'
+        main: 'src/index.js'
       },
       output: {
         entryFileNames: 'framework.css',

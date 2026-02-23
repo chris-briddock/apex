@@ -4,7 +4,6 @@
 // ============================================================================
 
 @use '../../config/settings' as settings;
-@use '../../base/colors' as *;
 
 @if settings.$enable-typography-extended ==true {
 
@@ -59,27 +58,27 @@
   // Text Decoration Colors
   // ============================================================================
   .decoration-primary {
-    text-decoration-color: $color-primary;
+    text-decoration-color: var(--color-primary);
   }
 
   .decoration-secondary {
-    text-decoration-color: $color-secondary;
+    text-decoration-color: var(--color-secondary);
   }
 
   .decoration-success {
-    text-decoration-color: $color-success;
+    text-decoration-color: var(--color-success);
   }
 
   .decoration-danger {
-    text-decoration-color: $color-danger;
+    text-decoration-color: var(--color-danger);
   }
 
   .decoration-warning {
-    text-decoration-color: $color-warning;
+    text-decoration-color: var(--color-warning);
   }
 
   .decoration-info {
-    text-decoration-color: $color-info;
+    text-decoration-color: var(--color-info);
   }
 
   // Text Decoration Thickness
@@ -677,35 +676,35 @@
   }
 
   .decoration-black {
-    text-decoration-color: #000;
+    text-decoration-color: var(--color-black);
   }
 
   .decoration-white {
-    text-decoration-color: #fff;
+    text-decoration-color: var(--color-white);
   }
 
   .decoration-primary {
-    text-decoration-color: #3b82f6;
+    text-decoration-color: var(--color-primary);
   }
 
   .decoration-secondary {
-    text-decoration-color: #64748b;
+    text-decoration-color: var(--color-secondary);
   }
 
   .decoration-success {
-    text-decoration-color: #22c55e;
+    text-decoration-color: var(--color-success);
   }
 
   .decoration-danger {
-    text-decoration-color: #ef4444;
+    text-decoration-color: var(--color-danger);
   }
 
   .decoration-warning {
-    text-decoration-color: #f59e0b;
+    text-decoration-color: var(--color-warning);
   }
 
   .decoration-info {
-    text-decoration-color: #0ea5e9;
+    text-decoration-color: var(--color-info);
   }
 
   // Text decoration style

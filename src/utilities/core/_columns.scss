@@ -53,17 +53,17 @@
 
   // Column rule color
   .column-rule-transparent { column-rule-color: transparent; }
-  .column-rule-white { column-rule-color: #fff; }
-  .column-rule-black { column-rule-color: #000; }
-  .column-rule-primary { column-rule-color: #3b82f6; }
-  .column-rule-secondary { column-rule-color: #64748b; }
-  .column-rule-success { column-rule-color: #22c55e; }
-  .column-rule-danger { column-rule-color: #ef4444; }
-  .column-rule-warning { column-rule-color: #f59e0b; }
-  .column-rule-info { column-rule-color: #0ea5e9; }
-  .column-rule-gray-100 { column-rule-color: #f3f4f6; }
-  .column-rule-gray-200 { column-rule-color: #e5e7eb; }
-  .column-rule-gray-300 { column-rule-color: #d1d5db; }
+  .column-rule-white { column-rule-color: var(--color-white); }
+  .column-rule-black { column-rule-color: var(--color-black); }
+  .column-rule-primary { column-rule-color: var(--color-primary); }
+  .column-rule-secondary { column-rule-color: var(--color-secondary); }
+  .column-rule-success { column-rule-color: var(--color-success); }
+  .column-rule-danger { column-rule-color: var(--color-danger); }
+  .column-rule-warning { column-rule-color: var(--color-warning); }
+  .column-rule-info { column-rule-color: var(--color-info); }
+  .column-rule-gray-100 { column-rule-color: var(--color-gray-100); }
+  .column-rule-gray-200 { column-rule-color: var(--color-gray-200); }
+  .column-rule-gray-300 { column-rule-color: var(--color-gray-300); }
 
   // Column span
   .col-span-all { column-span: all; }

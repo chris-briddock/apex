@@ -322,7 +322,7 @@
     .xl\:text-justify { text-align: justify; }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .xxl\:text-#{$name} { font-size: $size; }

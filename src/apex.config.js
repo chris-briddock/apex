@@ -31,7 +31,7 @@ export const defaultConfig = {
     important: false,
     separator: ':',
     darkMode: 'class', // 'class', 'media', or false
-    rtl: false
+    rtl: true
   },
 
   // Feature toggles - disable unused features to reduce bundle size
@@ -87,7 +87,7 @@ export const defaultConfig = {
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    '2xl': '1536px'
+    xxl: '1536px'
   },
 
   // Spacing scale (in rem units)
@@ -184,7 +184,7 @@ export const defaultConfig = {
       800: '#92400e',
       900: '#78350f'
     },
-    error: {
+    danger: {
       50: '#fef2f2',
       100: '#fee2e2',
       200: '#fecaca',
@@ -327,7 +327,7 @@ export const defaultConfig = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1536px'
+      xxl: '1536px'
     }
   }
 };

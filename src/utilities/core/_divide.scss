@@ -5,46 +5,40 @@
 @use '../../config/settings' as settings;
 
 @if settings.$enable-borders == true {
-  // Define divide CSS variables on :root
-  :root {
-    --apex-divide-y-reverse: 0;
-    --apex-divide-x-reverse: 0;
-  }
-
   // Divide y (top/bottom borders)
   .divide-y > :not([hidden]) ~ :not([hidden]) {
-    --apex-divide-y-reverse: 0;
-    border-top-width: calc(1px * calc(1 - var(--apex-divide-y-reverse)));
-    border-bottom-width: calc(1px * var(--apex-divide-y-reverse));
+    --divide-y-reverse: 0;
+    border-top-width: calc(1px * calc(1 - var(--divide-y-reverse)));
+    border-bottom-width: calc(1px * var(--divide-y-reverse));
   }
 
   .divide-y-reverse > :not([hidden]) ~ :not([hidden]) {
-    --apex-divide-y-reverse: 1;
+    --divide-y-reverse: 1;
   }
 
   // Divide x (left/right borders)
   .divide-x > :not([hidden]) ~ :not([hidden]) {
-    --apex-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--apex-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--apex-divide-x-reverse)));
+    --divide-x-reverse: 0;
+    border-right-width: calc(1px * var(--divide-x-reverse));
+    border-left-width: calc(1px * calc(1 - var(--divide-x-reverse)));
   }
 
   .divide-x-reverse > :not([hidden]) ~ :not([hidden]) {
-    --apex-divide-x-reverse: 1;
+    --divide-x-reverse: 1;
   }
 
   // Divide widths
   @each $width in (0, 2, 4, 8) {
     .divide-y-#{$width} > :not([hidden]) ~ :not([hidden]) {
-      --apex-divide-y-reverse: 0;
-      border-top-width: calc(#{$width}px * calc(1 - var(--apex-divide-y-reverse)));
-      border-bottom-width: calc(#{$width}px * var(--apex-divide-y-reverse));
+      --divide-y-reverse: 0;
+      border-top-width: calc(#{$width}px * calc(1 - var(--divide-y-reverse)));
+      border-bottom-width: calc(#{$width}px * var(--divide-y-reverse));
     }
 
     .divide-x-#{$width} > :not([hidden]) ~ :not([hidden]) {
-      --apex-divide-x-reverse: 0;
-      border-right-width: calc(#{$width}px * var(--apex-divide-x-reverse));
-      border-left-width: calc(#{$width}px * calc(1 - var(--apex-divide-x-reverse)));
+      --divide-x-reverse: 0;
+      border-right-width: calc(#{$width}px * var(--divide-x-reverse));
+      border-left-width: calc(#{$width}px * calc(1 - var(--divide-x-reverse)));
     }
   }
 

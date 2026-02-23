@@ -42,8 +42,8 @@ test.describe('Color Utilities', () => {
       expect(bg).toMatch(/rgb\(245, 158, 11\)|rgb\(217, 119, 6\)/);
     });
 
-    test('bg-error should have red background', async ({ page }) => {
-      const bg = await getComputedStyle(page, '[data-testid="bg-error"]', 'background-color');
+    test('bg-danger should have red background', async ({ page }) => {
+      const bg = await getComputedStyle(page, '[data-testid="bg-danger"]', 'background-color');
       expect(bg).toMatch(/rgb\(239, 68, 68\)|rgb\(220, 38, 38\)/);
     });
 

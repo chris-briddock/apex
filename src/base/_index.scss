@@ -3,12 +3,13 @@
 // ============================================================================
 // This module provides the foundation for the framework:
 //
-// 1. DESIGN TOKENS - SCSS variables for colors, spacing, typography, etc.
+// 1. SCSS VARIABLES - Compile-time values for utility generation
 // 2. CSS RESET     - Normalize browser defaults
 // 3. BASE STYLES   - Foundation element styles
 //
-// Note: CSS custom properties (CSS variables) are defined in the themes module,
-// not here. This module provides the SCSS variables used at build time.
+// Note: CSS custom properties (CSS variables) are defined in the themes module
+// (themes/_default.scss), not here. This module provides the SCSS variables
+// used at build time.
 //
 // Usage:
 //   @use 'base';
@@ -17,26 +18,21 @@
 // ============================================================================
 
 // ============================================================================
-// Design Tokens (SCSS Variables)
+// SCSS Variables (Compile-Time)
 // ============================================================================
 // These are compile-time values used to generate utility classes.
 // For runtime theming, use CSS custom properties from the themes module.
 
-@forward 'colors' as color-*;
 @forward 'spacing' as spacing-*;
 @forward 'typography' as typography-*;
 @forward 'effects' as effects-*;
 @forward 'transitions' as transitions-*;
 @forward 'z-index' as z-index-*;
 
-// Legacy variables forward (for backwards compatibility)
-@forward 'variables' as var-*;
-
 // ============================================================================
 // Foundation Styles
 // ============================================================================
 // These provide a consistent baseline across browsers.
+// Note: reset, normalize, and base have been consolidated into _base.scss
 
-@forward 'reset';
-@forward 'normalize';
 @forward 'base';

@@ -218,7 +218,7 @@
     .xl\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     // Transition property
     .xxl\:transition-none { transition-property: none; }
     .xxl\:transition-all { transition-property: all; }

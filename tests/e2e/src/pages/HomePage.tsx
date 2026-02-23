@@ -49,7 +49,7 @@ export const HomePage: React.FC = () => {
                 <header className="text-center mb-12">
                     <h1 className="text-4xl font-bold mb-4">ApexCSS E2E Test Suite</h1>
                     <p className="text-lg text-gray-600">
-                        Comprehensive visual testing for all CSS utility classes.
+                        Visual testing for all CSS utility classes.
                         Select a category below to view and test specific utilities.
                     </p>
                 </header>

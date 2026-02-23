@@ -329,7 +329,7 @@
     .xl\:m-auto { margin: auto; }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     @each $key, $value in $spacing-scale-int {
       .xxl\:m-#{$key} { margin: $value; }
       .xxl\:mt-#{$key} { margin-top: $value; }

@@ -10,28 +10,28 @@
   .fill-current { fill: currentcolor; }
   .fill-inherit { fill: inherit; }
   .fill-transparent { fill: transparent; }
-  .fill-white { fill: #fff; }
-  .fill-black { fill: #000; }
-  .fill-primary { fill: #3b82f6; }
-  .fill-secondary { fill: #64748b; }
-  .fill-success { fill: #22c55e; }
-  .fill-danger { fill: #ef4444; }
-  .fill-warning { fill: #f59e0b; }
-  .fill-info { fill: #0ea5e9; }
+  .fill-white { fill: var(--color-white); }
+  .fill-black { fill: var(--color-black); }
+  .fill-primary { fill: var(--color-primary); }
+  .fill-secondary { fill: var(--color-secondary); }
+  .fill-success { fill: var(--color-success); }
+  .fill-danger { fill: var(--color-danger); }
+  .fill-warning { fill: var(--color-warning); }
+  .fill-info { fill: var(--color-info); }
 
   // Stroke
   .stroke-none { stroke: none; }
   .stroke-current { stroke: currentcolor; }
   .stroke-inherit { stroke: inherit; }
   .stroke-transparent { stroke: transparent; }
-  .stroke-white { stroke: #fff; }
-  .stroke-black { stroke: #000; }
-  .stroke-primary { stroke: #3b82f6; }
-  .stroke-secondary { stroke: #64748b; }
-  .stroke-success { stroke: #22c55e; }
-  .stroke-danger { stroke: #ef4444; }
-  .stroke-warning { stroke: #f59e0b; }
-  .stroke-info { stroke: #0ea5e9; }
+  .stroke-white { stroke: var(--color-white); }
+  .stroke-black { stroke: var(--color-black); }
+  .stroke-primary { stroke: var(--color-primary); }
+  .stroke-secondary { stroke: var(--color-secondary); }
+  .stroke-success { stroke: var(--color-success); }
+  .stroke-danger { stroke: var(--color-danger); }
+  .stroke-warning { stroke: var(--color-warning); }
+  .stroke-info { stroke: var(--color-info); }
 
   // Stroke width
   .stroke-0 { stroke-width: 0; }

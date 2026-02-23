@@ -43,7 +43,7 @@ export const OverflowVisibilityPage: React.FC = () => {
                     <div>
                         <p className="text-sm text-gray-600 mb-2">overflow-scroll:</p>
                         <div data-testid="overflow-scroll" className="overflow-scroll w-full h-32 bg-gray-100 p-2 border">
-                            <div className="w-[200%] h-[200%] bg-error-200 p-4">
+                            <div className="w-[200%] h-[200%] bg-danger-200 p-4">
                                 Scrollbars always visible
                             </div>
                         </div>

@@ -43,9 +43,9 @@ export const FlexboxPage: React.FC = () => {
                     <div>
                         <p className="text-sm text-gray-600 mb-2">flex-col-reverse:</p>
                         <div data-testid="flex-col-reverse" className="flex flex-col-reverse gap-2 bg-gray-100 p-4">
-                            <div className="bg-error-500 text-white p-4">Item 1</div>
-                            <div className="bg-error-500 text-white p-4">Item 2</div>
-                            <div className="bg-error-500 text-white p-4">Item 3</div>
+                            <div className="bg-danger-500 text-white p-4">Item 1</div>
+                            <div className="bg-danger-500 text-white p-4">Item 2</div>
+                            <div className="bg-danger-500 text-white p-4">Item 3</div>
                         </div>
                     </div>
                 </div>

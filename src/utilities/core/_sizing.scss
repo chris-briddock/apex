@@ -279,7 +279,7 @@
     .xl\:max-w-screen-xl { max-width: var(--breakpoint-xl); }
   }
 
-  @media (min-width: bp.$breakpoint-2xl) {
+  @media (min-width: bp.$breakpoint-xxl) {
     // Widths
     .xxl\:w-auto { width: auto; }
     .xxl\:w-full { width: 100%; }

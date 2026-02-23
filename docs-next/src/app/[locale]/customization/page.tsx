@@ -157,7 +157,7 @@ export default function CustomizationPage() {
   --color-secondary: #8b5cf6;
   --color-success: #22c55e;
   --color-warning: #eab308;
-  --color-error: #ef4444;
+  --color-danger: #ef4444;
   --color-info: #0ea5e9;
 
   /* Neutral Colors */
@@ -396,7 +396,7 @@ $color-primary-500: #6366f1;
 $color-primary-600: #4f46e5;
 $color-success-500: #10b981;
 $color-warning-500: #f59e0b;
-$color-error-500: #ef4444;
+$color-danger-500: #ef4444;
 
 // Override entire color maps (advanced)
 $spacing-scale: (

@@ -398,11 +398,11 @@
 // Generate opacity utilities
 @mixin generate-opacity($prefix: '') {
   $opacity-map: (
-    0: var(--apex-opacity-0),
-    25: var(--apex-opacity-25),
-    50: var(--apex-opacity-50),
-    75: var(--apex-opacity-75),
-    100: var(--apex-opacity-100)
+    0: var(--opacity-0),
+    25: var(--opacity-25),
+    50: var(--opacity-50),
+    75: var(--opacity-75),
+    100: var(--opacity-100)
   );
 
   @each $name, $opacity in $opacity-map {

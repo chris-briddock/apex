@@ -29,12 +29,12 @@
 
   // Outline color
   .outline-transparent { outline-color: transparent; }
-  .outline-white { outline-color: #fff; }
-  .outline-black { outline-color: #000; }
-  .outline-primary { outline-color: #3b82f6; }
-  .outline-secondary { outline-color: #64748b; }
-  .outline-success { outline-color: #22c55e; }
-  .outline-danger { outline-color: #ef4444; }
-  .outline-warning { outline-color: #f59e0b; }
-  .outline-info { outline-color: #0ea5e9; }
+  .outline-white { outline-color: var(--color-white); }
+  .outline-black { outline-color: var(--color-black); }
+  .outline-primary { outline-color: var(--color-primary); }
+  .outline-secondary { outline-color: var(--color-secondary); }
+  .outline-success { outline-color: var(--color-success); }
+  .outline-danger { outline-color: var(--color-danger); }
+  .outline-warning { outline-color: var(--color-warning); }
+  .outline-info { outline-color: var(--color-info); }
 }
