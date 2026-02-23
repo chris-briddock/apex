@@ -8,7 +8,6 @@
  *   2. Run: npm run config:build
  *   3. The SCSS files will be regenerated with your customizations
  *
- * For full documentation, see: https://apexcss.dev/docs/configuration
  */
 
 export default {
@@ -17,8 +16,8 @@ export default {
     prefix: '',           // Add prefix to all classes (e.g., 'apex-' -> .apex-flex)
     important: false,     // Add !important to all utilities
     separator: ':',       // Separator for variants (e.g., hover:flex)
-    darkMode: 'class',    // 'class', 'media', or false
-    rtl: false            // Enable RTL support
+    darkMode: false,      // Disable class-based dark mode
+    rtl: true             // Enable RTL support
   },
 
   // Disable features you don't need to reduce bundle size

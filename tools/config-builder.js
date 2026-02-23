@@ -516,7 +516,6 @@ function generateSampleConfig() {
  *   2. Run: npm run config:build
  *   3. The SCSS files will be regenerated with your customizations
  *
- * For full documentation, see: https://apexcss.dev/docs/configuration
  */
 
 export default {
