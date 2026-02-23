@@ -187,7 +187,7 @@ To add tests for new CSS utilities:
 1. Add the test element to `src/components/CssTestSuite.tsx`:
 
   ```tsx
-  <div data-testid="my-new-class" className="my-new-class">My New Class</div>
+    <div data-testid="my-new-class" className="my-new-class">My New Class</div>
   ```
 
 2. Create a new test file in `tests/`:

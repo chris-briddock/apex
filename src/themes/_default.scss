@@ -4,7 +4,9 @@
 // This file defines all CSS custom properties for runtime theming.
 // All ApexCSS utilities can be customized by overriding these variables.
 
+@use "sass:map";
 @use '../config/settings' as settings;
+@use '../config/custom' as custom;
 
 // ============================================================================
 // CSS Custom Properties - Root Level
@@ -358,12 +360,13 @@
 
   // ============================================================================
   // Breakpoints (as CSS variables for reference)
+  // These are sourced from the customizable config
   // ============================================================================
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+  --breakpoint-sm: #{map.get(custom.$breakpoints, sm)};
+  --breakpoint-md: #{map.get(custom.$breakpoints, md)};
+  --breakpoint-lg: #{map.get(custom.$breakpoints, lg)};
+  --breakpoint-xl: #{map.get(custom.$breakpoints, xl)};
+  --breakpoint-2xl: #{map.get(custom.$breakpoints, 2xl)};
 
   // ============================================================================
   // Container Widths

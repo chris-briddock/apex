@@ -1,28 +1,26 @@
 // ============================================================================
 // Responsive Breakpoints
 // ============================================================================
+// Default breakpoint values - these can be overridden by the user
+// via apex.config.js and running: npm run config:build
+// ============================================================================
 
-// Breakpoint values
-$breakpoint-sm: 640px !default;
-$breakpoint-md: 768px !default;
-$breakpoint-lg: 1024px !default;
-$breakpoint-xl: 1280px !default;
-$breakpoint-xxl: 1536px !default;
+@use "sass:map";
+@use 'custom';
 
-// Breakpoint map
-$breakpoints: (
-  sm: $breakpoint-sm,
-  md: $breakpoint-md,
-  lg: $breakpoint-lg,
-  xl: $breakpoint-xl,
-  xxl: $breakpoint-xxl
-) !default;
+// Individual breakpoint variables (defaults, can be overridden by _custom.scss)
+// Note: We don't define $breakpoints here because it's defined in _custom.scss
+// This file provides backwards-compatible aliases
 
-// Breakpoint prefixes for responsive utilities
-$breakpoint-prefixes: (
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  xl: 'xl',
-  xxl: 'xxl'
-) !default;
+// Legacy aliases for backwards compatibility (using the custom config values)
+$breakpoint-sm: map.get(custom.$breakpoints, sm) !default;
+$breakpoint-md: map.get(custom.$breakpoints, md) !default;
+$breakpoint-lg: map.get(custom.$breakpoints, lg) !default;
+$breakpoint-xl: map.get(custom.$breakpoints, xl) !default;
+$breakpoint-2xl: map.get(custom.$breakpoints, 2xl) !default;
+
+// Extra legacy alias
+$breakpoint-xxl: $breakpoint-2xl !default;
+
+// Re-export the breakpoints map for convenience
+$breakpoints: custom.$breakpoints !default;

@@ -2,6 +2,7 @@
 // Config Entry Point
 // ============================================================================
 
-@forward 'settings';
-@forward 'breakpoints';
-@forward 'prefix';
+// Custom config contains all settings including breakpoints and prefix
+@forward 'custom';
+@forward 'breakpoints' hide $breakpoints;
+@forward 'prefix' hide $prefix, $prefix-map;

@@ -129,15 +129,7 @@
 //   ));
 
 @mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  $breakpoints: (
-    sm: bp.$breakpoint-sm,
-    md: bp.$breakpoint-md,
-    lg: bp.$breakpoint-lg,
-    xl: bp.$breakpoint-xl,
-    xxl: bp.$breakpoint-xxl
-  );
-
-  @each $bp-name, $bp-value in $breakpoints {
+  @each $bp-name, $bp-value in bp.$breakpoints {
     @media (min-width: $bp-value) {
       @each $name, $var-name in $var-map {
         .#{$bp-name}\:#{$class-name}-#{$name} {

@@ -200,164 +200,39 @@
   // ============================================================================
   // Responsive Spacing Utilities
   // ============================================================================
-  @media (min-width: bp.$breakpoint-sm) {
-    @each $key, $value in $spacing-scale-int {
-      .sm\:m-#{$key} { margin: $value; }
-      .sm\:mt-#{$key} { margin-top: $value; }
-      .sm\:mr-#{$key} { margin-right: $value; }
-      .sm\:mb-#{$key} { margin-bottom: $value; }
-      .sm\:ml-#{$key} { margin-left: $value; }
-      .sm\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-      .sm\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
+  // Dynamically generate responsive utilities for all configured breakpoints
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @media (min-width: $bp-value) {
+      @each $key, $value in $spacing-scale-int {
+        .#{$bp-name}\:m-#{$key} { margin: $value; }
+        .#{$bp-name}\:mt-#{$key} { margin-top: $value; }
+        .#{$bp-name}\:mr-#{$key} { margin-right: $value; }
+        .#{$bp-name}\:mb-#{$key} { margin-bottom: $value; }
+        .#{$bp-name}\:ml-#{$key} { margin-left: $value; }
+        .#{$bp-name}\:mx-#{$key} { margin-left: $value; margin-right: $value; }
+        .#{$bp-name}\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
 
-      .sm\:p-#{$key} { padding: $value; }
-      .sm\:pt-#{$key} { padding-top: $value; }
-      .sm\:pr-#{$key} { padding-right: $value; }
-      .sm\:pb-#{$key} { padding-bottom: $value; }
-      .sm\:pl-#{$key} { padding-left: $value; }
-      .sm\:px-#{$key} { padding-left: $value; padding-right: $value; }
-      .sm\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+        .#{$bp-name}\:p-#{$key} { padding: $value; }
+        .#{$bp-name}\:pt-#{$key} { padding-top: $value; }
+        .#{$bp-name}\:pr-#{$key} { padding-right: $value; }
+        .#{$bp-name}\:pb-#{$key} { padding-bottom: $value; }
+        .#{$bp-name}\:pl-#{$key} { padding-left: $value; }
+        .#{$bp-name}\:px-#{$key} { padding-left: $value; padding-right: $value; }
+        .#{$bp-name}\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
 
-      .sm\:gap-#{$key} { gap: $value; }
-      .sm\:gap-x-#{$key} { column-gap: $value; }
-      .sm\:gap-y-#{$key} { row-gap: $value; }
+        .#{$bp-name}\:gap-#{$key} { gap: $value; }
+        .#{$bp-name}\:gap-x-#{$key} { column-gap: $value; }
+        .#{$bp-name}\:gap-y-#{$key} { row-gap: $value; }
+      }
+
+      // Auto margins
+      .#{$bp-name}\:mx-auto { margin-left: auto; margin-right: auto; }
+      .#{$bp-name}\:my-auto { margin-top: auto; margin-bottom: auto; }
+      .#{$bp-name}\:mt-auto { margin-top: auto; }
+      .#{$bp-name}\:mr-auto { margin-right: auto; }
+      .#{$bp-name}\:mb-auto { margin-bottom: auto; }
+      .#{$bp-name}\:ml-auto { margin-left: auto; }
+      .#{$bp-name}\:m-auto { margin: auto; }
     }
-
-    // Auto margins
-    .sm\:mx-auto { margin-left: auto; margin-right: auto; }
-    .sm\:my-auto { margin-top: auto; margin-bottom: auto; }
-    .sm\:mt-auto { margin-top: auto; }
-    .sm\:mr-auto { margin-right: auto; }
-    .sm\:mb-auto { margin-bottom: auto; }
-    .sm\:ml-auto { margin-left: auto; }
-    .sm\:m-auto { margin: auto; }
-  }
-
-  @media (min-width: bp.$breakpoint-md) {
-    @each $key, $value in $spacing-scale-int {
-      .md\:m-#{$key} { margin: $value; }
-      .md\:mt-#{$key} { margin-top: $value; }
-      .md\:mr-#{$key} { margin-right: $value; }
-      .md\:mb-#{$key} { margin-bottom: $value; }
-      .md\:ml-#{$key} { margin-left: $value; }
-      .md\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-      .md\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
-
-      .md\:p-#{$key} { padding: $value; }
-      .md\:pt-#{$key} { padding-top: $value; }
-      .md\:pr-#{$key} { padding-right: $value; }
-      .md\:pb-#{$key} { padding-bottom: $value; }
-      .md\:pl-#{$key} { padding-left: $value; }
-      .md\:px-#{$key} { padding-left: $value; padding-right: $value; }
-      .md\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
-
-      .md\:gap-#{$key} { gap: $value; }
-      .md\:gap-x-#{$key} { column-gap: $value; }
-      .md\:gap-y-#{$key} { row-gap: $value; }
-    }
-
-    // Auto margins
-    .md\:mx-auto { margin-left: auto; margin-right: auto; }
-    .md\:mt-auto { margin-top: auto; }
-    .md\:mr-auto { margin-right: auto; }
-    .md\:mb-auto { margin-bottom: auto; }
-    .md\:ml-auto { margin-left: auto; }
-    .md\:m-auto { margin: auto; }
-  }
-
-  @media (min-width: bp.$breakpoint-lg) {
-    @each $key, $value in $spacing-scale-int {
-      .lg\:m-#{$key} { margin: $value; }
-      .lg\:mt-#{$key} { margin-top: $value; }
-      .lg\:mr-#{$key} { margin-right: $value; }
-      .lg\:mb-#{$key} { margin-bottom: $value; }
-      .lg\:ml-#{$key} { margin-left: $value; }
-      .lg\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-      .lg\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
-
-      .lg\:p-#{$key} { padding: $value; }
-      .lg\:pt-#{$key} { padding-top: $value; }
-      .lg\:pr-#{$key} { padding-right: $value; }
-      .lg\:pb-#{$key} { padding-bottom: $value; }
-      .lg\:pl-#{$key} { padding-left: $value; }
-      .lg\:px-#{$key} { padding-left: $value; padding-right: $value; }
-      .lg\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
-
-      .lg\:gap-#{$key} { gap: $value; }
-      .lg\:gap-x-#{$key} { column-gap: $value; }
-      .lg\:gap-y-#{$key} { row-gap: $value; }
-    }
-
-    // Auto margins
-    .lg\:mx-auto { margin-left: auto; margin-right: auto; }
-    .lg\:mt-auto { margin-top: auto; }
-    .lg\:mr-auto { margin-right: auto; }
-    .lg\:mb-auto { margin-bottom: auto; }
-    .lg\:ml-auto { margin-left: auto; }
-    .lg\:m-auto { margin: auto; }
-  }
-
-  @media (min-width: bp.$breakpoint-xl) {
-    @each $key, $value in $spacing-scale-int {
-      .xl\:m-#{$key} { margin: $value; }
-      .xl\:mt-#{$key} { margin-top: $value; }
-      .xl\:mr-#{$key} { margin-right: $value; }
-      .xl\:mb-#{$key} { margin-bottom: $value; }
-      .xl\:ml-#{$key} { margin-left: $value; }
-      .xl\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-      .xl\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
-
-      .xl\:p-#{$key} { padding: $value; }
-      .xl\:pt-#{$key} { padding-top: $value; }
-      .xl\:pr-#{$key} { padding-right: $value; }
-      .xl\:pb-#{$key} { padding-bottom: $value; }
-      .xl\:pl-#{$key} { padding-left: $value; }
-      .xl\:px-#{$key} { padding-left: $value; padding-right: $value; }
-      .xl\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
-
-      .xl\:gap-#{$key} { gap: $value; }
-      .xl\:gap-x-#{$key} { column-gap: $value; }
-      .xl\:gap-y-#{$key} { row-gap: $value; }
-    }
-
-    // Auto margins
-    .xl\:mx-auto { margin-left: auto; margin-right: auto; }
-    .xl\:mt-auto { margin-top: auto; }
-    .xl\:mr-auto { margin-right: auto; }
-    .xl\:mb-auto { margin-bottom: auto; }
-    .xl\:ml-auto { margin-left: auto; }
-    .xl\:m-auto { margin: auto; }
-  }
-
-  @media (min-width: bp.$breakpoint-xxl) {
-    @each $key, $value in $spacing-scale-int {
-      .xxl\:m-#{$key} { margin: $value; }
-      .xxl\:mt-#{$key} { margin-top: $value; }
-      .xxl\:mr-#{$key} { margin-right: $value; }
-      .xxl\:mb-#{$key} { margin-bottom: $value; }
-      .xxl\:ml-#{$key} { margin-left: $value; }
-      .xxl\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-      .xxl\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
-
-      .xxl\:p-#{$key} { padding: $value; }
-      .xxl\:pt-#{$key} { padding-top: $value; }
-      .xxl\:pr-#{$key} { padding-right: $value; }
-      .xxl\:pb-#{$key} { padding-bottom: $value; }
-      .xxl\:pl-#{$key} { padding-left: $value; }
-      .xxl\:px-#{$key} { padding-left: $value; padding-right: $value; }
-      .xxl\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
-
-      .xxl\:gap-#{$key} { gap: $value; }
-      .xxl\:gap-x-#{$key} { column-gap: $value; }
-      .xxl\:gap-y-#{$key} { row-gap: $value; }
-    }
-
-    // Auto margins
-    .xxl\:mx-auto { margin-left: auto; margin-right: auto; }
-    .xxl\:mt-auto { margin-top: auto; }
-    .xxl\:mr-auto { margin-right: auto; }
-    .xxl\:mb-auto { margin-bottom: auto; }
-    .xxl\:ml-auto { margin-left: auto; }
-    .xxl\:m-auto { margin: auto; }
   }
 }

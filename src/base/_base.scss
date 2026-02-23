@@ -1,68 +1,24 @@
-// ============================================================================
-// Base Styles - Consolidated Reset, Normalize & Base Element Styles
-// ============================================================================
-// This file combines CSS Reset, Normalize.css, and Base Element Styles into
-// a single cohesive foundation for the framework.
-//
-// Loading Order (now unified):
-//   1. CSS Reset        - Remove default browser styles
-//   2. Normalize        - Cross-browser consistency
-//   3. Base Elements    - Opinionated element styling
-//
-// ============================================================================
-
-@use '../config/settings' as settings;
-
-// ============================================================================
-// SECTION 1: CSS Reset
-// ============================================================================
-
-// Box sizing reset
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-// Remove default margins
 body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-dl,
-dd,
-figure,
-blockquote,
-pre,
-code {
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, dl, dd,
+figure, blockquote, pre, code {
   margin: 0;
 }
 
-// Remove default outline only when :focus-visible is supported
-// This ensures keyboard users retain visible focus in older browsers
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-// Font reset
-address,
-cite,
-dfn,
-var {
+address, cite, dfn, var {
   font-style: normal;
 }
 
-// ============================================================================
-// SECTION 2: Normalize (Cross-Browser Consistency)
-// ============================================================================
-
-// Document
 html {
   line-height: 1.15;
   font-size: 16px;
@@ -71,87 +27,56 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-// Sections
-main {
-  display: block;
-}
+main    { display: block; }
+h1      { font-size: 2em; }
+details { display: block; }
+summary { display: list-item; }
 
-// Grouping content
-h1 {
-  font-size: 2em;
-}
+template { display: none; }
+[hidden] { display: none; }
 
-// Text-level semantics
 a {
   background-color: transparent;
 }
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
   text-decoration: underline dotted;
 }
 
-b,
-strong {
-  font-weight: bolder;
-}
+b, strong { font-weight: bolder; }
+small     { font-size: 80%; }
 
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
+sub, sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
-  bottom: -0.25em;
-}
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
 
-sup {
-  top: -0.5em;
-}
+img { border-style: none; }
+svg { overflow: visible; }
 
-// Embedded content
-img {
-  border-style: none;
-}
+progress { vertical-align: baseline; }
+textarea { overflow: auto; }
 
-svg {
-  overflow: visible;
-}
-
-// Forms
 :where(button, input, optgroup, select, textarea) {
   font-family: inherit;
   line-height: 1.15;
   margin: 0;
 }
 
-:where(button, input) {
-  overflow: visible;
-}
-
-:where(button, select) {
-  text-transform: none;
-}
+:where(button, input)  { overflow: visible; }
+:where(button, select) { text-transform: none; }
 
 :where(button, [type="button"], [type="reset"], [type="submit"]) {
   appearance: auto;
-}
 
-:where(button, [type="button"], [type="reset"], [type="submit"])::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-:where(button, [type="button"], [type="reset"], [type="submit"]):-moz-focusring {
-  outline: 1px dotted ButtonText;
+  &::-moz-focus-inner { border-style: none; padding: 0; }
+  &:-moz-focusring    { outline: 1px dotted ButtonText; }
 }
 
 fieldset {
@@ -167,14 +92,6 @@ legend {
   white-space: normal;
 }
 
-progress {
-  vertical-align: baseline;
-}
-
-textarea {
-  overflow: auto;
-}
-
 :where([type="checkbox"], [type="radio"]) {
   box-sizing: border-box;
   padding: 0;
@@ -188,10 +105,8 @@ textarea {
 [type="search"] {
   appearance: textfield;
   outline-offset: -2px;
-}
 
-[type="search"]::-webkit-search-decoration {
-  appearance: none;
+  &::-webkit-search-decoration { appearance: none; }
 }
 
 ::-webkit-file-upload-button {
@@ -199,70 +114,22 @@ textarea {
   font: inherit;
 }
 
-// Interactive
-details {
-  display: block;
-}
-
-summary {
-  display: list-item;
-}
-
-// Misc
-template {
-  display: none;
-}
-
-[hidden] {
-  display: none;
-}
-
-// ============================================================================
-// SECTION 3: Base Element Styles (Opinionated Defaults)
-// ============================================================================
-
-// Body element
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
   line-height: 1.5;
-  color: var(--color-gray-900);
-  background-color: var(--color-white);
-  text-rendering: optimizelegibility;
+  color: #111827;
+  background-color: #fff;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  // Automatic dark mode for body
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-gray-100);
-      background-color: var(--color-gray-900);
-    }
-
-    [data-theme="dark"] & {
-      color: var(--color-gray-100);
-      background-color: var(--color-gray-900);
-    }
-  }
 }
 
-// Typography
 :where(h1, h2, h3, h4, h5, h6) {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--color-gray-900);
-
-  // Automatic dark mode for headings
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-gray-50);
-    }
-
-    [data-theme="dark"] & {
-      color: var(--color-gray-50);
-    }
-  }
 }
 
 h1 { font-size: 2.5rem; }
@@ -277,7 +144,6 @@ p {
   margin-bottom: 1rem;
 }
 
-// Links
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -287,89 +153,44 @@ a {
     color: var(--color-primary-dark);
     text-decoration: underline;
   }
-
-  // Automatic dark mode for links
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-primary-light);
-
-      &:hover {
-        color: var(--color-primary);
-      }
-    }
-
-    [data-theme="dark"] & {
-      color: var(--color-primary-light);
-
-      &:hover {
-        color: var(--color-primary);
-      }
-    }
-  }
 }
 
-// Images
 img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
 }
 
-// Lists
 :where(ul, ol) {
   margin-top: 0;
   margin-bottom: 1rem;
   padding-left: 2rem;
 }
 
-li {
-  margin-bottom: 0.25rem;
-}
+li { margin-bottom: 0.25rem; }
 
-// Definition lists
 dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-dt {
-  font-weight: 600;
-}
+dt { font-weight: 600; }
 
 dd {
   margin-left: 0;
   margin-bottom: 0.5rem;
 }
 
-// Blockquotes
 blockquote {
   margin: 0 0 1rem;
   padding: 0.5rem 1rem;
-  border-left: 4px solid var(--color-gray-200);
-  background-color: var(--color-gray-50);
-  color: var(--color-gray-600);
+  border-left: 4px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #6b7280;
 
-  // Automatic dark mode for blockquotes
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      border-left-color: var(--color-gray-700);
-      background-color: var(--color-gray-800);
-      color: var(--color-gray-400);
-    }
-
-    [data-theme="dark"] & {
-      border-left-color: var(--color-gray-700);
-      background-color: var(--color-gray-800);
-      color: var(--color-gray-400);
-    }
-  }
+  p:last-child { margin-bottom: 0; }
 }
 
-blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-// Preformatted text
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -386,21 +207,8 @@ code {
   font-size: 0.875em;
   padding: 0.125rem 0.25rem;
   background-color: #f3f4f6;
-  border-radius: 0.25rem;
   color: #ef4444;
-
-  // Automatic dark mode for inline code
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      background-color: #374151;
-      color: #f87171;
-    }
-
-    [data-theme="dark"] & {
-      background-color: #374151;
-      color: #f87171;
-    }
-  }
+  border-radius: 0.25rem;
 }
 
 pre code {
@@ -409,7 +217,6 @@ pre code {
   color: inherit;
 }
 
-// Tables
 table {
   width: 100%;
   margin-bottom: 1rem;
@@ -417,22 +224,10 @@ table {
   border-spacing: 0;
 }
 
-th,
-td {
+th, td {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #e5e7eb;
-
-  // Automatic dark mode for table cells
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      border-top-color: #374151;
-    }
-
-    [data-theme="dark"] & {
-      border-top-color: #374151;
-    }
-  }
 }
 
 thead th {
@@ -440,35 +235,12 @@ thead th {
   border-bottom: 2px solid #e5e7eb;
   font-weight: 600;
   text-align: left;
-
-  // Automatic dark mode for table headers
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      border-bottom-color: #4b5563;
-    }
-
-    [data-theme="dark"] & {
-      border-bottom-color: #4b5563;
-    }
-  }
 }
 
 tbody + tbody {
   border-top: 2px solid #e5e7eb;
-
-  // Automatic dark mode for table body separator
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      border-top-color: #4b5563;
-    }
-
-    [data-theme="dark"] & {
-      border-top-color: #4b5563;
-    }
-  }
 }
 
-// Forms
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -494,6 +266,7 @@ select {
   border: 1px solid #d1d5db;
   border-radius: 0.375rem;
   transition: border-color 150ms ease, box-shadow 150ms ease;
+  appearance: none;
 
   &:focus {
     border-color: #3b82f6;
@@ -501,67 +274,17 @@ select {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
-  &::placeholder {
-    color: #9ca3af;
-  }
+  &::placeholder { color: #9ca3af; }
 
   &:disabled,
   &[readonly] {
     background-color: #f3f4f6;
     cursor: not-allowed;
   }
-
-  // Remove default appearance
-  appearance: none;
-
-  // Automatic dark mode for form inputs
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      color: #f3f4f6;
-      background-color: #1f2937;
-      border-color: #4b5563;
-
-      &:focus {
-        border-color: #60a5fa;
-        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
-      }
-
-      &::placeholder {
-        color: #6b7280;
-      }
-
-      &:disabled,
-      &[readonly] {
-        background-color: #374151;
-      }
-    }
-
-    [data-theme="dark"] & {
-      color: #f3f4f6;
-      background-color: #1f2937;
-      border-color: #4b5563;
-
-      &:focus {
-        border-color: #60a5fa;
-        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
-      }
-
-      &::placeholder {
-        color: #6b7280;
-      }
-
-      &:disabled,
-      &[readonly] {
-        background-color: #374151;
-      }
-    }
-  }
 }
 
 :where(button, input[type="button"], input[type="submit"], input[type="reset"]) {
   cursor: pointer;
-
-  // Reset button styles
   border: none;
   background: none;
   font-family: inherit;
@@ -572,7 +295,6 @@ select {
   }
 }
 
-// Horizontal rule
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -581,45 +303,18 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-
-  // Automatic dark mode for horizontal rule
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      border-top-color: #374151;
-    }
-
-    [data-theme="dark"] & {
-      border-top-color: #374151;
-    }
-  }
 }
 
-// Selection
 ::selection {
   background-color: #bfdbfe;
   color: #1e3a8a;
-
-  // Automatic dark mode for text selection
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      background-color: #1e40af;
-      color: #bfdbfe;
-    }
-
-    [data-theme="dark"] & {
-      background-color: #1e40af;
-      color: #bfdbfe;
-    }
-  }
 }
 
-// Focus visible
 :focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
-// Autofill styling
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -629,20 +324,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  box-shadow: 0 0 0 1000px white inset !important;
-
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      box-shadow: 0 0 0 1000px #1f2937 inset !important;
-    }
-
-    [data-theme="dark"] & {
-      box-shadow: 0 0 0 1000px #1f2937 inset !important;
-    }
-  }
+  box-shadow: 0 0 0 1000px #fff inset
 }
 
-// Scrollbar styling
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -650,63 +334,18 @@ select:-webkit-autofill:focus {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      background: #1f2937;
-    }
-
-    [data-theme="dark"] & {
-      background: #1f2937;
-    }
-  }
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
-
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      background: #4b5563;
-    }
-
-    [data-theme="dark"] & {
-      background: #4b5563;
-    }
-  }
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
-
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      background: #6b7280;
-    }
-
-    [data-theme="dark"] & {
-      background: #6b7280;
-    }
-  }
 }
 
-// Firefox scrollbar support
 * {
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f1f1f1;
-
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      scrollbar-color: #4b5563 #1f2937;
-    }
-
-    [data-theme="dark"] & {
-      scrollbar-color: #4b5563 #1f2937;
-    }
-  }
 }
-
-// ============================================================================
-// End of Consolidated Base Styles
-// ============================================================================

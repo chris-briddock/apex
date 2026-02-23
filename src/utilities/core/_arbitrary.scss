@@ -257,15 +257,7 @@
 // ============================================================================
 // Responsive Variants
 // ============================================================================
-$breakpoints: (
-  sm: bp.$breakpoint-sm,
-  md: bp.$breakpoint-md,
-  lg: bp.$breakpoint-lg,
-  xl: bp.$breakpoint-xl,
-  xxl: bp.$breakpoint-xxl
-);
-
-@each $bp-name, $bp-value in $breakpoints {
+@each $bp-name, $bp-value in bp.$breakpoints {
   @media (min-width: $bp-value) {
     // Responsive sizing
     .#{$bp-name}\:w-\[var\(--w\)\] { width: var(--w); }

@@ -333,6 +333,12 @@ ${Object.entries(merged.features)
 // ============================================================================
 // Breakpoints
 // ============================================================================
+// Individual breakpoint variables for use in media queries
+${Object.entries(merged.breakpoints)
+  .map(([key, value]) => `$breakpoints-${key}: ${value} !default;`)
+  .join('\n')}
+
+// Breakpoint map for iteration
 $breakpoints: (
 ${Object.entries(merged.breakpoints)
   .map(([key, value]) => `  ${key}: ${value}`)
@@ -356,13 +362,11 @@ ${generateColorVariables(merged.colors)}
 // ============================================================================
 // Typography
 // ============================================================================
+// Font families stored as CSS custom property compatible strings
 $font-families: (
-${Object.entries(merged.typography.fontFamily)
-  .map(([key, value]) => {
-    const val = Array.isArray(value) ? value.join(', ') : value;
-    return `  ${key}: ${val}`;
-  })
-  .join(',\n')}
+  sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+  serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
+  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
 ) !default;
 
 $font-sizes: (
@@ -403,7 +407,11 @@ ${Object.entries(merged.borderRadius)
 // ============================================================================
 $shadows: (
 ${Object.entries(merged.shadows)
-  .map(([key, value]) => `  ${key}: ${value}`)
+  .map(([key, value]) => {
+    // Quote shadow values that contain commas to prevent Sass parsing issues
+    const needsQuotes = value.includes(',');
+    return `  ${key}: ${needsQuotes ? `"${value}"` : value}`;
+  })
   .join(',\n')}
 ) !default;
 
