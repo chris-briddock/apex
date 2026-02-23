@@ -1,0 +1,119 @@
+// ============================================================================
+// SVG Utilities
+// ============================================================================
+
+@use '../../config/settings' as settings;
+
+@if settings.$enable-svg == true {
+  // Fill
+  .fill-none { fill: none; }
+  .fill-current { fill: currentcolor; }
+  .fill-inherit { fill: inherit; }
+  .fill-transparent { fill: transparent; }
+  .fill-white { fill: var(--color-white); }
+  .fill-black { fill: var(--color-black); }
+  .fill-primary { fill: var(--color-primary); }
+  .fill-secondary { fill: var(--color-secondary); }
+  .fill-success { fill: var(--color-success); }
+  .fill-danger { fill: var(--color-danger); }
+  .fill-warning { fill: var(--color-warning); }
+  .fill-info { fill: var(--color-info); }
+
+  // Stroke
+  .stroke-none { stroke: none; }
+  .stroke-current { stroke: currentcolor; }
+  .stroke-inherit { stroke: inherit; }
+  .stroke-transparent { stroke: transparent; }
+  .stroke-white { stroke: var(--color-white); }
+  .stroke-black { stroke: var(--color-black); }
+  .stroke-primary { stroke: var(--color-primary); }
+  .stroke-secondary { stroke: var(--color-secondary); }
+  .stroke-success { stroke: var(--color-success); }
+  .stroke-danger { stroke: var(--color-danger); }
+  .stroke-warning { stroke: var(--color-warning); }
+  .stroke-info { stroke: var(--color-info); }
+
+  // Stroke width
+  .stroke-0 { stroke-width: 0; }
+  .stroke-1 { stroke-width: 1; }
+  .stroke-2 { stroke-width: 2; }
+  .stroke-3 { stroke-width: 3; }
+  .stroke-4 { stroke-width: 4; }
+  .stroke-5 { stroke-width: 5; }
+  .stroke-6 { stroke-width: 6; }
+  .stroke-7 { stroke-width: 7; }
+  .stroke-8 { stroke-width: 8; }
+
+  // Stroke linecap
+  .stroke-cap-but { stroke-linecap: butt; }
+  .stroke-cap-round { stroke-linecap: round; }
+  .stroke-cap-square { stroke-linecap: square; }
+
+  // Stroke linejoin
+  .stroke-join-miter { stroke-linejoin: miter; }
+  .stroke-join-round { stroke-linejoin: round; }
+  .stroke-join-bevel { stroke-linejoin: bevel; }
+
+  // Stroke dasharray
+  .stroke-dash-0 { stroke-dasharray: 0; }
+  .stroke-dash-1 { stroke-dasharray: 1; }
+  .stroke-dash-2 { stroke-dasharray: 2; }
+  .stroke-dash-3 { stroke-dasharray: 3; }
+  .stroke-dash-4 { stroke-dasharray: 4; }
+  .stroke-dash-5 { stroke-dasharray: 5; }
+  .stroke-dash-6 { stroke-dasharray: 6; }
+  .stroke-dash-8 { stroke-dasharray: 8; }
+  .stroke-dash-10 { stroke-dasharray: 10; }
+
+  // Stroke dashoffset
+  .stroke-dash-offset-0 { stroke-dashoffset: 0; }
+  .stroke-dash-offset-1 { stroke-dashoffset: 1; }
+  .stroke-dash-offset-2 { stroke-dashoffset: 2; }
+  .stroke-dash-offset-4 { stroke-dashoffset: 4; }
+  .stroke-dash-offset-8 { stroke-dashoffset: 8; }
+
+  // Stroke opacity
+  .stroke-opacity-0 { stroke-opacity: 0; }
+  .stroke-opacity-5 { stroke-opacity: 0.05; }
+  .stroke-opacity-10 { stroke-opacity: 0.1; }
+  .stroke-opacity-20 { stroke-opacity: 0.2; }
+  .stroke-opacity-25 { stroke-opacity: 0.25; }
+  .stroke-opacity-30 { stroke-opacity: 0.3; }
+  .stroke-opacity-40 { stroke-opacity: 0.4; }
+  .stroke-opacity-50 { stroke-opacity: 0.5; }
+  .stroke-opacity-60 { stroke-opacity: 0.6; }
+  .stroke-opacity-70 { stroke-opacity: 0.7; }
+  .stroke-opacity-75 { stroke-opacity: 0.75; }
+  .stroke-opacity-80 { stroke-opacity: 0.8; }
+  .stroke-opacity-90 { stroke-opacity: 0.9; }
+  .stroke-opacity-95 { stroke-opacity: 0.95; }
+  .stroke-opacity-100 { stroke-opacity: 1; }
+
+  // Fill opacity
+  .fill-opacity-0 { fill-opacity: 0; }
+  .fill-opacity-5 { fill-opacity: 0.05; }
+  .fill-opacity-10 { fill-opacity: 0.1; }
+  .fill-opacity-20 { fill-opacity: 0.2; }
+  .fill-opacity-25 { fill-opacity: 0.25; }
+  .fill-opacity-30 { fill-opacity: 0.3; }
+  .fill-opacity-40 { fill-opacity: 0.4; }
+  .fill-opacity-50 { fill-opacity: 0.5; }
+  .fill-opacity-60 { fill-opacity: 0.6; }
+  .fill-opacity-70 { fill-opacity: 0.7; }
+  .fill-opacity-75 { fill-opacity: 0.75; }
+  .fill-opacity-80 { fill-opacity: 0.8; }
+  .fill-opacity-90 { fill-opacity: 0.9; }
+  .fill-opacity-95 { fill-opacity: 0.95; }
+  .fill-opacity-100 { fill-opacity: 1; }
+
+  // Fill rule
+  .fill-rule-nonzero { fill-rule: nonzero; }
+  .fill-rule-evenodd { fill-rule: evenodd; }
+
+  // Paint order
+  .paint-normal { paint-order: normal; }
+  .paint-stroke { paint-order: stroke; }
+  .paint-fill { paint-order: fill; }
+  .paint-stroke-fill { paint-order: stroke fill; }
+  .paint-fill-stroke { paint-order: fill stroke; }
+}

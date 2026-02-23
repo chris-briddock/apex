@@ -15,7 +15,7 @@ This test suite ensures that every CSS utility class in the ApexCSS framework is
 
 ## Project Structure
 
-```
+``` plaintext
 tests/e2e/
 ├── src/
 │   ├── components/
@@ -61,6 +61,7 @@ npx playwright install chromium
 
 | Command | Description |
 |---------|-------------|
+
 | `npm run dev` | Start the Vite dev server |
 | `npm run build` | Build the test app for production |
 | `npm run test:e2e` | Run all e2e tests in headless mode |
@@ -74,32 +75,39 @@ npx playwright install chromium
 ## Test Coverage
 
 ### Display Utilities
+
 - `block`, `inline`, `inline-block`, `flex`, `inline-flex`, `grid`, `inline-grid`, `hidden`
 
 ### Position Utilities
+
 - `static`, `relative`, `absolute`, `fixed`, `sticky`
 
 ### Spacing Utilities
+
 - Margin: `m-0` through `m-96`, directional margins (`mt`, `mr`, `mb`, `ml`, `mx`, `my`)
 - Padding: `p-0` through `p-96`, directional padding (`pt`, `pr`, `pb`, `pl`, `px`, `py`)
 
 ### Sizing Utilities
+
 - Width: `w-0`, `w-full`, `w-screen`, fractions (`w-1/2`, `w-1/4`, etc.)
 - Height: `h-0`, `h-full`, `h-screen`
 - Min/Max width and height utilities
 
 ### Flexbox Utilities
+
 - Direction: `flex-row`, `flex-row-reverse`, `flex-col`, `flex-col-reverse`
 - Wrap: `flex-wrap`, `flex-nowrap`, `flex-wrap-reverse`
 - Justify: `justify-start`, `justify-center`, `justify-end`, `justify-between`, `justify-around`, `justify-evenly`
 - Align items: `items-start`, `items-center`, `items-end`, `items-stretch`
 
 ### Grid Utilities
+
 - Columns: `grid-cols-1` through `grid-cols-12`
 - Column span: `col-span-1`, `col-span-2`, `col-span-full`
 - Gap: `gap-0`, `gap-1`, `gap-4`, `gap-8`
 
 ### Typography Utilities
+
 - Font size: `text-xs`, `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, etc.
 - Font weight: `font-thin`, `font-light`, `font-normal`, `font-medium`, `font-semibold`, `font-bold`, `font-black`
 - Text alignment: `text-left`, `text-center`, `text-right`, `text-justify`
@@ -108,30 +116,38 @@ npx playwright install chromium
 - Letter spacing: `tracking-tighter`, `tracking-tight`, `tracking-normal`, `tracking-wide`, `tracking-wider`, `tracking-widest`
 
 ### Color Utilities
-- Background colors: `bg-primary-50` through `bg-primary-950`, `bg-gray-100` through `bg-gray-900`, `bg-success`, `bg-warning`, `bg-error`, `bg-info`
+
+- Background colors: `bg-primary-50` through `bg-primary-950`, `bg-gray-100` through `bg-gray-900`, `bg-success`, `bg-warning`, `bg-danger`, `bg-info`
 - Text colors: `text-primary`, `text-gray-500`, `text-white`, `text-black`
 
 ### Border Utilities
+
 - Border radius: `rounded-none`, `rounded-sm`, `rounded`, `rounded-md`, `rounded-lg`, `rounded-xl`, `rounded-2xl`, `rounded-full`
 - Border width: `border`, `border-0`, `border-2`, `border-4`, directional borders (`border-t`, `border-r`, `border-b`, `border-l`)
 - Border style: `border-solid`, `border-dashed`, `border-dotted`, `border-double`, `border-none`
 
 ### Shadow Utilities
+
 - `shadow-sm`, `shadow`, `shadow-md`, `shadow-lg`, `shadow-xl`, `shadow-2xl`, `shadow-inner`, `shadow-none`
 
 ### Opacity Utilities
+
 - `opacity-0`, `opacity-25`, `opacity-50`, `opacity-75`, `opacity-100`
 
 ### Z-Index Utilities
+
 - `z-0`, `z-10`, `z-20`, `z-30`, `z-40`, `z-50`, `z-auto`
 
 ### Overflow Utilities
+
 - `overflow-auto`, `overflow-hidden`, `overflow-visible`, `overflow-scroll`, `overflow-x-auto`, `overflow-y-auto`
 
 ### Visibility Utilities
+
 - `visible`, `invisible`
 
 ### Cursor Utilities
+
 - `cursor-auto`, `cursor-default`, `cursor-pointer`, `cursor-wait`, `cursor-text`, `cursor-move`, `cursor-not-allowed`
 
 ## Test Helpers
@@ -169,11 +185,13 @@ await expectTypography(page, selector, {
 To add tests for new CSS utilities:
 
 1. Add the test element to `src/components/CssTestSuite.tsx`:
-```tsx
-<div data-testid="my-new-class" className="my-new-class">My New Class</div>
-```
+
+  ```tsx
+    <div data-testid="my-new-class" className="my-new-class">My New Class</div>
+  ```
 
 2. Create a new test file in `tests/`:
+
 ```typescript
 import { test } from '@playwright/test';
 import { expectCSSProperty } from './utils/css-test-helpers';

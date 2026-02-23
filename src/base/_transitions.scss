@@ -28,20 +28,4 @@ $transition-timing-functions: (
   ease-in-out: $transition-timing-function-ease-in-out
 ) !default;
 
-// ============================================================================
-// CSS Custom Properties (for runtime theming)
-// ============================================================================
-
-:root {
-  // Transition durations
-  --transition-duration-75: #{$transition-fast};
-  --transition-duration-150: #{$transition-base};
-  --transition-duration-300: #{$transition-slow};
-
-  // Transition timing functions
-  --transition-timing-function-ease: #{$transition-timing-function-ease};
-  --transition-timing-function-linear: #{$transition-timing-function-linear};
-  --transition-timing-function-ease-in: #{$transition-timing-function-ease-in};
-  --transition-timing-function-ease-out: #{$transition-timing-function-ease-out};
-  --transition-timing-function-ease-in-out: #{$transition-timing-function-ease-in-out};
-}
+// Note: CSS custom properties are defined in _tokens.scss

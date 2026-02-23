@@ -28,7 +28,7 @@ export const PositionPage: React.FC = () => {
                         </div>
                     </div>
 
-                    <div data-testid="position-fixed" className="fixed bottom-4 right-4 bg-error-100 p-4 border-2 border-error-500 z-50">
+                    <div data-testid="position-fixed" className="fixed bottom-4 right-4 bg-danger-100 p-4 border-2 border-danger-500 z-50">
                         fixed position
                     </div>
 

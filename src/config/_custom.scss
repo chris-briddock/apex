@@ -62,10 +62,19 @@ $enable-transforms: true !default;
 $enable-filters: true !default;
 $enable-aspect-ratio: true !default;
 $enable-accessibility: true !default;
+$enable-z-index: true !default;
 
 // ============================================================================
 // Breakpoints
 // ============================================================================
+// Individual breakpoint variables for use in media queries
+$breakpoints-sm: 640px !default;
+$breakpoints-md: 768px !default;
+$breakpoints-lg: 1024px !default;
+$breakpoints-xl: 1280px !default;
+$breakpoints-2xl: 1536px !default;
+
+// Breakpoint map for iteration
 $breakpoints: (
   sm: 640px,
   md: 768px,
@@ -93,6 +102,7 @@ $spacing-scale: (
   12: 3rem,
   14: 3.5rem,
   16: 4rem,
+  18: 4.5rem,
   20: 5rem,
   24: 6rem,
   28: 7rem,
@@ -107,6 +117,7 @@ $spacing-scale: (
   64: 16rem,
   72: 18rem,
   80: 20rem,
+  88: 22rem,
   96: 24rem,
   px: 1px,
   0.5: 0.125rem,
@@ -180,14 +191,19 @@ $color-info-600: #0284c7 !default;
 $color-info-700: #0369a1 !default;
 $color-info-800: #075985 !default;
 $color-info-900: #0c4a6e !default;
+$color-brand-50: #f0f9ff !default;
+$color-brand-500: #0ea5e9 !default;
+$color-brand-900: #0c4a6e !default;
 
 // ============================================================================
 // Typography
 // ============================================================================
+// Font families from user config (supports custom keys like 'display')
 $font-families: (
-  sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif,
-  serif: ui-serif, Georgia, Cambria, Times New Roman, Times, serif,
-  mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace
+  sans: "Inter, system-ui, sans-serif",
+  serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
+  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+  display: "Poppins, sans-serif"
 ) !default;
 
 $font-sizes: (
@@ -256,10 +272,10 @@ $border-radius-scale: (
 // ============================================================================
 $shadows: (
   sm: 0 1px 2px 0 rgb(0 0 0 / 0.05),
-  DEFAULT: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1),
-  md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1),
-  lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1),
-  xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1),
+  DEFAULT: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+  md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+  xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
   2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25),
   inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05),
   none: none

@@ -1,0 +1,17 @@
+// ============================================================================
+// Color Scheme Utilities
+// ============================================================================
+
+@use '../../config/settings' as settings;
+
+@if settings.$enable-color-scheme == true {
+  // Color scheme
+  .scheme-normal { color-scheme: normal; }
+  .scheme-light { color-scheme: light; }
+  .scheme-dark { color-scheme: dark; }
+  .scheme-light-dark { color-scheme: light dark; }
+  .scheme-dark-light { color-scheme: dark light; }
+  .scheme-only-light { color-scheme: only light; }
+  .scheme-only-dark { color-scheme: only dark; }
+  .scheme-inherit { color-scheme: inherit; }
+}

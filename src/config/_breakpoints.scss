@@ -1,28 +1,90 @@
 // ============================================================================
 // Responsive Breakpoints
 // ============================================================================
+// Provides breakpoints from custom config with class name mappings
+// for valid CSS identifiers (e.g., '2xl' -> 'xxl')
+// ============================================================================
 
-// Breakpoint values
-$breakpoint-sm: 640px !default;
-$breakpoint-md: 768px !default;
-$breakpoint-lg: 1024px !default;
-$breakpoint-xl: 1280px !default;
-$breakpoint-xxl: 1536px !default;
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+@use 'custom';
 
-// Breakpoint map
-$breakpoints: (
-  sm: $breakpoint-sm,
-  md: $breakpoint-md,
-  lg: $breakpoint-lg,
-  xl: $breakpoint-xl,
-  xxl: $breakpoint-xxl
-) !default;
+// Breakpoints map is sourced from custom config
+$breakpoints: custom.$breakpoints;
 
-// Breakpoint prefixes for responsive utilities
-$breakpoint-prefixes: (
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  xl: 'xl',
-  xxl: 'xxl'
-) !default;
+// Digit to number map for converting numeric strings to their numeric values
+$digit-map: (
+  "0": 0,
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9
+);
+
+// Create mapping for valid CSS class names
+// (CSS classes can't start with a digit, so '2xl' becomes 'xxl')
+$breakpoint-class-names: ();
+
+@each $name, $value in $breakpoints {
+  $name-str: meta.inspect($name);
+  $class-name: $name-str;
+  $name-len: string.length($name-str);
+
+  // Validate full breakpoint string against numeric-xl pattern (e.g., "2xl", "3xl", "4xl")
+  // Must be at least 3 chars (e.g., "2xl") and end with "xl"
+  @if $name-len >= 3 {
+    // Extract the last 2 characters to check for "xl" suffix
+    $suffix: string.slice($name-str, $name-len - 1, $name-len);
+
+    @if $suffix == "xl" {
+      // Extract the numeric prefix (everything before "xl")
+      $num-str: string.slice($name-str, 1, $name-len - 2);
+      $num-len: string.length($num-str);
+
+      // Validate the prefix is a non-empty numeric string (0-9 only)
+      $is-numeric: true;
+
+      @for $i from 1 through $num-len {
+        $char: string.slice($num-str, $i, $i);
+
+        @if $char != "0" and $char != "1" and $char != "2" and $char != "3" and
+            $char != "4" and $char != "5" and $char != "6" and $char != "7" and
+            $char != "8" and $char != "9" {
+          $is-numeric: false;
+        }
+      }
+
+      // After successful match, construct class-name using mapped numeric value
+      // e.g., "2xl" -> "xxl", "3xl" -> "xxxl", "4xl" -> "xxxxl"
+      @if $is-numeric and $num-len > 0 {
+        $count: map.get($digit-map, $num-str);
+        $class-name: "";
+
+        @for $i from 1 through $count {
+          $class-name: $class-name + "x";
+        }
+
+        $class-name: $class-name + "l";
+      }
+    }
+  }
+
+  $breakpoint-class-names: map.merge($breakpoint-class-names, ($name: $class-name));
+}
+
+// Legacy aliases for backwards compatibility
+$breakpoint-sm: map.get($breakpoints, sm);
+$breakpoint-md: map.get($breakpoints, md);
+$breakpoint-lg: map.get($breakpoints, lg);
+$breakpoint-xl: map.get($breakpoints, xl);
+$breakpoint-2xl: map.get($breakpoints, 2xl);
+$breakpoint-xxl: $breakpoint-2xl;
+
+// Alias for code that expects $breakpoint-prefixes
+$breakpoint-prefixes: $breakpoint-class-names;

@@ -1,0 +1,46 @@
+// ============================================================================
+// List Style Utilities
+// ============================================================================
+
+@use '../../config/settings' as settings;
+
+@if settings.$enable-list == true {
+  // List style type
+  .list-none { list-style-type: none; }
+  .list-disc { list-style-type: disc; }
+  .list-decimal { list-style-type: decimal; }
+  .list-circle { list-style-type: circle; }
+  .list-square { list-style-type: square; }
+  .list-decimal-leading-zero { list-style-type: decimal-leading-zero; }
+  .list-lower-roman { list-style-type: lower-roman; }
+  .list-upper-roman { list-style-type: upper-roman; }
+  .list-lower-alpha { list-style-type: lower-alpha; }
+  .list-upper-alpha { list-style-type: upper-alpha; }
+  .list-lower-latin { list-style-type: lower-latin; }
+  .list-upper-latin { list-style-type: upper-latin; }
+  .list-lower-greek { list-style-type: lower-greek; }
+  .list-armenian { list-style-type: armenian; }
+  .list-georgian { list-style-type: georgian; }
+
+  // List style position
+  .list-inside { list-style-position: inside; }
+  .list-outside { list-style-position: outside; }
+
+  // List style image (utility for none)
+  .list-image-none { list-style-image: none; }
+
+  // Marker
+  .marker-color-primary { --list-marker-color: var(--color-primary); }
+  .marker-color-secondary { --list-marker-color: var(--color-secondary); }
+  .marker-color-success { --list-marker-color: var(--color-success); }
+  .marker-color-danger { --list-marker-color: var(--color-danger); }
+  .marker-color-warning { --list-marker-color: var(--color-warning); }
+  .marker-color-info { --list-marker-color: var(--color-info); }
+  .marker-color-white { --list-marker-color: var(--color-white); }
+  .marker-color-black { --list-marker-color: var(--color-black); }
+
+  // Apply marker color
+  ::marker {
+    color: var(--list-marker-color);
+  }
+}

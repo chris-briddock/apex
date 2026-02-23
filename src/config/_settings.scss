@@ -2,9 +2,6 @@
 // Framework Settings
 // ============================================================================
 
-// Prefix for all utility classes
-$prefix: '' !default;
-
 // Enable/disable specific utilities
 $enable-spacing: true !default;
 $enable-sizing: true !default;
@@ -45,7 +42,7 @@ $enable-focus: true !default;
 $enable-active: true !default;
 $enable-disabled: true !default;
 $enable-dark-mode: true !default;
-$enable-rtl: false !default;
+$enable-rtl: true !default;
 $enable-animations: true !default;
 $enable-transforms: true !default;
 $enable-filters: true !default;
@@ -63,6 +60,7 @@ $enable-transition-behavior: true !default;
 $enable-transforms-3d: true !default;
 $enable-color-scheme: true !default;
 $enable-field-sizing: true !default;
+$enable-z-index: true !default;
 
 // Spacing scale
 $spacing-scale: (

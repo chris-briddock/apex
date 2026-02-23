@@ -142,20 +142,20 @@ const defaultConfig = {
   vw: [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100],
   // Custom values (for calc, special units)
   custom: [
-    'calc(100%-1rem)',
-    'calc(100%-2rem)',
-    'calc(100%-3rem)',
-    'calc(100%-4rem)',
-    'calc(100%-20px)',
-    'calc(100%-40px)',
-    'calc(100%-60px)',
-    'calc(100vh-1rem)',
-    'calc(100vh-2rem)',
-    'calc(100vh-3rem)',
-    'calc(100vw-1rem)',
-    'calc(100vw-2rem)',
-    'calc(50%-0.5rem)',
-    'calc(50%-1rem)',
+    'calc(100% - 1rem)',
+    'calc(100% - 2rem)',
+    'calc(100% - 3rem)',
+    'calc(100% - 4rem)',
+    'calc(100% - 20px)',
+    'calc(100% - 40px)',
+    'calc(100% - 60px)',
+    'calc(100vh - 1rem)',
+    'calc(100vh - 2rem)',
+    'calc(100vh - 3rem)',
+    'calc(100vw - 1rem)',
+    'calc(100vw - 2rem)',
+    'calc(50% - 0.5rem)',
+    'calc(50% - 1rem)',
     'min-content',
     'max-content',
     'fit-content',
@@ -187,8 +187,9 @@ function generateArbitrarySCSS(config) {
   lines.push(`// Last generated: ${new Date().toISOString()}`);
   lines.push(`// ============================================================================`);
   lines.push('');
-  lines.push(`@use '../config/settings' as settings;`);
-  lines.push(`@use '../config/breakpoints' as bp;`);
+  lines.push(`@use 'sass:map';`);
+  lines.push(`@use '../../config/settings' as settings;`);
+  lines.push(`@use '../../config/breakpoints' as bp;`);
   lines.push('');
 
   // Generate utilities for each property definition
@@ -248,19 +249,15 @@ function generateArbitrarySCSS(config) {
   lines.push('// Responsive Arbitrary Value Utilities');
   lines.push('// ============================================================================');
   lines.push('@if settings.$enable-sizing == true {');
-  lines.push('  $breakpoints: (');
-  lines.push('    sm: bp.$breakpoint-sm,');
-  lines.push('    md: bp.$breakpoint-md,');
-  lines.push('    lg: bp.$breakpoint-lg,');
-  lines.push('    xl: bp.$breakpoint-xl,');
-  lines.push('    xxl: bp.$breakpoint-xxl');
-  lines.push('  );');
+  lines.push('  // Use the configurable breakpoints from the framework');
+  lines.push('  $breakpoints: bp.$breakpoints;');
   lines.push('');
 
   // Generate responsive variants for key utilities
   const responsivePrefixes = ['w', 'h', 'min-w', 'min-h', 'max-w', 'max-h', 'm', 'p', 'gap'];
 
   lines.push('  @each $bp-name, $bp-value in $breakpoints {');
+  lines.push('    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);');
   lines.push('    @media (min-width: $bp-value) {');
 
   for (const prefix of responsivePrefixes) {
@@ -276,7 +273,7 @@ function generateArbitrarySCSS(config) {
       for (const value of config.pixels.slice(0, 10)) { // Limit to first 10 for responsive
         const className = generateClassName(prefix, value, 'px');
         const cssValue = formatCSSValue(value, 'px');
-        const escapedClassName = `#{$bp-name}\\:${className}`;
+        const escapedClassName = `#{$bp-class}\\:${className}`;
 
         if (properties.length === 1) {
           lines.push(`        .${escapedClassName} { ${properties[0]}: ${cssValue}; }`);
@@ -413,6 +410,11 @@ function formatCSSValue(value, unit) {
       if (value === 'last') return '9999';
       if (value === 'none') return '0';
     }
+    // Fix calc() expressions to have proper whitespace for Sass
+    if (value.includes('calc(')) {
+      return value.replace(/(\d+%?)([+-])(\d)/g, '$1 $2 $3')
+                  .replace(/(\d)([+-])(\d+%?)/g, '$1 $2 $3');
+    }
     return value;
   }
 
@@ -475,7 +477,7 @@ async function build() {
     const scss = generateArbitrarySCSS(config);
 
     // Ensure output directory exists
-    const outputDir = path.resolve(process.cwd(), 'src/core');
+    const outputDir = path.resolve(process.cwd(), 'src/utilities/core');
     await fs.mkdir(outputDir, { recursive: true });
 
     // Write SCSS file

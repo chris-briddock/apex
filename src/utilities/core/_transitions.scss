@@ -1,0 +1,254 @@
+// ============================================================================
+// Transition Utilities (CSS Custom Properties)
+// ============================================================================
+// All transition values use CSS custom properties for runtime customization
+
+@use '../../config/settings' as settings;
+@use '../../config/breakpoints' as bp;
+
+@if settings.$enable-transitions == true {
+  // ============================================================================
+  // Transition Property
+  // ============================================================================
+  .transition-none { transition-property: none; }
+  .transition-all { transition-property: all; }
+  .transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+  .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+  .transition-opacity { transition-property: opacity; }
+  .transition-shadow { transition-property: box-shadow; }
+  .transition-transform { transition-property: transform; }
+
+  // ============================================================================
+  // Transition Duration (CSS Custom Properties)
+  // ============================================================================
+  .duration-75 { transition-duration: var(--transition-duration-75); }
+  .duration-100 { transition-duration: var(--transition-duration-100); }
+  .duration-150 { transition-duration: var(--transition-duration-150); }
+  .duration-200 { transition-duration: var(--transition-duration-200); }
+  .duration-300 { transition-duration: var(--transition-duration-300); }
+  .duration-500 { transition-duration: var(--transition-duration-500); }
+  .duration-700 { transition-duration: var(--transition-duration-700); }
+  .duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+  // ============================================================================
+  // Transition Timing Function (CSS Custom Properties)
+  // ============================================================================
+  .ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+  .ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+  .ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+  .ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+  .ease { transition-timing-function: var(--transition-timing-function-ease); }
+
+  // ============================================================================
+  // Transition Delay (CSS Custom Properties)
+  // ============================================================================
+  .delay-75 { transition-delay: var(--transition-duration-75); }
+  .delay-100 { transition-delay: var(--transition-duration-100); }
+  .delay-150 { transition-delay: var(--transition-duration-150); }
+  .delay-200 { transition-delay: var(--transition-duration-200); }
+  .delay-300 { transition-delay: var(--transition-duration-300); }
+  .delay-500 { transition-delay: var(--transition-duration-500); }
+  .delay-700 { transition-delay: var(--transition-duration-700); }
+  .delay-1000 { transition-delay: var(--transition-duration-1000); }
+
+  // ============================================================================
+  // Animation Utilities (CSS Custom Properties)
+  // ============================================================================
+  .animate-none { animation: none; }
+
+  // Spin animation
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  // Ping animation
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  .animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  // Pulse animation
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  // Bounce animation
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+
+  // ============================================================================
+  // Responsive Transition Utilities
+  // ============================================================================
+  @media (min-width: bp.$breakpoint-sm) {
+    // Transition property
+    .sm\:transition-none { transition-property: none; }
+    .sm\:transition-all { transition-property: all; }
+    .sm\:transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+    .sm\:transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+    .sm\:transition-opacity { transition-property: opacity; }
+    .sm\:transition-shadow { transition-property: box-shadow; }
+    .sm\:transition-transform { transition-property: transform; }
+
+    // Duration
+    .sm\:duration-75 { transition-duration: var(--transition-duration-75); }
+    .sm\:duration-100 { transition-duration: var(--transition-duration-100); }
+    .sm\:duration-150 { transition-duration: var(--transition-duration-150); }
+    .sm\:duration-200 { transition-duration: var(--transition-duration-200); }
+    .sm\:duration-300 { transition-duration: var(--transition-duration-300); }
+    .sm\:duration-500 { transition-duration: var(--transition-duration-500); }
+    .sm\:duration-700 { transition-duration: var(--transition-duration-700); }
+    .sm\:duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+    // Timing function
+    .sm\:ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+    .sm\:ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+    .sm\:ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+    .sm\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+
+    // Animation
+    .sm\:animate-none { animation: none; }
+    .sm\:animate-spin { animation: spin 1s linear infinite; }
+    .sm\:animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .sm\:animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .sm\:animate-bounce { animation: bounce 1s infinite; }
+  }
+
+  @media (min-width: bp.$breakpoint-md) {
+    // Transition property
+    .md\:transition-none { transition-property: none; }
+    .md\:transition-all { transition-property: all; }
+    .md\:transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+    .md\:transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+    .md\:transition-opacity { transition-property: opacity; }
+    .md\:transition-shadow { transition-property: box-shadow; }
+    .md\:transition-transform { transition-property: transform; }
+
+    // Duration
+    .md\:duration-75 { transition-duration: var(--transition-duration-75); }
+    .md\:duration-100 { transition-duration: var(--transition-duration-100); }
+    .md\:duration-150 { transition-duration: var(--transition-duration-150); }
+    .md\:duration-200 { transition-duration: var(--transition-duration-200); }
+    .md\:duration-300 { transition-duration: var(--transition-duration-300); }
+    .md\:duration-500 { transition-duration: var(--transition-duration-500); }
+    .md\:duration-700 { transition-duration: var(--transition-duration-700); }
+    .md\:duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+    // Timing function
+    .md\:ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+    .md\:ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+    .md\:ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+    .md\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+  }
+
+  @media (min-width: bp.$breakpoint-lg) {
+    // Transition property
+    .lg\:transition-none { transition-property: none; }
+    .lg\:transition-all { transition-property: all; }
+    .lg\:transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+    .lg\:transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+    .lg\:transition-opacity { transition-property: opacity; }
+    .lg\:transition-shadow { transition-property: box-shadow; }
+    .lg\:transition-transform { transition-property: transform; }
+
+    // Duration
+    .lg\:duration-75 { transition-duration: var(--transition-duration-75); }
+    .lg\:duration-100 { transition-duration: var(--transition-duration-100); }
+    .lg\:duration-150 { transition-duration: var(--transition-duration-150); }
+    .lg\:duration-200 { transition-duration: var(--transition-duration-200); }
+    .lg\:duration-300 { transition-duration: var(--transition-duration-300); }
+    .lg\:duration-500 { transition-duration: var(--transition-duration-500); }
+    .lg\:duration-700 { transition-duration: var(--transition-duration-700); }
+    .lg\:duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+    // Timing function
+    .lg\:ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+    .lg\:ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+    .lg\:ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+    .lg\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+  }
+
+  @media (min-width: bp.$breakpoint-xl) {
+    // Transition property
+    .xl\:transition-none { transition-property: none; }
+    .xl\:transition-all { transition-property: all; }
+    .xl\:transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+    .xl\:transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+    .xl\:transition-opacity { transition-property: opacity; }
+    .xl\:transition-shadow { transition-property: box-shadow; }
+    .xl\:transition-transform { transition-property: transform; }
+
+    // Duration
+    .xl\:duration-75 { transition-duration: var(--transition-duration-75); }
+    .xl\:duration-100 { transition-duration: var(--transition-duration-100); }
+    .xl\:duration-150 { transition-duration: var(--transition-duration-150); }
+    .xl\:duration-200 { transition-duration: var(--transition-duration-200); }
+    .xl\:duration-300 { transition-duration: var(--transition-duration-300); }
+    .xl\:duration-500 { transition-duration: var(--transition-duration-500); }
+    .xl\:duration-700 { transition-duration: var(--transition-duration-700); }
+    .xl\:duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+    // Timing function
+    .xl\:ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+    .xl\:ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+    .xl\:ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+    .xl\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+  }
+
+  @media (min-width: bp.$breakpoint-xxl) {
+    // Transition property
+    .xxl\:transition-none { transition-property: none; }
+    .xxl\:transition-all { transition-property: all; }
+    .xxl\:transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; }
+    .xxl\:transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; }
+    .xxl\:transition-opacity { transition-property: opacity; }
+    .xxl\:transition-shadow { transition-property: box-shadow; }
+    .xxl\:transition-transform { transition-property: transform; }
+
+    // Duration
+    .xxl\:duration-75 { transition-duration: var(--transition-duration-75); }
+    .xxl\:duration-100 { transition-duration: var(--transition-duration-100); }
+    .xxl\:duration-150 { transition-duration: var(--transition-duration-150); }
+    .xxl\:duration-200 { transition-duration: var(--transition-duration-200); }
+    .xxl\:duration-300 { transition-duration: var(--transition-duration-300); }
+    .xxl\:duration-500 { transition-duration: var(--transition-duration-500); }
+    .xxl\:duration-700 { transition-duration: var(--transition-duration-700); }
+    .xxl\:duration-1000 { transition-duration: var(--transition-duration-1000); }
+
+    // Timing function
+    .xxl\:ease-linear { transition-timing-function: var(--transition-timing-function-linear); }
+    .xxl\:ease-in { transition-timing-function: var(--transition-timing-function-ease-in); }
+    .xxl\:ease-out { transition-timing-function: var(--transition-timing-function-ease-out); }
+    .xxl\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
+
+    // Animation
+    .xxl\:animate-none { animation: none; }
+    .xxl\:animate-spin { animation: spin 1s linear infinite; }
+    .xxl\:animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .xxl\:animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .xxl\:animate-bounce { animation: bounce 1s infinite; }
+  }
+}

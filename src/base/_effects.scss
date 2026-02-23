@@ -57,34 +57,4 @@ $opacities: (
   100: $opacity-100
 ) !default;
 
-// ============================================================================
-// CSS Custom Properties (for runtime theming)
-// ============================================================================
-
-:root {
-  // Shadows
-  --shadow-sm: #{$shadow-sm};
-  --shadow-base: #{$shadow-base};
-  --shadow-md: #{$shadow-md};
-  --shadow-lg: #{$shadow-lg};
-  --shadow-xl: #{$shadow-xl};
-  --shadow-2xl: #{$shadow-2xl};
-  --shadow-none: #{$shadow-none};
-
-  // Border radius
-  --border-radius-none: #{$border-radius-none};
-  --border-radius-sm: #{$border-radius-sm};
-  --border-radius-base: #{$border-radius-base};
-  --border-radius-md: #{$border-radius-md};
-  --border-radius-lg: #{$border-radius-lg};
-  --border-radius-xl: #{$border-radius-xl};
-  --border-radius-2xl: #{$border-radius-2xl};
-  --border-radius-full: #{$border-radius-full};
-
-  // Opacity (values are unitless)
-  --opacity-0: #{$opacity-0};
-  --opacity-25: #{$opacity-25};
-  --opacity-50: #{$opacity-50};
-  --opacity-75: #{$opacity-75};
-  --opacity-100: #{$opacity-100};
-}
+// Note: CSS custom properties are defined in _tokens.scss

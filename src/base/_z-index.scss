@@ -20,16 +20,4 @@ $z-indices: (
   auto: $z-index-auto
 ) !default;
 
-// ============================================================================
-// CSS Custom Properties (for runtime theming)
-// ============================================================================
-
-:root {
-  --z-index-0: #{$z-index-0};
-  --z-index-10: #{$z-index-10};
-  --z-index-20: #{$z-index-20};
-  --z-index-30: #{$z-index-30};
-  --z-index-40: #{$z-index-40};
-  --z-index-50: #{$z-index-50};
-  --z-index-auto: #{$z-index-auto};
-}
+// Note: CSS custom properties are defined in _tokens.scss

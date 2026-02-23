@@ -1,12 +1,12 @@
 {
   "metadata": {
     "title": "Apex Documentation - Utility-First CSS Framework",
-    "description": "Apex - A comprehensive utility-first CSS framework with 500+ utility classes for rapid UI development"
+    "description": "Apex - A utility-first CSS framework with 500+ utility classes for rapid UI development"
   },
   "pages": {
     "accessibility": {
       "title": "Accessibility",
-      "description": "Comprehensive accessibility features in Apex CSS Framework including screen reader support, focus management, reduced motion preferences, and high contrast mode utilities.",
+      "description": "Accessibility features in Apex CSS Framework including screen reader support, focus management, reduced motion preferences, and high contrast mode utilities.",
       "wcagCompliance": {
         "title": "WCAG Compliance",
         "content": "Apex is designed with accessibility in mind and aims to meet WCAG 2.1 AA standards. All accessibility utilities are optional and can be enabled or disabled via configuration."
@@ -29,7 +29,7 @@
       },
       "focusManagement": {
         "title": "Focus Management",
-        "description": "Apex provides comprehensive focus management utilities for keyboard navigation. These help create clear, visible focus indicators that meet WCAG requirements.",
+        "description": "Apex provides focus management utilities for keyboard navigation. These help create clear, visible focus indicators that meet WCAG requirements.",
         "focusVisible": {
           "title": "Focus Visible (:focus-visible)",
           "description": "Apply styles only when an element receives focus via keyboard navigation (not on mouse click). This creates a cleaner experience for mouse users while maintaining accessibility for keyboard users."
@@ -425,22 +425,69 @@
     },
     "customization": {
       "title": "Customization",
-      "description": "Tailor Apex to match your brand and project requirements.",
+      "description": "Learn how to customize Apex CSS framework to match your brand and project requirements using CSS variables and SCSS configuration.",
       "cssVariables": {
         "title": "CSS Variables",
-        "content": "Apex uses CSS custom properties (variables) for easy customization."
+        "content": "Apex uses CSS custom properties (variables) for easy customization. All design tokens are available as CSS variables that you can override in your styles."
+      },
+      "quickStart": {
+        "title": "Quick Start",
+        "description": "Get started customizing Apex in minutes.",
+        "intro": "The easiest way to customize Apex is by overriding CSS variables. Load your custom styles after importing the framework."
       },
       "customColors": {
         "title": "Custom Colors",
-        "description": "Override the default color palette:"
+        "description": "Override the default color palette to match your brand identity.",
+        "intro": "Apex uses semantic color tokens that can be customized by overriding CSS variables. The framework provides both semantic colors (primary, success, warning, error) and neutral grays.",
+        "paletteTitle": "Color Palette",
+        "paletteDescription": "Each color has a full palette of shades from 50 (lightest) to 950 (darkest). Override individual shades to fine-tune your color scheme.",
+        "darkModeTitle": "Dark Mode Colors",
+        "darkModeDescription": "For dark mode support, override the same variables within a dark mode selector. Apex supports both class-based (.dark) and data-attribute based ([data-theme=\"dark\"]) dark mode."
       },
       "customSpacing": {
         "title": "Custom Spacing",
-        "description": "Define your own spacing scale:"
+        "description": "Define your own spacing scale for margins, padding, and gaps.",
+        "intro": "Apex provides a spacing scale based on rem units. All spacing utilities use these CSS variables internally.",
+        "noteTitle": "Note",
+        "noteContent": "Spacing in Apex is defined via SCSS maps at build time. While you can override CSS variables for runtime theming, adding new spacing values requires SCSS configuration."
       },
       "customTypography": {
         "title": "Custom Typography",
-        "description": "Customize font families and sizes:"
+        "description": "Customize font families, sizes, weights, and line heights.",
+        "intro": "Apex provides a complete typography system with customizable font stacks, size scale, weights, and line heights. All values use CSS variables for easy theming.",
+        "googleFontsTitle": "Using Google Fonts",
+        "googleFontsDescription": "Load custom fonts from Google Fonts or other CDN sources, then reference them in your CSS variables."
+      },
+      "scss": {
+        "title": "SCSS Configuration",
+        "description": "For advanced customization, use SCSS variables before importing the framework.",
+        "intro": "Apex is built with SCSS and allows you to customize the framework by setting variables before import. This gives you control over colors, spacing scales, and which features to include.",
+        "availableVariablesTitle": "Available Variables",
+        "availableVariablesDescription": "These are the main configuration variables you can override before importing Apex:",
+        "colorVariablesTitle": "Color Variables",
+        "colorVariablesDescription": "Override specific color shades or entire color maps to match your brand:",
+        "importantNoteTitle": "Important",
+        "importantNoteContent": "SCSS variables must be set BEFORE importing the Apex framework. Once compiled, these values are baked into the CSS and cannot be changed at runtime."
+      },
+      "featureFlags": {
+        "title": "Feature Flags",
+        "description": "Enable or disable specific utility categories to optimize your bundle size.",
+        "intro": "Apex allows you to disable utility categories you don't use. This reduces the final CSS bundle size by excluding unused styles.",
+        "allFlagsTitle": "All Feature Flags"
+      },
+      "jsConfig": {
+        "title": "JavaScript Configuration",
+        "description": "Configure Apex dynamically at runtime using JavaScript.",
+        "intro": "Apex provides a JavaScript configuration API for runtime theming. This is useful for dynamic theme switching and user preferences."
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Follow these guidelines for maintainable and effective customization.",
+        "tip1": "Define your custom variables in a central location, loaded after the framework.",
+        "tip2": "Use semantic color names (primary, success, error) rather than literal colors (blue, green, red).",
+        "tip3": "Test customizations in both light and dark modes.",
+        "tip4": "Consider using CSS custom properties for values that might change at runtime.",
+        "tip5": "Document your design token values for team consistency."
       }
     },
     "darkMode": {
@@ -461,26 +508,42 @@
     },
     "designSystem": {
       "title": "Design System",
-      "description": "Apex provides a comprehensive design system with consistent colors, typography, spacing, and more.",
+      "description": "Explore the Apex design system with interactive color palettes, spacing scales, typography specimens, and live theme customization. All design tokens use CSS custom properties for easy customization.",
       "colors": {
         "title": "Colors",
-        "description": "A semantic color system with primary, secondary, success, warning, and error colors."
+        "description": "A color system with semantic colors and full palettes. Click any color to copy its CSS variable.",
+        "semantic": "Semantic Colors",
+        "palettes": "Color Palettes",
+        "contrast": "Contrast Checker",
+        "contrastDescription": "Check accessibility contrast ratios between colors to ensure WCAG compliance."
       },
       "typography": {
         "title": "Typography",
-        "description": "Consistent typography scale for headings and body text:"
+        "description": "A complete typography system with font sizes, weights, line heights, and letter spacing. Preview changes live and copy CSS variables."
       },
       "spacing": {
         "title": "Spacing",
-        "description": "Consistent spacing scale for margins and padding:"
+        "description": "34 spacing values from 0 to 24rem. Use for margins, padding, gaps, and more. View in list, stack, or comparison modes."
       },
       "borderRadius": {
-        "title": "Border Radius",
-        "description": "Consistent border radius scale:"
+        "title": "Borders & Shadows",
+        "description": "Border radius and shadow scales for consistent elevation and rounding. Includes individual corner utilities."
       },
       "shadows": {
         "title": "Shadows",
-        "description": "Consistent shadow scale for elevation:"
+        "description": "8 levels of box shadows from none to 2xl. Use shadows to create depth and elevation in your designs."
+      },
+      "themePlayground": {
+        "title": "Theme Playground",
+        "description": "Customize colors, border radius, and shadows in real-time. Copy the generated CSS to use in your project."
+      },
+      "cssVariables": {
+        "title": "CSS Variables",
+        "description": "All Apex design tokens are available as CSS custom properties. Override them to customize your theme."
+      },
+      "quickReference": {
+        "title": "Quick Reference",
+        "description": "Quick lookup table for common utility class patterns and their CSS equivalents."
       }
     },
     "faq": {
@@ -489,7 +552,7 @@
       "questions": {
         "whatIs": {
           "question": "What is Apex?",
-          "answer": "Apex is a comprehensive utility-first CSS framework with 500+ utility classes designed for rapid UI development. It provides a set of low-level utility classes that let you build completely custom designs without leaving your HTML."
+          "answer": "Apex is a utility-first CSS framework with 500+ utility classes designed for rapid UI development. It provides a set of low-level utility classes that let you build completely custom designs without leaving your HTML."
         },
         "productionReady": {
           "question": "Is Apex production-ready?",
@@ -780,7 +843,7 @@
     "migrationPages": {
       "fromBootstrap": {
         "title": "Migration from Bootstrap",
-        "description": "A comprehensive guide for migrating your project from Bootstrap to Apex.",
+        "description": "A guide for migrating your project from Bootstrap to Apex.",
         "alert": {
           "type": "warning",
           "title": "Major Changes",
@@ -807,7 +870,7 @@
       },
       "fromBulma": {
         "title": "Migration from Bulma",
-        "description": "A comprehensive guide for migrating your project from Bulma to Apex.",
+        "description": "A guide for migrating your project from Bulma to Apex.",
         "alert": {
           "type": "info",
           "title": "Similar Philosophy",
@@ -834,7 +897,7 @@
       },
       "fromTailwind": {
         "title": "Migration from Tailwind CSS",
-        "description": "A comprehensive guide for migrating your project from Tailwind CSS to Apex.",
+        "description": "A guide for migrating your project from Tailwind CSS to Apex.",
         "alert": {
           "type": "info",
           "title": "Similar Syntax",
@@ -2007,10 +2070,10 @@
   },
   "home": {
     "title": "Apex",
-    "description": "A comprehensive utility-first CSS framework with 500+ utility classes for rapid UI development.",
+    "description": "A utility-first CSS framework with 500+ utility classes for rapid UI development.",
     "welcomeAlert": {
       "title": "Welcome!",
-      "content": "Welcome to the Apex documentation. This utility-first framework provides a comprehensive set of CSS classes for rapid UI development, including spacing, typography, colors, flexbox, grid, animations, transforms, filters, and much more."
+      "content": "Welcome to the Apex documentation. This utility-first framework provides a large set of CSS classes for rapid UI development, including spacing, typography, colors, flexbox, grid, animations, transforms, filters, and much more."
     },
     "gettingStarted": {
       "title": "Getting Started",

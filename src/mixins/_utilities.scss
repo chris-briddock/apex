@@ -129,15 +129,7 @@
 //   ));
 
 @mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  $breakpoints: (
-    sm: bp.$breakpoint-sm,
-    md: bp.$breakpoint-md,
-    lg: bp.$breakpoint-lg,
-    xl: bp.$breakpoint-xl,
-    xxl: bp.$breakpoint-xxl
-  );
-
-  @each $bp-name, $bp-value in $breakpoints {
+  @each $bp-name, $bp-value in bp.$breakpoints {
     @media (min-width: $bp-value) {
       @each $name, $var-name in $var-map {
         .#{$bp-name}\:#{$class-name}-#{$name} {
@@ -398,11 +390,11 @@
 // Generate opacity utilities
 @mixin generate-opacity($prefix: '') {
   $opacity-map: (
-    0: var(--apex-opacity-0),
-    25: var(--apex-opacity-25),
-    50: var(--apex-opacity-50),
-    75: var(--apex-opacity-75),
-    100: var(--apex-opacity-100)
+    0: var(--opacity-0),
+    25: var(--opacity-25),
+    50: var(--opacity-50),
+    75: var(--opacity-75),
+    100: var(--opacity-100)
   );
 
   @each $name, $opacity in $opacity-map {

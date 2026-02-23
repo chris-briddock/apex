@@ -465,22 +465,69 @@
     },
     "customization": {
       "title": "Anpassung",
-      "description": "Passen Sie Apex an Ihre Marke und Projektanforderungen an.",
+      "description": "Erfahren Sie, wie Sie das Apex CSS-Framework an Ihre Marke und Projektanforderungen anpassen können, indem Sie CSS-Variablen und SCSS-Konfiguration verwenden.",
       "cssVariables": {
         "title": "CSS-Variablen",
-        "content": "Apex verwendet CSS-Custom-Properties (Variablen) für einfache Anpassung."
+        "content": "Apex verwendet CSS-Custom-Properties (Variablen) für einfache Anpassung. Alle Design-Token sind als CSS-Variablen verfügbar, die Sie in Ihren Styles überschreiben können."
+      },
+      "quickStart": {
+        "title": "Schnellstart",
+        "description": "Beginnen Sie in Minuten mit der Anpassung von Apex.",
+        "intro": "Der einfachste Weg, Apex anzupassen, ist das Überschreiben von CSS-Variablen. Laden Sie Ihre benutzerdefinierten Styles nach dem Import des Frameworks."
       },
       "customColors": {
         "title": "Benutzerdefinierte Farben",
-        "description": "Überschreiben Sie die Standardfarbpalette:"
+        "description": "Überschreiben Sie die Standardfarbpalette, um sie an Ihre Markenidentität anzupassen.",
+        "intro": "Apex verwendet semantische Farb-Tokens, die durch Überschreiben von CSS-Variablen angepasst werden können. Das Framework bietet sowohl semantische Farben (Primär, Erfolg, Warnung, Fehler) als auch neutrale Grautöne.",
+        "paletteTitle": "Farbpalette",
+        "paletteDescription": "Jede Farbe hat eine vollständige Palette von Schattierungen von 50 (am hellsten) bis 950 (am dunkelsten). Überschreiben Sie einzelne Schattierungen, um Ihr Farbschema zu optimieren.",
+        "darkModeTitle": "Dunkelmodus-Farben",
+        "darkModeDescription": "Für Dunkelmodus-Unterstützung überschreiben Sie dieselben Variablen innerhalb eines Dunkelmodus-Selektors. Apex unterstützt sowohl klassenbasierten (.dark) als auch datenattributbasierten ([data-theme=\"dark\"]) Dunkelmodus."
       },
       "customSpacing": {
         "title": "Benutzerdefinierter Abstand",
-        "description": "Definieren Sie Ihre eigene Abstandsskala:"
+        "description": "Definieren Sie Ihre eigene Abstandsskala für Ränder, Polsterung und Lücken.",
+        "intro": "Apex bietet eine umfassende Abstandsskala basierend auf rem-Einheiten. Alle Abstands-Utilities verwenden intern diese CSS-Variablen.",
+        "noteTitle": "Hinweis",
+        "noteContent": "Abstände in Apex werden über SCSS-Maps zur Kompilierungszeit definiert. Während Sie CSS-Variablen für Runtime-Theming überschreiben können, erfordert das Hinzufügen neuer Abstandswerte eine SCSS-Konfiguration."
       },
       "customTypography": {
         "title": "Benutzerdefinierte Typografie",
-        "description": "Passen Sie Schriftfamilien und -größen an:"
+        "description": "Passen Sie Schriftfamilien, Größen, Gewichte und Zeilenhöhen an.",
+        "intro": "Apex bietet ein komplettes Typografie-System mit anpassbaren Schriftstapeln, Größenskalen, Gewichten und Zeilenhöhen. Alle Werte verwenden CSS-Variablen für einfaches Theming.",
+        "googleFontsTitle": "Google Fonts Verwenden",
+        "googleFontsDescription": "Laden Sie benutzerdefinierte Schriften von Google Fonts oder anderen CDN-Quellen und referenzieren Sie sie dann in Ihren CSS-Variablen."
+      },
+      "scss": {
+        "title": "SCSS-Konfiguration",
+        "description": "Für erweiterte Anpassungen verwenden Sie SCSS-Variablen vor dem Import des Frameworks.",
+        "intro": "Apex ist mit SCSS gebaut und ermöglicht es Ihnen, das Framework durch Setzen von Variablen vor dem Import anzupassen. Dies gibt Ihnen Kontrolle über Farben, Abstandsskalen und welche Funktionen einbezogen werden.",
+        "availableVariablesTitle": "Verfügbare Variablen",
+        "availableVariablesDescription": "Dies sind die Hauptkonfigurationsvariablen, die Sie vor dem Import von Apex überschreiben können:",
+        "colorVariablesTitle": "Farbvariablen",
+        "colorVariablesDescription": "Überschreiben Sie spezifische Farbschattierungen oder vollständige Farbmaps, um Ihrer Marke zu entsprechen:",
+        "importantNoteTitle": "Wichtig",
+        "importantNoteContent": "SCSS-Variablen müssen VOR dem Import des Apex-Frameworks gesetzt werden. Einmal kompiliert, sind diese Werte im CSS festgelegt und können nicht zur Laufzeit geändert werden."
+      },
+      "featureFlags": {
+        "title": "Feature-Flags",
+        "description": "Aktivieren oder deaktivieren Sie spezifische Utility-Kategorien, um Ihre Bundle-Größe zu optimieren.",
+        "intro": "Apex ermöglicht es Ihnen, Utility-Kategorien zu deaktivieren, die Sie nicht verwenden. Dies reduziert die finale CSS-Bundle-Größe durch Ausschluss ungenutzter Styles.",
+        "allFlagsTitle": "Alle Feature-Flags"
+      },
+      "jsConfig": {
+        "title": "JavaScript-Konfiguration",
+        "description": "Konfigurieren Sie Apex dynamisch zur Laufzeit mit JavaScript.",
+        "intro": "Apex bietet eine JavaScript-Konfigurations-API für Runtime-Theming. Dies ist nützlich für dynamisches Theme-Switching und Benutzereinstellungen."
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Befolgen Sie diese Richtlinien für wartbare und effektive Anpassungen.",
+        "tip1": "Definieren Sie Ihre benutzerdefinierten Variablen an einer zentralen Stelle, geladen nach dem Framework.",
+        "tip2": "Verwenden Sie semantische Farbnamen (Primär, Erfolg, Fehler) anstelle von wörtlichen Farben (Blau, Grün, Rot).",
+        "tip3": "Testen Sie Anpassungen sowohl im hellen als auch im dunklen Modus.",
+        "tip4": "Erwägen Sie die Verwendung von CSS-Custom-Properties für Werte, die sich zur Laufzeit ändern könnten.",
+        "tip5": "Dokumentieren Sie Ihre Design-Token-Werte für Team-Konsistenz."
       }
     },
     "darkMode": {
@@ -501,26 +548,42 @@
     },
     "designSystem": {
       "title": "Design-System",
-      "description": "Apex bietet ein umfassendes Design-System mit konsistenten Farben, Typografie, Abständen und mehr.",
+      "description": "Erkunden Sie das Apex Design-System mit interaktiven Farbpaletten, Abstandsskalen, Typografie-Mustern und Live-Themen-Anpassung. Alle Design-Tokens verwenden CSS-Custom-Properties für einfache Anpassung.",
       "colors": {
         "title": "Farben",
-        "description": "Ein semantisches Farbsystem mit primären, sekundären, Erfolgs-, Warn- und Fehlerfarben."
+        "description": "Ein umfassendes Farbsystem mit semantischen Farben und vollständigen Paletten. Klicken Sie auf eine Farbe, um ihre CSS-Variable zu kopieren.",
+        "semantic": "Semantische Farben",
+        "palettes": "Farbpaletten",
+        "contrast": "Kontrast-Prüfer",
+        "contrastDescription": "Überprüfen Sie die Barrierefreiheit-Kontrastverhältnisse zwischen Farben, um die WCAG-Konformität sicherzustellen."
       },
       "typography": {
         "title": "Typografie",
-        "description": "Konsistente Typografieskala für Überschriften und Fließtext:"
+        "description": "Ein vollständiges Typografie-System mit Schriftgrößen, Gewichten, Zeilenhöhen und Zeichenabständen. Änderungen live anzeigen und CSS-Variablen kopieren."
       },
       "spacing": {
         "title": "Abstand",
-        "description": "Konsistente Abstandsskala für Ränder und Padding:"
+        "description": "34 Abstandswerte von 0 bis 24rem. Verwendung für Ränder, Padding, Abstände und mehr. Anzeige in Listen-, Stapel- oder Vergleichsansicht."
       },
       "borderRadius": {
-        "title": "Border-Radius",
-        "description": "Konsistente Border-Radius-Skala:"
+        "title": "Rahmen & Schatten",
+        "description": "Border-Radius- und Schattenskalen für konsistente Erhöhung und Rundung. Enthält individuelle Ecken-Utilities."
       },
       "shadows": {
         "title": "Schatten",
-        "description": "Konsistente Schattenskala für Erhöhung:"
+        "description": "8 Ebenen von Box-Schatten von none bis 2xl. Verwenden Sie Schatten, um Tiefe und Erhöhung in Ihren Designs zu erzeugen."
+      },
+      "themePlayground": {
+        "title": "Themen-Spielplatz",
+        "description": "Passen Sie Farben, Border-Radius und Schatten in Echtzeit an. Kopieren Sie das generierte CSS, um es in Ihrem Projekt zu verwenden."
+      },
+      "cssVariables": {
+        "title": "CSS-Variablen",
+        "description": "Alle Apex Design-Tokens sind als CSS-Custom-Properties verfügbar. Überschreiben Sie sie, um Ihr Thema anzupassen."
+      },
+      "quickReference": {
+        "title": "Schnellreferenz",
+        "description": "Schnelle Nachschlagetabelle für häufige Utility-Klassen-Muster und ihre CSS-Entsprechungen."
       }
     },
     "faq": {

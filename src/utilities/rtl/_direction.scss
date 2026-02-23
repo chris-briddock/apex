@@ -1,0 +1,291 @@
+// ============================================================================
+// RTL Direction Utilities
+// ============================================================================
+// This file provides direction utilities for RTL (right-to-left) languages.
+// These utilities are automatically applied when the dir="rtl" attribute
+// is set on the HTML element or when the rtl: prefix is used.
+
+// Base Direction Utilities
+// ============================================================================
+.direction-ltr {
+  direction: ltr;
+}
+
+.direction-rtl {
+  direction: rtl;
+}
+
+// Text Direction
+// ============================================================================
+.text-direction-ltr {
+  direction: ltr;
+}
+
+.text-direction-rtl {
+  direction: rtl;
+}
+
+// Flex Direction RTL
+// ============================================================================
+.rtl\:flex-row {
+  &[dir="rtl"],
+  .rtl & {
+    flex-direction: row-reverse;
+  }
+}
+
+.rtl\:flex-row-reverse {
+  &[dir="rtl"],
+  .rtl & {
+    flex-direction: row;
+  }
+}
+
+// Grid Direction RTL
+// ============================================================================
+.rtl\:grid-flow-col {
+  &[dir="rtl"],
+  .rtl & {
+    grid-auto-flow: column;
+  }
+}
+
+.rtl\:grid-flow-col-reverse {
+  &[dir="rtl"],
+  .rtl & {
+    grid-auto-flow: column;
+  }
+}
+
+// Text Align RTL
+// ============================================================================
+.rtl\:text-left {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: right;
+  }
+}
+
+.rtl\:text-right {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: left;
+  }
+}
+
+.rtl\:text-center {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: center;
+  }
+}
+
+// Justify Content RTL
+// ============================================================================
+.rtl\:justify-start {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: flex-end;
+  }
+}
+
+.rtl\:justify-end {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: flex-start;
+  }
+}
+
+.rtl\:justify-center {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: center;
+  }
+}
+
+.rtl\:justify-between {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: space-between;
+  }
+}
+
+.rtl\:justify-around {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: space-around;
+  }
+}
+
+.rtl\:justify-evenly {
+  &[dir="rtl"],
+  .rtl & {
+    justify-content: space-evenly;
+  }
+}
+
+// Transform RTL
+// ============================================================================
+// RTL Scale Transform (using escaped class names)
+.scale-x-n1 {
+  &[dir="rtl"],
+  .rtl & {
+    transform: scaleX(-1);
+  }
+}
+
+.scale-x-1 {
+  &[dir="rtl"],
+  .rtl & {
+    transform: scaleX(1);
+  }
+}
+
+// Translate RTL
+// ============================================================================
+.rtl\:translate-x-0 {
+  &[dir="rtl"],
+  .rtl & {
+    transform: translateX(0);
+  }
+}
+
+.rtl\:translate-x-full {
+  &[dir="rtl"],
+  .rtl & {
+    transform: translateX(100%);
+  }
+}
+
+.rtl\:-translate-x-full {
+  &[dir="rtl"],
+  .rtl & {
+    transform: translateX(-100%);
+  }
+}
+
+// Border Radius RTL
+// ============================================================================
+.rtl\:rounded-l {
+  &[dir="rtl"],
+  .rtl & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+}
+
+.rtl\:rounded-r {
+  &[dir="rtl"],
+  .rtl & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+}
+
+.rtl\:rounded-l-none {
+  &[dir="rtl"],
+  .rtl & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.rtl\:rounded-r-none {
+  &[dir="rtl"],
+  .rtl & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+// Cursor RTL
+// ============================================================================
+.rtl\:cursor-w-resize {
+  &[dir="rtl"],
+  .rtl & {
+    cursor: e-resize;
+  }
+}
+
+.rtl\:cursor-e-resize {
+  &[dir="rtl"],
+  .rtl & {
+    cursor: w-resize;
+  }
+}
+
+// List Style Type RTL
+// ============================================================================
+.rtl\:list-decimal {
+  &[dir="rtl"],
+  .rtl & {
+    list-style-type: decimal-leading-zero;
+  }
+}
+
+.rtl\:list-disc {
+  &[dir="rtl"],
+  .rtl & {
+    list-style-type: disc;
+  }
+}
+
+// Input RTL
+// ============================================================================
+.rtl\:input[type="text"] {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: right;
+  }
+}
+
+.rtl\:input[type="email"] {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: right;
+  }
+}
+
+.rtl\:input[type="password"] {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: right;
+  }
+}
+
+// Placeholder RTL
+// ============================================================================
+.rtl\:placeholder::placeholder {
+  &[dir="rtl"],
+  .rtl & {
+    text-align: right;
+  }
+}
+
+// Scroll RTL
+// ============================================================================
+.rtl\:scroll-py-2 {
+  &[dir="rtl"],
+  .rtl & {
+    scroll-padding-top: 0.5rem;
+    scroll-padding-bottom: 0.5rem;
+  }
+}
+
+// Selection RTL
+// ============================================================================
+.rtl\:selection-primary {
+  &[dir="rtl"],
+  .rtl & {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+// ============================================================================
+// End of RTL Direction Utilities
+// ============================================================================

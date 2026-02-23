@@ -31,7 +31,7 @@ const defaultConfig = {
     important: false,
     separator: ':',
     darkMode: 'class',
-    rtl: false
+    rtl: true
   },
   features: {
     spacing: true,
@@ -78,7 +78,8 @@ const defaultConfig = {
     transforms: true,
     filters: true,
     aspectRatio: true,
-    accessibility: true
+    accessibility: true,
+    zIndex: true
   },
   breakpoints: {
     sm: '640px',
@@ -332,6 +333,12 @@ ${Object.entries(merged.features)
 // ============================================================================
 // Breakpoints
 // ============================================================================
+// Individual breakpoint variables for use in media queries
+${Object.entries(merged.breakpoints)
+  .map(([key, value]) => `$breakpoints-${key}: ${value} !default;`)
+  .join('\n')}
+
+// Breakpoint map for iteration
 $breakpoints: (
 ${Object.entries(merged.breakpoints)
   .map(([key, value]) => `  ${key}: ${value}`)
@@ -355,11 +362,12 @@ ${generateColorVariables(merged.colors)}
 // ============================================================================
 // Typography
 // ============================================================================
+// Font families from user config (supports custom keys like 'display')
 $font-families: (
 ${Object.entries(merged.typography.fontFamily)
   .map(([key, value]) => {
-    const val = Array.isArray(value) ? value.join(', ') : value;
-    return `  ${key}: ${val}`;
+    const fontList = Array.isArray(value) ? value.join(', ') : value;
+    return `  ${key}: "${fontList}"`;
   })
   .join(',\n')}
 ) !default;
@@ -402,7 +410,11 @@ ${Object.entries(merged.borderRadius)
 // ============================================================================
 $shadows: (
 ${Object.entries(merged.shadows)
-  .map(([key, value]) => `  ${key}: ${value}`)
+  .map(([key, value]) => {
+    // Quote shadow values that contain commas to prevent Sass parsing issues
+    const needsQuotes = value.includes(',');
+    return `  ${key}: ${needsQuotes ? `"${value}"` : value}`;
+  })
   .join(',\n')}
 ) !default;
 
@@ -504,7 +516,6 @@ function generateSampleConfig() {
  *   2. Run: npm run config:build
  *   3. The SCSS files will be regenerated with your customizations
  *
- * For full documentation, see: https://apexcss.dev/docs/configuration
  */
 
 export default {

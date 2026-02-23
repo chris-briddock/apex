@@ -1,0 +1,42 @@
+// ============================================================================
+// 3D Transform Utilities
+// Backface visibility, perspective, perspective-origin, transform-style
+// ============================================================================
+
+@use '../../config/settings' as settings;
+
+@if settings.$enable-transforms-3d == true {
+  // Backface visibility
+  .backface-visible { backface-visibility: visible; }
+  .backface-hidden { backface-visibility: hidden; }
+
+  // Perspective
+  .perspective-none { perspective: none; }
+  .perspective-dramatic { perspective: 100px; }
+  .perspective-near { perspective: 300px; }
+  .perspective-normal { perspective: 500px; }
+  .perspective-midrange { perspective: 800px; }
+  .perspective-distant { perspective: 1200px; }
+
+  // Perspective origin
+  .perspective-origin-center { perspective-origin: center; }
+  .perspective-origin-top { perspective-origin: top; }
+  .perspective-origin-top-right { perspective-origin: top right; }
+  .perspective-origin-right { perspective-origin: right; }
+  .perspective-origin-bottom-right { perspective-origin: bottom right; }
+  .perspective-origin-bottom { perspective-origin: bottom; }
+  .perspective-origin-bottom-left { perspective-origin: bottom left; }
+  .perspective-origin-left { perspective-origin: left; }
+  .perspective-origin-top-left { perspective-origin: top left; }
+
+  // Transform style
+  .transform-3d { transform-style: preserve-3d; }
+  .transform-flat { transform-style: flat; }
+
+  // Transform box
+  .transform-box-border-box { transform-box: border-box; }
+  .transform-box-fill-box { transform-box: fill-box; }
+  .transform-box-content-box { transform-box: content-box; }
+  .transform-box-stroke-box { transform-box: stroke-box; }
+  .transform-box-view-box { transform-box: view-box; }
+}

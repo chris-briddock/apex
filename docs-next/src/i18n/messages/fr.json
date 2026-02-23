@@ -500,27 +500,43 @@
       }
     },
     "designSystem": {
-      "title": "Système de conception",
-      "description": "Apex fournit un système de conception complet avec des couleurs, une typographie, un espacement et plus encore cohérents.",
+      "title": "Système de Design",
+      "description": "Explorez le système de design Apex avec des palettes de couleurs interactives, des échelles d'espacement, des spécimens typographiques et une personnalisation de thème en direct. Tous les tokens de design utilisent des propriétés CSS personnalisées pour une personnalisation facile.",
       "colors": {
         "title": "Couleurs",
-        "description": "Un système de couleur sémantique avec des couleurs primaires, secondaires, de succès, d'avertissement et d'erreur."
+        "description": "Un système de couleur complet avec des couleurs sémantiques et des palettes complètes. Cliquez sur n'importe quelle couleur pour copier sa variable CSS.",
+        "semantic": "Couleurs Sémantiques",
+        "palettes": "Palettes de Couleurs",
+        "contrast": "Vérificateur de Contraste",
+        "contrastDescription": "Vérifiez les rapports de contraste d'accessibilité entre les couleurs pour assurer la conformité WCAG."
       },
       "typography": {
         "title": "Typographie",
-        "description": "Échelle de typographie cohérente pour les titres et le texte du corps:"
+        "description": "Un système typographique complet avec des tailles de police, des graisses, des hauteurs de ligne et des espacements de lettres. Aperçu des modifications en direct et copie des variables CSS."
       },
       "spacing": {
         "title": "Espacement",
-        "description": "Échelle d'espacement cohérente pour les marges et le remplissage:"
+        "description": "34 valeurs d'espacement de 0 à 24rem. Utilisation pour les marges, le remplissage, les espacements et plus. Affichage en modes liste, pile ou comparaison."
       },
       "borderRadius": {
-        "title": "Rayon de bordure",
-        "description": "Échelle de rayon de bordure cohérente:"
+        "title": "Bordures & Ombres",
+        "description": "Échelles de rayon de bordure et d'ombres pour une élévation et un arrondi cohérents. Inclut des utilitaires de coins individuels."
       },
       "shadows": {
         "title": "Ombres",
-        "description": "Échelle d'ombre cohérente pour l'élévation:"
+        "description": "8 niveaux d'ombres portées de none à 2xl. Utilisez des ombres pour créer de la profondeur et de l'élévation dans vos designs."
+      },
+      "themePlayground": {
+        "title": "Terrain de Jeu de Thème",
+        "description": "Personnalisez les couleurs, le rayon de bordure et les ombres en temps réel. Copiez le CSS généré pour l'utiliser dans votre projet."
+      },
+      "cssVariables": {
+        "title": "Variables CSS",
+        "description": "Tous les tokens de design Apex sont disponibles en tant que propriétés CSS personnalisées. Remplacez-les pour personnaliser votre thème."
+      },
+      "quickReference": {
+        "title": "Référence Rapide",
+        "description": "Table de référence rapide pour les modèles communs de classes utilitaires et leurs équivalents CSS."
       }
     },
     "faq": {

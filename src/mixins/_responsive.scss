@@ -1,6 +1,10 @@
 // ============================================================================
 // Responsive Mixins
 // ============================================================================
+// Note: These mixins are available for user convenience but are not currently
+// used internally by the framework. Responsive utilities are generated
+// dynamically using the $breakpoints map from config.
+// ============================================================================
 
 @use 'sass:map';
 @use '../config/breakpoints' as bp;
@@ -9,7 +13,6 @@
 @mixin respond-above($breakpoint) {
   @if map.has-key(bp.$breakpoints, $breakpoint) {
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint);
-
     @media (min-width: $breakpoint-value) {
       @content;
     }
@@ -22,7 +25,6 @@
 @mixin respond-below($breakpoint) {
   @if map.has-key(bp.$breakpoints, $breakpoint) {
     $breakpoint-value: map.get(bp.$breakpoints, $breakpoint);
-
     @media (max-width: ($breakpoint-value - 1px)) {
       @content;
     }
@@ -36,31 +38,10 @@
   @if map.has-key(bp.$breakpoints, $lower) and map.has-key(bp.$breakpoints, $upper) {
     $lower-value: map.get(bp.$breakpoints, $lower);
     $upper-value: map.get(bp.$breakpoints, $upper);
-
     @media (min-width: $lower-value) and (max-width: ($upper-value - 1px)) {
       @content;
     }
   } @else {
     @warn 'Unknown breakpoints: #{$lower} or #{$upper}';
-  }
-}
-
-// Specific breakpoint mixin
-@mixin respond-to($breakpoint) {
-  @include respond-above($breakpoint) {
-    @content;
-  }
-}
-
-// Generate responsive utilities
-@mixin generate-responsive($property, $values, $prefix: '') {
-  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-    @include respond-above($breakpoint) {
-      @each $key, $value in $values {
-        .#{$prefix}#{$breakpoint}#{$key} {
-          #{$property}: $value;
-        }
-      }
-    }
   }
 }

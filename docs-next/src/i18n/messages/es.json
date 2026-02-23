@@ -465,22 +465,69 @@
     },
     "customization": {
       "title": "Personalización",
-      "description": "Adapte Apex para que coincida con su marca y requisitos del proyecto.",
+      "description": "Aprenda a personalizar el framework CSS Apex para que coincida con su marca y requisitos del proyecto utilizando variables CSS y configuración SCSS.",
       "cssVariables": {
         "title": "Variables CSS",
-        "content": "Apex utiliza propiedades personalizadas de CSS (variables) para una personalización fácil."
+        "content": "Apex utiliza propiedades personalizadas de CSS (variables) para una personalización fácil. Todos los tokens de diseño están disponibles como variables CSS que puede sobrescribir en sus estilos."
+      },
+      "quickStart": {
+        "title": "Inicio Rápido",
+        "description": "Comience a personalizar Apex en minutos.",
+        "intro": "La forma más fácil de personalizar Apex es sobrescribiendo variables CSS. Cargue sus estilos personalizados después de importar el framework."
       },
       "customColors": {
-        "title": "Colores personalizados",
-        "description": "Anule la paleta de colores predeterminada:"
+        "title": "Colores Personalizados",
+        "description": "Anule la paleta de colores predeterminada para que coincida con la identidad de su marca.",
+        "intro": "Apex utiliza tokens de color semánticos que se pueden personalizar sobrescribiendo variables CSS. El framework proporciona colores semánticos (primario, éxito, advertencia, error) y grises neutros.",
+        "paletteTitle": "Paleta de Colores",
+        "paletteDescription": "Cada color tiene una paleta completa de tonos del 50 (más claro) al 950 (más oscuro). Sobrescriba tonos individuales para ajustar su esquema de colores.",
+        "darkModeTitle": "Colores del Modo Oscuro",
+        "darkModeDescription": "Para soporte de modo oscuro, sobrescriba las mismas variables dentro de un selector de modo oscuro. Apex admite modo oscuro basado en clase (.dark) y basado en atributo de datos ([data-theme=\"dark\"])."
       },
       "customSpacing": {
-        "title": "Espaciado personalizado",
-        "description": "Defina su propia escala de espaciado:"
+        "title": "Espaciado Personalizado",
+        "description": "Defina su propia escala de espaciado para márgenes, relleno y espacios.",
+        "intro": "Apex proporciona una escala de espaciado completa basada en unidades rem. Todas las utilidades de espaciado usan estas variables CSS internamente.",
+        "noteTitle": "Nota",
+        "noteContent": "El espaciado en Apex se define mediante mapas SCSS en tiempo de compilación. Si bien puede sobrescribir variables CSS para temas en tiempo de ejecución, agregar nuevos valores de espaciado requiere configuración SCSS."
       },
       "customTypography": {
-        "title": "Tipografía personalizada",
-        "description": "Personalice familias y tamaños de fuente:"
+        "title": "Tipografía Personalizada",
+        "description": "Personalice familias de fuentes, tamaños, pesos y alturas de línea.",
+        "intro": "Apex proporciona un sistema de tipografía completo con pilas de fuentes personalizables, escala de tamaños, pesos y alturas de línea. Todos los valores usan variables CSS para temas fáciles.",
+        "googleFontsTitle": "Usar Google Fonts",
+        "googleFontsDescription": "Cargue fuentes personalizadas desde Google Fonts u otras fuentes CDN, luego refléjelas en sus variables CSS."
+      },
+      "scss": {
+        "title": "Configuración SCSS",
+        "description": "Para personalización avanzada, use variables SCSS antes de importar el framework.",
+        "intro": "Apex está construido con SCSS y le permite personalizar el framework estableciendo variables antes de la importación. Esto le da control sobre colores, escalas de espaciado y qué características incluir.",
+        "availableVariablesTitle": "Variables Disponibles",
+        "availableVariablesDescription": "Estas son las principales variables de configuración que puede sobrescribir antes de importar Apex:",
+        "colorVariablesTitle": "Variables de Color",
+        "colorVariablesDescription": "Sobrescriba tonos de color específicos o mapas de colores completos para que coincidan con su marca:",
+        "importantNoteTitle": "Importante",
+        "importantNoteContent": "Las variables SCSS deben establecerse ANTES de importar el framework Apex. Una vez compiladas, estos valores se fijan en el CSS y no se pueden cambiar en tiempo de ejecución."
+      },
+      "featureFlags": {
+        "title": "Banderas de Características",
+        "description": "Habilite o deshabilite categorías de utilidades específicas para optimizar el tamaño de su paquete.",
+        "intro": "Apex le permite deshabilitar categorías de utilidades que no usa. Esto reduce el tamaño final del paquete CSS excluyendo estilos no utilizados.",
+        "allFlagsTitle": "Todas las Banderas de Características"
+      },
+      "jsConfig": {
+        "title": "Configuración JavaScript",
+        "description": "Configure Apex dinámicamente en tiempo de ejecución usando JavaScript.",
+        "intro": "Apex proporciona una API de configuración JavaScript para temas en tiempo de ejecución. Esto es útil para cambios de tema dinámicos y preferencias de usuario."
+      },
+      "bestPractices": {
+        "title": "Mejores Prácticas",
+        "description": "Siga estas pautas para una personalización mantenible y efectiva.",
+        "tip1": "Defina sus variables personalizadas en una ubicación central, cargadas después del framework.",
+        "tip2": "Use nombres de color semánticos (primario, éxito, error) en lugar de colores literales (azul, verde, rojo).",
+        "tip3": "Pruebe las personalizaciones tanto en modo claro como oscuro.",
+        "tip4": "Considere usar propiedades CSS personalizadas para valores que podrían cambiar en tiempo de ejecución.",
+        "tip5": "Documente los valores de sus tokens de diseño para la consistencia del equipo."
       }
     },
     "darkMode": {
@@ -500,27 +547,43 @@
       }
     },
     "designSystem": {
-      "title": "Sistema de diseño",
-      "description": "Apex proporciona un sistema de diseño completo con colores, tipografía, espaciado y más consistentes.",
+      "title": "Sistema de Diseño",
+      "description": "Explore el sistema de diseño Apex con paletas de colores interactivas, escalas de espaciado, especímenes tipográficos y personalización de temas en vivo. Todos los tokens de diseño utilizan propiedades CSS personalizadas para una fácil personalización.",
       "colors": {
         "title": "Colores",
-        "description": "Un sistema de color semántico con colores primarios, secundarios, de éxito, advertencia y error."
+        "description": "Un sistema de color completo con colores semánticos y paletas completas. Haga clic en cualquier color para copiar su variable CSS.",
+        "semantic": "Colores Semánticos",
+        "palettes": "Paletas de Color",
+        "contrast": "Verificador de Contraste",
+        "contrastDescription": "Verifique las relaciones de contraste de accesibilidad entre colores para garantizar el cumplimiento de WCAG."
       },
       "typography": {
         "title": "Tipografía",
-        "description": "Escala de tipografía consistente para encabezados y texto del cuerpo:"
+        "description": "Un sistema tipográfico completo con tamaños de fuente, pesos, alturas de línea y espaciado entre letras. Vista previa de cambios en vivo y copie variables CSS."
       },
       "spacing": {
         "title": "Espaciado",
-        "description": "Escala de espaciado consistente para márgenes y relleno:"
+        "description": "34 valores de espaciado de 0 a 24rem. Uso para márgenes, relleno, espacios y más. Ver en modos de lista, pila o comparación."
       },
       "borderRadius": {
-        "title": "Radio de borde",
-        "description": "Escala de radio de borde consistente:"
+        "title": "Bordes y Sombras",
+        "description": "Escalas de radio de borde y sombras para elevación y redondeo consistentes. Incluye utilidades de esquinas individuales."
       },
       "shadows": {
         "title": "Sombras",
-        "description": "Escala de sombra consistente para elevación:"
+        "description": "8 niveles de sombras de caja de none a 2xl. Use sombras para crear profundidad y elevación en sus diseños."
+      },
+      "themePlayground": {
+        "title": "Área de Juegos de Temas",
+        "description": "Personalice colores, radio de borde y sombras en tiempo real. Copie el CSS generado para usarlo en su proyecto."
+      },
+      "cssVariables": {
+        "title": "Variables CSS",
+        "description": "Todos los tokens de diseño Apex están disponibles como propiedades CSS personalizadas. Sobrescribalas para personalizar su tema."
+      },
+      "quickReference": {
+        "title": "Referencia Rápida",
+        "description": "Tabla de referencia rápida para patrones comunes de clases de utilidad y sus equivalentes CSS."
       }
     },
     "faq": {

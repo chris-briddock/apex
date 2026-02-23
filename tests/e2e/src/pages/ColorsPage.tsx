@@ -49,7 +49,7 @@ export const ColorsPage: React.FC = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                     <div data-testid="bg-success" className="bg-success p-4 text-center text-white">Success</div>
                     <div data-testid="bg-warning" className="bg-warning p-4 text-center text-white">Warning</div>
-                    <div data-testid="bg-error" className="bg-error p-4 text-center text-white">Error</div>
+                    <div data-testid="bg-danger" className="bg-danger p-4 text-center text-white">Danger</div>
                     <div data-testid="bg-info" className="bg-info p-4 text-center text-white">Info</div>
                 </div>
             </section>
@@ -63,7 +63,7 @@ export const ColorsPage: React.FC = () => {
                     <p data-testid="text-gray-700" className="text-gray-700 text-xl">text-gray-700</p>
                     <p data-testid="text-success" className="text-success text-xl">text-success</p>
                     <p data-testid="text-warning" className="text-warning text-xl">text-warning</p>
-                    <p data-testid="text-error" className="text-error text-xl">text-error</p>
+                    <p data-testid="text-danger" className="text-danger text-xl">text-danger</p>
                     <p data-testid="text-info" className="text-info text-xl">text-info</p>
                     <div className="bg-gray-800 p-2">
                         <p data-testid="text-white" className="text-white text-xl">text-white</p>
