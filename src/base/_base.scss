@@ -44,8 +44,9 @@ code {
   margin: 0;
 }
 
-// Remove default outline
-:focus {
+// Remove default outline only when :focus-visible is supported
+// This ensures keyboard users retain visible focus in older browsers
+:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -53,8 +54,6 @@ code {
 address,
 cite,
 dfn,
-em,
-i,
 var {
   font-style: normal;
 }
@@ -80,7 +79,6 @@ main {
 // Grouping content
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
 }
 
 // Text-level semantics
