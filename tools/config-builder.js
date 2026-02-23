@@ -31,7 +31,7 @@ const defaultConfig = {
     important: false,
     separator: ':',
     darkMode: 'class',
-    rtl: false
+    rtl: true
   },
   features: {
     spacing: true,
@@ -362,11 +362,14 @@ ${generateColorVariables(merged.colors)}
 // ============================================================================
 // Typography
 // ============================================================================
-// Font families stored as CSS custom property compatible strings
+// Font families from user config (supports custom keys like 'display')
 $font-families: (
-  sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
-  serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
-  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+${Object.entries(merged.typography.fontFamily)
+  .map(([key, value]) => {
+    const fontList = Array.isArray(value) ? value.join(', ') : value;
+    return `  ${key}: "${fontList}"`;
+  })
+  .join(',\n')}
 ) !default;
 
 $font-sizes: (

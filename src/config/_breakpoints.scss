@@ -1,26 +1,43 @@
 // ============================================================================
 // Responsive Breakpoints
 // ============================================================================
-// Default breakpoint values - these can be overridden by the user
-// via apex.config.js and running: npm run config:build
+// Provides breakpoints from custom config with class name mappings
+// for valid CSS identifiers (e.g., '2xl' -> 'xxl')
 // ============================================================================
 
 @use "sass:map";
+@use "sass:meta";
+@use "sass:string";
 @use 'custom';
 
-// Individual breakpoint variables (defaults, can be overridden by _custom.scss)
-// Note: We don't define $breakpoints here because it's defined in _custom.scss
-// This file provides backwards-compatible aliases
+// Breakpoints map is sourced from custom config
+$breakpoints: custom.$breakpoints;
 
-// Legacy aliases for backwards compatibility (using the custom config values)
-$breakpoint-sm: map.get(custom.$breakpoints, sm) !default;
-$breakpoint-md: map.get(custom.$breakpoints, md) !default;
-$breakpoint-lg: map.get(custom.$breakpoints, lg) !default;
-$breakpoint-xl: map.get(custom.$breakpoints, xl) !default;
-$breakpoint-2xl: map.get(custom.$breakpoints, 2xl) !default;
+// Create mapping for valid CSS class names
+// (CSS classes can't start with a digit, so '2xl' becomes 'xxl')
+$breakpoint-class-names: ();
 
-// Extra legacy alias
-$breakpoint-xxl: $breakpoint-2xl !default;
+@each $name, $value in $breakpoints {
+  $name-str: meta.inspect($name);
+  $class-name: $name-str;
 
-// Re-export the breakpoints map for convenience
-$breakpoints: custom.$breakpoints !default;
+  // Handle numeric prefixes like '2xl', '3xl'
+  @if string.slice($name-str, 1, 1) == "2" {
+    $class-name: "xxl";
+  } @else if string.slice($name-str, 1, 1) == "3" {
+    $class-name: "xxxl";
+  }
+
+  $breakpoint-class-names: map.merge($breakpoint-class-names, ($name: $class-name));
+}
+
+// Legacy aliases for backwards compatibility
+$breakpoint-sm: map.get($breakpoints, sm);
+$breakpoint-md: map.get($breakpoints, md);
+$breakpoint-lg: map.get($breakpoints, lg);
+$breakpoint-xl: map.get($breakpoints, xl);
+$breakpoint-2xl: map.get($breakpoints, 2xl);
+$breakpoint-xxl: $breakpoint-2xl;
+
+// Alias for code that expects $breakpoint-prefixes
+$breakpoint-prefixes: $breakpoint-class-names;

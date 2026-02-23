@@ -187,6 +187,7 @@ function generateArbitrarySCSS(config) {
   lines.push(`// Last generated: ${new Date().toISOString()}`);
   lines.push(`// ============================================================================`);
   lines.push('');
+  lines.push(`@use 'sass:map';`);
   lines.push(`@use '../../config/settings' as settings;`);
   lines.push(`@use '../../config/breakpoints' as bp;`);
   lines.push('');
@@ -248,19 +249,15 @@ function generateArbitrarySCSS(config) {
   lines.push('// Responsive Arbitrary Value Utilities');
   lines.push('// ============================================================================');
   lines.push('@if settings.$enable-sizing == true {');
-  lines.push('  $breakpoints: (');
-  lines.push('    sm: bp.$breakpoint-sm,');
-  lines.push('    md: bp.$breakpoint-md,');
-  lines.push('    lg: bp.$breakpoint-lg,');
-  lines.push('    xl: bp.$breakpoint-xl,');
-  lines.push('    xxl: bp.$breakpoint-xxl');
-  lines.push('  );');
+  lines.push('  // Use the configurable breakpoints from the framework');
+  lines.push('  $breakpoints: bp.$breakpoints;');
   lines.push('');
 
   // Generate responsive variants for key utilities
   const responsivePrefixes = ['w', 'h', 'min-w', 'min-h', 'max-w', 'max-h', 'm', 'p', 'gap'];
 
   lines.push('  @each $bp-name, $bp-value in $breakpoints {');
+  lines.push('    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);');
   lines.push('    @media (min-width: $bp-value) {');
 
   for (const prefix of responsivePrefixes) {
@@ -276,7 +273,7 @@ function generateArbitrarySCSS(config) {
       for (const value of config.pixels.slice(0, 10)) { // Limit to first 10 for responsive
         const className = generateClassName(prefix, value, 'px');
         const cssValue = formatCSSValue(value, 'px');
-        const escapedClassName = `#{$bp-name}\\:${className}`;
+        const escapedClassName = `#{$bp-class}\\:${className}`;
 
         if (properties.length === 1) {
           lines.push(`        .${escapedClassName} { ${properties[0]}: ${cssValue}; }`);

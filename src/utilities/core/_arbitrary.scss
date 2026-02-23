@@ -8,6 +8,7 @@
 // class="min-h-[--my-value]" style="--my-value: 200px"
 // ============================================================================
 
+@use 'sass:map';
 @use '../../config/settings' as settings;
 @use '../../config/breakpoints' as bp;
 
@@ -258,27 +259,28 @@
 // Responsive Variants
 // ============================================================================
 @each $bp-name, $bp-value in bp.$breakpoints {
+  $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
   @media (min-width: $bp-value) {
     // Responsive sizing
-    .#{$bp-name}\:w-\[var\(--w\)\] { width: var(--w); }
-    .#{$bp-name}\:h-\[var\(--h\)\] { height: var(--h); }
-    .#{$bp-name}\:min-h-\[var\(--min-h\)\] { min-height: var(--min-h); }
-    .#{$bp-name}\:min-w-\[var\(--min-w\)\] { min-width: var(--min-w); }
-    .#{$bp-name}\:max-h-\[var\(--max-h\)\] { max-height: var(--max-h); }
-    .#{$bp-name}\:max-w-\[var\(--max-w\)\] { max-width: var(--max-w); }
+    .#{$bp-class}\:w-\[var\(--w\)\] { width: var(--w); }
+    .#{$bp-class}\:h-\[var\(--h\)\] { height: var(--h); }
+    .#{$bp-class}\:min-h-\[var\(--min-h\)\] { min-height: var(--min-h); }
+    .#{$bp-class}\:min-w-\[var\(--min-w\)\] { min-width: var(--min-w); }
+    .#{$bp-class}\:max-h-\[var\(--max-h\)\] { max-height: var(--max-h); }
+    .#{$bp-class}\:max-w-\[var\(--max-w\)\] { max-width: var(--max-w); }
 
     // Responsive spacing
-    .#{$bp-name}\:m-\[var\(--m\)\] { margin: var(--m); }
-    .#{$bp-name}\:p-\[var\(--p\)\] { padding: var(--p); }
-    .#{$bp-name}\:gap-\[var\(--gap\)\] { gap: var(--gap); }
+    .#{$bp-class}\:m-\[var\(--m\)\] { margin: var(--m); }
+    .#{$bp-class}\:p-\[var\(--p\)\] { padding: var(--p); }
+    .#{$bp-class}\:gap-\[var\(--gap\)\] { gap: var(--gap); }
 
     // Responsive positioning
-    .#{$bp-name}\:top-\[var\(--top\)\] { top: var(--top); }
-    .#{$bp-name}\:right-\[var\(--right\)\] { right: var(--right); }
-    .#{$bp-name}\:bottom-\[var\(--bottom\)\] { bottom: var(--bottom); }
-    .#{$bp-name}\:left-\[var\(--left\)\] { left: var(--left); }
+    .#{$bp-class}\:top-\[var\(--top\)\] { top: var(--top); }
+    .#{$bp-class}\:right-\[var\(--right\)\] { right: var(--right); }
+    .#{$bp-class}\:bottom-\[var\(--bottom\)\] { bottom: var(--bottom); }
+    .#{$bp-class}\:left-\[var\(--left\)\] { left: var(--left); }
 
     // Responsive typography
-    .#{$bp-name}\:text-\[var\(--text-size\)\] { font-size: var(--text-size); }
+    .#{$bp-class}\:text-\[var\(--text-size\)\] { font-size: var(--text-size); }
   }
 }

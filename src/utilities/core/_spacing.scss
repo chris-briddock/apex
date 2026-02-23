@@ -201,38 +201,40 @@
   // Responsive Spacing Utilities
   // ============================================================================
   // Dynamically generate responsive utilities for all configured breakpoints
+  // Use the class name mapping to handle breakpoints like '2xl' -> 'xxl'
   @each $bp-name, $bp-value in bp.$breakpoints {
+    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
     @media (min-width: $bp-value) {
       @each $key, $value in $spacing-scale-int {
-        .#{$bp-name}\:m-#{$key} { margin: $value; }
-        .#{$bp-name}\:mt-#{$key} { margin-top: $value; }
-        .#{$bp-name}\:mr-#{$key} { margin-right: $value; }
-        .#{$bp-name}\:mb-#{$key} { margin-bottom: $value; }
-        .#{$bp-name}\:ml-#{$key} { margin-left: $value; }
-        .#{$bp-name}\:mx-#{$key} { margin-left: $value; margin-right: $value; }
-        .#{$bp-name}\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
+        .#{$bp-class}\:m-#{$key} { margin: $value; }
+        .#{$bp-class}\:mt-#{$key} { margin-top: $value; }
+        .#{$bp-class}\:mr-#{$key} { margin-right: $value; }
+        .#{$bp-class}\:mb-#{$key} { margin-bottom: $value; }
+        .#{$bp-class}\:ml-#{$key} { margin-left: $value; }
+        .#{$bp-class}\:mx-#{$key} { margin-left: $value; margin-right: $value; }
+        .#{$bp-class}\:my-#{$key} { margin-top: $value; margin-bottom: $value; }
 
-        .#{$bp-name}\:p-#{$key} { padding: $value; }
-        .#{$bp-name}\:pt-#{$key} { padding-top: $value; }
-        .#{$bp-name}\:pr-#{$key} { padding-right: $value; }
-        .#{$bp-name}\:pb-#{$key} { padding-bottom: $value; }
-        .#{$bp-name}\:pl-#{$key} { padding-left: $value; }
-        .#{$bp-name}\:px-#{$key} { padding-left: $value; padding-right: $value; }
-        .#{$bp-name}\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
+        .#{$bp-class}\:p-#{$key} { padding: $value; }
+        .#{$bp-class}\:pt-#{$key} { padding-top: $value; }
+        .#{$bp-class}\:pr-#{$key} { padding-right: $value; }
+        .#{$bp-class}\:pb-#{$key} { padding-bottom: $value; }
+        .#{$bp-class}\:pl-#{$key} { padding-left: $value; }
+        .#{$bp-class}\:px-#{$key} { padding-left: $value; padding-right: $value; }
+        .#{$bp-class}\:py-#{$key} { padding-top: $value; padding-bottom: $value; }
 
-        .#{$bp-name}\:gap-#{$key} { gap: $value; }
-        .#{$bp-name}\:gap-x-#{$key} { column-gap: $value; }
-        .#{$bp-name}\:gap-y-#{$key} { row-gap: $value; }
+        .#{$bp-class}\:gap-#{$key} { gap: $value; }
+        .#{$bp-class}\:gap-x-#{$key} { column-gap: $value; }
+        .#{$bp-class}\:gap-y-#{$key} { row-gap: $value; }
       }
 
       // Auto margins
-      .#{$bp-name}\:mx-auto { margin-left: auto; margin-right: auto; }
-      .#{$bp-name}\:my-auto { margin-top: auto; margin-bottom: auto; }
-      .#{$bp-name}\:mt-auto { margin-top: auto; }
-      .#{$bp-name}\:mr-auto { margin-right: auto; }
-      .#{$bp-name}\:mb-auto { margin-bottom: auto; }
-      .#{$bp-name}\:ml-auto { margin-left: auto; }
-      .#{$bp-name}\:m-auto { margin: auto; }
+      .#{$bp-class}\:mx-auto { margin-left: auto; margin-right: auto; }
+      .#{$bp-class}\:my-auto { margin-top: auto; margin-bottom: auto; }
+      .#{$bp-class}\:mt-auto { margin-top: auto; }
+      .#{$bp-class}\:mr-auto { margin-right: auto; }
+      .#{$bp-class}\:mb-auto { margin-bottom: auto; }
+      .#{$bp-class}\:ml-auto { margin-left: auto; }
+      .#{$bp-class}\:m-auto { margin: auto; }
     }
   }
 }
