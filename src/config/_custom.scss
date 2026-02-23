@@ -12,7 +12,7 @@ $prefix: '' !default;
 $important: false !default;
 $separator: ':' !default;
 $dark-mode: 'class' !default;
-$rtl: true !default;
+$rtl: false !default;
 
 // ============================================================================
 // Feature Flags
@@ -102,6 +102,7 @@ $spacing-scale: (
   12: 3rem,
   14: 3.5rem,
   16: 4rem,
+  18: 4.5rem,
   20: 5rem,
   24: 6rem,
   28: 7rem,
@@ -116,6 +117,7 @@ $spacing-scale: (
   64: 16rem,
   72: 18rem,
   80: 20rem,
+  88: 22rem,
   96: 24rem,
   px: 1px,
   0.5: 0.125rem,
@@ -189,15 +191,19 @@ $color-info-600: #0284c7 !default;
 $color-info-700: #0369a1 !default;
 $color-info-800: #075985 !default;
 $color-info-900: #0c4a6e !default;
+$color-brand-50: #f0f9ff !default;
+$color-brand-500: #0ea5e9 !default;
+$color-brand-900: #0c4a6e !default;
 
 // ============================================================================
 // Typography
 // ============================================================================
 // Font families from user config (supports custom keys like 'display')
 $font-families: (
-  sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+  sans: "Inter, system-ui, sans-serif",
   serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
-  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+  display: "Poppins, sans-serif"
 ) !default;
 
 $font-sizes: (

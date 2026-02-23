@@ -20,12 +20,40 @@ $breakpoint-class-names: ();
 @each $name, $value in $breakpoints {
   $name-str: meta.inspect($name);
   $class-name: $name-str;
+  $name-len: string.length($name-str);
 
-  // Handle numeric prefixes like '2xl', '3xl'
-  @if string.slice($name-str, 1, 1) == "2" {
-    $class-name: "xxl";
-  } @else if string.slice($name-str, 1, 1) == "3" {
-    $class-name: "xxxl";
+  // Validate full breakpoint string against numeric-xl pattern (e.g., "2xl", "3xl", "4xl")
+  // Must be at least 3 chars (e.g., "2xl") and end with "xl"
+  @if $name-len >= 3 {
+    // Extract the last 2 characters to check for "xl" suffix
+    $suffix: string.slice($name-str, $name-len - 1, $name-len);
+
+    @if $suffix == "xl" {
+      // Extract the numeric prefix (everything before "xl")
+      $num-str: string.slice($name-str, 1, $name-len - 2);
+      $num-len: string.length($num-str);
+
+      // Validate the prefix is a non-empty numeric string (0-9 only)
+      $is-numeric: true;
+      @for $i from 1 through $num-len {
+        $char: string.slice($num-str, $i, $i);
+        @if $char != "0" and $char != "1" and $char != "2" and $char != "3" and
+            $char != "4" and $char != "5" and $char != "6" and $char != "7" and
+            $char != "8" and $char != "9" {
+          $is-numeric: false;
+        }
+      }
+
+      // After successful match, construct class-name as that many "x" chars + "l"
+      // e.g., "2xl" -> "xxl", "3xl" -> "xxxl", "4xl" -> "xxxxl"
+      @if $is-numeric and $num-len > 0 {
+        $class-name: "";
+        @for $i from 1 through $num-len {
+          $class-name: $class-name + "x";
+        }
+        $class-name: $class-name + "l";
+      }
+    }
   }
 
   $breakpoint-class-names: map.merge($breakpoint-class-names, ($name: $class-name));
