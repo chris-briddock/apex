@@ -1,95 +1,119 @@
 // ============================================================================
-// Utility-First CSS Framework - Consolidated Build File
+// ApexCSS Framework - Production Build Entry Point
+// ============================================================================
+// This is the consolidated build file used by Vite.
+// For the modular entry point, see src/framework.scss
+//
+// Module Structure:
+// - CONFIG:    Framework settings and configuration
+// - BASE:      CSS reset, normalize, and base element styles
+// - THEMES:    CSS custom properties for theming
+// - UTILITIES: All utility classes (core, extended, states, accessibility)
+//
 // ============================================================================
 
+// ============================================================================
 // Configuration
+// ============================================================================
 @use '../config/settings';
 @use '../config/breakpoints';
 @use '../config/prefix';
 
-// Base
+// ============================================================================
+// Base Styles
+// ============================================================================
 @use '../base/variables';
 @use '../base/reset';
 @use '../base/normalize';
 @use '../base/base';
 
-// Mixins
+// ============================================================================
+// Mixins (Internal Use)
+// ============================================================================
 @use '../mixins/responsive';
 @use '../mixins/utilities';
 @use '../mixins/states';
 @use '../mixins/dark-mode';
 
-// Core Utilities
-@use '../core/spacing';
-@use '../core/sizing';
-@use '../core/typography';
-@use '../core/colors';
-@use '../core/opacity-modifiers';
-@use '../core/flexbox';
-@use '../core/grid';
-@use '../core/positioning';
-@use '../core/display';
-@use '../core/borders';
-@use '../core/ring';
-@use '../core/divide';
-@use '../core/shadows';
-@use '../core/opacity';
-@use '../core/overflow';
-@use '../core/visibility';
-@use '../core/transitions';
-@use '../core/cursor';
-@use '../core/interaction';
-@use '../core/svg';
-@use '../core/columns';
-@use '../core/break';
-@use '../core/isolation';
-@use '../core/list';
-@use '../core/float';
-@use '../core/vertical-align';
-@use '../core/text-indent';
-@use '../core/object-fit';
-@use '../core/table';
-@use '../core/outline';
-@use '../core/appearance';
-@use '../core/user-select';
-@use '../core/will-change';
-@use '../core/accent-color';
-@use '../core/place-items';
-@use '../core/space-between';
-@use '../core/overscroll-behavior';
-@use '../core/justify-items';
-@use '../core/sizing-logical';
-@use '../core/typography-extended';
-@use '../core/backgrounds';
-@use '../core/text-shadow';
-@use '../core/blend-modes';
-@use '../core/masks';
-@use '../core/transition-behavior';
-@use '../core/transforms-3d';
-@use '../core/color-scheme';
-@use '../core/field-sizing';
-
-// States
-@use '../states/hover';
-@use '../states/focus';
-@use '../states/active';
-@use '../states/disabled';
-
-// Themes
+// ============================================================================
+// Themes (CSS Custom Properties)
+// ============================================================================
 @use '../themes/default';
 @use '../themes/dark';
 
+// ============================================================================
+// Utilities Module
+// ============================================================================
+// Core utilities
+@use '../utilities/core/spacing';
+@use '../utilities/core/sizing';
+@use '../utilities/core/typography';
+@use '../utilities/core/colors';
+@use '../utilities/core/opacity-modifiers';
+@use '../utilities/core/flexbox';
+@use '../utilities/core/grid';
+@use '../utilities/core/positioning';
+@use '../utilities/core/display';
+@use '../utilities/core/borders';
+@use '../utilities/core/ring';
+@use '../utilities/core/divide';
+@use '../utilities/core/shadows';
+@use '../utilities/core/opacity';
+@use '../utilities/core/overflow';
+@use '../utilities/core/visibility';
+@use '../utilities/core/transitions';
+@use '../utilities/core/cursor';
+@use '../utilities/core/interaction';
+@use '../utilities/core/svg';
+@use '../utilities/core/columns';
+@use '../utilities/core/break';
+@use '../utilities/core/isolation';
+@use '../utilities/core/list';
+@use '../utilities/core/float';
+@use '../utilities/core/vertical-align';
+@use '../utilities/core/text-indent';
+@use '../utilities/core/object-fit';
+@use '../utilities/core/table';
+@use '../utilities/core/outline';
+@use '../utilities/core/appearance';
+@use '../utilities/core/user-select';
+@use '../utilities/core/will-change';
+@use '../utilities/core/accent-color';
+@use '../utilities/core/place-items';
+@use '../utilities/core/space-between';
+@use '../utilities/core/overscroll-behavior';
+@use '../utilities/core/justify-items';
+@use '../utilities/core/sizing-logical';
+@use '../utilities/core/typography-extended';
+@use '../utilities/core/backgrounds';
+@use '../utilities/core/text-shadow';
+@use '../utilities/core/blend-modes';
+@use '../utilities/core/masks';
+@use '../utilities/core/transition-behavior';
+@use '../utilities/core/transforms-3d';
+@use '../utilities/core/color-scheme';
+@use '../utilities/core/field-sizing';
+@use '../utilities/core/arbitrary';
+// Note: arbitrary-generated temporarily disabled due to calc() formatting issues
+// @use '../utilities/core/arbitrary-generated';
+
+// State utilities
+@use '../utilities/states/hover';
+@use '../utilities/states/focus';
+@use '../utilities/states/active';
+@use '../utilities/states/disabled';
+
+// Accessibility utilities
+@use '../utilities/accessibility/screen-reader';
+@use '../utilities/accessibility/focus' as a11y-focus;
+
+// Extended utilities
+@use '../utilities/extended/transforms';
+@use '../utilities/extended/filters';
+@use '../utilities/extended/aspect-ratio';
+
 // RTL Support
-@use '../rtl/spacing' as rtl-spacing;
-
-// Accessibility
-@use '../accessibility/screen-reader';
-@use '../accessibility/focus' as a11y-focus;
-
-// Extended Utilities
-@use '../extended/transforms';
-@use '../extended/filters';
-@use '../extended/aspect-ratio';
+@use '../utilities/rtl/spacing' as rtl-spacing;
 
 // Plugins
 @use '../plugins/animations';

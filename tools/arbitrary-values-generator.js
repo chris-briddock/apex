@@ -187,8 +187,8 @@ function generateArbitrarySCSS(config) {
   lines.push(`// Last generated: ${new Date().toISOString()}`);
   lines.push(`// ============================================================================`);
   lines.push('');
-  lines.push(`@use '../config/settings' as settings;`);
-  lines.push(`@use '../config/breakpoints' as bp;`);
+  lines.push(`@use '../../config/settings' as settings;`);
+  lines.push(`@use '../../config/breakpoints' as bp;`);
   lines.push('');
 
   // Generate utilities for each property definition
@@ -253,7 +253,7 @@ function generateArbitrarySCSS(config) {
   lines.push('    md: bp.$breakpoint-md,');
   lines.push('    lg: bp.$breakpoint-lg,');
   lines.push('    xl: bp.$breakpoint-xl,');
-  lines.push('    xxl: bp.$breakpoint-xxl');
+  lines.push('    2xl: bp.$breakpoint-2xl');
   lines.push('  );');
   lines.push('');
 
@@ -413,6 +413,11 @@ function formatCSSValue(value, unit) {
       if (value === 'last') return '9999';
       if (value === 'none') return '0';
     }
+    // Fix calc() expressions to have proper whitespace for Sass
+    if (value.includes('calc(')) {
+      return value.replace(/(\d+%?)([+-])(\d)/g, '$1 $2 $3')
+                  .replace(/(\d)([+-])(\d+%?)/g, '$1 $2 $3');
+    }
     return value;
   }
 
@@ -475,7 +480,7 @@ async function build() {
     const scss = generateArbitrarySCSS(config);
 
     // Ensure output directory exists
-    const outputDir = path.resolve(process.cwd(), 'src/core');
+    const outputDir = path.resolve(process.cwd(), 'src/utilities/core');
     await fs.mkdir(outputDir, { recursive: true });
 
     // Write SCSS file

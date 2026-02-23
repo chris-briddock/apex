@@ -78,7 +78,8 @@ const defaultConfig = {
     transforms: true,
     filters: true,
     aspectRatio: true,
-    accessibility: true
+    accessibility: true,
+    zIndex: true
   },
   breakpoints: {
     sm: '640px',

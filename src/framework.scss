@@ -1,102 +1,59 @@
 // ============================================================================
-// Utility-First CSS Framework - Main Entry Point
+// ApexCSS Framework - Main Entry Point
+// ============================================================================
+// A modular, utility-first CSS framework with three core modules:
+//
+// 1. CONFIG    - Framework settings, breakpoints, and configuration
+// 2. BASE      - CSS reset, normalize, and base element styles
+// 3. THEMES    - CSS custom properties for theming support
+// 4. UTILITIES - All utility classes (core, extended, states, accessibility)
+//
+// Usage:
+//   @use 'framework';
+//
+// Or import modules individually:
+//   @use 'config';
+//   @use 'base';
+//   @use 'themes';
+//   @use 'utilities';
+//
 // ============================================================================
 
-// Configuration
 // ============================================================================
-// Use configuration settings first to allow overrides
-@use 'config/settings';
-@use 'config/breakpoints';
-@use 'config/prefix';
+// 1. Configuration
+// ============================================================================
+// Settings, breakpoints, and prefix configuration must come first
+// to allow for framework customization.
 
-// Base
-// ============================================================================
-@use 'base/variables';
-@use 'base/reset';
-@use 'base/normalize';
-@use 'base/base';
+@use 'config';
 
-// Mixins
 // ============================================================================
-@use 'mixins/responsive';
-@use 'mixins/utilities';
-@use 'mixins/states';
-@use 'mixins/components';
+// 2. Base Styles
+// ============================================================================
+// Reset, normalize, and base element styles. These provide a consistent
+// foundation across browsers.
 
-// Core Utilities
-// ============================================================================
-@use 'core/spacing';
-@use 'core/sizing';
-@use 'core/typography';
-@use 'core/colors';
-@use 'core/flexbox';
-@use 'core/grid';
-@use 'core/positioning';
-@use 'core/display';
-@use 'core/borders';
-@use 'core/ring';
-@use 'core/divide';
-@use 'core/shadows';
-@use 'core/opacity';
-@use 'core/overflow';
-@use 'core/visibility';
-@use 'core/transitions';
-@use 'core/cursor';
-@use 'core/interaction';
-@use 'core/svg';
-@use 'core/columns';
-@use 'core/break';
-@use 'core/isolation';
-@use 'core/list';
-@use 'core/float';
-@use 'core/vertical-align';
-@use 'core/text-indent';
-@use 'core/object-fit';
-@use 'core/table';
-@use 'core/outline';
-@use 'core/appearance';
-@use 'core/user-select';
-@use 'core/will-change';
-@use 'core/accent-color';
-@use 'core/place-items';
-@use 'core/space-between';
-@use 'core/overscroll-behavior';
-@use 'core/justify-items';
-@use 'core/sizing-logical';
-@use 'core/typography-extended';
-@use 'core/backgrounds';
-@use 'core/text-shadow';
-@use 'core/blend-modes';
-@use 'core/masks';
-@use 'core/transition-behavior';
-@use 'core/transforms-3d';
-@use 'core/color-scheme';
-@use 'core/field-sizing';
+@use 'base';
 
-// States
 // ============================================================================
-@use 'states/hover';
-@use 'states/focus';
-@use 'states/active';
-@use 'states/disabled';
+// 3. Themes
+// ============================================================================
+// CSS custom properties for runtime theming. Themes define color palettes,
+// spacing scales, and other design tokens as CSS variables.
 
-// Themes
-// ============================================================================
-@use 'themes/default';
-@use 'themes/dark';
+@use 'themes';
 
-// RTL Support
 // ============================================================================
-@use 'rtl/spacing' as rtl-spacing;
+// 4. Utilities
+// ============================================================================
+// All utility classes organized into categories:
+// - core:       Essential utilities (spacing, colors, typography, flexbox, etc.)
+// - extended:   Advanced utilities (animations, transforms, filters)
+// - states:     Pseudo-state variants (hover, focus, active, disabled)
+// - accessibility: A11y utilities (screen-reader, focus)
 
-// Accessibility
-// ============================================================================
-@use 'accessibility/screen-reader';
-@use 'accessibility/focus' as a11y-focus;
+@use 'utilities';
 
-// Extended Utilities
 // ============================================================================
-@use 'extended/animations';
-@use 'extended/transforms';
-@use 'extended/filters';
-@use 'extended/aspect-ratio';
+// End of Framework Entry Point
+// ============================================================================

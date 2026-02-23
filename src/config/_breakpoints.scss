@@ -7,7 +7,7 @@ $breakpoint-sm: 640px !default;
 $breakpoint-md: 768px !default;
 $breakpoint-lg: 1024px !default;
 $breakpoint-xl: 1280px !default;
-$breakpoint-xxl: 1536px !default;
+$breakpoint-2xl: 1536px !default;
 
 // Breakpoint map
 $breakpoints: (
@@ -15,7 +15,7 @@ $breakpoints: (
   md: $breakpoint-md,
   lg: $breakpoint-lg,
   xl: $breakpoint-xl,
-  xxl: $breakpoint-xxl
+  2xl: $breakpoint-2xl
 ) !default;
 
 // Breakpoint prefixes for responsive utilities
@@ -24,5 +24,5 @@ $breakpoint-prefixes: (
   md: 'md',
   lg: 'lg',
   xl: 'xl',
-  xxl: 'xxl'
+  2xl: '2xl'
 ) !default;

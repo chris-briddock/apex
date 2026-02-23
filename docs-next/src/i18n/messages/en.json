@@ -425,22 +425,69 @@
     },
     "customization": {
       "title": "Customization",
-      "description": "Tailor Apex to match your brand and project requirements.",
+      "description": "Learn how to customize Apex CSS framework to match your brand and project requirements using CSS variables and SCSS configuration.",
       "cssVariables": {
         "title": "CSS Variables",
-        "content": "Apex uses CSS custom properties (variables) for easy customization."
+        "content": "Apex uses CSS custom properties (variables) for easy customization. All design tokens are available as CSS variables that you can override in your styles."
+      },
+      "quickStart": {
+        "title": "Quick Start",
+        "description": "Get started customizing Apex in minutes.",
+        "intro": "The easiest way to customize Apex is by overriding CSS variables. Load your custom styles after importing the framework."
       },
       "customColors": {
         "title": "Custom Colors",
-        "description": "Override the default color palette:"
+        "description": "Override the default color palette to match your brand identity.",
+        "intro": "Apex uses semantic color tokens that can be customized by overriding CSS variables. The framework provides both semantic colors (primary, success, warning, error) and neutral grays.",
+        "paletteTitle": "Color Palette",
+        "paletteDescription": "Each color has a full palette of shades from 50 (lightest) to 950 (darkest). Override individual shades to fine-tune your color scheme.",
+        "darkModeTitle": "Dark Mode Colors",
+        "darkModeDescription": "For dark mode support, override the same variables within a dark mode selector. Apex supports both class-based (.dark) and data-attribute based ([data-theme=\"dark\"]) dark mode."
       },
       "customSpacing": {
         "title": "Custom Spacing",
-        "description": "Define your own spacing scale:"
+        "description": "Define your own spacing scale for margins, padding, and gaps.",
+        "intro": "Apex provides a comprehensive spacing scale based on rem units. All spacing utilities use these CSS variables internally.",
+        "noteTitle": "Note",
+        "noteContent": "Spacing in Apex is defined via SCSS maps at build time. While you can override CSS variables for runtime theming, adding new spacing values requires SCSS configuration."
       },
       "customTypography": {
         "title": "Custom Typography",
-        "description": "Customize font families and sizes:"
+        "description": "Customize font families, sizes, weights, and line heights.",
+        "intro": "Apex provides a complete typography system with customizable font stacks, size scale, weights, and line heights. All values use CSS variables for easy theming.",
+        "googleFontsTitle": "Using Google Fonts",
+        "googleFontsDescription": "Load custom fonts from Google Fonts or other CDN sources, then reference them in your CSS variables."
+      },
+      "scss": {
+        "title": "SCSS Configuration",
+        "description": "For advanced customization, use SCSS variables before importing the framework.",
+        "intro": "Apex is built with SCSS and allows you to customize the framework by setting variables before import. This gives you control over colors, spacing scales, and which features to include.",
+        "availableVariablesTitle": "Available Variables",
+        "availableVariablesDescription": "These are the main configuration variables you can override before importing Apex:",
+        "colorVariablesTitle": "Color Variables",
+        "colorVariablesDescription": "Override specific color shades or entire color maps to match your brand:",
+        "importantNoteTitle": "Important",
+        "importantNoteContent": "SCSS variables must be set BEFORE importing the Apex framework. Once compiled, these values are baked into the CSS and cannot be changed at runtime."
+      },
+      "featureFlags": {
+        "title": "Feature Flags",
+        "description": "Enable or disable specific utility categories to optimize your bundle size.",
+        "intro": "Apex allows you to disable utility categories you don't use. This reduces the final CSS bundle size by excluding unused styles.",
+        "allFlagsTitle": "All Feature Flags"
+      },
+      "jsConfig": {
+        "title": "JavaScript Configuration",
+        "description": "Configure Apex dynamically at runtime using JavaScript.",
+        "intro": "Apex provides a JavaScript configuration API for runtime theming. This is useful for dynamic theme switching and user preferences."
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Follow these guidelines for maintainable and effective customization.",
+        "tip1": "Define your custom variables in a central location, loaded after the framework.",
+        "tip2": "Use semantic color names (primary, success, error) rather than literal colors (blue, green, red).",
+        "tip3": "Test customizations in both light and dark modes.",
+        "tip4": "Consider using CSS custom properties for values that might change at runtime.",
+        "tip5": "Document your design token values for team consistency."
       }
     },
     "darkMode": {

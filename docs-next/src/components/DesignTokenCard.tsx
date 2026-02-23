@@ -5,7 +5,7 @@ import { useState } from "react";
 interface DesignTokenCardProps {
   name: string;
   value: string;
-  category: "color" | "spacing" | "typography" | "border" | "shadow" | "transition" | "z-index";
+  category: "color" | "spacing" | "typography" | "border" | "shadow" | "transition" | "z-index" | "responsive";
   description?: string;
   preview?: React.ReactNode;
   cssVariable?: string;
@@ -47,6 +47,8 @@ export function DesignTokenCard({
         return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300";
       case "z-index":
         return "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300";
+      case "responsive":
+        return "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300";
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
     }

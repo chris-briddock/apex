@@ -1,0 +1,22 @@
+// ============================================================================
+// Overscroll Behavior Utilities
+// ============================================================================
+
+@use '../../config/settings' as settings;
+
+@if settings.$enable-overscroll-behavior == true {
+  // Overscroll behavior
+  .overscroll-auto { overscroll-behavior: auto; }
+  .overscroll-contain { overscroll-behavior: contain; }
+  .overscroll-none { overscroll-behavior: none; }
+
+  // Overscroll behavior x
+  .overscroll-x-auto { overscroll-behavior-x: auto; }
+  .overscroll-x-contain { overscroll-behavior-x: contain; }
+  .overscroll-x-none { overscroll-behavior-x: none; }
+
+  // Overscroll behavior y
+  .overscroll-y-auto { overscroll-behavior-y: auto; }
+  .overscroll-y-contain { overscroll-behavior-y: contain; }
+  .overscroll-y-none { overscroll-behavior-y: none; }
+}

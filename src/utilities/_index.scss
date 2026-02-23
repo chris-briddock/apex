@@ -1,0 +1,85 @@
+// ============================================================================
+// Utilities Module Entry Point
+// ============================================================================
+// This module contains all utility classes organized by category:
+// - core: Essential utility classes (spacing, colors, typography, etc.)
+// - extended: Advanced utilities (animations, transforms, filters)
+// - states: Pseudo-state variants (hover, focus, active, disabled)
+// - accessibility: Accessibility utilities (screen-reader, focus)
+//
+// Usage:
+//   @use 'utilities';
+//   @use 'utilities/core' as util;
+//
+// ============================================================================
+
+// Core Utilities
+// ============================================================================
+@forward 'core/spacing';
+@forward 'core/sizing';
+@forward 'core/typography';
+@forward 'core/flexbox';
+@forward 'core/grid';
+@forward 'core/positioning';
+@forward 'core/display';
+@forward 'core/borders';
+@forward 'core/ring';
+@forward 'core/divide';
+@forward 'core/shadows';
+@forward 'core/opacity';
+@forward 'core/overflow';
+@forward 'core/visibility';
+@forward 'core/transitions';
+@forward 'core/cursor';
+@forward 'core/interaction';
+@forward 'core/svg';
+@forward 'core/columns';
+@forward 'core/break';
+@forward 'core/isolation';
+@forward 'core/list';
+@forward 'core/float';
+@forward 'core/vertical-align';
+@forward 'core/text-indent';
+@forward 'core/object-fit';
+@forward 'core/table';
+@forward 'core/outline';
+@forward 'core/appearance';
+@forward 'core/user-select';
+@forward 'core/will-change';
+@forward 'core/accent-color';
+@forward 'core/place-items';
+@forward 'core/space-between';
+@forward 'core/overscroll-behavior';
+@forward 'core/justify-items';
+@forward 'core/sizing-logical';
+@forward 'core/typography-extended';
+@forward 'core/backgrounds';
+@forward 'core/text-shadow';
+@forward 'core/blend-modes';
+@forward 'core/masks';
+@forward 'core/transition-behavior';
+@forward 'core/transforms-3d';
+@forward 'core/color-scheme';
+@forward 'core/field-sizing';
+@forward 'core/arbitrary';
+@forward 'core/arbitrary-generated';
+@forward 'core/opacity-modifiers';
+
+// Extended Utilities
+// ============================================================================
+@forward 'extended/animations';
+@forward 'extended/transforms';
+@forward 'extended/filters';
+@forward 'extended/aspect-ratio';
+
+// States (Pseudo-class utilities)
+// ============================================================================
+@forward 'states/hover';
+@forward 'states/focus';
+@forward 'states/active';
+@forward 'states/disabled';
+
+// Accessibility Utilities
+// ============================================================================
+@forward 'accessibility/screen-reader';
+@forward 'accessibility/focus';
