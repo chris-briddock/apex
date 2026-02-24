@@ -52,9 +52,12 @@
     .motion-reduce\:transform-none { transform: none; }
   }
 
-  .motion-safe\:animate-none { animation: none; }
-  .motion-safe\:transition-none { transition: none; }
-  .motion-safe\:transform-none { transform: none; }
+  // Only apply when user has NOT requested reduced motion
+  @media (prefers-reduced-motion: no-preference) {
+    .motion-safe\:animate-none { animation: none; }
+    .motion-safe\:transition-none { transition: none; }
+    .motion-safe\:transform-none { transform: none; }
+  }
 
   // High contrast mode
   @media (prefers-contrast: high) {

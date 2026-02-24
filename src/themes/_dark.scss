@@ -4,6 +4,7 @@
 // This file provides dark mode theming via CSS custom properties.
 // All colors are overridden in dark mode using CSS variables.
 
+@use 'sass:color';
 @use '../config/settings' as settings;
 
 @if settings.$enable-dark-mode == true {
@@ -31,10 +32,10 @@
       --color-info: #38bdf8;
       --color-info-light: #7dd3fc;
       --color-info-dark: #0ea5e9;
-      --color-light: #1f2937;
-      --color-dark: #f3f4f6;
-      --color-white: #ffffff;
-      --color-black: #111827;
+      --color-light: #f3f4f6;
+      --color-dark: #1f2937;
+      --color-white: #f3f4f6;
+      --color-black: #1f2937;
 
       // Shadows (adjusted opacity for dark mode)
       --shadow-color: 0 0 0;
@@ -71,10 +72,10 @@
     --color-info: #38bdf8;
     --color-info-light: #7dd3fc;
     --color-info-dark: #0ea5e9;
-    --color-light: #1f2937;
-    --color-dark: #f3f4f6;
-    --color-white: #ffffff;
-    --color-black: #111827;
+    --color-light: #f3f4f6;
+    --color-dark: #1f2937;
+    --color-white: #f3f4f6;
+    --color-black: #1f2937;
 
     // Shadows (adjusted opacity for dark mode)
     --shadow-color: 0 0 0;
@@ -243,4 +244,92 @@
   [data-theme="dark"] .dark\:shadow-2xl { box-shadow: var(--shadow-2xl); }
   [data-theme="dark"] .dark\:shadow-none { box-shadow: var(--shadow-none); }
   [data-theme="dark"] .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
+
+  // ============================================================================
+  // Dark Mode Extended Color Scales (Blue, Green, Red, Yellow, Purple)
+  // ============================================================================
+  @each $color-family in ('blue', 'green', 'red', 'yellow', 'purple') {
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+      // Automatic dark mode
+      @media (prefers-color-scheme: dark) {
+        .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
+        .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
+        .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
+      }
+      // Manual dark mode
+      [data-theme="dark"] .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
+      [data-theme="dark"] .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
+      [data-theme="dark"] .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
+    }
+  }
+
+  // ============================================================================
+  // Dark Mode Opacity Variants
+  // ============================================================================
+  @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
+    // Automatic dark mode
+    @media (prefers-color-scheme: dark) {
+      .dark\:bg-primary\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-secondary\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-success\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-success) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-danger\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-danger) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-warning\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-warning) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-info\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-white\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
+      }
+      .dark\:bg-black\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-black) #{$opacity-name * 1%}, transparent);
+      }
+      // Gray opacity variants
+      @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+        .dark\:bg-gray-#{$shade}\/#{$opacity-name} {
+          background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
+        }
+      }
+    }
+    // Manual dark mode
+    [data-theme="dark"] .dark\:bg-primary\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-secondary\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-success\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-success) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-danger\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-danger) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-warning\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-warning) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-info\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-white\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
+    }
+    [data-theme="dark"] .dark\:bg-black\/#{$opacity-name} {
+      background-color: color-mix(in srgb, var(--color-black) #{$opacity-name * 1%}, transparent);
+    }
+    // Gray opacity variants - manual
+    @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+      [data-theme="dark"] .dark\:bg-gray-#{$shade}\/#{$opacity-name} {
+        background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
+      }
+    }
+  }
 }

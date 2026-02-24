@@ -46,6 +46,9 @@
   // Shadow Color Utilities
   // Change the shadow color via CSS variable
   // ============================================================================
+  // NOTE: --shadow-color uses space-separated RGB values (e.g., "0 0 0" not "0,0,0")
+  // This works with rgb(var(--shadow-color) / alpha) syntax where rgb() accepts
+  // space-separated values in modern CSS. This is intentional but unusual.
   .shadow-color-current {
     --shadow-color: currentColor;
   }

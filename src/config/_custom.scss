@@ -11,8 +11,8 @@
 $prefix: '' !default;
 $important: false !default;
 $separator: ':' !default;
-$dark-mode: 'class' !default;
-$rtl: false !default;
+$dark-mode: false !default;
+$rtl: true !default;
 
 // ============================================================================
 // Feature Flags
