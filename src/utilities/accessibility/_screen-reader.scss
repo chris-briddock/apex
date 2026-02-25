@@ -2,7 +2,7 @@
 // Screen Reader Utilities
 // ============================================================================
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-accessibility == true {
   // Shared screen reader only base styles

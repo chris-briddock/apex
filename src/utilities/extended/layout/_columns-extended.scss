@@ -1,0 +1,27 @@
+// ============================================================================
+// Columns Extended Properties
+// ============================================================================
+// column-fill, column-span, column-width
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-columns-extended == true {
+  // Column fill
+  // ============================================================================
+  .column-fill-balance { column-fill: balance; }
+  .column-fill-auto { column-fill: auto; }
+
+  // Column span
+  // ============================================================================
+  .column-span-none { column-span: none; }
+  .column-span-all { column-span: all; }
+
+  // Column width (additional values)
+  // ============================================================================
+  .column-width-auto { column-width: auto; }
+  .column-width-10rem { column-width: 10rem; }
+  .column-width-15rem { column-width: 15rem; }
+  .column-width-20rem { column-width: 20rem; }
+  .column-width-25rem { column-width: 25rem; }
+  .column-width-30rem { column-width: 30rem; }
+}

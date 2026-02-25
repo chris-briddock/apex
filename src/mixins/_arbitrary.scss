@@ -1,0 +1,329 @@
+// ============================================================================
+// Arbitrary Value Generation Mixins
+// ============================================================================
+// These mixins generate Tailwind-style arbitrary value utilities using CSS
+// custom properties for runtime customization.
+//
+// Usage:
+//   @include arbitrary.arbitrary-value('w', 'width', ('--w', '--w-px'));
+//   @include arbitrary.arbitrary-value-set($sizing-utilities);
+//
+// Generated CSS:
+//   .w-\[var\(--w\)\] { width: var(--w); }
+//   .w-\[var\(--w-px\)\] { width: var(--w-px); }
+// ============================================================================
+
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use '../config/breakpoints' as bp;
+
+// ============================================================================
+// Single Arbitrary Value Utility
+// ============================================================================
+// Generates a single arbitrary value utility class
+//
+// @param {String} $class-prefix - The class prefix (e.g., 'w', 'h', 'p')
+// @param {String} $property - The CSS property (e.g., 'width', 'height')
+// @param {String} $var-name - The CSS variable name (e.g., '--w', '--my-size')
+// @param {String} $suffix - Optional suffix for the class (e.g., 'px', 'rem')
+//
+// Example:
+//   @include arbitrary-value('w', 'width', '--w');
+//   Output: .w-\[var\(--w\)\] { width: var(--w); }
+
+@mixin arbitrary-value($class-prefix, $property, $var-name, $suffix: null) {
+  // Use string interpolation to build the escaped selector
+  // The \\ creates a literal backslash in the output
+
+  @if $suffix {
+    $class-name: string.unquote('.#{$class-prefix}-#{$suffix}\\[var\\(#{$var-name}\\)\\]');
+    #{$class-name} {
+      #{$property}: var(#{$var-name});
+    }
+  } @else {
+    $class-name: string.unquote('.#{$class-prefix}\\[var\\(#{$var-name}\\)\\]');
+    #{$class-name} {
+      #{$property}: var(#{$var-name});
+    }
+  }
+}
+
+// ============================================================================
+// Multiple Arbitrary Value Utilities
+// ============================================================================
+// Generates multiple arbitrary value utilities with different variable names
+//
+// @param {String} $class-prefix - The class prefix
+// @param {String} $property - The CSS property
+// @param {List} $var-names - List of CSS variable names
+// @param {Map} $suffixes - Map of var-name to suffix (optional)
+
+@mixin arbitrary-values($class-prefix, $property, $var-names, $suffixes: ()) {
+  @each $var-name in $var-names {
+    $suffix: map.get($suffixes, $var-name);
+    @include arbitrary-value($class-prefix, $property, $var-name, $suffix);
+  }
+}
+
+// ============================================================================
+// Utility Set Generator
+// ============================================================================
+// Generates a set of arbitrary value utilities from a configuration map
+//
+// @param {Map} $utilities - Map of class-prefix to (property, var-names)
+//
+// Example:
+//   $utilities: (
+//     'w': ('width', ('--w', '--w-px', '--w-pct')),
+//     'h': ('height', ('--h', '--h-px', '--h-pct'))
+//   );
+//   @include arbitrary-value-set($utilities);
+
+@mixin arbitrary-value-set($utilities) {
+  @each $class-prefix, $config in $utilities {
+    $property: list.nth($config, 1);
+    $var-names: list.nth($config, 2);
+
+    @each $var-name in $var-names {
+      @include arbitrary-value($class-prefix, $property, $var-name);
+    }
+  }
+}
+
+// ============================================================================
+// Axis Utilities (x/y or inline/block)
+// ============================================================================
+// Generates arbitrary value utilities for axis-based properties
+//
+// @param {String} $class-prefix - The class prefix (e.g., 'mx', 'my')
+// @param {List} $properties - List of CSS properties to apply
+// @param {String} $var-name - The CSS variable name
+
+@mixin arbitrary-axis-value($class-prefix, $properties, $var-name) {
+  $class-name: string.unquote('.#{$class-prefix}\\[var\\(#{$var-name}\\)\\]');
+
+  #{$class-name} {
+    @each $property in $properties {
+      #{$property}: var(#{$var-name});
+    }
+  }
+}
+
+// ============================================================================
+// Responsive Arbitrary Values
+// ============================================================================
+// Generates responsive variants of arbitrary value utilities
+//
+// @param {String} $class-prefix - The class prefix
+// @param {String} $property - The CSS property
+// @param {String} $var-name - The CSS variable name
+// @param {String} $suffix - Optional suffix
+
+@mixin responsive-arbitrary-value($class-prefix, $property, $var-name, $suffix: null) {
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+
+    @media (min-width: $bp-value) {
+      @if $suffix {
+        $class-name: string.unquote('.#{$bp-class}\\:#{$class-prefix}-#{$suffix}\\[var\\(#{$var-name}\\)\\]');
+        #{$class-name} {
+          #{$property}: var(#{$var-name});
+        }
+      } @else {
+        $class-name: string.unquote('.#{$bp-class}\\:#{$class-prefix}\\[var\\(#{$var-name}\\)\\]');
+        #{$class-name} {
+          #{$property}: var(#{$var-name});
+        }
+      }
+    }
+  }
+}
+
+// ============================================================================
+// Responsive Utility Set
+// ============================================================================
+// Generates responsive variants for a set of utilities
+//
+// @param {Map} $utilities - Map of class-prefix to (property, var-names)
+// @param {List} $responsive-vars - List of var-names to generate responsive variants for
+
+@mixin responsive-arbitrary-set($utilities, $responsive-vars: ()) {
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+
+    @media (min-width: $bp-value) {
+      @each $class-prefix, $config in $utilities {
+        $property: list.nth($config, 1);
+        $var-names: list.nth($config, 2);
+
+        // Only generate responsive for specified vars, or all if not specified
+        $vars-to-generate: $var-names;
+        @if length($responsive-vars) > 0 {
+          $vars-to-generate: $responsive-vars;
+        }
+
+        @each $var-name in $vars-to-generate {
+          $class-name: string.unquote('.#{$bp-class}\\:#{$class-prefix}\\[var\\(#{$var-name}\\)\\]');
+
+          #{$class-name} {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================================
+// Corner/Edge Utilities Generator
+// ============================================================================
+// Generates utilities for corners (border-radius) or edges (borders)
+//
+// @param {String} $class-prefix - Base class prefix (e.g., 'rounded', 'border')
+// @param {String} $property-base - Base CSS property
+// @param {Map} $variants - Map of suffix to list of properties
+// @param {List} $var-names - List of CSS variable names
+
+@mixin arbitrary-corner-values($class-prefix, $property-base, $variants, $var-names) {
+  @each $suffix, $properties in $variants {
+    @each $var-name in $var-names {
+      $escaped-var: string.unquote('\\[var\\(#{$var-name}\\)\\]');
+
+      @if $suffix == '' {
+        .#{$class-prefix}#{$escaped-var} {
+          @each $property in $properties {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      } @else {
+        $full-prefix: #{$class-prefix}-#{$suffix};
+        .#{$full-prefix}#{$escaped-var} {
+          @each $property in $properties {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================================
+// Predefined Utility Generators
+// ============================================================================
+
+// Sizing utilities (width, height, min/max variants)
+@mixin arbitrary-sizing-utilities() {
+  // Width
+  @include arbitrary-values('w', 'width', ('--w', '--w-px', '--w-pct', '--w-rem', '--w-em', '--w-vw', '--w-vh'));
+
+  // Height
+  @include arbitrary-values('h', 'height', ('--h', '--h-px', '--h-pct', '--h-rem', '--h-em', '--h-vw', '--h-vh'));
+
+  // Min-Width
+  @include arbitrary-values('min-w', 'min-width', ('--min-w', '--min-w-px', '--min-w-pct', '--min-w-rem'));
+
+  // Min-Height
+  @include arbitrary-values('min-h', 'min-height', ('--min-h', '--min-h-px', '--min-h-pct', '--min-h-rem', '--min-h-vh', '--min-h-vw'));
+
+  // Max-Width
+  @include arbitrary-values('max-w', 'max-width', ('--max-w', '--max-w-px', '--max-w-pct', '--max-w-rem'));
+
+  // Max-Height
+  @include arbitrary-values('max-h', 'max-height', ('--max-h', '--max-h-px', '--max-h-pct', '--max-h-rem'));
+}
+
+// Spacing utilities (margin, padding, gap)
+@mixin arbitrary-spacing-utilities() {
+  // Margin single sides
+  @include arbitrary-values('m', 'margin', ('--m', '--m-px'));
+  @include arbitrary-values('mt', 'margin-top', ('--mt', '--mt-px'));
+  @include arbitrary-values('mr', 'margin-right', ('--mr', '--mr-px'));
+  @include arbitrary-values('mb', 'margin-bottom', ('--mb', '--mb-px'));
+  @include arbitrary-values('ml', 'margin-left', ('--ml', '--ml-px'));
+
+  // Margin axis
+  @include arbitrary-axis-value('mx', ('margin-left', 'margin-right'), '--mx');
+  @include arbitrary-axis-value('mx', ('margin-left', 'margin-right'), '--mx-px');
+  @include arbitrary-axis-value('my', ('margin-top', 'margin-bottom'), '--my');
+  @include arbitrary-axis-value('my', ('margin-top', 'margin-bottom'), '--my-px');
+
+  // Padding single sides
+  @include arbitrary-values('p', 'padding', ('--p', '--p-px'));
+  @include arbitrary-values('pt', 'padding-top', ('--pt', '--pt-px'));
+  @include arbitrary-values('pr', 'padding-right', ('--pr', '--pr-px'));
+  @include arbitrary-values('pb', 'padding-bottom', ('--pb', '--pb-px'));
+  @include arbitrary-values('pl', 'padding-left', ('--pl', '--pl-px'));
+
+  // Padding axis
+  @include arbitrary-axis-value('px', ('padding-left', 'padding-right'), '--px');
+  @include arbitrary-axis-value('px', ('padding-left', 'padding-right'), '--px-px');
+  @include arbitrary-axis-value('py', ('padding-top', 'padding-bottom'), '--py');
+  @include arbitrary-axis-value('py', ('padding-top', 'padding-bottom'), '--py-px');
+
+  // Gap
+  @include arbitrary-values('gap', 'gap', ('--gap', '--gap-px'));
+  @include arbitrary-values('gap-x', 'column-gap', ('--gap-x', '--gap-x-px'));
+  @include arbitrary-values('gap-y', 'row-gap', ('--gap-y', '--gap-y-px'));
+}
+
+// Positioning utilities
+@mixin arbitrary-positioning-utilities() {
+  // Single sides
+  @include arbitrary-values('top', 'top', ('--top', '--top-px', '--top-pct'));
+  @include arbitrary-values('right', 'right', ('--right', '--right-px'));
+  @include arbitrary-values('bottom', 'bottom', ('--bottom', '--bottom-px'));
+  @include arbitrary-values('left', 'left', ('--left', '--left-px'));
+
+  // Inset (all sides)
+  @include arbitrary-axis-value('inset', ('top', 'right', 'bottom', 'left'), '--inset');
+  @include arbitrary-axis-value('inset-x', ('left', 'right'), '--inset-x');
+  @include arbitrary-axis-value('inset-y', ('top', 'bottom'), '--inset-y');
+}
+
+// Typography utilities
+@mixin arbitrary-typography-utilities() {
+  @include arbitrary-values('text', 'font-size', ('--text-size', '--text-size-px'));
+  @include arbitrary-values('text', 'color', ('--text-color', '--text-color-hex'));
+  @include arbitrary-value('leading', 'line-height', '--leading');
+  @include arbitrary-values('tracking', 'letter-spacing', ('--tracking', '--tracking-px'));
+}
+
+// Color utilities
+@mixin arbitrary-color-utilities() {
+  @include arbitrary-values('bg', 'background-color', ('--bg', '--bg-hex', '--bg-rgb', '--bg-hsl'));
+  @include arbitrary-values('border', 'border-color', ('--border',));
+  @include arbitrary-values('border', 'border-width', ('--border-px',));
+}
+
+// Border utilities
+@mixin arbitrary-border-utilities() {
+  // Border width sides
+  @include arbitrary-values('border-t', 'border-top-width', ('--border-t',));
+  @include arbitrary-values('border-r', 'border-right-width', ('--border-r',));
+  @include arbitrary-values('border-b', 'border-bottom-width', ('--border-b',));
+  @include arbitrary-values('border-l', 'border-left-width', ('--border-l',));
+
+  // Border radius
+  $radius-variants: (
+    '': ('border-radius'),
+    't': ('border-top-left-radius', 'border-top-right-radius'),
+    'r': ('border-top-right-radius', 'border-bottom-right-radius'),
+    'b': ('border-bottom-right-radius', 'border-bottom-left-radius'),
+    'l': ('border-top-left-radius', 'border-bottom-left-radius'),
+  );
+  @include arbitrary-corner-values('rounded', 'border', $radius-variants, ('--rounded', '--rounded-px'));
+}
+
+// Transition utilities
+@mixin arbitrary-transition-utilities() {
+  @include arbitrary-value('duration', 'transition-duration', '--duration');
+  @include arbitrary-value('delay', 'transition-delay', '--delay');
+}
+
+// Effect utilities
+@mixin arbitrary-effect-utilities() {
+  @include arbitrary-value('shadow', 'box-shadow', '--shadow');
+  @include arbitrary-value('opacity', 'opacity', '--opacity');
+  @include arbitrary-value('z', 'z-index', '--z');
+}

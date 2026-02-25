@@ -1,29 +1,30 @@
 // ============================================================================
 // Focus Management Utilities
 // ============================================================================
+// All focus utilities use CSS custom properties for runtime theming support.
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-accessibility == true {
   // Focus visible
-  .focus-visible\:outline { outline: 2px solid #3b82f6; outline-offset: 2px; }
+  .focus-visible\:outline { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   .focus-visible\:outline-none { outline: none; }
-  .focus-visible\:ring { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); }
+  .focus-visible\:ring { outline: none; box-shadow: 0 0 0 3px var(--color-primary); }
   .focus-visible\:ring-0 { outline: none; box-shadow: none; }
-  .focus-visible\:ring-2 { outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); }
-  .focus-visible\:ring-4 { outline: none; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5); }
-  .focus-visible\:ring-8 { outline: none; box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.5); }
-  .focus-visible\:ring-inset { outline: none; box-shadow: inset 0 0 0 2px rgba(59, 130, 246, 0.5); }
+  .focus-visible\:ring-2 { outline: none; box-shadow: 0 0 0 2px var(--color-primary); }
+  .focus-visible\:ring-4 { outline: none; box-shadow: 0 0 0 4px var(--color-primary); }
+  .focus-visible\:ring-8 { outline: none; box-shadow: 0 0 0 8px var(--color-primary); }
+  .focus-visible\:ring-inset { outline: none; box-shadow: inset 0 0 0 2px var(--color-primary); }
 
   // Focus within
-  .focus-within\:outline { outline: 2px solid #3b82f6; outline-offset: 2px; }
+  .focus-within\:outline { outline: 2px solid var(--color-primary); outline-offset: 2px; }
   .focus-within\:outline-none { outline: none; }
-  .focus-within\:ring { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); }
+  .focus-within\:ring { outline: none; box-shadow: 0 0 0 3px var(--color-primary); }
   .focus-within\:ring-0 { outline: none; box-shadow: none; }
-  .focus-within\:ring-2 { outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); }
-  .focus-within\:ring-4 { outline: none; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5); }
-  .focus-within\:ring-8 { outline: none; box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.5); }
-  .focus-within\:ring-inset { outline: none; box-shadow: inset 0 0 0 2px rgba(59, 130, 246, 0.5); }
+  .focus-within\:ring-2 { outline: none; box-shadow: 0 0 0 2px var(--color-primary); }
+  .focus-within\:ring-4 { outline: none; box-shadow: 0 0 0 4px var(--color-primary); }
+  .focus-within\:ring-8 { outline: none; box-shadow: 0 0 0 8px var(--color-primary); }
+  .focus-within\:ring-inset { outline: none; box-shadow: inset 0 0 0 2px var(--color-primary); }
 
   // Focus outline none (for custom focus styles)
   .focus\:outline-none { outline: none; }
@@ -33,8 +34,8 @@
     position: absolute;
     top: -40px;
     left: 0;
-    background: #3b82f6;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-white);
     padding: 8px 16px;
     z-index: 100;
     text-decoration: none;

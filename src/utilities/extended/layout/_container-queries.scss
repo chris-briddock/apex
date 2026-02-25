@@ -1,0 +1,246 @@
+// ============================================================================
+// Container Query Utilities
+// ============================================================================
+// CSS Container Queries allow styling based on parent container size
+// instead of viewport size. This enables truly modular components.
+//
+// Usage:
+//   <div class="@container"> <!-- Define container context -->
+//     <div class="@md:flex"> <!-- Respond to container, not viewport -->
+//       <!-- Content -->
+//     </div>
+//   </div>
+//
+// Container Types:
+//   @container   - Size container (inline/block dimensions)
+//   @container/style - Style container (custom property values)
+//
+// Browser Support: Chrome 105+, Firefox 110+, Safari 16+
+// ============================================================================
+
+@use 'sass:map';
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-container-queries == true {
+
+  // ============================================================================
+  // Container Type Utilities (Define Container Context)
+  // ============================================================================
+
+  // Size container - establishes container for size queries
+  .\@container {
+    container-type: size;
+  }
+
+  // Inline-size container - establishes container for inline-size only
+  .\@container-inline {
+    container-type: inline-size;
+  }
+
+  // Normal container - resets container
+  .\@container-normal {
+    container-type: normal;
+  }
+
+  // Named containers
+  .\@container-sidebar {
+    container-type: inline-size;
+    container-name: sidebar;
+  }
+
+  .\@container-main {
+    container-type: size;
+    container-name: main;
+  }
+
+  .\@container-card {
+    container-type: inline-size;
+    container-name: card;
+  }
+
+  // ============================================================================
+  // Container Query Breakpoints
+  // ============================================================================
+  // These match the viewport breakpoints but respond to container size
+
+  $container-breakpoints: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1536px
+  );
+
+  // ============================================================================
+  // Container Query Utilities
+  // ============================================================================
+
+  @each $bp-name, $bp-value in $container-breakpoints {
+    // Generic container queries
+    @container (min-width: #{$bp-value}) {
+      // Display utilities
+      .\@#{$bp-name}\:block { display: block; }
+      .\@#{$bp-name}\:inline { display: inline; }
+      .\@#{$bp-name}\:inline-block { display: inline-block; }
+      .\@#{$bp-name}\:flex { display: flex; }
+      .\@#{$bp-name}\:inline-flex { display: inline-flex; }
+      .\@#{$bp-name}\:grid { display: grid; }
+      .\@#{$bp-name}\:inline-grid { display: inline-grid; }
+      .\@#{$bp-name}\:hidden { display: none; }
+
+      // Flex direction
+      .\@#{$bp-name}\:flex-row { flex-direction: row; }
+      .\@#{$bp-name}\:flex-row-reverse { flex-direction: row-reverse; }
+      .\@#{$bp-name}\:flex-col { flex-direction: column; }
+      .\@#{$bp-name}\:flex-col-reverse { flex-direction: column-reverse; }
+
+      // Flex wrap
+      .\@#{$bp-name}\:flex-wrap { flex-wrap: wrap; }
+      .\@#{$bp-name}\:flex-nowrap { flex-wrap: nowrap; }
+      .\@#{$bp-name}\:flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+      // Justify content
+      .\@#{$bp-name}\:justify-start { justify-content: flex-start; }
+      .\@#{$bp-name}\:justify-end { justify-content: flex-end; }
+      .\@#{$bp-name}\:justify-center { justify-content: center; }
+      .\@#{$bp-name}\:justify-between { justify-content: space-between; }
+      .\@#{$bp-name}\:justify-around { justify-content: space-around; }
+      .\@#{$bp-name}\:justify-evenly { justify-content: space-evenly; }
+
+      // Align items
+      .\@#{$bp-name}\:items-start { align-items: flex-start; }
+      .\@#{$bp-name}\:items-end { align-items: flex-end; }
+      .\@#{$bp-name}\:items-center { align-items: center; }
+      .\@#{$bp-name}\:items-baseline { align-items: baseline; }
+      .\@#{$bp-name}\:items-stretch { align-items: stretch; }
+
+      // Grid columns
+      .\@#{$bp-name}\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .\@#{$bp-name}\:grid-cols-none { grid-template-columns: none; }
+
+      // Text alignment
+      .\@#{$bp-name}\:text-left { text-align: left; }
+      .\@#{$bp-name}\:text-center { text-align: center; }
+      .\@#{$bp-name}\:text-right { text-align: right; }
+      .\@#{$bp-name}\:text-justify { text-align: justify; }
+
+      // Visibility
+      .\@#{$bp-name}\:visible { visibility: visible; }
+      .\@#{$bp-name}\:invisible { visibility: hidden; }
+    }
+  }
+
+  // ============================================================================
+  // Named Container Queries
+  // ============================================================================
+
+  // Sidebar container queries
+  @container sidebar (min-width: 300px) {
+    .\@sidebar\:block { display: block; }
+    .\@sidebar\:hidden { display: none; }
+  }
+
+  @container sidebar (min-width: 400px) {
+    .\@sidebar-lg\:block { display: block; }
+    .\@sidebar-lg\:flex { display: flex; }
+  }
+
+  // Card container queries
+  @container card (min-width: 400px) {
+    .\@card\:horizontal {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .\@card\:vertical {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @container card (min-width: 600px) {
+    .\@card-lg\:horizontal {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .\@card-lg\:grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // Main container queries
+  @container main (min-width: 768px) {
+    .\@main\:grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @container main (min-width: 1024px) {
+    .\@main-lg\:grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // ============================================================================
+  // Container Query Units (cqw, cqh, cqi, cqb, cqmin, cqmax)
+  // ============================================================================
+  // These units are relative to container dimensions
+
+  .w-cqw-full { width: 100cqw; }
+  .w-cqw-half { width: 50cqw; }
+  .w-cqw-quarter { width: 25cqw; }
+
+  .h-cqh-full { height: 100cqh; }
+  .h-cqh-half { height: 50cqh; }
+
+  .w-cqi-full { width: 100cqi; }
+  .w-cqi-half { width: 50cqi; }
+
+  .h-cqb-full { height: 100cqb; }
+  .h-cqb-half { height: 50cqb; }
+
+  // ============================================================================
+  // Style Queries (Experimental)
+  // ============================================================================
+  // Style queries respond to computed style values of the container
+
+  @container style(--theme: dark) {
+    .\@theme\:text-white {
+      color: white;
+    }
+
+    .\@theme\:bg-gray-900 {
+      background-color: var(--color-gray-900);
+    }
+  }
+
+  @container style(--density: compact) {
+    .\@compact\:p-2 {
+      padding: 0.5rem;
+    }
+
+    .\@compact\:gap-2 {
+      gap: 0.5rem;
+    }
+  }
+
+  @container style(--density: spacious) {
+    .\@spacious\:p-6 {
+      padding: 1.5rem;
+    }
+
+    .\@spacious\:gap-6 {
+      gap: 1.5rem;
+    }
+  }
+}

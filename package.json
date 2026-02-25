@@ -1,6 +1,6 @@
 {
   "name": "apexcss",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Apex` - A utility-first CSS framework with 500+ utility classes",
   "type": "module",
   "main": "dist/framework.css",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run arbitrary:build && npm run config:build && vite build && mv dist/framework2.css dist/framework.css",
+    "build": "npm run config:build && vite build && mv dist/framework2.css dist/framework.css",
     "preview": "vite preview",
     "watch": "vite build --watch",
     "lint": "stylelint 'src/**/*.scss'",

@@ -1,0 +1,286 @@
+// ============================================================================
+// Scroll Properties
+// ============================================================================
+// scroll-behavior, scroll-margin, scroll-padding, scroll-snap, scrollbar-color
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-scroll == true {
+  // Scroll behavior
+  // ============================================================================
+  .scroll-auto { scroll-behavior: auto; }
+  .scroll-smooth { scroll-behavior: smooth; }
+
+  // Scroll margin (shorthand)
+  // ============================================================================
+  .scroll-m-0 { scroll-margin: 0; }
+  .scroll-m-1 { scroll-margin: 0.25rem; }
+  .scroll-m-2 { scroll-margin: 0.5rem; }
+  .scroll-m-3 { scroll-margin: 0.75rem; }
+  .scroll-m-4 { scroll-margin: 1rem; }
+  .scroll-m-5 { scroll-margin: 1.25rem; }
+  .scroll-m-6 { scroll-margin: 1.5rem; }
+  .scroll-m-8 { scroll-margin: 2rem; }
+  .scroll-m-10 { scroll-margin: 2.5rem; }
+  .scroll-m-12 { scroll-margin: 3rem; }
+
+  // Scroll margin block
+  // ============================================================================
+  .scroll-mb-0 { scroll-margin-block: 0; }
+  .scroll-mb-1 { scroll-margin-block: 0.25rem; }
+  .scroll-mb-2 { scroll-margin-block: 0.5rem; }
+  .scroll-mb-3 { scroll-margin-block: 0.75rem; }
+  .scroll-mb-4 { scroll-margin-block: 1rem; }
+  .scroll-mb-5 { scroll-margin-block: 1.25rem; }
+  .scroll-mb-6 { scroll-margin-block: 1.5rem; }
+  .scroll-mb-8 { scroll-margin-block: 2rem; }
+
+  // Scroll margin block start
+  // ============================================================================
+  .scroll-mbs-0 { scroll-margin-block-start: 0; }
+  .scroll-mbs-1 { scroll-margin-block-start: 0.25rem; }
+  .scroll-mbs-2 { scroll-margin-block-start: 0.5rem; }
+  .scroll-mbs-3 { scroll-margin-block-start: 0.75rem; }
+  .scroll-mbs-4 { scroll-margin-block-start: 1rem; }
+  .scroll-mbs-5 { scroll-margin-block-start: 1.25rem; }
+  .scroll-mbs-6 { scroll-margin-block-start: 1.5rem; }
+  .scroll-mbs-8 { scroll-margin-block-start: 2rem; }
+
+  // Scroll margin block end
+  // ============================================================================
+  .scroll-mbe-0 { scroll-margin-block-end: 0; }
+  .scroll-mbe-1 { scroll-margin-block-end: 0.25rem; }
+  .scroll-mbe-2 { scroll-margin-block-end: 0.5rem; }
+  .scroll-mbe-3 { scroll-margin-block-end: 0.75rem; }
+  .scroll-mbe-4 { scroll-margin-block-end: 1rem; }
+  .scroll-mbe-5 { scroll-margin-block-end: 1.25rem; }
+  .scroll-mbe-6 { scroll-margin-block-end: 1.5rem; }
+  .scroll-mbe-8 { scroll-margin-block-end: 2rem; }
+
+  // Scroll margin inline
+  // ============================================================================
+  .scroll-mi-0 { scroll-margin-inline: 0; }
+  .scroll-mi-1 { scroll-margin-inline: 0.25rem; }
+  .scroll-mi-2 { scroll-margin-inline: 0.5rem; }
+  .scroll-mi-3 { scroll-margin-inline: 0.75rem; }
+  .scroll-mi-4 { scroll-margin-inline: 1rem; }
+  .scroll-mi-5 { scroll-margin-inline: 1.25rem; }
+  .scroll-mi-6 { scroll-margin-inline: 1.5rem; }
+  .scroll-mi-8 { scroll-margin-inline: 2rem; }
+
+  // Scroll margin inline start
+  // ============================================================================
+  .scroll-mis-0 { scroll-margin-inline-start: 0; }
+  .scroll-mis-1 { scroll-margin-inline-start: 0.25rem; }
+  .scroll-mis-2 { scroll-margin-inline-start: 0.5rem; }
+  .scroll-mis-3 { scroll-margin-inline-start: 0.75rem; }
+  .scroll-mis-4 { scroll-margin-inline-start: 1rem; }
+  .scroll-mis-5 { scroll-margin-inline-start: 1.25rem; }
+  .scroll-mis-6 { scroll-margin-inline-start: 1.5rem; }
+  .scroll-mis-8 { scroll-margin-inline-start: 2rem; }
+
+  // Scroll margin inline end
+  // ============================================================================
+  .scroll-mie-0 { scroll-margin-inline-end: 0; }
+  .scroll-mie-1 { scroll-margin-inline-end: 0.25rem; }
+  .scroll-mie-2 { scroll-margin-inline-end: 0.5rem; }
+  .scroll-mie-3 { scroll-margin-inline-end: 0.75rem; }
+  .scroll-mie-4 { scroll-margin-inline-end: 1rem; }
+  .scroll-mie-5 { scroll-margin-inline-end: 1.25rem; }
+  .scroll-mie-6 { scroll-margin-inline-end: 1.5rem; }
+  .scroll-mie-8 { scroll-margin-inline-end: 2rem; }
+
+  // Scroll margin top
+  // ============================================================================
+  .scroll-mt-0 { scroll-margin-top: 0; }
+  .scroll-mt-1 { scroll-margin-top: 0.25rem; }
+  .scroll-mt-2 { scroll-margin-top: 0.5rem; }
+  .scroll-mt-3 { scroll-margin-top: 0.75rem; }
+  .scroll-mt-4 { scroll-margin-top: 1rem; }
+  .scroll-mt-5 { scroll-margin-top: 1.25rem; }
+  .scroll-mt-6 { scroll-margin-top: 1.5rem; }
+  .scroll-mt-8 { scroll-margin-top: 2rem; }
+
+  // Scroll margin right
+  // ============================================================================
+  .scroll-mr-0 { scroll-margin-right: 0; }
+  .scroll-mr-1 { scroll-margin-right: 0.25rem; }
+  .scroll-mr-2 { scroll-margin-right: 0.5rem; }
+  .scroll-mr-3 { scroll-margin-right: 0.75rem; }
+  .scroll-mr-4 { scroll-margin-right: 1rem; }
+  .scroll-mr-5 { scroll-margin-right: 1.25rem; }
+  .scroll-mr-6 { scroll-margin-right: 1.5rem; }
+  .scroll-mr-8 { scroll-margin-right: 2rem; }
+
+  // Scroll margin bottom
+  // ============================================================================
+  .scroll-mb-0 { scroll-margin-bottom: 0; }
+  .scroll-mb-1 { scroll-margin-bottom: 0.25rem; }
+  .scroll-mb-2 { scroll-margin-bottom: 0.5rem; }
+  .scroll-mb-3 { scroll-margin-bottom: 0.75rem; }
+  .scroll-mb-4 { scroll-margin-bottom: 1rem; }
+  .scroll-mb-5 { scroll-margin-bottom: 1.25rem; }
+  .scroll-mb-6 { scroll-margin-bottom: 1.5rem; }
+  .scroll-mb-8 { scroll-margin-bottom: 2rem; }
+
+  // Scroll margin left
+  // ============================================================================
+  .scroll-ml-0 { scroll-margin-left: 0; }
+  .scroll-ml-1 { scroll-margin-left: 0.25rem; }
+  .scroll-ml-2 { scroll-margin-left: 0.5rem; }
+  .scroll-ml-3 { scroll-margin-left: 0.75rem; }
+  .scroll-ml-4 { scroll-margin-left: 1rem; }
+  .scroll-ml-5 { scroll-margin-left: 1.25rem; }
+  .scroll-ml-6 { scroll-margin-left: 1.5rem; }
+  .scroll-ml-8 { scroll-margin-left: 2rem; }
+
+  // Scroll padding (shorthand)
+  // ============================================================================
+  .scroll-p-0 { scroll-padding: 0; }
+  .scroll-p-1 { scroll-padding: 0.25rem; }
+  .scroll-p-2 { scroll-padding: 0.5rem; }
+  .scroll-p-3 { scroll-padding: 0.75rem; }
+  .scroll-p-4 { scroll-padding: 1rem; }
+  .scroll-p-5 { scroll-padding: 1.25rem; }
+  .scroll-p-6 { scroll-padding: 1.5rem; }
+  .scroll-p-8 { scroll-padding: 2rem; }
+  .scroll-p-10 { scroll-padding: 2.5rem; }
+  .scroll-p-12 { scroll-padding: 3rem; }
+
+  // Scroll padding block
+  // ============================================================================
+  .scroll-pb-0 { scroll-padding-block: 0; }
+  .scroll-pb-1 { scroll-padding-block: 0.25rem; }
+  .scroll-pb-2 { scroll-padding-block: 0.5rem; }
+  .scroll-pb-3 { scroll-padding-block: 0.75rem; }
+  .scroll-pb-4 { scroll-padding-block: 1rem; }
+  .scroll-pb-5 { scroll-padding-block: 1.25rem; }
+  .scroll-pb-6 { scroll-padding-block: 1.5rem; }
+  .scroll-pb-8 { scroll-padding-block: 2rem; }
+
+  // Scroll padding block start
+  // ============================================================================
+  .scroll-pbs-0 { scroll-padding-block-start: 0; }
+  .scroll-pbs-1 { scroll-padding-block-start: 0.25rem; }
+  .scroll-pbs-2 { scroll-padding-block-start: 0.5rem; }
+  .scroll-pbs-3 { scroll-padding-block-start: 0.75rem; }
+  .scroll-pbs-4 { scroll-padding-block-start: 1rem; }
+  .scroll-pbs-5 { scroll-padding-block-start: 1.25rem; }
+  .scroll-pbs-6 { scroll-padding-block-start: 1.5rem; }
+  .scroll-pbs-8 { scroll-padding-block-start: 2rem; }
+
+  // Scroll padding block end
+  // ============================================================================
+  .scroll-pbe-0 { scroll-padding-block-end: 0; }
+  .scroll-pbe-1 { scroll-padding-block-end: 0.25rem; }
+  .scroll-pbe-2 { scroll-padding-block-end: 0.5rem; }
+  .scroll-pbe-3 { scroll-padding-block-end: 0.75rem; }
+  .scroll-pbe-4 { scroll-padding-block-end: 1rem; }
+  .scroll-pbe-5 { scroll-padding-block-end: 1.25rem; }
+  .scroll-pbe-6 { scroll-padding-block-end: 1.5rem; }
+  .scroll-pbe-8 { scroll-padding-block-end: 2rem; }
+
+  // Scroll padding inline
+  // ============================================================================
+  .scroll-pi-0 { scroll-padding-inline: 0; }
+  .scroll-pi-1 { scroll-padding-inline: 0.25rem; }
+  .scroll-pi-2 { scroll-padding-inline: 0.5rem; }
+  .scroll-pi-3 { scroll-padding-inline: 0.75rem; }
+  .scroll-pi-4 { scroll-padding-inline: 1rem; }
+  .scroll-pi-5 { scroll-padding-inline: 1.25rem; }
+  .scroll-pi-6 { scroll-padding-inline: 1.5rem; }
+  .scroll-pi-8 { scroll-padding-inline: 2rem; }
+
+  // Scroll padding inline start
+  // ============================================================================
+  .scroll-pis-0 { scroll-padding-inline-start: 0; }
+  .scroll-pis-1 { scroll-padding-inline-start: 0.25rem; }
+  .scroll-pis-2 { scroll-padding-inline-start: 0.5rem; }
+  .scroll-pis-3 { scroll-padding-inline-start: 0.75rem; }
+  .scroll-pis-4 { scroll-padding-inline-start: 1rem; }
+  .scroll-pis-5 { scroll-padding-inline-start: 1.25rem; }
+  .scroll-pis-6 { scroll-padding-inline-start: 1.5rem; }
+  .scroll-pis-8 { scroll-padding-inline-start: 2rem; }
+
+  // Scroll padding inline end
+  // ============================================================================
+  .scroll-pie-0 { scroll-padding-inline-end: 0; }
+  .scroll-pie-1 { scroll-padding-inline-end: 0.25rem; }
+  .scroll-pie-2 { scroll-padding-inline-end: 0.5rem; }
+  .scroll-pie-3 { scroll-padding-inline-end: 0.75rem; }
+  .scroll-pie-4 { scroll-padding-inline-end: 1rem; }
+  .scroll-pie-5 { scroll-padding-inline-end: 1.25rem; }
+  .scroll-pie-6 { scroll-padding-inline-end: 1.5rem; }
+  .scroll-pie-8 { scroll-padding-inline-end: 2rem; }
+
+  // Scroll padding top
+  // ============================================================================
+  .scroll-pt-0 { scroll-padding-top: 0; }
+  .scroll-pt-1 { scroll-padding-top: 0.25rem; }
+  .scroll-pt-2 { scroll-padding-top: 0.5rem; }
+  .scroll-pt-3 { scroll-padding-top: 0.75rem; }
+  .scroll-pt-4 { scroll-padding-top: 1rem; }
+  .scroll-pt-5 { scroll-padding-top: 1.25rem; }
+  .scroll-pt-6 { scroll-padding-top: 1.5rem; }
+  .scroll-pt-8 { scroll-padding-top: 2rem; }
+
+  // Scroll padding right
+  // ============================================================================
+  .scroll-pr-0 { scroll-padding-right: 0; }
+  .scroll-pr-1 { scroll-padding-right: 0.25rem; }
+  .scroll-pr-2 { scroll-padding-right: 0.5rem; }
+  .scroll-pr-3 { scroll-padding-right: 0.75rem; }
+  .scroll-pr-4 { scroll-padding-right: 1rem; }
+  .scroll-pr-5 { scroll-padding-right: 1.25rem; }
+  .scroll-pr-6 { scroll-padding-right: 1.5rem; }
+  .scroll-pr-8 { scroll-padding-right: 2rem; }
+
+  // Scroll padding bottom
+  // ============================================================================
+  .scroll-pb-0 { scroll-padding-bottom: 0; }
+  .scroll-pb-1 { scroll-padding-bottom: 0.25rem; }
+  .scroll-pb-2 { scroll-padding-bottom: 0.5rem; }
+  .scroll-pb-3 { scroll-padding-bottom: 0.75rem; }
+  .scroll-pb-4 { scroll-padding-bottom: 1rem; }
+  .scroll-pb-5 { scroll-padding-bottom: 1.25rem; }
+  .scroll-pb-6 { scroll-padding-bottom: 1.5rem; }
+  .scroll-pb-8 { scroll-padding-bottom: 2rem; }
+
+  // Scroll padding left
+  // ============================================================================
+  .scroll-pl-0 { scroll-padding-left: 0; }
+  .scroll-pl-1 { scroll-padding-left: 0.25rem; }
+  .scroll-pl-2 { scroll-padding-left: 0.5rem; }
+  .scroll-pl-3 { scroll-padding-left: 0.75rem; }
+  .scroll-pl-4 { scroll-padding-left: 1rem; }
+  .scroll-pl-5 { scroll-padding-left: 1.25rem; }
+  .scroll-pl-6 { scroll-padding-left: 1.5rem; }
+  .scroll-pl-8 { scroll-padding-left: 2rem; }
+
+  // Scroll snap align
+  // ============================================================================
+  .snap-align-none { scroll-snap-align: none; }
+  .snap-align-start { scroll-snap-align: start; }
+  .snap-align-end { scroll-snap-align: end; }
+  .snap-align-center { scroll-snap-align: center; }
+
+  // Scroll snap stop
+  // ============================================================================
+  .snap-stop-normal { scroll-snap-stop: normal; }
+  .snap-stop-always { scroll-snap-stop: always; }
+
+  // Scroll snap type
+  // ============================================================================
+  .snap-none { scroll-snap-type: none; }
+  .snap-x { scroll-snap-type: x mandatory; }
+  .snap-y { scroll-snap-type: y mandatory; }
+  .snap-both { scroll-snap-type: both mandatory; }
+  .snap-mandatory { scroll-snap-type: mandatory; }
+  .snap-proximity { scroll-snap-type: proximity; }
+
+  // Scrollbar color
+  // ============================================================================
+  .scrollbar-auto { scrollbar-color: auto; }
+  .scrollbar-dark { scrollbar-color: dark; }
+  .scrollbar-light { scrollbar-color: light; }
+}

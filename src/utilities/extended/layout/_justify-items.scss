@@ -1,0 +1,23 @@
+// ============================================================================
+// Justify Items & Justify Self Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-justify-items == true {
+  // Justify items (for grid containers)
+  .justify-items-start { justify-items: start; }
+  .justify-items-end { justify-items: end; }
+  .justify-items-center { justify-items: center; }
+  .justify-items-stretch { justify-items: stretch; }
+  .justify-items-baseline { justify-items: baseline; }
+  .justify-items-auto { justify-items: auto; }
+
+  // Justify self (for grid/flex items)
+  .justify-self-start { justify-self: start; }
+  .justify-self-end { justify-self: end; }
+  .justify-self-center { justify-self: center; }
+  .justify-self-stretch { justify-self: stretch; }
+  .justify-self-auto { justify-self: auto; }
+  .justify-self-baseline { justify-self: baseline; }
+}

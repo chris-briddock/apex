@@ -1,0 +1,37 @@
+// ============================================================================
+// Text Emphasis Properties
+// ============================================================================
+// text-emphasis, text-emphasis-color, text-emphasis-position, text-emphasis-style
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-text-emphasis == true {
+  // Text emphasis color
+  // ============================================================================
+  .emphasis-current { text-emphasis-color: currentColor; }
+  .emphasis-transparent { text-emphasis-color: transparent; }
+  .emphasis-white { text-emphasis-color: var(--color-white); }
+  .emphasis-black { text-emphasis-color: var(--color-black); }
+  .emphasis-primary { text-emphasis-color: var(--color-primary); }
+  .emphasis-secondary { text-emphasis-color: var(--color-secondary); }
+  .emphasis-success { text-emphasis-color: var(--color-success); }
+  .emphasis-danger { text-emphasis-color: var(--color-danger); }
+  .emphasis-warning { text-emphasis-color: var(--color-warning); }
+  .emphasis-info { text-emphasis-color: var(--color-info); }
+
+  // Text emphasis position
+  // ============================================================================
+  .emphasis-over { text-emphasis-position: over left; }
+  .emphasis-under { text-emphasis-position: under left; }
+
+  // Text emphasis style
+  // ============================================================================
+  .emphasis-none { text-emphasis-style: none; }
+  .emphasis-filled { text-emphasis-style: filled; }
+  .emphasis-open { text-emphasis-style: open; }
+  .emphasis-dot { text-emphasis-style: dot; }
+  .emphasis-circle { text-emphasis-style: circle; }
+  .emphasis-double-circle { text-emphasis-style: double-circle; }
+  .emphasis-triangle { text-emphasis-style: triangle; }
+  .emphasis-sesame { text-emphasis-style: sesame; }
+}

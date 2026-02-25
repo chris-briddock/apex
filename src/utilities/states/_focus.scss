@@ -2,7 +2,7 @@
 // Focus State Variants
 // ============================================================================
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-focus == true {
   // Focus ring

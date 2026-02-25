@@ -1,0 +1,14 @@
+// ============================================================================
+// Quotes Properties
+// ============================================================================
+// quotes
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-quotes == true {
+  .quotes-auto { quotes: auto; }
+  .quotes-none { quotes: none; }
+  .quotes-english { quotes: '"' '"' "'" "'"; }
+  .quotes-french { quotes: "«" "»" "‹" "›"; }
+  .quotes-german { quotes: "»" "«" "›" "‹"; }
+}

@@ -1,8 +1,113 @@
 // ============================================================================
 // Extended Utilities Entry Point
 // ============================================================================
+// Advanced, specialized, or less commonly used utilities
 
-@forward 'animations';
-@forward 'transforms';
-@forward 'filters';
-@forward 'aspect-ratio';
+// ============================================================================
+// Layout Extended
+// ============================================================================
+@forward 'layout/flex-extended';
+@forward 'layout/grid-extended';
+@forward 'layout/float';
+@forward 'layout/container-queries';
+@forward 'layout/isolation';
+@forward 'layout/place-items';
+@forward 'layout/justify-items';
+@forward 'layout/space-between';
+@forward 'layout/columns';
+@forward 'layout/columns-extended';
+
+// ============================================================================
+// Typography Extended
+// ============================================================================
+@forward 'typography/typography-extended';
+@forward 'typography/font-extended';
+@forward 'typography/letter-spacing';
+@forward 'typography/line-height';
+@forward 'typography/text-align-last';
+@forward 'typography/text-decoration-extended';
+@forward 'typography/text-justify';
+@forward 'typography/text-indent';
+@forward 'typography/text-shadow';
+@forward 'typography/text-emphasis';
+@forward 'typography/text-orientation';
+@forward 'typography/text-underline';
+@forward 'typography/hanging-punctuation';
+@forward 'typography/hyphenate';
+@forward 'typography/initial-letter';
+@forward 'typography/tab-size';
+@forward 'typography/word-break';
+@forward 'typography/word-wrap';
+@forward 'typography/writing-mode';
+@forward 'typography/unicode-bidi';
+
+// ============================================================================
+// Visual Extended
+// ============================================================================
+@forward 'visual/background-extended';
+@forward 'visual/color-modifiers';
+@forward 'visual/blend-modes';
+@forward 'visual/masks';
+@forward 'visual/border-radius-logical';
+@forward 'visual/ring';
+@forward 'visual/outline';
+@forward 'visual/appearance';
+@forward 'visual/accent-color';
+@forward 'visual/color-scheme';
+
+// ============================================================================
+// Interaction Extended
+// ============================================================================
+@forward 'interaction/interaction';
+@forward 'interaction/user-select';
+@forward 'interaction/will-change';
+@forward 'interaction/all';
+@forward 'interaction/caret';
+@forward 'interaction/scroll';
+@forward 'interaction/overscroll-behavior';
+@forward 'interaction/overscroll-behavior-extended';
+@forward 'interaction/overflow-extended';
+
+// ============================================================================
+// Effects (Transforms, Filters, Transitions)
+// ============================================================================
+@forward 'effects/transforms';
+@forward 'effects/transforms-3d';
+@forward 'effects/filters';
+@forward 'effects/transition-behavior';
+@forward 'effects/aspect-ratio';
+@forward 'effects/image-rendering';
+
+// ============================================================================
+// Content (Lists, Tables, Text Content)
+// ============================================================================
+@forward 'content/list';
+@forward 'content/list-style-extended';
+@forward 'content/table';
+@forward 'content/counter';
+@forward 'content/caption';
+@forward 'content/quotes';
+@forward 'content/orphans';
+@forward 'content/widows';
+@forward 'content/page-break';
+@forward 'content/break';
+@forward 'content/vertical-align';
+
+// ============================================================================
+// Advanced (Experimental, Specialized, Arbitrary)
+// ============================================================================
+@forward 'advanced/arbitrary';
+@forward 'advanced/logical-properties';
+@forward 'advanced/sizing-logical';
+@forward 'advanced/offset';
+@forward 'advanced/shape-outside';
+@forward 'advanced/marker-extended';
+@forward 'advanced/zoom';
+@forward 'advanced/field-sizing';
+@forward 'advanced/svg';
+@forward 'advanced/box';
+@forward 'advanced/divide';
+
+// ============================================================================
+// End of Extended Utilities Index
+// ============================================================================

@@ -8,7 +8,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use 'custom';
+@use 'custom-config' as custom;
 
 // Breakpoints map is sourced from custom config
 $breakpoints: custom.$breakpoints;

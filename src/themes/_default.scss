@@ -5,8 +5,7 @@
 // All ApexCSS utilities can be customized by overriding these variables.
 
 @use "sass:map";
-@use '../config/settings' as settings;
-@use '../config/custom' as custom;
+@use '../config/custom-config' as custom;
 
 // ============================================================================
 // CSS Custom Properties - Root Level
@@ -404,6 +403,32 @@
   // ============================================================================
   --space-x-reverse: 0;
   --space-y-reverse: 0;
+
+  // ============================================================================
+  // Ring Utility Variables
+  // ============================================================================
+  --ring-offset-shadow: 0 0 #0000;
+  --ring-shadow: 0 0 #0000;
+  --shadow: 0 0 #0000;
+  --ring-inset: ;
+  --ring-offset-width: 0px;
+  --ring-offset-color: #fff;
+  --ring-color: rgba(59, 130, 246, 0.5);
+  --ring-opacity: 1;
+
+    /* Focus mode variables */
+  --focus-ring-width: 2px;
+  --focus-ring-style: solid;
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-offset: 2px;
+
+  /* Component theme variables */
+  --component-bg: var(--color-white);
+  --component-border: var(--color-gray-200);
+  --component-radius: var(--border-radius-lg);
+  --component-shadow: var(--shadow-base);
+  --component-padding: var(--spacing-6);
+  --component-border-focus: var(--color-primary);
 
 }
 

@@ -1,0 +1,39 @@
+// ============================================================================
+// Font Extended Properties
+// ============================================================================
+// font-kerning, font-size-adjust, font-style, font-variant-caps
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-font-extended == true {
+  // Font kerning
+  // ============================================================================
+  .font-kerning-auto { font-kerning: auto; }
+  .font-kerning-normal { font-kerning: normal; }
+  .font-kerning-none { font-kerning: none; }
+
+  // Font size adjust
+  // ============================================================================
+  .font-size-adjust-none { font-size-adjust: none; }
+  .font-size-adjust-0-5 { font-size-adjust: 0.5; }
+  .font-size-adjust-0-6 { font-size-adjust: 0.6; }
+  .font-size-adjust-0-7 { font-size-adjust: 0.7; }
+  .font-size-adjust-0-8 { font-size-adjust: 0.8; }
+  .font-size-adjust-0-9 { font-size-adjust: 0.9; }
+  .font-size-adjust-1 { font-size-adjust: 1; }
+
+  // Font style
+  // ============================================================================
+  .italic { font-style: italic; }
+  .not-italic { font-style: normal; }
+
+  // Font variant caps
+  // ============================================================================
+  .font-variant-caps-normal { font-variant-caps: normal; }
+  .font-variant-caps-small-caps { font-variant-caps: small-caps; }
+  .font-variant-caps-all-small-caps { font-variant-caps: all-small-caps; }
+  .font-variant-caps-petite-caps { font-variant-caps: petite-caps; }
+  .font-variant-caps-all-petite-caps { font-variant-caps: all-petite-caps; }
+  .font-variant-caps-unicase { font-variant-caps: unicase; }
+  .font-variant-caps-titling { font-variant-caps: titling-caps; }
+}

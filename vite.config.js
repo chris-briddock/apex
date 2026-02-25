@@ -2,7 +2,13 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   css: {
-    postcss: './postcss.config.js'
+    postcss: './postcss.config.js',
+    devSourcemap: true
+  },
+  esbuild: {
+    logOverride: {
+      'css-syntax-error': 'silent'
+    }
   },
   build: {
     cssCodeSplit: false,

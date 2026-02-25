@@ -1,0 +1,13 @@
+// ============================================================================
+// Initial Letter Properties
+// ============================================================================
+// initial-letter
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-initial-letter == true {
+  .initial-letter-normal { initial-letter: normal; }
+  .initial-letter-1 { initial-letter: 1; }
+  .initial-letter-2 { initial-letter: 2; }
+  .initial-letter-3 { initial-letter: 3; }
+}

@@ -1,0 +1,19 @@
+// ============================================================================
+// Overflow Extended Properties
+// ============================================================================
+// overflow-anchor, overflow-wrap
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-overflow-extended == true {
+  // Overflow anchor
+  // ============================================================================
+  .overflow-anchor-auto { overflow-anchor: auto; }
+  .overflow-anchor-none { overflow-anchor: none; }
+
+  // Overflow wrap
+  // ============================================================================
+  .break-words { overflow-wrap: break-word; }
+  .break-anywhere { overflow-wrap: anywhere; }
+  .break-normal { overflow-wrap: normal; }
+}

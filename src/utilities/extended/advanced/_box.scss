@@ -1,0 +1,26 @@
+// ============================================================================
+// Box Properties
+// ============================================================================
+// box-decoration-break, box-reflect, box-sizing
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-box == true {
+  // Box decoration break
+  // ============================================================================
+  .box-decoration-slice { box-decoration-break: slice; }
+  .box-decoration-clone { box-decoration-break: clone; }
+
+  // Box reflect
+  // ============================================================================
+  .box-reflect-none { -webkit-box-reflect: none; }
+  .box-reflect-below { -webkit-box-reflect: below; }
+  .box-reflect-left { -webkit-box-reflect: left; }
+  .box-reflect-right { -webkit-box-reflect: right; }
+
+  // Box sizing
+  // ============================================================================
+  .box-border { box-sizing: border-box; }
+  .box-content { box-sizing: content-box; }
+}

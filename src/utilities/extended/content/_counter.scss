@@ -1,0 +1,23 @@
+// ============================================================================
+// Counter Properties
+// ============================================================================
+// counter-increment, counter-reset, counter-set
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-counter == true {
+  // Counter increment
+  // ============================================================================
+  .counter-increment { counter-increment: list-item; }
+  .counter-increment-none { counter-increment: none; }
+
+  // Counter reset
+  // ============================================================================
+  .counter-reset { counter-reset: list-item; }
+  .counter-reset-none { counter-reset: none; }
+
+  // Counter set
+  // ============================================================================
+  .counter-set { counter-set: list-item; }
+  .counter-set-none { counter-set: none; }
+}

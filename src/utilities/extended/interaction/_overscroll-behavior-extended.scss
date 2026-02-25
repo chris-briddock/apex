@@ -1,0 +1,20 @@
+// ============================================================================
+// Overscroll Behavior Extended Properties
+// ============================================================================
+// overscroll-behavior-block, overscroll-behavior-inline
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-overscroll-behavior-extended == true {
+  // Overscroll behavior block
+  // ============================================================================
+  .overscroll-block-auto { overscroll-behavior-block: auto; }
+  .overscroll-block-contain { overscroll-behavior-block: contain; }
+  .overscroll-block-none { overscroll-behavior-block: none; }
+
+  // Overscroll behavior inline
+  // ============================================================================
+  .overscroll-inline-auto { overscroll-behavior-inline: auto; }
+  .overscroll-inline-contain { overscroll-behavior-inline: contain; }
+  .overscroll-inline-none { overscroll-behavior-inline: none; }
+}

@@ -2,7 +2,7 @@
 // Hover State Variants
 // ============================================================================
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-hover == true {
   // Hover text color - theme colors

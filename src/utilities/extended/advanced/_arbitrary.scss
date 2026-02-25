@@ -1,0 +1,164 @@
+// ============================================================================
+// Arbitrary Value Utilities (CSS Custom Properties)
+// ============================================================================
+// This file enables Tailwind-style arbitrary values using CSS custom properties.
+// Usage: style="--arbitrary-value: 200px" class="min-h-[var(--arbitrary-value)]"
+//
+// Or use the inline style approach:
+//   class="min-h-[--my-value]" style="--my-value: 200px"
+//
+// Generated using the arbitrary-value mixins in mixins/_arbitrary.scss
+// ============================================================================
+
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../config/custom-config' as settings;
+@use '../../../config/breakpoints' as bp;
+@use '../../../mixins/arbitrary' as arb;
+
+// ============================================================================
+// Sizing Arbitrary Values
+// ============================================================================
+@if settings.$enable-sizing == true {
+  @include arb.arbitrary-sizing-utilities;
+}
+
+// ============================================================================
+// Spacing Arbitrary Values
+// ============================================================================
+@if settings.$enable-spacing == true {
+  @include arb.arbitrary-spacing-utilities;
+}
+
+// ============================================================================
+// Positioning Arbitrary Values
+// ============================================================================
+@if settings.$enable-positioning == true {
+  @include arb.arbitrary-positioning-utilities;
+}
+
+// ============================================================================
+// Typography Arbitrary Values
+// ============================================================================
+@if settings.$enable-typography == true {
+  @include arb.arbitrary-typography-utilities;
+}
+
+// ============================================================================
+// Color Arbitrary Values
+// ============================================================================
+@if settings.$enable-colors == true {
+  @include arb.arbitrary-color-utilities;
+}
+
+// ============================================================================
+// Border Arbitrary Values
+// ============================================================================
+@if settings.$enable-borders == true {
+  @include arb.arbitrary-border-utilities;
+}
+
+// ============================================================================
+// Transition Arbitrary Values
+// ============================================================================
+@if settings.$enable-transitions == true {
+  @include arb.arbitrary-transition-utilities;
+}
+
+// ============================================================================
+// Effect Arbitrary Values (Shadow, Opacity, Z-Index)
+// ============================================================================
+@if settings.$enable-shadows == true or settings.$enable-opacity == true or settings.$enable-z-index == true {
+  @include arb.arbitrary-effect-utilities;
+}
+
+// ============================================================================
+// Responsive Arbitrary Values
+// ============================================================================
+$responsive-sizing: (
+  'w': ('width', ('--w',)),
+  'h': ('height', ('--h',)),
+  'min-h': ('min-height', ('--min-h',)),
+  'min-w': ('min-width', ('--min-w',)),
+  'max-h': ('max-height', ('--max-h',)),
+  'max-w': ('max-width', ('--max-w',)),
+);
+
+$responsive-spacing: (
+  'm': ('margin', ('--m',)),
+  'p': ('padding', ('--p',)),
+  'gap': ('gap', ('--gap',)),
+);
+
+$responsive-positioning: (
+  'top': ('top', ('--top',)),
+  'right': ('right', ('--right',)),
+  'bottom': ('bottom', ('--bottom',)),
+  'left': ('left', ('--left',)),
+);
+
+$responsive-typography: (
+  'text': ('font-size', ('--text-size',)),
+);
+
+@each $bp-name, $bp-value in bp.$breakpoints {
+  $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+
+  @media (min-width: $bp-value) {
+    // Responsive sizing
+    @if settings.$enable-sizing == true {
+      @each $class-prefix, $config in $responsive-sizing {
+        $property: list.nth($config, 1);
+        $var-names: list.nth($config, 2);
+
+        @each $var-name in $var-names {
+          .#{$bp-class}\:#{$class-prefix}-\[var\(#{$var-name}\)\] {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+
+    // Responsive spacing
+    @if settings.$enable-spacing == true {
+      @each $class-prefix, $config in $responsive-spacing {
+        $property: list.nth($config, 1);
+        $var-names: list.nth($config, 2);
+
+        @each $var-name in $var-names {
+          .#{$bp-class}\:#{$class-prefix}-\[var\(#{$var-name}\)\] {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+
+    // Responsive positioning
+    @if settings.$enable-positioning == true {
+      @each $class-prefix, $config in $responsive-positioning {
+        $property: list.nth($config, 1);
+        $var-names: list.nth($config, 2);
+
+        @each $var-name in $var-names {
+          .#{$bp-class}\:#{$class-prefix}-\[var\(#{$var-name}\)\] {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+
+    // Responsive typography
+    @if settings.$enable-typography == true {
+      @each $class-prefix, $config in $responsive-typography {
+        $property: list.nth($config, 1);
+        $var-names: list.nth($config, 2);
+
+        @each $var-name in $var-names {
+          .#{$bp-class}\:#{$class-prefix}-\[var\(#{$var-name}\)\] {
+            #{$property}: var(#{$var-name});
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,15 @@
 // ============================================================================
 // Plugins Entry Point
 // ============================================================================
-// This file imports all available plugins.
-// Uncomment plugins you want to include in your build.
-
-// Form Plugin
-// @import 'forms';
-
-// Carousel Plugin
-// @import 'carousel';
+// This file imports all available plugins for the framework.
+//
+// Available Plugins:
+// - animations: Extended animation utilities (included by default)
+//
+// To add new plugins:
+// 1. Create the plugin file in this directory
+// 2. Import it here using @use or @forward
+// ============================================================================
 
 // Animation Module - Extended animation utilities
 @use 'animations';

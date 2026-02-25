@@ -1,0 +1,11 @@
+// ============================================================================
+// Field Sizing Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-field-sizing == true {
+  // Field sizing
+  .field-sizing-fixed { field-sizing: fixed; }
+  .field-sizing-content { field-sizing: content; }
+}

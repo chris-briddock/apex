@@ -1,0 +1,35 @@
+// ============================================================================
+// Page Break Properties
+// ============================================================================
+// page-break-after, page-break-before, page-break-inside
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@if settings.$enable-page-break == true {
+  // Page break after
+  // ============================================================================
+  .break-after-auto { page-break-after: auto; }
+  .break-after-avoid { page-break-after: avoid; }
+  .break-after-always { page-break-after: always; }
+  .break-after-left { page-break-after: left; }
+  .break-after-right { page-break-after: right; }
+  .break-after-column { page-break-after: column; }
+  .break-after-avoid-column { page-break-after: avoid-column; }
+
+  // Page break before
+  // ============================================================================
+  .break-before-auto { page-break-before: auto; }
+  .break-before-avoid { page-break-before: avoid; }
+  .break-before-always { page-break-before: always; }
+  .break-before-left { page-break-before: left; }
+  .break-before-right { page-break-before: right; }
+  .break-before-column { page-break-before: column; }
+  .break-before-avoid-column { page-break-before: avoid-column; }
+
+  // Page break inside
+  // ============================================================================
+  .break-inside-auto { page-break-inside: auto; }
+  .break-inside-avoid { page-break-inside: avoid; }
+  .break-inside-avoid-page { page-break-inside: avoid-page; }
+  .break-inside-avoid-column { page-break-inside: avoid-column; }
+}

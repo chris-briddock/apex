@@ -7,7 +7,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
-@use '../config/settings' as settings;
+@use '../config/custom-config' as settings;
 @use '../config/breakpoints' as bp;
 
 // ============================================================================

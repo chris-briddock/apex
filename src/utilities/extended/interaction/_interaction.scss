@@ -1,0 +1,94 @@
+// ============================================================================
+// Interaction Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-interaction == true {
+  // User select
+  .select-none { user-select: none; }
+  .select-text { user-select: text; }
+  .select-all { user-select: all; }
+  .select-auto { user-select: auto; }
+
+  // Pointer events
+  .pointer-events-none { pointer-events: none; }
+  .pointer-events-auto { pointer-events: auto; }
+
+  // Resize
+  .resize-none { resize: none; }
+  .resize { resize: both; }
+  .resize-y { resize: vertical; }
+  .resize-x { resize: horizontal; }
+
+  // Scroll behavior
+  .scroll-auto { scroll-behavior: auto; }
+  .scroll-smooth { scroll-behavior: smooth; }
+
+  // Touch action
+  .touch-auto { touch-action: auto; }
+  .touch-none { touch-action: none; }
+  .touch-pan-x { touch-action: pan-x; }
+  .touch-pan-left { touch-action: pan-left; }
+  .touch-pan-right { touch-action: pan-right; }
+  .touch-pan-y { touch-action: pan-y; }
+  .touch-pan-up { touch-action: pan-up; }
+  .touch-pan-down { touch-action: pan-down; }
+  .touch-pinch-zoom { touch-action: pinch-zoom; }
+  .touch-manipulation { touch-action: manipulation; }
+
+  // Scroll snap type
+  .snap-none { scroll-snap-type: none; }
+  .snap-x { scroll-snap-type: x mandatory; }
+  .snap-y { scroll-snap-type: y mandatory; }
+  .snap-both { scroll-snap-type: both mandatory; }
+  .snap-x-proximity { scroll-snap-type: x proximity; }
+  .snap-y-proximity { scroll-snap-type: y proximity; }
+  .snap-both-proximity { scroll-snap-type: both proximity; }
+
+  // Scroll snap align
+  .snap-start { scroll-snap-align: start; }
+  .snap-end { scroll-snap-align: end; }
+  .snap-center { scroll-snap-align: center; }
+  .snap-align-none { scroll-snap-align: none; }
+
+  // Scroll snap stop
+  .snap-normal { scroll-snap-stop: normal; }
+  .snap-always { scroll-snap-stop: always; }
+
+  // Scroll margin
+  .scroll-m-0 { scroll-margin: 0; }
+  .scroll-m-1 { scroll-margin: 0.25rem; }
+  .scroll-m-2 { scroll-margin: 0.5rem; }
+  .scroll-m-3 { scroll-margin: 0.75rem; }
+  .scroll-m-4 { scroll-margin: 1rem; }
+  .scroll-m-5 { scroll-margin: 1.25rem; }
+  .scroll-m-6 { scroll-margin: 1.5rem; }
+  .scroll-m-8 { scroll-margin: 2rem; }
+  .scroll-m-10 { scroll-margin: 2.5rem; }
+  .scroll-m-12 { scroll-margin: 3rem; }
+
+  // Scroll padding
+  .scroll-p-0 { scroll-padding: 0; }
+  .scroll-p-1 { scroll-padding: 0.25rem; }
+  .scroll-p-2 { scroll-padding: 0.5rem; }
+  .scroll-p-3 { scroll-padding: 0.75rem; }
+  .scroll-p-4 { scroll-padding: 1rem; }
+  .scroll-p-5 { scroll-padding: 1.25rem; }
+  .scroll-p-6 { scroll-padding: 1.5rem; }
+  .scroll-p-8 { scroll-padding: 2rem; }
+  .scroll-p-10 { scroll-padding: 2.5rem; }
+  .scroll-p-12 { scroll-padding: 3rem; }
+
+  // Caret color
+  .caret-auto { caret-color: auto; }
+  .caret-transparent { caret-color: transparent; }
+  .caret-white { caret-color: var(--color-white); }
+  .caret-black { caret-color: var(--color-black); }
+  .caret-primary { caret-color: var(--color-primary); }
+  .caret-secondary { caret-color: var(--color-secondary); }
+  .caret-success { caret-color: var(--color-success); }
+  .caret-danger { caret-color: var(--color-danger); }
+  .caret-warning { caret-color: var(--color-warning); }
+  .caret-info { caret-color: var(--color-info); }
+}
