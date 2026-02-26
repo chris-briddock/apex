@@ -2,20 +2,15 @@
 // Base Module Entry Point
 // ============================================================================
 // This module provides the foundation for the framework:
-//
 // 1. SCSS VARIABLES - Compile-time values for utility generation
 // 2. CSS RESET     - Normalize browser defaults
 // 3. BASE STYLES   - Foundation element styles
-//
 // Note: CSS custom properties (CSS variables) are defined in the themes module
 // (themes/_default.scss), not here. This module provides the SCSS variables
 // used at build time.
-//
 // Usage:
 //   @use 'base';
 //   @use 'base/colors' as color;
-//
-// ============================================================================
 
 // ============================================================================
 // SCSS Variables (Compile-Time)

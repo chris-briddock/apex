@@ -1,0 +1,62 @@
+// ============================================================================
+// Offset Properties
+// ============================================================================
+// offset, offset-anchor, offset-distance, offset-path, offset-position, offset-rotate
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-offset == true {
+  // Offset (shorthand)
+  // ============================================================================
+  .offset-none { offset: none; }
+
+  // Offset anchor
+  // ============================================================================
+  .offset-anchor-auto { offset-anchor: auto; }
+  .offset-anchor-center { offset-anchor: center; }
+  .offset-anchor-top { offset-anchor: top; }
+  .offset-anchor-bottom { offset-anchor: bottom; }
+  .offset-anchor-left { offset-anchor: left; }
+  .offset-anchor-right { offset-anchor: right; }
+
+  // Offset distance
+  // ============================================================================
+  .offset-distance-0 { offset-distance: 0; }
+  .offset-distance-10 { offset-distance: 10%; }
+  .offset-distance-20 { offset-distance: 20%; }
+  .offset-distance-30 { offset-distance: 30%; }
+  .offset-distance-40 { offset-distance: 40%; }
+  .offset-distance-50 { offset-distance: 50%; }
+  .offset-distance-60 { offset-distance: 60%; }
+  .offset-distance-70 { offset-distance: 70%; }
+  .offset-distance-80 { offset-distance: 80%; }
+  .offset-distance-90 { offset-distance: 90%; }
+  .offset-distance-100 { offset-distance: 100%; }
+
+  // Offset path
+  // ============================================================================
+  .offset-path-none { offset-path: none; }
+  .offset-path-circle { offset-path: circle(50%); }
+  .offset-path-ellipse { offset-path: ellipse(50% 50%); }
+  .offset-path-inset { offset-path: inset(50%); }
+  .offset-path-polygon { offset-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+
+  // Offset position
+  // ============================================================================
+  .offset-position-auto { offset-position: auto; }
+  .offset-position-center { offset-position: center; }
+  .offset-position-top { offset-position: top; }
+  .offset-position-bottom { offset-position: bottom; }
+  .offset-position-left { offset-position: left; }
+  .offset-position-right { offset-position: right; }
+
+  // Offset rotate
+  // ============================================================================
+  .offset-rotate-auto { offset-rotate: auto; }
+  .offset-rotate-0 { offset-rotate: 0deg; }
+  .offset-rotate-45 { offset-rotate: 45deg; }
+  .offset-rotate-90 { offset-rotate: 90deg; }
+  .offset-rotate-135 { offset-rotate: 135deg; }
+  .offset-rotate-180 { offset-rotate: 180deg; }
+}

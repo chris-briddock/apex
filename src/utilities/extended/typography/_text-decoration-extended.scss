@@ -1,0 +1,47 @@
+// ============================================================================
+// Text Decoration Extended Properties
+// ============================================================================
+// text-decoration-color, text-decoration-line, text-decoration-style, text-decoration-thickness
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-text-decoration-extended == true {
+  // Text decoration color
+  // ============================================================================
+  .decoration-current { text-decoration-color: currentcolor; }
+  .decoration-transparent { text-decoration-color: transparent; }
+  .decoration-white { text-decoration-color: var(--color-white); }
+  .decoration-black { text-decoration-color: var(--color-black); }
+  .decoration-primary { text-decoration-color: var(--color-primary); }
+  .decoration-secondary { text-decoration-color: var(--color-secondary); }
+  .decoration-success { text-decoration-color: var(--color-success); }
+  .decoration-danger { text-decoration-color: var(--color-danger); }
+  .decoration-warning { text-decoration-color: var(--color-warning); }
+  .decoration-info { text-decoration-color: var(--color-info); }
+
+  // Text decoration line
+  // ============================================================================
+  .decoration-none { text-decoration-line: none; }
+  .decoration-underline { text-decoration-line: underline; }
+  .decoration-overline { text-decoration-line: overline; }
+  .decoration-line-through { text-decoration-line: line-through; }
+
+  // Text decoration style
+  // ============================================================================
+  .decoration-solid { text-decoration-style: solid; }
+  .decoration-double { text-decoration-style: double; }
+  .decoration-dotted { text-decoration-style: dotted; }
+  .decoration-dashed { text-decoration-style: dashed; }
+  .decoration-wavy { text-decoration-style: wavy; }
+
+  // Text decoration thickness
+  // ============================================================================
+  .decoration-auto { text-decoration-thickness: auto; }
+  .decoration-from-font { text-decoration-thickness: from-font; }
+  .decoration-0 { text-decoration-thickness: 0; }
+  .decoration-1 { text-decoration-thickness: 1px; }
+  .decoration-2 { text-decoration-thickness: 2px; }
+  .decoration-4 { text-decoration-thickness: 4px; }
+  .decoration-8 { text-decoration-thickness: 8px; }
+}

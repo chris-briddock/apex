@@ -1,0 +1,57 @@
+// ============================================================================
+// Border Radius Logical Properties
+// ============================================================================
+// border-end-end-radius, border-end-start-radius, border-start-end-radius, border-start-start-radius
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-border-radius-logical == true {
+  // Border end end radius (bottom-right in LTR, bottom-left in RTL)
+  // ============================================================================
+  .rounded-eee { border-end-end-radius: 0.25rem; }
+  .rounded-eee-sm { border-end-end-radius: 0.125rem; }
+  .rounded-eee-md { border-end-end-radius: 0.375rem; }
+  .rounded-eee-lg { border-end-end-radius: 0.5rem; }
+  .rounded-eee-xl { border-end-end-radius: 0.75rem; }
+  .rounded-eee-2xl { border-end-end-radius: 1rem; }
+  .rounded-eee-3xl { border-end-end-radius: 1.5rem; }
+  .rounded-eee-full { border-end-end-radius: 9999px; }
+  .rounded-eee-none { border-end-end-radius: 0; }
+
+  // Border end start radius (top-right in LTR, top-left in RTL)
+  // ============================================================================
+  .rounded-ees { border-end-start-radius: 0.25rem; }
+  .rounded-ees-sm { border-end-start-radius: 0.125rem; }
+  .rounded-ees-md { border-end-start-radius: 0.375rem; }
+  .rounded-ees-lg { border-end-start-radius: 0.5rem; }
+  .rounded-ees-xl { border-end-start-radius: 0.75rem; }
+  .rounded-ees-2xl { border-end-start-radius: 1rem; }
+  .rounded-ees-3xl { border-end-start-radius: 1.5rem; }
+  .rounded-ees-full { border-end-start-radius: 9999px; }
+  .rounded-ees-none { border-end-start-radius: 0; }
+
+  // Border start end radius (bottom-left in LTR, bottom-right in RTL)
+  // ============================================================================
+  .rounded-see { border-start-end-radius: 0.25rem; }
+  .rounded-see-sm { border-start-end-radius: 0.125rem; }
+  .rounded-see-md { border-start-end-radius: 0.375rem; }
+  .rounded-see-lg { border-start-end-radius: 0.5rem; }
+  .rounded-see-xl { border-start-end-radius: 0.75rem; }
+  .rounded-see-2xl { border-start-end-radius: 1rem; }
+  .rounded-see-3xl { border-start-end-radius: 1.5rem; }
+  .rounded-see-full { border-start-end-radius: 9999px; }
+  .rounded-see-none { border-start-end-radius: 0; }
+
+  // Border start start radius (top-left in LTR, top-right in RTL)
+  // ============================================================================
+  .rounded-sss { border-start-start-radius: 0.25rem; }
+  .rounded-sss-sm { border-start-start-radius: 0.125rem; }
+  .rounded-sss-md { border-start-start-radius: 0.375rem; }
+  .rounded-sss-lg { border-start-start-radius: 0.5rem; }
+  .rounded-sss-xl { border-start-start-radius: 0.75rem; }
+  .rounded-sss-2xl { border-start-start-radius: 1rem; }
+  .rounded-sss-3xl { border-start-start-radius: 1.5rem; }
+  .rounded-sss-full { border-start-start-radius: 9999px; }
+  .rounded-sss-none { border-start-start-radius: 0; }
+}

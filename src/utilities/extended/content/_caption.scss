@@ -1,0 +1,12 @@
+// ============================================================================
+// Caption Properties
+// ============================================================================
+// caption-side
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-caption == true {
+  .caption-top { caption-side: top; }
+  .caption-bottom { caption-side: bottom; }
+}

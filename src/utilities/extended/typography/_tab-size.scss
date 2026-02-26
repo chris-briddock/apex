@@ -1,0 +1,18 @@
+// ============================================================================
+// Tab Size Properties
+// ============================================================================
+// tab-size
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-tab-size == true {
+  .tab-0 { tab-size: 0; }
+  .tab-1 { tab-size: 1; }
+  .tab-2 { tab-size: 2; }
+  .tab-3 { tab-size: 3; }
+  .tab-4 { tab-size: 4; }
+  .tab-5 { tab-size: 5; }
+  .tab-6 { tab-size: 6; }
+  .tab-8 { tab-size: 8; }
+}

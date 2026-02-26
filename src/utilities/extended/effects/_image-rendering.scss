@@ -1,0 +1,13 @@
+// ============================================================================
+// Image Rendering Properties
+// ============================================================================
+// image-rendering
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-image-rendering == true {
+  .image-auto { image-rendering: auto; }
+  .image-pixelated { image-rendering: pixelated; }
+  .image-crisp-edges { image-rendering: crisp-edges; }
+}

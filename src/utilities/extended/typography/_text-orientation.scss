@@ -1,0 +1,13 @@
+// ============================================================================
+// Text Orientation Properties
+// ============================================================================
+// text-orientation
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-text-orientation == true {
+  .text-orientation-mixed { text-orientation: mixed; }
+  .text-orientation-upright { text-orientation: upright; }
+  .text-orientation-sideways { text-orientation: sideways; }
+}

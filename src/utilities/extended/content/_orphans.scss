@@ -1,0 +1,16 @@
+// ============================================================================
+// Orphans Properties
+// ============================================================================
+// orphans
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-orphans == true {
+  .orphans-0 { orphans: 0; }
+  .orphans-1 { orphans: 1; }
+  .orphans-2 { orphans: 2; }
+  .orphans-3 { orphans: 3; }
+  .orphans-4 { orphans: 4; }
+  .orphans-5 { orphans: 5; }
+}

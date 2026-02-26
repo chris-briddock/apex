@@ -1,0 +1,178 @@
+// ============================================================================
+// Color Modifiers (Consolidated)
+// ============================================================================
+// Supports Tailwind-style opacity modifiers: bg-gray-800/50, text-red-500/75
+// Uses CSS color-mix() for modern browsers
+// Previously: _opacity-modifiers.scss
+// Renamed to better reflect the actual functionality
+
+@use 'sass:string';
+@use 'sass:math';
+@use '../../../config/custom-config' as settings;
+@use '../../../mixins/dark-mode' as dm;
+
+// ============================================================================
+// Helper function to create class name with escaped slash
+// NOTE: Functions must be defined at root level, not inside @if blocks
+// ============================================================================
+@function opacity-class($prefix, $name, $opacity) {
+  // Use escaped slash for opacity modifier (e.g., bg-gray-700/70)
+  $opacity-decimal: math.div($opacity, 100);
+
+  @return string.unquote('.#{$prefix}-#{$name}\\/#{$opacity}');
+}
+
+@if settings.$enable-color-modifiers == true {
+  // ============================================================================
+  // Configuration
+  // ============================================================================
+  $opacity-values: (5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95);
+
+  // Semantic colors with full opacity range
+  $semantic-colors: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'white', 'black');
+
+  // Gray colors
+  $gray-shades: (500, 600, 700, 800, 900);
+
+  // ============================================================================
+  // Background Color Opacity Modifiers
+  // ============================================================================
+  @if settings.$enable-colors == true {
+    // Semantic colors with all opacity values
+    @each $color in $semantic-colors {
+      @each $opacity in $opacity-values {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('bg', $color, $opacity)} {
+          background-color: string.unquote("oklch(var(--color-#{$color}) / #{$opacity-decimal})");
+        }
+      }
+
+      // Full opacity (no alpha needed)
+      #{opacity-class('bg', $color, 100)} {
+        background-color: var(--color-#{$color});
+      }
+    }
+
+    // Gray colors
+    @each $shade in $gray-shades {
+      @each $opacity in $opacity-values {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('bg', 'gray-#{$shade}', $opacity)} {
+          background-color: string.unquote("oklch(var(--color-gray-#{$shade}) / #{$opacity-decimal})");
+        }
+      }
+      #{opacity-class('bg', 'gray-#{$shade}', 100)} {
+        background-color: var(--color-gray-#{$shade});
+      }
+    }
+  }
+
+  // ============================================================================
+  // Text Color Opacity Modifiers
+  // ============================================================================
+  @if settings.$enable-typography == true {
+    // Semantic text colors (limited opacity: 50, 75 for common use)
+    $text-opacity-values: (50, 75);
+
+    @each $color in $semantic-colors {
+      @each $opacity in $text-opacity-values {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('text', $color, $opacity)} {
+          color: string.unquote("oklch(var(--color-#{$color}) / #{$opacity-decimal})");
+        }
+      }
+    }
+
+    // Gray text colors
+    @each $shade in $gray-shades {
+      @each $opacity in $text-opacity-values {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('text', 'gray-#{$shade}', $opacity)} {
+          color: string.unquote("oklch(var(--color-gray-#{$shade}) / #{$opacity-decimal})");
+        }
+      }
+    }
+  }
+
+  // ============================================================================
+  // Border Color Opacity Modifiers
+  // ============================================================================
+  @if settings.$enable-borders == true {
+    $border-opacity-values: (25, 50);
+
+    // Key colors for borders
+    $border-colors: ('primary', 'secondary', 'dark', 'white', 'black');
+
+    @each $color in $border-colors {
+      @each $opacity in $border-opacity-values {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('border', $color, $opacity)} {
+          border-color: string.unquote("oklch(var(--color-#{$color}) / #{$opacity-decimal})");
+        }
+      }
+    }
+
+    // Gray borders
+    @each $opacity in $border-opacity-values {
+      $opacity-decimal: math.div($opacity, 100);
+      #{opacity-class('border', 'gray-500', $opacity)} {
+        border-color: string.unquote("oklch(var(--color-gray-500) / #{$opacity-decimal})");
+      }
+    }
+  }
+
+  // ============================================================================
+  // Dark Mode Opacity Modifiers (Consolidated)
+  // ============================================================================
+  @if settings.$enable-dark-mode == true {
+    // Dark mode background colors
+    @include dm.dark-mode {
+      @each $shade in (700, 800, 900) {
+        @each $opacity in (50, 75) {
+          $opacity-decimal: math.div($opacity, 100);
+          #{opacity-class('dark\:bg', 'gray-#{$shade}', $opacity)} {
+            background-color: string.unquote("oklch(var(--color-gray-#{$shade}) / #{$opacity-decimal})");
+          }
+        }
+      }
+    }
+
+    // Dark mode text colors
+    @include dm.dark-mode {
+      @each $opacity in (50, 75) {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('dark\:text', 'white', $opacity)} {
+          color: string.unquote("oklch(var(--color-white) / #{$opacity-decimal})");
+        }
+        #{opacity-class('dark\:text', 'gray-300', $opacity)} {
+          color: string.unquote("oklch(var(--color-gray-300) / #{$opacity-decimal})");
+        }
+      }
+    }
+
+    // Dark mode border colors
+    @include dm.dark-mode {
+      @each $opacity in (25, 50) {
+        $opacity-decimal: math.div($opacity, 100);
+        #{opacity-class('dark\:border', 'gray-700', $opacity)} {
+          border-color: string.unquote("oklch(var(--color-gray-700) / #{$opacity-decimal})");
+        }
+      }
+    }
+  }
+
+  // ============================================================================
+  // CSS Custom Property Opacity Modifiers (Arbitrary Values)
+  // ============================================================================
+  .bg-opacity-\[var\(--bg-opacity\)\] {
+    background-color: string.unquote("oklch(var(--bg-color, var(--color-primary)) / var(--bg-opacity, 1))");
+  }
+
+  .text-opacity-\[var\(--text-opacity\)\] {
+    color: oklch(var(--text-color, currentcolor) / var(--text-opacity, 1));
+  }
+
+  .border-opacity-\[var\(--border-opacity\)\] {
+    border-color: oklch(var(--border-color, currentcolor) / var(--border-opacity, 1));
+  }
+}

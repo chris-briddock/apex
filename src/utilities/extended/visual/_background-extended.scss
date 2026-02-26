@@ -1,0 +1,67 @@
+// ============================================================================
+// Background Extended Properties
+// ============================================================================
+// Background attachment, clip, origin, position, repeat, size
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-background-extended == true {
+  // Background attachment
+  // ============================================================================
+  .bg-fixed { background-attachment: fixed; }
+  .bg-local { background-attachment: local; }
+  .bg-scroll { background-attachment: scroll; }
+
+  // Background clip
+  // ============================================================================
+  .bg-clip-border { background-clip: border-box; }
+  .bg-clip-padding { background-clip: padding-box; }
+  .bg-clip-content { background-clip: content-box; }
+  .bg-clip-text { background-clip: text; }
+
+  // Background origin
+  // ============================================================================
+  .bg-origin-border { background-origin: border-box; }
+  .bg-origin-padding { background-origin: padding-box; }
+  .bg-origin-content { background-origin: content-box; }
+
+  // Background position (extended)
+  // ============================================================================
+  .bg-position-left { background-position: left; }
+  .bg-position-right { background-position: right; }
+  .bg-position-top { background-position: top; }
+  .bg-position-bottom { background-position: bottom; }
+  .bg-position-center { background-position: center; }
+  .bg-position-top-left { background-position: top left; }
+  .bg-position-top-right { background-position: top right; }
+  .bg-position-bottom-left { background-position: bottom left; }
+  .bg-position-bottom-right { background-position: bottom right; }
+
+  // Background position X
+  // ============================================================================
+  .bg-position-x-left { background-position-x: left; }
+  .bg-position-x-right { background-position-x: right; }
+  .bg-position-x-center { background-position-x: center; }
+
+  // Background position Y
+  // ============================================================================
+  .bg-position-y-top { background-position-y: top; }
+  .bg-position-y-bottom { background-position-y: bottom; }
+  .bg-position-y-center { background-position-y: center; }
+
+  // Background repeat
+  // ============================================================================
+  .bg-repeat { background-repeat: repeat; }
+  .bg-no-repeat { background-repeat: no-repeat; }
+  .bg-repeat-x { background-repeat: repeat-x; }
+  .bg-repeat-y { background-repeat: repeat-y; }
+  .bg-repeat-space { background-repeat: space; }
+  .bg-repeat-round { background-repeat: round; }
+
+  // Background size
+  // ============================================================================
+  .bg-cover { background-size: cover; }
+  .bg-contain { background-size: contain; }
+  .bg-auto { background-size: auto; }
+}

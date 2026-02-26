@@ -2,7 +2,7 @@
 // State Variant Mixins
 // ============================================================================
 
-@use '../config/settings' as settings;
+@use '../config/custom-config' as settings;
 
 // Hover state mixin
 @mixin hover {

@@ -1,0 +1,13 @@
+// ============================================================================
+// Word Wrap Properties
+// ============================================================================
+// word-wrap
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-word-wrap == true {
+  .wrap-normal { overflow-wrap: normal; }
+  .wrap-anywhere { overflow-wrap: anywhere; }
+  .wrap-break-word { overflow-wrap: break-word; }
+}

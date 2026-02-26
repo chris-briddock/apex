@@ -1,0 +1,107 @@
+// ============================================================================
+// Ring Utilities (Focus rings, borders with ring)
+// ============================================================================
+// All ring utilities use CSS custom properties for runtime theming support.
+// The default values reference theme variables from the themes module.
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-borders == true {
+  // Define ring CSS variables on :root
+  :root {
+    --ring-offset-shadow: 0 0 #0000;
+    --ring-shadow: 0 0 #0000;
+    --shadow: 0 0 #0000;
+    --ring-inset: ;
+    --ring-offset-width: 0px;
+    --ring-offset-color: var(--color-white);
+    --ring-color: var(--color-primary);
+    --ring-opacity: 1;
+  }
+
+  // Ring width
+  $ring-widths: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    4: 4px,
+    8: 8px
+  );
+
+  @each $key, $value in $ring-widths {
+    .ring-#{$key} {
+      --shadow: 0 0 #0000;
+      --ring-inset: ;
+      --ring-offset-width: 0px;
+      --ring-offset-color: var(--color-white);
+      --ring-color: var(--color-primary);
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+      --ring-shadow: 0 0 0 calc(#{$value} + var(--ring-offset-width)) var(--ring-color);
+      box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
+    }
+  }
+
+  // Ring offset width
+  @each $key, $value in $ring-widths {
+    .ring-offset-#{$key} {
+      --ring-offset-width: #{$value};
+      --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+    }
+  }
+
+  // Ring colors - using CSS custom properties from theme
+  $ring-colors: (
+    primary: var(--color-primary),
+    secondary: var(--color-secondary),
+    success: var(--color-success),
+    danger: var(--color-danger),
+    warning: var(--color-warning),
+    info: var(--color-info),
+    light: var(--color-light),
+    dark: var(--color-dark),
+    "white": var(--color-white),
+    "black": var(--color-black),
+    "transparent": var(--color-transparent),
+    gray-50: var(--color-gray-50),
+    gray-100: var(--color-gray-100),
+    gray-200: var(--color-gray-200),
+    gray-300: var(--color-gray-300),
+    gray-400: var(--color-gray-400),
+    gray-500: var(--color-gray-500),
+    gray-600: var(--color-gray-600),
+    gray-700: var(--color-gray-700),
+    gray-800: var(--color-gray-800),
+    gray-900: var(--color-gray-900),
+    blue-500: var(--color-blue-500),
+    green-500: var(--color-green-500),
+    red-500: var(--color-red-500),
+    yellow-500: var(--color-yellow-500),
+    purple-500: var(--color-purple-500),
+  );
+
+  @each $key, $value in $ring-colors {
+    .ring-#{$key} {
+      --ring-color: #{$value};
+    }
+  }
+
+  // Ring offset colors
+  @each $key, $value in $ring-colors {
+    .ring-offset-#{$key} {
+      --ring-offset-color: #{$value};
+    }
+  }
+
+  // Ring inset
+  .ring-inset {
+    --ring-inset: inset;
+  }
+
+  // Ring opacity
+  .ring-opacity-0 { --ring-opacity: 0; }
+  .ring-opacity-25 { --ring-opacity: 0.25; }
+  .ring-opacity-50 { --ring-opacity: 0.5; }
+  .ring-opacity-75 { --ring-opacity: 0.75; }
+  .ring-opacity-100 { --ring-opacity: 1; }
+
+}

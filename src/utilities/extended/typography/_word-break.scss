@@ -1,0 +1,14 @@
+// ============================================================================
+// Word Break Properties
+// ============================================================================
+// word-break
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-word-break == true {
+  .break-normal { word-break: normal; }
+  .break-words { word-break: words; }
+  .break-all { word-break: break-all; }
+  .break-keep { word-break: keep-all; }
+}

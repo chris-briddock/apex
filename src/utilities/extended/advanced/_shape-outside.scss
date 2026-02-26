@@ -1,0 +1,15 @@
+// ============================================================================
+// Shape Outside Properties
+// ============================================================================
+// shape-outside
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-shape-outside == true {
+  .shape-none { shape-outside: none; }
+  .shape-circle { shape-outside: circle(50%); }
+  .shape-ellipse { shape-outside: ellipse(50% 50%); }
+  .shape-inset { shape-outside: inset(50%); }
+  .shape-polygon { shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+}

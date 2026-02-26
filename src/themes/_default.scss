@@ -5,8 +5,7 @@
 // All ApexCSS utilities can be customized by overriding these variables.
 
 @use "sass:map";
-@use '../config/settings' as settings;
-@use '../config/custom' as custom;
+@use '../config/custom-config' as custom;
 
 // ============================================================================
 // CSS Custom Properties - Root Level
@@ -91,10 +90,10 @@
 
   --color-light: #f3f4f6;
   --color-dark: #1f2937;
-  --color-white: #ffffff;
-  --color-black: #000000;
+  --color-white: #fff;
+  --color-black: #000;
   --color-transparent: transparent;
-  --color-current: currentColor;
+  --color-current: currentcolor;
 
   // ============================================================================
   // Color Palette - Extended Colors
@@ -290,9 +289,9 @@
   // ============================================================================
   // Typography - Font Families
   // ============================================================================
-  --font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-family-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-family-sans: ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+  --font-family-serif: ui-serif, georgia, cambria, "Times New Roman", times, serif;
+  --font-family-mono: ui-monospace, sfmono-regular, "SF Mono", consolas, "Liberation Mono", menlo, monospace;
 
   // ============================================================================
   // Border Radius Scale
@@ -397,13 +396,39 @@
   // ============================================================================
   // List utilities
   // ============================================================================
-  --list-marker-color: currentColor;
+  --list-marker-color: currentcolor;
 
   // ============================================================================
   // Space between utilities
   // ============================================================================
   --space-x-reverse: 0;
   --space-y-reverse: 0;
+
+  // ============================================================================
+  // Ring Utility Variables
+  // ============================================================================
+  --ring-offset-shadow: 0 0 #0000;
+  --ring-shadow: 0 0 #0000;
+  --shadow: 0 0 #0000;
+  --ring-inset: ;
+  --ring-offset-width: 0px;
+  --ring-offset-color: #fff;
+  --ring-color: rgba(59, 130, 246, 0.5);
+  --ring-opacity: 1;
+
+    /* Focus mode variables */
+  --focus-ring-width: 2px;
+  --focus-ring-style: solid;
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-offset: 2px;
+
+  /* Component theme variables */
+  --component-bg: var(--color-white);
+  --component-border: var(--color-gray-200);
+  --component-radius: var(--border-radius-lg);
+  --component-shadow: var(--shadow-base);
+  --component-padding: var(--spacing-6);
+  --component-border-focus: var(--color-primary);
 
 }
 

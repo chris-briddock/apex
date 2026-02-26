@@ -1,6 +1,6 @@
 {
   "name": "apexcss",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Apex` - A utility-first CSS framework with 500+ utility classes",
   "type": "module",
   "main": "dist/framework.css",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run arbitrary:build && npm run config:build && vite build && mv dist/framework2.css dist/framework.css",
+    "build": "npm run config:build && npm run lint && vite build",
     "preview": "vite preview",
     "watch": "vite build --watch",
     "lint": "stylelint 'src/**/*.scss'",
@@ -21,8 +21,6 @@
     "config:init": "node tools/config-builder.js --init",
     "config:build": "node tools/config-builder.js",
     "config:watch": "node tools/config-builder.js --watch",
-    "config:css": "node tools/config-builder.js --css",
-    "arbitrary:build": "node tools/arbitrary-values-generator.js",
     "test:e2e": "cd tests/e2e && npm run test:e2e",
     "test:e2e:ui": "cd tests/e2e && npm run test:e2e:ui",
     "test:e2e:install": "cd tests/e2e && npm install && npx playwright install chromium"

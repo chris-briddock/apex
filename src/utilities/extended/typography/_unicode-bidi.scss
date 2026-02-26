@@ -1,0 +1,16 @@
+// ============================================================================
+// Unicode Bidi Properties
+// ============================================================================
+// unicode-bidi
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-unicode-bidi == true {
+  .bidi-normal { unicode-bidi: normal; }
+  .bidi-embed { unicode-bidi: embed; }
+  .bidi-bidi-override { unicode-bidi: bidi-override; }
+  .bidi-isolate { unicode-bidi: isolate; }
+  .bidi-isolate-override { unicode-bidi: isolate-override; }
+  .bidi-plaintext { unicode-bidi: plaintext; }
+}

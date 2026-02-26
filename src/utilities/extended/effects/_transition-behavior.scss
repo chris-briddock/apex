@@ -1,0 +1,11 @@
+// ============================================================================
+// Transition Behavior Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-transition-behavior == true {
+  // Transition behavior
+  .transition-normal { transition-behavior: normal; }
+  .transition-allow-discrete { transition-behavior: allow-discrete; }
+}

@@ -2,7 +2,7 @@
 // Active State Variants
 // ============================================================================
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-active == true {
   // Active text color

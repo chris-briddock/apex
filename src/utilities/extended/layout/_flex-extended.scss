@@ -1,0 +1,20 @@
+// ============================================================================
+// Flex Extended Properties
+// ============================================================================
+// flex-flow
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-flex-extended == true {
+  // Flex flow (shorthand for flex-direction and flex-wrap)
+  // ============================================================================
+  .flex-flow-row { flex-flow: row nowrap; }
+  .flex-flow-row-reverse { flex-flow: row-reverse nowrap; }
+  .flex-flow-col { flex-flow: column nowrap; }
+  .flex-flow-col-reverse { flex-flow: column-reverse nowrap; }
+  .flex-flow-row-wrap { flex-flow: row wrap; }
+  .flex-flow-row-reverse-wrap { flex-flow: row-reverse wrap; }
+  .flex-flow-col-wrap { flex-flow: column wrap; }
+  .flex-flow-col-reverse-wrap { flex-flow: column-reverse wrap; }
+}

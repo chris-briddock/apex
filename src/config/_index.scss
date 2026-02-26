@@ -1,8 +1,14 @@
 // ============================================================================
 // Config Entry Point
 // ============================================================================
+// This module provides the configuration for the framework.
+// Configuration Source:
+// _custom-config.scss - Auto-generated from apex.config.js (DO NOT EDIT)
+// To customize configuration:
+// 1. Modify your apex.config.js file
+// 2. Run: npm run config:build
+// The _custom-config.scss file is regenerated with your configuration.
+// ============================================================================
 
-// Custom config contains all settings including breakpoints and prefix
-@forward 'custom';
-@forward 'breakpoints' hide $breakpoints;
-@forward 'prefix' hide $prefix, $prefix-map;
+// Forward from auto-generated config
+@forward 'custom-config';

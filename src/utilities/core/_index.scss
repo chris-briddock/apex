@@ -1,0 +1,50 @@
+// ============================================================================
+// Core Utilities Index
+// ============================================================================
+// This file serves as the entry point for all core utility classes.
+// Core utilities include essential CSS properties like spacing, colors,
+// typography, flexbox, grid, positioning, display, borders, shadows, etc.
+// Usage:
+//   @use 'utilities/core';
+//   @use 'utilities/core' as core;
+
+// ============================================================================
+// Layout
+// ============================================================================
+@forward 'layout/display';
+@forward 'layout/flexbox';
+@forward 'layout/grid';
+@forward 'layout/positioning';
+@forward 'layout/visibility';
+
+// ============================================================================
+// Spacing
+// ============================================================================
+@forward 'spacing/spacing';
+@forward 'spacing/sizing';
+
+// ============================================================================
+// Typography
+// ============================================================================
+@forward 'typography/typography';
+
+// ============================================================================
+// Visual (Colors, Backgrounds, Borders, Effects)
+// ============================================================================
+@forward 'visual/colors';
+@forward 'visual/backgrounds';
+@forward 'visual/borders';
+@forward 'visual/shadows';
+@forward 'visual/overflow';
+@forward 'visual/opacity';
+@forward 'visual/object-fit';
+
+// ============================================================================
+// Interaction
+// ============================================================================
+@forward 'interaction/cursor';
+@forward 'interaction/transitions';
+
+// ============================================================================
+// End of Core Utilities Index
+// ============================================================================

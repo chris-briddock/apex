@@ -1,0 +1,244 @@
+// ============================================================================
+// Logical Properties (Modern CSS for RTL Support)
+// ============================================================================
+// Logical properties use inline/block flow instead of physical directions.
+// This provides automatic RTL support without separate utility sets.
+// Physical -> Logical Mapping:
+//   left/right  -> inline-start/end
+//   top/bottom  -> block-start/end
+//   width       -> inline-size
+//   height      -> block-size
+//   margin-x    -> margin-inline
+//   margin-y    -> margin-block
+//   padding-x   -> padding-inline
+//   padding-y   -> padding-block
+// Browser Support: All modern browsers (Chrome 87+, Firefox 66+, Safari 14+)
+
+@use 'sass:map';
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-logical-properties == true {
+  // ============================================================================
+  // Logical Spacing Scale
+  // ============================================================================
+  $spacing-keys: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, px);
+
+  // ============================================================================
+  // Logical Margins
+  // ============================================================================
+  @if settings.$enable-spacing == true {
+    // Inline axis margins (replaces mx-*)
+    @each $key in $spacing-keys {
+      $var-name: null;
+
+      @if $key == px {
+        $var-name: 'var(--spacing-px)';
+      } @else {
+        $var-name: var(--spacing-#{$key});
+      }
+      .mi-#{$key} { margin-inline: #{$var-name}; }
+      .mis-#{$key} { margin-inline-start: #{$var-name}; }
+      .mie-#{$key} { margin-inline-end: #{$var-name}; }
+    }
+
+    // Block axis margins (replaces my-*)
+    @each $key in $spacing-keys {
+      $var-name: null;
+
+      @if $key == px {
+        $var-name: 'var(--spacing-px)';
+      } @else {
+        $var-name: var(--spacing-#{$key});
+      }
+      .mb-#{$key} { margin-block: #{$var-name}; }
+      .mbs-#{$key} { margin-block-start: #{$var-name}; }
+      .mbe-#{$key} { margin-block-end: #{$var-name}; }
+    }
+
+    // Auto margins
+    .mi-auto { margin-inline: auto; }
+    .mis-auto { margin-inline-start: auto; }
+    .mie-auto { margin-inline-end: auto; }
+    .mb-auto { margin-block: auto; }
+    .mbs-auto { margin-block-start: auto; }
+    .mbe-auto { margin-block-end: auto; }
+
+    // ============================================================================
+    // Logical Padding
+    // ============================================================================
+    // Inline axis padding (replaces px-*)
+    @each $key in $spacing-keys {
+      $var-name: null;
+
+      @if $key == px {
+        $var-name: 'var(--spacing-px)';
+      } @else {
+        $var-name: var(--spacing-#{$key});
+      }
+      .pi-#{$key} { padding-inline: #{$var-name}; }
+      .pis-#{$key} { padding-inline-start: #{$var-name}; }
+      .pie-#{$key} { padding-inline-end: #{$var-name}; }
+    }
+
+    // Block axis padding (replaces py-*)
+    @each $key in $spacing-keys {
+      $var-name: null;
+
+      @if $key == px {
+        $var-name: 'var(--spacing-px)';
+      } @else {
+        $var-name: var(--spacing-#{$key});
+      }
+      .pb-#{$key} { padding-block: #{$var-name}; }
+      .pbs-#{$key} { padding-block-start: #{$var-name}; }
+      .pbe-#{$key} { padding-block-end: #{$var-name}; }
+    }
+
+    // ============================================================================
+    // Logical Border Radius (for start/end corners)
+    // ============================================================================
+    @if settings.$enable-borders == true {
+      .rounded-s { border-start-start-radius: var(--border-radius-default); border-start-end-radius: var(--border-radius-default); }
+      .rounded-e { border-end-start-radius: var(--border-radius-default); border-end-end-radius: var(--border-radius-default); }
+      .rounded-t { border-start-start-radius: var(--border-radius-default); border-start-end-radius: var(--border-radius-default); }
+      .rounded-b { border-end-start-radius: var(--border-radius-default); border-end-end-radius: var(--border-radius-default); }
+
+      // Border width logical
+      @each $key in $spacing-keys {
+        @if $key != px {
+          .bis-#{$key} { border-inline-start-width: var(--spacing-#{$key}); }
+          .bie-#{$key} { border-inline-end-width: var(--spacing-#{$key}); }
+          .bbs-#{$key} { border-block-start-width: var(--spacing-#{$key}); }
+          .bbe-#{$key} { border-block-end-width: var(--spacing-#{$key}); }
+        }
+      }
+    }
+  }
+
+  // ============================================================================
+  // Logical Sizing
+  // ============================================================================
+  @if settings.$enable-sizing == true {
+    // Inline-size (width)
+    .is-auto { inline-size: auto; }
+    .is-full { inline-size: 100%; }
+    .is-min { inline-size: min-content; }
+    .is-max { inline-size: max-content; }
+    .is-fit { inline-size: fit-content; }
+
+    // Block-size (height)
+    .bs-auto { block-size: auto; }
+    .bs-full { block-size: 100%; }
+    .bs-min { block-size: min-content; }
+    .bs-max { block-size: max-content; }
+    .bs-fit { block-size: fit-content; }
+    .bs-screen { block-size: 100vh; }
+
+    // Min/Max logical sizing
+    .min-is-full { min-inline-size: 100%; }
+    .min-is-min { min-inline-size: min-content; }
+    .min-is-max { min-inline-size: max-content; }
+    .max-is-full { max-inline-size: 100%; }
+    .max-is-min { max-inline-size: min-content; }
+    .max-is-max { max-inline-size: max-content; }
+
+    .min-bs-full { min-block-size: 100%; }
+    .min-bs-min { min-block-size: min-content; }
+    .min-bs-max { min-block-size: max-content; }
+    .min-bs-screen { min-block-size: 100vh; }
+    .max-bs-full { max-block-size: 100%; }
+    .max-bs-min { max-block-size: min-content; }
+    .max-bs-max { max-block-size: max-content; }
+    .max-bs-screen { max-block-size: 100vh; }
+  }
+
+  // ============================================================================
+  // Logical Positioning (Inset)
+  // ============================================================================
+  @if settings.$enable-positioning == true {
+    @each $key in $spacing-keys {
+      $var-name: null;
+
+      @if $key == px {
+        $var-name: 'var(--spacing-px)';
+      } @else {
+        $var-name: var(--spacing-#{$key});
+      }
+
+      // Inline insets
+      .inset-i-#{$key} { inset-inline: #{$var-name}; }
+      .inset-is-#{$key} { inset-inline-start: #{$var-name}; }
+      .inset-ie-#{$key} { inset-inline-end: #{$var-name}; }
+
+      // Block insets
+      .inset-b-#{$key} { inset-block: #{$var-name}; }
+      .inset-bs-#{$key} { inset-block-start: #{$var-name}; }
+      .inset-be-#{$key} { inset-block-end: #{$var-name}; }
+    }
+
+    // Auto insets
+    .inset-i-auto { inset-inline: auto; }
+    .inset-is-auto { inset-inline-start: auto; }
+    .inset-ie-auto { inset-inline-end: auto; }
+    .inset-b-auto { inset-block: auto; }
+    .inset-bs-auto { inset-block-start: auto; }
+    .inset-be-auto { inset-block-end: auto; }
+  }
+
+  // ============================================================================
+  // Responsive Logical Utilities
+  // ============================================================================
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
+
+    @media (min-width: $bp-value) {
+      // Responsive logical margins
+      @each $key in $spacing-keys {
+        $var-name: null;
+
+        @if $key == px {
+          $var-name: 'var(--spacing-px)';
+        } @else {
+          $var-name: var(--spacing-#{$key});
+        }
+
+        .#{$bp-class}\:mi-#{$key} { margin-inline: #{$var-name}; }
+        .#{$bp-class}\:mis-#{$key} { margin-inline-start: #{$var-name}; }
+        .#{$bp-class}\:mie-#{$key} { margin-inline-end: #{$var-name}; }
+        .#{$bp-class}\:mb-#{$key} { margin-block: #{$var-name}; }
+        .#{$bp-class}\:mbs-#{$key} { margin-block-start: #{$var-name}; }
+        .#{$bp-class}\:mbe-#{$key} { margin-block-end: #{$var-name}; }
+
+        // Responsive logical padding
+        .#{$bp-class}\:pi-#{$key} { padding-inline: #{$var-name}; }
+        .#{$bp-class}\:pis-#{$key} { padding-inline-start: #{$var-name}; }
+        .#{$bp-class}\:pie-#{$key} { padding-inline-end: #{$var-name}; }
+        .#{$bp-class}\:pb-#{$key} { padding-block: #{$var-name}; }
+        .#{$bp-class}\:pbs-#{$key} { padding-block-start: #{$var-name}; }
+        .#{$bp-class}\:pbe-#{$key} { padding-block-end: #{$var-name}; }
+      }
+
+      // Responsive logical sizing
+      .#{$bp-class}\:is-auto { inline-size: auto; }
+      .#{$bp-class}\:is-full { inline-size: 100%; }
+      .#{$bp-class}\:bs-auto { block-size: auto; }
+      .#{$bp-class}\:bs-full { block-size: 100%; }
+      .#{$bp-class}\:min-bs-screen { min-block-size: 100vh; }
+    }
+  }
+
+  // ============================================================================
+  // Dark Mode Logical Utilities
+  // ============================================================================
+  @if settings.$enable-dark-mode == true {
+    @media (prefers-color-scheme: dark) {
+      .dark\:is-full { inline-size: 100%; }
+      .dark\:bs-full { block-size: 100%; }
+    }
+
+    [data-theme="dark"] {
+      .dark\:is-full { inline-size: 100%; }
+      .dark\:bs-full { block-size: 100%; }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// ============================================================================
+// All Property Utilities
+// ============================================================================
+// The 'all' property resets all properties except direction and unicode-bidi
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-all == true {
+  .all-initial { all: initial; }
+  .all-inherit { all: inherit; }
+  .all-unset { all: unset; }
+  .all-revert { all: revert; }
+}

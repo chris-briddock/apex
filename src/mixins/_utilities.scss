@@ -7,21 +7,18 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
-@use '../config/settings' as settings;
-@use '../config/breakpoints' as bp;
+@use '../config/custom-config' as settings;
 
 // ============================================================================
 // Generate utilities from a CSS variable map
 // ============================================================================
 // This mixin creates utility classes that reference CSS custom properties
 // instead of hardcoded values, enabling runtime theming.
-//
 // Usage:
 //   @include generate-from-css-vars('text', 'font-size', (
 //     sm: '--font-size-sm',
 //     base: '--font-size-base'
 //   ));
-//
 // Output:
 //   .text-sm { font-size: var(--font-size-sm); }
 //   .text-base { font-size: var(--font-size-base); }
@@ -38,10 +35,8 @@
 // Generate color utilities from CSS variables
 // ============================================================================
 // Creates text, background, and border color utilities using CSS custom properties
-//
 // Usage:
 //   @include generate-color-utilities('primary', '--color-primary');
-//
 // Output:
 //   .text-primary { color: var(--color-primary); }
 //   .bg-primary { background-color: var(--color-primary); }
@@ -63,13 +58,11 @@
 // Generate spacing utilities from CSS variables
 // ============================================================================
 // Creates margin and padding utilities using CSS custom properties
-//
 // Usage:
 //   @include generate-spacing-utilities('m', 'margin', (
 //     1: '--spacing-1',
 //     2: '--spacing-2'
 //   ));
-//
 // Output:
 //   .m-1 { margin: var(--spacing-1); }
 //   .m-2 { margin: var(--spacing-2); }
@@ -121,7 +114,6 @@
 // Generate responsive utilities from CSS variables
 // ============================================================================
 // Creates responsive variants of utilities at all breakpoints
-//
 // Usage:
 //   @include generate-responsive-css-vars('text', 'font-size', (
 //     sm: '--font-size-sm',
@@ -129,7 +121,7 @@
 //   ));
 
 @mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  @each $bp-name, $bp-value in bp.$breakpoints {
+  @each $bp-name, $bp-value in settings.$breakpoints {
     @media (min-width: $bp-value) {
       @each $name, $var-name in $var-map {
         .#{$bp-name}\:#{$class-name}-#{$name} {
@@ -144,7 +136,6 @@
 // Generate dark mode utilities from CSS variables
 // ============================================================================
 // Creates dark mode variants that swap colors automatically
-//
 // Usage:
 //   @include generate-dark-mode-utilities('primary', '--color-primary');
 
@@ -177,7 +168,6 @@
 // ============================================================================
 // Creates opacity variants using CSS color-mix() function
 // This is more modern than rgba() and works with CSS variables
-//
 // Usage:
 //   @include generate-opacity-variants('bg-primary', 'var(--color-primary)');
 

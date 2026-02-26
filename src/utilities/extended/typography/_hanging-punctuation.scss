@@ -1,0 +1,17 @@
+// ============================================================================
+// Hanging Punctuation Properties
+// ============================================================================
+// hanging-punctuation
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-hanging-punctuation == true {
+  .hang-none { hanging-punctuation: none; }
+  .hang-first { hanging-punctuation: first; }
+  .hang-last { hanging-punctuation: last; }
+  .hang-force-end { hanging-punctuation: force-end; }
+  .hang-force-start { hanging-punctuation: force-start; }
+  .hang-allow-end { hanging-punctuation: allow-end; }
+  .hang-allow-start { hanging-punctuation: allow-start; }
+}

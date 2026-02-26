@@ -1,0 +1,31 @@
+// ============================================================================
+// List Style Extended Properties
+// ============================================================================
+// list-style-image, list-style-position, list-style-type
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-list-style-extended == true {
+  // List style image
+  // ============================================================================
+  .list-image-none { list-style-image: none; }
+
+  // List style position
+  // ============================================================================
+  .list-inside { list-style-position: inside; }
+  .list-outside { list-style-position: outside; }
+
+  // List style type
+  // ============================================================================
+  .list-none { list-style-type: none; }
+  .list-disc { list-style-type: disc; }
+  .list-circle { list-style-type: circle; }
+  .list-square { list-style-type: square; }
+  .list-decimal { list-style-type: decimal; }
+  .list-decimal-leading-zero { list-style-type: decimal-leading-zero; }
+  .list-lower-roman { list-style-type: lower-roman; }
+  .list-upper-roman { list-style-type: upper-roman; }
+  .list-lower-alpha { list-style-type: lower-alpha; }
+  .list-upper-alpha { list-style-type: upper-alpha; }
+}

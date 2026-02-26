@@ -1,0 +1,36 @@
+// ============================================================================
+// Page Break Properties
+// ============================================================================
+// page-break-after, page-break-before, page-break-inside
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-page-break == true {
+  // Page break after
+  // ============================================================================
+  .break-after-auto { break-after: auto; }
+  .break-after-avoid { break-after: avoid; }
+  .break-after-always { break-after: always; }
+  .break-after-left { break-after: left; }
+  .break-after-right { break-after: right; }
+  .break-after-column { break-after: column; }
+  .break-after-avoid-column { break-after: avoid-column; }
+
+  // Page break before
+  // ============================================================================
+  .break-before-auto { break-before: auto; }
+  .break-before-avoid { break-before: avoid; }
+  .break-before-always { break-before: always; }
+  .break-before-left { break-before: left; }
+  .break-before-right { break-before: right; }
+  .break-before-column { break-before: column; }
+  .break-before-avoid-column { break-before: avoid-column; }
+
+  // Page break inside
+  // ============================================================================
+  .break-inside-auto { break-inside: auto; }
+  .break-inside-avoid { break-inside: avoid; }
+  .break-inside-avoid-page { break-inside: avoid-page; }
+  .break-inside-avoid-column { break-inside: avoid-column; }
+}

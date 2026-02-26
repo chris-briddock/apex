@@ -1,0 +1,13 @@
+// ============================================================================
+// Writing Mode Properties
+// ============================================================================
+// writing-mode
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-writing-mode == true {
+  .writing-horizontal-tb { writing-mode: horizontal-tb; }
+  .writing-vertical-rl { writing-mode: vertical-rl; }
+  .writing-vertical-lr { writing-mode: vertical-lr; }
+}

@@ -1,0 +1,14 @@
+// ============================================================================
+// Hyphenate Properties
+// ============================================================================
+// hyphenate-character
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-hyphenate == true {
+  .hyphenate-auto { hyphenate-character: auto; }
+  .hyphenate-space { hyphenate-character: ' '; }
+  .hyphenate-dash { hyphenate-character: '-'; }
+  .hyphenate-em-dash { hyphenate-character: '—'; }
+}

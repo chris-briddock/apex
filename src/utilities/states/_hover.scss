@@ -2,7 +2,7 @@
 // Hover State Variants
 // ============================================================================
 
-@use '../../config/settings' as settings;
+@use '../../config/custom-config' as settings;
 
 @if settings.$enable-hover == true {
   // Hover text color - theme colors
@@ -47,17 +47,15 @@
       .dark\:hover\:text-dark:hover { color: var(--color-light); }
       .dark\:hover\:text-white:hover { color: var(--color-black); }
       .dark\:hover\:text-black:hover { color: var(--color-white); }
-    }
 
-    // Dark mode hover gray text colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray text colors - via data-theme="dark" attribute
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
       }
     }
 
-    // Dark mode hover gray text colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    // Dark mode hover gray text colors - via media query
+    @media (prefers-color-scheme: dark) {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
       }
@@ -109,17 +107,15 @@
       .dark\:hover\:bg-dark:hover { background-color: var(--color-light); }
       .dark\:hover\:bg-white:hover { background-color: var(--color-black); }
       .dark\:hover\:bg-transparent:hover { background-color: transparent; }
-    }
 
-    // Dark mode hover gray background colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray background colors - via data-theme="dark" attribute
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
       }
     }
 
-    // Dark mode hover gray background colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    // Dark mode hover gray background colors - via media query
+    @media (prefers-color-scheme: dark) {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
       }
@@ -168,17 +164,15 @@
       .dark\:hover\:border-light:hover { border-color: var(--color-dark); }
       .dark\:hover\:border-dark:hover { border-color: var(--color-light); }
       .dark\:hover\:border-white:hover { border-color: var(--color-black); }
-    }
 
-    // Dark mode hover gray border colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray border colors - via data-theme="dark" attribute
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
       }
     }
 
-    // Dark mode hover gray border colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    // Dark mode hover gray border colors - via media query
+    @media (prefers-color-scheme: dark) {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
       }
@@ -207,6 +201,7 @@
       .dark\:hover\:text-purple-500:hover { color: var(--color-purple-400); }
     }
 
+    // Dark mode hover colors for other colors - via data-theme="dark" attribute
     [data-theme="dark"] {
       .dark\:hover\:text-blue-500:hover { color: var(--color-blue-400); }
       .dark\:hover\:text-green-500:hover { color: var(--color-green-400); }
