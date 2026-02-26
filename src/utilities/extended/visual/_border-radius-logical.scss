@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-border-radius-logical == true {
   // Border end end radius (bottom-right in LTR, bottom-left in RTL)
   // ============================================================================

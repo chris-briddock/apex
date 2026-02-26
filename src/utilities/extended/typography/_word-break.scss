@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-word-break == true {
   .break-normal { word-break: normal; }
   .break-words { word-break: words; }

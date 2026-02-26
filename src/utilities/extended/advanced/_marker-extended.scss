@@ -5,19 +5,20 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-marker-extended == true {
   // Marker end
   // ============================================================================
   .marker-end-none { marker-end: none; }
-  .marker-end-url { marker-end: url(#arrowhead); }
+  .marker-end-url { marker-end: url("#arrowhead"); }
 
   // Marker mid
   // ============================================================================
   .marker-mid-none { marker-mid: none; }
-  .marker-mid-url { marker-mid: url(#arrowhead); }
+  .marker-mid-url { marker-mid: url("#arrowhead"); }
 
   // Marker start
   // ============================================================================
   .marker-start-none { marker-start: none; }
-  .marker-start-url { marker-start: url(#arrowhead); }
+  .marker-start-url { marker-start: url("#arrowhead"); }
 }

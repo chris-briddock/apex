@@ -3,12 +3,9 @@
 // ============================================================================
 // This file enables Tailwind-style arbitrary values using CSS custom properties.
 // Usage: style="--arbitrary-value: 200px" class="min-h-[var(--arbitrary-value)]"
-//
 // Or use the inline style approach:
 //   class="min-h-[--my-value]" style="--my-value: 200px"
-//
 // Generated using the arbitrary-value mixins in mixins/_arbitrary.scss
-// ============================================================================
 
 @use 'sass:map';
 @use 'sass:list';
@@ -82,20 +79,17 @@ $responsive-sizing: (
   'max-h': ('max-height', ('--max-h',)),
   'max-w': ('max-width', ('--max-w',)),
 );
-
 $responsive-spacing: (
   'm': ('margin', ('--m',)),
   'p': ('padding', ('--p',)),
   'gap': ('gap', ('--gap',)),
 );
-
 $responsive-positioning: (
   'top': ('top', ('--top',)),
   'right': ('right', ('--right',)),
   'bottom': ('bottom', ('--bottom',)),
   'left': ('left', ('--left',)),
 );
-
 $responsive-typography: (
   'text': ('font-size', ('--text-size',)),
 );

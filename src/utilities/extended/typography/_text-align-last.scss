@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-text-align-last == true {
   .text-align-last-auto { text-align-last: auto; }
   .text-align-last-start { text-align-last: start; }

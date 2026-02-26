@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-overscroll-behavior-extended == true {
   // Overscroll behavior block
   // ============================================================================

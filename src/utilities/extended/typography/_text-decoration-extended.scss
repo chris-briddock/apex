@@ -5,10 +5,11 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-text-decoration-extended == true {
   // Text decoration color
   // ============================================================================
-  .decoration-current { text-decoration-color: currentColor; }
+  .decoration-current { text-decoration-color: currentcolor; }
   .decoration-transparent { text-decoration-color: transparent; }
   .decoration-white { text-decoration-color: var(--color-white); }
   .decoration-black { text-decoration-color: var(--color-black); }
@@ -38,7 +39,7 @@
   // ============================================================================
   .decoration-auto { text-decoration-thickness: auto; }
   .decoration-from-font { text-decoration-thickness: from-font; }
-  .decoration-0 { text-decoration-thickness: 0px; }
+  .decoration-0 { text-decoration-thickness: 0; }
   .decoration-1 { text-decoration-thickness: 1px; }
   .decoration-2 { text-decoration-thickness: 2px; }
   .decoration-4 { text-decoration-thickness: 4px; }

@@ -5,11 +5,12 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-text-underline == true {
   // Text underline offset
   // ============================================================================
   .underline-offset-auto { text-underline-offset: auto; }
-  .underline-offset-0 { text-underline-offset: 0px; }
+  .underline-offset-0 { text-underline-offset: 0; }
   .underline-offset-1 { text-underline-offset: 1px; }
   .underline-offset-2 { text-underline-offset: 2px; }
   .underline-offset-4 { text-underline-offset: 4px; }

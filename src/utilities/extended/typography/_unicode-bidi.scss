@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-unicode-bidi == true {
   .bidi-normal { unicode-bidi: normal; }
   .bidi-embed { unicode-bidi: embed; }

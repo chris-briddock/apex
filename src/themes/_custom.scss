@@ -236,19 +236,19 @@
 .theme-high-contrast {
   --color-primary: #005fcc;
   --color-primary-light: #0078ff;
-  --color-primary-dark: #004499;
-  --color-text: #000000;
-  --color-bg: #ffffff;
-  --color-border: #000000;
+  --color-primary-dark: #049;
+  --color-text: #000;
+  --color-bg: #fff;
+  --color-border: #000;
 }
 
 // Color blind friendly theme
 .theme-colorblind {
-  --color-primary: #0055ff;
-  --color-success: #008800;
-  --color-danger: #cc0000;
-  --color-warning: #ffcc00;
-  --color-info: #0066cc;
+  --color-primary: #05f;
+  --color-success: #080;
+  --color-danger: #c00;
+  --color-warning: #fc0;
+  --color-info: #06c;
 }
 
 // ============================================================================
@@ -327,14 +327,14 @@
 // ============================================================================
 @media print {
   :root {
-    --color-primary: #000000;
-    --color-secondary: #333333;
-    --color-success: #000000;
-    --color-danger: #000000;
-    --color-warning: #000000;
-    --color-info: #000000;
-    --color-text: #000000;
-    --color-bg: #ffffff;
+    --color-primary: #000;
+    --color-secondary: #333;
+    --color-success: #000;
+    --color-danger: #000;
+    --color-warning: #000;
+    --color-info: #000;
+    --color-text: #000;
+    --color-bg: #fff;
 
     --shadow-sm: none;
     --shadow-base: none;

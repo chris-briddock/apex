@@ -3,10 +3,8 @@
 // ============================================================================
 // Supports Tailwind-style opacity modifiers: bg-gray-800/50, text-red-500/75
 // Uses CSS color-mix() for modern browsers
-//
 // Previously: _opacity-modifiers.scss
 // Renamed to better reflect the actual functionality
-// ============================================================================
 
 @use 'sass:string';
 @use 'sass:math';
@@ -20,11 +18,11 @@
 @function opacity-class($prefix, $name, $opacity) {
   // Use escaped slash for opacity modifier (e.g., bg-gray-700/70)
   $opacity-decimal: math.div($opacity, 100);
+
   @return string.unquote('.#{$prefix}-#{$name}\\/#{$opacity}');
 }
 
 @if settings.$enable-color-modifiers == true {
-
   // ============================================================================
   // Configuration
   // ============================================================================
@@ -48,6 +46,7 @@
           background-color: string.unquote("oklch(var(--color-#{$color}) / #{$opacity-decimal})");
         }
       }
+
       // Full opacity (no alpha needed)
       #{opacity-class('bg', $color, 100)} {
         background-color: var(--color-#{$color});
@@ -126,7 +125,6 @@
   // Dark Mode Opacity Modifiers (Consolidated)
   // ============================================================================
   @if settings.$enable-dark-mode == true {
-
     // Dark mode background colors
     @include dm.dark-mode {
       @each $shade in (700, 800, 900) {

@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-flex-extended == true {
   // Flex flow (shorthand for flex-direction and flex-wrap)
   // ============================================================================

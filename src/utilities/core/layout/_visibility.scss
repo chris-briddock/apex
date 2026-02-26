@@ -30,6 +30,7 @@
       @each $name, $value in $visibility-values {
         // Escape class names that start with a number
         $escaped-prefix: $prefix;
+
         @if string.slice($prefix, 1, 1) == '2' {
           $escaped-prefix: '\\32' + string.slice($prefix, 2);
         }

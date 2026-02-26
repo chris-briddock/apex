@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-tab-size == true {
   .tab-0 { tab-size: 0; }
   .tab-1 { tab-size: 1; }

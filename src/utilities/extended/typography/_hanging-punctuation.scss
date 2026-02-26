@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-hanging-punctuation == true {
   .hang-none { hanging-punctuation: none; }
   .hang-first { hanging-punctuation: first; }

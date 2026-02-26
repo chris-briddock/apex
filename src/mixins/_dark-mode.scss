@@ -7,12 +7,13 @@
 // ============================================================================
 
 @use 'sass:map';
+@use 'sass:color';
 
 // Generate a dark mode utility that responds to system preference AND .dark class
 // Usage: @include dark-mode-utility('text-gray-900', 'color', #fff);
 @mixin dark-mode-utility($class-name, $property, $dark-value, $light-value: null) {
   // Light mode (default)
-  @if $light-value != null {
+  @if $light-value {
     .#{$class-name} {
       #{$property}: $light-value;
     }
@@ -93,9 +94,9 @@
       @include dark-mode {
         .#{$class-name} {
           #{$property}: rgba(
-            red($base-dark-color),
-            green($base-dark-color),
-            blue($base-dark-color),
+            color.red($base-dark-color),
+            color.green($base-dark-color),
+            color.blue($base-dark-color),
             $opacity-value
           );
         }
@@ -104,9 +105,9 @@
       // Dark mode via data-theme="dark" attribute (manual toggle)
       [data-theme="dark"] .#{$class-name} {
         #{$property}: rgba(
-          red($base-dark-color),
-          green($base-dark-color),
-          blue($base-dark-color),
+          color.red($base-dark-color),
+          color.green($base-dark-color),
+          color.blue($base-dark-color),
           $opacity-value
         );
       }
@@ -138,9 +139,9 @@
       @include dark-mode {
         .#{$escaped-name}:hover {
           #{$property}: rgba(
-            red($dark-value),
-            green($dark-value),
-            blue($dark-value),
+            color.red($dark-value),
+            color.green($dark-value),
+            color.blue($dark-value),
             $opacity-value
           );
         }
@@ -149,9 +150,9 @@
       // data-theme="dark" hover with opacity
       [data-theme="dark"] .#{$escaped-name}:hover {
         #{$property}: rgba(
-          red($dark-value),
-          green($dark-value),
-          blue($dark-value),
+          color.red($dark-value),
+          color.green($dark-value),
+          color.blue($dark-value),
           $opacity-value
         );
       }
@@ -168,7 +169,7 @@
     // Determine dark mode value based on property
     @if $property == 'color' {
       // Text colors get lightened in dark mode
-      $dark-value: lighten($value, 10%);
+      $dark-value: color.adjust($value, $lightness: 10%);
 
       @include dark-mode {
         .#{$class-name} {
@@ -181,7 +182,7 @@
       }
     } @else if $property == 'background-color' {
       // Background colors get darkened in dark mode
-      $dark-value: darken($value, 20%);
+      $dark-value: color.adjust($value, $lightness: -20%);
 
       @include dark-mode {
         .#{$class-name} {
@@ -207,7 +208,6 @@
 //   @include dark-mode {
 //     .dark\:text-primary { color: var(--color-primary); }
 //   }
-//
 // Output:
 //   @media (prefers-color-scheme: dark) {
 //     .dark\:text-primary { color: var(--color-primary); }
@@ -234,7 +234,6 @@
 //       color: var(--color-primary);
 //     }
 //   }
-//
 // Output:
 //   .my-class {
 //     @media (prefers-color-scheme: dark) {

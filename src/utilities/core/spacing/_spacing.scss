@@ -203,6 +203,7 @@
   // Use the class name mapping to handle breakpoints like '2xl' -> 'xxl'
   @each $bp-name, $bp-value in settings.$breakpoints {
     $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
+
     @media (min-width: $bp-value) {
       @each $key, $value in $spacing-scale-int {
         .#{$bp-class}\:m-#{$key} { margin: $value; }

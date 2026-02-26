@@ -13,6 +13,7 @@
 @mixin respond-above($breakpoint) {
   @if map.has-key(settings.$breakpoints, $breakpoint) {
     $breakpoint-value: map.get(settings.$breakpoints, $breakpoint);
+
     @media (min-width: $breakpoint-value) {
       @content;
     }
@@ -25,6 +26,7 @@
 @mixin respond-below($breakpoint) {
   @if map.has-key(settings.$breakpoints, $breakpoint) {
     $breakpoint-value: map.get(settings.$breakpoints, $breakpoint);
+
     @media (max-width: ($breakpoint-value - 1px)) {
       @content;
     }
@@ -38,6 +40,7 @@
   @if map.has-key(settings.$breakpoints, $lower) and map.has-key(settings.$breakpoints, $upper) {
     $lower-value: map.get(settings.$breakpoints, $lower);
     $upper-value: map.get(settings.$breakpoints, $upper);
+
     @media (min-width: $lower-value) and (max-width: ($upper-value - 1px)) {
       @content;
     }

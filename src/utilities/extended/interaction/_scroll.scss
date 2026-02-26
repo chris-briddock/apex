@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-scroll == true {
   // Scroll behavior
   // ============================================================================
@@ -112,16 +113,16 @@
   .scroll-mr-6 { scroll-margin-right: 1.5rem; }
   .scroll-mr-8 { scroll-margin-right: 2rem; }
 
-  // Scroll margin bottom
+  // Scroll margin bottom (physical)
   // ============================================================================
-  .scroll-mb-0 { scroll-margin-bottom: 0; }
-  .scroll-mb-1 { scroll-margin-bottom: 0.25rem; }
-  .scroll-mb-2 { scroll-margin-bottom: 0.5rem; }
-  .scroll-mb-3 { scroll-margin-bottom: 0.75rem; }
-  .scroll-mb-4 { scroll-margin-bottom: 1rem; }
-  .scroll-mb-5 { scroll-margin-bottom: 1.25rem; }
-  .scroll-mb-6 { scroll-margin-bottom: 1.5rem; }
-  .scroll-mb-8 { scroll-margin-bottom: 2rem; }
+  .scroll-margin-bottom-0 { scroll-margin-bottom: 0; }
+  .scroll-margin-bottom-1 { scroll-margin-bottom: 0.25rem; }
+  .scroll-margin-bottom-2 { scroll-margin-bottom: 0.5rem; }
+  .scroll-margin-bottom-3 { scroll-margin-bottom: 0.75rem; }
+  .scroll-margin-bottom-4 { scroll-margin-bottom: 1rem; }
+  .scroll-margin-bottom-5 { scroll-margin-bottom: 1.25rem; }
+  .scroll-margin-bottom-6 { scroll-margin-bottom: 1.5rem; }
+  .scroll-margin-bottom-8 { scroll-margin-bottom: 2rem; }
 
   // Scroll margin left
   // ============================================================================
@@ -235,16 +236,16 @@
   .scroll-pr-6 { scroll-padding-right: 1.5rem; }
   .scroll-pr-8 { scroll-padding-right: 2rem; }
 
-  // Scroll padding bottom
+  // Scroll padding bottom (physical)
   // ============================================================================
-  .scroll-pb-0 { scroll-padding-bottom: 0; }
-  .scroll-pb-1 { scroll-padding-bottom: 0.25rem; }
-  .scroll-pb-2 { scroll-padding-bottom: 0.5rem; }
-  .scroll-pb-3 { scroll-padding-bottom: 0.75rem; }
-  .scroll-pb-4 { scroll-padding-bottom: 1rem; }
-  .scroll-pb-5 { scroll-padding-bottom: 1.25rem; }
-  .scroll-pb-6 { scroll-padding-bottom: 1.5rem; }
-  .scroll-pb-8 { scroll-padding-bottom: 2rem; }
+  .scroll-padding-bottom-0 { scroll-padding-bottom: 0; }
+  .scroll-padding-bottom-1 { scroll-padding-bottom: 0.25rem; }
+  .scroll-padding-bottom-2 { scroll-padding-bottom: 0.5rem; }
+  .scroll-padding-bottom-3 { scroll-padding-bottom: 0.75rem; }
+  .scroll-padding-bottom-4 { scroll-padding-bottom: 1rem; }
+  .scroll-padding-bottom-5 { scroll-padding-bottom: 1.25rem; }
+  .scroll-padding-bottom-6 { scroll-padding-bottom: 1.5rem; }
+  .scroll-padding-bottom-8 { scroll-padding-bottom: 2rem; }
 
   // Scroll padding left
   // ============================================================================

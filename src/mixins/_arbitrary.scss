@@ -3,15 +3,12 @@
 // ============================================================================
 // These mixins generate Tailwind-style arbitrary value utilities using CSS
 // custom properties for runtime customization.
-//
 // Usage:
 //   @include arbitrary.arbitrary-value('w', 'width', ('--w', '--w-px'));
 //   @include arbitrary.arbitrary-value-set($sizing-utilities);
-//
 // Generated CSS:
 //   .w-\[var\(--w\)\] { width: var(--w); }
 //   .w-\[var\(--w-px\)\] { width: var(--w-px); }
-// ============================================================================
 
 @use 'sass:map';
 @use 'sass:list';
@@ -22,12 +19,10 @@
 // Single Arbitrary Value Utility
 // ============================================================================
 // Generates a single arbitrary value utility class
-//
 // @param {String} $class-prefix - The class prefix (e.g., 'w', 'h', 'p')
 // @param {String} $property - The CSS property (e.g., 'width', 'height')
 // @param {String} $var-name - The CSS variable name (e.g., '--w', '--my-size')
 // @param {String} $suffix - Optional suffix for the class (e.g., 'px', 'rem')
-//
 // Example:
 //   @include arbitrary-value('w', 'width', '--w');
 //   Output: .w-\[var\(--w\)\] { width: var(--w); }
@@ -53,7 +48,6 @@
 // Multiple Arbitrary Value Utilities
 // ============================================================================
 // Generates multiple arbitrary value utilities with different variable names
-//
 // @param {String} $class-prefix - The class prefix
 // @param {String} $property - The CSS property
 // @param {List} $var-names - List of CSS variable names
@@ -62,6 +56,7 @@
 @mixin arbitrary-values($class-prefix, $property, $var-names, $suffixes: ()) {
   @each $var-name in $var-names {
     $suffix: map.get($suffixes, $var-name);
+
     @include arbitrary-value($class-prefix, $property, $var-name, $suffix);
   }
 }
@@ -70,9 +65,7 @@
 // Utility Set Generator
 // ============================================================================
 // Generates a set of arbitrary value utilities from a configuration map
-//
 // @param {Map} $utilities - Map of class-prefix to (property, var-names)
-//
 // Example:
 //   $utilities: (
 //     'w': ('width', ('--w', '--w-px', '--w-pct')),
@@ -95,7 +88,6 @@
 // Axis Utilities (x/y or inline/block)
 // ============================================================================
 // Generates arbitrary value utilities for axis-based properties
-//
 // @param {String} $class-prefix - The class prefix (e.g., 'mx', 'my')
 // @param {List} $properties - List of CSS properties to apply
 // @param {String} $var-name - The CSS variable name
@@ -114,7 +106,6 @@
 // Responsive Arbitrary Values
 // ============================================================================
 // Generates responsive variants of arbitrary value utilities
-//
 // @param {String} $class-prefix - The class prefix
 // @param {String} $property - The CSS property
 // @param {String} $var-name - The CSS variable name
@@ -144,7 +135,6 @@
 // Responsive Utility Set
 // ============================================================================
 // Generates responsive variants for a set of utilities
-//
 // @param {Map} $utilities - Map of class-prefix to (property, var-names)
 // @param {List} $responsive-vars - List of var-names to generate responsive variants for
 
@@ -159,7 +149,8 @@
 
         // Only generate responsive for specified vars, or all if not specified
         $vars-to-generate: $var-names;
-        @if length($responsive-vars) > 0 {
+
+        @if list.length($responsive-vars) > 0 {
           $vars-to-generate: $responsive-vars;
         }
 
@@ -179,7 +170,6 @@
 // Corner/Edge Utilities Generator
 // ============================================================================
 // Generates utilities for corners (border-radius) or edges (borders)
-//
 // @param {String} $class-prefix - Base class prefix (e.g., 'rounded', 'border')
 // @param {String} $property-base - Base CSS property
 // @param {Map} $variants - Map of suffix to list of properties
@@ -312,6 +302,7 @@
     'b': ('border-bottom-right-radius', 'border-bottom-left-radius'),
     'l': ('border-top-left-radius', 'border-bottom-left-radius'),
   );
+
   @include arbitrary-corner-values('rounded', 'border', $radius-variants, ('--rounded', '--rounded-px'));
 }
 

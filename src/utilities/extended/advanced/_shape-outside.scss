@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-shape-outside == true {
   .shape-none { shape-outside: none; }
   .shape-circle { shape-outside: circle(50%); }

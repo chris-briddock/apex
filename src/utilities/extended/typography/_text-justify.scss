@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-text-justify == true {
   .text-justify-auto { text-justify: auto; }
   .text-justify-none { text-justify: none; }

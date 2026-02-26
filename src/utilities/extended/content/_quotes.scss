@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-quotes == true {
   .quotes-auto { quotes: auto; }
   .quotes-none { quotes: none; }

@@ -357,7 +357,7 @@ const defaultConfig = {
   borderRadius: {
     none: '0',
     sm: '0.125rem',
-    DEFAULT: '0.25rem',
+    default: '0.25rem',
     md: '0.375rem',
     lg: '0.5rem',
     xl: '0.75rem',
@@ -371,7 +371,7 @@ const defaultConfig = {
   // ============================================================================
   shadows: {
     sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-    DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+    default: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
     md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
     lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
     xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
@@ -396,7 +396,7 @@ const defaultConfig = {
     },
     timing: {
       linear: 'linear',
-      DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      default: 'cubic-bezier(0.4, 0, 0.2, 1)',
       in: 'cubic-bezier(0.4, 0, 1, 1)',
       out: 'cubic-bezier(0, 0, 0.2, 1)',
       'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)'
@@ -567,15 +567,6 @@ function generateBreakpoints(breakpoints) {
     lines.push(`  ${key}: ${value}${comma}`);
   });
   lines.push(') !default;');
-
-  // CSS custom properties for runtime access via JavaScript
-  lines.push('');
-  lines.push('// CSS custom properties for breakpoints (runtime access)');
-  lines.push(':root {');
-  Object.entries(breakpoints).forEach(([key, value]) => {
-    lines.push(`  --breakpoint-${key}: ${value};`);
-  });
-  lines.push('}');
 
   // Breakpoint class name prefixes (for responsive utility class naming)
   lines.push('');
@@ -786,45 +777,6 @@ function generateOpacity(opacity) {
 }
 
 /**
- * Generate CSS custom properties for runtime theming
- */
-function generateCSSVariables(config) {
-  const merged = mergeDeep(defaultConfig, config);
-  const variables = [];
-
-  // Colors
-  Object.entries(merged.colors).forEach(([colorName, shades]) => {
-    if (typeof shades === 'string') {
-      variables.push(`  --apex-${colorName}: ${shades};`);
-    } else {
-      Object.entries(shades).forEach(([shade, value]) => {
-        variables.push(`  --apex-${colorName}-${shade}: ${value};`);
-      });
-    }
-  });
-
-  // Spacing
-  Object.entries(merged.spacing).forEach(([key, value]) => {
-    variables.push(`  --apex-spacing-${key}: ${value};`);
-  });
-
-  // Border radius
-  Object.entries(merged.borderRadius).forEach(([key, value]) => {
-    variables.push(`  --apex-radius-${key}: ${value};`);
-  });
-
-  // Shadows
-  Object.entries(merged.shadows).forEach(([key, value]) => {
-    variables.push(`  --apex-shadow-${key}: ${value};`);
-  });
-
-  return `:root {
-${variables.join('\n')}
-}
-`;
-}
-
-/**
  * Generate a complete sample config file
  */
 function generateSampleConfig() {
@@ -952,7 +904,6 @@ function parseArgs() {
     config: 'src/apex.config.js',
     output: 'src/config',
     watch: false,
-    css: false,
     init: false
   };
 
@@ -963,8 +914,6 @@ function parseArgs() {
       options.output = arg.split('=')[1];
     } else if (arg === '--watch' || arg === '-w') {
       options.watch = true;
-    } else if (arg === '--css') {
-      options.css = true;
     } else if (arg === '--init') {
       options.init = true;
     } else if (arg === '--help' || arg === '-h') {
@@ -985,7 +934,6 @@ Usage: node config-builder.js [options]
 Options:
   --config=<file>    Config file path (default: src/apex.config.js)
   --output=<dir>     Output directory (default: src/config)
-  --css              Generate CSS variables file
   --watch, -w        Watch for changes and rebuild
   --init             Create sample config file
   --help, -h         Show this help
@@ -1032,15 +980,6 @@ async function build(options) {
     const scssPath = path.join(options.output, '_custom-config.scss');
     await fs.writeFile(scssPath, scss);
     console.log(`✅ Generated: ${scssPath}`);
-
-    // Generate CSS variables if requested
-    if (options.css) {
-      const css = generateCSSVariables(userConfig);
-      const cssPath = path.join(options.output, '../themes/custom.css');
-      await fs.mkdir(path.dirname(cssPath), { recursive: true });
-      await fs.writeFile(cssPath, css);
-      console.log(`✅ Generated: ${cssPath}`);
-    }
 
     console.log('\\n🎉 Configuration built successfully!');
     console.log('   Run "npm run build" to compile the framework.\\n');

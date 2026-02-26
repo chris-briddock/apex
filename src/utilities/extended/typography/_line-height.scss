@@ -5,6 +5,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+
 @if settings.$enable-line-height == true {
   .leading-none { line-height: 1; }
   .leading-tight { line-height: 1.25; }
