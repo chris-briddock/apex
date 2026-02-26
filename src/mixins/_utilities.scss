@@ -8,7 +8,6 @@
 @use 'sass:map';
 @use 'sass:string';
 @use '../config/custom-config' as settings;
-@use '../config/breakpoints' as bp;
 
 // ============================================================================
 // Generate utilities from a CSS variable map
@@ -129,7 +128,7 @@
 //   ));
 
 @mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  @each $bp-name, $bp-value in bp.$breakpoints {
+  @each $bp-name, $bp-value in settings.$breakpoints {
     @media (min-width: $bp-value) {
       @each $name, $var-name in $var-map {
         .#{$bp-name}\:#{$class-name}-#{$name} {

@@ -16,7 +16,7 @@
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:string';
-@use '../config/breakpoints' as bp;
+@use '../config/custom-config' as config;
 
 // ============================================================================
 // Single Arbitrary Value Utility
@@ -121,8 +121,8 @@
 // @param {String} $suffix - Optional suffix
 
 @mixin responsive-arbitrary-value($class-prefix, $property, $var-name, $suffix: null) {
-  @each $bp-name, $bp-value in bp.$breakpoints {
-    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
 
     @media (min-width: $bp-value) {
       @if $suffix {
@@ -149,8 +149,8 @@
 // @param {List} $responsive-vars - List of var-names to generate responsive variants for
 
 @mixin responsive-arbitrary-set($utilities, $responsive-vars: ()) {
-  @each $bp-name, $bp-value in bp.$breakpoints {
-    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
 
     @media (min-width: $bp-value) {
       @each $class-prefix, $config in $utilities {

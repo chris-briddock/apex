@@ -8,7 +8,7 @@
 @if settings.$enable-text-emphasis == true {
   // Text emphasis color
   // ============================================================================
-  .emphasis-current { text-emphasis-color: currentColor; }
+  .emphasis-current { text-emphasis-color: currentcolor; }
   .emphasis-transparent { text-emphasis-color: transparent; }
   .emphasis-white { text-emphasis-color: var(--color-white); }
   .emphasis-black { text-emphasis-color: var(--color-black); }

@@ -15,6 +15,3 @@
 
 // Forward from auto-generated config
 @forward 'custom-config';
-
-// Forward from specialized config files
-@forward 'breakpoints' hide $breakpoints;

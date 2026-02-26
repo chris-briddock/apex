@@ -4,7 +4,6 @@
 // All sizing values use CSS custom properties for runtime customization
 
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 
 @if settings.$enable-sizing == true {
   // ============================================================================
@@ -193,7 +192,7 @@
   // ============================================================================
   // Responsive Sizing Utilities
   // ============================================================================
-  @media (min-width: bp.$breakpoint-sm) {
+  @media (min-width: settings.$breakpoint-sm) {
     // Widths
     .sm\:w-auto { width: auto; }
     .sm\:w-full { width: 100%; }
@@ -222,7 +221,7 @@
     .sm\:max-w-screen-sm { max-width: var(--breakpoint-sm); }
   }
 
-  @media (min-width: bp.$breakpoint-md) {
+  @media (min-width: settings.$breakpoint-md) {
     // Widths
     .md\:w-auto { width: auto; }
     .md\:w-full { width: 100%; }
@@ -244,7 +243,7 @@
     .md\:max-w-screen-md { max-width: var(--breakpoint-md); }
   }
 
-  @media (min-width: bp.$breakpoint-lg) {
+  @media (min-width: settings.$breakpoint-lg) {
     // Widths
     .lg\:w-auto { width: auto; }
     .lg\:w-full { width: 100%; }
@@ -262,7 +261,7 @@
     .lg\:max-w-screen-lg { max-width: var(--breakpoint-lg); }
   }
 
-  @media (min-width: bp.$breakpoint-xl) {
+  @media (min-width: settings.$breakpoint-xl) {
     // Widths
     .xl\:w-auto { width: auto; }
     .xl\:w-full { width: 100%; }
@@ -279,7 +278,7 @@
     .xl\:max-w-screen-xl { max-width: var(--breakpoint-xl); }
   }
 
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     // Widths
     .xxl\:w-auto { width: auto; }
     .xxl\:w-full { width: 100%; }

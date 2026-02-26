@@ -3,7 +3,6 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/utilities' as utilities;
 @use '../../../mixins/responsive' as responsive;
 
@@ -16,7 +15,7 @@
   }
 
   // Responsive opacity variants for xxl breakpoint
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     @each $key, $value in settings.$opacity-scale {
       .xxl\:opacity-#{$key} {
         opacity: $value;

@@ -19,7 +19,6 @@
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 
 @if settings.$enable-logical-properties == true {
 
@@ -188,8 +187,8 @@
   // ============================================================================
   // Responsive Logical Utilities
   // ============================================================================
-  @each $bp-name, $bp-value in bp.$breakpoints {
-    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
 
     @media (min-width: $bp-value) {
       // Responsive logical margins

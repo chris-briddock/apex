@@ -6,131 +6,184 @@
 // ============================================================================
 
 // ============================================================================
-// Feature Flags
+// Feature Toggles - Enable/disable utility categories
+// Set to false to exclude specific utilities from the build
 // ============================================================================
-$enable-spacing: true !default;
-$enable-sizing: true !default;
-$enable-typography: true !default;
-$enable-colors: true !default;
-$enable-flexbox: true !default;
-$enable-grid: true !default;
-$enable-positioning: true !default;
-$enable-display: true !default;
-$enable-borders: true !default;
-$enable-shadows: true !default;
-$enable-opacity: true !default;
-$enable-overflow: true !default;
-$enable-overscroll-behavior: true !default;
-$enable-visibility: true !default;
-$enable-transitions: true !default;
-$enable-cursor: true !default;
-$enable-interaction: true !default;
-$enable-svg: true !default;
-$enable-columns: true !default;
-$enable-break: true !default;
-$enable-isolation: true !default;
-$enable-list: true !default;
-$enable-float: true !default;
-$enable-vertical-align: true !default;
-$enable-text-indent: true !default;
-$enable-object-fit: true !default;
-$enable-table: true !default;
-$enable-outline: true !default;
-$enable-appearance: true !default;
-$enable-user-select: true !default;
-$enable-will-change: true !default;
-$enable-accent-color: true !default;
-$enable-place-items: true !default;
-$enable-space-between: true !default;
-$enable-states: true !default;
-$enable-hover: true !default;
-$enable-focus: true !default;
-$enable-active: true !default;
-$enable-disabled: true !default;
-$enable-dark-mode: true !default;
-$enable-rtl: true !default;
-$enable-animations: true !default;
-$enable-transforms: true !default;
-$enable-filters: true !default;
-$enable-aspect-ratio: true !default;
-$enable-accessibility: true !default;
-$enable-z-index: true !default;
-$enable-color-modifiers: true !default;
-$enable-all: true !default;
-$enable-backgrounds: true !default;
-$enable-background-extended: true !default;
-$enable-box: true !default;
-$enable-border-radius-logical: true !default;
-$enable-caption: true !default;
-$enable-caret: true !default;
-$enable-columns-extended: true !default;
-$enable-counter: true !default;
-$enable-flex-extended: true !default;
-$enable-font-extended: true !default;
-$enable-grid-extended: true !default;
-$enable-letter-spacing: true !default;
-$enable-line-height: true !default;
-$enable-list-style-extended: true !default;
-$enable-logical-properties: true !default;
-$enable-orphans: true !default;
-$enable-page-break: true !default;
-$enable-quotes: true !default;
-$enable-scroll: true !default;
-$enable-tab-size: true !default;
-$enable-text-align-last: true !default;
-$enable-text-decoration-extended: true !default;
-$enable-text-justify: true !default;
-$enable-unicode-bidi: true !default;
-$enable-widows: true !default;
-$enable-word-break: true !default;
-$enable-word-wrap: true !default;
-$enable-writing-mode: true !default;
-$enable-zoom: true !default;
-$enable-hanging-punctuation: true !default;
-$enable-hyphenate: true !default;
-$enable-image-rendering: true !default;
-$enable-initial-letter: true !default;
-$enable-marker-extended: true !default;
-$enable-offset: true !default;
-$enable-overflow-extended: true !default;
-$enable-overscroll-behavior-extended: true !default;
-$enable-shape-outside: true !default;
-$enable-text-emphasis: true !default;
-$enable-text-orientation: true !default;
-$enable-text-underline: true !default;
-$enable-blend-modes: true !default;
-$enable-color-scheme: true !default;
-$enable-container-queries: true !default;
-$enable-field-sizing: true !default;
-$enable-justify-items: true !default;
-$enable-masks: true !default;
-$enable-sizing-logical: true !default;
-$enable-text-shadow: true !default;
-$enable-transforms3d: true !default;
-$enable-transition-behavior: true !default;
-$enable-typography-extended: true !default;
+// Core Layout
+$enable-display: true !default; // enabled
+$enable-flexbox: true !default; // enabled
+$enable-grid: true !default; // enabled
+$enable-positioning: true !default; // enabled
+$enable-visibility: true !default; // enabled
+
+// Core Spacing
+$enable-spacing: true !default; // enabled
+$enable-sizing: true !default; // enabled
+
+// Core Typography
+$enable-typography: true !default; // enabled
+
+// Core Visual
+$enable-colors: true !default; // enabled
+$enable-backgrounds: true !default; // enabled
+$enable-borders: true !default; // enabled
+$enable-shadows: true !default; // enabled
+$enable-opacity: true !default; // enabled
+$enable-overflow: true !default; // enabled
+$enable-object-fit: true !default; // enabled
+
+// Core Interaction
+$enable-cursor: true !default; // enabled
+$enable-transitions: true !default; // enabled
+
+// Extended Layout
+$enable-flex-extended: true !default; // enabled
+$enable-grid-extended: true !default; // enabled
+$enable-float: true !default; // enabled
+$enable-container-queries: true !default; // enabled
+$enable-isolation: true !default; // enabled
+$enable-place-items: true !default; // enabled
+$enable-justify-items: true !default; // enabled
+$enable-space-between: true !default; // enabled
+$enable-columns: true !default; // enabled
+$enable-columns-extended: true !default; // enabled
+
+// Extended Typography
+$enable-typography-extended: true !default; // enabled
+$enable-font-extended: true !default; // enabled
+$enable-letter-spacing: true !default; // enabled
+$enable-line-height: true !default; // enabled
+$enable-text-align-last: true !default; // enabled
+$enable-text-decoration-extended: true !default; // enabled
+$enable-text-justify: true !default; // enabled
+$enable-text-indent: true !default; // enabled
+$enable-text-shadow: true !default; // enabled
+$enable-text-emphasis: true !default; // enabled
+$enable-text-orientation: true !default; // enabled
+$enable-text-underline: true !default; // enabled
+$enable-hanging-punctuation: true !default; // enabled
+$enable-hyphenate: true !default; // enabled
+$enable-initial-letter: true !default; // enabled
+$enable-tab-size: true !default; // enabled
+$enable-word-break: true !default; // enabled
+$enable-word-wrap: true !default; // enabled
+$enable-writing-mode: true !default; // enabled
+$enable-unicode-bidi: true !default; // enabled
+
+// Extended Visual
+$enable-background-extended: true !default; // enabled
+$enable-color-modifiers: false !default; // disabled
+$enable-blend-modes: true !default; // enabled
+$enable-masks: true !default; // enabled
+$enable-border-radius-logical: true !default; // enabled
+$enable-ring: true !default; // enabled
+$enable-outline: true !default; // enabled
+$enable-appearance: true !default; // enabled
+$enable-accent-color: true !default; // enabled
+$enable-color-scheme: true !default; // enabled
+
+// Extended Interaction
+$enable-interaction: true !default; // enabled
+$enable-user-select: true !default; // enabled
+$enable-will-change: true !default; // enabled
+$enable-all: true !default; // enabled
+$enable-caret: true !default; // enabled
+$enable-scroll: true !default; // enabled
+$enable-overscroll-behavior: true !default; // enabled
+$enable-overscroll-behavior-extended: true !default; // enabled
+$enable-overflow-extended: true !default; // enabled
+
+// Effects
+$enable-animations: true !default; // enabled
+$enable-transforms: true !default; // enabled
+$enable-transforms3d: true !default; // enabled
+$enable-filters: true !default; // enabled
+$enable-aspect-ratio: true !default; // enabled
+$enable-image-rendering: true !default; // enabled
+$enable-transition-behavior: true !default; // enabled
+
+// Content
+$enable-list: true !default; // enabled
+$enable-list-style-extended: true !default; // enabled
+$enable-table: true !default; // enabled
+$enable-counter: true !default; // enabled
+$enable-caption: true !default; // enabled
+$enable-quotes: true !default; // enabled
+$enable-orphans: true !default; // enabled
+$enable-widows: true !default; // enabled
+$enable-page-break: true !default; // enabled
+$enable-break: true !default; // enabled
+$enable-vertical-align: true !default; // enabled
+
+// Advanced
+$enable-arbitrary: false !default; // disabled
+$enable-logical-properties: true !default; // enabled
+$enable-sizing-logical: true !default; // enabled
+$enable-offset: true !default; // enabled
+$enable-shape-outside: true !default; // enabled
+$enable-marker-extended: true !default; // enabled
+$enable-zoom: true !default; // enabled
+$enable-field-sizing: true !default; // enabled
+$enable-svg: true !default; // enabled
+$enable-box: true !default; // enabled
+$enable-divide: true !default; // enabled
+
+// State Variants
+$enable-states: true !default; // enabled
+$enable-hover: true !default; // enabled
+$enable-focus: true !default; // enabled
+$enable-active: true !default; // enabled
+$enable-disabled: true !default; // enabled
+
+// Theme Support
+$enable-dark-mode: true !default; // enabled
+$enable-rtl: true !default; // enabled
+$enable-accessibility: true !default; // enabled
+$enable-z-index: true !default; // enabled
+
 
 // ============================================================================
-// Breakpoints
+// Breakpoints - Responsive design breakpoints
 // ============================================================================
-// Individual breakpoint variables for use in media queries
-$breakpoints-sm: 640px !default;
-$breakpoints-md: 768px !default;
-$breakpoints-lg: 1024px !default;
-$breakpoints-xl: 1280px !default;
-$breakpoints-2xl: 1536px !default;
+// Individual breakpoint variables
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+$breakpoint-xxl: 1536px !default;
 
-// Breakpoint map for iteration
+// Breakpoints map for SCSS iteration
 $breakpoints: (
   sm: 640px,
   md: 768px,
   lg: 1024px,
   xl: 1280px,
-  2xl: 1536px
+  xxl: 1536px
 ) !default;
 
+// CSS custom properties for breakpoints (runtime access)
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1536px;
+}
+
+// Breakpoint prefixes for responsive class names
+$breakpoint-prefixes: (
+  sm: sm,
+  md: md,
+  lg: lg,
+  xl: xl,
+  xxl: xxl
+) !default;
+
+// Alias for backwards compatibility
+$breakpoint-class-names: $breakpoint-prefixes !default;
+
 // ============================================================================
-// Spacing Scale
+// Spacing Scale - Margin, padding, and gap values
 // ============================================================================
 $spacing-scale: (
   0: 0,
@@ -171,7 +224,7 @@ $spacing-scale: (
 ) !default;
 
 // ============================================================================
-// Colors
+// Colors - Complete color palette with semantic and gray scales
 // ============================================================================
 $color-primary-50: #eff6ff !default;
 $color-primary-100: #dbeafe !default;
@@ -237,15 +290,16 @@ $color-info-800: #075985 !default;
 $color-info-900: #0c4a6e !default;
 
 // ============================================================================
-// Typography
+// Typography - Font families, sizes, weights, and spacing
 // ============================================================================
-// Font families from user config (supports custom keys like 'display')
+// Font Families
 $font-families: (
   sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
   serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
   mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
 ) !default;
 
+// Font Sizes
 $font-sizes: (
   xs: 0.75rem,
   sm: 0.875rem,
@@ -262,6 +316,7 @@ $font-sizes: (
   9xl: 8rem
 ) !default;
 
+// Font Weights
 $font-weights: (
   thin: 100,
   extralight: 200,
@@ -274,6 +329,7 @@ $font-weights: (
   black: 900
 ) !default;
 
+// Letter Spacing
 $letter-spacing: (
   tighter: -0.05em,
   tight: -0.025em,
@@ -283,6 +339,7 @@ $letter-spacing: (
   widest: 0.1em
 ) !default;
 
+// Line Heights
 $line-heights: (
   none: 1,
   tight: 1.25,
@@ -293,7 +350,7 @@ $line-heights: (
 ) !default;
 
 // ============================================================================
-// Border Radius
+// Border Radius - Corner roundness values
 // ============================================================================
 $border-radius-scale: (
   none: 0,
@@ -308,7 +365,7 @@ $border-radius-scale: (
 ) !default;
 
 // ============================================================================
-// Shadows
+// Shadows - Box shadow values
 // ============================================================================
 $shadows: (
   sm: 0 1px 2px 0 rgb(0 0 0 / 0.05),
@@ -322,8 +379,9 @@ $shadows: (
 ) !default;
 
 // ============================================================================
-// Transitions
+// Transitions - Animation timing functions and durations
 // ============================================================================
+// Transition Durations
 $transition-duration: (
   75: 75ms,
   100: 100ms,
@@ -335,6 +393,7 @@ $transition-duration: (
   1000: 1000ms
 ) !default;
 
+// Transition Timing Functions
 $transition-timing: (
   linear: linear,
   DEFAULT: cubic-bezier(0.4, 0, 0.2, 1),
@@ -344,7 +403,20 @@ $transition-timing: (
 ) !default;
 
 // ============================================================================
-// Opacity
+// Z-Index - Stacking order values
+// ============================================================================
+$z-index: (
+  0: 0,
+  10: 10,
+  20: 20,
+  30: 30,
+  40: 40,
+  50: 50,
+  auto: auto
+) !default;
+
+// ============================================================================
+// Opacity - Transparency values
 // ============================================================================
 $opacity-scale: (
   0: 0,
@@ -365,14 +437,5 @@ $opacity-scale: (
 ) !default;
 
 // ============================================================================
-// Z-Index
+// End of ApexCSS Configuration
 // ============================================================================
-$z-index: (
-  0: 0,
-  10: 10,
-  20: 20,
-  30: 30,
-  40: 40,
-  50: 50,
-  auto: auto
-) !default;

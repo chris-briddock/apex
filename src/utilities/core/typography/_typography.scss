@@ -5,7 +5,6 @@
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/utilities' as utilities;
 @use '../../../mixins/responsive' as responsive;
 
@@ -170,7 +169,7 @@
   // ============================================================================
   // Responsive Typography Variants
   // ============================================================================
-  @media (min-width: bp.$breakpoint-sm) {
+  @media (min-width: settings.$breakpoint-sm) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .sm\:text-#{$name} { font-size: $size; }
@@ -230,7 +229,7 @@
     .sm\:whitespace-nowrap { white-space: nowrap; }
   }
 
-  @media (min-width: bp.$breakpoint-md) {
+  @media (min-width: settings.$breakpoint-md) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .md\:text-#{$name} { font-size: $size; }
@@ -269,7 +268,7 @@
     }
   }
 
-  @media (min-width: bp.$breakpoint-lg) {
+  @media (min-width: settings.$breakpoint-lg) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .lg\:text-#{$name} { font-size: $size; }
@@ -299,7 +298,7 @@
     }
   }
 
-  @media (min-width: bp.$breakpoint-xl) {
+  @media (min-width: settings.$breakpoint-xl) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .xl\:text-#{$name} { font-size: $size; }
@@ -322,7 +321,7 @@
     .xl\:text-justify { text-align: justify; }
   }
 
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     // Font sizes
     @each $name, $size in $font-sizes {
       .xxl\:text-#{$name} { font-size: $size; }

@@ -4,7 +4,6 @@
 // All transition values use CSS custom properties for runtime customization
 
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 
 @if settings.$enable-transitions == true {
   // ============================================================================
@@ -103,7 +102,7 @@
   // ============================================================================
   // Responsive Transition Utilities
   // ============================================================================
-  @media (min-width: bp.$breakpoint-sm) {
+  @media (min-width: settings.$breakpoint-sm) {
     // Transition property
     .sm\:transition-none { transition-property: none; }
     .sm\:transition-all { transition-property: all; }
@@ -137,7 +136,7 @@
     .sm\:animate-bounce { animation: bounce 1s infinite; }
   }
 
-  @media (min-width: bp.$breakpoint-md) {
+  @media (min-width: settings.$breakpoint-md) {
     // Transition property
     .md\:transition-none { transition-property: none; }
     .md\:transition-all { transition-property: all; }
@@ -164,7 +163,7 @@
     .md\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
   }
 
-  @media (min-width: bp.$breakpoint-lg) {
+  @media (min-width: settings.$breakpoint-lg) {
     // Transition property
     .lg\:transition-none { transition-property: none; }
     .lg\:transition-all { transition-property: all; }
@@ -191,7 +190,7 @@
     .lg\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
   }
 
-  @media (min-width: bp.$breakpoint-xl) {
+  @media (min-width: settings.$breakpoint-xl) {
     // Transition property
     .xl\:transition-none { transition-property: none; }
     .xl\:transition-all { transition-property: all; }
@@ -218,7 +217,7 @@
     .xl\:ease-in-out { transition-timing-function: var(--transition-timing-function-ease-in-out); }
   }
 
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     // Transition property
     .xxl\:transition-none { transition-property: none; }
     .xxl\:transition-all { transition-property: all; }

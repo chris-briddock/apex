@@ -7,12 +7,12 @@
 // ============================================================================
 
 @use 'sass:map';
-@use '../config/breakpoints' as bp;
+@use '../config/custom-config' as settings;
 
 // Mobile-first breakpoint mixin
 @mixin respond-above($breakpoint) {
-  @if map.has-key(bp.$breakpoints, $breakpoint) {
-    $breakpoint-value: map.get(bp.$breakpoints, $breakpoint);
+  @if map.has-key(settings.$breakpoints, $breakpoint) {
+    $breakpoint-value: map.get(settings.$breakpoints, $breakpoint);
     @media (min-width: $breakpoint-value) {
       @content;
     }
@@ -23,8 +23,8 @@
 
 // Desktop-first breakpoint mixin
 @mixin respond-below($breakpoint) {
-  @if map.has-key(bp.$breakpoints, $breakpoint) {
-    $breakpoint-value: map.get(bp.$breakpoints, $breakpoint);
+  @if map.has-key(settings.$breakpoints, $breakpoint) {
+    $breakpoint-value: map.get(settings.$breakpoints, $breakpoint);
     @media (max-width: ($breakpoint-value - 1px)) {
       @content;
     }
@@ -35,9 +35,9 @@
 
 // Between breakpoints mixin
 @mixin respond-between($lower, $upper) {
-  @if map.has-key(bp.$breakpoints, $lower) and map.has-key(bp.$breakpoints, $upper) {
-    $lower-value: map.get(bp.$breakpoints, $lower);
-    $upper-value: map.get(bp.$breakpoints, $upper);
+  @if map.has-key(settings.$breakpoints, $lower) and map.has-key(settings.$breakpoints, $upper) {
+    $lower-value: map.get(settings.$breakpoints, $lower);
+    $upper-value: map.get(settings.$breakpoints, $upper);
     @media (min-width: $lower-value) and (max-width: ($upper-value - 1px)) {
       @content;
     }

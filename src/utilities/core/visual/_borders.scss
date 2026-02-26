@@ -5,7 +5,6 @@
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/utilities' as utilities;
 @use '../../../mixins/responsive' as responsive;
 
@@ -335,7 +334,7 @@
   // Individual Side Properties (Color, Style, Width)
   // ============================================================================
   // Border top
-  .border-top-color-current { border-top-color: currentColor; }
+  .border-top-color-current { border-top-color: currentcolor; }
   .border-top-color-transparent { border-top-color: transparent; }
   .border-top-color-primary { border-top-color: var(--color-primary); }
   .border-top-color-secondary { border-top-color: var(--color-secondary); }
@@ -346,7 +345,7 @@
   .border-top-style-none { border-top-style: none; }
 
   // Border right
-  .border-right-color-current { border-right-color: currentColor; }
+  .border-right-color-current { border-right-color: currentcolor; }
   .border-right-color-transparent { border-right-color: transparent; }
   .border-right-color-primary { border-right-color: var(--color-primary); }
   .border-right-color-secondary { border-right-color: var(--color-secondary); }
@@ -357,7 +356,7 @@
   .border-right-style-none { border-right-style: none; }
 
   // Border bottom
-  .border-bottom-color-current { border-bottom-color: currentColor; }
+  .border-bottom-color-current { border-bottom-color: currentcolor; }
   .border-bottom-color-transparent { border-bottom-color: transparent; }
   .border-bottom-color-primary { border-bottom-color: var(--color-primary); }
   .border-bottom-color-secondary { border-bottom-color: var(--color-secondary); }
@@ -368,7 +367,7 @@
   .border-bottom-style-none { border-bottom-style: none; }
 
   // Border left
-  .border-left-color-current { border-left-color: currentColor; }
+  .border-left-color-current { border-left-color: currentcolor; }
   .border-left-color-transparent { border-left-color: transparent; }
   .border-left-color-primary { border-left-color: var(--color-primary); }
   .border-left-color-secondary { border-left-color: var(--color-secondary); }
@@ -394,7 +393,7 @@
   .border-block-double { border-block-style: double; }
   .border-block-none { border-block-style: none; }
 
-  .border-block-color-current { border-block-color: currentColor; }
+  .border-block-color-current { border-block-color: currentcolor; }
   .border-block-color-transparent { border-block-color: transparent; }
   .border-block-color-primary { border-block-color: var(--color-primary); }
   .border-block-color-secondary { border-block-color: var(--color-secondary); }
@@ -430,7 +429,7 @@
   .border-inline-double { border-inline-style: double; }
   .border-inline-none { border-inline-style: none; }
 
-  .border-inline-color-current { border-inline-color: currentColor; }
+  .border-inline-color-current { border-inline-color: currentcolor; }
   .border-inline-color-transparent { border-inline-color: transparent; }
   .border-inline-color-primary { border-inline-color: var(--color-primary); }
   .border-inline-color-secondary { border-inline-color: var(--color-secondary); }
@@ -520,7 +519,7 @@
   // ============================================================================
   // Responsive Border Utilities
   // ============================================================================
-  @media (min-width: bp.$breakpoint-sm) {
+  @media (min-width: settings.$breakpoint-sm) {
     // Border width
     .sm\:border-0 { border-width: var(--border-width-0); }
     .sm\:border { border-width: var(--border-width-default); }
@@ -540,7 +539,7 @@
     .sm\:rounded-full { border-radius: var(--border-radius-full); }
   }
 
-  @media (min-width: bp.$breakpoint-md) {
+  @media (min-width: settings.$breakpoint-md) {
     // Border width
     .md\:border-0 { border-width: var(--border-width-0); }
     .md\:border { border-width: var(--border-width-default); }
@@ -560,7 +559,7 @@
     .md\:rounded-full { border-radius: var(--border-radius-full); }
   }
 
-  @media (min-width: bp.$breakpoint-lg) {
+  @media (min-width: settings.$breakpoint-lg) {
     // Border width
     .lg\:border-0 { border-width: var(--border-width-0); }
     .lg\:border { border-width: var(--border-width-default); }
@@ -580,7 +579,7 @@
     .lg\:rounded-full { border-radius: var(--border-radius-full); }
   }
 
-  @media (min-width: bp.$breakpoint-xl) {
+  @media (min-width: settings.$breakpoint-xl) {
     // Border width
     .xl\:border-0 { border-width: var(--border-width-0); }
     .xl\:border { border-width: var(--border-width-default); }
@@ -600,7 +599,7 @@
     .xl\:rounded-full { border-radius: var(--border-radius-full); }
   }
 
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     // Border width
     .xxl\:border-0 { border-width: var(--border-width-0); }
     .xxl\:border { border-width: var(--border-width-default); }

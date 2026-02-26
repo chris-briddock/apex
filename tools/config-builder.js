@@ -11,7 +11,7 @@
  *   node tools/config-builder.js --watch
  *
  * Options:
- *   --config    Path to configuration file (default: apex.config.js)
+ *   --config    Path to configuration file (default: src/apex.config.js)
  *   --output    Output directory (default: src/config)
  *   --watch     Watch for changes and rebuild automatically
  *   --help      Show help
@@ -24,121 +24,159 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Default configuration matching src/config.js structure
+// Complete default configuration with all feature toggles
 const defaultConfig = {
+  // ============================================================================
+  // Feature Toggles - Enable/disable utility categories
+  // ============================================================================
   features: {
-    spacing: true,
-    sizing: true,
-    typography: true,
-    colors: true,
+    // Core Layout Utilities
+    display: true,
     flexbox: true,
     grid: true,
     positioning: true,
-    display: true,
+    visibility: true,
+
+    // Core Spacing Utilities
+    spacing: true,
+    sizing: true,
+
+    // Core Typography Utilities
+    typography: true,
+
+    // Core Visual Utilities
+    colors: true,
+    backgrounds: true,
     borders: true,
     shadows: true,
     opacity: true,
     overflow: true,
-    overscrollBehavior: true,
-    visibility: true,
-    transitions: true,
-    cursor: true,
-    interaction: true,
-    svg: true,
-    columns: true,
-    break: true,
-    isolation: true,
-    list: true,
-    float: true,
-    verticalAlign: true,
-    textIndent: true,
     objectFit: true,
-    table: true,
+
+    // Core Interaction Utilities
+    cursor: true,
+    transitions: true,
+
+    // Extended Layout Utilities
+    flexExtended: true,
+    gridExtended: true,
+    float: true,
+    containerQueries: true,
+    isolation: true,
+    placeItems: true,
+    justifyItems: true,
+    spaceBetween: true,
+    columns: true,
+    columnsExtended: true,
+
+    // Extended Typography Utilities
+    typographyExtended: true,
+    fontExtended: true,
+    letterSpacing: true,
+    lineHeight: true,
+    textAlignLast: true,
+    textDecorationExtended: true,
+    textJustify: true,
+    textIndent: true,
+    textShadow: true,
+    textEmphasis: true,
+    textOrientation: true,
+    textUnderline: true,
+    hangingPunctuation: true,
+    hyphenate: true,
+    initialLetter: true,
+    tabSize: true,
+    wordBreak: true,
+    wordWrap: true,
+    writingMode: true,
+    unicodeBidi: true,
+
+    // Extended Visual Utilities
+    backgroundExtended: true,
+    colorModifiers: false,
+    blendModes: true,
+    masks: true,
+    borderRadiusLogical: true,
+    ring: true,
     outline: true,
     appearance: true,
+    accentColor: true,
+    colorScheme: true,
+
+    // Extended Interaction Utilities
+    interaction: true,
     userSelect: true,
     willChange: true,
-    accentColor: true,
-    placeItems: true,
-    spaceBetween: true,
+    all: true,
+    caret: true,
+    scroll: true,
+    overscrollBehavior: true,
+    overscrollBehaviorExtended: true,
+    overflowExtended: true,
+
+    // Effects (Animations, Transforms, Filters)
+    animations: true,
+    transforms: true,
+    transforms3d: true,
+    filters: true,
+    aspectRatio: true,
+    imageRendering: true,
+    transitionBehavior: true,
+
+    // Content Utilities (Lists, Tables, Print)
+    list: true,
+    listStyleExtended: true,
+    table: true,
+    counter: true,
+    caption: true,
+    quotes: true,
+    orphans: true,
+    widows: true,
+    pageBreak: true,
+    break: true,
+    verticalAlign: true,
+
+    // Advanced/Specialized Utilities
+    arbitrary: false,
+    logicalProperties: true,
+    sizingLogical: true,
+    offset: true,
+    shapeOutside: true,
+    markerExtended: true,
+    zoom: true,
+    fieldSizing: true,
+    svg: true,
+    box: true,
+    divide: true,
+
+    // State Variants
     states: true,
     hover: true,
     focus: true,
     active: true,
     disabled: true,
+
+    // Theme Support
     darkMode: true,
     rtl: true,
-    animations: true,
-    transforms: true,
-    filters: true,
-    aspectRatio: true,
     accessibility: true,
-    zIndex: true,
-    colorModifiers: true,
-    // Core utilities - essential, commonly used
-    all: true,
-    backgrounds: true,
-    backgroundExtended: true,
-    box: true,
-    borderRadiusLogical: true,
-    caption: true,
-    caret: true,
-    columnsExtended: true,
-    counter: true,
-    flexExtended: true,
-    fontExtended: true,
-    gridExtended: true,
-    letterSpacing: true,
-    lineHeight: true,
-    listStyleExtended: true,
-    logicalProperties: true,
-    orphans: true,
-    pageBreak: true,
-    quotes: true,
-    scroll: true,
-    tabSize: true,
-    textAlignLast: true,
-    textDecorationExtended: true,
-    textJustify: true,
-    unicodeBidi: true,
-    widows: true,
-    wordBreak: true,
-    wordWrap: true,
-    writingMode: true,
-    zoom: true,
-    // Extended utilities - advanced, specialized, or less commonly used
-    hangingPunctuation: true,
-    hyphenate: true,
-    imageRendering: true,
-    initialLetter: true,
-    markerExtended: true,
-    offset: true,
-    overflowExtended: true,
-    overscrollBehaviorExtended: true,
-    shapeOutside: true,
-    textEmphasis: true,
-    textOrientation: true,
-    textUnderline: true,
-    // Additional missing features
-    blendModes: true,
-    colorScheme: true,
-    containerQueries: true,
-    fieldSizing: true,
-    justifyItems: true,
-    masks: true,
-    sizingLogical: true,
-    textShadow: true,
-    transforms3d: true,
-    transitionBehavior: true,
-    typographyExtended: true
+    zIndex: true
   },
+
+  // ============================================================================
+  // Breakpoints - Responsive design breakpoints
+  // ============================================================================
   breakpoints: {
     sm: '640px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    '2xl': '1536px'
+    xxl: '1536px'
   },
+
+  // ============================================================================
+  // Spacing Scale - Margin, padding, and gap values
+  // ============================================================================
   spacing: {
     0: '0',
     px: '1px',
@@ -176,7 +214,12 @@ const defaultConfig = {
     80: '20rem',
     96: '24rem'
   },
+
+  // ============================================================================
+  // Colors - Complete color palette
+  // ============================================================================
   colors: {
+    // Primary brand color
     primary: {
       50: '#eff6ff',
       100: '#dbeafe',
@@ -190,6 +233,7 @@ const defaultConfig = {
       900: '#1e3a8a',
       950: '#172554'
     },
+    // Gray scale
     gray: {
       50: '#f9fafb',
       100: '#f3f4f6',
@@ -203,6 +247,7 @@ const defaultConfig = {
       900: '#111827',
       950: '#030712'
     },
+    // Semantic colors
     success: {
       50: '#f0fdf4',
       100: '#dcfce7',
@@ -252,6 +297,10 @@ const defaultConfig = {
       900: '#0c4a6e'
     }
   },
+
+  // ============================================================================
+  // Typography - Font families, sizes, weights, spacing
+  // ============================================================================
   typography: {
     fontFamily: {
       sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
@@ -301,6 +350,10 @@ const defaultConfig = {
       loose: '2'
     }
   },
+
+  // ============================================================================
+  // Border Radius - Corner roundness values
+  // ============================================================================
   borderRadius: {
     none: '0',
     sm: '0.125rem',
@@ -312,6 +365,10 @@ const defaultConfig = {
     '3xl': '1.5rem',
     full: '9999px'
   },
+
+  // ============================================================================
+  // Shadows - Box shadow values
+  // ============================================================================
   shadows: {
     sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
     DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
@@ -322,6 +379,10 @@ const defaultConfig = {
     inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
     none: 'none'
   },
+
+  // ============================================================================
+  // Transitions - Animation timing
+  // ============================================================================
   transition: {
     duration: {
       75: '75ms',
@@ -341,6 +402,10 @@ const defaultConfig = {
       'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)'
     }
   },
+
+  // ============================================================================
+  // Z-Index - Stacking order values
+  // ============================================================================
   zIndex: {
     auto: 'auto',
     0: '0',
@@ -350,6 +415,10 @@ const defaultConfig = {
     40: '40',
     50: '50'
   },
+
+  // ============================================================================
+  // Opacity - Transparency values
+  // ============================================================================
   opacity: {
     0: '0',
     5: '0.05',
@@ -383,139 +452,171 @@ function generateSCSS(config) {
 // ============================================================================
 
 // ============================================================================
-// Feature Flags
+// Feature Toggles - Enable/disable utility categories
+// Set to false to exclude specific utilities from the build
 // ============================================================================
-${Object.entries(merged.features)
-  .map(([key, value]) => `$enable-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value} !default;`)
-  .join('\n')}
+${generateFeatureToggles(merged.features)}
 
 // ============================================================================
-// Breakpoints
+// Breakpoints - Responsive design breakpoints
 // ============================================================================
-// Individual breakpoint variables for use in media queries
-${Object.entries(merged.breakpoints)
-  .map(([key, value]) => `$breakpoints-${key}: ${value} !default;`)
-  .join('\n')}
-
-// Breakpoint map for iteration
-$breakpoints: (
-${Object.entries(merged.breakpoints)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateBreakpoints(merged.breakpoints)}
 
 // ============================================================================
-// Spacing Scale
+// Spacing Scale - Margin, padding, and gap values
 // ============================================================================
-$spacing-scale: (
-${Object.entries(merged.spacing)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateSpacing(merged.spacing)}
 
 // ============================================================================
-// Colors
+// Colors - Complete color palette with semantic and gray scales
 // ============================================================================
-${generateColorVariables(merged.colors)}
+${generateColors(merged.colors)}
 
 // ============================================================================
-// Typography
+// Typography - Font families, sizes, weights, and spacing
 // ============================================================================
-// Font families from user config (supports custom keys like 'display')
-$font-families: (
-${Object.entries(merged.typography.fontFamily)
-  .map(([key, value]) => {
-    const fontList = Array.isArray(value) ? value.join(', ') : value;
-    return `  ${key}: "${fontList}"`;
-  })
-  .join(',\n')}
-) !default;
-
-$font-sizes: (
-${Object.entries(merged.typography.fontSize)
-  .map(([key, value]) => `  ${key}: ${Array.isArray(value) ? value[0] : value}`)
-  .join(',\n')}
-) !default;
-
-$font-weights: (
-${Object.entries(merged.typography.fontWeight)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
-
-$letter-spacing: (
-${Object.entries(merged.typography.letterSpacing)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
-
-$line-heights: (
-${Object.entries(merged.typography.lineHeight)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateTypography(merged.typography)}
 
 // ============================================================================
-// Border Radius
+// Border Radius - Corner roundness values
 // ============================================================================
-$border-radius-scale: (
-${Object.entries(merged.borderRadius)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateBorderRadius(merged.borderRadius)}
 
 // ============================================================================
-// Shadows
+// Shadows - Box shadow values
 // ============================================================================
-$shadows: (
-${Object.entries(merged.shadows)
-  .map(([key, value]) => {
-    // Quote shadow values that contain commas to prevent Sass parsing issues
-    const needsQuotes = value.includes(',');
-    return `  ${key}: ${needsQuotes ? `"${value}"` : value}`;
-  })
-  .join(',\n')}
-) !default;
+${generateShadows(merged.shadows)}
 
 // ============================================================================
-// Transitions
+// Transitions - Animation timing functions and durations
 // ============================================================================
-$transition-duration: (
-${Object.entries(merged.transition.duration)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
-
-$transition-timing: (
-${Object.entries(merged.transition.timing)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateTransitions(merged.transition)}
 
 // ============================================================================
-// Opacity
+// Z-Index - Stacking order values
 // ============================================================================
-$opacity-scale: (
-${Object.entries(merged.opacity)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateZIndex(merged.zIndex)}
 
 // ============================================================================
-// Z-Index
+// Opacity - Transparency values
 // ============================================================================
-$z-index: (
-${Object.entries(merged.zIndex)
-  .map(([key, value]) => `  ${key}: ${value}`)
-  .join(',\n')}
-) !default;
+${generateOpacity(merged.opacity)}
+
+// ============================================================================
+// End of ApexCSS Configuration
+// ============================================================================
 `;
 }
 
 /**
- * Generate color SCSS variables
+ * Generate feature toggle variables with categorization
  */
-function generateColorVariables(colors) {
+function generateFeatureToggles(features) {
+  const categories = {
+    'Core Layout': ['display', 'flexbox', 'grid', 'positioning', 'visibility'],
+    'Core Spacing': ['spacing', 'sizing'],
+    'Core Typography': ['typography'],
+    'Core Visual': ['colors', 'backgrounds', 'borders', 'shadows', 'opacity', 'overflow', 'objectFit'],
+    'Core Interaction': ['cursor', 'transitions'],
+    'Extended Layout': ['flexExtended', 'gridExtended', 'float', 'containerQueries', 'isolation', 'placeItems', 'justifyItems', 'spaceBetween', 'columns', 'columnsExtended'],
+    'Extended Typography': ['typographyExtended', 'fontExtended', 'letterSpacing', 'lineHeight', 'textAlignLast', 'textDecorationExtended', 'textJustify', 'textIndent', 'textShadow', 'textEmphasis', 'textOrientation', 'textUnderline', 'hangingPunctuation', 'hyphenate', 'initialLetter', 'tabSize', 'wordBreak', 'wordWrap', 'writingMode', 'unicodeBidi'],
+    'Extended Visual': ['backgroundExtended', 'colorModifiers', 'blendModes', 'masks', 'borderRadiusLogical', 'ring', 'outline', 'appearance', 'accentColor', 'colorScheme'],
+    'Extended Interaction': ['interaction', 'userSelect', 'willChange', 'all', 'caret', 'scroll', 'overscrollBehavior', 'overscrollBehaviorExtended', 'overflowExtended'],
+    'Effects': ['animations', 'transforms', 'transforms3d', 'filters', 'aspectRatio', 'imageRendering', 'transitionBehavior'],
+    'Content': ['list', 'listStyleExtended', 'table', 'counter', 'caption', 'quotes', 'orphans', 'widows', 'pageBreak', 'break', 'verticalAlign'],
+    'Advanced': ['arbitrary', 'logicalProperties', 'sizingLogical', 'offset', 'shapeOutside', 'markerExtended', 'zoom', 'fieldSizing', 'svg', 'box', 'divide'],
+    'State Variants': ['states', 'hover', 'focus', 'active', 'disabled'],
+    'Theme Support': ['darkMode', 'rtl', 'accessibility', 'zIndex']
+  };
+
+  let output = [];
+
+  for (const [category, keys] of Object.entries(categories)) {
+    output.push(`// ${category}`);
+    keys.forEach(key => {
+      if (key in features) {
+        const varName = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        const comment = features[key] ? 'enabled' : 'disabled';
+        output.push(`$enable-${varName}: ${features[key]} !default; // ${comment}`);
+      }
+    });
+    output.push('');
+  }
+
+  return output.join('\n');
+}
+
+/**
+ * Generate breakpoint variables and CSS custom properties
+ */
+function generateBreakpoints(breakpoints) {
+  const lines = [];
+
+  // Individual SCSS variables
+  lines.push('// Individual breakpoint variables');
+  Object.entries(breakpoints).forEach(([key, value]) => {
+    lines.push(`$breakpoint-${key}: ${value} !default;`);
+  });
+
+  // SCSS map for iteration
+  lines.push('');
+  lines.push('// Breakpoints map for SCSS iteration');
+  lines.push('$breakpoints: (');
+  Object.entries(breakpoints).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // CSS custom properties for runtime access via JavaScript
+  lines.push('');
+  lines.push('// CSS custom properties for breakpoints (runtime access)');
+  lines.push(':root {');
+  Object.entries(breakpoints).forEach(([key, value]) => {
+    lines.push(`  --breakpoint-${key}: ${value};`);
+  });
+  lines.push('}');
+
+  // Breakpoint class name prefixes (for responsive utility class naming)
+  lines.push('');
+  lines.push('// Breakpoint prefixes for responsive class names');
+  lines.push('$breakpoint-prefixes: (');
+  Object.entries(breakpoints).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    // For 'xxl', use 'xxl' directly. For others, use the key as-is
+    const prefix = key === 'xxl' ? 'xxl' : key;
+    lines.push(`  ${key}: ${prefix}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Alias for backwards compatibility with code that uses $breakpoint-class-names
+  lines.push('');
+  lines.push('// Alias for backwards compatibility');
+  lines.push('$breakpoint-class-names: $breakpoint-prefixes !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate spacing scale
+ */
+function generateSpacing(spacing) {
+  const lines = [];
+
+  lines.push('$spacing-scale: (');
+  Object.entries(spacing).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate color variables
+ */
+function generateColors(colors) {
   const lines = [];
 
   Object.entries(colors).forEach(([colorName, shades]) => {
@@ -527,6 +628,159 @@ function generateColorVariables(colors) {
       });
     }
   });
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate typography configuration
+ */
+function generateTypography(typography) {
+  const lines = [];
+
+  // Font families
+  lines.push('// Font Families');
+  lines.push('$font-families: (');
+  Object.entries(typography.fontFamily).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    const fontList = Array.isArray(value) ? value.join(', ') : value;
+    lines.push(`  ${key}: "${fontList}"${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Font sizes
+  lines.push('// Font Sizes');
+  lines.push('$font-sizes: (');
+  Object.entries(typography.fontSize).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    const size = Array.isArray(value) ? value[0] : value;
+    lines.push(`  ${key}: ${size}${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Font weights
+  lines.push('// Font Weights');
+  lines.push('$font-weights: (');
+  Object.entries(typography.fontWeight).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Letter spacing
+  lines.push('// Letter Spacing');
+  lines.push('$letter-spacing: (');
+  Object.entries(typography.letterSpacing).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Line heights
+  lines.push('// Line Heights');
+  lines.push('$line-heights: (');
+  Object.entries(typography.lineHeight).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate border radius scale
+ */
+function generateBorderRadius(borderRadius) {
+  const lines = [];
+
+  lines.push('$border-radius-scale: (');
+  Object.entries(borderRadius).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate shadow variables
+ */
+function generateShadows(shadows) {
+  const lines = [];
+
+  lines.push('$shadows: (');
+  Object.entries(shadows).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    const needsQuotes = value.includes(',');
+    lines.push(`  ${key}: ${needsQuotes ? `"${value}"` : value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate transition configuration
+ */
+function generateTransitions(transition) {
+  const lines = [];
+
+  // Durations
+  lines.push('// Transition Durations');
+  lines.push('$transition-duration: (');
+  Object.entries(transition.duration).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Timing functions
+  lines.push('// Transition Timing Functions');
+  lines.push('$transition-timing: (');
+  Object.entries(transition.timing).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate z-index scale
+ */
+function generateZIndex(zIndex) {
+  const lines = [];
+
+  lines.push('$z-index: (');
+  Object.entries(zIndex).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate opacity scale
+ */
+function generateOpacity(opacity) {
+  const lines = [];
+
+  lines.push('$opacity-scale: (');
+  Object.entries(opacity).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
 
   return lines.join('\n');
 }
@@ -571,13 +825,44 @@ ${variables.join('\n')}
 }
 
 /**
- * Generate a sample config file
+ * Generate a complete sample config file
  */
 function generateSampleConfig() {
+  // Generate the features section from defaultConfig
+  const featureCategories = {
+    'Core Layout': ['display', 'flexbox', 'grid', 'positioning', 'visibility'],
+    'Core Spacing': ['spacing', 'sizing'],
+    'Core Typography': ['typography'],
+    'Core Visual': ['colors', 'backgrounds', 'borders', 'shadows', 'opacity', 'overflow', 'objectFit'],
+    'Core Interaction': ['cursor', 'transitions'],
+    'Extended Layout': ['flexExtended', 'gridExtended', 'float', 'containerQueries', 'isolation', 'placeItems', 'justifyItems', 'spaceBetween', 'columns', 'columnsExtended'],
+    'Extended Typography': ['typographyExtended', 'fontExtended', 'letterSpacing', 'lineHeight', 'textAlignLast', 'textDecorationExtended', 'textJustify', 'textIndent', 'textShadow', 'textEmphasis', 'textOrientation', 'textUnderline', 'hangingPunctuation', 'hyphenate', 'initialLetter', 'tabSize', 'wordBreak', 'wordWrap', 'writingMode', 'unicodeBidi'],
+    'Extended Visual': ['backgroundExtended', 'colorModifiers', 'blendModes', 'masks', 'borderRadiusLogical', 'ring', 'outline', 'appearance', 'accentColor', 'colorScheme'],
+    'Extended Interaction': ['interaction', 'userSelect', 'willChange', 'all', 'caret', 'scroll', 'overscrollBehavior', 'overscrollBehaviorExtended', 'overflowExtended'],
+    'Effects': ['animations', 'transforms', 'transforms3d', 'filters', 'aspectRatio', 'imageRendering', 'transitionBehavior'],
+    'Content': ['list', 'listStyleExtended', 'table', 'counter', 'caption', 'quotes', 'orphans', 'widows', 'pageBreak', 'break', 'verticalAlign'],
+    'Advanced': ['arbitrary', 'logicalProperties', 'sizingLogical', 'offset', 'shapeOutside', 'markerExtended', 'zoom', 'fieldSizing', 'svg', 'box', 'divide'],
+    'State Variants': ['states', 'hover', 'focus', 'active', 'disabled'],
+    'Theme Support': ['darkMode', 'rtl', 'accessibility', 'zIndex']
+  };
+
+  let featuresSection = '';
+  for (const [category, keys] of Object.entries(featureCategories)) {
+    featuresSection += `    // ${category}\n`;
+    keys.forEach(key => {
+      if (key in defaultConfig.features) {
+        featuresSection += `    ${key}: true,\n`;
+      }
+    });
+    featuresSection += '\n';
+  }
+
   return `/**
  * ApexCSS Configuration File
  *
  * This is your configuration file for customizing ApexCSS.
+ * All features are enabled by default. Set any feature to false to disable it
+ * and reduce your bundle size.
  *
  * Usage:
  *   1. Modify the values below to customize the framework
@@ -587,65 +872,47 @@ function generateSampleConfig() {
  */
 
 export default {
-  // Core settings
-  core: {
-    prefix: '',           // Add prefix to all classes (e.g., 'apex-' -> .apex-flex)
-    important: false,     // Add !important to all utilities
-    separator: ':',       // Separator for variants (e.g., hover:flex)
-    darkMode: 'class',    // 'class', 'media', or false
-    rtl: false            // Enable RTL support
-  },
-
-  // Disable features you don't need to reduce bundle size
+  // ============================================================================
+  // Feature Toggles - Enable/disable utility categories
+  // ============================================================================
   features: {
-    spacing: true,
-    sizing: true,
-    typography: true,
-    colors: true,
-    flexbox: true,
-    grid: true,
-    // ... disable any features you don't need
+${featuresSection.trim()}
   },
 
-  // Custom breakpoints
+  // ============================================================================
+  // Breakpoints - Customize responsive breakpoints
+  // ============================================================================
   breakpoints: {
     sm: '640px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    '2xl': '1536px'
+    xxl: '1536px'
   },
 
-  // Custom colors
+  // ============================================================================
+  // Spacing Scale - Customize margin/padding values
+  // ============================================================================
+  spacing: {
+    0: '0',
+    1: '0.25rem',
+    2: '0.5rem',
+    4: '1rem',
+    8: '2rem',
+    16: '4rem'
+    // Add or remove values as needed
+  },
+
+  // ============================================================================
+  // Colors - Customize your color palette
+  // ============================================================================
   colors: {
     primary: {
       50: '#eff6ff',
-      100: '#dbeafe',
       500: '#3b82f6',
-      600: '#2563eb',
       900: '#1e3a8a'
-    },
+    }
     // Add your brand colors here
-    brand: {
-      50: '#f0f9ff',
-      500: '#0ea5e9',
-      900: '#0c4a6e'
-    }
-  },
-
-  // Custom spacing scale
-  spacing: {
-    // Add custom spacing values
-    18: '4.5rem',
-    88: '22rem'
-  },
-
-  // Typography customization
-  typography: {
-    fontFamily: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
-      display: ['Poppins', 'sans-serif']
-    }
   }
 };
 `;
@@ -656,7 +923,6 @@ export default {
  */
 function mergeDeep(target, source) {
   const output = { ...target };
-
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (isObject(source[key])) {
@@ -670,7 +936,6 @@ function mergeDeep(target, source) {
       }
     });
   }
-
   return output;
 }
 
@@ -744,7 +1009,7 @@ async function loadConfig(configPath) {
     return module.default || module;
   } catch (err) {
     console.log(`⚠️  Config file not found: ${configPath}`);
-    console.log('   Using default configuration...\n');
+    console.log('   Using default configuration...\\n');
     return {};
   }
 }
@@ -777,8 +1042,8 @@ async function build(options) {
       console.log(`✅ Generated: ${cssPath}`);
     }
 
-    console.log('\n🎉 Configuration built successfully!');
-    console.log('   Run "npm run build" to compile the framework.\n');
+    console.log('\\n🎉 Configuration built successfully!');
+    console.log('   Run "npm run build" to compile the framework.\\n');
 
   } catch (err) {
     console.error('❌ Build failed:', err.message);
@@ -790,21 +1055,13 @@ async function build(options) {
  * Initialize config file
  */
 async function init() {
-  const configPath = path.resolve(process.cwd(), 'apex.config.js');
-
-  try {
-    await fs.access(configPath);
-    console.log('⚠️  Config file already exists: apex.config.js\n');
-    return;
-  } catch {
-    // File doesn't exist, create it
-  }
+  const configPath = path.resolve(process.cwd(), 'src/apex.config.js');
 
   const sample = generateSampleConfig();
   await fs.writeFile(configPath, sample);
-  console.log('✅ Created: apex.config.js\n');
+  console.log('✅ Created: src/apex.config.js\\n');
   console.log('   Edit this file to customize ApexCSS, then run:');
-  console.log('   npm run config:build\n');
+  console.log('   npm run config:build\\n');
 }
 
 /**
@@ -813,7 +1070,7 @@ async function init() {
 async function watch(options) {
   const configPath = path.resolve(process.cwd(), options.config);
 
-  console.log(`👀 Watching ${options.config} for changes...\n`);
+  console.log(`👀 Watching ${options.config} for changes...\\n`);
 
   // Initial build
   await build(options);
@@ -822,7 +1079,7 @@ async function watch(options) {
   const { watchFile } = await import('fs');
   watchFile(configPath, async (curr, prev) => {
     if (curr.mtime !== prev.mtime) {
-      console.log(`📝 Config changed, rebuilding...\n`);
+      console.log(`📝 Config changed, rebuilding...\\n`);
       await build(options);
     }
   });

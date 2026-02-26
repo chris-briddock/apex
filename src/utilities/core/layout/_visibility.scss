@@ -5,7 +5,6 @@
 @use 'sass:map';
 @use 'sass:string';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/responsive' as responsive;
 
 @if settings.$enable-visibility == true {
@@ -24,8 +23,8 @@
   }
 
   // Responsive visibility utilities
-  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-    $prefix: map.get(bp.$breakpoint-prefixes, $breakpoint);
+  @each $breakpoint, $breakpoint-value in settings.$breakpoints {
+    $prefix: map.get(settings.$breakpoint-prefixes, $breakpoint);
 
     @include responsive.respond-above($breakpoint) {
       @each $name, $value in $visibility-values {

@@ -4,7 +4,6 @@
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 
 @if settings.$enable-grid == true {
   // Display grid
@@ -172,7 +171,7 @@
   .auto-rows-fr { grid-auto-rows: minmax(min-content, 1fr); }
 
   // Responsive grid utilities for sm, md, lg, xl, xxl
-  @media (min-width: bp.$breakpoint-sm) {
+  @media (min-width: settings.$breakpoint-sm) {
     .sm\:grid { display: grid; }
     .sm\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -190,7 +189,7 @@
     .sm\:col-span-full { grid-column: 1 / -1; }
   }
 
-  @media (min-width: bp.$breakpoint-md) {
+  @media (min-width: settings.$breakpoint-md) {
     .md\:grid { display: grid; }
     .md\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -219,7 +218,7 @@
     .md\:col-span-full { grid-column: 1 / -1; }
   }
 
-  @media (min-width: bp.$breakpoint-lg) {
+  @media (min-width: settings.$breakpoint-lg) {
     .lg\:grid { display: grid; }
     .lg\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -248,7 +247,7 @@
     .lg\:col-span-full { grid-column: 1 / -1; }
   }
 
-  @media (min-width: bp.$breakpoint-xl) {
+  @media (min-width: settings.$breakpoint-xl) {
     .xl\:grid { display: grid; }
     .xl\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .xl\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -277,7 +276,7 @@
     .xl\:col-span-full { grid-column: 1 / -1; }
   }
 
-  @media (min-width: bp.$breakpoint-xxl) {
+  @media (min-width: settings.$breakpoint-xxl) {
     .xxl\:grid { display: grid; }
     .xxl\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .xxl\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

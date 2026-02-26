@@ -92,6 +92,44 @@
   // Dark Mode Utility Classes (using CSS custom properties)
   // ============================================================================
 
+  // Ring utilities variables (defined outside for reuse)
+  $ring-widths: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    4: 4px,
+    8: 8px
+  );
+
+  $dark-ring-colors: (
+    primary: #60a5fa,
+    secondary: #94a3b8,
+    success: #4ade80,
+    danger: #f87171,
+    warning: #fbbf24,
+    info: #38bdf8,
+    light: #1f2937,
+    dark: #f3f4f6,
+    "white": #111827,
+    "black": #fff,
+    "transparent": transparent,
+    gray-50: #1f2937,
+    gray-100: #374151,
+    gray-200: #4b5563,
+    gray-300: #6b7280,
+    gray-400: #9ca3af,
+    gray-500: #d1d5db,
+    gray-600: #e5e7e7,
+    gray-700: #f3f4f6,
+    gray-800: #f9fafb,
+    gray-900: #ffffff,
+    blue-500: #60a5fa,
+    green-500: #4ade80,
+    red-500: #f87171,
+    yellow-500: #fbbf24,
+    purple-500: #c084fc
+  );
+
   // Semantic colors - text, background, border
   @include dm.dark-mode {
     // Primary
@@ -151,45 +189,44 @@
     .dark\:shadow-none { box-shadow: var(--shadow-none); }
     .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
 
-    // Ring utilities for dark mode
-    $ring-widths: (
-      0: 0,
-      1: 1px,
-      2: 2px,
-      4: 4px,
-      8: 8px
-    );
+    // Ring widths (already inside @include dm.dark-mode, so no extra media query needed)
+    @each $key, $value in $ring-widths {
+      .dark\:ring-#{$key} {
+        --ring-offset-color: #111827;
+        --ring-color: rgba(96, 165, 250, 0.5);
+      }
+    }
+    // Ring offset widths
+    @each $key, $value in $ring-widths {
+      .dark\:ring-offset-#{$key} {
+        --ring-offset-width: #{$value};
+        --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+      }
+    }
+    // Ring colors
+    @each $key, $value in $dark-ring-colors {
+      .dark\:ring-#{$key} {
+        --ring-color: #{$value};
+      }
+    }
+    // Ring offset colors
+    @each $key, $value in $dark-ring-colors {
+      .dark\:ring-offset-#{$key} {
+        --ring-offset-color: #{$value};
+      }
+    }
+    // Ring inset
+    .dark\:ring-inset { --ring-inset: inset; }
+    // Ring opacity
+    .dark\:ring-opacity-0 { --ring-opacity: 0; }
+    .dark\:ring-opacity-25 { --ring-opacity: 0.25; }
+    .dark\:ring-opacity-50 { --ring-opacity: 0.5; }
+    .dark\:ring-opacity-75 { --ring-opacity: 0.75; }
+    .dark\:ring-opacity-100 { --ring-opacity: 1; }
+  }
 
-    $dark-ring-colors: (
-      primary: #60a5fa,
-      secondary: #94a3b8,
-      success: #4ade80,
-      danger: #f87171,
-      warning: #fbbf24,
-      info: #38bdf8,
-      light: #1f2937,
-      dark: #f3f4f6,
-      "white": #111827,
-      "black": #fff,
-      "transparent": transparent,
-      gray-50: #1f2937,
-      gray-100: #374151,
-      gray-200: #4b5563,
-      gray-300: #6b7280,
-      gray-400: #9ca3af,
-      gray-500: #d1d5db,
-      gray-600: #e5e7e7,
-      gray-700: #f3f4f6,
-      gray-800: #f9fafb,
-      gray-900: #ffffff,
-      blue-500: #60a5fa,
-      green-500: #4ade80,
-      red-500: #f87171,
-      yellow-500: #fbbf24,
-      purple-500: #c084fc
-    );
-
-    @media (prefers-color-scheme: dark) {
+  // Manual dark mode via data-theme attribute
+  [data-theme="dark"] {
       // Ring widths
       @each $key, $value in $ring-widths {
         .dark\:ring-#{$key} {
@@ -225,44 +262,6 @@
       .dark\:ring-opacity-75 { --ring-opacity: 0.75; }
       .dark\:ring-opacity-100 { --ring-opacity: 1; }
     }
-
-    [data-theme="dark"] {
-      // Ring widths
-      @each $key, $value in $ring-widths {
-        .dark\:ring-#{$key} {
-          --ring-offset-color: #111827;
-          --ring-color: rgba(96, 165, 250, 0.5);
-        }
-      }
-      // Ring offset widths
-      @each $key, $value in $ring-widths {
-        .dark\:ring-offset-#{$key} {
-          --ring-offset-width: #{$value};
-          --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
-        }
-      }
-      // Ring colors
-      @each $key, $value in $dark-ring-colors {
-        .dark\:ring-#{$key} {
-          --ring-color: #{$value};
-        }
-      }
-      // Ring offset colors
-      @each $key, $value in $dark-ring-colors {
-        .dark\:ring-offset-#{$key} {
-          --ring-offset-color: #{$value};
-        }
-      }
-      // Ring inset
-      .dark\:ring-inset { --ring-inset: inset; }
-      // Ring opacity
-      .dark\:ring-opacity-0 { --ring-opacity: 0; }
-      .dark\:ring-opacity-25 { --ring-opacity: 0.25; }
-      .dark\:ring-opacity-50 { --ring-opacity: 0.5; }
-      .dark\:ring-opacity-75 { --ring-opacity: 0.75; }
-      .dark\:ring-opacity-100 { --ring-opacity: 1; }
-    }
-
   }
 
   // ============================================================================
@@ -344,4 +343,3 @@
       }
     }
   }
-}

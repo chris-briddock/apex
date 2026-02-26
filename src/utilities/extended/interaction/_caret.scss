@@ -7,7 +7,7 @@
 @use '../../../config/custom-config' as settings;
 @if settings.$enable-caret == true {
   .caret-auto { caret-color: auto; }
-  .caret-current { caret-color: currentColor; }
+  .caret-current { caret-color: currentcolor; }
   .caret-transparent { caret-color: transparent; }
   .caret-white { caret-color: var(--color-white); }
   .caret-black { caret-color: var(--color-black); }

@@ -171,10 +171,10 @@
   }
 
   .text-opacity-\[var\(--text-opacity\)\] {
-    color: oklch(var(--text-color, currentColor) / var(--text-opacity, 1));
+    color: oklch(var(--text-color, currentcolor) / var(--text-opacity, 1));
   }
 
   .border-opacity-\[var\(--border-opacity\)\] {
-    border-color: oklch(var(--border-color, currentColor) / var(--border-opacity, 1));
+    border-color: oklch(var(--border-color, currentcolor) / var(--border-opacity, 1));
   }
 }

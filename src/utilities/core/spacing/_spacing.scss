@@ -6,7 +6,6 @@
 @use 'sass:map';
 @use 'sass:string';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/utilities';
 
 @if settings.$enable-spacing == true {
@@ -202,8 +201,8 @@
   // ============================================================================
   // Dynamically generate responsive utilities for all configured breakpoints
   // Use the class name mapping to handle breakpoints like '2xl' -> 'xxl'
-  @each $bp-name, $bp-value in bp.$breakpoints {
-    $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
     @media (min-width: $bp-value) {
       @each $key, $value in $spacing-scale-int {
         .#{$bp-class}\:m-#{$key} { margin: $value; }

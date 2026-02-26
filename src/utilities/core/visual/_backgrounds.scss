@@ -83,7 +83,7 @@
   .from-gray-800 { --gradient-from: var(--color-gray-800); }
   .from-gray-900 { --gradient-from: var(--color-gray-900); }
   .from-transparent { --gradient-from: transparent; }
-  .from-current { --gradient-from: currentColor; }
+  .from-current { --gradient-from: currentcolor; }
 
   // Via (middle color)
   .via-primary { --gradient-via: var(--color-primary); }

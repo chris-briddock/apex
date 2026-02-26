@@ -13,7 +13,6 @@
 @use 'sass:map';
 @use 'sass:list';
 @use '../../../config/custom-config' as settings;
-@use '../../../config/breakpoints' as bp;
 @use '../../../mixins/arbitrary' as arb;
 
 // ============================================================================
@@ -101,8 +100,8 @@ $responsive-typography: (
   'text': ('font-size', ('--text-size',)),
 );
 
-@each $bp-name, $bp-value in bp.$breakpoints {
-  $bp-class: map.get(bp.$breakpoint-class-names, $bp-name);
+@each $bp-name, $bp-value in settings.$breakpoints {
+  $bp-class: map.get(settings.$breakpoint-prefixes, $bp-name);
 
   @media (min-width: $bp-value) {
     // Responsive sizing
