@@ -27,6 +27,13 @@ const __dirname = path.dirname(__filename);
 // Complete default configuration with all feature toggles
 const defaultConfig = {
   // ============================================================================
+  // Dark Mode Strategy
+  // ============================================================================
+  // "media" = uses system preference (prefers-color-scheme)
+  // "class" = uses .dark class on parent element
+  darkModeStrategy: 'class',
+
+  // ============================================================================
   // Feature Toggles - Enable/disable utility categories
   // ============================================================================
   features: {
@@ -458,6 +465,11 @@ function generateSCSS(config) {
 ${generateFeatureToggles(merged.features)}
 
 // ============================================================================
+// Dark Mode Strategy
+// ============================================================================
+${generateDarkModeStrategy(merged.darkModeStrategy)}
+
+// ============================================================================
 // Breakpoints - Responsive design breakpoints
 // ============================================================================
 ${generateBreakpoints(merged.breakpoints)}
@@ -544,6 +556,19 @@ function generateFeatureToggles(features) {
   }
 
   return output.join('\n');
+}
+
+/**
+ * Generate dark mode strategy configuration
+ */
+function generateDarkModeStrategy(darkMode) {
+  const lines = [];
+  lines.push('// Dark Mode Strategy');
+  lines.push('// "media" = uses system preference (prefers-color-scheme)');
+  lines.push('// "class" = uses .dark class on parent element');
+  lines.push(`$dark-mode-strategy: '${darkMode}' !default;`);
+  lines.push('');
+  return lines.join('\n');
 }
 
 /**
@@ -824,6 +849,13 @@ function generateSampleConfig() {
  */
 
 export default {
+  // ============================================================================
+  // Dark Mode Strategy
+  // ============================================================================
+  // "media" = uses system preference (prefers-color-scheme)
+  // "class" = uses .dark class on parent element
+  darkModeStrategy: 'media',
+
   // ============================================================================
   // Feature Toggles - Enable/disable utility categories
   // ============================================================================

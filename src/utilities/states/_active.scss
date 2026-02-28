@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../config/custom-config' as settings;
+@use '../../mixins/dark-mode' as dm;
 
 @if settings.$enable-active == true {
   // Active text color
@@ -17,18 +18,7 @@
 
   // Dark mode active text colors
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:text-primary:active { color: var(--color-primary); }
-      .dark\:active\:text-secondary:active { color: var(--color-secondary); }
-      .dark\:active\:text-success:active { color: var(--color-success); }
-      .dark\:active\:text-danger:active { color: var(--color-danger); }
-      .dark\:active\:text-warning:active { color: var(--color-warning); }
-      .dark\:active\:text-info:active { color: var(--color-info); }
-      .dark\:active\:text-white:active { color: var(--color-black); }
-      .dark\:active\:text-dark:active { color: var(--color-dark); }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:active\:text-primary:active { color: var(--color-primary); }
       .dark\:active\:text-secondary:active { color: var(--color-secondary); }
       .dark\:active\:text-success:active { color: var(--color-success); }
@@ -51,17 +41,7 @@
 
   // Dark mode active background colors
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
-      .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
-      .dark\:active\:bg-success:active { background-color: var(--color-success); }
-      .dark\:active\:bg-danger:active { background-color: var(--color-danger); }
-      .dark\:active\:bg-warning:active { background-color: var(--color-warning); }
-      .dark\:active\:bg-info:active { background-color: var(--color-info); }
-      .dark\:active\:bg-dark:active { background-color: var(--color-dark); }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
       .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
       .dark\:active\:bg-success:active { background-color: var(--color-success); }
@@ -82,16 +62,7 @@
 
   // Dark mode active border colors
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:border-primary:active { border-color: var(--color-primary); }
-      .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
-      .dark\:active\:border-success:active { border-color: var(--color-success); }
-      .dark\:active\:border-danger:active { border-color: var(--color-danger); }
-      .dark\:active\:border-warning:active { border-color: var(--color-warning); }
-      .dark\:active\:border-info:active { border-color: var(--color-info); }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:active\:border-primary:active { border-color: var(--color-primary); }
       .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
       .dark\:active\:border-success:active { border-color: var(--color-success); }
@@ -122,15 +93,7 @@
 
   // Dark mode active shadows
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
-      .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
-      .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }
-      .dark\:active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
-      .dark\:active\:shadow-none:active { box-shadow: none; }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
       .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
       .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }

@@ -49,16 +49,25 @@ export default defineConfig({
     devSourcemap: true
   },
   build: {
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     sourcemap: true,
     minify: 'esbuild',
     rollupOptions: {
       input: {
-        main: 'src/index.js'
+        'themes': 'src/entry-themes.scss',
+        'base': 'src/entry-base.scss',
+        'utilities': 'src/entry-utilities.scss',
+        'apex': 'src/main.scss',
       },
       output: {
-        entryFileNames: 'framework.js',
-        assetFileNames: 'framework.[ext]',
+        entryFileNames: '[name].js',
+        assetFileNames: (assetInfo) => {
+          // Ensure CSS files keep their original names
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return '[name][extname]';
+          }
+          return '[name][extname]';
+        },
       }
     }
   },

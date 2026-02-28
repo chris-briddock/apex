@@ -143,6 +143,15 @@ $enable-z-index: true !default; // enabled
 
 
 // ============================================================================
+// Dark Mode Strategy
+// ============================================================================
+// Dark Mode Strategy
+// "media" = uses system preference (prefers-color-scheme)
+// "class" = uses .dark class on parent element
+$dark-mode-strategy: 'class' !default;
+
+
+// ============================================================================
 // Breakpoints - Responsive design breakpoints
 // ============================================================================
 // Individual breakpoint variables

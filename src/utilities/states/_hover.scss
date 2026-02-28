@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../config/custom-config' as settings;
+@use '../../mixins/dark-mode' as dm;
 
 @if settings.$enable-hover == true {
   // Hover text color - theme colors
@@ -21,22 +22,7 @@
 
   // Dark mode hover text colors
   @if settings.$enable-dark-mode == true {
-    // Dark mode hover text colors - via media query
-    @media (prefers-color-scheme: dark) {
-      .dark\:hover\:text-primary:hover { color: var(--color-primary); }
-      .dark\:hover\:text-secondary:hover { color: var(--color-secondary); }
-      .dark\:hover\:text-success:hover { color: var(--color-success); }
-      .dark\:hover\:text-danger:hover { color: var(--color-danger); }
-      .dark\:hover\:text-warning:hover { color: var(--color-warning); }
-      .dark\:hover\:text-info:hover { color: var(--color-info); }
-      .dark\:hover\:text-light:hover { color: var(--color-dark); }
-      .dark\:hover\:text-dark:hover { color: var(--color-light); }
-      .dark\:hover\:text-white:hover { color: var(--color-black); }
-      .dark\:hover\:text-black:hover { color: var(--color-white); }
-    }
-
-    // Dark mode hover text colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:hover\:text-primary:hover { color: var(--color-primary); }
       .dark\:hover\:text-secondary:hover { color: var(--color-secondary); }
       .dark\:hover\:text-success:hover { color: var(--color-success); }
@@ -48,14 +34,7 @@
       .dark\:hover\:text-white:hover { color: var(--color-black); }
       .dark\:hover\:text-black:hover { color: var(--color-white); }
 
-      // Dark mode hover gray text colors - via data-theme="dark" attribute
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
-      }
-    }
-
-    // Dark mode hover gray text colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray text colors
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
       }
@@ -81,22 +60,7 @@
 
   // Dark mode hover background colors
   @if settings.$enable-dark-mode == true {
-    // Dark mode hover background colors - via media query
-    @media (prefers-color-scheme: dark) {
-      .dark\:hover\:bg-primary:hover { background-color: var(--color-primary); }
-      .dark\:hover\:bg-secondary:hover { background-color: var(--color-secondary); }
-      .dark\:hover\:bg-success:hover { background-color: var(--color-success); }
-      .dark\:hover\:bg-danger:hover { background-color: var(--color-danger); }
-      .dark\:hover\:bg-warning:hover { background-color: var(--color-warning); }
-      .dark\:hover\:bg-info:hover { background-color: var(--color-info); }
-      .dark\:hover\:bg-light:hover { background-color: var(--color-dark); }
-      .dark\:hover\:bg-dark:hover { background-color: var(--color-light); }
-      .dark\:hover\:bg-white:hover { background-color: var(--color-black); }
-      .dark\:hover\:bg-transparent:hover { background-color: transparent; }
-    }
-
-    // Dark mode hover background colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:hover\:bg-primary:hover { background-color: var(--color-primary); }
       .dark\:hover\:bg-secondary:hover { background-color: var(--color-secondary); }
       .dark\:hover\:bg-success:hover { background-color: var(--color-success); }
@@ -108,14 +72,7 @@
       .dark\:hover\:bg-white:hover { background-color: var(--color-black); }
       .dark\:hover\:bg-transparent:hover { background-color: transparent; }
 
-      // Dark mode hover gray background colors - via data-theme="dark" attribute
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
-      }
-    }
-
-    // Dark mode hover gray background colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray background colors
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
       }
@@ -140,21 +97,7 @@
 
   // Dark mode hover border colors
   @if settings.$enable-dark-mode == true {
-    // Dark mode hover border colors - via media query
-    @media (prefers-color-scheme: dark) {
-      .dark\:hover\:border-primary:hover { border-color: var(--color-primary); }
-      .dark\:hover\:border-secondary:hover { border-color: var(--color-secondary); }
-      .dark\:hover\:border-success:hover { border-color: var(--color-success); }
-      .dark\:hover\:border-danger:hover { border-color: var(--color-danger); }
-      .dark\:hover\:border-warning:hover { border-color: var(--color-warning); }
-      .dark\:hover\:border-info:hover { border-color: var(--color-info); }
-      .dark\:hover\:border-light:hover { border-color: var(--color-dark); }
-      .dark\:hover\:border-dark:hover { border-color: var(--color-light); }
-      .dark\:hover\:border-white:hover { border-color: var(--color-black); }
-    }
-
-    // Dark mode hover border colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:hover\:border-primary:hover { border-color: var(--color-primary); }
       .dark\:hover\:border-secondary:hover { border-color: var(--color-secondary); }
       .dark\:hover\:border-success:hover { border-color: var(--color-success); }
@@ -165,14 +108,7 @@
       .dark\:hover\:border-dark:hover { border-color: var(--color-light); }
       .dark\:hover\:border-white:hover { border-color: var(--color-black); }
 
-      // Dark mode hover gray border colors - via data-theme="dark" attribute
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
-      }
-    }
-
-    // Dark mode hover gray border colors - via media query
-    @media (prefers-color-scheme: dark) {
+      // Dark mode hover gray border colors
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
       }
@@ -193,16 +129,7 @@
 
   // Dark mode hover text colors for other colors
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:hover\:text-blue-500:hover { color: var(--color-blue-400); }
-      .dark\:hover\:text-green-500:hover { color: var(--color-green-400); }
-      .dark\:hover\:text-red-500:hover { color: var(--color-red-400); }
-      .dark\:hover\:text-yellow-500:hover { color: var(--color-yellow-400); }
-      .dark\:hover\:text-purple-500:hover { color: var(--color-purple-400); }
-    }
-
-    // Dark mode hover colors for other colors - via data-theme="dark" attribute
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:hover\:text-blue-500:hover { color: var(--color-blue-400); }
       .dark\:hover\:text-green-500:hover { color: var(--color-green-400); }
       .dark\:hover\:text-red-500:hover { color: var(--color-red-400); }
@@ -228,16 +155,7 @@
 
   // Dark mode hover shadows (adjusted for dark backgrounds)
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:hover\:shadow-sm:hover { box-shadow: var(--shadow-sm); }
-      .dark\:hover\:shadow:hover { box-shadow: var(--shadow-base); }
-      .dark\:hover\:shadow-md:hover { box-shadow: var(--shadow-md); }
-      .dark\:hover\:shadow-lg:hover { box-shadow: var(--shadow-lg); }
-      .dark\:hover\:shadow-xl:hover { box-shadow: var(--shadow-xl); }
-      .dark\:hover\:shadow-none:hover { box-shadow: none; }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:hover\:shadow-sm:hover { box-shadow: var(--shadow-sm); }
       .dark\:hover\:shadow:hover { box-shadow: var(--shadow-base); }
       .dark\:hover\:shadow-md:hover { box-shadow: var(--shadow-md); }

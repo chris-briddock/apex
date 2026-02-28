@@ -151,16 +151,6 @@
       border-color: var(#{$var-name});
     }
   }
-
-  [data-theme="dark"] .dark\:text-#{$color-name} {
-    color: var(#{$var-name});
-  }
-  [data-theme="dark"] .dark\:bg-#{$color-name} {
-    background-color: var(#{$var-name});
-  }
-  [data-theme="dark"] .dark\:border-#{$color-name} {
-    border-color: var(#{$var-name});
-  }
 }
 
 // ============================================================================
