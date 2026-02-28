@@ -7,92 +7,143 @@
 @use '../config/custom-config' as settings;
 @use '../mixins/dark-mode' as dm;
 
+// Dark mode CSS custom properties mixin
+// Defined at top level to comply with Sass rules
+@mixin dark-props {
+  // Semantic Colors
+  --color-primary: #60a5fa;
+  --color-primary-light: #93c5fd;
+  --color-primary-dark: #3b82f6;
+  --color-secondary: #94a3b8;
+  --color-secondary-light: #cbd5e1;
+  --color-secondary-dark: #64748b;
+  --color-success: #4ade80;
+  --color-success-light: #86efac;
+  --color-success-dark: #22c55e;
+  --color-danger: #f87171;
+  --color-danger-light: #fca5a5;
+  --color-danger-dark: #ef4444;
+  --color-warning: #fbbf24;
+  --color-warning-light: #fcd34d;
+  --color-warning-dark: #f59e0b;
+  --color-info: #38bdf8;
+  --color-info-light: #7dd3fc;
+  --color-info-dark: #0ea5e9;
+  --color-light: #f3f4f6;
+  --color-dark: #1f2937;
+  --color-white: #f3f4f6;
+  --color-black: #1f2937;
+
+  // Gray Scale (adjusted for dark mode)
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  // Extended Color Scales (Blue) - adjusted for dark mode
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  // Extended Color Scales (Green) - adjusted for dark mode
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+
+  // Extended Color Scales (Red) - adjusted for dark mode
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+
+  // Extended Color Scales (Yellow) - adjusted for dark mode
+  --color-yellow-50: #fefce8;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+
+  // Extended Color Scales (Purple) - adjusted for dark mode
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7c3aed;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+
+  // Shadows (adjusted opacity for dark mode)
+  --shadow-color: 0 0 0;
+  --shadow-sm: 0 1px 2px 0 rgb(var(--shadow-color) / 0.3);
+  --shadow-base: 0 1px 3px 0 rgb(var(--shadow-color) / 0.4), 0 1px 2px 0 rgb(var(--shadow-color) / 0.2);
+  --shadow-md: 0 4px 6px -1px rgb(var(--shadow-color) / 0.4), 0 2px 4px -1px rgb(var(--shadow-color) / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(var(--shadow-color) / 0.4), 0 4px 6px -2px rgb(var(--shadow-color) / 0.2);
+  --shadow-xl: 0 20px 25px -5px rgb(var(--shadow-color) / 0.4), 0 10px 10px -5px rgb(var(--shadow-color) / 0.2);
+  --shadow-2xl: 0 25px 50px -12px rgb(var(--shadow-color) / 0.5);
+  --shadow-inner: inset 0 2px 4px 0 rgb(var(--shadow-color) / 0.15);
+}
+
 @if settings.$enable-dark-mode == true {
   // ============================================================================
-  // CSS Custom Properties - Automatic Dark Mode (System Preference)
+  // Dark Mode CSS Custom Properties
   // ============================================================================
-  @media (prefers-color-scheme: dark) {
-    :root {
-      // Semantic Colors
-      --color-primary: #60a5fa;
-      --color-primary-light: #93c5fd;
-      --color-primary-dark: #3b82f6;
-      --color-secondary: #94a3b8;
-      --color-secondary-light: #cbd5e1;
-      --color-secondary-dark: #64748b;
-      --color-success: #4ade80;
-      --color-success-light: #86efac;
-      --color-success-dark: #22c55e;
-      --color-danger: #f87171;
-      --color-danger-light: #fca5a5;
-      --color-danger-dark: #ef4444;
-      --color-warning: #fbbf24;
-      --color-warning-light: #fcd34d;
-      --color-warning-dark: #f59e0b;
-      --color-info: #38bdf8;
-      --color-info-light: #7dd3fc;
-      --color-info-dark: #0ea5e9;
-      --color-light: #f3f4f6;
-      --color-dark: #1f2937;
-      --color-white: #f3f4f6;
-      --color-black: #1f2937;
+  // Define dark mode colors based on $dark-mode-strategy
+  // - "media": Uses @media (prefers-color-scheme: dark)
+  // - "class": Uses .dark class on parent element
 
-      // Shadows (adjusted opacity for dark mode)
-      --shadow-color: 0 0 0;
-      --shadow-sm: 0 1px 2px 0 rgb(var(--shadow-color) / 0.3);
-      --shadow-base: 0 1px 3px 0 rgb(var(--shadow-color) / 0.4), 0 1px 2px 0 rgb(var(--shadow-color) / 0.2);
-      --shadow-md: 0 4px 6px -1px rgb(var(--shadow-color) / 0.4), 0 2px 4px -1px rgb(var(--shadow-color) / 0.2);
-      --shadow-lg: 0 10px 15px -3px rgb(var(--shadow-color) / 0.4), 0 4px 6px -2px rgb(var(--shadow-color) / 0.2);
-      --shadow-xl: 0 20px 25px -5px rgb(var(--shadow-color) / 0.4), 0 10px 10px -5px rgb(var(--shadow-color) / 0.2);
-      --shadow-2xl: 0 25px 50px -12px rgb(var(--shadow-color) / 0.5);
-      --shadow-inner: inset 0 2px 4px 0 rgb(var(--shadow-color) / 0.15);
+  // Output based on strategy
+  @if settings.$dark-mode-strategy == 'media' {
+    @media (prefers-color-scheme: dark) {
+      :root {
+        @include dark-props;
+      }
+    }
+  } @else if settings.$dark-mode-strategy == 'class' {
+    .dark {
+      @include dark-props;
     }
   }
+}
 
-  // ============================================================================
-  // CSS Custom Properties - Manual Dark Mode (data-theme="dark" attribute)
-  // ============================================================================
-  [data-theme="dark"] {
-    // Semantic Colors
-    --color-primary: #60a5fa;
-    --color-primary-light: #93c5fd;
-    --color-primary-dark: #3b82f6;
-    --color-secondary: #94a3b8;
-    --color-secondary-light: #cbd5e1;
-    --color-secondary-dark: #64748b;
-    --color-success: #4ade80;
-    --color-success-light: #86efac;
-    --color-success-dark: #22c55e;
-    --color-danger: #f87171;
-    --color-danger-light: #fca5a5;
-    --color-danger-dark: #ef4444;
-    --color-warning: #fbbf24;
-    --color-warning-light: #fcd34d;
-    --color-warning-dark: #f59e0b;
-    --color-info: #38bdf8;
-    --color-info-light: #7dd3fc;
-    --color-info-dark: #0ea5e9;
-    --color-light: #f3f4f6;
-    --color-dark: #1f2937;
-    --color-white: #f3f4f6;
-    --color-black: #1f2937;
-
-    // Shadows (adjusted opacity for dark mode)
-    --shadow-color: 0 0 0;
-    --shadow-sm: 0 1px 2px 0 rgb(var(--shadow-color) / 0.3);
-    --shadow-base: 0 1px 3px 0 rgb(var(--shadow-color) / 0.4), 0 1px 2px 0 rgb(var(--shadow-color) / 0.2);
-    --shadow-md: 0 4px 6px -1px rgb(var(--shadow-color) / 0.4), 0 2px 4px -1px rgb(var(--shadow-color) / 0.2);
-    --shadow-lg: 0 10px 15px -3px rgb(var(--shadow-color) / 0.4), 0 4px 6px -2px rgb(var(--shadow-color) / 0.2);
-    --shadow-xl: 0 20px 25px -5px rgb(var(--shadow-color) / 0.4), 0 10px 10px -5px rgb(var(--shadow-color) / 0.2);
-    --shadow-2xl: 0 25px 50px -12px rgb(var(--shadow-color) / 0.5);
-    --shadow-inner: inset 0 2px 4px 0 rgb(var(--shadow-color) / 0.15);
-  }
-
-  // ============================================================================
-  // Dark Mode Utility Classes (using CSS custom properties)
-  // ============================================================================
-
-  // Ring utilities variables (defined outside for reuse)
+// ============================================================================
+// Dark Mode Utility Classes - TOP LEVEL to maintain (0,1,0) specificity
+// ============================================================================
+@if settings.$enable-dark-mode == true {
+  // Ring utilities variables
   $ring-widths: (
     0: 0,
     1: 1px,
@@ -107,21 +158,21 @@
     danger: #f87171,
     warning: #fbbf24,
     info: #38bdf8,
-    light: #1f2937,
-    dark: #f3f4f6,
-    "white": #111827,
-    "black": #fff,
+    light: #f3f4f6,
+    dark: #1f2937,
+    "white": #fff,
+    "black": #111827,
     "transparent": transparent,
-    gray-50: #1f2937,
-    gray-100: #374151,
-    gray-200: #4b5563,
-    gray-300: #6b7280,
+    gray-50: #f9fafb,
+    gray-100: #f3f4f6,
+    gray-200: #e5e7eb,
+    gray-300: #d1d5db,
     gray-400: #9ca3af,
-    gray-500: #d1d5db,
-    gray-600: #e5e7e7,
-    gray-700: #f3f4f6,
-    gray-800: #f9fafb,
-    gray-900: #fff,
+    gray-500: #6b7280,
+    gray-600: #4b5563,
+    gray-700: #374151,
+    gray-800: #1f2937,
+    gray-900: #111827,
     blue-500: #60a5fa,
     green-500: #4ade80,
     red-500: #f87171,
@@ -129,39 +180,32 @@
     purple-500: #c084fc
   );
 
-  // Semantic colors - text, background, border
   @include dm.dark-mode {
-    // Primary
+    // Semantic colors - text, background, border
     .dark\:text-primary { color: var(--color-primary); }
     .dark\:bg-primary { background-color: var(--color-primary); }
     .dark\:border-primary { border-color: var(--color-primary); }
 
-    // Secondary
     .dark\:text-secondary { color: var(--color-secondary); }
     .dark\:bg-secondary { background-color: var(--color-secondary); }
     .dark\:border-secondary { border-color: var(--color-secondary); }
 
-    // Success
     .dark\:text-success { color: var(--color-success); }
     .dark\:bg-success { background-color: var(--color-success); }
     .dark\:border-success { border-color: var(--color-success); }
 
-    // Danger
     .dark\:text-danger { color: var(--color-danger); }
     .dark\:bg-danger { background-color: var(--color-danger); }
     .dark\:border-danger { border-color: var(--color-danger); }
 
-    // Warning
     .dark\:text-warning { color: var(--color-warning); }
     .dark\:bg-warning { background-color: var(--color-warning); }
     .dark\:border-warning { border-color: var(--color-warning); }
 
-    // Info
     .dark\:text-info { color: var(--color-info); }
     .dark\:bg-info { background-color: var(--color-info); }
     .dark\:border-info { border-color: var(--color-info); }
 
-    // Light/Dark/White/Black
     .dark\:text-light { color: var(--color-light); }
     .dark\:bg-light { background-color: var(--color-light); }
     .dark\:border-light { border-color: var(--color-light); }
@@ -188,7 +232,7 @@
     .dark\:shadow-none { box-shadow: var(--shadow-none); }
     .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
 
-    // Ring widths (already inside @include dm.dark-mode, so no extra media query needed)
+    // Ring widths
     @each $key, $value in $ring-widths {
       .dark\:ring-#{$key} {
         --ring-offset-color: #111827;
@@ -227,23 +271,15 @@
     .dark\:ring-opacity-50 { --ring-opacity: 0.5; }
     .dark\:ring-opacity-75 { --ring-opacity: 0.75; }
     .dark\:ring-opacity-100 { --ring-opacity: 1; }
-  }
 
-  // ============================================================================
-  // Gray Color Scale (50-900)
-  // ============================================================================
-  @include dm.dark-mode {
+    // Gray Color Scale (50-900)
     @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
       .dark\:text-gray-#{$shade} { color: var(--color-gray-#{$shade}); }
       .dark\:bg-gray-#{$shade} { background-color: var(--color-gray-#{$shade}); }
       .dark\:border-gray-#{$shade} { border-color: var(--color-gray-#{$shade}); }
     }
-  }
 
-  // ============================================================================
-  // Extended Color Scales (Blue, Green, Red, Yellow, Purple)
-  // ============================================================================
-  @include dm.dark-mode {
+    // Extended Color Scales (Blue, Green, Red, Yellow, Purple)
     @each $color-family in ('blue', 'green', 'red', 'yellow', 'purple') {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
@@ -253,32 +289,10 @@
     }
   }
 
-  // ============================================================================
   // Dark Mode Opacity Variants
-  // ============================================================================
   @if settings.$enable-color-modifiers == true {
-    @media (prefers-color-scheme: dark) {
+    @include dm.dark-mode {
       @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
-        // Semantic color opacity variants
-        $semantic-colors: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'white', 'black');
-
-        @each $color in $semantic-colors {
-          .dark\:bg-#{$color}[op#{$opacity-name}] {
-            background-color: color-mix(in srgb, var(--color-#{$color}) #{$opacity-name * 1%}, transparent);
-          }
-        }
-
-        // Gray opacity variants
-        @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-          .dark\:bg-gray-#{$shade}[op#{$opacity-name}] {
-            background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
-          }
-        }
-      }
-    }
-
-    @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
-      @include dm.dark-mode {
         // Semantic color opacity variants
         $semantic-colors: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'white', 'black');
 

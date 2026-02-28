@@ -1,0 +1,82 @@
+// ============================================================================
+// Responsive Utilities Generator
+// ============================================================================
+// This module generates responsive utilities within consolidated media queries.
+// Instead of each utility file defining its own media queries, this module
+// collects all utilities and generates them once per breakpoint.
+// Usage in utility files:
+//   1. Export a map of values: $display-values: (block: block, flex: flex);
+//   2. Generate base utilities from the map
+//   3. Call the responsive generator after loading all utility modules
+// Example output:
+//   @media (min-width: 640px) {
+//     .sm:block { display: block; }
+//     .sm:flex { display: flex; }
+//     .sm:visible { visibility: visible; }
+//   }
+// ============================================================================
+
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+@use '../config/custom-config' as settings;
+
+// Generate responsive utilities from a values map
+// Parameters:
+//   $values-map: Map of class name suffixes to CSS values
+//   $property: The CSS property name (e.g., 'display', 'visibility')
+//   $breakpoint: The breakpoint name (e.g., 'sm', 'md')
+@mixin generate-responsive-utilities($values-map, $property, $breakpoint) {
+  $prefix: map.get(settings.$breakpoint-prefixes, $breakpoint);
+
+  @each $name, $value in $values-map {
+    // Handle potential numeric prefixes that need escaping
+    $escaped-prefix: $prefix;
+
+    @if string.slice($prefix, 1, 1) == '2' {
+      $escaped-prefix: '\\32' + string.slice($prefix, 2);
+    }
+
+    .#{$escaped-prefix}\:#{$name} {
+      #{$property}: $value;
+    }
+  }
+}
+
+// Generate responsive utilities for all breakpoints
+// This mixin generates a single media query per breakpoint containing
+// all utilities registered for that breakpoint.
+// Parameters:
+//   $utilities-config: map of (display: $display-values, visibility: $visibility-values)
+@mixin generate-all-breakpoint-utilities($utilities-config) {
+  @each $breakpoint, $breakpoint-value in settings.$breakpoints {
+    $has-utilities: false;
+
+    // Check if any utilities are defined for this breakpoint
+    @each $module-name, $values-map in $utilities-config {
+      @if list.length($values-map) > 0 {
+        $has-utilities: true;
+      }
+    }
+
+    // Generate media query with all utilities for this breakpoint
+    @if $has-utilities {
+      @media (min-width: #{$breakpoint-value}) {
+        @each $module-name, $values-map in $utilities-config {
+          @if list.length($values-map) > 0 {
+            // Determine property name from module name
+            $property: $module-name;
+
+            @if $module-name == 'display' {
+              $property: 'display';
+            } @else if $module-name == 'visibility' {
+              $property: 'visibility';
+            }
+
+            @include generate-responsive-utilities($values-map, $property, $breakpoint);
+          }
+        }
+      }
+    }
+  }
+}

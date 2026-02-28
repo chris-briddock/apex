@@ -1,0 +1,15 @@
+// ============================================================================
+// ApexCSS - Utilities Entry Point
+// ============================================================================
+// All utility classes organized into categories:
+// - core:       Essential utilities (spacing, colors, typography, flexbox, etc.)
+// - extended:   Advanced utilities (animations, transforms, filters)
+// - states:     Pseudo-state variants (hover, focus, active, disabled)
+// - accessibility: A11y utilities (screen-reader, focus)
+
+@use 'config';
+@use 'utilities';
+
+// ============================================================================
+// End of Utilities
+// ============================================================================

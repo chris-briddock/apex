@@ -14,6 +14,13 @@
 
 export default {
   // ============================================================================
+  // Dark Mode Strategy
+  // ============================================================================
+  // "media" = uses system preference (prefers-color-scheme)
+  // "class" = uses .dark class on parent element
+  darkModeStrategy: 'class',
+
+  // ============================================================================
   // Feature Toggles - Enable/disable utility categories
   // ============================================================================
   features: {

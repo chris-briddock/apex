@@ -1,8 +1,10 @@
 // ============================================================================
 // State Variant Mixins
 // ============================================================================
-
-@use '../config/custom-config' as settings;
+// Note: These mixins are available for user convenience but are not currently
+// used internally by the framework. State variants are generated directly
+// in the utilities/states/ files.
+// ============================================================================
 
 // Hover state mixin
 @mixin hover {
@@ -30,43 +32,6 @@
   &:disabled,
   &.disabled {
     @content;
-  }
-}
-
-// Generate hover variants
-@mixin generate-hover-variants($property, $value-map) {
-  @each $name, $value in $value-map {
-    .hover\:#{$name}:hover {
-      #{$property}: $value;
-    }
-  }
-}
-
-// Generate focus variants
-@mixin generate-focus-variants($property, $value-map) {
-  @each $name, $value in $value-map {
-    .focus\:#{$name}:focus {
-      #{$property}: $value;
-    }
-  }
-}
-
-// Generate active variants
-@mixin generate-active-variants($property, $value-map) {
-  @each $name, $value in $value-map {
-    .active\:#{$name}:active {
-      #{$property}: $value;
-    }
-  }
-}
-
-// Generate disabled variants
-@mixin generate-disabled-variants($property, $value-map) {
-  @each $name, $value in $value-map {
-    .disabled\:#{$name}:disabled,
-    .disabled\:#{$name}.disabled {
-      #{$property}: $value;
-    }
   }
 }
 

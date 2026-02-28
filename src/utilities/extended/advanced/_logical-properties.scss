@@ -16,6 +16,7 @@
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/dark-mode' as dm;
 
 @if settings.$enable-logical-properties == true {
   // ============================================================================
@@ -231,12 +232,7 @@
   // Dark Mode Logical Utilities
   // ============================================================================
   @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:is-full { inline-size: 100%; }
-      .dark\:bs-full { block-size: 100%; }
-    }
-
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       .dark\:is-full { inline-size: 100%; }
       .dark\:bs-full { block-size: 100%; }
     }

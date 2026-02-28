@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../config/custom-config' as settings;
+@use '../../mixins/dark-mode' as dm;
 
 @if settings.$enable-active == true {
   // Active text color
@@ -15,31 +16,6 @@
   .active\:text-white:active { color: var(--color-white); }
   .active\:text-dark:active { color: var(--color-dark); }
 
-  // Dark mode active text colors
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:text-primary:active { color: var(--color-primary); }
-      .dark\:active\:text-secondary:active { color: var(--color-secondary); }
-      .dark\:active\:text-success:active { color: var(--color-success); }
-      .dark\:active\:text-danger:active { color: var(--color-danger); }
-      .dark\:active\:text-warning:active { color: var(--color-warning); }
-      .dark\:active\:text-info:active { color: var(--color-info); }
-      .dark\:active\:text-white:active { color: var(--color-black); }
-      .dark\:active\:text-dark:active { color: var(--color-dark); }
-    }
-
-    [data-theme="dark"] {
-      .dark\:active\:text-primary:active { color: var(--color-primary); }
-      .dark\:active\:text-secondary:active { color: var(--color-secondary); }
-      .dark\:active\:text-success:active { color: var(--color-success); }
-      .dark\:active\:text-danger:active { color: var(--color-danger); }
-      .dark\:active\:text-warning:active { color: var(--color-warning); }
-      .dark\:active\:text-info:active { color: var(--color-info); }
-      .dark\:active\:text-white:active { color: var(--color-black); }
-      .dark\:active\:text-dark:active { color: var(--color-dark); }
-    }
-  }
-
   // Active background color
   .active\:bg-primary:active { background-color: var(--color-primary); }
   .active\:bg-secondary:active { background-color: var(--color-secondary); }
@@ -49,29 +25,6 @@
   .active\:bg-info:active { background-color: var(--color-info); }
   .active\:bg-dark:active { background-color: var(--color-dark); }
 
-  // Dark mode active background colors
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
-      .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
-      .dark\:active\:bg-success:active { background-color: var(--color-success); }
-      .dark\:active\:bg-danger:active { background-color: var(--color-danger); }
-      .dark\:active\:bg-warning:active { background-color: var(--color-warning); }
-      .dark\:active\:bg-info:active { background-color: var(--color-info); }
-      .dark\:active\:bg-dark:active { background-color: var(--color-dark); }
-    }
-
-    [data-theme="dark"] {
-      .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
-      .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
-      .dark\:active\:bg-success:active { background-color: var(--color-success); }
-      .dark\:active\:bg-danger:active { background-color: var(--color-danger); }
-      .dark\:active\:bg-warning:active { background-color: var(--color-warning); }
-      .dark\:active\:bg-info:active { background-color: var(--color-info); }
-      .dark\:active\:bg-dark:active { background-color: var(--color-dark); }
-    }
-  }
-
   // Active border color
   .active\:border-primary:active { border-color: var(--color-primary); }
   .active\:border-secondary:active { border-color: var(--color-secondary); }
@@ -79,27 +32,6 @@
   .active\:border-danger:active { border-color: var(--color-danger); }
   .active\:border-warning:active { border-color: var(--color-warning); }
   .active\:border-info:active { border-color: var(--color-info); }
-
-  // Dark mode active border colors
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:border-primary:active { border-color: var(--color-primary); }
-      .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
-      .dark\:active\:border-success:active { border-color: var(--color-success); }
-      .dark\:active\:border-danger:active { border-color: var(--color-danger); }
-      .dark\:active\:border-warning:active { border-color: var(--color-warning); }
-      .dark\:active\:border-info:active { border-color: var(--color-info); }
-    }
-
-    [data-theme="dark"] {
-      .dark\:active\:border-primary:active { border-color: var(--color-primary); }
-      .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
-      .dark\:active\:border-success:active { border-color: var(--color-success); }
-      .dark\:active\:border-danger:active { border-color: var(--color-danger); }
-      .dark\:active\:border-warning:active { border-color: var(--color-warning); }
-      .dark\:active\:border-info:active { border-color: var(--color-info); }
-    }
-  }
 
   // Active scale
   .active\:scale-90:active { transform: scale(0.9); }
@@ -120,29 +52,51 @@
   .active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
   .active\:shadow-none:active { box-shadow: none; }
 
-  // Dark mode active shadows
-  @if settings.$enable-dark-mode == true {
-    @media (prefers-color-scheme: dark) {
-      .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
-      .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
-      .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }
-      .dark\:active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
-      .dark\:active\:shadow-none:active { box-shadow: none; }
-    }
-
-    [data-theme="dark"] {
-      .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
-      .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
-      .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }
-      .dark\:active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
-      .dark\:active\:shadow-none:active { box-shadow: none; }
-    }
-  }
-
   // Active opacity
   .active\:opacity-0:active { opacity: 0; }
   .active\:opacity-25:active { opacity: 0.25; }
   .active\:opacity-50:active { opacity: 0.5; }
   .active\:opacity-75:active { opacity: 0.75; }
   .active\:opacity-100:active { opacity: 1; }
+}
+
+// ============================================================================
+// Dark mode active states - TOP LEVEL to maintain (0,1,0) specificity
+// ============================================================================
+@if settings.$enable-active == true and settings.$enable-dark-mode == true {
+  @include dm.dark-mode {
+    // Dark mode active text colors
+    .dark\:active\:text-primary:active { color: var(--color-primary); }
+    .dark\:active\:text-secondary:active { color: var(--color-secondary); }
+    .dark\:active\:text-success:active { color: var(--color-success); }
+    .dark\:active\:text-danger:active { color: var(--color-danger); }
+    .dark\:active\:text-warning:active { color: var(--color-warning); }
+    .dark\:active\:text-info:active { color: var(--color-info); }
+    .dark\:active\:text-white:active { color: var(--color-black); }
+    .dark\:active\:text-dark:active { color: var(--color-dark); }
+
+    // Dark mode active background colors
+    .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
+    .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
+    .dark\:active\:bg-success:active { background-color: var(--color-success); }
+    .dark\:active\:bg-danger:active { background-color: var(--color-danger); }
+    .dark\:active\:bg-warning:active { background-color: var(--color-warning); }
+    .dark\:active\:bg-info:active { background-color: var(--color-info); }
+    .dark\:active\:bg-dark:active { background-color: var(--color-dark); }
+
+    // Dark mode active border colors
+    .dark\:active\:border-primary:active { border-color: var(--color-primary); }
+    .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
+    .dark\:active\:border-success:active { border-color: var(--color-success); }
+    .dark\:active\:border-danger:active { border-color: var(--color-danger); }
+    .dark\:active\:border-warning:active { border-color: var(--color-warning); }
+    .dark\:active\:border-info:active { border-color: var(--color-info); }
+
+    // Dark mode active shadows
+    .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
+    .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
+    .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }
+    .dark\:active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
+    .dark\:active\:shadow-none:active { box-shadow: none; }
+  }
 }

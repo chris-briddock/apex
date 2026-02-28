@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/dark-mode' as dm;
 
 @if settings.$enable-borders == true {
   // Divide y (top/bottom borders)
@@ -88,7 +89,7 @@
 
   // Dark mode divide colors
   @if settings.$enable-dark-mode == true {
-    [data-theme="dark"] {
+    @include dm.dark-mode {
       @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
         .dark\:divide-gray-#{$key} > :not([hidden]) ~ :not([hidden]) {
           border-color: var(--color-gray-#{$key});
