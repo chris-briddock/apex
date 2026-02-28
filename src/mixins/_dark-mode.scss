@@ -1,45 +1,38 @@
 // ============================================================================
 // Automatic Dark Mode Mixins
 // ============================================================================
-// These mixins generate utilities that respond to:
-// - System preference: @media (prefers-color-scheme: dark)
-// - Manual toggle: [data-theme='dark'] or .dark class on parent
+// These mixins generate utilities based on the configured strategy:
+// - "media": Uses @media (prefers-color-scheme: dark) for system preference
+// - "class": Uses .dark class on parent element for manual toggle
 // ============================================================================
 
 @use 'sass:map';
 @use 'sass:color';
+@use '../config/custom-config' as config;
 
 // ============================================================================
 // Primary Dark Mode Mixin
 // ============================================================================
-// Generates dark mode utilities with consistent specificity (0,1,0)
+// Generates dark mode utilities based on $dark-mode-strategy config.
+// Strategy "media": Outputs @media (prefers-color-scheme: dark) { ... }
+// Strategy "class": Outputs .dark { ... }
 // Usage (at TOP LEVEL of file):
 //   @include dark-mode {
 //     .dark\:text-primary { color: var(--color-primary); }
 //   }
-// Output:
-//   @media (prefers-color-scheme: dark) {
-//     .dark\:text-primary { color: var(--color-primary); }
-//   }
-//   [data-theme='dark'] .dark\:text-primary,
-//   .dark .dark\:text-primary {
-//     color: var(--color-primary);
-//   }
 // ============================================================================
 
 @mixin dark-mode {
-  // Media query for system preference (automatic)
-  @media (prefers-color-scheme: dark) {
-    @content;
-  }
-
-  // Manual toggle via data attribute or class
-  // Output wrappers to maintain (0,1,0) specificity
-  [data-theme='dark'] {
-    @content;
-  }
-  .dark {
-    @content;
+  @if config.$dark-mode-strategy == 'media' {
+    // Media query for system preference (automatic)
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  } @else if config.$dark-mode-strategy == 'class' {
+    // Manual toggle via class on parent
+    .dark {
+      @content;
+    }
   }
 }
 
@@ -51,43 +44,61 @@
 //       color: white;
 //     }
 //   }
-// Output:
+// Output (strategy "media"):
 //   .my-class { color: black; }
 //   @media (prefers-color-scheme: dark) {
 //     .my-class { color: white; }
 //   }
-//   [data-theme='dark'] .my-class,
-//   .dark .my-class {
-//     color: white;
-//   }
+// Output (strategy "class"):
+//   .my-class { color: black; }
+//   .dark .my-class { color: white; }
 @mixin dark-mode-self {
-  @media (prefers-color-scheme: dark) {
-    @content;
-  }
-
-  @at-root {
-    [data-theme='dark'] #{&},
-    .dark #{&} {
+  @if config.$dark-mode-strategy == 'media' {
+    @media (prefers-color-scheme: dark) {
       @content;
+    }
+  } @else if config.$dark-mode-strategy == 'class' {
+    @at-root {
+      .dark #{&} {
+        @content;
+      }
     }
   }
 }
 
 // Light mode mixin
+// ============================================================================
 // Usage (at TOP LEVEL):
 //   @include light-mode {
 //     .light\:text-primary { color: var(--color-primary); }
 //   }
+// ============================================================================
 @mixin light-mode {
-  @media (prefers-color-scheme: light) {
+  @if config.$dark-mode-strategy == 'media' {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  } @else if config.$dark-mode-strategy == 'class' {
+    // When using class strategy, light mode is the default
+    // Only output content without wrapping (or could use :not(.dark))
     @content;
   }
 }
 
 // Light mode mixin for use WITHIN other selectors
+// ============================================================================
 @mixin light-mode-self {
-  @media (prefers-color-scheme: light) {
-    @content;
+  @if config.$dark-mode-strategy == 'media' {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  } @else if config.$dark-mode-strategy == 'class' {
+    // Light mode is default when not inside .dark
+    @at-root {
+      :not(.dark) #{&} {
+        @content;
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 @layer base, utilities, themes;
 
 /* Import ApexCSS files into their respective layers */
-@import url('../../../dist/base.css') layer(base);
-@import url('../../../dist/utilities.css') layer(utilities);
-@import url('../../../dist/themes.css') layer(themes);
+@import '../../../dist/base.css' layer(base);
+@import '../../../dist/utilities.css' layer(utilities);
+@import '../../../dist/themes.css' layer(themes);
