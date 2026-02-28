@@ -124,8 +124,9 @@
     }
   }
 
-  // Manual toggle via class
-  .dark {
+  // Manual toggle via class or data attribute
+  .dark,
+  [data-theme='dark'] {
     // Semantic Colors
     --color-primary: #60a5fa;
     --color-primary-light: #93c5fd;

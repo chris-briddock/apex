@@ -32,6 +32,15 @@
   @media (prefers-color-scheme: dark) {
     @content;
   }
+
+  // Manual toggle via data attribute or class
+  // Output wrappers to maintain (0,1,0) specificity
+  [data-theme='dark'] {
+    @content;
+  }
+  .dark {
+    @content;
+  }
 }
 
 // Dark mode mixin for use WITHIN other selectors
@@ -47,9 +56,20 @@
 //   @media (prefers-color-scheme: dark) {
 //     .my-class { color: white; }
 //   }
+//   [data-theme='dark'] .my-class,
+//   .dark .my-class {
+//     color: white;
+//   }
 @mixin dark-mode-self {
   @media (prefers-color-scheme: dark) {
     @content;
+  }
+
+  @at-root {
+    [data-theme='dark'] #{&},
+    .dark #{&} {
+      @content;
+    }
   }
 }
 
