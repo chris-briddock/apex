@@ -20,27 +20,6 @@
   .hover\:text-transparent:hover { color: transparent; }
   .hover\:text-current:hover { color: currentcolor; }
 
-  // Dark mode hover text colors
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:hover\:text-primary:hover { color: var(--color-primary); }
-      .dark\:hover\:text-secondary:hover { color: var(--color-secondary); }
-      .dark\:hover\:text-success:hover { color: var(--color-success); }
-      .dark\:hover\:text-danger:hover { color: var(--color-danger); }
-      .dark\:hover\:text-warning:hover { color: var(--color-warning); }
-      .dark\:hover\:text-info:hover { color: var(--color-info); }
-      .dark\:hover\:text-light:hover { color: var(--color-dark); }
-      .dark\:hover\:text-dark:hover { color: var(--color-light); }
-      .dark\:hover\:text-white:hover { color: var(--color-black); }
-      .dark\:hover\:text-black:hover { color: var(--color-white); }
-
-      // Dark mode hover gray text colors
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
-      }
-    }
-  }
-
   // Hover text color - gray scale
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
     .hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
@@ -58,27 +37,6 @@
   .hover\:bg-white:hover { background-color: var(--color-white); }
   .hover\:bg-transparent:hover { background-color: transparent; }
 
-  // Dark mode hover background colors
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:hover\:bg-primary:hover { background-color: var(--color-primary); }
-      .dark\:hover\:bg-secondary:hover { background-color: var(--color-secondary); }
-      .dark\:hover\:bg-success:hover { background-color: var(--color-success); }
-      .dark\:hover\:bg-danger:hover { background-color: var(--color-danger); }
-      .dark\:hover\:bg-warning:hover { background-color: var(--color-warning); }
-      .dark\:hover\:bg-info:hover { background-color: var(--color-info); }
-      .dark\:hover\:bg-light:hover { background-color: var(--color-dark); }
-      .dark\:hover\:bg-dark:hover { background-color: var(--color-light); }
-      .dark\:hover\:bg-white:hover { background-color: var(--color-black); }
-      .dark\:hover\:bg-transparent:hover { background-color: transparent; }
-
-      // Dark mode hover gray background colors
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
-      }
-    }
-  }
-
   // Hover background color - gray scale
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
     .hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
@@ -95,26 +53,6 @@
   .hover\:border-dark:hover { border-color: var(--color-dark); }
   .hover\:border-white:hover { border-color: var(--color-white); }
 
-  // Dark mode hover border colors
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:hover\:border-primary:hover { border-color: var(--color-primary); }
-      .dark\:hover\:border-secondary:hover { border-color: var(--color-secondary); }
-      .dark\:hover\:border-success:hover { border-color: var(--color-success); }
-      .dark\:hover\:border-danger:hover { border-color: var(--color-danger); }
-      .dark\:hover\:border-warning:hover { border-color: var(--color-warning); }
-      .dark\:hover\:border-info:hover { border-color: var(--color-info); }
-      .dark\:hover\:border-light:hover { border-color: var(--color-dark); }
-      .dark\:hover\:border-dark:hover { border-color: var(--color-light); }
-      .dark\:hover\:border-white:hover { border-color: var(--color-black); }
-
-      // Dark mode hover gray border colors
-      @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
-      }
-    }
-  }
-
   // Hover border color - gray scale
   @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
     .hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
@@ -126,17 +64,6 @@
   .hover\:text-red-500:hover { color: var(--color-red-500); }
   .hover\:text-yellow-500:hover { color: var(--color-yellow-500); }
   .hover\:text-purple-500:hover { color: var(--color-purple-500); }
-
-  // Dark mode hover text colors for other colors
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:hover\:text-blue-500:hover { color: var(--color-blue-400); }
-      .dark\:hover\:text-green-500:hover { color: var(--color-green-400); }
-      .dark\:hover\:text-red-500:hover { color: var(--color-red-400); }
-      .dark\:hover\:text-yellow-500:hover { color: var(--color-yellow-400); }
-      .dark\:hover\:text-purple-500:hover { color: var(--color-purple-400); }
-    }
-  }
 
   // Hover opacity
   .hover\:opacity-0:hover { opacity: 0; }
@@ -152,18 +79,6 @@
   .hover\:shadow-lg:hover { box-shadow: var(--shadow-lg); }
   .hover\:shadow-xl:hover { box-shadow: var(--shadow-xl); }
   .hover\:shadow-none:hover { box-shadow: none; }
-
-  // Dark mode hover shadows (adjusted for dark backgrounds)
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:hover\:shadow-sm:hover { box-shadow: var(--shadow-sm); }
-      .dark\:hover\:shadow:hover { box-shadow: var(--shadow-base); }
-      .dark\:hover\:shadow-md:hover { box-shadow: var(--shadow-md); }
-      .dark\:hover\:shadow-lg:hover { box-shadow: var(--shadow-lg); }
-      .dark\:hover\:shadow-xl:hover { box-shadow: var(--shadow-xl); }
-      .dark\:hover\:shadow-none:hover { box-shadow: none; }
-    }
-  }
 
   // Hover scale
   .hover\:scale-90:hover { transform: scale(0.9); }
@@ -181,4 +96,76 @@
   // Hover underline
   .hover\:underline:hover { text-decoration: underline; }
   .hover\:no-underline:hover { text-decoration: none; }
+}
+
+// ============================================================================
+// Dark mode hover states - TOP LEVEL to maintain (0,1,0) specificity
+// ============================================================================
+@if settings.$enable-hover == true and settings.$enable-dark-mode == true {
+  @include dm.dark-mode {
+    // Dark mode hover text colors
+    .dark\:hover\:text-primary:hover { color: var(--color-primary); }
+    .dark\:hover\:text-secondary:hover { color: var(--color-secondary); }
+    .dark\:hover\:text-success:hover { color: var(--color-success); }
+    .dark\:hover\:text-danger:hover { color: var(--color-danger); }
+    .dark\:hover\:text-warning:hover { color: var(--color-warning); }
+    .dark\:hover\:text-info:hover { color: var(--color-info); }
+    .dark\:hover\:text-light:hover { color: var(--color-dark); }
+    .dark\:hover\:text-dark:hover { color: var(--color-light); }
+    .dark\:hover\:text-white:hover { color: var(--color-black); }
+    .dark\:hover\:text-black:hover { color: var(--color-white); }
+
+    // Dark mode hover gray text colors
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+      .dark\:hover\:text-gray-#{$key}:hover { color: var(--color-gray-#{$key}); }
+    }
+
+    // Dark mode hover background colors
+    .dark\:hover\:bg-primary:hover { background-color: var(--color-primary); }
+    .dark\:hover\:bg-secondary:hover { background-color: var(--color-secondary); }
+    .dark\:hover\:bg-success:hover { background-color: var(--color-success); }
+    .dark\:hover\:bg-danger:hover { background-color: var(--color-danger); }
+    .dark\:hover\:bg-warning:hover { background-color: var(--color-warning); }
+    .dark\:hover\:bg-info:hover { background-color: var(--color-info); }
+    .dark\:hover\:bg-light:hover { background-color: var(--color-dark); }
+    .dark\:hover\:bg-dark:hover { background-color: var(--color-light); }
+    .dark\:hover\:bg-white:hover { background-color: var(--color-black); }
+    .dark\:hover\:bg-transparent:hover { background-color: transparent; }
+
+    // Dark mode hover gray background colors
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+      .dark\:hover\:bg-gray-#{$key}:hover { background-color: var(--color-gray-#{$key}); }
+    }
+
+    // Dark mode hover border colors
+    .dark\:hover\:border-primary:hover { border-color: var(--color-primary); }
+    .dark\:hover\:border-secondary:hover { border-color: var(--color-secondary); }
+    .dark\:hover\:border-success:hover { border-color: var(--color-success); }
+    .dark\:hover\:border-danger:hover { border-color: var(--color-danger); }
+    .dark\:hover\:border-warning:hover { border-color: var(--color-warning); }
+    .dark\:hover\:border-info:hover { border-color: var(--color-info); }
+    .dark\:hover\:border-light:hover { border-color: var(--color-dark); }
+    .dark\:hover\:border-dark:hover { border-color: var(--color-light); }
+    .dark\:hover\:border-white:hover { border-color: var(--color-black); }
+
+    // Dark mode hover gray border colors
+    @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+      .dark\:hover\:border-gray-#{$key}:hover { border-color: var(--color-gray-#{$key}); }
+    }
+
+    // Dark mode hover text colors for other colors
+    .dark\:hover\:text-blue-500:hover { color: var(--color-blue-400); }
+    .dark\:hover\:text-green-500:hover { color: var(--color-green-400); }
+    .dark\:hover\:text-red-500:hover { color: var(--color-red-400); }
+    .dark\:hover\:text-yellow-500:hover { color: var(--color-yellow-400); }
+    .dark\:hover\:text-purple-500:hover { color: var(--color-purple-400); }
+
+    // Dark mode hover shadows
+    .dark\:hover\:shadow-sm:hover { box-shadow: var(--shadow-sm); }
+    .dark\:hover\:shadow:hover { box-shadow: var(--shadow-base); }
+    .dark\:hover\:shadow-md:hover { box-shadow: var(--shadow-md); }
+    .dark\:hover\:shadow-lg:hover { box-shadow: var(--shadow-lg); }
+    .dark\:hover\:shadow-xl:hover { box-shadow: var(--shadow-xl); }
+    .dark\:hover\:shadow-none:hover { box-shadow: none; }
+  }
 }

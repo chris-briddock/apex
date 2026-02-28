@@ -8,14 +8,18 @@
 //   @use 'utilities/core';
 //   @use 'utilities/core' as core;
 
+@use 'sass:map';
+@use '../../config/custom-config' as settings;
+@use '../../mixins/responsive-utilities' as resp;
+
 // ============================================================================
-// Layout
+// Layout - Import for base utilities and collect value maps
 // ============================================================================
-@forward 'layout/display';
+@use 'layout/display' as display-module;
+@use 'layout/visibility' as visibility-module;
 @forward 'layout/flexbox';
 @forward 'layout/grid';
 @forward 'layout/positioning';
-@forward 'layout/visibility';
 
 // ============================================================================
 // Spacing
@@ -44,6 +48,25 @@
 // ============================================================================
 @forward 'interaction/cursor';
 @forward 'interaction/transitions';
+
+// ============================================================================
+// Responsive Utilities Generation
+// ============================================================================
+// Consolidated responsive utilities - one media query per breakpoint
+
+// Collect utility value maps from modules
+$responsive-config: ();
+
+@if settings.$enable-display == true {
+  $responsive-config: map.merge($responsive-config, (display: display-module.$display-values));
+}
+
+@if settings.$enable-visibility == true {
+  $responsive-config: map.merge($responsive-config, (visibility: visibility-module.$visibility-values));
+}
+
+// Generate all responsive utilities in consolidated media queries
+@include resp.generate-all-breakpoint-utilities($responsive-config);
 
 // ============================================================================
 // End of Core Utilities Index

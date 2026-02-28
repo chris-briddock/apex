@@ -2,268 +2,72 @@
 // Automatic Dark Mode Mixins
 // ============================================================================
 // These mixins generate utilities that respond to:
-// System preference (prefers-color-scheme: dark) or .dark class
+// - System preference: @media (prefers-color-scheme: dark)
+// - Manual toggle: [data-theme='dark'] or .dark class on parent
 // ============================================================================
 
 @use 'sass:map';
 @use 'sass:color';
-@use '../config/custom-config' as config;
 
-// Generate a dark mode utility that responds to system preference
-// Usage: @include dark-mode-utility('text-gray-900', 'color', #fff);
-@mixin light-mode {
-  [data-theme='light'],
-  .light {
+// ============================================================================
+// Primary Dark Mode Mixin
+// ============================================================================
+// Generates dark mode utilities with consistent specificity (0,1,0)
+// Usage (at TOP LEVEL of file):
+//   @include dark-mode {
+//     .dark\:text-primary { color: var(--color-primary); }
+//   }
+// Output:
+//   @media (prefers-color-scheme: dark) {
+//     .dark\:text-primary { color: var(--color-primary); }
+//   }
+//   [data-theme='dark'] .dark\:text-primary,
+//   .dark .dark\:text-primary {
+//     color: var(--color-primary);
+//   }
+// ============================================================================
+
+@mixin dark-mode {
+  // Media query for system preference (automatic)
+  @media (prefers-color-scheme: dark) {
     @content;
   }
 }
 
-@mixin dark-mode-utility($class-name, $property, $dark-value, $light-value: null) {
-  // Light mode (default)
-  @if $light-value {
-    @include light-mode {
-      .#{$class-name} {
-        #{$property}: $light-value;
-      }
-    }
-  }
-
-  // Dark mode via media query (system preference)
-  @include dark-mode {
-    .#{$class-name} {
-      #{$property}: $dark-value;
-    }
-  }
-}
-
-// Generate multiple dark mode utilities from a map
+// Dark mode mixin for use WITHIN other selectors
 // Usage:
-//   $dark-colors: (white: #111827, black: #fff);
-//   @include dark-mode-utilities-from-map('bg', 'background-color', $dark-colors);
-@mixin dark-mode-utilities-from-map($class-prefix, $property, $value-map) {
-  @each $name, $dark-value in $value-map {
-    $class-name: '#{$class-prefix}-#{$name}';
-
-    // Dark mode via media query (system preference)
-    @include dark-mode {
-      .#{$class-name} {
-        #{$property}: $dark-value;
-      }
-    }
-  }
-}
-
-// Generate dark mode utilities with both light and dark values
-// Usage:
-//   $color-pairs: (gray-50: (light: #f9fafb, dark: #1f2937));
-//   @include dark-mode-paired-utilities('bg', 'background-color', $color-pairs);
-@mixin dark-mode-paired-utilities($class-prefix, $property, $value-pairs) {
-  @each $name, $pair in $value-pairs {
-    $class-name: '#{$class-prefix}-#{$name}';
-    $light-value: map.get($pair, 'light');
-    $dark-value: map.get($pair, 'dark');
-
-    // Light mode (default)
-    @include light-mode {
-      .#{$class-name} {
-        #{$property}: $light-value;
-      }
-    }
-
-    // Dark mode via media query (system preference)
-    @include dark-mode {
-      .#{$class-name} {
-        #{$property}: $dark-value;
-      }
-    }
-  }
-}
-
-// Generate dark mode utilities for opacity variants
-// Usage: @include dark-mode-opacity-utilities('bg-gray-50', 'background-color', $color, $opacity-values);
-@mixin dark-mode-opacity-utilities($class-prefix, $property, $base-dark-color, $opacity-values) {
-  @each $opacity-name, $opacity-value in $opacity-values {
-    @if $opacity-value < 1 {
-      $class-name: '#{$class-prefix}\\/#{$opacity-name}';
-
-      // Dark mode via media query (system preference)
-      @include dark-mode {
-        .#{$class-name} {
-          #{$property}: rgba(
-            color.red($base-dark-color),
-            color.green($base-dark-color),
-            color.blue($base-dark-color),
-            $opacity-value
-          );
-        }
-      }
-    }
-  }
-}
-
-// Generate hover state dark mode utilities
-// Usage: @include dark-mode-hover-utilities('bg-gray-50', 'background-color', $dark-color);
-@mixin dark-mode-hover-utilities($class-prefix, $property, $dark-value, $opacity-values: ()) {
-  // Dark mode via media query (system preference)
-  @include dark-mode {
-    .#{$class-prefix}:hover {
-      #{$property}: $dark-value;
-    }
-  }
-
-  // Opacity variants for hover
-  @each $opacity-name, $opacity-value in $opacity-values {
-    @if $opacity-value < 1 {
-      $escaped-name: '#{$class-prefix}\\/#{$opacity-name}';
-
-      // Media query hover with opacity
-      @include dark-mode {
-        .#{$escaped-name}:hover {
-          #{$property}: rgba(
-            color.red($dark-value),
-            color.green($dark-value),
-            color.blue($dark-value),
-            $opacity-value
-          );
-        }
-      }
-    }
-  }
-}
-
-// Generate color scale dark mode utilities (lightens text, darkens backgrounds)
-// Usage: @include dark-mode-color-scale-utilities('text', 'color', $color-scale-map);
-@mixin dark-mode-color-scale-utilities($class-prefix, $property, $color-scale) {
-  @each $key, $value in $color-scale {
-    $class-name: '#{$class-prefix}-#{$key}';
-
-    // Determine dark mode value based on property
-    @if $property == 'color' {
-      // Text colors get lightened in dark mode
-      $dark-value: color.adjust($value, $lightness: 10%);
-
-      @include dark-mode {
-        .#{$class-name} {
-          #{$property}: $dark-value;
-        }
-      }
-    } @else if $property == 'background-color' {
-      // Background colors get darkened in dark mode
-      $dark-value: color.adjust($value, $lightness: -20%);
-
-      @include dark-mode {
-        .#{$class-name} {
-          #{$property}: $dark-value;
-        }
-      }
-    }
-  }
-}
-
-// ============================================================================
-// Unified Dark Mode Mixins
-// ============================================================================
-// These mixins generate media query variants only,
-// eliminating code duplication across the codebase.
-
-// Primary dark mode mixin - handles system preference or class strategy
-// Usage:
-//   @include dark-mode {
-//     .dark\:text-primary { color: var(--color-primary); }
+//   .my-class {
+//     color: black;
+//     @include dark-mode-self {
+//       color: white;
+//     }
 //   }
-// Output (media strategy):
+// Output:
+//   .my-class { color: black; }
 //   @media (prefers-color-scheme: dark) {
-//     .dark\:text-primary { color: var(--color-primary); }
+//     .my-class { color: white; }
 //   }
-// Output (class strategy):
-//   .dark .dark\:text-primary { color: var(--color-primary); }
-// ============================================================================
-
-@mixin dark-mode {
-  $strategy: config.$dark-mode-strategy or 'media';
-
-  @if $strategy == 'class' {
-    // Class-based dark mode (Tailwind-style)
-    [data-theme='dark'],
-    .dark {
-      @content;
-    }
-  } @else {
-    // Media query dark mode (system preference)
-    @media (prefers-color-scheme: dark) {
-      [data-theme='dark'] &,
-      .dark & {
-        @content;
-      }
-    }
+@mixin dark-mode-self {
+  @media (prefers-color-scheme: dark) {
+    @content;
   }
 }
 
-// Dark mode mixin for content blocks with parent selector
-// Usage:
-//   .my-class {
-//     @include dark-mode-content-block {
-//       color: var(--color-primary);
-//     }
+// Light mode mixin
+// Usage (at TOP LEVEL):
+//   @include light-mode {
+//     .light\:text-primary { color: var(--color-primary); }
 //   }
-// Output (media strategy):
-//   .my-class {
-//     @media (prefers-color-scheme: dark) {
-//       color: var(--color-primary);
-//     }
-//   }
-// Output (class strategy):
-//   .my-class {
-//     .dark & {
-//       color: var(--color-primary);
-//     }
-//   }
-@mixin dark-mode-content-block {
-  $strategy: config.$dark-mode-strategy or 'media';
-
-  @if $strategy == 'class' {
-    [data-theme='dark'] &,
-    .dark & {
-      @content;
-    }
-  } @else {
-    @media (prefers-color-scheme: dark) {
-      [data-theme='dark'] &,
-      .dark & {
-        @content;
-      }
-    }
+@mixin light-mode {
+  @media (prefers-color-scheme: light) {
+    @content;
   }
 }
 
-// Generate dark utilities with automatic prefix
-// Usage: @include generate-dark-utility('text-primary', 'color', var(--color-primary));
-@mixin generate-dark-utility($class-name, $property, $value) {
-  @include dark-mode {
-    .dark\:#{$class-name} {
-      #{$property}: #{$value};
-    }
+// Light mode mixin for use WITHIN other selectors
+@mixin light-mode-self {
+  @media (prefers-color-scheme: light) {
+    @content;
   }
 }
 
-// Consolidated generator for dark mode color utilities
-// Generates text, background, and border utilities with dark mode media query
-@mixin generate-dark-color-utilities($color-name, $var-name) {
-  @include dark-mode {
-    .dark\:text-#{$color-name} { color: var(#{$var-name}); }
-    .dark\:bg-#{$color-name} { background-color: var(#{$var-name}); }
-    .dark\:border-#{$color-name} { border-color: var(#{$var-name}); }
-  }
-}
-
-// Generate dark mode utilities for a list of color keys
-// Usage: @include generate-dark-colors-from-keys('gray', (50, 100, 200));
-@mixin generate-dark-colors-from-keys($color-family, $keys) {
-  @include dark-mode {
-    @each $key in $keys {
-      .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
-      .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
-      .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
-    }
-  }
-}

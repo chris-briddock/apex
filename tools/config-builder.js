@@ -31,7 +31,7 @@ const defaultConfig = {
   // ============================================================================
   // "media" = uses system preference (prefers-color-scheme)
   // "class" = uses .dark class on parent element
-  darkModeStrategy: 'class',
+  darkModeStrategy: 'media',
 
   // ============================================================================
   // Feature Toggles - Enable/disable utility categories
