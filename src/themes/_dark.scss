@@ -121,21 +121,20 @@
   // ============================================================================
   // Dark Mode CSS Custom Properties
   // ============================================================================
-  // Define dark mode colors based on $dark-mode-strategy
-  // - "media": Uses @media (prefers-color-scheme: dark)
-  // - "class": Uses .dark class on parent element
+  // Dark mode applies BOTH via:
+  // - System preference: @media (prefers-color-scheme: dark)
+  // - Manual class toggle: .dark on html element
 
-  // Output based on strategy
-  @if settings.$dark-mode-strategy == 'media' {
-    @media (prefers-color-scheme: dark) {
-      :root {
-        @include dark-props;
-      }
-    }
-  } @else if settings.$dark-mode-strategy == 'class' {
-    .dark {
+  // System preference
+  @media (prefers-color-scheme: dark) {
+    :root {
       @include dark-props;
     }
+  }
+
+  // Manual class toggle
+  .dark {
+    @include dark-props;
   }
 }
 
@@ -152,35 +151,148 @@
     8: 8px
   );
   $dark-ring-colors: (
-    primary: #60a5fa,
-    secondary: #94a3b8,
-    success: #4ade80,
-    danger: #f87171,
-    warning: #fbbf24,
-    info: #38bdf8,
-    light: #f3f4f6,
-    dark: #1f2937,
-    "white": #fff,
-    "black": #111827,
+    primary: var(--color-primary),
+    secondary: var(--color-secondary),
+    success: var(--color-success),
+    danger: var(--color-danger),
+    warning: var(--color-warning),
+    info: var(--color-info),
+    light: var(--color-light),
+    dark: var(--color-dark),
+    "white": var(--color-white),
+    "black": var(--color-black),
     "transparent": transparent,
-    gray-50: #f9fafb,
-    gray-100: #f3f4f6,
-    gray-200: #e5e7eb,
-    gray-300: #d1d5db,
-    gray-400: #9ca3af,
-    gray-500: #6b7280,
-    gray-600: #4b5563,
-    gray-700: #374151,
-    gray-800: #1f2937,
-    gray-900: #111827,
-    blue-500: #60a5fa,
-    green-500: #4ade80,
-    red-500: #f87171,
-    yellow-500: #fbbf24,
-    purple-500: #c084fc
+    gray-50: var(--color-gray-50),
+    gray-100: var(--color-gray-100),
+    gray-200: var(--color-gray-200),
+    gray-300: var(--color-gray-300),
+    gray-400: var(--color-gray-400),
+    gray-500: var(--color-gray-500),
+    gray-600: var(--color-gray-600),
+    gray-700: var(--color-gray-700),
+    gray-800: var(--color-gray-800),
+    gray-900: var(--color-gray-900),
+    blue-500: var(--color-blue-500),
+    green-500: var(--color-green-500),
+    red-500: var(--color-red-500),
+    yellow-500: var(--color-yellow-500),
+    purple-500: var(--color-purple-500)
   );
 
-  @include dm.dark-mode {
+  // System preference (automatic) - with .dark parent for specificity
+  @media (prefers-color-scheme: dark) {
+    .dark {
+      // Semantic colors - text, background, border
+      .dark\:text-primary { color: var(--color-primary); }
+      .dark\:bg-primary { background-color: var(--color-primary); }
+      .dark\:border-primary { border-color: var(--color-primary); }
+
+      .dark\:text-secondary { color: var(--color-secondary); }
+      .dark\:bg-secondary { background-color: var(--color-secondary); }
+      .dark\:border-secondary { border-color: var(--color-secondary); }
+
+      .dark\:text-success { color: var(--color-success); }
+      .dark\:bg-success { background-color: var(--color-success); }
+      .dark\:border-success { border-color: var(--color-success); }
+
+      .dark\:text-danger { color: var(--color-danger); }
+      .dark\:bg-danger { background-color: var(--color-danger); }
+      .dark\:border-danger { border-color: var(--color-danger); }
+
+      .dark\:text-warning { color: var(--color-warning); }
+      .dark\:bg-warning { background-color: var(--color-warning); }
+      .dark\:border-warning { border-color: var(--color-warning); }
+
+      .dark\:text-info { color: var(--color-info); }
+      .dark\:bg-info { background-color: var(--color-info); }
+      .dark\:border-info { border-color: var(--color-info); }
+
+      .dark\:text-light { color: var(--color-light); }
+      .dark\:bg-light { background-color: var(--color-light); }
+      .dark\:border-light { border-color: var(--color-light); }
+
+      .dark\:text-dark { color: var(--color-dark); }
+      .dark\:bg-dark { background-color: var(--color-dark); }
+      .dark\:border-dark { border-color: var(--color-dark); }
+
+      .dark\:text-white { color: var(--color-white); }
+      .dark\:bg-white { background-color: var(--color-white); }
+      .dark\:border-white { border-color: var(--color-white); }
+
+      .dark\:text-black { color: var(--color-black); }
+      .dark\:bg-black { background-color: var(--color-black); }
+      .dark\:border-black { border-color: var(--color-black); }
+
+      // Shadows
+      .dark\:shadow-sm { box-shadow: var(--shadow-sm); }
+      .dark\:shadow { box-shadow: var(--shadow-base); }
+      .dark\:shadow-md { box-shadow: var(--shadow-md); }
+      .dark\:shadow-lg { box-shadow: var(--shadow-lg); }
+      .dark\:shadow-xl { box-shadow: var(--shadow-xl); }
+      .dark\:shadow-2xl { box-shadow: var(--shadow-2xl); }
+      .dark\:shadow-none { box-shadow: var(--shadow-none); }
+      .dark\:shadow-inner { box-shadow: var(--shadow-inner); }
+
+      // Ring widths
+      @each $key, $value in $ring-widths {
+        .dark\:ring-#{$key} {
+          --ring-offset-color: var(--color-black);
+          --ring-color: var(--color-primary);
+        }
+      }
+
+      // Ring offset widths
+      @each $key, $value in $ring-widths {
+        .dark\:ring-offset-#{$key} {
+          --ring-offset-width: #{$value};
+          --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+        }
+      }
+
+      // Ring colors
+      @each $key, $value in $dark-ring-colors {
+        .dark\:ring-#{$key} {
+          --ring-color: #{$value};
+        }
+      }
+
+      // Ring offset colors
+      @each $key, $value in $dark-ring-colors {
+        .dark\:ring-offset-#{$key} {
+          --ring-offset-color: #{$value};
+        }
+      }
+
+      // Ring inset
+      .dark\:ring-inset { --ring-inset: inset; }
+
+      // Ring opacity
+      .dark\:ring-opacity-0 { --ring-opacity: 0; }
+      .dark\:ring-opacity-25 { --ring-opacity: 0.25; }
+      .dark\:ring-opacity-50 { --ring-opacity: 0.5; }
+      .dark\:ring-opacity-75 { --ring-opacity: 0.75; }
+      .dark\:ring-opacity-100 { --ring-opacity: 1; }
+
+      // Gray Color Scale (50-900)
+      @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+        .dark\:text-gray-#{$shade} { color: var(--color-gray-#{$shade}); }
+        .dark\:bg-gray-#{$shade} { background-color: var(--color-gray-#{$shade}); }
+        .dark\:border-gray-#{$shade} { border-color: var(--color-gray-#{$shade}); }
+      }
+
+      // Extended Color Scales (Blue, Green, Red, Yellow, Purple)
+      @each $color-family in ('blue', 'green', 'red', 'yellow', 'purple') {
+        @each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+          .dark\:text-#{$color-family}-#{$key} { color: var(--color-#{$color-family}-#{$key}); }
+          .dark\:bg-#{$color-family}-#{$key} { background-color: var(--color-#{$color-family}-#{$key}); }
+          .dark\:border-#{$color-family}-#{$key} { border-color: var(--color-#{$color-family}-#{$key}); }
+        }
+      }
+    }
+  }
+
+  // Manual toggle via class on parent
+  .dark {
     // Semantic colors - text, background, border
     .dark\:text-primary { color: var(--color-primary); }
     .dark\:bg-primary { background-color: var(--color-primary); }
@@ -235,8 +347,8 @@
     // Ring widths
     @each $key, $value in $ring-widths {
       .dark\:ring-#{$key} {
-        --ring-offset-color: #111827;
-        --ring-color: rgba(96, 165, 250, 0.5);
+        --ring-offset-color: var(--color-black);
+        --ring-color: var(--color-primary);
       }
     }
 
@@ -291,7 +403,31 @@
 
   // Dark Mode Opacity Variants
   @if settings.$enable-color-modifiers == true {
-    @include dm.dark-mode {
+    // System preference (automatic) - with .dark parent for specificity
+    @media (prefers-color-scheme: dark) {
+      .dark {
+        @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
+          // Semantic color opacity variants
+          $semantic-colors: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'white', 'black');
+
+          @each $color in $semantic-colors {
+            .dark\:bg-#{$color}[op#{$opacity-name}] {
+              background-color: color-mix(in srgb, var(--color-#{$color}) #{$opacity-name * 1%}, transparent);
+            }
+          }
+
+          // Gray opacity variants
+          @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+            .dark\:bg-gray-#{$shade}[op#{$opacity-name}] {
+              background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
+            }
+          }
+        }
+      }
+    }
+
+    // Manual toggle via class on parent
+    .dark {
       @each $opacity-name in (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95) {
         // Semantic color opacity variants
         $semantic-colors: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'white', 'black');
