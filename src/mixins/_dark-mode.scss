@@ -1,21 +1,18 @@
 // ============================================================================
 // Automatic Dark Mode Mixins
 // ============================================================================
-// These mixins generate utilities based on the configured strategy:
-// - "media": Uses @media (prefers-color-scheme: dark) for system preference
-// - "class": Uses .dark class on parent element for manual toggle
+// These mixins generate utilities for BOTH strategies:
+// - System preference: @media (prefers-color-scheme: dark)
+// - Manual toggle: .dark class on parent element
 // ============================================================================
 
 @use 'sass:map';
 @use 'sass:color';
-@use '../config/custom-config' as config;
 
 // ============================================================================
 // Primary Dark Mode Mixin
 // ============================================================================
-// Generates dark mode utilities based on $dark-mode-strategy config.
-// Strategy "media": Outputs @media (prefers-color-scheme: dark) { ... }
-// Strategy "class": Outputs .dark { ... }
+// Generates dark mode utilities for BOTH system preference AND manual toggle.
 // Usage (at TOP LEVEL of file):
 //   @include dark-mode {
 //     .dark\:text-primary { color: var(--color-primary); }
@@ -23,16 +20,14 @@
 // ============================================================================
 
 @mixin dark-mode {
-  @if config.$dark-mode-strategy == 'media' {
-    // Media query for system preference (automatic)
-    @media (prefers-color-scheme: dark) {
-      @content;
-    }
-  } @else if config.$dark-mode-strategy == 'class' {
-    // Manual toggle via class on parent
-    .dark {
-      @content;
-    }
+  // System preference (automatic)
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+
+  // Manual toggle via class on parent
+  .dark {
+    @content;
   }
 }
 
@@ -44,24 +39,22 @@
 //       color: white;
 //     }
 //   }
-// Output (strategy "media"):
+// Output:
 //   .my-class { color: black; }
 //   @media (prefers-color-scheme: dark) {
 //     .my-class { color: white; }
 //   }
-// Output (strategy "class"):
-//   .my-class { color: black; }
 //   .dark .my-class { color: white; }
 @mixin dark-mode-self {
-  @if config.$dark-mode-strategy == 'media' {
-    @media (prefers-color-scheme: dark) {
+  // System preference
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+
+  // Manual toggle via class
+  @at-root {
+    .dark #{&} {
       @content;
-    }
-  } @else if config.$dark-mode-strategy == 'class' {
-    @at-root {
-      .dark #{&} {
-        @content;
-      }
     }
   }
 }
@@ -74,13 +67,13 @@
 //   }
 // ============================================================================
 @mixin light-mode {
-  @if config.$dark-mode-strategy == 'media' {
-    @media (prefers-color-scheme: light) {
-      @content;
-    }
-  } @else if config.$dark-mode-strategy == 'class' {
-    // When using class strategy, light mode is the default
-    // Only output content without wrapping (or could use :not(.dark))
+  // System preference (automatic)
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+
+  // Light mode is the default, but can also be explicit via .light class
+  .light {
     @content;
   }
 }
@@ -88,17 +81,15 @@
 // Light mode mixin for use WITHIN other selectors
 // ============================================================================
 @mixin light-mode-self {
-  @if config.$dark-mode-strategy == 'media' {
-    @media (prefers-color-scheme: light) {
+  // System preference
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+
+  // Light mode via class
+  @at-root {
+    .light #{&} {
       @content;
-    }
-  } @else if config.$dark-mode-strategy == 'class' {
-    // Light mode is default when not inside .dark
-    @at-root {
-      :not(.dark) #{&} {
-        @content;
-      }
     }
   }
 }
-
