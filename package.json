@@ -1,22 +1,40 @@
 {
   "name": "apexcss",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Apex` - A utility-first CSS framework with 500+ utility classes",
   "type": "module",
   "main": "dist/apex.css",
   "module": "dist/apex.css",
   "style": "dist/apex.css",
   "files": [
-    "src/**/*.scss"
+    "dist/",
+    "src/",
+    "README.md",
+    "LICENSE"
   ],
   "exports": {
     ".": {
       "style": "./dist/apex.css"
-    }
+    },
+    "./base": {
+      "style": "./dist/base.css"
+    },
+    "./themes": {
+      "style": "./dist/themes.css"
+    },
+    "./utilities": {
+      "style": "./dist/utilities.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "dev": "vite",
     "build": "npm run config:build && npm run lint && vite build",
+    "prepublishOnly": "npm run clean && npm run build",
     "preview": "vite preview",
     "watch": "vite build --watch",
     "lint": "stylelint 'src/**/*.scss'",
