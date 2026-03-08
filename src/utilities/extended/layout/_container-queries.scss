@@ -3,6 +3,9 @@
 // ============================================================================
 // CSS Container Queries allow styling based on parent container size
 // instead of viewport size. This enables truly modular components.
+// IMPORTANT: Container queries CAN use CSS variables for breakpoints!
+// Unlike @media queries, @container queries support CSS custom properties.
+// This allows runtime override of breakpoints - a major advantage.
 // Usage:
 //   <div class="@container"> <!-- Define container context -->
 //     <div class="@md:flex"> <!-- Respond to container, not viewport -->
@@ -11,8 +14,13 @@
 //   </div>
 // Container Types:
 //   @container   - Size container (inline/block dimensions)
-//   @container/style - Style container (custom property values)
+//   @container-inline - Inline-size container (width only)
 // Browser Support: Chrome 105+, Firefox 110+, Safari 16+
+// Breakpoint Override Example:
+//   .custom-container {
+//     --breakpoint-md: 600px; /* Override default 768px */
+//   }
+// ============================================================================
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
@@ -54,25 +62,16 @@
   }
 
   // ============================================================================
-  // Container Query Breakpoints
+  // Container Query Utilities with CSS Variable Breakpoints
   // ============================================================================
-  // These match the viewport breakpoints but respond to container size
-
-  $container-breakpoints: (
-    sm: 640px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1280px,
-    xxl: 1536px
-  );
-
-  // ============================================================================
-  // Container Query Utilities
+  // These use CSS variables (--breakpoint-*) allowing runtime customization.
+  // The CSS variables are defined in themes/_default.scss and can be overridden
+  // in any stylesheet for fine-grained breakpoint control.
   // ============================================================================
 
-  @each $bp-name, $bp-value in $container-breakpoints {
-    // Generic container queries
-    @container (min-width: #{$bp-value}) {
+  @each $bp-name, $bp-value in settings.$breakpoints {
+    // Generic container queries using CSS variables
+    @container (inline-size >= var(--breakpoint-#{$bp-name})) {
       // Display utilities
       .\@#{$bp-name}\:block { display: block; }
       .\@#{$bp-name}\:inline { display: inline; }

@@ -4,12 +4,19 @@
 // This module generates responsive utilities within consolidated media queries.
 // Instead of each utility file defining its own media queries, this module
 // collects all utilities and generates them once per breakpoint.
+// IMPORTANT: Uses Sass variables for @media queries
+// ---------------------------------------------------
+// Media queries CANNOT use CSS custom properties due to CSS parsing limitations.
+// Therefore, this generator uses Sass variables ($breakpoint-*) from config.
+// These are compile-time values and can only be overridden before build.
+// For runtime-customizable breakpoints, use container queries (@container)
+// which CAN use CSS variables. See: utilities/extended/layout/_container-queries.scss
 // Usage in utility files:
 //   1. Export a map of values: $display-values: (block: block, flex: flex);
 //   2. Generate base utilities from the map
 //   3. Call the responsive generator after loading all utility modules
 // Example output:
-//   @media (min-width: 640px) {
+//   @media (min-width: 640px) {  ← Uses Sass variable (compile-time)
 //     .sm:block { display: block; }
 //     .sm:flex { display: flex; }
 //     .sm:visible { visibility: visible; }
@@ -60,6 +67,8 @@
     }
 
     // Generate media query with all utilities for this breakpoint
+    // Note: Uses Sass variable $breakpoint-value (compile-time)
+    // CSS variables cannot be used in @media queries
     @if $has-utilities {
       @media (min-width: #{$breakpoint-value}) {
         @each $module-name, $values-map in $utilities-config {

@@ -22,7 +22,20 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+const LOG_PREFIX = '[apex-config-builder]';
+
+function logInfo(message) {
+  console.log(`${LOG_PREFIX} INFO: ${message}`);
+}
+
+function logWarn(message) {
+  console.warn(`${LOG_PREFIX} WARN: ${message}`);
+}
+
+function logError(message) {
+  console.error(`${LOG_PREFIX} ERROR: ${message}`);
+}
 
 // Complete default configuration with all feature toggles
 const defaultConfig = {
@@ -167,7 +180,7 @@ const defaultConfig = {
   // Breakpoints - Responsive design breakpoints
   // ============================================================================
   breakpoints: {
-    sm: '640px',
+    sm: '320px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
@@ -216,85 +229,76 @@ const defaultConfig = {
   },
 
   // ============================================================================
-  // Colors - Complete color palette
+  // Colors - OKLCH Color Scales (Perceptually uniform color space)
+  // Define base colors with OKLCH values, and full scales will be generated
+  // Format: { lightness: 0-100%, chroma: 0-0.4, hue: 0-360 }
   // ============================================================================
   colors: {
-    // Primary brand color
+    // Primary Blue
     primary: {
-      50: '#eff6ff',
-      100: '#dbeafe',
-      200: '#bfdbfe',
-      300: '#93c5fd',
-      400: '#60a5fa',
-      500: '#3b82f6',
-      600: '#2563eb',
-      700: '#1d4ed8',
-      800: '#1e40af',
-      900: '#1e3a8a',
-      950: '#172554'
+      hue: 250,
+      chroma: 0.18,
+      // Scale will be generated from these lightness values
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+      }
     },
-    // Gray scale
+    // Gray (neutral, low chroma)
     gray: {
-      50: '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827',
-      950: '#030712'
+      hue: 250,
+      chroma: 0.02,
+      lightnessScale: {
+        50: 96, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 65, 600: 55, 700: 45, 800: 35, 900: 25, 950: 18
+      }
     },
-    // Semantic colors
+    // Success Green
     success: {
-      50: '#f0fdf4',
-      100: '#dcfce7',
-      200: '#bbf7d0',
-      300: '#86efac',
-      400: '#4ade80',
-      500: '#22c55e',
-      600: '#16a34a',
-      700: '#15803d',
-      800: '#166534',
-      900: '#14532d'
+      hue: 145,
+      chroma: 0.20,
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+      }
     },
+    // Warning Amber
     warning: {
-      50: '#fffbeb',
-      100: '#fef3c7',
-      200: '#fde68a',
-      300: '#fcd34d',
-      400: '#fbbf24',
-      500: '#f59e0b',
-      600: '#d97706',
-      700: '#b45309',
-      800: '#92400e',
-      900: '#78350f'
+      hue: 80,
+      chroma: 0.16,
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 72, 600: 60, 700: 50, 800: 40, 900: 30, 950: 25
+      }
     },
-    error: {
-      50: '#fef2f2',
-      100: '#fee2e2',
-      200: '#fecaca',
-      300: '#fca5a5',
-      400: '#f87171',
-      500: '#ef4444',
-      600: '#dc2626',
-      700: '#b91c1c',
-      800: '#991b1b',
-      900: '#7f1d1d'
+    // Danger Red
+    danger: {
+      hue: 25,
+      chroma: 0.22,
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+      }
     },
+    // Info Sky
     info: {
-      50: '#f0f9ff',
-      100: '#e0f2fe',
-      200: '#bae6fd',
-      300: '#7dd3fc',
-      400: '#38bdf8',
-      500: '#0ea5e9',
-      600: '#0284c7',
-      700: '#0369a1',
-      800: '#075985',
-      900: '#0c4a6e'
+      hue: 220,
+      chroma: 0.14,
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+      }
+    },
+    // Extended palette
+    extended: {
+      blue: { hue: 250, chroma: 0.18 },
+      green: { hue: 145, chroma: 0.20 },
+      red: { hue: 25, chroma: 0.22 },
+      yellow: { hue: 90, chroma: 0.18 },
+      purple: { hue: 300, chroma: 0.22 },
+      orange: { hue: 55, chroma: 0.18 },
+      teal: { hue: 180, chroma: 0.16 },
+      pink: { hue: 340, chroma: 0.18 }
     }
   },
 
@@ -468,7 +472,7 @@ ${generateBreakpoints(merged.breakpoints)}
 ${generateSpacing(merged.spacing)}
 
 // ============================================================================
-// Colors - Complete color palette with semantic and gray scales
+// Colors - OKLCH Color Scales (Perceptually uniform color space)
 // ============================================================================
 ${generateColors(merged.colors)}
 
@@ -605,20 +609,73 @@ function generateSpacing(spacing) {
 }
 
 /**
- * Generate color variables
+ * Generate OKLCH color variables from configuration
+ * Colors are now defined with OKLCH format: { hue, chroma, lightnessScale }
  */
 function generateColors(colors) {
   const lines = [];
+  const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+  const defaultLightnessScale = {
+    50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+    500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+  };
 
-  Object.entries(colors).forEach(([colorName, shades]) => {
-    if (typeof shades === 'string') {
-      lines.push(`$color-${colorName}: ${shades} !default;`);
-    } else {
-      Object.entries(shades).forEach(([shade, value]) => {
-        lines.push(`$color-${colorName}-${shade}: ${value} !default;`);
+  // Primary colors
+  if (colors.primary) {
+    lines.push('// Primary Color Scale (OKLCH)');
+    const { hue, chroma, lightnessScale } = colors.primary;
+    shades.forEach(shade => {
+      const lightness = lightnessScale[shade];
+      lines.push(`$color-primary-${shade}: oklch(${lightness}% ${chroma} ${hue}deg) !default;`);
+    });
+  }
+
+  // Gray scale
+  if (colors.gray) {
+    lines.push('');
+    lines.push('// Gray Scale (OKLCH)');
+    const { hue, chroma, lightnessScale } = colors.gray;
+    shades.forEach(shade => {
+      const lightness = lightnessScale[shade];
+      lines.push(`$color-gray-${shade}: oklch(${lightness}% ${chroma} ${hue}deg) !default;`);
+    });
+  }
+
+  // Semantic colors
+  const semanticColors = ['success', 'warning', 'danger', 'info'];
+  semanticColors.forEach(colorName => {
+    if (colors[colorName]) {
+      lines.push('');
+      lines.push(`// ${colorName.charAt(0).toUpperCase() + colorName.slice(1)} Color Scale (OKLCH)`);
+      const { hue, chroma, lightnessScale } = colors[colorName];
+      shades.forEach(shade => {
+        const lightness = lightnessScale[shade];
+        lines.push(`$color-${colorName}-${shade}: oklch(${lightness}% ${chroma} ${hue}deg) !default;`);
       });
     }
   });
+
+  // Extended color palette
+  if (colors.extended) {
+    lines.push('');
+    lines.push('// Extended Color Palette (OKLCH)');
+    Object.entries(colors.extended).forEach(([colorName, config]) => {
+      const { hue, chroma } = config;
+      shades.forEach(shade => {
+        const lightness = defaultLightnessScale[shade];
+        lines.push(`$color-${colorName}-${shade}: oklch(${lightness}% ${chroma} ${hue}deg) !default;`);
+      });
+    });
+  }
+
+  // Semantic aliases
+  lines.push('');
+  lines.push('// Semantic Color Aliases');
+  lines.push('$color-primary: $color-primary-500 !default;');
+  lines.push('$color-success: $color-success-500 !default;');
+  lines.push('$color-warning: $color-warning-500 !default;');
+  lines.push('$color-danger: $color-danger-500 !default;');
+  lines.push('$color-info: $color-info-500 !default;');
 
   return lines.join('\n');
 }
@@ -835,7 +892,7 @@ ${featuresSection.trim()}
   // Breakpoints - Customize responsive breakpoints
   // ============================================================================
   breakpoints: {
-    sm: '640px',
+    sm: '320px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
@@ -856,15 +913,31 @@ ${featuresSection.trim()}
   },
 
   // ============================================================================
-  // Colors - Customize your color palette
+  // Colors - Customize your color palette (OKLCH format)
+  // ============================================================================
+  // Define colors with OKLCH format: { hue, chroma, lightnessScale }
+  // - hue: 0-360 (color wheel angle)
+  // - chroma: 0-0.4 (color intensity)
+  // - lightnessScale: { 50: 95, 100: 90, ... 950: 20 } (perceptual lightness values)
+  //
+  // Example: Change primary from blue (250) to purple (300):
+  //   primary: { hue: 300, chroma: 0.18, lightnessScale: { ... } }
   // ============================================================================
   colors: {
     primary: {
-      50: '#eff6ff',
-      500: '#3b82f6',
-      900: '#1e3a8a'
+      hue: 250,        // Blue
+      chroma: 0.18,    // Moderate saturation
+      lightnessScale: {
+        50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
+        500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
+      }
     }
-    // Add your brand colors here
+    // Add your brand colors here:
+    // brand: {
+    //   hue: 340,        // Pink
+    //   chroma: 0.20,
+    //   lightnessScale: { 50: 95, 100: 90, ... 950: 20 }
+    // }
   }
 };
 `;
@@ -893,6 +966,79 @@ function mergeDeep(target, source) {
 
 function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
+}
+
+function getType(value) {
+  if (Array.isArray(value)) {
+    return 'array';
+  }
+
+  if (value === null) {
+    return 'null';
+  }
+
+  return typeof value;
+}
+
+/**
+ * Validate user config shape and value types against defaults.
+ * Unknown keys are warnings to keep customization flexible, but type mismatches
+ * are treated as hard errors so generated SCSS remains valid.
+ */
+function validateUserConfig(userConfig, defaults = defaultConfig, currentPath = '') {
+  const errors = [];
+  const warnings = [];
+
+  if (!isObject(userConfig)) {
+    if (userConfig === undefined || userConfig === null) {
+      return { errors, warnings };
+    }
+
+    errors.push(`Configuration root must be an object, received ${getType(userConfig)}.`);
+    return { errors, warnings };
+  }
+
+  Object.entries(userConfig).forEach(([key, value]) => {
+    const pathKey = currentPath ? `${currentPath}.${key}` : key;
+    const isTopLevel = currentPath === '';
+    const isFeatureKey = currentPath === 'features';
+
+    if (!(key in defaults)) {
+      if (isTopLevel || isFeatureKey) {
+        warnings.push(`Unknown config key \`${pathKey}\` will be ignored by generators.`);
+      }
+      return;
+    }
+
+    const defaultValue = defaults[key];
+    const expectedType = getType(defaultValue);
+    const actualType = getType(value);
+
+    if (expectedType !== actualType) {
+      errors.push(
+        `Invalid type for \`${pathKey}\`: expected ${expectedType}, received ${actualType}.`
+      );
+      return;
+    }
+
+    if (expectedType === 'object') {
+      const nested = validateUserConfig(value, defaultValue, pathKey);
+      errors.push(...nested.errors);
+      warnings.push(...nested.warnings);
+    }
+  });
+
+  if (isObject(userConfig.features)) {
+    Object.entries(userConfig.features).forEach(([featureKey, featureValue]) => {
+      if (typeof featureValue !== 'boolean') {
+        errors.push(
+          `Invalid feature toggle \`features.${featureKey}\`: expected boolean, received ${getType(featureValue)}.`
+        );
+      }
+    });
+  }
+
+  return { errors, warnings };
 }
 
 /**
@@ -947,18 +1093,29 @@ Examples:
 }
 
 /**
- * Load user configuration
+ * Load user configuration (optional)
+ * Users can directly edit src/config/_custom-config.scss instead
  */
 async function loadConfig(configPath) {
+  const fullPath = path.resolve(process.cwd(), configPath);
+
   try {
-    const fullPath = path.resolve(process.cwd(), configPath);
     await fs.access(fullPath);
     const module = await import(fullPath + '?t=' + Date.now());
-    return module.default || module;
+    const loaded = module.default || module;
+
+    if (!isObject(loaded)) {
+      throw new Error(`Expected exported config object but received ${getType(loaded)}.`);
+    }
+
+    return loaded;
   } catch (err) {
-    console.log(`⚠️  Config file not found: ${configPath}`);
-    console.log('   Using default configuration...\\n');
-    return {};
+    if (err?.code === 'ENOENT') {
+      logInfo(`Config file not found at ${configPath}; using defaults.`);
+      return {};
+    }
+
+    throw new Error(`Failed to load config file ${configPath}: ${err.message}`);
   }
 }
 
@@ -969,6 +1126,16 @@ async function build(options) {
   try {
     // Load user config
     const userConfig = await loadConfig(options.config);
+    const validation = validateUserConfig(userConfig);
+
+    validation.warnings.forEach(logWarn);
+
+    if (validation.errors.length > 0) {
+      const details = validation.errors.map(error => `- ${error}`).join('\n');
+      throw new Error(`Configuration validation failed:\n${details}`);
+    }
+
+    const mergedConfig = mergeDeep(defaultConfig, userConfig);
 
     // Generate SCSS
     const scss = generateSCSS(userConfig);
@@ -979,13 +1146,20 @@ async function build(options) {
     // Write SCSS file
     const scssPath = path.join(options.output, '_custom-config.scss');
     await fs.writeFile(scssPath, scss);
-    console.log(`✅ Generated: ${scssPath}`);
+    logInfo(`Generated: ${scssPath}`);
 
-    console.log('\\n🎉 Configuration built successfully!');
-    console.log('   Run "npm run build" to compile the framework.\\n');
+    if (isObject(mergedConfig.features)) {
+      const featureEntries = Object.values(mergedConfig.features);
+      const enabled = featureEntries.filter(Boolean).length;
+      const total = featureEntries.length;
+      logInfo(`Feature toggles enabled: ${enabled}/${total}`);
+    }
+
+    console.log('\n🎉 Configuration built successfully!');
+    console.log('   Run "npm run build" to compile the framework.\n');
 
   } catch (err) {
-    console.error('❌ Build failed:', err.message);
+    logError(`Build failed: ${err.message}`);
     process.exit(1);
   }
 }
@@ -1009,7 +1183,8 @@ async function init() {
 async function watch(options) {
   const configPath = path.resolve(process.cwd(), options.config);
 
-  console.log(`👀 Watching ${options.config} for changes...\\n`);
+  logInfo(`Watching ${options.config} for changes...`);
+  console.log('');
 
   // Initial build
   await build(options);
@@ -1040,4 +1215,23 @@ async function main() {
   }
 }
 
-main();
+function isDirectExecution() {
+  if (!process.argv[1]) {
+    return false;
+  }
+
+  return path.resolve(process.argv[1]) === __filename;
+}
+
+if (isDirectExecution()) {
+  main();
+}
+
+export {
+  build,
+  defaultConfig,
+  generateSCSS,
+  isObject,
+  mergeDeep,
+  validateUserConfig
+};

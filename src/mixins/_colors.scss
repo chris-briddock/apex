@@ -1,0 +1,124 @@
+// ============================================================================
+// OKLCH Color Generation Mixins
+// ============================================================================
+// OKLCH provides perceptually uniform lightness, unlike HSL or RGB.
+// L: Lightness (0-100%) - perceptually uniform
+// C: Chroma (0-0.4 typical) - color intensity
+// H: Hue (0-360 degrees) - color angle
+// Benefits over hex/RGB:
+// - Consistent perceived lightness across hues
+// - Better accessibility (contrast ratios are more predictable)
+// - Smoother gradients and animations
+// Usage:
+//   @include define-oklch-color(primary, 55%, 0.2, 250);
+//   @include generate-oklch-scale(blue, 55%, 0.2, 250);
+
+@use 'sass:math';
+
+// ============================================================================
+// Define a single OKLCH color variable
+// ============================================================================
+// Creates a CSS custom property with OKLCH color
+// @param $name - The color name (e.g., primary, success)
+// @param $lightness - Lightness value (0% to 100%)
+// @param $chroma - Chroma value (0 to ~0.4)
+// @param $hue - Hue angle (0 to 360)
+// Output: --color-#{$name}: oklch(#{$lightness} #{$chroma} #{$hue});
+
+@mixin define-oklch-color($name, $lightness, $chroma, $hue) {
+  --color-#{$name}: oklch(#{$lightness} #{$chroma} #{$hue});
+}
+
+// ============================================================================
+// Generate a full color scale using OKLCH
+// ============================================================================
+// Creates 11 shade variables (50-950) maintaining consistent perceptual lightness
+// The scale uses a algorithmic approach to distribute lightness values
+// @param $name - Base name for the color (e.g., primary, success)
+// @param $base-lightness - Target lightness for the 500 shade
+// @param $chroma - Base chroma value
+// @param $hue - Hue angle
+
+@mixin generate-oklch-scale($name, $base-lightness, $chroma, $hue) {
+  // Convert percentage to number for calculations
+  $l: $base-lightness;
+
+  // 50: Very light (nearly white)
+  --color-#{$name}-50: oklch(#{math.min($l + 44%, 98%)} #{$chroma * 0.15} #{$hue});
+
+  // 100
+  --color-#{$name}-100: oklch(#{math.min($l + 38%, 95%)} #{$chroma * 0.25} #{$hue});
+
+  // 200
+  --color-#{$name}-200: oklch(#{math.min($l + 28%, 90%)} #{$chroma * 0.4} #{$hue});
+
+  // 300
+  --color-#{$name}-300: oklch(#{math.min($l + 18%, 85%)} #{$chroma * 0.65} #{$hue});
+
+  // 400
+  --color-#{$name}-400: oklch(#{math.min($l + 8%, 78%)} #{$chroma * 0.85} #{$hue});
+
+  // 500: The base color
+  --color-#{$name}-500: oklch(#{$l} #{$chroma} #{$hue});
+
+  // 600
+  --color-#{$name}-600: oklch(#{math.max($l - 10%, 25%)} #{math.min($chroma * 1.1, 0.4)} #{$hue});
+
+  // 700
+  --color-#{$name}-700: oklch(#{math.max($l - 20%, 20%)} #{math.min($chroma * 1.15, 0.4)} #{$hue});
+
+  // 800
+  --color-#{$name}-800: oklch(#{math.max($l - 30%, 15%)} #{math.min($chroma * 1.1, 0.35)} #{$hue});
+
+  // 900
+  --color-#{$name}-900: oklch(#{math.max($l - 40%, 10%)} #{math.min($chroma * 0.95, 0.3)} #{$hue});
+
+  // 950: Very dark (nearly black)
+  --color-#{$name}-950: oklch(#{math.max($l - 46%, 5%)} #{math.min($chroma * 0.75, 0.25)} #{$hue});
+}
+
+// ============================================================================
+// Generate a neutral gray scale using OKLCH
+// ============================================================================
+// Grays use very low chroma for near-achromatic colors
+// The "hue" parameter adds subtle warmth/coolness to grays
+// @param $base-lightness - Target lightness for 500 shade
+// @param $hue - Optional hue for warm/cool tint (default: 250 for cool/neutral)
+
+@mixin generate-gray-scale($base-lightness: 55%, $hue: 250) {
+  $l: $base-lightness;
+  $c: 0.015; // Very low chroma for grays
+
+  --color-gray-50: oklch(#{math.min($l + 44%, 98%)} #{$c * 0.3} #{$hue});
+  --color-gray-100: oklch(#{math.min($l + 38%, 95%)} #{$c * 0.5} #{$hue});
+  --color-gray-200: oklch(#{math.min($l + 28%, 90%)} #{$c * 0.8} #{$hue});
+  --color-gray-300: oklch(#{math.min($l + 18%, 85%)} #{$c * 1.2} #{$hue});
+  --color-gray-400: oklch(#{math.min($l + 8%, 75%)} #{$c * 1.5} #{$hue});
+  --color-gray-500: oklch(#{$l} #{$c} #{$hue});
+  --color-gray-600: oklch(#{math.max($l - 10%, 25%)} #{$c * 1.3} #{$hue});
+  --color-gray-700: oklch(#{math.max($l - 20%, 20%)} #{$c * 1.2} #{$hue});
+  --color-gray-800: oklch(#{math.max($l - 30%, 15%)} #{$c * 0.9} #{$hue});
+  --color-gray-900: oklch(#{math.max($l - 40%, 10%)} #{$c * 0.7} #{$hue});
+  --color-gray-950: oklch(#{math.max($l - 46%, 5%)} #{$c * 0.5} #{$hue});
+}
+
+// ============================================================================
+// Generate semantic color aliases
+// ============================================================================
+// Creates semantic aliases pointing to OKLCH color scales
+// e.g., --color-success → --color-green-500
+
+@mixin define-semantic-color($semantic-name, $color-name, $shade: 500) {
+  --color-#{$semantic-name}: var(--color-#{$color-name}-#{$shade});
+}
+
+// ============================================================================
+// Generate light/dark variants
+// ============================================================================
+// Creates semantic light/dark aliases for a color
+
+@mixin define-semantic-variants($name, $color-name, $shade: 500, $light-offset: 100, $dark-offset: 700) {
+  --color-#{$name}: var(--color-#{$color-name}-#{$shade});
+  --color-#{$name}-light: var(--color-#{$color-name}-#{$light-offset});
+  --color-#{$name}-dark: var(--color-#{$color-name}-#{$dark-offset});
+}

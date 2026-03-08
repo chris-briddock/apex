@@ -1,6 +1,22 @@
 // ============================================================================
 // Responsive Mixins
 // ============================================================================
+// IMPORTANT: CSS Variables vs Media Queries
+// ------------------------------------------
+// CSS custom properties (variables) CANNOT be used in @media queries due to
+// CSS parsing limitations. Media queries are evaluated at parse time, while
+// CSS variables are evaluated at runtime.
+// HOWEVER: Container queries (@container) CAN use CSS variables!
+// When to use each:
+// - Use respond-above/below/between: For viewport-based breakpoints (@media)
+//   * Cannot be overridden at runtime
+//   * Override at compile time via $breakpoints map in custom-config.scss
+// - Use container-above/below/between: For component-based responsive design
+//   * Uses CSS variables (--breakpoint-*)
+//   * Can be overridden at runtime in any stylesheet
+//   * Requires container-type on parent element
+//   * Modern, preferred approach for component responsiveness
+// ============================================================================
 // Note: These mixins are available for user convenience but are not currently
 // used internally by the framework. Responsive utilities are generated
 // dynamically using the $breakpoints map from config.
@@ -42,6 +58,49 @@
     $upper-value: map.get(settings.$breakpoints, $upper);
 
     @media (min-width: $lower-value) and (max-width: ($upper-value - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn 'Unknown breakpoints: #{$lower} or #{$upper}';
+  }
+}
+
+// ============================================================================
+// Container Query Mixins (Modern Alternative - Supports CSS Variables!)
+// ============================================================================
+// Container queries CAN use CSS custom properties, allowing runtime overrides.
+// These mixins reference the --breakpoint-* CSS variables defined in themes.
+// ============================================================================
+
+// Container query: above breakpoint (uses CSS variables)
+// Usage: @include container-above('md') { ... }
+@mixin container-above($breakpoint) {
+  @if map.has-key(settings.$breakpoints, $breakpoint) {
+    @container (inline-size >= var(--breakpoint-#{$breakpoint})) {
+      @content;
+    }
+  } @else {
+    @warn 'Unknown breakpoint: #{$breakpoint}';
+  }
+}
+
+// Container query: below breakpoint (uses CSS variables)
+// Usage: @include container-below('lg') { ... }
+@mixin container-below($breakpoint) {
+  @if map.has-key(settings.$breakpoints, $breakpoint) {
+    @container (inline-size < var(--breakpoint-#{$breakpoint})) {
+      @content;
+    }
+  } @else {
+    @warn 'Unknown breakpoint: #{$breakpoint}';
+  }
+}
+
+// Container query: between breakpoints (uses CSS variables)
+// Usage: @include container-between('sm', 'lg') { ... }
+@mixin container-between($lower, $upper) {
+  @if map.has-key(settings.$breakpoints, $lower) and map.has-key(settings.$breakpoints, $upper) {
+    @container (inline-size >= var(--breakpoint-#{$lower})) and (inline-size < var(--breakpoint-#{$upper})) {
       @content;
     }
   } @else {

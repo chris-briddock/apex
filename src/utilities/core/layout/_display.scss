@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
 
 // Display values for responsive generation
 // This map is used by the responsive utilities generator
@@ -31,10 +32,6 @@ $display-values: (
 ) !default;
 
 @if settings.$enable-display == true {
-  // Base display utilities
-  @each $name, $value in $display-values {
-    .#{$name} {
-      display: $value;
-    }
-  }
+  // Base display utilities are generated from a shared mixin for consistency.
+  @include utility-mixins.generate-property-utilities($display-values, 'display');
 }
