@@ -1,0 +1,160 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - button "Toggle navigation menu" [active] [ref=e4] [cursor=pointer]:
+    - img [ref=e5]
+  - main [ref=e8]:
+    - generic [ref=e9]:
+      - navigation [ref=e10]:
+        - link "Getting Started" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e13]:
+          - generic [ref=e14]: /
+          - generic [ref=e15]: Default
+      - heading "Apex" [level=1] [ref=e16]
+      - paragraph [ref=e17]: A utility-first CSS framework with 500+ utility classes for rapid UI development.
+      - generic [ref=e20]:
+        - img [ref=e21]
+        - generic [ref=e23]:
+          - heading "Welcome!" [level=4] [ref=e24]
+          - generic [ref=e25]: Welcome to the Apex documentation. This utility-first framework provides a large set of CSS classes for rapid UI development, including spacing, typography, colors, flexbox, grid, animations, transforms, filters, and much more.
+      - generic [ref=e26]:
+        - heading "Getting Started" [level=2] [ref=e27]
+        - paragraph [ref=e28]: Get started with Apex by including it in your project.
+        - heading "Quick Start" [level=3] [ref=e29]
+        - paragraph [ref=e30]: "Include the framework CSS file in your HTML:"
+        - generic [ref=e32]:
+          - generic [ref=e39]: HTML
+          - code [ref=e42]: <link rel="stylesheet" href="dist/framework.css">
+          - button "Copy code" [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+            - generic [ref=e47]: Copy
+        - heading "NPM Installation" [level=3] [ref=e48]
+        - paragraph [ref=e49]: "Install via npm:"
+        - generic [ref=e51]:
+          - generic [ref=e58]: Bash
+          - code [ref=e61]: npm install apexcss
+          - button "Copy code" [ref=e62] [cursor=pointer]:
+            - img [ref=e63]
+            - generic [ref=e66]: Copy
+      - generic [ref=e67]:
+        - heading "Utilities" [level=2] [ref=e68]
+        - paragraph [ref=e69]: The framework includes a wide range of utility classes for spacing, typography, colors, flexbox, grid, and more.
+        - heading "Spacing" [level=3] [ref=e70]
+        - generic [ref=e72]:
+          - generic [ref=e79]: HTML
+          - code [ref=e82]: <div class="p-4">Content</div>
+          - button "Copy code" [ref=e83] [cursor=pointer]:
+            - img [ref=e84]
+            - generic [ref=e87]: Copy
+        - heading "Typography" [level=3] [ref=e88]
+        - generic [ref=e90]:
+          - generic [ref=e97]: HTML
+          - code [ref=e100]: <p class="text-2xl font-bold">Large Heading</p>
+          - button "Copy code" [ref=e101] [cursor=pointer]:
+            - img [ref=e102]
+            - generic [ref=e105]: Copy
+        - heading "Colors" [level=3] [ref=e106]
+        - generic [ref=e108]:
+          - generic [ref=e115]: HTML
+          - code [ref=e118]: <div class="bg-blue-500 text-white p-2">Blue Box</div>
+          - button "Copy code" [ref=e119] [cursor=pointer]:
+            - img [ref=e120]
+            - generic [ref=e123]: Copy
+        - generic [ref=e126]:
+          - img [ref=e127]
+          - generic [ref=e131]: These are just a few examples. Explore the Utilities section to see all available classes.
+      - generic [ref=e132]:
+        - heading "Components" [level=2] [ref=e133]
+        - paragraph [ref=e134]: Apex provides a collection of pre-built components for common UI patterns.
+        - generic [ref=e135]:
+          - link "Buttons Button styles and variants" [ref=e136] [cursor=pointer]:
+            - /url: /components/buttons/
+            - heading "Buttons" [level=3] [ref=e137]
+            - paragraph [ref=e138]: Button styles and variants
+          - link "Cards Card layouts and styles" [ref=e139] [cursor=pointer]:
+            - /url: /components/cards/
+            - heading "Cards" [level=3] [ref=e140]
+            - paragraph [ref=e141]: Card layouts and styles
+          - link "Forms Form inputs and controls" [ref=e142] [cursor=pointer]:
+            - /url: /components/forms/
+            - heading "Forms" [level=3] [ref=e143]
+            - paragraph [ref=e144]: Form inputs and controls
+          - link "Alerts Alert messages and notifications" [ref=e145] [cursor=pointer]:
+            - /url: /components/alerts/
+            - heading "Alerts" [level=3] [ref=e146]
+            - paragraph [ref=e147]: Alert messages and notifications
+        - link "View All Components" [ref=e148] [cursor=pointer]:
+          - /url: /components/
+      - generic [ref=e149]:
+        - heading "Themes" [level=2] [ref=e150]
+        - paragraph [ref=e151]: Apex includes built-in support for light, dark, and custom themes.
+        - heading "Dark Mode" [level=3] [ref=e152]
+        - paragraph [ref=e153]: "Enable automatic dark mode or configure custom themes:"
+        - generic [ref=e155]:
+          - generic [ref=e162]: CSS
+          - code [ref=e165]: ":root { --color-primary: #3b82f6; } [data-theme=\"dark\"] { --color-primary: #60a5fa; }"
+          - button "Copy code" [ref=e166] [cursor=pointer]:
+            - img [ref=e167]
+            - generic [ref=e170]: Copy
+        - heading "Custom Themes" [level=3] [ref=e171]
+        - paragraph [ref=e172]: "Create your own theme by overriding CSS variables:"
+        - generic [ref=e174]:
+          - generic [ref=e181]: CSS
+          - code [ref=e184]: ".theme-custom { --color-primary: #8b5cf6; --color-secondary: #ec4899; }"
+          - button "Copy code" [ref=e185] [cursor=pointer]:
+            - img [ref=e186]
+            - generic [ref=e189]: Copy
+      - generic [ref=e190]:
+        - heading "Accessibility" [level=2] [ref=e191]
+        - paragraph [ref=e192]: Apex prioritizes accessibility with built-in support for screen readers, focus management, and keyboard navigation.
+        - heading "Screen Reader Classes" [level=3] [ref=e193]
+        - paragraph [ref=e194]: "Hide content visually while keeping it accessible to assistive technologies:"
+        - generic [ref=e196]:
+          - generic [ref=e203]: HTML
+          - code [ref=e206]: <span class="sr-only">Screen reader only text</span>
+          - button "Copy code" [ref=e207] [cursor=pointer]:
+            - img [ref=e208]
+            - generic [ref=e211]: Copy
+        - link "Learn More About Accessibility" [ref=e212] [cursor=pointer]:
+          - /url: /accessibility/
+      - generic [ref=e213]:
+        - heading "RTL Support" [level=2] [ref=e214]
+        - paragraph [ref=e215]: Apex includes built-in RTL (Right-to-Left) support for internationalization. Perfect for Arabic, Hebrew, and other RTL languages.
+        - generic [ref=e217]:
+          - generic [ref=e224]: HTML
+          - code [ref=e227]: <html dir="rtl" lang="ar">
+          - button "Copy code" [ref=e228] [cursor=pointer]:
+            - img [ref=e229]
+            - generic [ref=e232]: Copy
+        - link "RTL Documentation" [ref=e233] [cursor=pointer]:
+          - /url: /rtl/
+      - generic [ref=e234]:
+        - heading "Configuration" [level=2] [ref=e235]
+        - paragraph [ref=e236]: Customize Apex by modifying the configuration file to enable or disable utilities, change prefixes, and more.
+        - generic [ref=e238]:
+          - generic [ref=e245]: JS
+          - code [ref=e248]: "// config.js export default { prefix: 'apex-', utilities: { spacing: true, colors: true, typography: true, flexbox: true, grid: true } }"
+          - button "Copy code" [ref=e249] [cursor=pointer]:
+            - img [ref=e250]
+            - generic [ref=e253]: Copy
+        - link "Configuration Guide" [ref=e254] [cursor=pointer]:
+          - /url: /configuration/
+  - button "Was this helpful?" [ref=e256] [cursor=pointer]:
+    - generic [ref=e257]: Was this helpful?
+  - generic [ref=e262] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e263]:
+      - img [ref=e264]
+    - generic [ref=e267]:
+      - button "Open issues overlay" [ref=e268]:
+        - generic [ref=e269]:
+          - generic [ref=e270]: "0"
+          - generic [ref=e271]: "1"
+        - generic [ref=e272]: Issue
+      - button "Collapse issues badge" [ref=e273]:
+        - img [ref=e274]
+  - alert [ref=e276]
+```
