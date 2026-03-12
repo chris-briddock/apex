@@ -7,18 +7,6 @@
 @use '../../../config/custom-config' as settings;
 
 @if settings.$enable-borders == true {
-  // Define ring CSS variables on :root
-  :root {
-    --ring-offset-shadow: 0 0 #0000;
-    --ring-shadow: 0 0 #0000;
-    --shadow: 0 0 #0000;
-    --ring-inset: ;
-    --ring-offset-width: 0px;
-    --ring-offset-color: var(--color-white);
-    --ring-color: var(--color-primary);
-    --ring-opacity: 1;
-  }
-
   // Ring width
   $ring-widths: (
     0: 0,

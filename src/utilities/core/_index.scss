@@ -1,73 +1,17 @@
-// ============================================================================
-// Core Utilities Index
-// ============================================================================
-// This file serves as the entry point for all core utility classes.
-// Core utilities include essential CSS properties like spacing, colors,
-// typography, flexbox, grid, positioning, display, borders, shadows, etc.
-// Usage:
-//   @use 'utilities/core';
-//   @use 'utilities/core' as core;
-
-@use 'sass:map';
-@use '../../config/custom-config' as settings;
-@use '../../mixins/responsive-utilities' as resp;
-
-// ============================================================================
-// Layout - Import for base utilities and collect value maps
-// ============================================================================
-@use 'layout/display' as display-module;
-@use 'layout/visibility' as visibility-module;
 @forward 'layout/flexbox';
 @forward 'layout/grid';
 @forward 'layout/positioning';
-
-// ============================================================================
-// Spacing
-// ============================================================================
 @forward 'spacing/spacing';
 @forward 'spacing/sizing';
-
-// ============================================================================
-// Typography
-// ============================================================================
 @forward 'typography/typography';
-
-// ============================================================================
-// Visual (Colors, Backgrounds, Borders, Effects)
-// ============================================================================
-@forward 'visual/colors';
+@forward 'visual/text-colors';
+@forward 'visual/border-colors';
 @forward 'visual/backgrounds';
 @forward 'visual/borders';
 @forward 'visual/shadows';
 @forward 'visual/overflow';
 @forward 'visual/opacity';
 @forward 'visual/object-fit';
-
-// ============================================================================
-// Interaction
-// ============================================================================
 @forward 'interaction/cursor';
 @forward 'interaction/transitions';
-
-// ============================================================================
-// Responsive Utilities Generation
-// ============================================================================
-// Consolidated responsive utilities - one media query per breakpoint
-
-// Collect utility value maps from modules
-$responsive-config: ();
-
-@if settings.$enable-display == true {
-  $responsive-config: map.merge($responsive-config, (display: display-module.$display-values));
-}
-
-@if settings.$enable-visibility == true {
-  $responsive-config: map.merge($responsive-config, (visibility: visibility-module.$visibility-values));
-}
-
-// Generate all responsive utilities in consolidated media queries
-@include resp.generate-all-breakpoint-utilities($responsive-config);
-
-// ============================================================================
-// End of Core Utilities Index
-// ============================================================================
+@forward 'responsive';

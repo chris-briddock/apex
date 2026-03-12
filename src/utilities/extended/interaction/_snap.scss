@@ -1,0 +1,40 @@
+// ============================================================================
+// Scroll Snap Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-scroll == true {
+  // Scroll snap align
+  // ============================================================================
+  .snap-align-none { scroll-snap-align: none; }
+  .snap-align-start { scroll-snap-align: start; }
+  .snap-align-end { scroll-snap-align: end; }
+  .snap-align-center { scroll-snap-align: center; }
+
+  // Backwards-compatible aliases
+  .snap-start { scroll-snap-align: start; }
+  .snap-end { scroll-snap-align: end; }
+  .snap-center { scroll-snap-align: center; }
+
+  // Scroll snap stop
+  // ============================================================================
+  .snap-stop-normal { scroll-snap-stop: normal; }
+  .snap-stop-always { scroll-snap-stop: always; }
+
+  // Backwards-compatible aliases
+  .snap-normal { scroll-snap-stop: normal; }
+  .snap-always { scroll-snap-stop: always; }
+
+  // Scroll snap type
+  // ============================================================================
+  .snap-none { scroll-snap-type: none; }
+  .snap-x { scroll-snap-type: x mandatory; }
+  .snap-y { scroll-snap-type: y mandatory; }
+  .snap-both { scroll-snap-type: both mandatory; }
+  .snap-x-proximity { scroll-snap-type: x proximity; }
+  .snap-y-proximity { scroll-snap-type: y proximity; }
+  .snap-both-proximity { scroll-snap-type: both proximity; }
+  .snap-mandatory { scroll-snap-type: mandatory; }
+  .snap-proximity { scroll-snap-type: proximity; }
+}

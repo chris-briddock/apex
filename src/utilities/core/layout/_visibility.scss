@@ -3,6 +3,7 @@
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
 
 // Visibility values for responsive generation
 // This map is used by the responsive utilities generator
@@ -13,17 +14,9 @@ $visibility-values: (
 ) !default;
 
 @if settings.$enable-visibility == true {
-  // Base visibility utilities
-  @each $name, $value in $visibility-values {
-    .#{$name} {
-      visibility: $value;
-    }
-  }
+  // Base visibility utilities are generated through shared mixins.
+  @include utility-mixins.generate-property-utilities($visibility-values, 'visibility');
 
-  // Print visibility utilities
-  @media print {
-    .no-print {
-      display: none !important;
-    }
-  }
+  // Preserve existing print helper utility contract.
+  @include utility-mixins.generate-print-hidden-utility('no-print');
 }

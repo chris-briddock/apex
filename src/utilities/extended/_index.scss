@@ -58,12 +58,15 @@
 // ============================================================================
 // Interaction Extended
 // ============================================================================
-@forward 'interaction/interaction';
 @forward 'interaction/user-select';
+@forward 'interaction/pointer-events';
+@forward 'interaction/resize';
+@forward 'interaction/touch';
 @forward 'interaction/will-change';
 @forward 'interaction/all';
 @forward 'interaction/caret';
 @forward 'interaction/scroll';
+@forward 'interaction/snap';
 @forward 'interaction/overscroll-behavior';
 @forward 'interaction/overscroll-behavior-extended';
 @forward 'interaction/overflow-extended';
@@ -82,7 +85,6 @@
 // Content (Lists, Tables, Text Content)
 // ============================================================================
 @forward 'content/list';
-@forward 'content/list-style-extended';
 @forward 'content/table';
 @forward 'content/counter';
 @forward 'content/caption';

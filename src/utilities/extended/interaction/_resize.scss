@@ -1,0 +1,12 @@
+// ============================================================================
+// Resize Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-interaction == true {
+  .resize-none { resize: none; }
+  .resize { resize: both; }
+  .resize-y { resize: vertical; }
+  .resize-x { resize: horizontal; }
+}

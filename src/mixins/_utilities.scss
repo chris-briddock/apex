@@ -10,6 +10,42 @@
 @use '../config/custom-config' as settings;
 
 // ============================================================================
+// Generate utilities from plain value maps
+// ============================================================================
+// Usage:
+//   @include generate-property-utilities((block: block, hidden: none), 'display');
+// Output:
+//   .block { display: block; }
+//   .hidden { display: none; }
+
+@mixin generate-property-utilities($values-map, $property, $class-prefix: '') {
+  @each $name, $value in $values-map {
+    .#{$class-prefix}#{$name} {
+      #{$property}: $value;
+    }
+  }
+}
+
+@mixin generate-declaration-utilities($utilities-map, $class-prefix: '') {
+  @each $class-name, $declarations in $utilities-map {
+    .#{$class-prefix}#{$class-name} {
+      @each $property, $value in $declarations {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// Generate print-only hidden utility for compatibility with existing API
+@mixin generate-print-hidden-utility($class-name: 'no-print') {
+  @media print {
+    .#{$class-name} {
+      display: none !important;
+    }
+  }
+}
+
+// ============================================================================
 // Generate utilities from a CSS variable map
 // ============================================================================
 // This mixin creates utility classes that reference CSS custom properties

@@ -116,7 +116,7 @@ $enable-break: true !default; // enabled
 $enable-vertical-align: true !default; // enabled
 
 // Advanced
-$enable-arbitrary: false !default; // disabled
+$enable-arbitrary: true !default; // enabled
 $enable-logical-properties: true !default; // enabled
 $enable-sizing-logical: true !default; // enabled
 $enable-offset: true !default; // enabled
@@ -146,7 +146,7 @@ $enable-z-index: true !default; // enabled
 // Breakpoints - Responsive design breakpoints
 // ============================================================================
 // Individual breakpoint variables
-$breakpoint-sm: 640px !default;
+$breakpoint-sm: 320px !default;
 $breakpoint-md: 768px !default;
 $breakpoint-lg: 1024px !default;
 $breakpoint-xl: 1280px !default;
@@ -154,7 +154,7 @@ $breakpoint-xxl: 1536px !default;
 
 // Breakpoints map for SCSS iteration
 $breakpoints: (
-  sm: 640px,
+  sm: 320px,
   md: 768px,
   lg: 1024px,
   xl: 1280px,
@@ -215,70 +215,182 @@ $spacing-scale: (
 ) !default;
 
 // ============================================================================
-// Colors - Complete color palette with semantic and gray scales
+// Colors - OKLCH Color Scales (Perceptually uniform color space)
 // ============================================================================
-$color-primary-50: #eff6ff !default;
-$color-primary-100: #dbeafe !default;
-$color-primary-200: #bfdbfe !default;
-$color-primary-300: #93c5fd !default;
-$color-primary-400: #60a5fa !default;
-$color-primary-500: #3b82f6 !default;
-$color-primary-600: #2563eb !default;
-$color-primary-700: #1d4ed8 !default;
-$color-primary-800: #1e40af !default;
-$color-primary-900: #1e3a8a !default;
-$color-primary-950: #172554 !default;
-$color-gray-50: #f9fafb !default;
-$color-gray-100: #f3f4f6 !default;
-$color-gray-200: #e5e7eb !default;
-$color-gray-300: #d1d5db !default;
-$color-gray-400: #9ca3af !default;
-$color-gray-500: #6b7280 !default;
-$color-gray-600: #4b5563 !default;
-$color-gray-700: #374151 !default;
-$color-gray-800: #1f2937 !default;
-$color-gray-900: #111827 !default;
-$color-gray-950: #030712 !default;
-$color-success-50: #f0fdf4 !default;
-$color-success-100: #dcfce7 !default;
-$color-success-200: #bbf7d0 !default;
-$color-success-300: #86efac !default;
-$color-success-400: #4ade80 !default;
-$color-success-500: #22c55e !default;
-$color-success-600: #16a34a !default;
-$color-success-700: #15803d !default;
-$color-success-800: #166534 !default;
-$color-success-900: #14532d !default;
-$color-warning-50: #fffbeb !default;
-$color-warning-100: #fef3c7 !default;
-$color-warning-200: #fde68a !default;
-$color-warning-300: #fcd34d !default;
-$color-warning-400: #fbbf24 !default;
-$color-warning-500: #f59e0b !default;
-$color-warning-600: #d97706 !default;
-$color-warning-700: #b45309 !default;
-$color-warning-800: #92400e !default;
-$color-warning-900: #78350f !default;
-$color-error-50: #fef2f2 !default;
-$color-error-100: #fee2e2 !default;
-$color-error-200: #fecaca !default;
-$color-error-300: #fca5a5 !default;
-$color-error-400: #f87171 !default;
-$color-error-500: #ef4444 !default;
-$color-error-600: #dc2626 !default;
-$color-error-700: #b91c1c !default;
-$color-error-800: #991b1b !default;
-$color-error-900: #7f1d1d !default;
-$color-info-50: #f0f9ff !default;
-$color-info-100: #e0f2fe !default;
-$color-info-200: #bae6fd !default;
-$color-info-300: #7dd3fc !default;
-$color-info-400: #38bdf8 !default;
-$color-info-500: #0ea5e9 !default;
-$color-info-600: #0284c7 !default;
-$color-info-700: #0369a1 !default;
-$color-info-800: #075985 !default;
-$color-info-900: #0c4a6e !default;
+// Primary Color Scale (OKLCH)
+$color-primary-50: oklch(95% 0.18 250deg) !default;
+$color-primary-100: oklch(90% 0.18 250deg) !default;
+$color-primary-200: oklch(85% 0.18 250deg) !default;
+$color-primary-300: oklch(78% 0.18 250deg) !default;
+$color-primary-400: oklch(70% 0.18 250deg) !default;
+$color-primary-500: oklch(62% 0.18 250deg) !default;
+$color-primary-600: oklch(55% 0.18 250deg) !default;
+$color-primary-700: oklch(45% 0.18 250deg) !default;
+$color-primary-800: oklch(35% 0.18 250deg) !default;
+$color-primary-900: oklch(25% 0.18 250deg) !default;
+$color-primary-950: oklch(20% 0.18 250deg) !default;
+
+// Gray Scale (OKLCH)
+$color-gray-50: oklch(96% 0.02 250deg) !default;
+$color-gray-100: oklch(90% 0.02 250deg) !default;
+$color-gray-200: oklch(85% 0.02 250deg) !default;
+$color-gray-300: oklch(78% 0.02 250deg) !default;
+$color-gray-400: oklch(70% 0.02 250deg) !default;
+$color-gray-500: oklch(65% 0.02 250deg) !default;
+$color-gray-600: oklch(55% 0.02 250deg) !default;
+$color-gray-700: oklch(45% 0.02 250deg) !default;
+$color-gray-800: oklch(35% 0.02 250deg) !default;
+$color-gray-900: oklch(25% 0.02 250deg) !default;
+$color-gray-950: oklch(18% 0.02 250deg) !default;
+
+// Success Color Scale (OKLCH)
+$color-success-50: oklch(95% 0.2 145deg) !default;
+$color-success-100: oklch(90% 0.2 145deg) !default;
+$color-success-200: oklch(85% 0.2 145deg) !default;
+$color-success-300: oklch(78% 0.2 145deg) !default;
+$color-success-400: oklch(70% 0.2 145deg) !default;
+$color-success-500: oklch(62% 0.2 145deg) !default;
+$color-success-600: oklch(55% 0.2 145deg) !default;
+$color-success-700: oklch(45% 0.2 145deg) !default;
+$color-success-800: oklch(35% 0.2 145deg) !default;
+$color-success-900: oklch(25% 0.2 145deg) !default;
+$color-success-950: oklch(20% 0.2 145deg) !default;
+
+// Warning Color Scale (OKLCH)
+$color-warning-50: oklch(95% 0.16 80deg) !default;
+$color-warning-100: oklch(90% 0.16 80deg) !default;
+$color-warning-200: oklch(85% 0.16 80deg) !default;
+$color-warning-300: oklch(78% 0.16 80deg) !default;
+$color-warning-400: oklch(70% 0.16 80deg) !default;
+$color-warning-500: oklch(72% 0.16 80deg) !default;
+$color-warning-600: oklch(60% 0.16 80deg) !default;
+$color-warning-700: oklch(50% 0.16 80deg) !default;
+$color-warning-800: oklch(40% 0.16 80deg) !default;
+$color-warning-900: oklch(30% 0.16 80deg) !default;
+$color-warning-950: oklch(25% 0.16 80deg) !default;
+
+// Danger Color Scale (OKLCH)
+$color-danger-50: oklch(95% 0.22 25deg) !default;
+$color-danger-100: oklch(90% 0.22 25deg) !default;
+$color-danger-200: oklch(85% 0.22 25deg) !default;
+$color-danger-300: oklch(78% 0.22 25deg) !default;
+$color-danger-400: oklch(70% 0.22 25deg) !default;
+$color-danger-500: oklch(62% 0.22 25deg) !default;
+$color-danger-600: oklch(55% 0.22 25deg) !default;
+$color-danger-700: oklch(45% 0.22 25deg) !default;
+$color-danger-800: oklch(35% 0.22 25deg) !default;
+$color-danger-900: oklch(25% 0.22 25deg) !default;
+$color-danger-950: oklch(20% 0.22 25deg) !default;
+
+// Info Color Scale (OKLCH)
+$color-info-50: oklch(95% 0.14 220deg) !default;
+$color-info-100: oklch(90% 0.14 220deg) !default;
+$color-info-200: oklch(85% 0.14 220deg) !default;
+$color-info-300: oklch(78% 0.14 220deg) !default;
+$color-info-400: oklch(70% 0.14 220deg) !default;
+$color-info-500: oklch(62% 0.14 220deg) !default;
+$color-info-600: oklch(55% 0.14 220deg) !default;
+$color-info-700: oklch(45% 0.14 220deg) !default;
+$color-info-800: oklch(35% 0.14 220deg) !default;
+$color-info-900: oklch(25% 0.14 220deg) !default;
+$color-info-950: oklch(20% 0.14 220deg) !default;
+
+// Extended Color Palette (OKLCH)
+$color-blue-50: oklch(95% 0.18 250deg) !default;
+$color-blue-100: oklch(90% 0.18 250deg) !default;
+$color-blue-200: oklch(85% 0.18 250deg) !default;
+$color-blue-300: oklch(78% 0.18 250deg) !default;
+$color-blue-400: oklch(70% 0.18 250deg) !default;
+$color-blue-500: oklch(62% 0.18 250deg) !default;
+$color-blue-600: oklch(55% 0.18 250deg) !default;
+$color-blue-700: oklch(45% 0.18 250deg) !default;
+$color-blue-800: oklch(35% 0.18 250deg) !default;
+$color-blue-900: oklch(25% 0.18 250deg) !default;
+$color-blue-950: oklch(20% 0.18 250deg) !default;
+$color-green-50: oklch(95% 0.2 145deg) !default;
+$color-green-100: oklch(90% 0.2 145deg) !default;
+$color-green-200: oklch(85% 0.2 145deg) !default;
+$color-green-300: oklch(78% 0.2 145deg) !default;
+$color-green-400: oklch(70% 0.2 145deg) !default;
+$color-green-500: oklch(62% 0.2 145deg) !default;
+$color-green-600: oklch(55% 0.2 145deg) !default;
+$color-green-700: oklch(45% 0.2 145deg) !default;
+$color-green-800: oklch(35% 0.2 145deg) !default;
+$color-green-900: oklch(25% 0.2 145deg) !default;
+$color-green-950: oklch(20% 0.2 145deg) !default;
+$color-red-50: oklch(95% 0.22 25deg) !default;
+$color-red-100: oklch(90% 0.22 25deg) !default;
+$color-red-200: oklch(85% 0.22 25deg) !default;
+$color-red-300: oklch(78% 0.22 25deg) !default;
+$color-red-400: oklch(70% 0.22 25deg) !default;
+$color-red-500: oklch(62% 0.22 25deg) !default;
+$color-red-600: oklch(55% 0.22 25deg) !default;
+$color-red-700: oklch(45% 0.22 25deg) !default;
+$color-red-800: oklch(35% 0.22 25deg) !default;
+$color-red-900: oklch(25% 0.22 25deg) !default;
+$color-red-950: oklch(20% 0.22 25deg) !default;
+$color-yellow-50: oklch(95% 0.18 90deg) !default;
+$color-yellow-100: oklch(90% 0.18 90deg) !default;
+$color-yellow-200: oklch(85% 0.18 90deg) !default;
+$color-yellow-300: oklch(78% 0.18 90deg) !default;
+$color-yellow-400: oklch(70% 0.18 90deg) !default;
+$color-yellow-500: oklch(62% 0.18 90deg) !default;
+$color-yellow-600: oklch(55% 0.18 90deg) !default;
+$color-yellow-700: oklch(45% 0.18 90deg) !default;
+$color-yellow-800: oklch(35% 0.18 90deg) !default;
+$color-yellow-900: oklch(25% 0.18 90deg) !default;
+$color-yellow-950: oklch(20% 0.18 90deg) !default;
+$color-purple-50: oklch(95% 0.22 300deg) !default;
+$color-purple-100: oklch(90% 0.22 300deg) !default;
+$color-purple-200: oklch(85% 0.22 300deg) !default;
+$color-purple-300: oklch(78% 0.22 300deg) !default;
+$color-purple-400: oklch(70% 0.22 300deg) !default;
+$color-purple-500: oklch(62% 0.22 300deg) !default;
+$color-purple-600: oklch(55% 0.22 300deg) !default;
+$color-purple-700: oklch(45% 0.22 300deg) !default;
+$color-purple-800: oklch(35% 0.22 300deg) !default;
+$color-purple-900: oklch(25% 0.22 300deg) !default;
+$color-purple-950: oklch(20% 0.22 300deg) !default;
+$color-orange-50: oklch(95% 0.18 55deg) !default;
+$color-orange-100: oklch(90% 0.18 55deg) !default;
+$color-orange-200: oklch(85% 0.18 55deg) !default;
+$color-orange-300: oklch(78% 0.18 55deg) !default;
+$color-orange-400: oklch(70% 0.18 55deg) !default;
+$color-orange-500: oklch(62% 0.18 55deg) !default;
+$color-orange-600: oklch(55% 0.18 55deg) !default;
+$color-orange-700: oklch(45% 0.18 55deg) !default;
+$color-orange-800: oklch(35% 0.18 55deg) !default;
+$color-orange-900: oklch(25% 0.18 55deg) !default;
+$color-orange-950: oklch(20% 0.18 55deg) !default;
+$color-teal-50: oklch(95% 0.16 180deg) !default;
+$color-teal-100: oklch(90% 0.16 180deg) !default;
+$color-teal-200: oklch(85% 0.16 180deg) !default;
+$color-teal-300: oklch(78% 0.16 180deg) !default;
+$color-teal-400: oklch(70% 0.16 180deg) !default;
+$color-teal-500: oklch(62% 0.16 180deg) !default;
+$color-teal-600: oklch(55% 0.16 180deg) !default;
+$color-teal-700: oklch(45% 0.16 180deg) !default;
+$color-teal-800: oklch(35% 0.16 180deg) !default;
+$color-teal-900: oklch(25% 0.16 180deg) !default;
+$color-teal-950: oklch(20% 0.16 180deg) !default;
+$color-pink-50: oklch(95% 0.18 340deg) !default;
+$color-pink-100: oklch(90% 0.18 340deg) !default;
+$color-pink-200: oklch(85% 0.18 340deg) !default;
+$color-pink-300: oklch(78% 0.18 340deg) !default;
+$color-pink-400: oklch(70% 0.18 340deg) !default;
+$color-pink-500: oklch(62% 0.18 340deg) !default;
+$color-pink-600: oklch(55% 0.18 340deg) !default;
+$color-pink-700: oklch(45% 0.18 340deg) !default;
+$color-pink-800: oklch(35% 0.18 340deg) !default;
+$color-pink-900: oklch(25% 0.18 340deg) !default;
+$color-pink-950: oklch(20% 0.18 340deg) !default;
+
+// Semantic Color Aliases
+$color-primary: $color-primary-500 !default;
+$color-success: $color-success-500 !default;
+$color-warning: $color-warning-500 !default;
+$color-danger: $color-danger-500 !default;
+$color-info: $color-info-500 !default;
 
 // ============================================================================
 // Typography - Font families, sizes, weights, and spacing
@@ -317,7 +429,7 @@ $font-weights: (
   semibold: 600,
   bold: 700,
   extrabold: 800,
-  black: 900
+  "black": 900
 ) !default;
 
 // Letter Spacing

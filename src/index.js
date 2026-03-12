@@ -1,1 +1,1 @@
-import './framework.scss';
+import './main.scss';

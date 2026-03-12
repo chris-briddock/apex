@@ -1,0 +1,37 @@
+# Development files
+node_modules/
+.git/
+.github/
+.vscode/
+.qodo/
+
+# Test files
+tests/
+*.spec.ts
+*.test.ts
+
+# Build tools
+tools/
+*.config.js
+*.config.ts
+*.config.mjs
+postcss.config.js
+purgecss.config.js
+
+# Documentation (keep README.md and LICENSE)
+docs/
+docs-next/
+plans/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
