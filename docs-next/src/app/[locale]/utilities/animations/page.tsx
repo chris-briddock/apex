@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Alert } from "@/components/Alert";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("docs");
-  return {
-    title: `${t("nav.animations")} - ${t("meta.title")}`,
-    description: t("nav.animationsDescription"),
-  };
-}
+export const metadata: Metadata = {
+  title: "Animations - Apex Documentation",
+  description: "Ready-to-use animation utilities for common UI patterns in Apex.",
+};
 
 export default function AnimationsPage() {
   return (

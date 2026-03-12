@@ -11,15 +11,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Generate entries for all locales
   for (const entry of entries) {
     const url = entry.url;
+    const path = url.replace(`${BASE_URL}/`, "").replace(`${BASE_URL}`, "");
 
     // Add alternates for all locales
     const alternates = {
       languages: Object.fromEntries(
         locales.map((locale) => {
-          const path = url.replace(`${BASE_URL}/`, "").replace(`${BASE_URL}`, "");
           const localeUrl = locale === defaultLocale
-            ? `${BASE_URL}/${path}`
-            : `${BASE_URL}/${locale}/${path}`;
+            ? path ? `${BASE_URL}/${path}` : BASE_URL
+            : path ? `${BASE_URL}/${locale}/${path}` : `${BASE_URL}/${locale}`;
           return [locale, localeUrl];
         })
       ),
