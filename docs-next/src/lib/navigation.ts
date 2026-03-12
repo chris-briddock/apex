@@ -111,6 +111,39 @@ export const utilityLinks = [
   { title: "Visibility", href: "/utilities/visibility", description: "Visibility without affecting layout" },
 ];
 
+type SitemapEntry = {
+  url: string;
+  lastModified?: Date;
+  changeFrequency?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+  priority?: number;
+};
+
+const SITEMAP_BASE_URL = "https://docs.apex-css.com";
+
+export async function getSitemapEntries(): Promise<SitemapEntry[]> {
+  const hrefs = new Set<string>();
+
+  for (const section of navigation) {
+    for (const item of section.items) {
+      hrefs.add(item.href);
+    }
+  }
+
+  for (const item of componentLinks) {
+    hrefs.add(item.href);
+  }
+
+  for (const item of utilityLinks) {
+    hrefs.add(item.href);
+  }
+
+  return Array.from(hrefs).sort().map((href) => ({
+    url: href === "/" ? SITEMAP_BASE_URL : `${SITEMAP_BASE_URL}${href}`,
+    changeFrequency: "weekly",
+    priority: href === "/" ? 1 : 0.8,
+  }));
+}
+
 /**
  * Utility function to create localized hrefs
  * Usage in client components: const localizeHref = useLocalizeHref()
