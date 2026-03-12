@@ -26,6 +26,16 @@
   }
 }
 
+@mixin generate-declaration-utilities($utilities-map, $class-prefix: '') {
+  @each $class-name, $declarations in $utilities-map {
+    .#{$class-prefix}#{$class-name} {
+      @each $property, $value in $declarations {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
 // Generate print-only hidden utility for compatibility with existing API
 @mixin generate-print-hidden-utility($class-name: 'no-print') {
   @media print {

@@ -8,6 +8,7 @@
 // - --color-primary-900 is ALWAYS the darkest shade
 // - The values adjust for dark mode visibility while keeping scale direction
 
+@use 'sass:math';
 @use '../config/custom-config' as settings;
 @use '../mixins/dark-mode' as dm;
 
@@ -334,7 +335,7 @@
   @media (prefers-color-scheme: dark) {
     .dark {
       // Semantic colors - text, background, border
-      @each $color in (primary, secondary, success, danger, warning, info, light, dark, white, black) {
+      @each $color in ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white', 'black') {
         .dark\:text-#{$color} { color: var(--color-#{$color}); }
         .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
         .dark\:border-#{$color} { border-color: var(--color-#{$color}); }
@@ -380,7 +381,7 @@
 
       // Ring opacity
       @each $opacity in (0, 25, 50, 75, 100) {
-        .dark\:ring-opacity-#{$opacity} { --ring-opacity: #{$opacity / 100}; }
+        .dark\:ring-opacity-#{$opacity} { --ring-opacity: #{math.div($opacity, 100)}; }
       }
 
       // Gray Color Scale (50-900)
@@ -404,7 +405,7 @@
   // Manual toggle via class on parent
   .dark {
     // Semantic colors - text, background, border
-    @each $color in (primary, secondary, success, danger, warning, info, light, dark, white, black) {
+    @each $color in ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white', 'black') {
       .dark\:text-#{$color} { color: var(--color-#{$color}); }
       .dark\:bg-#{$color} { background-color: var(--color-#{$color}); }
       .dark\:border-#{$color} { border-color: var(--color-#{$color}); }
@@ -450,7 +451,7 @@
 
     // Ring opacity
     @each $opacity in (0, 25, 50, 75, 100) {
-      .dark\:ring-opacity-#{$opacity} { --ring-opacity: #{$opacity / 100}; }
+      .dark\:ring-opacity-#{$opacity} { --ring-opacity: #{math.div($opacity, 100)}; }
     }
 
     // Gray Color Scale (50-900)

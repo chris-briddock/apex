@@ -76,20 +76,7 @@
   // ============================================================================
   // Letter Spacing (CSS Custom Properties)
   // ============================================================================
-  $letter-spacing: (
-    tighter: var(--letter-spacing-tighter),
-    tight: var(--letter-spacing-tight),
-    normal: var(--letter-spacing-normal),
-    wide: var(--letter-spacing-wide),
-    wider: var(--letter-spacing-wider),
-    widest: var(--letter-spacing-widest)
-  );
-
-  @each $name, $spacing in $letter-spacing {
-    .tracking-#{$name} {
-      letter-spacing: $spacing;
-    }
-  }
+  // Moved to extended/typography/_letter-spacing.scss for feature flag control
 
   // ============================================================================
   // Text Alignment
@@ -137,12 +124,7 @@
   // ============================================================================
   // Word Break
   // ============================================================================
-  .break-normal {
-    overflow-wrap: normal;
-    word-break: normal;
-  }
-  .break-words { overflow-wrap: break-word; }
-  .break-all { word-break: break-all; }
+  // Moved to extended/typography/_word-break.scss for feature flag control
 
   // ============================================================================
   // White Space
@@ -183,11 +165,6 @@
     // Line heights
     @each $name, $height in $line-heights {
       .sm\:leading-#{$name} { line-height: $height; }
-    }
-
-    // Letter spacing
-    @each $name, $spacing in $letter-spacing {
-      .sm\:tracking-#{$name} { letter-spacing: $spacing; }
     }
 
     // Text alignment
@@ -335,11 +312,6 @@
     // Line heights
     @each $name, $height in $line-heights {
       .xxl\:leading-#{$name} { line-height: $height; }
-    }
-
-    // Letter spacing
-    @each $name, $spacing in $letter-spacing {
-      .xxl\:tracking-#{$name} { letter-spacing: $spacing; }
     }
 
     // Text alignment

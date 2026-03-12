@@ -116,7 +116,7 @@ $enable-break: true !default; // enabled
 $enable-vertical-align: true !default; // enabled
 
 // Advanced
-$enable-arbitrary: false !default; // disabled
+$enable-arbitrary: true !default; // enabled
 $enable-logical-properties: true !default; // enabled
 $enable-sizing-logical: true !default; // enabled
 $enable-offset: true !default; // enabled
@@ -146,7 +146,7 @@ $enable-z-index: true !default; // enabled
 // Breakpoints - Responsive design breakpoints
 // ============================================================================
 // Individual breakpoint variables
-$breakpoint-sm: 640px !default;
+$breakpoint-sm: 320px !default;
 $breakpoint-md: 768px !default;
 $breakpoint-lg: 1024px !default;
 $breakpoint-xl: 1280px !default;
@@ -154,7 +154,7 @@ $breakpoint-xxl: 1536px !default;
 
 // Breakpoints map for SCSS iteration
 $breakpoints: (
-  sm: 640px,
+  sm: 320px,
   md: 768px,
   lg: 1024px,
   xl: 1280px,
@@ -429,7 +429,7 @@ $font-weights: (
   semibold: 600,
   bold: 700,
   extrabold: 800,
-  black: 900
+  "black": 900
 ) !default;
 
 // Letter Spacing

@@ -1,0 +1,10 @@
+// ============================================================================
+// Pointer Events Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-interaction == true {
+  .pointer-events-none { pointer-events: none; }
+  .pointer-events-auto { pointer-events: auto; }
+}

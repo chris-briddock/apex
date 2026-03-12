@@ -711,9 +711,11 @@ function generateTypography(typography) {
   // Font weights
   lines.push('// Font Weights');
   lines.push('$font-weights: (');
+  const sassColorNames = new Set(['black', 'white', 'red', 'green', 'blue', 'gray', 'orange', 'purple', 'yellow', 'pink', 'brown', 'cyan', 'magenta', 'navy', 'olive', 'silver', 'teal', 'maroon', 'aqua', 'fuchsia', 'lime']);
   Object.entries(typography.fontWeight).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    const safeKey = sassColorNames.has(key) ? `"${key}"` : key;
+    lines.push(`  ${safeKey}: ${value}${comma}`);
   });
   lines.push(') !default;');
   lines.push('');

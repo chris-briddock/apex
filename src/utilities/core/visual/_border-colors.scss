@@ -1,5 +1,5 @@
 // ============================================================================
-// Color Utilities (Text, Background, Border)
+// Border Color Utilities
 // ============================================================================
 // All colors use CSS custom properties for runtime theming support
 
@@ -22,20 +22,6 @@
     800: var(--color-gray-800),
     900: var(--color-gray-900),
   );
-
-  // Text colors
-  @each $key, $value in $grays {
-    .text-gray-#{$key} {
-      color: $value;
-    }
-  }
-
-  // Background colors
-  @each $key, $value in $grays {
-    .bg-gray-#{$key} {
-      background-color: $value;
-    }
-  }
 
   // Border colors
   @each $key, $value in $grays {
@@ -61,12 +47,6 @@
   );
 
   @each $key, $value in $blues {
-    .text-blue-#{$key} {
-      color: $value;
-    }
-    .bg-blue-#{$key} {
-      background-color: $value;
-    }
     .border-blue-#{$key} {
       border-color: $value;
     }
@@ -89,12 +69,6 @@
   );
 
   @each $key, $value in $greens {
-    .text-green-#{$key} {
-      color: $value;
-    }
-    .bg-green-#{$key} {
-      background-color: $value;
-    }
     .border-green-#{$key} {
       border-color: $value;
     }
@@ -117,12 +91,6 @@
   );
 
   @each $key, $value in $reds {
-    .text-red-#{$key} {
-      color: $value;
-    }
-    .bg-red-#{$key} {
-      background-color: $value;
-    }
     .border-red-#{$key} {
       border-color: $value;
     }
@@ -145,12 +113,6 @@
   );
 
   @each $key, $value in $yellows {
-    .text-yellow-#{$key} {
-      color: $value;
-    }
-    .bg-yellow-#{$key} {
-      background-color: $value;
-    }
     .border-yellow-#{$key} {
       border-color: $value;
     }
@@ -173,12 +135,6 @@
   );
 
   @each $key, $value in $purples {
-    .text-purple-#{$key} {
-      color: $value;
-    }
-    .bg-purple-#{$key} {
-      background-color: $value;
-    }
     .border-purple-#{$key} {
       border-color: $value;
     }
@@ -187,32 +143,6 @@
   // ============================================================================
   // Semantic Colors (CSS Custom Properties)
   // ============================================================================
-  .text-primary { color: var(--color-primary); }
-  .text-secondary { color: var(--color-secondary); }
-  .text-success { color: var(--color-success); }
-  .text-danger { color: var(--color-danger); }
-  .text-warning { color: var(--color-warning); }
-  .text-info { color: var(--color-info); }
-  .text-light { color: var(--color-light); }
-  .text-dark { color: var(--color-dark); }
-  .text-white { color: var(--color-white); }
-  .text-black { color: var(--color-black); }
-  .text-transparent { color: var(--color-transparent); }
-  .text-current { color: var(--color-current); }
-
-  .bg-primary { background-color: var(--color-primary); }
-  .bg-secondary { background-color: var(--color-secondary); }
-  .bg-success { background-color: var(--color-success); }
-  .bg-danger { background-color: var(--color-danger); }
-  .bg-warning { background-color: var(--color-warning); }
-  .bg-info { background-color: var(--color-info); }
-  .bg-light { background-color: var(--color-light); }
-  .bg-dark { background-color: var(--color-dark); }
-  .bg-white { background-color: var(--color-white); }
-  .bg-black { background-color: var(--color-black); }
-  .bg-transparent { background-color: var(--color-transparent); }
-  .bg-current { background-color: var(--color-current); }
-
   .border-primary { border-color: var(--color-primary); }
   .border-secondary { border-color: var(--color-secondary); }
   .border-success { border-color: var(--color-success); }
@@ -225,71 +155,4 @@
   .border-black { border-color: var(--color-black); }
   .border-transparent { border-color: var(--color-transparent); }
   .border-current { border-color: var(--color-current); }
-
-  // ============================================================================
-  // Opacity Variants (for backgrounds with CSS variables)
-  // ============================================================================
-  // Opacity values using CSS custom properties
-  $opacity-values: (
-    0: var(--opacity-0),
-    5: var(--opacity-5),
-    10: var(--opacity-10),
-    15: var(--opacity-15),
-    20: var(--opacity-20),
-    25: var(--opacity-25),
-    30: var(--opacity-30),
-    35: var(--opacity-35),
-    40: var(--opacity-40),
-    45: var(--opacity-45),
-    50: var(--opacity-50),
-    55: var(--opacity-55),
-    60: var(--opacity-60),
-    65: var(--opacity-65),
-    70: var(--opacity-70),
-    75: var(--opacity-75),
-    80: var(--opacity-80),
-    85: var(--opacity-85),
-    90: var(--opacity-90),
-    95: var(--opacity-95),
-    100: var(--opacity-100)
-  );
-
-  // CSS variable-based opacity backgrounds for semantic colors
-  @each $opacity-name, $opacity-value in $opacity-values {
-    @if $opacity-name != 100 {
-      .bg-primary\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-secondary\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-success\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-success) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-danger\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-danger) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-warning\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-warning) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-info\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-white\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
-      }
-      .bg-black\/#{$opacity-name} {
-        background-color: color-mix(in srgb, var(--color-black) #{$opacity-name * 1%}, transparent);
-      }
-
-      // Gray opacity variants using color-mix
-      @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-        .bg-gray-#{$shade}\/#{$opacity-name} {
-          background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
-        }
-      }
-    }
-  }
-
 }
-

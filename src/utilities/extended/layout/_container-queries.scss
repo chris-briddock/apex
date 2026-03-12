@@ -62,16 +62,15 @@
   }
 
   // ============================================================================
-  // Container Query Utilities with CSS Variable Breakpoints
+  // Container Query Utilities with Sass Variable Breakpoints
   // ============================================================================
-  // These use CSS variables (--breakpoint-*) allowing runtime customization.
-  // The CSS variables are defined in themes/_default.scss and can be overridden
-  // in any stylesheet for fine-grained breakpoint control.
+  // These use Sass variables that compile to literal pixel values.
+  // This avoids parsing issues with CSS custom properties in container queries.
   // ============================================================================
 
   @each $bp-name, $bp-value in settings.$breakpoints {
-    // Generic container queries using CSS variables
-    @container (inline-size >= var(--breakpoint-#{$bp-name})) {
+    // Generic container queries using Sass variables (compile to literal values)
+    @container (inline-size >= #{$bp-value}) {
       // Display utilities
       .\@#{$bp-name}\:block { display: block; }
       .\@#{$bp-name}\:inline { display: inline; }

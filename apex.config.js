@@ -124,7 +124,7 @@ export default {
     verticalAlign: true,
 
     // Advanced
-    arbitrary: false,
+    arbitrary: true,
     logicalProperties: true,
     sizingLogical: true,
     offset: true,
@@ -154,7 +154,7 @@ export default {
   // Breakpoints - Customize responsive breakpoints
   // ============================================================================
   breakpoints: {
-    sm: '640px',
+    sm: '320px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',

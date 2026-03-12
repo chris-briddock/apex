@@ -1,0 +1,59 @@
+@use 'sass:map';
+@use '../../config/custom-config' as settings;
+@use '../../mixins/responsive-utilities' as resp;
+@use 'layout/display' as display-module;
+@use 'layout/flexbox' as flexbox-module;
+@use 'layout/grid' as grid-module;
+@use 'layout/positioning' as positioning-module;
+@use 'layout/visibility' as visibility-module;
+@use 'visual/borders' as borders-module;
+@use 'visual/shadows' as shadows-module;
+
+$responsive-config: ();
+
+@if settings.$enable-display == true {
+  $responsive-config: map.merge($responsive-config, (display: (
+    property: 'display',
+    values: display-module.$display-values
+  )));
+}
+
+@if settings.$enable-flexbox == true {
+  $responsive-config: map.merge($responsive-config, (flexbox: (
+    values: flexbox-module.$flexbox-utilities
+  )));
+}
+
+@if settings.$enable-grid == true {
+  $responsive-config: map.merge($responsive-config, (grid: (
+    breakpoint-values: grid-module.$grid-responsive-utilities
+  )));
+}
+
+@if settings.$enable-visibility == true {
+  $responsive-config: map.merge($responsive-config, (visibility: (
+    property: 'visibility',
+    values: visibility-module.$visibility-values
+  )));
+}
+
+@if settings.$enable-positioning == true {
+  $responsive-config: map.merge($responsive-config, (positioning: (
+    values: positioning-module.$positioning-utilities
+  )));
+}
+
+@if settings.$enable-shadows == true {
+  $responsive-config: map.merge($responsive-config, (shadows: (
+    property: 'box-shadow',
+    values: shadows-module.$shadow-values
+  )));
+}
+
+@if settings.$enable-borders == true {
+  $responsive-config: map.merge($responsive-config, (borders: (
+    breakpoint-values: borders-module.$border-responsive-utilities
+  )));
+}
+
+@include resp.generate-all-breakpoint-utilities($responsive-config);
