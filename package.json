@@ -34,7 +34,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "dev": "vite",
     "build": "npm run config:build && npm run lint && vite build",
     "prepublishOnly": "npm run clean && npm run build",
     "preview": "vite preview",
