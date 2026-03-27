@@ -54,7 +54,7 @@ npm run config:build
 npm run build
 ```
 
-📖 **[See full configuration guide](./CONFIG.md)**
+📖 **[See full configuration guide](./docs/CONFIG.md)**
 
 ## Documentation
 

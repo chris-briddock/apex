@@ -1,0 +1,1114 @@
+# ApexCSS Framework - LLM Documentation
+# Version: 0.3.5
+# Last Updated: 2026-03-27
+# Purpose: Comprehensive reference for AI/LLM consumption
+
+================================================================================
+SECTION 1: FRAMEWORK OVERVIEW
+================================================================================
+
+ApexCSS is a utility-first CSS framework built with Sass/SCSS, inspired by Tailwind
+CSS but with a modular, configuration-driven architecture. It provides 500+
+utility classes across 104+ feature categories.
+
+KEY CHARACTERISTICS:
+- Built entirely with Sass (not PostCSS-based like Tailwind)
+- Uses OKLCH color space for perceptually uniform colors
+- Modular architecture: import only what you need
+- JavaScript-based configuration (apex.config.js)
+- CSS custom properties for runtime theming
+- Mobile-first responsive design
+- Full dark mode and RTL support
+- Accessibility-focused (screen readers, focus management, reduced motion)
+
+PROJECT STATUS: Pre-release (v0.3.5), actively developed
+
+================================================================================
+SECTION 2: QUICK START
+================================================================================
+
+INSTALLATION:
+    npm install apexcss
+
+USAGE OPTIONS:
+    Option 1: Full framework
+        <link rel="stylesheet" href="node_modules/apexcss/dist/apex.css">
+
+    Option 2: Individual modules (tree-shaking)
+        @use 'apexcss/dist/base.css';       /* Reset/base styles only */
+        @use 'apexcss/dist/utilities.css'; /* Utility classes only */
+        @use 'apexcss/dist/themes.css';    /* Theme variables only */
+
+MINIMAL HTML EXAMPLE:
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="dist/apex.css">
+    </head>
+    <body class="bg-gray-50 text-gray-900 font-sans p-4">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-primary-600 mb-4">Hello ApexCSS</h1>
+            <p class="text-gray-600 mb-4">Utility-first CSS framework</p>
+            <button class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-md transition-colors">
+                Get Started
+            </button>
+        </div>
+    </body>
+    </html>
+
+================================================================================
+SECTION 3: CONFIGURATION SYSTEM
+================================================================================
+
+CONFIGURATION FILE: apex.config.js (project root)
+
+The framework uses a JavaScript configuration file that generates SCSS variables.
+Workflow: Edit apex.config.js → npm run config:build → npm run build
+
+104 FEATURE TOGGLES (enable/disable utility categories):
+
+Core Layout:
+    display: true          /* Display utilities (block, flex, grid, hidden) */
+    flexbox: true          /* Flexbox layout utilities */
+    grid: true             /* CSS Grid layout utilities */
+    positioning: true      /* Position utilities (static, relative, absolute) */
+    visibility: true       /* Visibility utilities */
+
+Core Spacing:
+    spacing: true          /* Margin and padding utilities */
+    sizing: true           /* Width and height utilities */
+
+Core Typography:
+    typography: true       /* Basic typography utilities */
+
+Core Visual:
+    colors: true           /* Text color utilities */
+    backgrounds: true      /* Background color utilities */
+    borders: true          /* Border width, style, color utilities */
+    shadows: true          /* Box shadow utilities */
+    opacity: true          /* Opacity utilities */
+    overflow: true         /* Overflow utilities */
+    objectFit: true        /* Object-fit utilities */
+
+Core Interaction:
+    cursor: true           /* Cursor utilities */
+    transitions: true      /* Transition utilities */
+
+Extended Layout:
+    flexExtended: true     /* Extended flex (grow, shrink, basis) */
+    gridExtended: true     /* Extended grid (auto-flow, template areas) */
+    float: true            /* Float utilities */
+    containerQueries: true /* CSS Container Query utilities */
+    isolation: true        /* Isolation utilities */
+    placeItems: true       /* Place-items and place-content */
+    justifyItems: true     /* Justify-items utilities */
+    spaceBetween: true     /* Space-between utilities */
+    columns: true          /* CSS columns utilities */
+    columnsExtended: true  /* Extended column utilities */
+
+Extended Typography:
+    typographyExtended: true
+    fontExtended: true
+    letterSpacing: true
+    lineHeight: true
+    textAlignLast: true
+    textDecorationExtended: true
+    textJustify: true
+    textIndent: true
+    textShadow: true
+    textEmphasis: true
+    textOrientation: true
+    textUnderline: true
+    hangingPunctuation: true
+    hyphenate: true
+    initialLetter: true
+    tabSize: true
+    wordBreak: true
+    wordWrap: true
+    writingMode: true
+    unicodeBidi: true
+
+Extended Visual:
+    backgroundExtended: true
+    colorModifiers: false   /* Disabled by default */
+    blendModes: true
+    masks: true
+    borderRadiusLogical: true
+    ring: true              /* Focus ring utilities */
+    outline: true
+    appearance: true
+    accentColor: true
+    colorScheme: true
+
+Extended Interaction:
+    interaction: true
+    userSelect: true
+    willChange: true
+    all: true
+    caret: true
+    scroll: true
+    overscrollBehavior: true
+    overscrollBehaviorExtended: true
+    overflowExtended: true
+
+Effects & Animations:
+    animations: true
+    transforms: true
+    transforms3d: true
+    filters: true
+    aspectRatio: true
+    imageRendering: true
+    transitionBehavior: true
+
+Content Utilities:
+    list: true
+    listStyleExtended: true
+    table: true
+    counter: true
+    caption: true
+    quotes: true
+    orphans: true
+    widows: true
+    pageBreak: true
+    break: true
+    verticalAlign: true
+
+Advanced Utilities:
+    arbitrary: true        /* Arbitrary value support ([w-100px]) */
+    logicalProperties: true /* Logical margin/padding (ms-, me-, ps-, pe-) */
+    sizingLogical: true
+    offset: true
+    shapeOutside: true
+    markerExtended: true
+    zoom: true
+    fieldSizing: true
+    svg: true
+    box: true
+    divide: true
+
+State Variants:
+    states: true           /* Enable all state variants */
+    hover: true
+    focus: true
+    active: true
+    disabled: true
+
+Theme Support:
+    darkMode: true
+    rtl: true
+    accessibility: true
+    zIndex: true
+
+================================================================================
+SECTION 4: BREAKPOINT SYSTEM
+================================================================================
+
+DEFAULT BREAKPOINTS (mobile-first):
+    sm:   320px   /* Small phones */
+    md:   768px   /* Tablets */
+    lg:   1024px  /* Small laptops */
+    xl:   1280px  /* Desktops */
+    xxl:  2560px  /* 2K / QHD displays */
+    xxxl: 3840px  /* 4K / UHD displays */
+    ultra: 7680px /* 8K displays */
+
+RESPONSIVE PREFIX SYNTAX:
+    {breakpoint}:{utility}
+
+    Examples:
+        md:d-flex      /* display: flex at md breakpoint and up */
+        lg:p-8         /* padding: 2rem at lg breakpoint and up */
+        sm:hidden      /* display: none below sm breakpoint */
+
+CUSTOMIZATION (in apex.config.js):
+    breakpoints: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        xxl: '1920px'
+    }
+
+================================================================================
+SECTION 5: SPACING SYSTEM
+================================================================================
+
+SPACING SCALE (based on 0.25rem increments):
+    0:     0
+    px:    1px
+    0.5:   0.125rem
+    1:     0.25rem  (4px)
+    2:     0.5rem   (8px)
+    3:     0.75rem  (12px)
+    4:     1rem     (16px)
+    5:     1.25rem  (20px)
+    6:     1.5rem   (24px)
+    8:     2rem     (32px)
+    10:    2.5rem   (40px)
+    12:    3rem     (48px)
+    16:    4rem     (64px)
+    20:    5rem     (80px)
+    24:    6rem     (96px)
+    32:    8rem     (128px)
+    40:    10rem    (160px)
+    48:    12rem    (192px)
+    64:    16rem    (256px)
+    80:    20rem    (320px)
+    96:    24rem    (384px)
+
+SPACING UTILITY PATTERNS:
+    /* Margin */
+    m-{value}       /* All sides */
+    mt-{value}      /* Top */
+    mr-{value}      /* Right */
+    mb-{value}      /* Bottom */
+    ml-{value}      /* Left */
+    mx-{value}      /* Horizontal (left + right) */
+    my-{value}      /* Vertical (top + bottom) */
+
+    /* Padding */
+    p-{value}       /* All sides */
+    pt-{value}      /* Top */
+    pr-{value}      /* Right */
+    pb-{value}      /* Bottom */
+    pl-{value}      /* Left */
+    px-{value}      /* Horizontal */
+    py-{value}      /* Vertical */
+
+    /* Gap */
+    gap-{value}     /* All gaps */
+    gap-x-{value}   /* Column gap */
+    gap-y-{value}   /* Row gap */
+
+AUTO SPACING:
+    mx-auto         /* margin-left: auto; margin-right: auto */
+    my-auto         /* margin-top: auto; margin-bottom: auto */
+    m-auto          /* margin: auto */
+
+LOGICAL PROPERTIES (RTL-aware):
+    ms-{value}      /* margin-inline-start (replaces ml) */
+    me-{value}      /* margin-inline-end (replaces mr) */
+    ps-{value}      /* padding-inline-start (replaces pl) */
+    pe-{value}      /* padding-inline-end (replaces pr) */
+
+================================================================================
+SECTION 6: COLOR SYSTEM (OKLCH)
+================================================================================
+
+ApexCSS uses the OKLCH color space for perceptually uniform colors.
+Format: oklch(lightness% chroma hue)
+
+DEFAULT COLOR PALETTE:
+
+Primary (Blue):
+    text-primary-50  through text-primary-950
+    bg-primary-50    through bg-primary-950
+    border-primary-50 through border-primary-950
+
+Gray (Neutral):
+    text-gray-50     through text-gray-950
+    bg-gray-50       through bg-gray-950
+
+Success (Green):
+    text-success-50  through text-success-950
+    bg-success-50    through bg-success-950
+
+Warning (Amber):
+    text-warning-50  through text-warning-950
+    bg-warning-50    through bg-warning-950
+
+Danger (Red):
+    text-danger-50   through text-danger-950
+    bg-danger-50     through bg-danger-950
+
+COLOR CONFIGURATION (in apex.config.js):
+    colors: {
+        primary: {
+            hue: 250,           /* 0-360 on color wheel */
+            chroma: 0.18,       /* 0-0.4 intensity */
+            lightnessScale: {
+                50: 95,         /* Lightest */
+                100: 90,
+                200: 85,
+                300: 78,
+                400: 70,
+                500: 62,        /* Base color */
+                600: 55,
+                700: 45,
+                800: 35,
+                900: 25,
+                950: 20         /* Darkest */
+            }
+        }
+    }
+
+OPACITY MODIFIERS:
+    bg-primary-500/50    /* 50% opacity background */
+    text-primary-500/75  /* 75% opacity text */
+
+================================================================================
+SECTION 7: CORE UTILITY REFERENCE
+================================================================================
+
+----- DISPLAY -----
+    block            /* display: block */
+    inline-block     /* display: inline-block */
+    inline           /* display: inline */
+    flex             /* display: flex */
+    inline-flex      /* display: inline-flex */
+    grid             /* display: grid */
+    inline-grid      /* display: inline-grid */
+    table            /* display: table */
+    hidden           /* display: none */
+    contents         /* display: contents */
+    list-item        /* display: list-item */
+
+----- FLEXBOX -----
+    /* Direction */
+    flex-row         /* flex-direction: row */
+    flex-row-reverse /* flex-direction: row-reverse */
+    flex-col         /* flex-direction: column */
+    flex-col-reverse /* flex-direction: column-reverse */
+
+    /* Wrap */
+    flex-wrap        /* flex-wrap: wrap */
+    flex-nowrap      /* flex-wrap: nowrap */
+    flex-wrap-reverse/* flex-wrap: wrap-reverse */
+
+    /* Grow/Shrink */
+    flex-grow        /* flex-grow: 1 */
+    flex-grow-0      /* flex-grow: 0 */
+    flex-shrink      /* flex-shrink: 1 */
+    flex-shrink-0    /* flex-shrink: 0 */
+
+    /* Basis */
+    flex-basis-0     /* flex-basis: 0 */
+    flex-basis-auto  /* flex-basis: auto */
+    flex-basis-full  /* flex-basis: 100% */
+    flex-basis-1/2   /* flex-basis: 50% */
+    flex-basis-1/3   /* flex-basis: 33.3333% */
+    flex-basis-2/3   /* flex-basis: 66.6667% */
+    flex-basis-1/4   /* flex-basis: 25% */
+    flex-basis-3/4   /* flex-basis: 75% */
+
+    /* Justify Content */
+    justify-start    /* justify-content: flex-start */
+    justify-end      /* justify-content: flex-end */
+    justify-center   /* justify-content: center */
+    justify-between  /* justify-content: space-between */
+    justify-around   /* justify-content: space-around */
+    justify-evenly   /* justify-content: space-evenly */
+
+    /* Align Items */
+    items-start      /* align-items: flex-start */
+    items-end        /* align-items: flex-end */
+    items-center     /* align-items: center */
+    items-baseline   /* align-items: baseline */
+    items-stretch    /* align-items: stretch */
+
+    /* Align Self */
+    self-auto        /* align-self: auto */
+    self-start       /* align-self: flex-start */
+    self-end         /* align-self: flex-end */
+    self-center      /* align-self: center */
+    self-baseline    /* align-self: baseline */
+    self-stretch     /* align-self: stretch */
+
+    /* Order */
+    order-1 through order-12
+    order-first      /* order: -9999 */
+    order-last       /* order: 9999 */
+    order-none       /* order: 0 */
+
+    /* Flex Shorthand */
+    flex-1           /* flex: 1 1 0% */
+    flex-auto        /* flex: 1 1 auto */
+    flex-initial     /* flex: 0 1 auto */
+    flex-none        /* flex: none */
+
+----- GRID -----
+    grid-cols-1 through grid-cols-12
+    grid-rows-1 through grid-rows-6
+    col-span-1 through col-span-12
+    col-span-full
+    row-span-1 through row-span-6
+    col-start-1 through col-start-13
+    col-end-1 through col-end-13
+    row-start-1 through row-start-7
+    row-end-1 through row-end-7
+    gap-{value}
+
+----- POSITIONING -----
+    static           /* position: static */
+    relative         /* position: relative */
+    absolute         /* position: absolute */
+    fixed            /* position: fixed */
+    sticky           /* position: sticky */
+
+    /* Position values (use with absolute/fixed) */
+    inset-0          /* inset: 0 */
+    inset-x-0        /* left: 0; right: 0 */
+    inset-y-0        /* top: 0; bottom: 0 */
+    top-0            /* top: 0 */
+    right-0          /* right: 0 */
+    bottom-0         /* bottom: 0 */
+    left-0           /* left: 0 */
+
+    /* Z-Index */
+    z-0, z-10, z-20, z-30, z-40, z-50
+    z-auto
+
+----- SIZING -----
+    /* Width */
+    w-0 through w-96
+    w-auto
+    w-full           /* width: 100% */
+    w-screen         /* width: 100vw */
+    w-min            /* width: min-content */
+    w-max            /* width: max-content */
+    w-fit            /* width: fit-content */
+
+    /* Height */
+    h-0 through h-96
+    h-auto
+    h-full           /* height: 100% */
+    h-screen         /* height: 100vh */
+    h-min            /* height: min-content */
+    h-max            /* height: max-content */
+    h-fit            /* height: fit-content */
+
+    /* Min/Max */
+    min-w-0, min-w-full
+    max-w-0 through max-w-96
+    max-w-none
+    min-h-0, min-h-full
+    max-h-0 through max-h-96
+    max-h-none
+    max-w-screen-sm through max-w-screen-ultra
+
+----- TYPOGRAPHY -----
+    /* Font Size */
+    text-xs          /* font-size: var(--font-size-xs) */
+    text-sm          /* font-size: var(--font-size-sm) */
+    text-base        /* font-size: var(--font-size-base) */
+    text-lg          /* font-size: var(--font-size-lg) */
+    text-xl          /* font-size: var(--font-size-xl) */
+    text-2xl through text-9xl
+
+    /* Font Weight */
+    font-thin        /* font-weight: 100 */
+    font-extralight  /* font-weight: 200 */
+    font-light       /* font-weight: 300 */
+    font-normal      /* font-weight: 400 */
+    font-medium      /* font-weight: 500 */
+    font-semibold    /* font-weight: 600 */
+    font-bold        /* font-weight: 700 */
+    font-extrabold   /* font-weight: 800 */
+    font-black       /* font-weight: 900 */
+
+    /* Line Height */
+    leading-none     /* line-height: 1 */
+    leading-tight    /* line-height: 1.25 */
+    leading-snug     /* line-height: 1.375 */
+    leading-normal   /* line-height: 1.5 */
+    leading-relaxed  /* line-height: 1.625 */
+    leading-loose    /* line-height: 2 */
+
+    /* Text Align */
+    text-left        /* text-align: left */
+    text-center      /* text-align: center */
+    text-right       /* text-align: right */
+    text-justify     /* text-align: justify */
+    text-start       /* text-align: start (logical) */
+    text-end         /* text-align: end (logical) */
+
+    /* Text Transform */
+    uppercase
+    lowercase
+    capitalize
+    normal-case
+
+    /* Text Decoration */
+    underline
+    line-through
+    no-underline
+    overline
+
+    /* Letter Spacing */
+    tracking-tighter /* letter-spacing: -0.05em */
+    tracking-tight   /* letter-spacing: -0.025em */
+    tracking-normal  /* letter-spacing: 0 */
+    tracking-wide    /* letter-spacing: 0.025em */
+    tracking-wider   /* letter-spacing: 0.05em */
+    tracking-widest  /* letter-spacing: 0.1em */
+
+----- BORDERS -----
+    /* Border Width */
+    border           /* border-width: 1px */
+    border-0         /* border-width: 0 */
+    border-2         /* border-width: 2px */
+    border-4         /* border-width: 4px */
+    border-8         /* border-width: 8px */
+    border-t-{n}, border-r-{n}, border-b-{n}, border-l-{n}
+    border-x-{n}, border-y-{n}
+
+    /* Border Style */
+    border-solid
+    border-dashed
+    border-dotted
+    border-double
+    border-hidden
+    border-none
+
+    /* Border Radius */
+    rounded-none     /* border-radius: 0 */
+    rounded-sm       /* border-radius: var(--radius-sm) */
+    rounded          /* border-radius: var(--radius-md) */
+    rounded-md       /* border-radius: var(--radius-md) */
+    rounded-lg       /* border-radius: var(--radius-lg) */
+    rounded-xl       /* border-radius: var(--radius-xl) */
+    rounded-2xl      /* border-radius: var(--radius-2xl) */
+    rounded-3xl      /* border-radius: var(--radius-3xl) */
+    rounded-full     /* border-radius: 9999px */
+    rounded-t-{size}, rounded-r-{size}, rounded-b-{size}, rounded-l-{size}
+    rounded-tl-{size}, rounded-tr-{size}, rounded-br-{size}, rounded-bl-{size}
+
+----- SHADOWS -----
+    shadow-none
+    shadow-sm
+    shadow           /* Default shadow */
+    shadow-md
+    shadow-lg
+    shadow-xl
+    shadow-2xl
+    shadow-inner
+
+----- OPACITY -----
+    opacity-0 through opacity-100 (increments of 5)
+
+----- OVERFLOW -----
+    overflow-auto
+    overflow-hidden
+    overflow-visible
+    overflow-scroll
+    overflow-x-auto, overflow-y-auto
+    overflow-x-hidden, overflow-y-hidden
+
+----- VISIBILITY -----
+    visible
+    invisible        /* visibility: hidden */
+    collapse         /* visibility: collapse (tables) */
+
+----- CURSOR -----
+    cursor-auto
+    cursor-default
+    cursor-pointer
+    cursor-wait
+    cursor-text
+    cursor-move
+    cursor-help
+    cursor-not-allowed
+    cursor-none
+
+----- TRANSITIONS -----
+    transition-none
+    transition-all
+    transition-colors
+    transition-opacity
+    transition-shadow
+    transition-transform
+
+    /* Duration */
+    duration-0, duration-75, duration-100, duration-150
+    duration-200, duration-300, duration-500, duration-700, duration-1000
+
+    /* Timing Function */
+    ease-linear
+    ease-in
+    ease-out
+    ease-in-out
+
+    /* Delay */
+    delay-0, delay-75, delay-100, delay-150
+    delay-200, delay-300, delay-500, delay-700, delay-1000
+
+================================================================================
+SECTION 8: STATE VARIANTS
+================================================================================
+
+State variants apply styles on specific element states.
+
+SYNTAX PATTERNS:
+    {state}:{utility}
+    {state}:{responsive-prefix}:{utility}
+
+AVAILABLE STATES:
+    hover:           /* :hover pseudo-class */
+    focus:           /* :focus pseudo-class */
+    focus-visible:   /* :focus-visible pseudo-class */
+    active:          /* :active pseudo-class */
+    disabled:        /* :disabled pseudo-class */
+
+USAGE EXAMPLES:
+    hover:bg-primary-600      /* Change bg on hover */
+    focus:outline-2           /* Show outline on focus */
+    focus-visible:ring-2      /* Show ring on keyboard focus */
+    active:bg-primary-700     /* Darker bg when active */
+    disabled:opacity-50       /* Reduce opacity when disabled */
+    hover:md:bg-primary-600   /* Hover at md breakpoint and up */
+
+================================================================================
+SECTION 9: ARBITRARY VALUES
+================================================================================
+
+Use arbitrary values for one-off custom values not in the default scale.
+
+SYNTAX: [property-value]
+
+EXAMPLES:
+    w-[100px]                    /* width: 100px */
+    h-[calc(100vh-4rem)]         /* height: calc(100vh - 4rem) */
+    text-[#1da1f2]               /* color: #1da1f2 */
+    bg-[url('/img/bg.png')]      /* background-image: url(...') */
+    p-[3rem]                     /* padding: 3rem */
+    m-[var(--custom-margin)]     /* margin: var(--custom-margin) */
+    gap-[2.5rem]                 /* gap: 2.5rem */
+
+RESPONSIVE ARBITRARY VALUES:
+    md:w-[50vw]                  /* width: 50vw at md and up */
+    lg:h-[calc(100%-2rem)]       /* height at lg and up */
+
+================================================================================
+SECTION 10: DARK MODE
+================================================================================
+
+DARK MODE CLASSES:
+    dark:{utility}
+
+EXAMPLES:
+    dark:bg-gray-900           /* Dark background in dark mode */
+    dark:text-white            /* White text in dark mode */
+    dark:border-gray-700       /* Darker borders in dark mode */
+
+IMPLEMENTATION:
+By default, dark mode uses the 'class' strategy. Add 'dark' class to html:
+    <html class="dark">
+
+Or use media query (system preference) by configuring in apex.config.js.
+
+DARK MODE TOGGLE EXAMPLE:
+    <button onclick="document.documentElement.classList.toggle('dark')">
+        Toggle Theme
+    </button>
+
+================================================================================
+SECTION 11: RTL (RIGHT-TO-LEFT) SUPPORT
+================================================================================
+
+ApexCSS provides full RTL support using logical properties.
+
+LOGICAL PROPERTIES (recommended):
+    ms-{n}          /* margin-inline-start (replaces ml) */
+    me-{n}          /* margin-inline-end (replaces mr) */
+    ps-{n}          /* padding-inline-start (replaces pl) */
+    pe-{n}          /* padding-inline-end (replaces pr) */
+    text-start      /* text-align: start (replaces text-left) */
+    text-end        /* text-align: end (replaces text-right) */
+
+RTL-SPECIFIC UTILITIES:
+    rtl:me-{n}      /* Only apply in RTL mode */
+    ltr:ms-{n}      /* Only apply in LTR mode */
+
+IMPLEMENTATION:
+Add dir="rtl" to html element:
+    <html dir="rtl">
+
+================================================================================
+SECTION 12: ACCESSIBILITY UTILITIES
+================================================================================
+
+SCREEN READER UTILITIES:
+    sr-only             /* Visually hide but keep for screen readers */
+    not-sr-only         /* Override sr-only */
+
+FOCUS UTILITIES:
+    focus:outline-none  /* Remove default outline */
+    focus:ring-2        /* Add custom ring on focus */
+    focus-visible:ring-2/* Ring only on keyboard focus */
+
+REDUCED MOTION:
+    motion-safe:{utility}   /* Only apply if user prefers motion */
+    motion-reduce:{utility} /* Only apply if user prefers reduced motion */
+
+EXAMPLE:
+    <div class="motion-safe:animate-bounce motion-reduce:transform-none">
+        Animated content
+    </div>
+
+================================================================================
+SECTION 13: EXTENDED UTILITIES
+================================================================================
+
+----- TRANSFORMS -----
+    /* Translate */
+    translate-x-{n}, translate-y-{n}
+    translate-x-full, translate-y-full
+    -translate-x-{n} (negative values)
+
+    /* Scale */
+    scale-0 through scale-150
+    scale-x-{n}, scale-y-{n}
+
+    /* Rotate */
+    rotate-0, rotate-45, rotate-90, rotate-135, rotate-180
+    rotate-270, rotate-360
+    -rotate-45 (negative)
+
+    /* Skew */
+    skew-x-{n}, skew-y-{n}
+
+    /* Transform Origin */
+    origin-center, origin-top, origin-right, origin-bottom, origin-left
+    origin-top-left, origin-top-right, origin-bottom-left, origin-bottom-right
+
+----- FILTERS -----
+    blur-none, blur-sm, blur, blur-md, blur-lg, blur-xl, blur-2xl, blur-3xl
+    brightness-0 through brightness-200
+    contrast-0 through contrast-200
+    saturate-0 through saturate-200
+    grayscale, grayscale-0
+    sepia, sepia-0
+    invert, invert-0
+    hue-rotate-0, hue-rotate-15, hue-rotate-30, hue-rotate-60
+    hue-rotate-90, hue-rotate-180
+    drop-shadow-sm, drop-shadow, drop-shadow-md, drop-shadow-lg
+    drop-shadow-xl, drop-shadow-2xl
+
+----- ASPECT RATIO -----
+    aspect-auto, aspect-square, aspect-video
+    aspect-[4/3], aspect-[16/9], aspect-[21/9]
+
+----- CONTAINER QUERIES -----
+    @container (min-width: ...)
+
+    Container size utilities:
+    @xs:{utility}, @sm:{utility}, @md:{utility}, @lg:{utility}, @xl:{utility}, @2xl:{utility}
+
+----- ANIMATIONS -----
+    animate-spin
+    animate-ping
+    animate-pulse
+    animate-bounce
+    animate-none
+
+----- SCROLL UTILITIES -----
+    scroll-auto, scroll-smooth
+    scroll-m-{n}, scroll-mt-{n}, etc.
+    scroll-p-{n}, scroll-pt-{n}, etc.
+
+----- USER SELECT -----
+    select-none, select-text, select-all, select-auto
+
+----- POINTER EVENTS -----
+    pointer-events-auto, pointer-events-none
+
+----- RESIZE -----
+    resize-none, resize, resize-x, resize-y
+
+================================================================================
+SECTION 14: SASS MIXINS API
+================================================================================
+
+For advanced users creating custom utilities.
+
+----- UTILITY GENERATION MIXINS -----
+
+@include generate-property-utilities($values-map, $property, $class-prefix: '');
+    /* Generates utilities from a value map */
+    Example:
+        @include generate-property-utilities(
+            (block: block, hidden: none),
+            'display'
+        );
+    Output:
+        .block { display: block; }
+        .hidden { display: none; }
+
+@include generate-declaration-utilities($utilities-map, $class-prefix: '');
+    /* Generates utilities with multiple declarations */
+    Example:
+        @include generate-declaration-utilities((
+            flex-center: (display: flex, justify-content: center, align-items: center)
+        ));
+
+@include generate-from-css-vars($class-name, $property, $var-map, $prefix: '');
+    /* Generates utilities referencing CSS custom properties */
+    Example:
+        @include generate-from-css-vars('text', 'font-size', (
+            sm: '--font-size-sm',
+            base: '--font-size-base'
+        ));
+    Output:
+        .text-sm { font-size: var(--font-size-sm); }
+        .text-base { font-size: var(--font-size-base); }
+
+@include generate-color-utilities($color-name, $var-name);
+    /* Generates text-, bg-, and border- color utilities */
+    Example:
+        @include generate-color-utilities('primary', '--color-primary');
+    Output:
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .border-primary { border-color: var(--color-primary); }
+
+----- RESPONSIVE MIXINS -----
+
+@include generate-responsive-utilities($utilities-map, $breakpoint-name);
+    /* Generates responsive variants of utilities */
+
+----- STATE MIXINS -----
+
+@include generate-state-utilities($utilities-map, $state);
+    /* Generates state variants (hover, focus, etc.) */
+
+@include generate-dark-mode-utilities($utilities-map);
+    /* Generates dark mode variants */
+
+@include generate-rtl-utilities($utilities-map);
+    /* Generates RTL variants */
+
+================================================================================
+SECTION 15: BUILD SYSTEM & ENTRY POINTS
+================================================================================
+
+ENTRY FILES (src/):
+
+| Entry File             | Output File      | Contents                          |
+|------------------------|------------------|-----------------------------------|
+| src/main.scss          | dist/apex.css    | Complete framework (all modules)    |
+| src/entry-base.scss    | dist/base.css    | Base/reset styles only            |
+| src/entry-utilities.scss| dist/utilities.css | Utility classes only             |
+| src/entry-themes.scss  | dist/themes.css  | CSS custom properties only        |
+
+NPM SCRIPTS:
+    npm run build              /* Build complete framework */
+    npm run config:build       /* Generate SCSS from apex.config.js */
+    npm run config:watch       /* Watch config and auto-rebuild */
+    npm run dev                /* Start Vite dev server */
+    npm run lint               /* Run Stylelint on SCSS */
+
+WORKFLOW:
+    1. Customize apex.config.js
+    2. Run: npm run config:build
+    3. Run: npm run build
+    4. Use generated CSS in dist/
+
+================================================================================
+SECTION 16: FILE STRUCTURE
+================================================================================
+
+src/
+├── base/                  /* Base/reset styles */
+│   ├── _base.scss
+│   └── _index.scss
+├── config/                /* Configuration files */
+│   ├── _custom-config.scss    /* Auto-generated (DO NOT EDIT) */
+│   └── _index.scss
+├── mixins/                /* SCSS mixins */
+│   ├── _arbitrary.scss
+│   ├── _colors.scss
+│   ├── _dark-mode.scss
+│   ├── _index.scss
+│   ├── _responsive-utilities.scss
+│   ├── _responsive.scss
+│   ├── _states.scss
+│   └── _utilities.scss
+├── plugins/               /* Animation keyframes */
+│   ├── _animations.scss
+│   └── _index.scss
+├── themes/                /* Theme definitions */
+│   ├── _custom.scss
+│   ├── _dark.scss
+│   ├── _default.scss
+│   └── _index.scss
+└── utilities/             /* All utility classes */
+    ├── _index.scss
+    ├── accessibility/     /* Focus, screen reader */
+    ├── core/              /* Essential utilities */
+    │   ├── _index.scss
+    │   ├── _responsive.scss
+    │   ├── interaction/
+    │   ├── layout/
+    │   ├── spacing/
+    │   ├── typography/
+    │   └── visual/
+    ├── extended/          /* Advanced utilities */
+    │   ├── advanced/
+    │   ├── content/
+    │   ├── effects/
+    │   ├── interaction/
+    │   ├── layout/
+    │   ├── typography/
+    │   └── visual/
+    ├── rtl/               /* RTL-specific utilities */
+    └── states/            /* State variants (hover, focus) */
+
+dist/                      /* Generated CSS output */
+├── apex.css               /* Complete framework */
+├── base.css               /* Base styles only */
+├── utilities.css          /* Utilities only */
+└── themes.css             /* Themes only */
+
+tools/                     /* Build tools */
+├── config-builder.js      /* Generates SCSS from config */
+└── generate.js            /* Utility generators */
+
+docs/
+├── CONFIG.md              /* Configuration guide */
+└── LLMs.txt               /* This file */
+
+================================================================================
+SECTION 17: COMMON PATTERNS
+================================================================================
+
+----- CARD COMPONENT -----
+    <div class="bg-white rounded-lg shadow-md p-6 max-w-sm">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Card Title</h2>
+        <p class="text-gray-600 mb-4">Card content goes here.</p>
+        <button class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-md transition-colors">
+            Action
+        </button>
+    </div>
+
+----- RESPONSIVE GRID -----
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-gray-100 p-4">Item 1</div>
+        <div class="bg-gray-100 p-4">Item 2</div>
+        <div class="bg-gray-100 p-4">Item 3</div>
+    </div>
+
+----- FLEXBOX CENTERING -----
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold mb-4">Centered Content</h1>
+            <p class="text-gray-600">Perfectly centered both ways</p>
+        </div>
+    </div>
+
+----- FORM STYLING -----
+    <form class="space-y-4 max-w-md">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+        </div>
+        <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-md transition-colors">
+            Submit
+        </button>
+    </form>
+
+----- NAVIGATION BAR -----
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-bold text-xl">Logo</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+----- DARK MODE TOGGLE -----
+    <html class="dark">
+        <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+            <!-- Content -->
+        </body>
+    </html>
+
+    <script>
+        function toggleDark() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+
+================================================================================
+SECTION 18: DESIGN PRINCIPLES
+================================================================================
+
+1. MOBILE-FIRST: Default styles are for mobile; use responsive prefixes for larger screens
+
+2. OKLCH COLOR SPACE: Uses perceptually uniform colors (not HSL/RGB)
+   - lightness: 0-100% (uniform perceived brightness)
+   - chroma: 0-0.4 (color intensity)
+   - hue: 0-360 (color wheel angle)
+
+3. CSS CUSTOM PROPERTIES: All theming uses CSS variables for runtime customization
+
+4. MODULAR IMPORTS: Only include utilities you need via feature toggles
+
+5. LOGICAL PROPERTIES: Full support for RTL with logical margin/padding
+
+6. ACCESSIBILITY FIRST: Screen reader support, focus management, reduced motion
+
+================================================================================
+SECTION 19: COMPARISON WITH TAILWIND CSS
+================================================================================
+
+SIMILARITIES:
+    - Utility-first approach
+    - Responsive prefixes (md:, lg:)
+    - State variants (hover:, focus:)
+    - Dark mode support
+    - Arbitrary values ([100px])
+
+DIFFERENCES:
+    | Feature              | ApexCSS                        | Tailwind CSS              |
+    |----------------------|--------------------------------|---------------------------|
+    | Build Tool           | Sass                           | PostCSS                   |
+    | Color Space          | OKLCH                          | HSL                       |
+    | Configuration        | JavaScript (apex.config.js)    | JavaScript (tailwind.config)|
+    | CSS Variables        | Extensive use                  | Limited use               |
+    | Modular Imports      | Feature toggles (104 options)  | @use with prefixes        |
+    | Custom Utilities     | Sass mixins                    | @layer utilities          |
+
+================================================================================
+SECTION 20: TROUBLESHOOTING
+================================================================================
+
+ISSUE: Classes not applying
+    - Verify dist/apex.css is built: npm run build
+    - Check feature is enabled in apex.config.js
+    - Check CSS is loaded: <link rel="stylesheet" href="...">
+
+ISSUE: Custom config not applying
+    - Run: npm run config:build
+    - Then: npm run build
+    - Check src/config/_custom-config.scss was updated
+
+ISSUE: Dark mode not working
+    - Ensure darkMode: true in apex.config.js
+    - Add class="dark" to <html> element
+    - Or configure to use media query strategy
+
+ISSUE: Responsive utilities not working
+    - Verify breakpoint syntax: md:flex (not md-flex)
+    - Check breakpoints are defined in apex.config.js
+
+================================================================================
+SECTION 21: VERSION INFORMATION
+================================================================================
+
+Current Version: 0.3.5
+Status: Pre-release
+License: See LICENSE file
+
+CHANGELOG (Recent):
+    - v0.3.5: Extended utilities, improved configuration system
+    - v0.3.0: Added 104 feature toggles
+    - v0.2.0: OKLCH color system implementation
+    - v0.1.0: Initial release
+
+================================================================================
+END OF LLMs.txt DOCUMENTATION
+================================================================================

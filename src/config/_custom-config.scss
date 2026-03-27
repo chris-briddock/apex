@@ -150,7 +150,9 @@ $breakpoint-sm: 320px !default;
 $breakpoint-md: 768px !default;
 $breakpoint-lg: 1024px !default;
 $breakpoint-xl: 1280px !default;
-$breakpoint-xxl: 1536px !default;
+$breakpoint-xxl: 2560px !default;
+$breakpoint-xxxl: 3840px !default;
+$breakpoint-ultra: 7680px !default;
 
 // Breakpoints map for SCSS iteration
 $breakpoints: (
@@ -158,7 +160,9 @@ $breakpoints: (
   md: 768px,
   lg: 1024px,
   xl: 1280px,
-  xxl: 1536px
+  xxl: 2560px,
+  xxxl: 3840px,
+  ultra: 7680px
 ) !default;
 
 // Breakpoint prefixes for responsive class names
@@ -167,7 +171,9 @@ $breakpoint-prefixes: (
   md: md,
   lg: lg,
   xl: xl,
-  xxl: xxl
+  xxl: xxl,
+  xxxl: xxxl,
+  ultra: ultra
 ) !default;
 
 // Alias for backwards compatibility
