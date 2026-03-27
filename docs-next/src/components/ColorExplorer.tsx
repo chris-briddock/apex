@@ -378,7 +378,7 @@ export function ColorExplorer() {
               style={{ backgroundColor: contrastBg, color: contrastFg }}
             >
               <p className="text-lg font-medium">Sample Text</p>
-              <p className="text-sm opacity-80">The quick brown fox jumps over the lazy dog.</p>
+              <p className="text-sm opacity-80">Whereas disregard and contempt for human rights have resulted</p>
             </div>
 
             <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">

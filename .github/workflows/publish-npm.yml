@@ -1,0 +1,64 @@
+name: Publish to NPM
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 0.3.6)'
+        required: true
+        default: ''
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test:unit
+
+      - name: Build package
+        run: npm run build
+
+      - name: Verify build outputs
+        run: |
+          test -f dist/apex.css || (echo "dist/apex.css not found" && exit 1)
+          test -f dist/base.css || (echo "dist/base.css not found" && exit 1)
+          test -f dist/utilities.css || (echo "dist/utilities.css not found" && exit 1)
+          test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
+          echo "All build outputs verified"
+
+      - name: Publish to NPM (Provenance)
+        if: github.event_name == 'release'
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM (Manual with version override)
+        if: github.event_name == 'workflow_dispatch' && inputs.version != ''
+        run: |
+          npm version ${{ inputs.version }} --no-git-tag-version
+          npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM (Manual - current version)
+        if: github.event_name == 'workflow_dispatch' && inputs.version == ''
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

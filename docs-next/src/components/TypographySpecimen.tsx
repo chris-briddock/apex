@@ -56,7 +56,7 @@ const letterSpacings: FontToken[] = [
   { name: "widest", value: "0.1em", variable: "--letter-spacing-widest", description: "Extra wide, uppercase" },
 ];
 
-const sampleText = "The quick brown fox jumps over the lazy dog.";
+const sampleText = "Whereas disregard and contempt for human rights have resulted";
 const headingSample = "Design System";
 
 export function TypographySpecimen() {
@@ -307,13 +307,13 @@ export function TypographySpecimen() {
             name: "Sans Serif",
             family: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             variable: "--font-family-sans",
-            sample: "The quick brown fox",
+            sample: "Whereas disregard and contempt",
           },
           {
             name: "Serif",
             family: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
             variable: "--font-family-serif",
-            sample: "The quick brown fox",
+            sample: "Whereas disregard and contempt",
           },
           {
             name: "Monospace",
