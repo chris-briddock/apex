@@ -57,7 +57,7 @@ jobs:
           echo "✅ All build outputs verified"
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: dist/
@@ -92,7 +92,7 @@ jobs:
         run: npm run test:e2e
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage/
