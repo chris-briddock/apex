@@ -1,6 +1,1 @@
-@layer base, utilities, themes;
 
-/* Import ApexCSS files into their respective layers for the e2e harness. */
-@import '../../../dist/base.css' layer(base);
-@import '../../../dist/utilities.css' layer(utilities);
-@import '../../../dist/themes.css' layer(themes);

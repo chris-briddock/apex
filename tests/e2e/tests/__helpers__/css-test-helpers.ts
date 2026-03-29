@@ -308,3 +308,67 @@ export async function expectShadow(
 export async function waitForStyles(page: Page, delay: number = 100): Promise<void> {
   await page.waitForTimeout(delay);
 }
+
+/**
+ * Gets the value of a CSS custom property (CSS variable)
+ */
+export async function getCSSCustomProperty(
+  page: Page,
+  propertyName: string,
+  elementSelector: string = ':root'
+): Promise<string> {
+  return await page.evaluate(
+    ({ selector, prop }) => {
+      const el = document.querySelector(selector);
+      if (!el) throw new Error(`Element ${selector} not found`);
+      return window.getComputedStyle(el).getPropertyValue(prop).trim();
+    },
+    { selector: elementSelector, prop: propertyName }
+  );
+}
+
+/**
+ * Gets all CSS custom properties defined on an element
+ */
+export async function getAllCSSCustomProperties(
+  page: Page,
+  elementSelector: string = ':root'
+): Promise<Record<string, string>> {
+  return await page.evaluate(
+    ({ selector }) => {
+      const el = document.querySelector(selector);
+      if (!el) throw new Error(`Element ${selector} not found`);
+      const styles = window.getComputedStyle(el);
+      const properties: Record<string, string> = {};
+
+      // Get all custom properties (those starting with --)
+      for (let i = 0; i < styles.length; i++) {
+        const prop = styles[i];
+        if (prop.startsWith('--')) {
+          properties[prop] = styles.getPropertyValue(prop).trim();
+        }
+      }
+
+      return properties;
+    },
+    { selector: elementSelector }
+  );
+}
+
+/**
+ * Validates that a CSS custom property exists and matches expected value
+ */
+export async function expectCSSCustomProperty(
+  page: Page,
+  propertyName: string,
+  expectedValue: string | RegExp,
+  elementSelector: string = ':root'
+): Promise<void> {
+  const actualValue = await getCSSCustomProperty(page, propertyName, elementSelector);
+
+  if (expectedValue instanceof RegExp) {
+    expect(actualValue).toMatch(expectedValue);
+  } else {
+    expect(actualValue).toBe(expectedValue);
+  }
+}

@@ -1,6 +1,12 @@
-name: Publish to NPM
+name: CI/CD Pipeline
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   release:
     types: [published]
   workflow_dispatch:
@@ -11,11 +17,14 @@ on:
         default: ''
 
 jobs:
-  publish:
+  # ============================================
+  # CI: Continuous Integration
+  # ============================================
+  build:
+    name: Build Package
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -23,42 +32,158 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '24'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm run test:unit
+      - name: Get version
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Building version: $VERSION"
 
       - name: Build package
         run: npm run build
 
       - name: Verify build outputs
         run: |
-          test -f dist/apex.css || (echo "dist/apex.css not found" && exit 1)
-          test -f dist/base.css || (echo "dist/base.css not found" && exit 1)
-          test -f dist/utilities.css || (echo "dist/utilities.css not found" && exit 1)
-          test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
-          echo "All build outputs verified"
+          echo "Verifying build artifacts..."
+          test -f dist/apex.css || (echo "❌ dist/apex.css not found" && exit 1)
+          test -f dist/base.css || (echo "❌ dist/base.css not found" && exit 1)
+          test -f dist/utilities.css || (echo "❌ dist/utilities.css not found" && exit 1)
+          test -f dist/themes.css || (echo "❌ dist/themes.css not found" && exit 1)
+          echo "✅ All build outputs verified"
 
-      - name: Publish to NPM (Provenance)
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/
+          retention-days: 30
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+
+      - name: Install Playwright dependencies
+        run: npm run test:e2e:install
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 30
+
+  # ============================================
+  # CD: Continuous Deployment
+  # ============================================
+  publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: github.event_name == 'push' || github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            package.json
+            LICENSE
+            README.md
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+          path: dist/
+
+      - name: Check if version exists on NPM
+        id: check-version
+        run: |
+          VERSION="${{ needs.build.outputs.version }}"
+          echo "Current version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          if npm view apexcss@$VERSION version 2>/dev/null; then
+            echo "Version $VERSION already exists on NPM"
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version $VERSION does not exist on NPM"
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM (Push to main)
+        if: github.event_name == 'push' && steps.check-version.outputs.exists == 'false'
+        run: |
+          echo "Publishing version ${{ steps.check-version.outputs.version }} to NPM..."
+          npm publish --provenance --access public
+          echo "Published successfully!"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM (Release)
         if: github.event_name == 'release'
-        run: npm publish --provenance --access public
+        run: |
+          echo "Publishing release to NPM..."
+          npm publish --provenance --access public
+          echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Manual with version override)
         if: github.event_name == 'workflow_dispatch' && inputs.version != ''
         run: |
+          echo "Publishing version ${{ inputs.version }} to NPM..."
           npm version ${{ inputs.version }} --no-git-tag-version
           npm publish --provenance --access public
+          echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Manual - current version)
         if: github.event_name == 'workflow_dispatch' && inputs.version == ''
-        run: npm publish --provenance --access public
+        run: |
+          echo "Publishing current version to NPM..."
+          npm publish --provenance --access public
+          echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Skip publish (version exists)
+        if: steps.check-version.outputs.exists == 'true'
+        run: |
+          echo "Skipping publish - version ${{ steps.check-version.outputs.version }} already exists on NPM"

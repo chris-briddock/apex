@@ -124,7 +124,7 @@ export default {
     verticalAlign: true,
 
     // Advanced
-    arbitrary: true,
+    arbitrary: false,
     logicalProperties: true,
     sizingLogical: true,
     offset: true,

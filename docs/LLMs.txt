@@ -204,7 +204,7 @@ SECTION 4: BREAKPOINT SYSTEM
 ================================================================================
 
 DEFAULT BREAKPOINTS (mobile-first):
-    sm:   320px   /* Small phones */
+    sm:   320px   /* Small phones & Smart Watches */
     md:   768px   /* Tablets */
     lg:   1024px  /* Small laptops */
     xl:   1280px  /* Desktops */
