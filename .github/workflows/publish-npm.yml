@@ -56,13 +56,6 @@ jobs:
           test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
           echo "All build outputs verified"
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: dist/
-          retention-days: 30
-
   test:
     name: Run Tests
     runs-on: ubuntu-latest
@@ -112,13 +105,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-        with:
-          sparse-checkout: |
-            package.json
-            README.md
-            LICENSE
-            docs/LLMs.txt
-            src
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -126,26 +112,20 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v8
-        with:
-          name: build-artifacts
-          path: dist/
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Verify downloaded dist artifact
+      - name: Build package
+        run: npm run build
+
+      - name: Verify built dist output
         run: |
-          echo "Verifying downloaded dist artifact..."
-
-          # Handle artifact layouts: dist/*.css or dist/dist/*.css
-          if [ -d dist/dist ]; then
-            cp -f dist/dist/* dist/
-          fi
-
-          test -f dist/apex.css || (echo "dist/apex.css not found in artifact" && exit 1)
-          test -f dist/base.css || (echo "dist/base.css not found in artifact" && exit 1)
-          test -f dist/utilities.css || (echo "dist/utilities.css not found in artifact" && exit 1)
-          test -f dist/themes.css || (echo "dist/themes.css not found in artifact" && exit 1)
-          echo "Dist artifact is ready for publish"
+          echo "Verifying locally built dist output..."
+          test -f dist/apex.css || (echo "dist/apex.css not found" && exit 1)
+          test -f dist/base.css || (echo "dist/base.css not found" && exit 1)
+          test -f dist/utilities.css || (echo "dist/utilities.css not found" && exit 1)
+          test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
+          echo "Dist output is ready for publish"
 
       - name: Check if version exists on NPM
         id: check-version
@@ -167,7 +147,7 @@ jobs:
         if: github.event_name == 'push' && steps.check-version.outputs.exists == 'false'
         run: |
           echo "Publishing version ${{ steps.check-version.outputs.version }} to NPM..."
-          npm publish --provenance --access public --ignore-scripts
+          npm publish --provenance --access public
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -176,7 +156,7 @@ jobs:
         if: github.event_name == 'release'
         run: |
           echo "Publishing release to NPM..."
-          npm publish --provenance --access public --ignore-scripts
+          npm publish --provenance --access public
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -186,7 +166,7 @@ jobs:
         run: |
           echo "Publishing version ${{ inputs.version }} to NPM..."
           npm version ${{ inputs.version }} --no-git-tag-version
-          npm publish --provenance --access public --ignore-scripts
+          npm publish --provenance --access public
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -195,7 +175,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.version == ''
         run: |
           echo "Publishing current version to NPM..."
-          npm publish --provenance --access public --ignore-scripts
+          npm publish --provenance --access public
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -204,3 +184,13 @@ jobs:
         if: steps.check-version.outputs.exists == 'true'
         run: |
           echo "Skipping publish - version ${{ steps.check-version.outputs.version }} already exists on NPM"
+
+      - name: Create Git Tag
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.check-version.outputs.exists == 'false'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          chmod +x ./create-tag.sh
+          ./create-tag.sh "v${{ steps.check-version.outputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
