@@ -50,11 +50,11 @@ jobs:
       - name: Verify build outputs
         run: |
           echo "Verifying build artifacts..."
-          test -f dist/apex.css || (echo "❌ dist/apex.css not found" && exit 1)
-          test -f dist/base.css || (echo "❌ dist/base.css not found" && exit 1)
-          test -f dist/utilities.css || (echo "❌ dist/utilities.css not found" && exit 1)
-          test -f dist/themes.css || (echo "❌ dist/themes.css not found" && exit 1)
-          echo "✅ All build outputs verified"
+          test -f dist/apex.css || (echo "dist/apex.css not found" && exit 1)
+          test -f dist/base.css || (echo "dist/base.css not found" && exit 1)
+          test -f dist/utilities.css || (echo "dist/utilities.css not found" && exit 1)
+          test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
+          echo "All build outputs verified"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -115,13 +115,15 @@ jobs:
         with:
           sparse-checkout: |
             package.json
-            LICENSE
             README.md
+            LICENSE
+            docs/LLMs.txt
+            src
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Download build artifacts
@@ -129,6 +131,21 @@ jobs:
         with:
           name: build-artifacts
           path: dist/
+
+      - name: Verify downloaded dist artifact
+        run: |
+          echo "Verifying downloaded dist artifact..."
+
+          # Handle artifact layouts: dist/*.css or dist/dist/*.css
+          if [ -d dist/dist ]; then
+            cp -f dist/dist/* dist/
+          fi
+
+          test -f dist/apex.css || (echo "dist/apex.css not found in artifact" && exit 1)
+          test -f dist/base.css || (echo "dist/base.css not found in artifact" && exit 1)
+          test -f dist/utilities.css || (echo "dist/utilities.css not found in artifact" && exit 1)
+          test -f dist/themes.css || (echo "dist/themes.css not found in artifact" && exit 1)
+          echo "Dist artifact is ready for publish"
 
       - name: Check if version exists on NPM
         id: check-version
@@ -150,7 +167,7 @@ jobs:
         if: github.event_name == 'push' && steps.check-version.outputs.exists == 'false'
         run: |
           echo "Publishing version ${{ steps.check-version.outputs.version }} to NPM..."
-          npm publish --provenance --access public
+          npm publish --provenance --access public --ignore-scripts
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -159,7 +176,7 @@ jobs:
         if: github.event_name == 'release'
         run: |
           echo "Publishing release to NPM..."
-          npm publish --provenance --access public
+          npm publish --provenance --access public --ignore-scripts
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -169,7 +186,7 @@ jobs:
         run: |
           echo "Publishing version ${{ inputs.version }} to NPM..."
           npm version ${{ inputs.version }} --no-git-tag-version
-          npm publish --provenance --access public
+          npm publish --provenance --access public --ignore-scripts
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -178,7 +195,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.version == ''
         run: |
           echo "Publishing current version to NPM..."
-          npm publish --provenance --access public
+          npm publish --provenance --access public --ignore-scripts
           echo "Published successfully!"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
