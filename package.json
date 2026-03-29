@@ -47,7 +47,7 @@
     "test:coverage": "c8 --all --src=tools --exclude=tests/** --reporter=text --reporter=lcov mocha \"tests/unit/**/*.test.js\"",
     "test:e2e": "cd tests/e2e && npm run test:e2e",
     "test:e2e:ui": "cd tests/e2e && npm run test:e2e -- --ui",
-    "test:e2e:install": "cd tests/e2e && npm install && npx playwright install chromium"
+    "test:e2e:install": "npx playwright install --with-deps"
   },
   "keywords": [
     "css",
