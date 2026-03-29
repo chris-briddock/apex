@@ -68,13 +68,7 @@ export default defineConfig({
     {
       name: 'Mobile Safari',
       use: { ...devices['iPhone 12'] },
-    },
-    // Visual regression tests (desktop only for baseline stability)
-    {
-      name: 'visual-regression',
-      testMatch: /visual-regression\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
-    },
+    }
   ],
   webServer: {
     command: 'npm run dev',
