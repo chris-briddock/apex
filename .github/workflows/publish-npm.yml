@@ -121,10 +121,10 @@ jobs:
       - name: Verify built dist output
         run: |
           echo "Verifying locally built dist output..."
-          test -f dist/apex.css || (echo "dist/apex.css not found" && exit 1)
-          test -f dist/base.css || (echo "dist/base.css not found" && exit 1)
+          test -f dist/apex.css      || (echo "dist/apex.css not found"      && exit 1)
+          test -f dist/base.css      || (echo "dist/base.css not found"      && exit 1)
           test -f dist/utilities.css || (echo "dist/utilities.css not found" && exit 1)
-          test -f dist/themes.css || (echo "dist/themes.css not found" && exit 1)
+          test -f dist/themes.css    || (echo "dist/themes.css not found"    && exit 1)
           echo "Dist output is ready for publish"
 
       - name: Check if version exists on NPM
@@ -140,45 +140,35 @@ jobs:
             echo "Version $VERSION does not exist on NPM"
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Push to main)
         if: github.event_name == 'push' && steps.check-version.outputs.exists == 'false'
         run: |
           echo "Publishing version ${{ steps.check-version.outputs.version }} to NPM..."
-          npm publish --provenance --access public
+          npm publish --access public
           echo "Published successfully!"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Release)
         if: github.event_name == 'release'
         run: |
           echo "Publishing release to NPM..."
-          npm publish --provenance --access public
+          npm publish --access public
           echo "Published successfully!"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Manual with version override)
         if: github.event_name == 'workflow_dispatch' && inputs.version != ''
         run: |
           echo "Publishing version ${{ inputs.version }} to NPM..."
           npm version ${{ inputs.version }} --no-git-tag-version
-          npm publish --provenance --access public
+          npm publish --access public
           echo "Published successfully!"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM (Manual - current version)
         if: github.event_name == 'workflow_dispatch' && inputs.version == ''
         run: |
           echo "Publishing current version to NPM..."
-          npm publish --provenance --access public
+          npm publish --access public
           echo "Published successfully!"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Skip publish (version exists)
         if: steps.check-version.outputs.exists == 'true'

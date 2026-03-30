@@ -1,7 +1,7 @@
 {
   "name": "apexcss",
-  "version": "0.3.5",
-  "description": "Apex` - A utility-first CSS framework with 500+ utility classes",
+  "version": "0.3.6",
+  "description": "Apex - A utility-first CSS framework with 500+ utility classes",
   "type": "module",
   "main": "dist/apex.css",
   "module": "dist/apex.css",
