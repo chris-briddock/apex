@@ -59,6 +59,10 @@
     "tailwind",
     "bootstrap-alternative"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chris-briddock/apex"
+  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
