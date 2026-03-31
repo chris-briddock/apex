@@ -2,136 +2,139 @@
 // Disabled State Variants
 // ============================================================================
 
+@use 'sass:map';
 @use '../../config/custom-config' as settings;
-@use '../../mixins/dark-mode' as dm;
+@use '../../mixins/utilities' as utilities;
+
+// ============================================================================
+// Disabled State Utilities
+// ============================================================================
 
 @if settings.$enable-disabled == true {
-  // Disabled cursor
-  .disabled\:cursor-auto:disabled,
-  .disabled\:cursor-auto.disabled { cursor: auto; }
-  .disabled\:cursor-default:disabled,
-  .disabled\:cursor-default.disabled { cursor: default; }
-  .disabled\:cursor-pointer:disabled,
-  .disabled\:cursor-pointer.disabled { cursor: pointer; }
-  .disabled\:cursor-wait:disabled,
-  .disabled\:cursor-wait.disabled { cursor: wait; }
-  .disabled\:cursor-text:disabled,
-  .disabled\:cursor-text.disabled { cursor: text; }
-  .disabled\:cursor-move:disabled,
-  .disabled\:cursor-move.disabled { cursor: move; }
-  .disabled\:cursor-not-allowed:disabled,
-  .disabled\:cursor-not-allowed.disabled { cursor: not-allowed; }
+  // ============================================================================
+  // Disabled Cursor Utilities
+  // ============================================================================
+  $disabled-cursor-utilities: (
+    'disabled\\:cursor-auto': (cursor: auto),
+    'disabled\\:cursor-default': (cursor: default),
+    'disabled\\:cursor-pointer': (cursor: pointer),
+    'disabled\\:cursor-wait': (cursor: wait),
+    'disabled\\:cursor-text': (cursor: text),
+    'disabled\\:cursor-move': (cursor: move),
+    'disabled\\:cursor-not-allowed': (cursor: not-allowed),
+  );
 
-  // Disabled pointer events
-  .disabled\:pointer-events-none:disabled,
-  .disabled\:pointer-events-none.disabled { pointer-events: none; }
-  .disabled\:pointer-events-auto:disabled,
-  .disabled\:pointer-events-auto.disabled { pointer-events: auto; }
+  @include utilities.generate-declaration-utilities($disabled-cursor-utilities);
 
-  // Disabled opacity
-  .disabled\:opacity-0:disabled,
-  .disabled\:opacity-0.disabled { opacity: 0; }
-  .disabled\:opacity-25:disabled,
-  .disabled\:opacity-25.disabled { opacity: 0.25; }
-  .disabled\:opacity-50:disabled,
-  .disabled\:opacity-50.disabled { opacity: 0.5; }
-  .disabled\:opacity-75:disabled,
-  .disabled\:opacity-75.disabled { opacity: 0.75; }
-  .disabled\:opacity-100:disabled,
-  .disabled\:opacity-100.disabled { opacity: 1; }
+  // ============================================================================
+  // Disabled Pointer Events
+  // ============================================================================
+  $disabled-pointer-events-utilities: (
+    'disabled\\:pointer-events-none': ('pointer-events': none),
+    'disabled\\:pointer-events-auto': ('pointer-events': auto),
+  );
 
-  // Disabled text color
-  .disabled\:text-primary:disabled,
-  .disabled\:text-primary.disabled { color: var(--color-primary); }
-  .disabled\:text-secondary:disabled,
-  .disabled\:text-secondary.disabled { color: var(--color-secondary); }
-  .disabled\:text-success:disabled,
-  .disabled\:text-success.disabled { color: var(--color-success); }
-  .disabled\:text-danger:disabled,
-  .disabled\:text-danger.disabled { color: var(--color-danger); }
-  .disabled\:text-warning:disabled,
-  .disabled\:text-warning.disabled { color: var(--color-warning); }
-  .disabled\:text-muted:disabled,
-  .disabled\:text-muted.disabled { color: var(--color-gray-400); }
+  @include utilities.generate-declaration-utilities($disabled-pointer-events-utilities);
 
-  // Disabled background color
-  .disabled\:bg-primary:disabled,
-  .disabled\:bg-primary.disabled { background-color: var(--color-primary); }
-  .disabled\:bg-secondary:disabled,
-  .disabled\:bg-secondary.disabled { background-color: var(--color-secondary); }
-  .disabled\:bg-success:disabled,
-  .disabled\:bg-success.disabled { background-color: var(--color-success); }
-  .disabled\:bg-danger:disabled,
-  .disabled\:bg-danger.disabled { background-color: var(--color-danger); }
-  .disabled\:bg-warning:disabled,
-  .disabled\:bg-warning.disabled { background-color: var(--color-warning); }
-  .disabled\:bg-muted:disabled,
-  .disabled\:bg-muted.disabled { background-color: var(--color-gray-100); }
+  // ============================================================================
+  // Disabled Opacity
+  // ============================================================================
+  $disabled-opacity-utilities: ();
 
-  // Disabled border color
-  .disabled\:border-primary:disabled,
-  .disabled\:border-primary.disabled { border-color: var(--color-primary); }
-  .disabled\:border-secondary:disabled,
-  .disabled\:border-secondary.disabled { border-color: var(--color-secondary); }
-  .disabled\:border-muted:disabled,
-  .disabled\:border-muted.disabled { border-color: var(--color-gray-300); }
+  @each $name, $value in settings.$opacity-scale {
+    $disabled-opacity-utilities: map.merge($disabled-opacity-utilities, (
+      'disabled\\:opacity-#{$name}': (opacity: $value)
+    ));
+  }
 
-  // Disabled shadow
-  .disabled\:shadow:disabled,
-  .disabled\:shadow.disabled { box-shadow: none; }
-  .disabled\:shadow-none:disabled,
-  .disabled\:shadow-none.disabled { box-shadow: none; }
+  @include utilities.generate-declaration-utilities($disabled-opacity-utilities);
 
-  // Disabled selection
-  .disabled\:select-none:disabled,
-  .disabled\:select-none.disabled { user-select: none; }
-  .disabled\:select-text:disabled,
-  .disabled\:select-text.disabled { user-select: text; }
-  .disabled\:select-all:disabled,
-  .disabled\:select-all.disabled { user-select: all; }
-  .disabled\:select-auto:disabled,
-  .disabled\:select-auto.disabled { user-select: auto; }
+  // ============================================================================
+  // Disabled Text Colors
+  // ============================================================================
+  $disabled-text-utilities: (
+    'disabled\\:text-primary': (color: var(--color-primary)),
+    'disabled\\:text-secondary': (color: var(--color-secondary)),
+    'disabled\\:text-success': (color: var(--color-success)),
+    'disabled\\:text-danger': (color: var(--color-danger)),
+    'disabled\\:text-warning': (color: var(--color-warning)),
+    'disabled\\:text-muted': (color: var(--color-gray-400)),
+  );
+
+  @include utilities.generate-declaration-utilities($disabled-text-utilities);
+
+  // ============================================================================
+  // Disabled Background Colors
+  // ============================================================================
+  $disabled-bg-utilities: (
+    'disabled\\:bg-primary': ('background-color': var(--color-primary)),
+    'disabled\\:bg-secondary': ('background-color': var(--color-secondary)),
+    'disabled\\:bg-success': ('background-color': var(--color-success)),
+    'disabled\\:bg-danger': ('background-color': var(--color-danger)),
+    'disabled\\:bg-warning': ('background-color': var(--color-warning)),
+    'disabled\\:bg-muted': ('background-color': var(--color-gray-100)),
+  );
+
+  @include utilities.generate-declaration-utilities($disabled-bg-utilities);
+
+  // ============================================================================
+  // Disabled Border Colors
+  // ============================================================================
+  $disabled-border-utilities: (
+    'disabled\\:border-primary': ('border-color': var(--color-primary)),
+    'disabled\\:border-secondary': ('border-color': var(--color-secondary)),
+    'disabled\\:border-muted': ('border-color': var(--color-gray-300)),
+  );
+
+  @include utilities.generate-declaration-utilities($disabled-border-utilities);
+
+  // ============================================================================
+  // Disabled Shadow
+  // ============================================================================
+  $disabled-shadow-utilities: (
+    'disabled\\:shadow': ('box-shadow': none),
+    'disabled\\:shadow-none': ('box-shadow': none),
+  );
+
+  @include utilities.generate-declaration-utilities($disabled-shadow-utilities);
+
+  // ============================================================================
+  // Disabled User Select
+  // ============================================================================
+  $disabled-select-utilities: (
+    'disabled\\:select-none': ('user-select': none),
+    'disabled\\:select-text': ('user-select': text),
+    'disabled\\:select-all': ('user-select': all),
+    'disabled\\:select-auto': ('user-select': auto),
+  );
+
+  @include utilities.generate-declaration-utilities($disabled-select-utilities);
 }
 
 // ============================================================================
-// Dark mode disabled states - TOP LEVEL to maintain (0,1,0) specificity
+// Dark Mode Disabled States
 // ============================================================================
 @if settings.$enable-disabled == true and settings.$enable-dark-mode == true {
-  @include dm.dark-mode {
-    // Dark mode disabled text colors
-    .dark\:disabled\:text-primary:disabled,
-    .dark\:disabled\:text-primary.disabled { color: var(--color-primary); }
-    .dark\:disabled\:text-secondary:disabled,
-    .dark\:disabled\:text-secondary.disabled { color: var(--color-secondary); }
-    .dark\:disabled\:text-success:disabled,
-    .dark\:disabled\:text-success.disabled { color: var(--color-success); }
-    .dark\:disabled\:text-danger:disabled,
-    .dark\:disabled\:text-danger.disabled { color: var(--color-danger); }
-    .dark\:disabled\:text-warning:disabled,
-    .dark\:disabled\:text-warning.disabled { color: var(--color-warning); }
-    .dark\:disabled\:text-muted:disabled,
-    .dark\:disabled\:text-muted.disabled { color: var(--color-gray-500); }
+  @media (prefers-color-scheme: dark) {
+    // Dark mode disabled colors (adjusted for dark backgrounds)
+    $dark-disabled-text-utilities: (
+      'dark\\:disabled\\:text-muted': (color: var(--color-gray-500)),
+    );
 
-    // Dark mode disabled background colors
-    .dark\:disabled\:bg-primary:disabled,
-    .dark\:disabled\:bg-primary.disabled { background-color: var(--color-primary); }
-    .dark\:disabled\:bg-secondary:disabled,
-    .dark\:disabled\:bg-secondary.disabled { background-color: var(--color-secondary); }
-    .dark\:disabled\:bg-success:disabled,
-    .dark\:disabled\:bg-success.disabled { background-color: var(--color-success); }
-    .dark\:disabled\:bg-danger:disabled,
-    .dark\:disabled\:bg-danger.disabled { background-color: var(--color-danger); }
-    .dark\:disabled\:bg-warning:disabled,
-    .dark\:disabled\:bg-warning.disabled { background-color: var(--color-warning); }
-    .dark\:disabled\:bg-muted:disabled,
-    .dark\:disabled\:bg-muted.disabled { background-color: var(--color-gray-700); }
+    @include utilities.generate-declaration-utilities($dark-disabled-text-utilities);
 
-    // Dark mode disabled border colors
-    .dark\:disabled\:border-primary:disabled,
-    .dark\:disabled\:border-primary.disabled { border-color: var(--color-primary); }
-    .dark\:disabled\:border-secondary:disabled,
-    .dark\:disabled\:border-secondary.disabled { border-color: var(--color-secondary); }
-    .dark\:disabled\:border-muted:disabled,
-    .dark\:disabled\:border-muted.disabled { border-color: var(--color-gray-600); }
+    $dark-disabled-bg-utilities: (
+      'dark\\:disabled\\:bg-muted': ('background-color': var(--color-gray-700)),
+    );
+
+    @include utilities.generate-declaration-utilities($dark-disabled-bg-utilities);
+
+    $dark-disabled-border-utilities: (
+      'dark\\:disabled\\:border-muted': ('border-color': var(--color-gray-600)),
+      'dark\\:disabled\\:border-primary': ('border-color': var(--color-primary)),
+      'dark\\:disabled\\:border-secondary': ('border-color': var(--color-secondary)),
+    );
+
+    @include utilities.generate-declaration-utilities($dark-disabled-border-utilities);
   }
 }

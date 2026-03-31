@@ -1,39 +1,74 @@
 // ============================================================================
 // Space Between Utilities (for flexbox and grid)
 // ============================================================================
+// Generated from configuration maps in _custom-config.scss
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utilities;
 
 @if settings.$enable-space-between == true {
-  // Space X (horizontal)
-  .space-x-0 > * + * { margin-left: 0; }
-  .space-x-1 > * + * { margin-left: 0.25rem; }
-  .space-x-2 > * + * { margin-left: 0.5rem; }
-  .space-x-3 > * + * { margin-left: 0.75rem; }
-  .space-x-4 > * + * { margin-left: 1rem; }
-  .space-x-5 > * + * { margin-left: 1.25rem; }
-  .space-x-6 > * + * { margin-left: 1.5rem; }
-  .space-x-8 > * + * { margin-left: 2rem; }
-  .space-x-10 > * + * { margin-left: 2.5rem; }
-  .space-x-12 > * + * { margin-left: 3rem; }
-  .space-x-16 > * + * { margin-left: 4rem; }
-  .space-x-20 > * + * { margin-left: 5rem; }
-  .space-x-24 > * + * { margin-left: 6rem; }
-  .space-x-reverse > * + * { --space-x-reverse: 1; }
+  // Build space-x utilities from settings.$spacing-scale
+  $space-x-utilities: ();
+  $space-y-utilities: ();
 
-  // Space Y (vertical)
-  .space-y-0 > * + * { margin-top: 0; }
-  .space-y-1 > * + * { margin-top: 0.25rem; }
-  .space-y-2 > * + * { margin-top: 0.5rem; }
-  .space-y-3 > * + * { margin-top: 0.75rem; }
-  .space-y-4 > * + * { margin-top: 1rem; }
-  .space-y-5 > * + * { margin-top: 1.25rem; }
-  .space-y-6 > * + * { margin-top: 1.5rem; }
-  .space-y-8 > * + * { margin-top: 2rem; }
-  .space-y-10 > * + * { margin-top: 2.5rem; }
-  .space-y-12 > * + * { margin-top: 3rem; }
-  .space-y-16 > * + * { margin-top: 4rem; }
-  .space-y-20 > * + * { margin-top: 5rem; }
-  .space-y-24 > * + * { margin-top: 6rem; }
-  .space-y-reverse > * + * { --space-y-reverse: 1; }
+  @each $key, $value in settings.$spacing-scale {
+    $spacing-token: $key;
+    $class-key: $key;
+
+    // Handle special keys for CSS variable names and class names
+    @if $key == 0.5 {
+      $spacing-token: '0-5';
+      $class-key: '0\\.5';
+    } @else if $key == 1.5 {
+      $spacing-token: '1-5';
+      $class-key: '1\\.5';
+    } @else if $key == 2.5 {
+      $spacing-token: '2-5';
+      $class-key: '2\\.5';
+    } @else if $key == 3.5 {
+      $spacing-token: '3-5';
+      $class-key: '3\\.5';
+    }
+
+    $space-x-utilities: map.merge($space-x-utilities, (
+      'space-x-#{$class-key}': (margin-left: var(--spacing-#{$spacing-token}))
+    ));
+    $space-y-utilities: map.merge($space-y-utilities, (
+      'space-y-#{$class-key}': (margin-top: var(--spacing-#{$spacing-token}))
+    ));
+  }
+
+  // Reverse utilities
+  $space-reverse-utilities: (
+    'space-x-reverse': (--space-x-reverse: 1),
+    'space-y-reverse': (--space-y-reverse: 1),
+  );
+
+  // Generate space-x utilities with child selector
+  @each $class, $props in $space-x-utilities {
+    .#{$class} > * + * {
+      @each $prop, $val in $props {
+        #{$prop}: $val;
+      }
+    }
+  }
+
+  // Generate space-y utilities with child selector
+  @each $class, $props in $space-y-utilities {
+    .#{$class} > * + * {
+      @each $prop, $val in $props {
+        #{$prop}: $val;
+      }
+    }
+  }
+
+  // Generate reverse utilities with child selector
+  @each $class, $props in $space-reverse-utilities {
+    .#{$class} > * + * {
+      @each $prop, $val in $props {
+        #{$prop}: $val;
+      }
+    }
+  }
 }

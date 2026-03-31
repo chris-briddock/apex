@@ -2,13 +2,27 @@
 // All Property Utilities
 // ============================================================================
 // The 'all' property resets all properties except direction and unicode-bidi
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// All property values
+$all-values: (
+  initial: initial,
+  inherit: inherit,
+  unset: unset,
+  revert: revert
+) !default;
+
+// Build utilities map
+$all-utilities: ();
+
+@each $key, $value in $all-values {
+  $all-utilities: map.merge($all-utilities, ('all-#{$key}': (all: $value)));
+}
 
 @if settings.$enable-all == true {
-  .all-initial { all: initial; }
-  .all-inherit { all: inherit; }
-  .all-unset { all: unset; }
-  .all-revert { all: revert; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($all-utilities);
 }

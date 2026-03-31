@@ -2,14 +2,28 @@
 // Shape Outside Properties
 // ============================================================================
 // shape-outside
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Shape outside values
+$shape-outside-values: (
+  none: none,
+  circle: circle(50%),
+  ellipse: ellipse(50% 50%),
+  inset: inset(50%),
+  polygon: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
+) !default;
+
+// Build utilities map
+$shape-outside-utilities: ();
+
+@each $key, $value in $shape-outside-values {
+  $shape-outside-utilities: map.merge($shape-outside-utilities, ('shape-#{$key}': (shape-outside: $value)));
+}
 
 @if settings.$enable-shape-outside == true {
-  .shape-none { shape-outside: none; }
-  .shape-circle { shape-outside: circle(50%); }
-  .shape-ellipse { shape-outside: ellipse(50% 50%); }
-  .shape-inset { shape-outside: inset(50%); }
-  .shape-polygon { shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($shape-outside-utilities);
 }

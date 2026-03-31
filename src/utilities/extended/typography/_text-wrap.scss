@@ -1,0 +1,24 @@
+// ============================================================================
+// Text Wrap Utilities
+// ============================================================================
+// text-wrap: wrap, nowrap, balance, pretty
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .text-wrap {
+    text-wrap: wrap;
+  }
+
+  .text-nowrap {
+    text-wrap: nowrap;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

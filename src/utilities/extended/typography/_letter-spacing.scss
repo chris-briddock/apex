@@ -1,16 +1,22 @@
 // ============================================================================
 // Letter Spacing Properties
 // ============================================================================
-// letter-spacing
-// ============================================================================
+// Generated from configuration maps in _custom-config.scss
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utilities;
 
 @if settings.$enable-letter-spacing == true {
-  .tracking-tighter { letter-spacing: -0.05em; }
-  .tracking-tight { letter-spacing: -0.025em; }
-  .tracking-normal { letter-spacing: 0; }
-  .tracking-wide { letter-spacing: 0.025em; }
-  .tracking-wider { letter-spacing: 0.05em; }
-  .tracking-widest { letter-spacing: 0.1em; }
+  // Build letter-spacing utilities from settings.$letter-spacing
+  $letter-spacing-utilities: ();
+
+  @each $key, $value in settings.$letter-spacing {
+    $letter-spacing-utilities: map.merge($letter-spacing-utilities, (
+      'tracking-#{$key}': (letter-spacing: var(--letter-spacing-#{$key}))
+    ));
+  }
+
+  // Generate utilities
+  @include utilities.generate-declaration-utilities($letter-spacing-utilities);
 }

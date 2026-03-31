@@ -184,7 +184,8 @@ const defaultConfig = {
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    xxl: '1536px'
+    xxl: '2560px',
+    xxxl: '3840px'
   },
 
   // ============================================================================
@@ -226,6 +227,164 @@ const defaultConfig = {
     72: '18rem',
     80: '20rem',
     96: '24rem'
+  },
+
+  // ============================================================================
+  // Fractional Widths - Percentage-based width utilities (w-1/2, w-1/3, etc.)
+  // ============================================================================
+  fractionalWidths: {
+    // Enable/disable specific denominators
+    // When enabled, generates utilities like w-1/2, w-1/3, w-2/3, etc.
+    halves: true,
+    thirds: true,
+    quarters: true,
+    fifths: true,
+    sixths: true,
+    twelfths: true
+  },
+
+  // ============================================================================
+  // Column Configuration - CSS Multi-Column Layout
+  // ============================================================================
+  columns: {
+    // Column counts to generate utilities for
+    counts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    // Column widths
+    widths: {
+      'xs': '20rem',
+      'sm': '24rem',
+      'md': '28rem',
+      'lg': '32rem',
+      'xl': '36rem',
+      '2xl': '42rem',
+      '3xl': '48rem',
+      '4xl': '56rem',
+      '5xl': '64rem',
+      '6xl': '72rem',
+      '7xl': '80rem'
+    },
+    // Column rule styles
+    ruleStyles: {
+      'solid': 'solid',
+      'dashed': 'dashed',
+      'dotted': 'dotted',
+      'double': 'double',
+      'none': 'none'
+    },
+    // Column rule widths
+    ruleWidths: {
+      '0': '0px',
+      'default': '1px',
+      '2': '2px',
+      '4': '4px',
+      '8': '8px'
+    }
+  },
+
+  // ============================================================================
+  // Text Shadow Values
+  // ============================================================================
+  textShadow: {
+    'none': 'none',
+    'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+    'default': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+    'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+    'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    'xl': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+    'inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)'
+  },
+
+  // ============================================================================
+  // Ring Widths - Focus ring widths
+  // ============================================================================
+  ringWidths: {
+    '0': '0px',
+    '1': '1px',
+    '2': '2px',
+    '4': '4px',
+    '8': '8px',
+    'default': '3px'
+  },
+
+  // ============================================================================
+  // Ring Colors - Focus ring colors
+  // ============================================================================
+  ringColors: {
+    "inherit": "inherit",
+    "current": "currentcolor",
+    "transparent": "transparent",
+    "white": "#fff",
+    "black": "#000",
+    "primary": "var(--color-primary-500)",
+    "gray": "var(--color-gray-500)"
+  },
+
+  // ============================================================================
+  // Ring Opacity Values
+  // ============================================================================
+  ringOpacity: {
+    "0": "0",
+    "5": "0.05",
+    "10": "0.1",
+    "20": "0.2",
+    "25": "0.25",
+    "30": "0.3",
+    "40": "0.4",
+    "50": "0.5",
+    "60": "0.6",
+    "70": "0.7",
+    "75": "0.75",
+    "80": "0.8",
+    "90": "0.9",
+    "95": "0.95",
+    "100": "1"
+  },
+
+  // ============================================================================
+  // Outline Widths - Focus outline widths
+  // ============================================================================
+  outlineWidths: {
+    "0": "0px",
+    "1": "1px",
+    "2": "2px",
+    "4": "4px",
+    "8": "8px",
+    "default": "3px"
+  },
+
+  // ============================================================================
+  // Outline Offsets
+  // ============================================================================
+  outlineOffsets: {
+    "0": "0px",
+    "1": "1px",
+    "2": "2px",
+    "4": "4px",
+    "8": "8px",
+    "default": "0px"
+  },
+
+  // ============================================================================
+  // Blend Modes - CSS blend modes for mix-blend-mode and background-blend-mode
+  // ============================================================================
+  blendModes: {
+    'normal': 'normal',
+    'multiply': 'multiply',
+    'screen': 'screen',
+    'overlay': 'overlay',
+    'darken': 'darken',
+    'lighten': 'lighten',
+    'color-dodge': 'color-dodge',
+    'color-burn': 'color-burn',
+    'hard-light': 'hard-light',
+    'soft-light': 'soft-light',
+    'difference': 'difference',
+    'exclusion': 'exclusion',
+    'hue': 'hue',
+    'saturation': 'saturation',
+    'color': 'color',
+    'luminosity': 'luminosity'
   },
 
   // ============================================================================
@@ -299,6 +458,52 @@ const defaultConfig = {
       orange: { hue: 55, chroma: 0.18 },
       teal: { hue: 180, chroma: 0.16 },
       pink: { hue: 340, chroma: 0.18 }
+    }
+  },
+
+  // ============================================================================
+  // Color Configuration Maps - For programmatic utility generation
+  // These maps drive the generation of color utilities in the framework
+  // ============================================================================
+  colorConfig: {
+    // Color shades used for scale generation
+    shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+
+    // Color families for utility generation
+    families: {
+      gray: 'gray',
+      primary: 'primary',
+      success: 'success',
+      warning: 'warning',
+      danger: 'danger',
+      info: 'info',
+      blue: 'blue',
+      green: 'green',
+      red: 'red',
+      yellow: 'yellow',
+      purple: 'purple',
+      orange: 'orange',
+      teal: 'teal',
+      pink: 'pink'
+    },
+
+    // Background opacity values for color modifiers
+    bgOpacityValues: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
+
+    // Gradient color stops
+    gradientColors: {
+      primary: 'primary',
+      secondary: 'secondary',
+      success: 'success',
+      danger: 'danger',
+      warning: 'warning',
+      info: 'info',
+      light: 'light',
+      dark: 'dark',
+      white: 'white',
+      black: 'black',
+      transparent: 'transparent',
+      current: 'current'
     }
   },
 
@@ -439,6 +644,121 @@ const defaultConfig = {
     90: '0.9',
     95: '0.95',
     100: '1'
+  },
+
+  // ============================================================================
+  // Filter Configuration
+  // ============================================================================
+  filterBlurValues: {
+    0: '0',
+    default: '8px',
+    sm: '4px',
+    md: '12px',
+    lg: '16px',
+    xl: '24px',
+    '2xl': '40px',
+    '3xl': '64px'
+  },
+
+  filterBrightnessValues: {
+    0: '0',
+    50: '0.5',
+    75: '0.75',
+    90: '0.9',
+    95: '0.95',
+    100: '1',
+    105: '1.05',
+    110: '1.1',
+    125: '1.25',
+    150: '1.5',
+    200: '2'
+  },
+
+  filterContrastValues: {
+    0: '0',
+    50: '0.5',
+    75: '0.75',
+    100: '1',
+    125: '1.25',
+    150: '1.5',
+    200: '2'
+  },
+
+  filterGrayscaleValues: {
+    0: '0',
+    default: '100%'
+  },
+
+  filterHueRotateValues: {
+    0: '0deg',
+    15: '15deg',
+    30: '30deg',
+    60: '60deg',
+    90: '90deg',
+    180: '180deg'
+  },
+
+  filterInvertValues: {
+    0: '0',
+    default: '100%'
+  },
+
+  filterSaturateValues: {
+    0: '0',
+    50: '0.5',
+    100: '1',
+    150: '1.5',
+    200: '2'
+  },
+
+  filterSepiaValues: {
+    0: '0',
+    default: '100%'
+  },
+
+  // ============================================================================
+  // Divide Configuration
+  // ============================================================================
+  divideWidths: {
+    0: '0px',
+    1: '1px',
+    2: '2px',
+    4: '4px',
+    8: '8px'
+  },
+
+  divideColors: {
+    current: 'currentcolor',
+    transparent: 'transparent',
+    primary: 'var(--color-primary-500)',
+    secondary: 'var(--color-secondary-500)',
+    gray: 'var(--color-gray-500)'
+  },
+
+  divideStyles: {
+    solid: 'solid',
+    dashed: 'dashed',
+    dotted: 'dotted',
+    double: 'double',
+    none: 'none'
+  },
+
+  dropShadowValues: {
+    none: '0 0 #0000',
+    default: '0 1px 2px 0 rgb(0 0 0 / 0.1)',
+    sm: '0 1px 1px 0 rgb(0 0 0 / 0.05)',
+    md: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)'
+  },
+
+  backdropOpacityValues: {
+    0: '0',
+    25: '0.25',
+    50: '0.5',
+    75: '0.75',
+    100: '1'
   }
 };
 
@@ -472,9 +792,60 @@ ${generateBreakpoints(merged.breakpoints)}
 ${generateSpacing(merged.spacing)}
 
 // ============================================================================
+// Fractional Widths - Percentage-based width utilities
+// ============================================================================
+${generateFractionalWidths(merged.fractionalWidths)}
+
+// ============================================================================
+// Column Configuration - CSS Multi-Column Layout
+// ============================================================================
+${generateColumns(merged.columns)}
+
+// ============================================================================
+// Text Shadow Values
+// ============================================================================
+${generateTextShadow(merged.textShadow)}
+
+// ============================================================================
+// Blend Modes - CSS blend modes configuration
+// ============================================================================
+${generateBlendModes(merged.blendModes)}
+
+// ============================================================================
+// Filter Configuration
+// ============================================================================
+${generateFilterConfig(merged)}
+
+// ============================================================================
+// Ring Widths - Focus ring widths
+// ============================================================================
+${generateRingWidths(merged.ringWidths)}
+
+// ============================================================================
+// Ring Colors - Focus ring colors
+// ============================================================================
+${generateRingColors(merged.ringColors)}
+
+// ============================================================================
+// Ring Opacity - Focus ring opacity values
+// ============================================================================
+${generateRingOpacity(merged.ringOpacity)}
+
+// ============================================================================
+// Outline Widths - Focus outline widths
+// ============================================================================
+${generateOutlineWidths(merged.outlineWidths)}
+
+// ============================================================================
+// Outline Offsets
+// ============================================================================
+${generateOutlineOffsets(merged.outlineOffsets)}
+
+// ============================================================================
 // Colors - OKLCH Color Scales (Perceptually uniform color space)
 // ============================================================================
 ${generateColors(merged.colors)}
+${generateColorConfig(merged.colorConfig)}
 
 // ============================================================================
 // Typography - Font families, sizes, weights, and spacing
@@ -505,6 +876,11 @@ ${generateZIndex(merged.zIndex)}
 // Opacity - Transparency values
 // ============================================================================
 ${generateOpacity(merged.opacity)}
+
+// ============================================================================
+// Divide Configuration
+// ============================================================================
+${generateDivideConfig(merged)}
 
 // ============================================================================
 // End of ApexCSS Configuration
@@ -568,7 +944,7 @@ function generateBreakpoints(breakpoints) {
   lines.push('$breakpoints: (');
   Object.entries(breakpoints).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -580,7 +956,7 @@ function generateBreakpoints(breakpoints) {
     const comma = index < arr.length - 1 ? ',' : '';
     // For 'xxl', use 'xxl' directly. For others, use the key as-is
     const prefix = key === 'xxl' ? 'xxl' : key;
-    lines.push(`  ${key}: ${prefix}${comma}`);
+    lines.push(`  "${key}": ${prefix}${comma}`);
   });
   lines.push(') !default;');
 
@@ -601,7 +977,324 @@ function generateSpacing(spacing) {
   lines.push('$spacing-scale: (');
   Object.entries(spacing).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
+    // Keep numeric keys unquoted for proper numeric comparisons in Sass
     lines.push(`  ${key}: ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate fractional widths configuration
+ * Outputs a Sass map with enabled fractional width values
+ */
+function generateFractionalWidths(config) {
+  const widths = [];
+
+  if (config.halves) {
+    widths.push('  "1\\\\/2": 50%');
+  }
+
+  if (config.thirds) {
+    widths.push('  "1\\\\/3": 33.3333%');
+    widths.push('  "2\\\\/3": 66.6667%');
+  }
+
+  if (config.quarters) {
+    widths.push('  "1\\\\/4": 25%');
+    widths.push('  "2\\\\/4": 50%');
+    widths.push('  "3\\\\/4": 75%');
+  }
+
+  if (config.fifths) {
+    widths.push('  "1\\\\/5": 20%');
+    widths.push('  "2\\\\/5": 40%');
+    widths.push('  "3\\\\/5": 60%');
+    widths.push('  "4\\\\/5": 80%');
+  }
+
+  if (config.sixths) {
+    widths.push('  "1\\\\/6": 16.6667%');
+    widths.push('  "2\\\\/6": 33.3333%');
+    widths.push('  "3\\\\/6": 50%');
+    widths.push('  "4\\\\/6": 66.6667%');
+    widths.push('  "5\\\\/6": 83.3333%');
+  }
+
+  if (config.twelfths) {
+    widths.push('  "1\\\\/12": 8.3333%');
+    widths.push('  "2\\\\/12": 16.6667%');
+    widths.push('  "3\\\\/12": 25%');
+    widths.push('  "4\\\\/12": 33.3333%');
+    widths.push('  "5\\\\/12": 41.6667%');
+    widths.push('  "6\\\\/12": 50%');
+    widths.push('  "7\\\\/12": 58.3333%');
+    widths.push('  "8\\\\/12": 66.6667%');
+    widths.push('  "9\\\\/12": 75%');
+    widths.push('  "10\\\\/12": 83.3333%');
+    widths.push('  "11\\\\/12": 91.6667%');
+  }
+
+  const lines = ['$fractional-widths: ('];
+  widths.forEach((line, index) => {
+    const comma = index < widths.length - 1 ? ',' : '';
+    lines.push(line + comma);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate column configuration
+ */
+function generateColumns(columns) {
+  const lines = [];
+
+  // Column counts
+  lines.push('$column-counts: (');
+  columns.counts.forEach((count, index) => {
+    const comma = index < columns.counts.length - 1 ? ',' : '';
+    lines.push(`  ${count}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Column widths
+  lines.push('$column-widths: (');
+  Object.entries(columns.widths).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Column rule styles
+  lines.push('$column-rule-styles: (');
+  Object.entries(columns.ruleStyles).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Column rule widths
+  lines.push('$column-rule-widths: (');
+  Object.entries(columns.ruleWidths).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate text shadow values
+ */
+function generateTextShadow(textShadow) {
+  const lines = ['$text-shadow-values: ('];
+  Object.entries(textShadow).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    // Quote the value to prevent Sass from parsing rgb() / as division
+    lines.push(`  "${key}": "${value}"${comma}`);
+  });
+  lines.push(') !default;');
+  return lines.join('\n');
+}
+
+/**
+ * Generate ring widths configuration
+ */
+function generateRingWidths(ringWidths) {
+  const lines = ['$ring-widths: ('];
+  Object.entries(ringWidths).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+  return lines.join('\n');
+}
+
+/**
+ * Generate ring colors configuration
+ */
+function generateRingColors(ringColors) {
+  const lines = ["$ring-colors: ("];
+  Object.entries(ringColors).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? "," : "";
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(") !default;");
+  return lines.join("\n");
+}
+
+/**
+ * Generate ring opacity configuration
+ */
+function generateRingOpacity(ringOpacity) {
+  const lines = ["$ring-opacity-values: ("];
+  Object.entries(ringOpacity).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? "," : "";
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(") !default;");
+  return lines.join("\n");
+}
+
+/**
+ * Generate outline widths configuration
+ */
+function generateOutlineWidths(outlineWidths) {
+  const lines = ["$outline-widths: ("];
+  Object.entries(outlineWidths).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? "," : "";
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(") !default;");
+  return lines.join("\n");
+}
+
+/**
+ * Generate outline offsets configuration
+ */
+function generateOutlineOffsets(outlineOffsets) {
+  const lines = ["$outline-offsets: ("];
+  Object.entries(outlineOffsets).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? "," : "";
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(") !default;");
+  return lines.join("\n");
+}
+
+/**
+ * Generate blend modes configuration
+ */
+function generateBlendModes(blendModes) {
+  const lines = ['$blend-modes: ('];
+  Object.entries(blendModes).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+  return lines.join('\n');
+}
+
+/**
+ * Generate divide configuration
+ */
+function generateDivideConfig(config) {
+  const lines = [];
+
+  // Divide widths
+  lines.push('$divide-widths: (');
+  Object.entries(config.divideWidths).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Divide colors
+  lines.push('$divide-colors: (');
+  Object.entries(config.divideColors).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Divide styles
+  lines.push('$divide-styles: (');
+  Object.entries(config.divideStyles).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate filter configuration
+ */
+function generateFilterConfig(config) {
+  const lines = [];
+
+  // Filter blur values
+  lines.push('$filter-blur-values: (');
+  Object.entries(config.filterBlurValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter brightness values
+  lines.push('$filter-brightness-values: (');
+  Object.entries(config.filterBrightnessValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter contrast values
+  lines.push('$filter-contrast-values: (');
+  Object.entries(config.filterContrastValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter grayscale values
+  lines.push('$filter-grayscale-values: (');
+  Object.entries(config.filterGrayscaleValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter hue-rotate values
+  lines.push('$filter-hue-rotate-values: (');
+  Object.entries(config.filterHueRotateValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter invert values
+  lines.push('$filter-invert-values: (');
+  Object.entries(config.filterInvertValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter saturate values
+  lines.push('$filter-saturate-values: (');
+  Object.entries(config.filterSaturateValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Filter sepia values
+  lines.push('$filter-sepia-values: (');
+  Object.entries(config.filterSepiaValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Drop shadow values
+  lines.push('$drop-shadow-values: (');
+  Object.entries(config.dropShadowValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": "${value}"${comma}`);
+  });
+  lines.push(') !default;');
+
+  // Backdrop opacity values
+  lines.push('$backdrop-opacity-values: (');
+  Object.entries(config.backdropOpacityValues).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -681,6 +1374,49 @@ function generateColors(colors) {
 }
 
 /**
+ * Generate color configuration maps for utility generation
+ */
+function generateColorConfig(colorConfig) {
+  const lines = [];
+
+  // Color shades
+  lines.push('');
+  lines.push('// ============================================================================');
+  lines.push('// Color Scale Maps (for programmatic utility generation)');
+  lines.push('// ============================================================================');
+  lines.push('');
+  lines.push('// Color shades used for scale generation');
+  lines.push(`$color-shades: (${colorConfig.shades.join(', ')}) !default;`);
+  lines.push('');
+
+  // Color families
+  lines.push('// Color families for utility generation');
+  lines.push('$color-families: (');
+  Object.entries(colorConfig.families).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": "${value}"${comma}`);
+  });
+  lines.push(') !default;');
+  lines.push('');
+
+  // Background opacity values
+  lines.push('// Background opacity values for color modifiers');
+  lines.push(`$bg-opacity-values: (${colorConfig.bgOpacityValues.join(', ')}) !default;`);
+  lines.push('');
+
+  // Gradient colors
+  lines.push('// Gradient color stops');
+  lines.push('$gradient-colors: (');
+  Object.entries(colorConfig.gradientColors).forEach(([key, value], index, arr) => {
+    const comma = index < arr.length - 1 ? ',' : '';
+    lines.push(`  "${key}": "${value}"${comma}`);
+  });
+  lines.push(') !default;');
+
+  return lines.join('\n');
+}
+
+/**
  * Generate typography configuration
  */
 function generateTypography(typography) {
@@ -692,7 +1428,7 @@ function generateTypography(typography) {
   Object.entries(typography.fontFamily).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
     const fontList = Array.isArray(value) ? value.join(', ') : value;
-    lines.push(`  ${key}: "${fontList}"${comma}`);
+    lines.push(`  "${key}": "${fontList}"${comma}`);
   });
   lines.push(') !default;');
   lines.push('');
@@ -703,7 +1439,7 @@ function generateTypography(typography) {
   Object.entries(typography.fontSize).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
     const size = Array.isArray(value) ? value[0] : value;
-    lines.push(`  ${key}: ${size}${comma}`);
+    lines.push(`  "${key}": ${size}${comma}`);
   });
   lines.push(') !default;');
   lines.push('');
@@ -725,7 +1461,7 @@ function generateTypography(typography) {
   lines.push('$letter-spacing: (');
   Object.entries(typography.letterSpacing).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
   lines.push('');
@@ -735,7 +1471,7 @@ function generateTypography(typography) {
   lines.push('$line-heights: (');
   Object.entries(typography.lineHeight).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -751,7 +1487,7 @@ function generateBorderRadius(borderRadius) {
   lines.push('$border-radius-scale: (');
   Object.entries(borderRadius).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -768,7 +1504,7 @@ function generateShadows(shadows) {
   Object.entries(shadows).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
     const needsQuotes = value.includes(',');
-    lines.push(`  ${key}: ${needsQuotes ? `"${value}"` : value}${comma}`);
+    lines.push(`  "${key}": ${needsQuotes ? `"${value}"` : value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -786,7 +1522,7 @@ function generateTransitions(transition) {
   lines.push('$transition-duration: (');
   Object.entries(transition.duration).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
   lines.push('');
@@ -796,7 +1532,7 @@ function generateTransitions(transition) {
   lines.push('$transition-timing: (');
   Object.entries(transition.timing).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -812,7 +1548,7 @@ function generateZIndex(zIndex) {
   lines.push('$z-index: (');
   Object.entries(zIndex).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
-    lines.push(`  ${key}: ${value}${comma}`);
+    lines.push(`  "${key}": ${value}${comma}`);
   });
   lines.push(') !default;');
 
@@ -828,6 +1564,7 @@ function generateOpacity(opacity) {
   lines.push('$opacity-scale: (');
   Object.entries(opacity).forEach(([key, value], index, arr) => {
     const comma = index < arr.length - 1 ? ',' : '';
+    // Keep numeric keys unquoted for proper numeric comparisons in Sass
     lines.push(`  ${key}: ${value}${comma}`);
   });
   lines.push(') !default;');

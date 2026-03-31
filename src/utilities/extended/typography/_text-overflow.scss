@@ -1,0 +1,27 @@
+// ============================================================================
+// Text Overflow Utilities
+// ============================================================================
+// text-overflow: clip, ellipsis
+// truncate shorthand
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  // Text Overflow
+  // ============================================================================
+  .text-overflow-clip {
+    text-overflow: clip;
+  }
+
+  .text-overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  // Truncate shorthand (overflow + text-overflow + white-space)
+  // ============================================================================
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

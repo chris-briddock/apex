@@ -1,7 +1,7 @@
 // ============================================================================
-// Word Wrap Properties
+// Word Wrap / Overflow Wrap Properties
 // ============================================================================
-// word-wrap
+// overflow-wrap (formerly word-wrap)
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
@@ -10,4 +10,7 @@
   .wrap-normal { overflow-wrap: normal; }
   .wrap-anywhere { overflow-wrap: anywhere; }
   .wrap-break-word { overflow-wrap: break-word; }
+
+  // Alias for break-words (common naming convention)
+  .break-words { overflow-wrap: break-word; }
 }

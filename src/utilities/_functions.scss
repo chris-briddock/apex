@@ -1,0 +1,25 @@
+// ============================================================================
+// SCSS Utility Functions
+// ============================================================================
+// Shared functions used across utility files
+
+// ============================================================================
+// Class Name Escaping
+// ============================================================================
+
+/// Escape decimal spacing keys for use in CSS class names
+/// Converts decimal keys like 0.5 to escaped versions like 0\.5
+/// This prevents Sass from interpreting the dot as a class selector
+/// @param {Number | String} $key - The spacing scale key
+/// @return {String} - Escaped key safe for use in class names
+@function escape-class-name($key) {
+  @if $key == 0.5 { @return '0\\.5'; }
+
+  @if $key == 1.5 { @return '1\\.5'; }
+
+  @if $key == 2.5 { @return '2\\.5'; }
+
+  @if $key == 3.5 { @return '3\\.5'; }
+
+  @return $key;
+}

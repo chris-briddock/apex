@@ -2,10 +2,113 @@
 // SVG Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Stroke width values
+$stroke-width-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8
+) !default;
+
+// Stroke linecap values
+$stroke-linecap-values: (
+  but: butt,
+  round: round,
+  square: square
+) !default;
+
+// Stroke linejoin values
+$stroke-linejoin-values: (
+  miter: miter,
+  round: round,
+  bevel: bevel
+) !default;
+
+// Stroke dasharray values
+$stroke-dasharray-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  8: 8,
+  10: 10
+) !default;
+
+// Stroke dashoffset values
+$stroke-dashoffset-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  4: 4,
+  8: 8
+) !default;
+
+// Fill rule values
+$fill-rule-values: (
+  nonzero: nonzero,
+  evenodd: evenodd
+) !default;
+
+// Paint order values
+$paint-order-values: (
+  normal: normal,
+  stroke: stroke,
+  fill: fill,
+  "stroke-fill": stroke fill,
+  "fill-stroke": fill stroke
+) !default;
+
+// Build utilities maps
+$stroke-width-utilities: ();
+$stroke-linecap-utilities: ();
+$stroke-linejoin-utilities: ();
+$stroke-dasharray-utilities: ();
+$stroke-dashoffset-utilities: ();
+$fill-rule-utilities: ();
+$paint-order-utilities: ();
+
+@each $key, $value in $stroke-width-values {
+  $stroke-width-utilities: map.merge($stroke-width-utilities, ('stroke-#{$key}': (stroke-width: $value)));
+}
+
+@each $key, $value in $stroke-linecap-values {
+  $stroke-linecap-utilities: map.merge($stroke-linecap-utilities, ('stroke-cap-#{$key}': (stroke-linecap: $value)));
+}
+
+@each $key, $value in $stroke-linejoin-values {
+  $stroke-linejoin-utilities: map.merge($stroke-linejoin-utilities, ('stroke-join-#{$key}': (stroke-linejoin: $value)));
+}
+
+@each $key, $value in $stroke-dasharray-values {
+  $stroke-dasharray-utilities: map.merge($stroke-dasharray-utilities, ('stroke-dash-#{$key}': (stroke-dasharray: $value)));
+}
+
+@each $key, $value in $stroke-dashoffset-values {
+  $stroke-dashoffset-utilities: map.merge($stroke-dashoffset-utilities, ('stroke-dash-offset-#{$key}': (stroke-dashoffset: $value)));
+}
+
+@each $key, $value in $fill-rule-values {
+  $fill-rule-utilities: map.merge($fill-rule-utilities, ('fill-rule-#{$key}': (fill-rule: $value)));
+}
+
+@each $key, $value in $paint-order-values {
+  $paint-order-utilities: map.merge($paint-order-utilities, ('paint-#{$key}': (paint-order: $value)));
+}
 
 @if settings.$enable-svg == true {
-  // Fill
+  // Fill colors - using theme CSS custom properties
   .fill-none { fill: none; }
   .fill-current { fill: currentcolor; }
   .fill-inherit { fill: inherit; }
@@ -19,7 +122,7 @@
   .fill-warning { fill: var(--color-warning); }
   .fill-info { fill: var(--color-info); }
 
-  // Stroke
+  // Stroke colors - using theme CSS custom properties
   .stroke-none { stroke: none; }
   .stroke-current { stroke: currentcolor; }
   .stroke-inherit { stroke: inherit; }
@@ -33,87 +136,25 @@
   .stroke-warning { stroke: var(--color-warning); }
   .stroke-info { stroke: var(--color-info); }
 
-  // Stroke width
-  .stroke-0 { stroke-width: 0; }
-  .stroke-1 { stroke-width: 1; }
-  .stroke-2 { stroke-width: 2; }
-  .stroke-3 { stroke-width: 3; }
-  .stroke-4 { stroke-width: 4; }
-  .stroke-5 { stroke-width: 5; }
-  .stroke-6 { stroke-width: 6; }
-  .stroke-7 { stroke-width: 7; }
-  .stroke-8 { stroke-width: 8; }
+  // List style image
+  .list-image-none { list-style-image: none; }
 
-  // Stroke linecap
-  .stroke-cap-but { stroke-linecap: butt; }
-  .stroke-cap-round { stroke-linecap: round; }
-  .stroke-cap-square { stroke-linecap: square; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($stroke-width-utilities);
+  @include utility-mixins.generate-declaration-utilities($stroke-linecap-utilities);
+  @include utility-mixins.generate-declaration-utilities($stroke-linejoin-utilities);
+  @include utility-mixins.generate-declaration-utilities($stroke-dasharray-utilities);
+  @include utility-mixins.generate-declaration-utilities($stroke-dashoffset-utilities);
+  @include utility-mixins.generate-declaration-utilities($fill-rule-utilities);
+  @include utility-mixins.generate-declaration-utilities($paint-order-utilities);
 
-  // Stroke linejoin
-  .stroke-join-miter { stroke-linejoin: miter; }
-  .stroke-join-round { stroke-linejoin: round; }
-  .stroke-join-bevel { stroke-linejoin: bevel; }
+  // Stroke opacity - using settings.$opacity-scale
+  @each $key, $value in settings.$opacity-scale {
+    .stroke-opacity-#{$key} { stroke-opacity: #{$value}; }
+  }
 
-  // Stroke dasharray
-  .stroke-dash-0 { stroke-dasharray: 0; }
-  .stroke-dash-1 { stroke-dasharray: 1; }
-  .stroke-dash-2 { stroke-dasharray: 2; }
-  .stroke-dash-3 { stroke-dasharray: 3; }
-  .stroke-dash-4 { stroke-dasharray: 4; }
-  .stroke-dash-5 { stroke-dasharray: 5; }
-  .stroke-dash-6 { stroke-dasharray: 6; }
-  .stroke-dash-8 { stroke-dasharray: 8; }
-  .stroke-dash-10 { stroke-dasharray: 10; }
-
-  // Stroke dashoffset
-  .stroke-dash-offset-0 { stroke-dashoffset: 0; }
-  .stroke-dash-offset-1 { stroke-dashoffset: 1; }
-  .stroke-dash-offset-2 { stroke-dashoffset: 2; }
-  .stroke-dash-offset-4 { stroke-dashoffset: 4; }
-  .stroke-dash-offset-8 { stroke-dashoffset: 8; }
-
-  // Stroke opacity
-  .stroke-opacity-0 { stroke-opacity: 0; }
-  .stroke-opacity-5 { stroke-opacity: 0.05; }
-  .stroke-opacity-10 { stroke-opacity: 0.1; }
-  .stroke-opacity-20 { stroke-opacity: 0.2; }
-  .stroke-opacity-25 { stroke-opacity: 0.25; }
-  .stroke-opacity-30 { stroke-opacity: 0.3; }
-  .stroke-opacity-40 { stroke-opacity: 0.4; }
-  .stroke-opacity-50 { stroke-opacity: 0.5; }
-  .stroke-opacity-60 { stroke-opacity: 0.6; }
-  .stroke-opacity-70 { stroke-opacity: 0.7; }
-  .stroke-opacity-75 { stroke-opacity: 0.75; }
-  .stroke-opacity-80 { stroke-opacity: 0.8; }
-  .stroke-opacity-90 { stroke-opacity: 0.9; }
-  .stroke-opacity-95 { stroke-opacity: 0.95; }
-  .stroke-opacity-100 { stroke-opacity: 1; }
-
-  // Fill opacity
-  .fill-opacity-0 { fill-opacity: 0; }
-  .fill-opacity-5 { fill-opacity: 0.05; }
-  .fill-opacity-10 { fill-opacity: 0.1; }
-  .fill-opacity-20 { fill-opacity: 0.2; }
-  .fill-opacity-25 { fill-opacity: 0.25; }
-  .fill-opacity-30 { fill-opacity: 0.3; }
-  .fill-opacity-40 { fill-opacity: 0.4; }
-  .fill-opacity-50 { fill-opacity: 0.5; }
-  .fill-opacity-60 { fill-opacity: 0.6; }
-  .fill-opacity-70 { fill-opacity: 0.7; }
-  .fill-opacity-75 { fill-opacity: 0.75; }
-  .fill-opacity-80 { fill-opacity: 0.8; }
-  .fill-opacity-90 { fill-opacity: 0.9; }
-  .fill-opacity-95 { fill-opacity: 0.95; }
-  .fill-opacity-100 { fill-opacity: 1; }
-
-  // Fill rule
-  .fill-rule-nonzero { fill-rule: nonzero; }
-  .fill-rule-evenodd { fill-rule: evenodd; }
-
-  // Paint order
-  .paint-normal { paint-order: normal; }
-  .paint-stroke { paint-order: stroke; }
-  .paint-fill { paint-order: fill; }
-  .paint-stroke-fill { paint-order: stroke fill; }
-  .paint-fill-stroke { paint-order: fill stroke; }
+  // Fill opacity - using settings.$opacity-scale
+  @each $key, $value in settings.$opacity-scale {
+    .fill-opacity-#{$key} { fill-opacity: #{$value}; }
+  }
 }

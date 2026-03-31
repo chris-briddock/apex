@@ -1,248 +1,146 @@
 // ============================================================================
 // Background Utilities
 // ============================================================================
+// Generated from configuration maps in _custom-config.scss
 
+@use 'sass:map';
+@use 'sass:string';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utilities;
 
 @if settings.$enable-backgrounds == true {
-  // Background attachment
-  .bg-fixed { background-attachment: fixed; }
-  .bg-local { background-attachment: local; }
-  .bg-scroll { background-attachment: scroll; }
+  // ============================================================================
+  // Background Property Utilities (CSS keywords)
+  // ============================================================================
 
-  // Background clip
-  .bg-clip-border { background-clip: border-box; }
-  .bg-clip-padding { background-clip: padding-box; }
-  .bg-clip-content { background-clip: content-box; }
-  .bg-clip-text { background-clip: text; }
+  // Background attachment utilities
+  $bg-attachment-utilities: (
+    'bg-fixed': ('background-attachment': fixed),
+    'bg-local': ('background-attachment': local),
+    'bg-scroll': ('background-attachment': scroll),
+  );
 
-  // Background origin
-  .bg-origin-border { background-origin: border-box; }
-  .bg-origin-padding { background-origin: padding-box; }
-  .bg-origin-content { background-origin: content-box; }
+  // Background clip utilities
+  $bg-clip-utilities: (
+    'bg-clip-border': ('background-clip': border-box),
+    'bg-clip-padding': ('background-clip': padding-box),
+    'bg-clip-content': ('background-clip': content-box),
+    'bg-clip-text': ('background-clip': text),
+  );
 
-  // Background position
-  .bg-bottom { background-position: bottom; }
-  .bg-center { background-position: center; }
-  .bg-left { background-position: left; }
-  .bg-left-bottom { background-position: left bottom; }
-  .bg-left-top { background-position: left top; }
-  .bg-right { background-position: right; }
-  .bg-right-bottom { background-position: right bottom; }
-  .bg-right-top { background-position: right top; }
-  .bg-top { background-position: top; }
+  // Background origin utilities
+  $bg-origin-utilities: (
+    'bg-origin-border': ('background-origin': border-box),
+    'bg-origin-padding': ('background-origin': padding-box),
+    'bg-origin-content': ('background-origin': content-box),
+  );
 
-  // Background repeat
-  .bg-repeat { background-repeat: repeat; }
-  .bg-no-repeat { background-repeat: no-repeat; }
-  .bg-repeat-x { background-repeat: repeat-x; }
-  .bg-repeat-y { background-repeat: repeat-y; }
-  .bg-repeat-round { background-repeat: round; }
-  .bg-repeat-space { background-repeat: space; }
+  // Background position utilities
+  $bg-position-utilities: (
+    'bg-bottom': ('background-position': bottom),
+    'bg-center': ('background-position': center),
+    'bg-left': ('background-position': left),
+    'bg-left-bottom': ('background-position': left bottom),
+    'bg-left-top': ('background-position': left top),
+    'bg-right': ('background-position': right),
+    'bg-right-bottom': ('background-position': right bottom),
+    'bg-right-top': ('background-position': right top),
+    'bg-top': ('background-position': top),
+  );
 
-  // Background size
-  .bg-auto { background-size: auto; }
-  .bg-cover { background-size: cover; }
-  .bg-contain { background-size: contain; }
+  // Background repeat utilities
+  $bg-repeat-utilities: (
+    'bg-repeat': ('background-repeat': repeat),
+    'bg-no-repeat': ('background-repeat': no-repeat),
+    'bg-repeat-x': ('background-repeat': repeat-x),
+    'bg-repeat-y': ('background-repeat': repeat-y),
+    'bg-repeat-round': ('background-repeat': round),
+    'bg-repeat-space': ('background-repeat': space),
+  );
+
+  // Background size utilities
+  $bg-size-utilities: (
+    'bg-auto': ('background-size': auto),
+    'bg-cover': ('background-size': cover),
+    'bg-contain': ('background-size': contain),
+  );
+
+  // Background image utilities
+  $bg-image-utilities: (
+    'bg-none': ('background-image': none),
+    'bg-gradient-to-t': ('background-image': linear-gradient(to top, var(--gradient-stops))),
+    'bg-gradient-to-tr': ('background-image': linear-gradient(to top right, var(--gradient-stops))),
+    'bg-gradient-to-r': ('background-image': linear-gradient(to right, var(--gradient-stops))),
+    'bg-gradient-to-br': ('background-image': linear-gradient(to bottom right, var(--gradient-stops))),
+    'bg-gradient-to-b': ('background-image': linear-gradient(to bottom, var(--gradient-stops))),
+    'bg-gradient-to-bl': ('background-image': linear-gradient(to bottom left, var(--gradient-stops))),
+    'bg-gradient-to-l': ('background-image': linear-gradient(to left, var(--gradient-stops))),
+    'bg-gradient-to-tl': ('background-image': linear-gradient(to top left, var(--gradient-stops))),
+  );
+
+  // Generate base background utilities
+  @include utilities.generate-declaration-utilities($bg-attachment-utilities);
+  @include utilities.generate-declaration-utilities($bg-clip-utilities);
+  @include utilities.generate-declaration-utilities($bg-origin-utilities);
+  @include utilities.generate-declaration-utilities($bg-position-utilities);
+  @include utilities.generate-declaration-utilities($bg-repeat-utilities);
+  @include utilities.generate-declaration-utilities($bg-size-utilities);
+  @include utilities.generate-declaration-utilities($bg-image-utilities);
 
   // ============================================================================
-  // Background Colors (CSS Custom Properties)
+  // Background Colors (Generated from settings.$color-families)
   // ============================================================================
   @if settings.$enable-colors == true {
-    // Gray color backgrounds
-    $grays: (
-      50: var(--color-gray-50),
-      100: var(--color-gray-100),
-      200: var(--color-gray-200),
-      300: var(--color-gray-300),
-      400: var(--color-gray-400),
-      500: var(--color-gray-500),
-      600: var(--color-gray-600),
-      700: var(--color-gray-700),
-      800: var(--color-gray-800),
-      900: var(--color-gray-900),
-    );
+    // Build background color utilities from color families
+    $bg-color-utilities: ();
 
-    @each $key, $value in $grays {
-      .bg-gray-#{$key} {
-        background-color: $value;
+    @each $family-name, $family-key in settings.$color-families {
+      @each $shade in settings.$color-shades {
+        $var-name: '--color-#{$family-name}-#{$shade}';
+        $bg-color-utilities: map.merge($bg-color-utilities, (
+          'bg-#{$family-name}-#{$shade}': ('background-color': var(#{$var-name}))
+        ));
       }
     }
 
-    // Blue color backgrounds
-    $blues: (
-      50: var(--color-blue-50),
-      100: var(--color-blue-100),
-      200: var(--color-blue-200),
-      300: var(--color-blue-300),
-      400: var(--color-blue-400),
-      500: var(--color-blue-500),
-      600: var(--color-blue-600),
-      700: var(--color-blue-700),
-      800: var(--color-blue-800),
-      900: var(--color-blue-900),
+    @include utilities.generate-declaration-utilities($bg-color-utilities);
+
+    // Semantic color utilities
+    $semantic-bg-utilities: (
+      'bg-primary': ('background-color': var(--color-primary)),
+      'bg-secondary': ('background-color': var(--color-secondary)),
+      'bg-success': ('background-color': var(--color-success)),
+      'bg-danger': ('background-color': var(--color-danger)),
+      'bg-warning': ('background-color': var(--color-warning)),
+      'bg-info': ('background-color': var(--color-info)),
+      'bg-light': ('background-color': var(--color-light)),
+      'bg-dark': ('background-color': var(--color-dark)),
+      'bg-white': ('background-color': var(--color-white)),
+      'bg-black': ('background-color': var(--color-black)),
+      'bg-transparent': ('background-color': var(--color-transparent)),
+      'bg-current': ('background-color': var(--color-current)),
     );
 
-    @each $key, $value in $blues {
-      .bg-blue-#{$key} {
-        background-color: $value;
-      }
-    }
+    @include utilities.generate-declaration-utilities($semantic-bg-utilities);
 
-    // Green color backgrounds
-    $greens: (
-      50: var(--color-green-50),
-      100: var(--color-green-100),
-      200: var(--color-green-200),
-      300: var(--color-green-300),
-      400: var(--color-green-400),
-      500: var(--color-green-500),
-      600: var(--color-green-600),
-      700: var(--color-green-700),
-      800: var(--color-green-800),
-      900: var(--color-green-900),
-    );
-
-    @each $key, $value in $greens {
-      .bg-green-#{$key} {
-        background-color: $value;
-      }
-    }
-
-    // Red color backgrounds
-    $reds: (
-      50: var(--color-red-50),
-      100: var(--color-red-100),
-      200: var(--color-red-200),
-      300: var(--color-red-300),
-      400: var(--color-red-400),
-      500: var(--color-red-500),
-      600: var(--color-red-600),
-      700: var(--color-red-700),
-      800: var(--color-red-800),
-      900: var(--color-red-900),
-    );
-
-    @each $key, $value in $reds {
-      .bg-red-#{$key} {
-        background-color: $value;
-      }
-    }
-
-    // Yellow color backgrounds
-    $yellows: (
-      50: var(--color-yellow-50),
-      100: var(--color-yellow-100),
-      200: var(--color-yellow-200),
-      300: var(--color-yellow-300),
-      400: var(--color-yellow-400),
-      500: var(--color-yellow-500),
-      600: var(--color-yellow-600),
-      700: var(--color-yellow-700),
-      800: var(--color-yellow-800),
-      900: var(--color-yellow-900),
-    );
-
-    @each $key, $value in $yellows {
-      .bg-yellow-#{$key} {
-        background-color: $value;
-      }
-    }
-
-    // Purple color backgrounds
-    $purples: (
-      50: var(--color-purple-50),
-      100: var(--color-purple-100),
-      200: var(--color-purple-200),
-      300: var(--color-purple-300),
-      400: var(--color-purple-400),
-      500: var(--color-purple-500),
-      600: var(--color-purple-600),
-      700: var(--color-purple-700),
-      800: var(--color-purple-800),
-      900: var(--color-purple-900),
-    );
-
-    @each $key, $value in $purples {
-      .bg-purple-#{$key} {
-        background-color: $value;
-      }
-    }
-
-    // Semantic color backgrounds
-    .bg-primary { background-color: var(--color-primary); }
-    .bg-secondary { background-color: var(--color-secondary); }
-    .bg-success { background-color: var(--color-success); }
-    .bg-danger { background-color: var(--color-danger); }
-    .bg-warning { background-color: var(--color-warning); }
-    .bg-info { background-color: var(--color-info); }
-    .bg-light { background-color: var(--color-light); }
-    .bg-dark { background-color: var(--color-dark); }
-    .bg-white { background-color: var(--color-white); }
-    .bg-black { background-color: var(--color-black); }
-    .bg-transparent { background-color: var(--color-transparent); }
-    .bg-current { background-color: var(--color-current); }
-
+    // ============================================================================
+    // Opacity Variants (for backgrounds with CSS color-mix)
+    // ============================================================================
     @if settings.$enable-color-modifiers == true {
-      // ============================================================================
-      // Opacity Variants (for backgrounds with CSS variables)
-      // ============================================================================
-      // Opacity values using CSS custom properties
-      $opacity-values: (
-        0: var(--opacity-0),
-        5: var(--opacity-5),
-        10: var(--opacity-10),
-        15: var(--opacity-15),
-        20: var(--opacity-20),
-        25: var(--opacity-25),
-        30: var(--opacity-30),
-        35: var(--opacity-35),
-        40: var(--opacity-40),
-        45: var(--opacity-45),
-        50: var(--opacity-50),
-        55: var(--opacity-55),
-        60: var(--opacity-60),
-        65: var(--opacity-65),
-        70: var(--opacity-70),
-        75: var(--opacity-75),
-        80: var(--opacity-80),
-        85: var(--opacity-85),
-        90: var(--opacity-90),
-        95: var(--opacity-95),
-        100: var(--opacity-100)
-      );
-
-      // CSS variable-based opacity backgrounds for semantic colors
-      @each $opacity-name, $opacity-value in $opacity-values {
+      @each $opacity-name in settings.$bg-opacity-values {
         @if $opacity-name != 100 {
-          .bg-primary\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-secondary\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-success\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-success) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-danger\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-danger) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-warning\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-warning) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-info\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-info) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-white\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-white) #{$opacity-name * 1%}, transparent);
-          }
-          .bg-black\/#{$opacity-name} {
-            background-color: color-mix(in srgb, var(--color-black) #{$opacity-name * 1%}, transparent);
+          // Semantic color opacity variants
+          @each $color-name, $color-var in settings.$gradient-colors {
+            @if $color-name != transparent and $color-name != current {
+              #{string.unquote('.bg-#{$color-name}\/#{$opacity-name}')} {
+                background-color: color-mix(in srgb, var(--color-#{$color-name}) #{$opacity-name * 1%}, transparent);
+              }
+            }
           }
 
-          // Gray opacity variants using color-mix
-          @each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
-            .bg-gray-#{$shade}\/#{$opacity-name} {
+          // Gray opacity variants
+          @each $shade in settings.$color-shades {
+            #{string.unquote('.bg-gray-#{$shade}\/#{$opacity-name}')} {
               background-color: color-mix(in srgb, var(--color-gray-#{$shade}) #{$opacity-name * 1%}, transparent);
             }
           }
@@ -251,99 +149,98 @@
     }
   }
 
-  // Background image utilities
-  .bg-none { background-image: none; }
-  .bg-gradient-to-t { background-image: linear-gradient(to top, var(--gradient-stops)); }
-  .bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--gradient-stops)); }
-  .bg-gradient-to-r { background-image: linear-gradient(to right, var(--gradient-stops)); }
-  .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--gradient-stops)); }
-  .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--gradient-stops)); }
-  .bg-gradient-to-bl { background-image: linear-gradient(to bottom left, var(--gradient-stops)); }
-  .bg-gradient-to-l { background-image: linear-gradient(to left, var(--gradient-stops)); }
-  .bg-gradient-to-tl { background-image: linear-gradient(to top left, var(--gradient-stops)); }
-
   // ============================================================================
-  // Gradient Color Stops
+  // Gradient Color Stops (Generated from settings.$gradient-colors)
   // ============================================================================
-  // Usage: class="bg-gradient-to-r from-blue-500 to-purple-500"
 
   // From (start color)
-  .from-primary { --gradient-from: var(--color-primary); }
-  .from-secondary { --gradient-from: var(--color-secondary); }
-  .from-success { --gradient-from: var(--color-success); }
-  .from-danger { --gradient-from: var(--color-danger); }
-  .from-warning { --gradient-from: var(--color-warning); }
-  .from-info { --gradient-from: var(--color-info); }
-  .from-light { --gradient-from: var(--color-light); }
-  .from-dark { --gradient-from: var(--color-dark); }
-  .from-white { --gradient-from: var(--color-white); }
-  .from-black { --gradient-from: var(--color-black); }
-  .from-gray-50 { --gradient-from: var(--color-gray-50); }
-  .from-gray-100 { --gradient-from: var(--color-gray-100); }
-  .from-gray-200 { --gradient-from: var(--color-gray-200); }
-  .from-gray-300 { --gradient-from: var(--color-gray-300); }
-  .from-gray-400 { --gradient-from: var(--color-gray-400); }
-  .from-gray-500 { --gradient-from: var(--color-gray-500); }
-  .from-gray-600 { --gradient-from: var(--color-gray-600); }
-  .from-gray-700 { --gradient-from: var(--color-gray-700); }
-  .from-gray-800 { --gradient-from: var(--color-gray-800); }
-  .from-gray-900 { --gradient-from: var(--color-gray-900); }
-  .from-transparent { --gradient-from: transparent; }
-  .from-current { --gradient-from: currentcolor; }
+  $gradient-from-utilities: ();
+
+  @each $color-name, $color-var in settings.$gradient-colors {
+    @if $color-name == transparent or $color-name == current {
+      $gradient-from-utilities: map.merge($gradient-from-utilities, (
+        'from-#{$color-name}': ('--gradient-from': #{$color-name})
+      ));
+    } @else {
+      $gradient-from-utilities: map.merge($gradient-from-utilities, (
+        'from-#{$color-name}': ('--gradient-from': var(--color-#{$color-name}))
+      ));
+    }
+  }
 
   // Via (middle color)
-  .via-primary { --gradient-via: var(--color-primary); }
-  .via-secondary { --gradient-via: var(--color-secondary); }
-  .via-success { --gradient-via: var(--color-success); }
-  .via-danger { --gradient-via: var(--color-danger); }
-  .via-warning { --gradient-via: var(--color-warning); }
-  .via-info { --gradient-via: var(--color-info); }
-  .via-light { --gradient-via: var(--color-light); }
-  .via-dark { --gradient-via: var(--color-dark); }
-  .via-white { --gradient-via: var(--color-white); }
-  .via-black { --gradient-via: var(--color-black); }
-  .via-gray-50 { --gradient-via: var(--color-gray-50); }
-  .via-gray-100 { --gradient-via: var(--color-gray-100); }
-  .via-gray-200 { --gradient-via: var(--color-gray-200); }
-  .via-gray-300 { --gradient-via: var(--color-gray-300); }
-  .via-gray-400 { --gradient-via: var(--color-gray-400); }
-  .via-gray-500 { --gradient-via: var(--color-gray-500); }
-  .via-gray-600 { --gradient-via: var(--color-gray-600); }
-  .via-gray-700 { --gradient-via: var(--color-gray-700); }
-  .via-gray-800 { --gradient-via: var(--color-gray-800); }
-  .via-gray-900 { --gradient-via: var(--color-gray-900); }
-  .via-transparent { --gradient-via: transparent; }
-  .via-current { --gradient-via: currentcolor; }
+  $gradient-via-utilities: ();
+
+  @each $color-name, $color-var in settings.$gradient-colors {
+    @if $color-name == transparent or $color-name == current {
+      $gradient-via-utilities: map.merge($gradient-via-utilities, (
+        'via-#{$color-name}': ('--gradient-via': #{$color-name})
+      ));
+    } @else {
+      $gradient-via-utilities: map.merge($gradient-via-utilities, (
+        'via-#{$color-name}': ('--gradient-via': var(--color-#{$color-name}))
+      ));
+    }
+  }
 
   // To (end color)
-  .to-primary { --gradient-to: var(--color-primary); }
-  .to-secondary { --gradient-to: var(--color-secondary); }
-  .to-success { --gradient-to: var(--color-success); }
-  .to-danger { --gradient-to: var(--color-danger); }
-  .to-warning { --gradient-to: var(--color-warning); }
-  .to-info { --gradient-to: var(--color-info); }
-  .to-light { --gradient-to: var(--color-light); }
-  .to-dark { --gradient-to: var(--color-dark); }
-  .to-white { --gradient-to: var(--color-white); }
-  .to-black { --gradient-to: var(--color-black); }
-  .to-gray-50 { --gradient-to: var(--color-gray-50); }
-  .to-gray-100 { --gradient-to: var(--color-gray-100); }
-  .to-gray-200 { --gradient-to: var(--color-gray-200); }
-  .to-gray-300 { --gradient-to: var(--color-gray-300); }
-  .to-gray-400 { --gradient-to: var(--color-gray-400); }
-  .to-gray-500 { --gradient-to: var(--color-gray-500); }
-  .to-gray-600 { --gradient-to: var(--color-gray-600); }
-  .to-gray-700 { --gradient-to: var(--color-gray-700); }
-  .to-gray-800 { --gradient-to: var(--color-gray-800); }
-  .to-gray-900 { --gradient-to: var(--color-gray-900); }
-  .to-transparent { --gradient-to: transparent; }
-  .to-current { --gradient-to: currentcolor; }
+  $gradient-to-utilities: ();
 
+  @each $color-name, $color-var in settings.$gradient-colors {
+    @if $color-name == transparent or $color-name == current {
+      $gradient-to-utilities: map.merge($gradient-to-utilities, (
+        'to-#{$color-name}': ('--gradient-to': #{$color-name})
+      ));
+    } @else {
+      $gradient-to-utilities: map.merge($gradient-to-utilities, (
+        'to-#{$color-name}': ('--gradient-to': var(--color-#{$color-name}))
+      ));
+    }
+  }
+
+  // Add gray gradient colors
+  @each $shade in settings.$color-shades {
+    $gradient-from-utilities: map.merge($gradient-from-utilities, (
+      'from-gray-#{$shade}': ('--gradient-from': var(--color-gray-#{$shade}))
+    ));
+    $gradient-via-utilities: map.merge($gradient-via-utilities, (
+      'via-gray-#{$shade}': ('--gradient-via': var(--color-gray-#{$shade}))
+    ));
+    $gradient-to-utilities: map.merge($gradient-to-utilities, (
+      'to-gray-#{$shade}': ('--gradient-to': var(--color-gray-#{$shade}))
+    ));
+  }
+
+  @include utilities.generate-declaration-utilities($gradient-from-utilities);
+  @include utilities.generate-declaration-utilities($gradient-via-utilities);
+  @include utilities.generate-declaration-utilities($gradient-to-utilities);
+
+  // ============================================================================
+  // Gradient Opacity Modifiers
+  // ============================================================================
   @if settings.$enable-color-modifiers == true {
-    // Gradient opacity modifiers
-    .from-primary\/50 { --gradient-from: color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .from-secondary\/50 { --gradient-from: color-mix(in srgb, var(--color-secondary) 50%, transparent); }
-    .to-primary\/50 { --gradient-to: color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .to-secondary\/50 { --gradient-to: color-mix(in srgb, var(--color-secondary) 50%, transparent); }
+    @each $opacity-name in settings.$bg-opacity-values {
+      @if $opacity-name != 100 and $opacity-name != 0 {
+        // Primary and secondary gradient opacity
+        #{string.unquote('.from-primary\/#{$opacity-name}')} {
+          --gradient-from: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+        }
+        #{string.unquote('.from-secondary\/#{$opacity-name}')} {
+          --gradient-from: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+        }
+        #{string.unquote('.to-primary\/#{$opacity-name}')} {
+          --gradient-to: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+        }
+        #{string.unquote('.to-secondary\/#{$opacity-name}')} {
+          --gradient-to: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+        }
+        #{string.unquote('.via-primary\/#{$opacity-name}')} {
+          --gradient-via: color-mix(in srgb, var(--color-primary) #{$opacity-name * 1%}, transparent);
+        }
+        #{string.unquote('.via-secondary\/#{$opacity-name}')} {
+          --gradient-via: color-mix(in srgb, var(--color-secondary) #{$opacity-name * 1%}, transparent);
+        }
+      }
+    }
   }
 }

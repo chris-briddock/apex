@@ -4,18 +4,42 @@
 // caret-color
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// CSS keyword values (fixed, local to this file)
+$caret-values: (
+  auto: auto,
+  current: currentcolor,
+  transparent: transparent
+) !default;
+
+// Theme color values (from CSS variables)
+$caret-theme-colors: (
+  white: var(--color-white),
+  black: var(--color-black),
+  primary: var(--color-primary),
+  secondary: var(--color-secondary),
+  success: var(--color-success),
+  danger: var(--color-danger),
+  warning: var(--color-warning),
+  info: var(--color-info)
+) !default;
+
+// Build utilities map
+$caret-utilities: ();
+
+// Add keyword-based utilities
+@each $key, $value in $caret-values {
+  $caret-utilities: map.merge($caret-utilities, ('caret-#{$key}': (caret-color: $value)));
+}
+
+// Add theme color utilities
+@each $key, $value in $caret-theme-colors {
+  $caret-utilities: map.merge($caret-utilities, ('caret-#{$key}': (caret-color: $value)));
+}
 
 @if settings.$enable-caret == true {
-  .caret-auto { caret-color: auto; }
-  .caret-current { caret-color: currentcolor; }
-  .caret-transparent { caret-color: transparent; }
-  .caret-white { caret-color: var(--color-white); }
-  .caret-black { caret-color: var(--color-black); }
-  .caret-primary { caret-color: var(--color-primary); }
-  .caret-secondary { caret-color: var(--color-secondary); }
-  .caret-success { caret-color: var(--color-success); }
-  .caret-danger { caret-color: var(--color-danger); }
-  .caret-warning { caret-color: var(--color-warning); }
-  .caret-info { caret-color: var(--color-info); }
+  @include utility-mixins.generate-declaration-utilities($caret-utilities);
 }

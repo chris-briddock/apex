@@ -1,0 +1,33 @@
+// ============================================================================
+// Contrast Utilities
+// ============================================================================
+
+@use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utilities;
+
+// Contrast preference utilities
+$contrast-high-utilities: (
+  'contrast-high:border': (border: 2px solid currentcolor),
+  'contrast-high:outline': (
+    outline: 3px solid currentcolor,
+    outline-offset: 2px,
+  ),
+) !default;
+$contrast-low-utilities: (
+  'contrast-low:border': (border: 1px solid currentcolor),
+  'contrast-low:outline': (
+    outline: 1px solid currentcolor,
+    outline-offset: 1px,
+  ),
+) !default;
+
+  @if settings.$enable-accessibility == true {
+// Contrast preferences
+  @media (prefers-contrast: high) {
+    @include utilities.generate-declaration-utilities($contrast-high-utilities);
+  }
+
+  @media (prefers-contrast: low) {
+    @include utilities.generate-declaration-utilities($contrast-low-utilities);
+  }
+}

@@ -1,0 +1,50 @@
+// ============================================================================
+// Line Clamp Utilities
+// ============================================================================
+// line-clamp for limiting text to a number of lines
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .line-clamp-1 {
+    display: -webkit-box;
+    line-clamp: 1;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .line-clamp-5 {
+    display: -webkit-box;
+    line-clamp: 5;
+    overflow: hidden;
+  }
+
+  .line-clamp-6 {
+    display: -webkit-box;
+    line-clamp: 6;
+    overflow: hidden;
+  }
+
+  .line-clamp-none {
+    display: block;
+    line-clamp: none;
+    overflow: visible;
+  }
+}

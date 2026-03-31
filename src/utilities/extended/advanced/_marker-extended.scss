@@ -2,23 +2,31 @@
 // Marker Extended Properties
 // ============================================================================
 // marker-end, marker-mid, marker-start
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Marker values
+$marker-values: (
+  none: none,
+  url: url("#arrowhead")
+) !default;
+
+// Build utilities maps
+$marker-end-utilities: ();
+$marker-mid-utilities: ();
+$marker-start-utilities: ();
+
+@each $key, $value in $marker-values {
+  $marker-end-utilities: map.merge($marker-end-utilities, ('marker-end-#{$key}': (marker-end: $value)));
+  $marker-mid-utilities: map.merge($marker-mid-utilities, ('marker-mid-#{$key}': (marker-mid: $value)));
+  $marker-start-utilities: map.merge($marker-start-utilities, ('marker-start-#{$key}': (marker-start: $value)));
+}
 
 @if settings.$enable-marker-extended == true {
-  // Marker end
-  // ============================================================================
-  .marker-end-none { marker-end: none; }
-  .marker-end-url { marker-end: url("#arrowhead"); }
-
-  // Marker mid
-  // ============================================================================
-  .marker-mid-none { marker-mid: none; }
-  .marker-mid-url { marker-mid: url("#arrowhead"); }
-
-  // Marker start
-  // ============================================================================
-  .marker-start-none { marker-start: none; }
-  .marker-start-url { marker-start: url("#arrowhead"); }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($marker-end-utilities);
+  @include utility-mixins.generate-declaration-utilities($marker-mid-utilities);
+  @include utility-mixins.generate-declaration-utilities($marker-start-utilities);
 }

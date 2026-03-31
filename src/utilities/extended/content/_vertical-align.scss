@@ -2,15 +2,30 @@
 // Vertical Alignment Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Vertical align values
+$vertical-align-values: (
+  baseline: baseline,
+  top: top,
+  middle: middle,
+  bottom: bottom,
+  "text-top": text-top,
+  "text-bottom": text-bottom,
+  sub: sub,
+  super: super
+) !default;
+
+// Build utilities map
+$vertical-align-utilities: ();
+
+@each $key, $value in $vertical-align-values {
+  $vertical-align-utilities: map.merge($vertical-align-utilities, ('align-#{$key}': (vertical-align: $value)));
+}
 
 @if settings.$enable-vertical-align == true {
-  .align-baseline { vertical-align: baseline; }
-  .align-top { vertical-align: top; }
-  .align-middle { vertical-align: middle; }
-  .align-bottom { vertical-align: bottom; }
-  .align-text-top { vertical-align: text-top; }
-  .align-text-bottom { vertical-align: text-bottom; }
-  .align-sub { vertical-align: sub; }
-  .align-super { vertical-align: super; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($vertical-align-utilities);
 }

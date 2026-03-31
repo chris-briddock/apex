@@ -2,126 +2,212 @@
 // Focus State Variants
 // ============================================================================
 
+@use 'sass:map';
 @use '../../config/custom-config' as settings;
-@use '../../mixins/dark-mode' as dm;
+@use '../../mixins/utilities' as utilities;
+
+// ============================================================================
+// Focus State Utilities
+// ============================================================================
 
 @if settings.$enable-focus == true {
-  // Focus ring
-  .focus\:ring:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus\:ring-0:focus { outline: none; box-shadow: none; }
-  .focus\:ring-2:focus { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus\:ring-4:focus { outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus\:ring-8:focus { outline: none; box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus\:ring-inset:focus { outline: none; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
+  // ============================================================================
+  // Focus Ring Utilities (uses box-shadow for focus rings)
+  // ============================================================================
+  $focus-ring-utilities: (
+    'focus\\:ring': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+    'focus\\:ring-0': ('box-shadow': none, outline: none),
+    'focus\\:ring-2': ('box-shadow': 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+    'focus\\:ring-4': ('box-shadow': 0 0 0 4px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+    'focus\\:ring-8': ('box-shadow': 0 0 0 8px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+    'focus\\:ring-inset': ('box-shadow': inset 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+  );
 
-  // Focus ring color
-  .focus\:ring-primary:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus\:ring-secondary:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-secondary) 50%, transparent); }
-  .focus\:ring-success:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 50%, transparent); }
-  .focus\:ring-danger:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger) 50%, transparent); }
-  .focus\:ring-warning:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-warning) 50%, transparent); }
-  .focus\:ring-info:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-info) 50%, transparent); }
+  @include utilities.generate-declaration-utilities($focus-ring-utilities);
 
-  // Focus outline
-  .focus\:outline-none:focus { outline: none; }
-  .focus\:outline:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-  .focus\:outline-white:focus { outline: 2px solid var(--color-white); outline-offset: 2px; }
-  .focus\:outline-black:focus { outline: 2px solid var(--color-black); outline-offset: 2px; }
+  // ============================================================================
+  // Focus Ring Color Utilities
+  // ============================================================================
+  $focus-ring-color-utilities: (
+    'focus\\:ring-primary': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent), outline: none),
+    'focus\\:ring-secondary': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-secondary) 50%, transparent), outline: none),
+    'focus\\:ring-success': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-success) 50%, transparent), outline: none),
+    'focus\\:ring-danger': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-danger) 50%, transparent), outline: none),
+    'focus\\:ring-warning': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-warning) 50%, transparent), outline: none),
+    'focus\\:ring-info': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-info) 50%, transparent), outline: none),
+    'focus\\:ring-white': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-white) 50%, transparent), outline: none),
+    'focus\\:ring-black': ('box-shadow': 0 0 0 3px color-mix(in srgb, var(--color-black) 50%, transparent), outline: none),
+    'focus\\:ring-transparent': ('box-shadow': 0 0 0 3px transparent, outline: none),
+  );
 
-  // Focus text color
-  .focus\:text-primary:focus { color: var(--color-primary); }
-  .focus\:text-secondary:focus { color: var(--color-secondary); }
-  .focus\:text-success:focus { color: var(--color-success); }
-  .focus\:text-danger:focus { color: var(--color-danger); }
-  .focus\:text-warning:focus { color: var(--color-warning); }
-  .focus\:text-info:focus { color: var(--color-info); }
+  @include utilities.generate-declaration-utilities($focus-ring-color-utilities);
 
-  // Focus background color
-  .focus\:bg-primary:focus { background-color: var(--color-primary); }
-  .focus\:bg-secondary:focus { background-color: var(--color-secondary); }
-  .focus\:bg-success:focus { background-color: var(--color-success); }
-  .focus\:bg-danger:focus { background-color: var(--color-danger); }
-  .focus\:bg-warning:focus { background-color: var(--color-warning); }
-  .focus\:bg-info:focus { background-color: var(--color-info); }
+  // ============================================================================
+  // Focus Outline Utilities
+  // ============================================================================
+  $focus-outline-utilities: (
+    'focus\\:outline-none': (outline: none),
+    'focus\\:outline': (outline: 2px solid var(--color-primary), outline-offset: 2px),
+    'focus\\:outline-white': (outline: 2px solid var(--color-white), outline-offset: 2px),
+    'focus\\:outline-black': (outline: 2px solid var(--color-black), outline-offset: 2px),
+  );
 
-  // Focus border color
-  .focus\:border-primary:focus { border-color: var(--color-primary); }
-  .focus\:border-secondary:focus { border-color: var(--color-secondary); }
-  .focus\:border-success:focus { border-color: var(--color-success); }
-  .focus\:border-danger:focus { border-color: var(--color-danger); }
-  .focus\:border-warning:focus { border-color: var(--color-warning); }
-  .focus\:border-info:focus { border-color: var(--color-info); }
+  @include utilities.generate-declaration-utilities($focus-outline-utilities);
 
-  // Focus visible
-  .focus-visible\:ring-2:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus-visible\:outline:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-  .focus-visible\:outline-none:focus-visible { outline: none; }
+  // ============================================================================
+  // Focus Text Colors
+  // ============================================================================
+  $focus-text-utilities: (
+    'focus\\:text-primary': (color: var(--color-primary)),
+    'focus\\:text-secondary': (color: var(--color-secondary)),
+    'focus\\:text-success': (color: var(--color-success)),
+    'focus\\:text-danger': (color: var(--color-danger)),
+    'focus\\:text-warning': (color: var(--color-warning)),
+    'focus\\:text-info': (color: var(--color-info)),
+    'focus\\:text-white': (color: var(--color-white)),
+    'focus\\:text-black': (color: var(--color-black)),
+    'focus\\:text-transparent': (color: transparent),
+    'focus\\:text-current': (color: currentcolor),
+  );
 
-  // Focus within
-  .focus-within\:ring-2:focus-within { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-  .focus-within\:outline:focus-within { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-  .focus-within\:outline-none:focus-within { outline: none; }
+  @include utilities.generate-declaration-utilities($focus-text-utilities);
+
+  // ============================================================================
+  // Focus Background Colors
+  // ============================================================================
+  $focus-bg-utilities: (
+    'focus\\:bg-primary': ('background-color': var(--color-primary)),
+    'focus\\:bg-secondary': ('background-color': var(--color-secondary)),
+    'focus\\:bg-success': ('background-color': var(--color-success)),
+    'focus\\:bg-danger': ('background-color': var(--color-danger)),
+    'focus\\:bg-warning': ('background-color': var(--color-warning)),
+    'focus\\:bg-info': ('background-color': var(--color-info)),
+    'focus\\:bg-white': ('background-color': var(--color-white)),
+    'focus\\:bg-black': ('background-color': var(--color-black)),
+    'focus\\:bg-transparent': ('background-color': transparent),
+    'focus\\:bg-current': ('background-color': currentcolor),
+  );
+
+  @include utilities.generate-declaration-utilities($focus-bg-utilities);
+
+  // ============================================================================
+  // Focus Border Colors
+  // ============================================================================
+  $focus-border-utilities: (
+    'focus\\:border-primary': ('border-color': var(--color-primary)),
+    'focus\\:border-secondary': ('border-color': var(--color-secondary)),
+    'focus\\:border-success': ('border-color': var(--color-success)),
+    'focus\\:border-danger': ('border-color': var(--color-danger)),
+    'focus\\:border-warning': ('border-color': var(--color-warning)),
+    'focus\\:border-info': ('border-color': var(--color-info)),
+    'focus\\:border-transparent': ('border-color': transparent),
+    'focus\\:border-current': ('border-color': currentcolor),
+  );
+
+  @include utilities.generate-declaration-utilities($focus-border-utilities);
+
+  // ============================================================================
+  // Focus-Visible Utilities (for keyboard navigation)
+  // Per MDN: :focus-visible only shows focus ring for keyboard navigation
+  // ============================================================================
+  .focus-visible\:ring:focus-visible {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    outline: none;
+  }
+
+  .focus-visible\:ring-2:focus-visible {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    outline: none;
+  }
+
+  .focus-visible\:outline:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .focus-visible\:outline-none:focus-visible {
+    outline: none;
+  }
+
+  // Fallback for browsers without :focus-visible support
+  // Per MDN: use @supports not selector(:focus-visible) for backward compatibility
+  @supports not selector(:focus-visible) {
+    .focus-visible\:ring:focus {
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+      outline: none;
+    }
+
+    .focus-visible\:ring-2:focus {
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+      outline: none;
+    }
+
+    .focus-visible\:outline:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .focus-visible\:outline-none:focus {
+      outline: none;
+    }
+  }
+
+  // ============================================================================
+  // Focus-Within Utilities (for parent elements)
+  // ============================================================================
+  .focus-within\:ring:focus-within {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    outline: none;
+  }
+
+  .focus-within\:ring-2:focus-within {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    outline: none;
+  }
+
+  .focus-within\:outline:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .focus-within\:outline-none:focus-within {
+    outline: none;
+  }
 }
 
 // ============================================================================
-// Dark mode focus states - TOP LEVEL to maintain (0,1,0) specificity
+// Dark Mode Focus States
 // ============================================================================
 @if settings.$enable-focus == true and settings.$enable-dark-mode == true {
-  @include dm.dark-mode {
-    // Dark mode focus rings
-    .dark\:focus\:ring:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus\:ring-0:focus { outline: none; box-shadow: none; }
-    .dark\:focus\:ring-2:focus { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus\:ring-4:focus { outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus\:ring-8:focus { outline: none; box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus\:ring-inset:focus { outline: none; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
+  @media (prefers-color-scheme: dark) {
+    // Dark mode focus outline colors (swapped white/black)
+    $dark-focus-outline-utilities: (
+      'dark\\:focus\\:outline-white': (outline: 2px solid var(--color-black), outline-offset: 2px),
+      'dark\\:focus\\:outline-black': (outline: 2px solid var(--color-white), outline-offset: 2px),
+    );
 
-    // Dark mode focus ring colors
-    .dark\:focus\:ring-primary:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus\:ring-secondary:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-secondary) 50%, transparent); }
-    .dark\:focus\:ring-success:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 50%, transparent); }
-    .dark\:focus\:ring-danger:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger) 50%, transparent); }
-    .dark\:focus\:ring-warning:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-warning) 50%, transparent); }
-    .dark\:focus\:ring-info:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-info) 50%, transparent); }
+    @include utilities.generate-declaration-utilities($dark-focus-outline-utilities);
 
-    // Dark mode focus outlines
-    .dark\:focus\:outline-none:focus { outline: none; }
-    .dark\:focus\:outline:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    .dark\:focus\:outline-white:focus { outline: 2px solid var(--color-black); outline-offset: 2px; }
-    .dark\:focus\:outline-black:focus { outline: 2px solid var(--color-white); outline-offset: 2px; }
+    // Dark mode focus-visible outline
+    .dark\:focus-visible\:outline-white:focus-visible {
+      outline: 2px solid var(--color-black);
+      outline-offset: 2px;
+    }
 
-    // Dark mode focus text colors
-    .dark\:focus\:text-primary:focus { color: var(--color-primary); }
-    .dark\:focus\:text-secondary:focus { color: var(--color-secondary); }
-    .dark\:focus\:text-success:focus { color: var(--color-success); }
-    .dark\:focus\:text-danger:focus { color: var(--color-danger); }
-    .dark\:focus\:text-warning:focus { color: var(--color-warning); }
-    .dark\:focus\:text-info:focus { color: var(--color-info); }
+    .dark\:focus-visible\:outline-black:focus-visible {
+      outline: 2px solid var(--color-white);
+      outline-offset: 2px;
+    }
 
-    // Dark mode focus background colors
-    .dark\:focus\:bg-primary:focus { background-color: var(--color-primary); }
-    .dark\:focus\:bg-secondary:focus { background-color: var(--color-secondary); }
-    .dark\:focus\:bg-success:focus { background-color: var(--color-success); }
-    .dark\:focus\:bg-danger:focus { background-color: var(--color-danger); }
-    .dark\:focus\:bg-warning:focus { background-color: var(--color-warning); }
-    .dark\:focus\:bg-info:focus { background-color: var(--color-info); }
+    // Dark mode focus-within outline
+    .dark\:focus-within\:outline-white:focus-within {
+      outline: 2px solid var(--color-black);
+      outline-offset: 2px;
+    }
 
-    // Dark mode focus border colors
-    .dark\:focus\:border-primary:focus { border-color: var(--color-primary); }
-    .dark\:focus\:border-secondary:focus { border-color: var(--color-secondary); }
-    .dark\:focus\:border-success:focus { border-color: var(--color-success); }
-    .dark\:focus\:border-danger:focus { border-color: var(--color-danger); }
-    .dark\:focus\:border-warning:focus { border-color: var(--color-warning); }
-    .dark\:focus\:border-info:focus { border-color: var(--color-info); }
-
-    // Dark mode focus visible
-    .dark\:focus-visible\:ring-2:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus-visible\:outline:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    .dark\:focus-visible\:outline-none:focus-visible { outline: none; }
-
-    // Dark mode focus within
-    .dark\:focus-within\:ring-2:focus-within { outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 50%, transparent); }
-    .dark\:focus-within\:outline:focus-within { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-    .dark\:focus-within\:outline-none:focus-within { outline: none; }
+    .dark\:focus-within\:outline-black:focus-within {
+      outline: 2px solid var(--color-white);
+      outline-offset: 2px;
+    }
   }
 }

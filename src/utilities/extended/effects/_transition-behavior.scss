@@ -2,10 +2,24 @@
 // Transition Behavior Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Transition behavior values
+$transition-behavior-values: (
+  normal: normal,
+  "allow-discrete": allow-discrete
+) !default;
+
+// Build utilities map
+$transition-behavior-utilities: ();
+
+@each $key, $value in $transition-behavior-values {
+  $transition-behavior-utilities: map.merge($transition-behavior-utilities, ('transition-#{$key}': (transition-behavior: $value)));
+}
 
 @if settings.$enable-transition-behavior == true {
-  // Transition behavior
-  .transition-normal { transition-behavior: normal; }
-  .transition-allow-discrete { transition-behavior: allow-discrete; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($transition-behavior-utilities);
 }

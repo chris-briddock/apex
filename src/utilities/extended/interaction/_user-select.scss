@@ -2,11 +2,26 @@
 // User Select Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// User select values (fixed CSS keywords)
+$user-select-values: (
+  none: none,
+  text: text,
+  all: all,
+  auto: auto
+) !default;
+
+// Build utilities map
+
+$user-select-utilities: ();
+
+@each $key, $value in $user-select-values {
+  $user-select-utilities: map.merge($user-select-utilities, ('select-#{$key}': (user-select: $value)));
+}
 
 @if settings.$enable-user-select == true {
-  .select-none { user-select: none; }
-  .select-text { user-select: text; }
-  .select-all { user-select: all; }
-  .select-auto { user-select: auto; }
+  @include utility-mixins.generate-declaration-utilities($user-select-utilities);
 }

@@ -2,30 +2,48 @@
 // List Style Extended Properties
 // ============================================================================
 // list-style-image, list-style-position, list-style-type
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// List style position values
+$list-style-position-values: (
+  inside: inside,
+  outside: outside
+) !default;
+
+// List style type values
+$list-style-type-values: (
+  none: none,
+  disc: disc,
+  circle: circle,
+  square: square,
+  decimal: decimal,
+  "decimal-leading-zero": decimal-leading-zero,
+  "lower-roman": lower-roman,
+  "upper-roman": upper-roman,
+  "lower-alpha": lower-alpha,
+  "upper-alpha": upper-alpha
+) !default;
+
+// Build utilities maps
+$list-style-position-utilities: ();
+$list-style-type-utilities: ();
+
+@each $key, $value in $list-style-position-values {
+  $list-style-position-utilities: map.merge($list-style-position-utilities, ('list-#{$key}': (list-style-position: $value)));
+}
+
+@each $key, $value in $list-style-type-values {
+  $list-style-type-utilities: map.merge($list-style-type-utilities, ('list-#{$key}': (list-style-type: $value)));
+}
 
 @if settings.$enable-list-style-extended == true {
   // List style image
-  // ============================================================================
   .list-image-none { list-style-image: none; }
 
-  // List style position
-  // ============================================================================
-  .list-inside { list-style-position: inside; }
-  .list-outside { list-style-position: outside; }
-
-  // List style type
-  // ============================================================================
-  .list-none { list-style-type: none; }
-  .list-disc { list-style-type: disc; }
-  .list-circle { list-style-type: circle; }
-  .list-square { list-style-type: square; }
-  .list-decimal { list-style-type: decimal; }
-  .list-decimal-leading-zero { list-style-type: decimal-leading-zero; }
-  .list-lower-roman { list-style-type: lower-roman; }
-  .list-upper-roman { list-style-type: upper-roman; }
-  .list-lower-alpha { list-style-type: lower-alpha; }
-  .list-upper-alpha { list-style-type: upper-alpha; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($list-style-position-utilities);
+  @include utility-mixins.generate-declaration-utilities($list-style-type-utilities);
 }

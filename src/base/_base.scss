@@ -9,6 +9,8 @@
   border: 0 solid;
 }
 
+// Remove default focus outline, but only when :focus-visible is supported
+// This prevents focus rings on mouse click while preserving keyboard focus
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -175,4 +177,13 @@
 :where(:focus-visible) {
   outline: auto;
   outline-offset: 2px;
+}
+
+// Fallback for browsers that don't support :focus-visible
+// Per MDN: use @supports not selector(:focus-visible) for backward compatibility
+@supports not selector(:focus-visible) {
+  :focus {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
 }

@@ -2,15 +2,29 @@
 // Widows Properties
 // ============================================================================
 // widows
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Widows values
+$widows-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5
+) !default;
+
+// Build utilities map
+$widows-utilities: ();
+
+@each $key, $value in $widows-values {
+  $widows-utilities: map.merge($widows-utilities, ('widows-#{$key}': (widows: $value)));
+}
 
 @if settings.$enable-widows == true {
-  .widows-0 { widows: 0; }
-  .widows-1 { widows: 1; }
-  .widows-2 { widows: 2; }
-  .widows-3 { widows: 3; }
-  .widows-4 { widows: 4; }
-  .widows-5 { widows: 5; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($widows-utilities);
 }

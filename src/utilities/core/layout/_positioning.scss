@@ -1,96 +1,104 @@
 // ============================================================================
 // Positioning Utilities
 // ============================================================================
+// Generated from configuration maps in _custom-config.scss
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
 @use '../../../mixins/utilities' as utility-mixins;
 
-$positioning-utilities: (
-  static: (position: static),
-  fixed: (position: fixed),
-  absolute: (position: absolute),
-  relative: (position: relative),
-  sticky: (position: sticky),
-  inset-0: (inset: 0),
-  inset-auto: (inset: auto),
-  inset-y-0: (top: 0, bottom: 0),
-  inset-x-0: (right: 0, left: 0),
-  inset-y-auto: (top: auto, bottom: auto),
-  inset-x-auto: (right: auto, left: auto),
-  top-0: (top: 0),
-  top-auto: (top: auto),
-  top-1: (top: 0.25rem),
-  top-2: (top: 0.5rem),
-  top-3: (top: 0.75rem),
-  top-4: (top: 1rem),
-  top-5: (top: 1.25rem),
-  top-6: (top: 1.5rem),
-  top-8: (top: 2rem),
-  top-10: (top: 2.5rem),
-  top-12: (top: 3rem),
-  top-16: (top: 4rem),
-  top-20: (top: 5rem),
-  top-24: (top: 6rem),
-  'top-1\\/2': (top: 50%),
-  top-full: (top: 100%),
-  right-0: (right: 0),
-  right-auto: (right: auto),
-  right-1: (right: 0.25rem),
-  right-2: (right: 0.5rem),
-  right-3: (right: 0.75rem),
-  right-4: (right: 1rem),
-  right-5: (right: 1.25rem),
-  right-6: (right: 1.5rem),
-  right-8: (right: 2rem),
-  right-10: (right: 2.5rem),
-  right-12: (right: 3rem),
-  right-16: (right: 4rem),
-  right-20: (right: 5rem),
-  right-24: (right: 6rem),
-  'right-1\\/2': (right: 50%),
-  right-full: (right: 100%),
-  bottom-0: (bottom: 0),
-  bottom-auto: (bottom: auto),
-  bottom-1: (bottom: 0.25rem),
-  bottom-2: (bottom: 0.5rem),
-  bottom-3: (bottom: 0.75rem),
-  bottom-4: (bottom: 1rem),
-  bottom-5: (bottom: 1.25rem),
-  bottom-6: (bottom: 1.5rem),
-  bottom-8: (bottom: 2rem),
-  bottom-10: (bottom: 2.5rem),
-  bottom-12: (bottom: 3rem),
-  bottom-16: (bottom: 4rem),
-  bottom-20: (bottom: 5rem),
-  bottom-24: (bottom: 6rem),
-  'bottom-1\\/2': (bottom: 50%),
-  bottom-full: (bottom: 100%),
-  left-0: (left: 0),
-  left-auto: (left: auto),
-  left-1: (left: 0.25rem),
-  left-2: (left: 0.5rem),
-  left-3: (left: 0.75rem),
-  left-4: (left: 1rem),
-  left-5: (left: 1.25rem),
-  left-6: (left: 1.5rem),
-  left-8: (left: 2rem),
-  left-10: (left: 2.5rem),
-  left-12: (left: 3rem),
-  left-16: (left: 4rem),
-  left-20: (left: 5rem),
-  left-24: (left: 6rem),
-  'left-1\\/2': (left: 50%),
-  left-full: (left: 100%),
-  z-0: (z-index: 0),
-  z-10: (z-index: 10),
-  z-20: (z-index: 20),
-  z-30: (z-index: 30),
-  z-40: (z-index: 40),
-  z-50: (z-index: 50),
-  z-auto: (z-index: auto),
-  z-negative: (z-index: -1)
-) !default;
-
 @if settings.$enable-positioning == true {
+  // ============================================================================
+  // Build Positioning Utility Maps from Config
+  // ============================================================================
+
+  // Position type utilities
+  $position-type-utilities: (
+    static: (position: static),
+    fixed: (position: fixed),
+    absolute: (position: absolute),
+    relative: (position: relative),
+    sticky: (position: sticky),
+  );
+
+  // Inset utilities
+  $inset-utilities: (
+    inset-0: (inset: 0),
+    inset-auto: (inset: auto),
+    inset-y-0: (top: 0, bottom: 0),
+    inset-x-0: (right: 0, left: 0),
+    inset-y-auto: (top: auto, bottom: auto),
+    inset-x-auto: (right: auto, left: auto),
+  );
+
+  // Build spacing-based position utilities from settings.$spacing-scale
+  $position-spacing-keys: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
+  $top-utilities: ();
+  $right-utilities: ();
+  $bottom-utilities: ();
+  $left-utilities: ();
+
+  @each $key in $position-spacing-keys {
+    @if map.has-key(settings.$spacing-scale, $key) {
+      $top-utilities: map.merge($top-utilities, ('top-#{$key}': (top: var(--spacing-#{$key}))));
+      $right-utilities: map.merge($right-utilities, ('right-#{$key}': (right: var(--spacing-#{$key}))));
+      $bottom-utilities: map.merge($bottom-utilities, ('bottom-#{$key}': (bottom: var(--spacing-#{$key}))));
+      $left-utilities: map.merge($left-utilities, ('left-#{$key}': (left: var(--spacing-#{$key}))));
+    }
+  }
+
+  // Add auto and special values
+  $top-utilities: map.merge($top-utilities, (
+    top-auto: (top: auto),
+    'top-1\\/2': (top: 50%),
+    top-full: (top: 100%),
+  ));
+  $right-utilities: map.merge($right-utilities, (
+    right-auto: (right: auto),
+    'right-1\\/2': (right: 50%),
+    right-full: (right: 100%),
+  ));
+  $bottom-utilities: map.merge($bottom-utilities, (
+    bottom-auto: (bottom: auto),
+    'bottom-1\\/2': (bottom: 50%),
+    bottom-full: (bottom: 100%),
+  ));
+  $left-utilities: map.merge($left-utilities, (
+    left-auto: (left: auto),
+    'left-1\\/2': (left: 50%),
+    left-full: (left: 100%),
+  ));
+
+  // Z-index utilities - generated from settings.$z-index
+  $z-index-utilities: ();
+
+  @each $key, $value in settings.$z-index {
+    $z-index-utilities: map.merge($z-index-utilities, ('z-#{$key}': (z-index: var(--z-index-#{$key}))));
+  }
+
+  // Add negative z-index
+  $z-index-utilities: map.merge($z-index-utilities, (z-negative: (z-index: -1)));
+
+  // Combine all positioning utilities
+  $positioning-utilities: map.merge(
+    map.merge($position-type-utilities, $inset-utilities),
+    map.merge(
+      map.merge($top-utilities, $right-utilities),
+      map.merge($bottom-utilities, $left-utilities)
+    )
+  );
+  $positioning-utilities: map.merge($positioning-utilities, $z-index-utilities);
+
+  // ============================================================================
+  // Generate Utilities
+  // ============================================================================
+
+  // Base positioning utilities
   @include utility-mixins.generate-declaration-utilities($positioning-utilities);
+
+  // Responsive positioning utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $positioning-utilities,
+    settings.$breakpoints
+  );
 }

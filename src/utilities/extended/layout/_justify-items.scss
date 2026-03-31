@@ -6,12 +6,13 @@
 
 @if settings.$enable-justify-items == true {
   // Justify items (for grid containers)
+  // Note: 'auto' is not valid for justify-items, using 'normal' instead
   .justify-items-start { justify-items: start; }
   .justify-items-end { justify-items: end; }
   .justify-items-center { justify-items: center; }
   .justify-items-stretch { justify-items: stretch; }
   .justify-items-baseline { justify-items: baseline; }
-  .justify-items-auto { justify-items: auto; }
+  .justify-items-normal { justify-items: normal; }
 
   // Justify self (for grid/flex items)
   .justify-self-start { justify-self: start; }

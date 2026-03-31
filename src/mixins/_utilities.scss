@@ -7,6 +7,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
+@use 'sass:meta';
 @use '../config/custom-config' as settings;
 
 // ============================================================================
@@ -102,66 +103,42 @@
 // Output:
 //   .m-1 { margin: var(--spacing-1); }
 //   .m-2 { margin: var(--spacing-2); }
-//   .mt-1 { margin-top: var(--spacing-1); }
-//   etc.
 
-@mixin generate-spacing-utilities($prefix, $property, $var-map) {
-  // All sides
-  @each $name, $var-name in $var-map {
+@mixin generate-spacing-utilities($prefix, $property, $scale-map) {
+  @each $name, $var-name in $scale-map {
     .#{$prefix}-#{$name} {
       #{$property}: var(#{$var-name});
-    }
-  }
-
-  // Individual sides
-  $sides: (
-    t: top,
-    r: right,
-    b: bottom,
-    l: left
-  );
-
-  @each $side-abbr, $side-name in $sides {
-    @each $name, $var-name in $var-map {
-      .#{$prefix}#{$side-abbr}-#{$name} {
-        #{$property}-#{$side-name}: var(#{$var-name});
-      }
-    }
-  }
-
-  // X axis (left and right)
-  @each $name, $var-name in $var-map {
-    .#{$prefix}x-#{$name} {
-      #{$property}-left: var(#{$var-name});
-      #{$property}-right: var(#{$var-name});
-    }
-  }
-
-  // Y axis (top and bottom)
-  @each $name, $var-name in $var-map {
-    .#{$prefix}y-#{$name} {
-      #{$property}-top: var(#{$var-name});
-      #{$property}-bottom: var(#{$var-name});
     }
   }
 }
 
 // ============================================================================
-// Generate responsive utilities from CSS variables
+// Generate responsive utilities
 // ============================================================================
-// Creates responsive variants of utilities at all breakpoints
+// Creates responsive variants of utilities at specified breakpoints
 // Usage:
-//   @include generate-responsive-css-vars('text', 'font-size', (
-//     sm: '--font-size-sm',
-//     base: '--font-size-base'
-//   ));
+//   @include generate-responsive-utilities('m', 'margin', $scale, $breakpoints);
 
-@mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  @each $bp-name, $bp-value in settings.$breakpoints {
+@mixin generate-responsive-declaration-utilities($utilities-map, $breakpoints) {
+  @each $bp-name, $bp-value in $breakpoints {
     @media (min-width: $bp-value) {
-      @each $name, $var-name in $var-map {
-        .#{$bp-name}\:#{$class-name}-#{$name} {
-          #{$property}: var(#{$var-name});
+      @each $class-name, $declarations in $utilities-map {
+        .#{$bp-name}\:#{$class-name} {
+          @each $property, $value in $declarations {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-property-utilities($values-map, $property, $breakpoints, $class-prefix: '') {
+  @each $bp-name, $bp-value in $breakpoints {
+    @media (min-width: $bp-value) {
+      @each $name, $value in $values-map {
+        .#{$bp-name}\:#{$class-prefix}#{$name} {
+          #{$property}: $value;
         }
       }
     }
@@ -169,39 +146,117 @@
 }
 
 // ============================================================================
-// Generate dark mode utilities from CSS variables
+// Generate state utilities (hover, focus, active, etc.)
 // ============================================================================
-// Creates dark mode variants that swap colors automatically
+// Creates state variants of utilities
 // Usage:
-//   @include generate-dark-mode-utilities('primary', '--color-primary');
+//   @include generate-state-utilities($utilities-map, 'hover');
 
-@mixin generate-dark-mode-utilities($color-name, $var-name) {
-  @media (prefers-color-scheme: dark) {
-    .dark\:text-#{$color-name} {
-      color: var(#{$var-name});
-    }
-    .dark\:bg-#{$color-name} {
-      background-color: var(#{$var-name});
-    }
-    .dark\:border-#{$color-name} {
-      border-color: var(#{$var-name});
+@mixin generate-state-utilities($utilities-map, $state) {
+  @each $class-name, $declarations in $utilities-map {
+    .#{$state}\:#{$class-name}:#{$state} {
+      @each $property, $value in $declarations {
+        #{$property}: $value;
+      }
     }
   }
 }
 
 // ============================================================================
-// Generate opacity variants using color-mix()
+// Generate color utilities with states
 // ============================================================================
-// Creates opacity variants using CSS color-mix() function
-// This is more modern than rgba() and works with CSS variables
-// Usage:
-//   @include generate-opacity-variants('bg-primary', 'var(--color-primary)');
+// Creates color utilities with hover and focus states
 
-@mixin generate-opacity-variants($class-name, $color-var, $opacities: (0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95)) {
-  @each $opacity in $opacities {
-    .#{$class-name}\/#{$opacity} {
-      background-color: color-mix(in srgb, #{$color-var} #{$opacity * 1%}, transparent);
-    }
+@mixin generate-color-utilities-with-states($color-name, $var-name) {
+  @include generate-color-utilities($color-name, $var-name);
+
+  // Hover state
+  .hover\:text-#{$color-name}:hover {
+    color: var(#{$var-name});
+  }
+  .hover\:bg-#{$color-name}:hover {
+    background-color: var(#{$var-name});
+  }
+
+  // Focus state
+  .focus\:text-#{$color-name}:focus {
+    color: var(#{$var-name});
+  }
+  .focus\:bg-#{$color-name}:focus {
+    background-color: var(#{$var-name});
   }
 }
 
+// ============================================================================
+// Utility Map Helpers
+// ============================================================================
+
+/// Merge multiple utility maps into one
+/// @param {List} $maps - List of maps to merge
+/// @return {Map} - Merged map
+@function merge-utility-maps($maps...) {
+  $result: ();
+
+  @each $map in $maps {
+    $result: map.merge($result, $map);
+  }
+
+  @return $result;
+}
+
+/// Create a utility map from a scale map with a property prefix
+/// @param {Map} $scale - Scale map (e.g., spacing scale)
+/// @param {String} $property - CSS property
+/// @param {String} $class-prefix - Prefix for class names
+/// @return {Map} - Utility map ready for generation
+@function create-utility-map-from-scale($scale, $property, $class-prefix: '') {
+  $result: ();
+
+  @each $key, $value in $scale {
+    $class-name: $key;
+
+    @if $class-prefix != '' {
+      $class-name: '#{$class-prefix}-#{$key}';
+    }
+
+    $result: map.merge($result, ($class-name: ($property: $value)));
+  }
+
+  @return $result;
+}
+
+// ============================================================================
+// Keyframe Animation Mixins
+// ============================================================================
+
+/// Standard keyframe animations for utility classes
+/// Includes: spin, ping, pulse, bounce
+@mixin keyframe-animations {
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}

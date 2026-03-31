@@ -2,101 +2,134 @@
 // Active State Variants
 // ============================================================================
 
+@use 'sass:map';
 @use '../../config/custom-config' as settings;
-@use '../../mixins/dark-mode' as dm;
+@use '../../mixins/utilities' as utilities;
+
+// ============================================================================
+// Active State Utilities
+// ============================================================================
 
 @if settings.$enable-active == true {
-  // Active text color
-  .active\:text-primary:active { color: var(--color-primary); }
-  .active\:text-secondary:active { color: var(--color-secondary); }
-  .active\:text-success:active { color: var(--color-success); }
-  .active\:text-danger:active { color: var(--color-danger); }
-  .active\:text-warning:active { color: var(--color-warning); }
-  .active\:text-info:active { color: var(--color-info); }
-  .active\:text-white:active { color: var(--color-white); }
-  .active\:text-dark:active { color: var(--color-dark); }
+  // ============================================================================
+  // Active Text Colors
+  // ============================================================================
+  $active-text-utilities: (
+    'active\\:text-primary': (color: var(--color-primary)),
+    'active\\:text-secondary': (color: var(--color-secondary)),
+    'active\\:text-success': (color: var(--color-success)),
+    'active\\:text-danger': (color: var(--color-danger)),
+    'active\\:text-warning': (color: var(--color-warning)),
+    'active\\:text-info': (color: var(--color-info)),
+    'active\\:text-white': (color: var(--color-white)),
+    'active\\:text-dark': (color: var(--color-dark)),
+    'active\\:text-light': (color: var(--color-light)),
+    'active\\:text-black': (color: var(--color-black)),
+    'active\\:text-transparent': (color: transparent),
+    'active\\:text-current': (color: currentcolor),
+  );
 
-  // Active background color
-  .active\:bg-primary:active { background-color: var(--color-primary); }
-  .active\:bg-secondary:active { background-color: var(--color-secondary); }
-  .active\:bg-success:active { background-color: var(--color-success); }
-  .active\:bg-danger:active { background-color: var(--color-danger); }
-  .active\:bg-warning:active { background-color: var(--color-warning); }
-  .active\:bg-info:active { background-color: var(--color-info); }
-  .active\:bg-dark:active { background-color: var(--color-dark); }
+  @include utilities.generate-declaration-utilities($active-text-utilities);
 
-  // Active border color
-  .active\:border-primary:active { border-color: var(--color-primary); }
-  .active\:border-secondary:active { border-color: var(--color-secondary); }
-  .active\:border-success:active { border-color: var(--color-success); }
-  .active\:border-danger:active { border-color: var(--color-danger); }
-  .active\:border-warning:active { border-color: var(--color-warning); }
-  .active\:border-info:active { border-color: var(--color-info); }
+  // ============================================================================
+  // Active Background Colors
+  // ============================================================================
+  $active-bg-utilities: (
+    'active\\:bg-primary': ('background-color': var(--color-primary)),
+    'active\\:bg-secondary': ('background-color': var(--color-secondary)),
+    'active\\:bg-success': ('background-color': var(--color-success)),
+    'active\\:bg-danger': ('background-color': var(--color-danger)),
+    'active\\:bg-warning': ('background-color': var(--color-warning)),
+    'active\\:bg-info': ('background-color': var(--color-info)),
+    'active\\:bg-dark': ('background-color': var(--color-dark)),
+    'active\\:bg-light': ('background-color': var(--color-light)),
+    'active\\:bg-white': ('background-color': var(--color-white)),
+    'active\\:bg-black': ('background-color': var(--color-black)),
+    'active\\:bg-transparent': ('background-color': transparent),
+    'active\\:bg-current': ('background-color': currentcolor),
+  );
 
-  // Active scale
-  .active\:scale-90:active { transform: scale(0.9); }
-  .active\:scale-95:active { transform: scale(0.95); }
-  .active\:scale-100:active { transform: scale(1); }
-  .active\:scale-105:active { transform: scale(1.05); }
+  @include utilities.generate-declaration-utilities($active-bg-utilities);
 
-  // Active translate
-  .active\:-translate-y-1:active { transform: translateY(-0.25rem); }
-  .active\:-translate-y-2:active { transform: translateY(-0.5rem); }
-  .active\:translate-y-1:active { transform: translateY(0.25rem); }
-  .active\:translate-y-2:active { transform: translateY(0.5rem); }
+  // ============================================================================
+  // Active Border Colors
+  // ============================================================================
+  $active-border-utilities: (
+    'active\\:border-primary': ('border-color': var(--color-primary)),
+    'active\\:border-secondary': ('border-color': var(--color-secondary)),
+    'active\\:border-success': ('border-color': var(--color-success)),
+    'active\\:border-danger': ('border-color': var(--color-danger)),
+    'active\\:border-warning': ('border-color': var(--color-warning)),
+    'active\\:border-info': ('border-color': var(--color-info)),
+    'active\\:border-transparent': ('border-color': transparent),
+    'active\\:border-current': ('border-color': currentcolor),
+  );
 
-  // Active shadow
-  .active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
-  .active\:shadow:active { box-shadow: var(--shadow-base); }
-  .active\:shadow-md:active { box-shadow: var(--shadow-md); }
-  .active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
-  .active\:shadow-none:active { box-shadow: none; }
+  @include utilities.generate-declaration-utilities($active-border-utilities);
 
-  // Active opacity
-  .active\:opacity-0:active { opacity: 0; }
-  .active\:opacity-25:active { opacity: 0.25; }
-  .active\:opacity-50:active { opacity: 0.5; }
-  .active\:opacity-75:active { opacity: 0.75; }
-  .active\:opacity-100:active { opacity: 1; }
+  // ============================================================================
+  // Active Transform Utilities
+  // ============================================================================
+  $active-transform-utilities: (
+    'active\\:scale-90': (transform: scale(0.9)),
+    'active\\:scale-95': (transform: scale(0.95)),
+    'active\\:scale-100': (transform: scale(1)),
+    'active\\:scale-105': (transform: scale(1.05)),
+    'active\\:-translate-y-1': (transform: translateY(-0.25rem)),
+    'active\\:-translate-y-2': (transform: translateY(-0.5rem)),
+    'active\\:translate-y-1': (transform: translateY(0.25rem)),
+    'active\\:translate-y-2': (transform: translateY(0.5rem)),
+  );
+
+  @include utilities.generate-declaration-utilities($active-transform-utilities);
+
+  // ============================================================================
+  // Active Shadow Utilities
+  // ============================================================================
+  $active-shadow-utilities: (
+    'active\\:shadow': ('box-shadow': var(--shadow-base)),
+    'active\\:shadow-sm': ('box-shadow': var(--shadow-sm)),
+    'active\\:shadow-md': ('box-shadow': var(--shadow-md)),
+    'active\\:shadow-lg': ('box-shadow': var(--shadow-lg)),
+    'active\\:shadow-xl': ('box-shadow': var(--shadow-xl)),
+    'active\\:shadow-none': ('box-shadow': none),
+  );
+
+  @include utilities.generate-declaration-utilities($active-shadow-utilities);
+
+  // ============================================================================
+  // Active Opacity Utilities
+  // ============================================================================
+  $active-opacity-utilities: ();
+
+  @each $name, $value in settings.$opacity-scale {
+    $active-opacity-utilities: map.merge($active-opacity-utilities, (
+      'active\\:opacity-#{$name}': (opacity: $value)
+    ));
+  }
+
+  @include utilities.generate-declaration-utilities($active-opacity-utilities);
 }
 
 // ============================================================================
-// Dark mode active states - TOP LEVEL to maintain (0,1,0) specificity
+// Dark Mode Active States
 // ============================================================================
 @if settings.$enable-active == true and settings.$enable-dark-mode == true {
-  @include dm.dark-mode {
-    // Dark mode active text colors
-    .dark\:active\:text-primary:active { color: var(--color-primary); }
-    .dark\:active\:text-secondary:active { color: var(--color-secondary); }
-    .dark\:active\:text-success:active { color: var(--color-success); }
-    .dark\:active\:text-danger:active { color: var(--color-danger); }
-    .dark\:active\:text-warning:active { color: var(--color-warning); }
-    .dark\:active\:text-info:active { color: var(--color-info); }
-    .dark\:active\:text-white:active { color: var(--color-black); }
-    .dark\:active\:text-dark:active { color: var(--color-dark); }
+  @media (prefers-color-scheme: dark) {
+    // Dark mode active text colors (swapped light/dark, white/black)
+    $dark-active-text-utilities: (
+      'dark\\:active\\:text-white': (color: var(--color-black)),
+      'dark\\:active\\:text-dark': (color: var(--color-light)),
+    );
+
+    @include utilities.generate-declaration-utilities($dark-active-text-utilities);
 
     // Dark mode active background colors
-    .dark\:active\:bg-primary:active { background-color: var(--color-primary); }
-    .dark\:active\:bg-secondary:active { background-color: var(--color-secondary); }
-    .dark\:active\:bg-success:active { background-color: var(--color-success); }
-    .dark\:active\:bg-danger:active { background-color: var(--color-danger); }
-    .dark\:active\:bg-warning:active { background-color: var(--color-warning); }
-    .dark\:active\:bg-info:active { background-color: var(--color-info); }
-    .dark\:active\:bg-dark:active { background-color: var(--color-dark); }
+    $dark-active-bg-utilities: (
+      'dark\\:active\\:bg-white': ('background-color': var(--color-black)),
+      'dark\\:active\\:bg-dark': ('background-color': var(--color-light)),
+    );
 
-    // Dark mode active border colors
-    .dark\:active\:border-primary:active { border-color: var(--color-primary); }
-    .dark\:active\:border-secondary:active { border-color: var(--color-secondary); }
-    .dark\:active\:border-success:active { border-color: var(--color-success); }
-    .dark\:active\:border-danger:active { border-color: var(--color-danger); }
-    .dark\:active\:border-warning:active { border-color: var(--color-warning); }
-    .dark\:active\:border-info:active { border-color: var(--color-info); }
-
-    // Dark mode active shadows
-    .dark\:active\:shadow-sm:active { box-shadow: var(--shadow-sm); }
-    .dark\:active\:shadow:active { box-shadow: var(--shadow-base); }
-    .dark\:active\:shadow-md:active { box-shadow: var(--shadow-md); }
-    .dark\:active\:shadow-lg:active { box-shadow: var(--shadow-lg); }
-    .dark\:active\:shadow-none:active { box-shadow: none; }
+    @include utilities.generate-declaration-utilities($dark-active-bg-utilities);
   }
 }
