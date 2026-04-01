@@ -4,18 +4,30 @@
 // overscroll-behavior-block, overscroll-behavior-inline
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Overscroll behavior values (fixed CSS keywords)
+$overscroll-behavior-values: (
+  auto: auto,
+  contain: contain,
+  none: none
+) !default;
+
+// Build utilities map
+$overscroll-behavior-extended-utilities: ();
+
+// Add overscroll-behavior-block utilities
+@each $key, $value in $overscroll-behavior-values {
+  $overscroll-behavior-extended-utilities: map.merge($overscroll-behavior-extended-utilities, ('overscroll-block-#{$key}': (overscroll-behavior-block: $value)));
+}
+
+// Add overscroll-behavior-inline utilities
+@each $key, $value in $overscroll-behavior-values {
+  $overscroll-behavior-extended-utilities: map.merge($overscroll-behavior-extended-utilities, ('overscroll-inline-#{$key}': (overscroll-behavior-inline: $value)));
+}
 
 @if settings.$enable-overscroll-behavior-extended == true {
-  // Overscroll behavior block
-  // ============================================================================
-  .overscroll-block-auto { overscroll-behavior-block: auto; }
-  .overscroll-block-contain { overscroll-behavior-block: contain; }
-  .overscroll-block-none { overscroll-behavior-block: none; }
-
-  // Overscroll behavior inline
-  // ============================================================================
-  .overscroll-inline-auto { overscroll-behavior-inline: auto; }
-  .overscroll-inline-contain { overscroll-behavior-inline: contain; }
-  .overscroll-inline-none { overscroll-behavior-inline: none; }
+  @include utility-mixins.generate-declaration-utilities($overscroll-behavior-extended-utilities);
 }

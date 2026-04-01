@@ -2,12 +2,11 @@
 // Text Decoration Extended Properties
 // ============================================================================
 // text-decoration-color, text-decoration-line, text-decoration-style, text-decoration-thickness
-// ============================================================================
 
 @use '../../../config/custom-config' as settings;
 
 @if settings.$enable-text-decoration-extended == true {
-  // Text decoration color
+  // Text decoration color - using theme CSS custom properties
   // ============================================================================
   .decoration-current { text-decoration-color: currentcolor; }
   .decoration-transparent { text-decoration-color: transparent; }
@@ -22,26 +21,44 @@
 
   // Text decoration line
   // ============================================================================
-  .decoration-none { text-decoration-line: none; }
-  .decoration-underline { text-decoration-line: underline; }
-  .decoration-overline { text-decoration-line: overline; }
-  .decoration-line-through { text-decoration-line: line-through; }
+  $text-decoration-lines: (
+    none: none,
+    underline: underline,
+    overline: overline,
+    "line-through": line-through
+  );
+
+  @each $key, $value in $text-decoration-lines {
+    .decoration-#{$key} { text-decoration-line: #{$value}; }
+  }
 
   // Text decoration style
   // ============================================================================
-  .decoration-solid { text-decoration-style: solid; }
-  .decoration-double { text-decoration-style: double; }
-  .decoration-dotted { text-decoration-style: dotted; }
-  .decoration-dashed { text-decoration-style: dashed; }
-  .decoration-wavy { text-decoration-style: wavy; }
+  $text-decoration-styles: (
+    solid: solid,
+    double: double,
+    dotted: dotted,
+    dashed: dashed,
+    wavy: wavy
+  );
+
+  @each $key, $value in $text-decoration-styles {
+    .decoration-#{$key} { text-decoration-style: #{$value}; }
+  }
 
   // Text decoration thickness
   // ============================================================================
-  .decoration-auto { text-decoration-thickness: auto; }
-  .decoration-from-font { text-decoration-thickness: from-font; }
-  .decoration-0 { text-decoration-thickness: 0; }
-  .decoration-1 { text-decoration-thickness: 1px; }
-  .decoration-2 { text-decoration-thickness: 2px; }
-  .decoration-4 { text-decoration-thickness: 4px; }
-  .decoration-8 { text-decoration-thickness: 8px; }
+  $text-decoration-thickness: (
+    auto: auto,
+    "from-font": from-font,
+    0: 0,
+    1: 1px,
+    2: 2px,
+    4: 4px,
+    8: 8px
+  );
+
+  @each $key, $value in $text-decoration-thickness {
+    .decoration-#{$key} { text-decoration-thickness: #{$value}; }
+  }
 }

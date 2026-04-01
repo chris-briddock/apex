@@ -5,18 +5,26 @@
 @use '../../../config/custom-config' as settings;
 
 @if settings.$enable-overscroll-behavior == true {
+  // Overscroll behavior values
+  // ============================================================================
+  $overscroll-behaviors: (
+    auto: auto,
+    contain: contain,
+    none: none
+  );
+
   // Overscroll behavior
-  .overscroll-auto { overscroll-behavior: auto; }
-  .overscroll-contain { overscroll-behavior: contain; }
-  .overscroll-none { overscroll-behavior: none; }
+  @each $key, $value in $overscroll-behaviors {
+    .overscroll-#{$key} { overscroll-behavior: #{$value}; }
+  }
 
   // Overscroll behavior x
-  .overscroll-x-auto { overscroll-behavior-x: auto; }
-  .overscroll-x-contain { overscroll-behavior-x: contain; }
-  .overscroll-x-none { overscroll-behavior-x: none; }
+  @each $key, $value in $overscroll-behaviors {
+    .overscroll-x-#{$key} { overscroll-behavior-x: #{$value}; }
+  }
 
   // Overscroll behavior y
-  .overscroll-y-auto { overscroll-behavior-y: auto; }
-  .overscroll-y-contain { overscroll-behavior-y: contain; }
-  .overscroll-y-none { overscroll-behavior-y: none; }
+  @each $key, $value in $overscroll-behaviors {
+    .overscroll-y-#{$key} { overscroll-behavior-y: #{$value}; }
+  }
 }

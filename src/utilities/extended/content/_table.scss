@@ -2,22 +2,48 @@
 // Table Layout Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Table layout values
+$table-layout-values: (
+  auto: auto,
+  fixed: fixed
+) !default;
+
+// Border collapse values
+$border-collapse-values: (
+  collapse: collapse,
+  separate: separate
+) !default;
+
+// Empty cells values
+$empty-cells-values: (
+  show: show,
+  hide: hide
+) !default;
+
+// Build utilities maps
+$table-layout-utilities: ();
+$border-collapse-utilities: ();
+$empty-cells-utilities: ();
+
+@each $key, $value in $table-layout-values {
+  $table-layout-utilities: map.merge($table-layout-utilities, ('table-#{$key}': (table-layout: $value)));
+}
+
+@each $key, $value in $border-collapse-values {
+  $border-collapse-utilities: map.merge($border-collapse-utilities, ('border-#{$key}': (border-collapse: $value)));
+}
+
+@each $key, $value in $empty-cells-values {
+  $empty-cells-utilities: map.merge($empty-cells-utilities, ('empty-cells-#{$key}': (empty-cells: $value)));
+}
 
 @if settings.$enable-table == true {
-  // Table layout
-  .table-auto { table-layout: auto; }
-  .table-fixed { table-layout: fixed; }
-
-  // Border collapse
-  .border-collapse { border-collapse: collapse; }
-  .border-separate { border-collapse: separate; }
-
-  // Caption side
-  .caption-top { caption-side: top; }
-  .caption-bottom { caption-side: bottom; }
-
-  // Empty cells
-  .empty-cells-show { empty-cells: show; }
-  .empty-cells-hide { empty-cells: hide; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($table-layout-utilities);
+  @include utility-mixins.generate-declaration-utilities($border-collapse-utilities);
+  @include utility-mixins.generate-declaration-utilities($empty-cells-utilities);
 }

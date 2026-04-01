@@ -10,8 +10,9 @@
   .hang-none { hanging-punctuation: none; }
   .hang-first { hanging-punctuation: first; }
   .hang-last { hanging-punctuation: last; }
-  .hang-force-end { hanging-punctuation: force-end; }
-  .hang-force-start { hanging-punctuation: force-start; }
   .hang-allow-end { hanging-punctuation: allow-end; }
-  .hang-allow-start { hanging-punctuation: allow-start; }
+  .hang-first-last { hanging-punctuation: first last; }
+  .hang-first-allow-end { hanging-punctuation: first allow-end; }
+  .hang-last-allow-end { hanging-punctuation: last allow-end; }
+  .hang-first-last-allow-end { hanging-punctuation: first allow-end last; }
 }

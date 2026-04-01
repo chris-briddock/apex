@@ -156,24 +156,24 @@ $breakpoint-ultra: 7680px !default;
 
 // Breakpoints map for SCSS iteration
 $breakpoints: (
-  sm: 320px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  xxl: 2560px,
-  xxxl: 3840px,
-  ultra: 7680px
+  "sm": 320px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "xxl": 2560px,
+  "xxxl": 3840px,
+  "ultra": 7680px
 ) !default;
 
 // Breakpoint prefixes for responsive class names
 $breakpoint-prefixes: (
-  sm: sm,
-  md: md,
-  lg: lg,
-  xl: xl,
-  xxl: xxl,
-  xxxl: xxxl,
-  ultra: ultra
+  "sm": sm,
+  "md": md,
+  "lg": lg,
+  "xl": xl,
+  "xxl": xxl,
+  "xxxl": xxxl,
+  "ultra": ultra
 ) !default;
 
 // Alias for backwards compatibility
@@ -218,6 +218,268 @@ $spacing-scale: (
   1.5: 0.375rem,
   2.5: 0.625rem,
   3.5: 0.875rem
+) !default;
+
+// ============================================================================
+// Fractional Widths - Percentage-based width utilities
+// ============================================================================
+$fractional-widths: (
+  "1\\/2": 50%,
+  "1\\/3": 33.3333%,
+  "2\\/3": 66.6667%,
+  "1\\/4": 25%,
+  "2\\/4": 50%,
+  "3\\/4": 75%,
+  "1\\/5": 20%,
+  "2\\/5": 40%,
+  "3\\/5": 60%,
+  "4\\/5": 80%,
+  "1\\/6": 16.6667%,
+  "2\\/6": 33.3333%,
+  "3\\/6": 50%,
+  "4\\/6": 66.6667%,
+  "5\\/6": 83.3333%,
+  "1\\/12": 8.3333%,
+  "2\\/12": 16.6667%,
+  "3\\/12": 25%,
+  "4\\/12": 33.3333%,
+  "5\\/12": 41.6667%,
+  "6\\/12": 50%,
+  "7\\/12": 58.3333%,
+  "8\\/12": 66.6667%,
+  "9\\/12": 75%,
+  "10\\/12": 83.3333%,
+  "11\\/12": 91.6667%
+) !default;
+
+// ============================================================================
+// Column Configuration - CSS Multi-Column Layout
+// ============================================================================
+$column-counts: (
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+) !default;
+$column-widths: (
+  "xs": 20rem,
+  "sm": 24rem,
+  "md": 28rem,
+  "lg": 32rem,
+  "xl": 36rem,
+  "2xl": 42rem,
+  "3xl": 48rem,
+  "4xl": 56rem,
+  "5xl": 64rem,
+  "6xl": 72rem,
+  "7xl": 80rem
+) !default;
+$column-rule-styles: (
+  "solid": solid,
+  "dashed": dashed,
+  "dotted": dotted,
+  "double": double,
+  "none": none
+) !default;
+$column-rule-widths: (
+  "0": 0px,
+  "2": 2px,
+  "4": 4px,
+  "8": 8px,
+  "default": 1px
+) !default;
+
+// ============================================================================
+// Text Shadow Values
+// ============================================================================
+$text-shadow-values: (
+  "none": "none",
+  "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+  "default": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+  "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+  "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+  "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+  "inner": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)"
+) !default;
+
+// ============================================================================
+// Blend Modes - CSS blend modes configuration
+// ============================================================================
+$blend-modes: (
+  "normal": normal,
+  "multiply": multiply,
+  "screen": screen,
+  "overlay": overlay,
+  "darken": darken,
+  "lighten": lighten,
+  "color-dodge": color-dodge,
+  "color-burn": color-burn,
+  "hard-light": hard-light,
+  "soft-light": soft-light,
+  "difference": difference,
+  "exclusion": exclusion,
+  "hue": hue,
+  "saturation": saturation,
+  "color": color,
+  "luminosity": luminosity
+) !default;
+
+// ============================================================================
+// Filter Configuration
+// ============================================================================
+$filter-blur-values: (
+  "0": 0,
+  "default": 8px,
+  "sm": 4px,
+  "md": 12px,
+  "lg": 16px,
+  "xl": 24px,
+  "2xl": 40px,
+  "3xl": 64px
+) !default;
+$filter-brightness-values: (
+  "0": 0,
+  "50": 0.5,
+  "75": 0.75,
+  "90": 0.9,
+  "95": 0.95,
+  "100": 1,
+  "105": 1.05,
+  "110": 1.1,
+  "125": 1.25,
+  "150": 1.5,
+  "200": 2
+) !default;
+$filter-contrast-values: (
+  "0": 0,
+  "50": 0.5,
+  "75": 0.75,
+  "100": 1,
+  "125": 1.25,
+  "150": 1.5,
+  "200": 2
+) !default;
+$filter-grayscale-values: (
+  "0": 0,
+  "default": 100%
+) !default;
+$filter-hue-rotate-values: (
+  "0": 0deg,
+  "15": 15deg,
+  "30": 30deg,
+  "60": 60deg,
+  "90": 90deg,
+  "180": 180deg
+) !default;
+$filter-invert-values: (
+  "0": 0,
+  "default": 100%
+) !default;
+$filter-saturate-values: (
+  "0": 0,
+  "50": 0.5,
+  "100": 1,
+  "150": 1.5,
+  "200": 2
+) !default;
+$filter-sepia-values: (
+  "0": 0,
+  "default": 100%
+) !default;
+$drop-shadow-values: (
+  "none": "0 0 #0000",
+  "default": "0 1px 2px 0 rgb(0 0 0 / 0.1)",
+  "sm": "0 1px 1px 0 rgb(0 0 0 / 0.05)",
+  "md": "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+  "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+  "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1)",
+  "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)"
+) !default;
+$backdrop-opacity-values: (
+  "0": 0,
+  "25": 0.25,
+  "50": 0.5,
+  "75": 0.75,
+  "100": 1
+) !default;
+
+// ============================================================================
+// Ring Widths - Focus ring widths
+// ============================================================================
+$ring-widths: (
+  "0": 0px,
+  "1": 1px,
+  "2": 2px,
+  "4": 4px,
+  "8": 8px,
+  "default": 3px
+) !default;
+
+// ============================================================================
+// Ring Colors - Focus ring colors
+// ============================================================================
+$ring-colors: (
+  "inherit": inherit,
+  "current": currentcolor,
+  "transparent": transparent,
+  "white": #fff,
+  "black": #000,
+  "primary": var(--color-primary-500),
+  "gray": var(--color-gray-500)
+) !default;
+
+// ============================================================================
+// Ring Opacity - Focus ring opacity values
+// ============================================================================
+$ring-opacity-values: (
+  "0": 0,
+  "5": 0.05,
+  "10": 0.1,
+  "20": 0.2,
+  "25": 0.25,
+  "30": 0.3,
+  "40": 0.4,
+  "50": 0.5,
+  "60": 0.6,
+  "70": 0.7,
+  "75": 0.75,
+  "80": 0.8,
+  "90": 0.9,
+  "95": 0.95,
+  "100": 1
+) !default;
+
+// ============================================================================
+// Outline Widths - Focus outline widths
+// ============================================================================
+$outline-widths: (
+  "0": 0px,
+  "1": 1px,
+  "2": 2px,
+  "4": 4px,
+  "8": 8px,
+  "default": 3px
+) !default;
+
+// ============================================================================
+// Outline Offsets
+// ============================================================================
+$outline-offsets: (
+  "0": 0px,
+  "1": 1px,
+  "2": 2px,
+  "4": 4px,
+  "8": 8px,
+  "default": 0px
 ) !default;
 
 // ============================================================================
@@ -399,30 +661,74 @@ $color-danger: $color-danger-500 !default;
 $color-info: $color-info-500 !default;
 
 // ============================================================================
+// Color Scale Maps (for programmatic utility generation)
+// ============================================================================
+
+// Color shades used for scale generation
+$color-shades: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) !default;
+
+// Color families for utility generation
+$color-families: (
+  "gray": "gray",
+  "primary": "primary",
+  "success": "success",
+  "warning": "warning",
+  "danger": "danger",
+  "info": "info",
+  "blue": "blue",
+  "green": "green",
+  "red": "red",
+  "yellow": "yellow",
+  "purple": "purple",
+  "orange": "orange",
+  "teal": "teal",
+  "pink": "pink"
+) !default;
+
+// Background opacity values for color modifiers
+$bg-opacity-values: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100) !default;
+
+// Gradient color stops
+$gradient-colors: (
+  "primary": "primary",
+  "secondary": "secondary",
+  "success": "success",
+  "danger": "danger",
+  "warning": "warning",
+  "info": "info",
+  "light": "light",
+  "dark": "dark",
+  "white": "white",
+  "black": "black",
+  "transparent": "transparent",
+  "current": "current"
+) !default;
+
+// ============================================================================
 // Typography - Font families, sizes, weights, and spacing
 // ============================================================================
 // Font Families
 $font-families: (
-  sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
-  serif: "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
-  mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+  "sans": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+  "serif": "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
+  "mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
 ) !default;
 
 // Font Sizes
 $font-sizes: (
-  xs: 0.75rem,
-  sm: 0.875rem,
-  base: 1rem,
-  lg: 1.125rem,
-  xl: 1.25rem,
-  2xl: 1.5rem,
-  3xl: 1.875rem,
-  4xl: 2.25rem,
-  5xl: 3rem,
-  6xl: 3.75rem,
-  7xl: 4.5rem,
-  8xl: 6rem,
-  9xl: 8rem
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "base": 1rem,
+  "lg": 1.125rem,
+  "xl": 1.25rem,
+  "2xl": 1.5rem,
+  "3xl": 1.875rem,
+  "4xl": 2.25rem,
+  "5xl": 3rem,
+  "6xl": 3.75rem,
+  "7xl": 4.5rem,
+  "8xl": 6rem,
+  "9xl": 8rem
 ) !default;
 
 // Font Weights
@@ -440,51 +746,51 @@ $font-weights: (
 
 // Letter Spacing
 $letter-spacing: (
-  tighter: -0.05em,
-  tight: -0.025em,
-  normal: 0em,
-  wide: 0.025em,
-  wider: 0.05em,
-  widest: 0.1em
+  "tighter": -0.05em,
+  "tight": -0.025em,
+  "normal": 0em,
+  "wide": 0.025em,
+  "wider": 0.05em,
+  "widest": 0.1em
 ) !default;
 
 // Line Heights
 $line-heights: (
-  none: 1,
-  tight: 1.25,
-  snug: 1.375,
-  normal: 1.5,
-  relaxed: 1.625,
-  loose: 2
+  "none": 1,
+  "tight": 1.25,
+  "snug": 1.375,
+  "normal": 1.5,
+  "relaxed": 1.625,
+  "loose": 2
 ) !default;
 
 // ============================================================================
 // Border Radius - Corner roundness values
 // ============================================================================
 $border-radius-scale: (
-  none: 0,
-  sm: 0.125rem,
-  default: 0.25rem,
-  md: 0.375rem,
-  lg: 0.5rem,
-  xl: 0.75rem,
-  2xl: 1rem,
-  3xl: 1.5rem,
-  full: 9999px
+  "none": 0,
+  "sm": 0.125rem,
+  "default": 0.25rem,
+  "md": 0.375rem,
+  "lg": 0.5rem,
+  "xl": 0.75rem,
+  "2xl": 1rem,
+  "3xl": 1.5rem,
+  "full": 9999px
 ) !default;
 
 // ============================================================================
 // Shadows - Box shadow values
 // ============================================================================
 $shadows: (
-  sm: 0 1px 2px 0 rgb(0 0 0 / 0.05),
-  default: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-  md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-  lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-  xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-  2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25),
-  inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05),
-  none: none
+  "sm": 0 1px 2px 0 rgb(0 0 0 / 0.05),
+  "default": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+  "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+  "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+  "2xl": 0 25px 50px -12px rgb(0 0 0 / 0.25),
+  "inner": inset 0 2px 4px 0 rgb(0 0 0 / 0.05),
+  "none": none
 ) !default;
 
 // ============================================================================
@@ -492,36 +798,36 @@ $shadows: (
 // ============================================================================
 // Transition Durations
 $transition-duration: (
-  75: 75ms,
-  100: 100ms,
-  150: 150ms,
-  200: 200ms,
-  300: 300ms,
-  500: 500ms,
-  700: 700ms,
-  1000: 1000ms
+  "75": 75ms,
+  "100": 100ms,
+  "150": 150ms,
+  "200": 200ms,
+  "300": 300ms,
+  "500": 500ms,
+  "700": 700ms,
+  "1000": 1000ms
 ) !default;
 
 // Transition Timing Functions
 $transition-timing: (
-  linear: linear,
-  default: cubic-bezier(0.4, 0, 0.2, 1),
-  in: cubic-bezier(0.4, 0, 1, 1),
-  out: cubic-bezier(0, 0, 0.2, 1),
-  in-out: cubic-bezier(0.4, 0, 0.2, 1)
+  "linear": linear,
+  "default": cubic-bezier(0.4, 0, 0.2, 1),
+  "in": cubic-bezier(0.4, 0, 1, 1),
+  "out": cubic-bezier(0, 0, 0.2, 1),
+  "in-out": cubic-bezier(0.4, 0, 0.2, 1)
 ) !default;
 
 // ============================================================================
 // Z-Index - Stacking order values
 // ============================================================================
 $z-index: (
-  0: 0,
-  10: 10,
-  20: 20,
-  30: 30,
-  40: 40,
-  50: 50,
-  auto: auto
+  "0": 0,
+  "10": 10,
+  "20": 20,
+  "30": 30,
+  "40": 40,
+  "50": 50,
+  "auto": auto
 ) !default;
 
 // ============================================================================
@@ -543,6 +849,31 @@ $opacity-scale: (
   90: 0.9,
   95: 0.95,
   100: 1
+) !default;
+
+// ============================================================================
+// Divide Configuration
+// ============================================================================
+$divide-widths: (
+  "0": 0px,
+  "1": 1px,
+  "2": 2px,
+  "4": 4px,
+  "8": 8px
+) !default;
+$divide-colors: (
+  "current": currentcolor,
+  "transparent": transparent,
+  "primary": var(--color-primary-500),
+  "secondary": var(--color-secondary-500),
+  "gray": var(--color-gray-500)
+) !default;
+$divide-styles: (
+  "solid": solid,
+  "dashed": dashed,
+  "dotted": dotted,
+  "double": double,
+  "none": none
 ) !default;
 
 // ============================================================================

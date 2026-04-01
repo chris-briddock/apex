@@ -2,23 +2,41 @@
 // Counter Properties
 // ============================================================================
 // counter-increment, counter-reset, counter-set
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Counter values
+$counter-values: (
+  increment: list-item,
+  "increment-none": none,
+  reset: list-item,
+  "reset-none": none,
+  set: list-item,
+  "set-none": none
+) !default;
+
+// Build utilities maps
+$counter-increment-utilities: ();
+$counter-reset-utilities: ();
+$counter-set-utilities: ();
+
+// Counter increment utilities
+$counter-increment-utilities: map.merge($counter-increment-utilities, ('counter-increment': (counter-increment: list-item)));
+$counter-increment-utilities: map.merge($counter-increment-utilities, ('counter-increment-none': (counter-increment: none)));
+
+// Counter reset utilities
+$counter-reset-utilities: map.merge($counter-reset-utilities, ('counter-reset': (counter-reset: list-item)));
+$counter-reset-utilities: map.merge($counter-reset-utilities, ('counter-reset-none': (counter-reset: none)));
+
+// Counter set utilities
+$counter-set-utilities: map.merge($counter-set-utilities, ('counter-set': (counter-set: list-item)));
+$counter-set-utilities: map.merge($counter-set-utilities, ('counter-set-none': (counter-set: none)));
 
 @if settings.$enable-counter == true {
-  // Counter increment
-  // ============================================================================
-  .counter-increment { counter-increment: list-item; }
-  .counter-increment-none { counter-increment: none; }
-
-  // Counter reset
-  // ============================================================================
-  .counter-reset { counter-reset: list-item; }
-  .counter-reset-none { counter-reset: none; }
-
-  // Counter set
-  // ============================================================================
-  .counter-set { counter-set: list-item; }
-  .counter-set-none { counter-set: none; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($counter-increment-utilities);
+  @include utility-mixins.generate-declaration-utilities($counter-reset-utilities);
+  @include utility-mixins.generate-declaration-utilities($counter-set-utilities);
 }

@@ -1,0 +1,63 @@
+// ============================================================================
+// Motion Preference Utilities
+// ============================================================================
+// Per MDN: Respect user's preference for reduced motion at the OS level
+// This provides both global resets and utility classes for motion control
+
+@use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utilities;
+
+// ============================================================================
+// Motion Preference Configuration Maps
+// ============================================================================
+// Motion reduce utilities (prefixed with motion-reduce:)
+// Applied when user prefers reduced motion
+$motion-reduce-utilities: (
+  'motion-reduce:animate-none': (animation: none),
+  'motion-reduce:transition-none': (transition: none),
+  'motion-reduce:transform-none': (transform: none),
+) !default;
+
+// Motion safe utilities (prefixed with motion-safe:)
+// Applied when user has no preference for reduced motion
+$motion-safe-utilities: (
+  'motion-safe:animate-none': (animation: none),
+  'motion-safe:transition-none': (transition: none),
+  'motion-safe:transform-none': (transform: none),
+) !default;
+
+// ============================================================================
+// Generate Motion Utilities
+// ============================================================================
+
+@if settings.$enable-accessibility == true {
+  // Motion reduce utilities - applied when user prefers reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    @include utilities.generate-declaration-utilities($motion-reduce-utilities);
+  }
+
+  // Motion safe utilities - applied when user has no motion preference
+  @media (prefers-reduced-motion: no-preference) {
+    @include utilities.generate-declaration-utilities($motion-safe-utilities);
+  }
+}
+
+// ============================================================================
+// Global Reduced Motion Reset
+// ============================================================================
+// Per MDN: This global rule disables animations and transitions for users
+// who prefer reduced motion at the OS level. This addresses vestibular
+// disorder accessibility concerns and prevents motion-induced discomfort.
+// Using 0.01ms instead of 0ms allows any animationend events to still fire
+// if JavaScript depends on them, while being effectively instant.
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

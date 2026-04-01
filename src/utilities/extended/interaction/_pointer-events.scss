@@ -2,9 +2,24 @@
 // Pointer Events Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Pointer events values
+$pointer-events-values: (
+  none: none,
+  auto: auto
+) !default;
+
+// Build utilities map
+$pointer-events-utilities: ();
+
+@each $key, $value in $pointer-events-values {
+  $pointer-events-utilities: map.merge($pointer-events-utilities, ('pointer-events-#{$key}': (pointer-events: $value)));
+}
 
 @if settings.$enable-interaction == true {
-  .pointer-events-none { pointer-events: none; }
-  .pointer-events-auto { pointer-events: auto; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($pointer-events-utilities);
 }

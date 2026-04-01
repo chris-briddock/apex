@@ -2,17 +2,31 @@
 // Zoom Properties
 // ============================================================================
 // zoom
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Zoom values
+$zoom-values: (
+  normal: normal,
+  50: 0.5,
+  75: 0.75,
+  100: 1,
+  125: 1.25,
+  150: 1.5,
+  200: 2,
+  300: 3
+) !default;
+
+// Build utilities map
+$zoom-utilities: ();
+
+@each $key, $value in $zoom-values {
+  $zoom-utilities: map.merge($zoom-utilities, ('zoom-#{$key}': (zoom: $value)));
+}
 
 @if settings.$enable-zoom == true {
-  .zoom-normal { zoom: normal; }
-  .zoom-50 { zoom: 0.5; }
-  .zoom-75 { zoom: 0.75; }
-  .zoom-100 { zoom: 1; }
-  .zoom-125 { zoom: 1.25; }
-  .zoom-150 { zoom: 1.5; }
-  .zoom-200 { zoom: 2; }
-  .zoom-300 { zoom: 3; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($zoom-utilities);
 }

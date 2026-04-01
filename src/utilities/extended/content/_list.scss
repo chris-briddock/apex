@@ -5,31 +5,47 @@
 @use '../../../config/custom-config' as settings;
 
 @if settings.$enable-list == true {
-  // List style type
-  .list-none { list-style-type: none; }
-  .list-disc { list-style-type: disc; }
-  .list-decimal { list-style-type: decimal; }
-  .list-circle { list-style-type: circle; }
-  .list-square { list-style-type: square; }
-  .list-decimal-leading-zero { list-style-type: decimal-leading-zero; }
-  .list-lower-roman { list-style-type: lower-roman; }
-  .list-upper-roman { list-style-type: upper-roman; }
-  .list-lower-alpha { list-style-type: lower-alpha; }
-  .list-upper-alpha { list-style-type: upper-alpha; }
-  .list-lower-latin { list-style-type: lower-latin; }
-  .list-upper-latin { list-style-type: upper-latin; }
-  .list-lower-greek { list-style-type: lower-greek; }
-  .list-armenian { list-style-type: armenian; }
-  .list-georgian { list-style-type: georgian; }
+  // List style types
+  // ============================================================================
+  $list-style-types: (
+    none: none,
+    disc: disc,
+    decimal: decimal,
+    circle: circle,
+    square: square,
+    "decimal-leading-zero": decimal-leading-zero,
+    "lower-roman": lower-roman,
+    "upper-roman": upper-roman,
+    "lower-alpha": lower-alpha,
+    "upper-alpha": upper-alpha,
+    "lower-latin": lower-latin,
+    "upper-latin": upper-latin,
+    "lower-greek": lower-greek,
+    armenian: armenian,
+    georgian: georgian
+  );
 
-  // List style position
-  .list-inside { list-style-position: inside; }
-  .list-outside { list-style-position: outside; }
+  @each $key, $value in $list-style-types {
+    .list-#{$key} { list-style-type: #{$value}; }
+  }
+
+  // List style positions
+  // ============================================================================
+  $list-style-positions: (
+    inside: inside,
+    outside: outside
+  );
+
+  @each $key, $value in $list-style-positions {
+    .list-#{$key} { list-style-position: #{$value}; }
+  }
 
   // List style image (utility for none)
+  // ============================================================================
   .list-image-none { list-style-image: none; }
 
-  // Marker
+  // Marker colors - using theme CSS custom properties
+  // ============================================================================
   .marker-color-primary { --list-marker-color: var(--color-primary); }
   .marker-color-secondary { --list-marker-color: var(--color-secondary); }
   .marker-color-success { --list-marker-color: var(--color-success); }

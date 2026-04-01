@@ -2,39 +2,69 @@
 // Scroll Snap Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Scroll snap align values (fixed CSS keywords)
+$snap-align-values: (
+  align-none: none,
+  align-start: start,
+  align-end: end,
+  align-center: center,
+  // Backwards-compatible aliases
+  start: start,
+  end: end,
+  center: center
+) !default;
+
+// Scroll snap stop values (fixed CSS keywords)
+$snap-stop-values: (
+  stop-normal: normal,
+  stop-always: always,
+  // Backwards-compatible aliases
+  normal: normal,
+  always: always
+) !default;
+
+// Scroll snap type values (fixed CSS keywords)
+// Note: mandatory and proximity must be paired with an axis (x, y, or both)
+$snap-type-values: (
+  none: none,
+  x: x mandatory,
+  y: y mandatory,
+  both: both mandatory,
+  x-proximity: x proximity,
+  y-proximity: y proximity,
+  both-proximity: both proximity
+) !default;
+
+// Build utilities map
+$snap-utilities: ();
+
+// Add scroll-snap-align utilities
+@each $key, $value in $snap-align-values {
+  @if $key == 'align-none' or $key == 'align-start' or $key == 'align-end' or $key == 'align-center' {
+    $snap-utilities: map.merge($snap-utilities, ('snap-#{$key}': (scroll-snap-align: $value)));
+  } @else {
+    $snap-utilities: map.merge($snap-utilities, ('snap-#{$key}': (scroll-snap-align: $value)));
+  }
+}
+
+// Add scroll-snap-stop utilities
+@each $key, $value in $snap-stop-values {
+  @if $key == 'stop-normal' or $key == 'stop-always' {
+    $snap-utilities: map.merge($snap-utilities, ('snap-#{$key}': (scroll-snap-stop: $value)));
+  } @else {
+    $snap-utilities: map.merge($snap-utilities, ('snap-#{$key}': (scroll-snap-stop: $value)));
+  }
+}
+
+// Add scroll-snap-type utilities
+@each $key, $value in $snap-type-values {
+  $snap-utilities: map.merge($snap-utilities, ('snap-#{$key}': (scroll-snap-type: $value)));
+}
 
 @if settings.$enable-scroll == true {
-  // Scroll snap align
-  // ============================================================================
-  .snap-align-none { scroll-snap-align: none; }
-  .snap-align-start { scroll-snap-align: start; }
-  .snap-align-end { scroll-snap-align: end; }
-  .snap-align-center { scroll-snap-align: center; }
-
-  // Backwards-compatible aliases
-  .snap-start { scroll-snap-align: start; }
-  .snap-end { scroll-snap-align: end; }
-  .snap-center { scroll-snap-align: center; }
-
-  // Scroll snap stop
-  // ============================================================================
-  .snap-stop-normal { scroll-snap-stop: normal; }
-  .snap-stop-always { scroll-snap-stop: always; }
-
-  // Backwards-compatible aliases
-  .snap-normal { scroll-snap-stop: normal; }
-  .snap-always { scroll-snap-stop: always; }
-
-  // Scroll snap type
-  // ============================================================================
-  .snap-none { scroll-snap-type: none; }
-  .snap-x { scroll-snap-type: x mandatory; }
-  .snap-y { scroll-snap-type: y mandatory; }
-  .snap-both { scroll-snap-type: both mandatory; }
-  .snap-x-proximity { scroll-snap-type: x proximity; }
-  .snap-y-proximity { scroll-snap-type: y proximity; }
-  .snap-both-proximity { scroll-snap-type: both proximity; }
-  .snap-mandatory { scroll-snap-type: mandatory; }
-  .snap-proximity { scroll-snap-type: proximity; }
+  @include utility-mixins.generate-declaration-utilities($snap-utilities);
 }

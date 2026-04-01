@@ -17,12 +17,13 @@
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
 @use '../../../mixins/dark-mode' as dm;
+@use '../../functions' as func;
 
 @if settings.$enable-logical-properties == true {
   // ============================================================================
-  // Logical Spacing Scale
+  // Logical Spacing Scale - using settings.$spacing-scale
   // ============================================================================
-  $spacing-keys: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, px);
+  $spacing-keys: map.keys(settings.$spacing-scale);
 
   // ============================================================================
   // Logical Margins
@@ -31,29 +32,31 @@
     // Inline axis margins (replaces mx-*)
     @each $key in $spacing-keys {
       $var-name: null;
+      $escaped-key: func.escape-class-name($key);
 
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
         $var-name: var(--spacing-#{$key});
       }
-      .mi-#{$key} { margin-inline: #{$var-name}; }
-      .mis-#{$key} { margin-inline-start: #{$var-name}; }
-      .mie-#{$key} { margin-inline-end: #{$var-name}; }
+      .mi-#{$escaped-key} { margin-inline: #{$var-name}; }
+      .mis-#{$escaped-key} { margin-inline-start: #{$var-name}; }
+      .mie-#{$escaped-key} { margin-inline-end: #{$var-name}; }
     }
 
     // Block axis margins (replaces my-*)
     @each $key in $spacing-keys {
       $var-name: null;
+      $escaped-key: func.escape-class-name($key);
 
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
         $var-name: var(--spacing-#{$key});
       }
-      .mb-#{$key} { margin-block: #{$var-name}; }
-      .mbs-#{$key} { margin-block-start: #{$var-name}; }
-      .mbe-#{$key} { margin-block-end: #{$var-name}; }
+      .mb-#{$escaped-key} { margin-block: #{$var-name}; }
+      .mbs-#{$escaped-key} { margin-block-start: #{$var-name}; }
+      .mbe-#{$escaped-key} { margin-block-end: #{$var-name}; }
     }
 
     // Auto margins
@@ -70,29 +73,31 @@
     // Inline axis padding (replaces px-*)
     @each $key in $spacing-keys {
       $var-name: null;
+      $escaped-key: func.escape-class-name($key);
 
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
         $var-name: var(--spacing-#{$key});
       }
-      .pi-#{$key} { padding-inline: #{$var-name}; }
-      .pis-#{$key} { padding-inline-start: #{$var-name}; }
-      .pie-#{$key} { padding-inline-end: #{$var-name}; }
+      .pi-#{$escaped-key} { padding-inline: #{$var-name}; }
+      .pis-#{$escaped-key} { padding-inline-start: #{$var-name}; }
+      .pie-#{$escaped-key} { padding-inline-end: #{$var-name}; }
     }
 
     // Block axis padding (replaces py-*)
     @each $key in $spacing-keys {
       $var-name: null;
+      $escaped-key: func.escape-class-name($key);
 
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
         $var-name: var(--spacing-#{$key});
       }
-      .pb-#{$key} { padding-block: #{$var-name}; }
-      .pbs-#{$key} { padding-block-start: #{$var-name}; }
-      .pbe-#{$key} { padding-block-end: #{$var-name}; }
+      .pb-#{$escaped-key} { padding-block: #{$var-name}; }
+      .pbs-#{$escaped-key} { padding-block-start: #{$var-name}; }
+      .pbe-#{$escaped-key} { padding-block-end: #{$var-name}; }
     }
 
     // ============================================================================
@@ -107,10 +112,11 @@
       // Border width logical
       @each $key in $spacing-keys {
         @if $key != px {
-          .bis-#{$key} { border-inline-start-width: var(--spacing-#{$key}); }
-          .bie-#{$key} { border-inline-end-width: var(--spacing-#{$key}); }
-          .bbs-#{$key} { border-block-start-width: var(--spacing-#{$key}); }
-          .bbe-#{$key} { border-block-end-width: var(--spacing-#{$key}); }
+          $escaped-key: func.escape-class-name($key);
+          .bis-#{$escaped-key} { border-inline-start-width: var(--spacing-#{$key}); }
+          .bie-#{$escaped-key} { border-inline-end-width: var(--spacing-#{$key}); }
+          .bbs-#{$escaped-key} { border-block-start-width: var(--spacing-#{$key}); }
+          .bbe-#{$escaped-key} { border-block-end-width: var(--spacing-#{$key}); }
         }
       }
     }
@@ -145,7 +151,7 @@
 
     .min-bs-full { min-block-size: 100%; }
     .min-bs-min { min-block-size: min-content; }
-    .min-bs-max { min-block-size: max-content; }
+    .min-bs-max { max-block-size: max-content; }
     .min-bs-screen { min-block-size: 100vh; }
     .max-bs-full { max-block-size: 100%; }
     .max-bs-min { max-block-size: min-content; }
@@ -159,6 +165,7 @@
   @if settings.$enable-positioning == true {
     @each $key in $spacing-keys {
       $var-name: null;
+      $escaped-key: func.escape-class-name($key);
 
       @if $key == px {
         $var-name: 'var(--spacing-px)';
@@ -167,14 +174,14 @@
       }
 
       // Inline insets
-      .inset-i-#{$key} { inset-inline: #{$var-name}; }
-      .inset-is-#{$key} { inset-inline-start: #{$var-name}; }
-      .inset-ie-#{$key} { inset-inline-end: #{$var-name}; }
+      .inset-i-#{$escaped-key} { inset-inline: #{$var-name}; }
+      .inset-is-#{$escaped-key} { inset-inline-start: #{$var-name}; }
+      .inset-ie-#{$escaped-key} { inset-inline-end: #{$var-name}; }
 
       // Block insets
-      .inset-b-#{$key} { inset-block: #{$var-name}; }
-      .inset-bs-#{$key} { inset-block-start: #{$var-name}; }
-      .inset-be-#{$key} { inset-block-end: #{$var-name}; }
+      .inset-b-#{$escaped-key} { inset-block: #{$var-name}; }
+      .inset-bs-#{$escaped-key} { inset-block-start: #{$var-name}; }
+      .inset-be-#{$escaped-key} { inset-block-end: #{$var-name}; }
     }
 
     // Auto insets
@@ -196,6 +203,7 @@
       // Responsive logical margins
       @each $key in $spacing-keys {
         $var-name: null;
+        $escaped-key: func.escape-class-name($key);
 
         @if $key == px {
           $var-name: 'var(--spacing-px)';
@@ -203,20 +211,20 @@
           $var-name: var(--spacing-#{$key});
         }
 
-        .#{$bp-class}\:mi-#{$key} { margin-inline: #{$var-name}; }
-        .#{$bp-class}\:mis-#{$key} { margin-inline-start: #{$var-name}; }
-        .#{$bp-class}\:mie-#{$key} { margin-inline-end: #{$var-name}; }
-        .#{$bp-class}\:mb-#{$key} { margin-block: #{$var-name}; }
-        .#{$bp-class}\:mbs-#{$key} { margin-block-start: #{$var-name}; }
-        .#{$bp-class}\:mbe-#{$key} { margin-block-end: #{$var-name}; }
+        .#{$bp-class}\:mi-#{$escaped-key} { margin-inline: #{$var-name}; }
+        .#{$bp-class}\:mis-#{$escaped-key} { margin-inline-start: #{$var-name}; }
+        .#{$bp-class}\:mie-#{$escaped-key} { margin-inline-end: #{$var-name}; }
+        .#{$bp-class}\:mb-#{$escaped-key} { margin-block: #{$var-name}; }
+        .#{$bp-class}\:mbs-#{$escaped-key} { margin-block-start: #{$var-name}; }
+        .#{$bp-class}\:mbe-#{$escaped-key} { margin-block-end: #{$var-name}; }
 
         // Responsive logical padding
-        .#{$bp-class}\:pi-#{$key} { padding-inline: #{$var-name}; }
-        .#{$bp-class}\:pis-#{$key} { padding-inline-start: #{$var-name}; }
-        .#{$bp-class}\:pie-#{$key} { padding-inline-end: #{$var-name}; }
-        .#{$bp-class}\:pb-#{$key} { padding-block: #{$var-name}; }
-        .#{$bp-class}\:pbs-#{$key} { padding-block-start: #{$var-name}; }
-        .#{$bp-class}\:pbe-#{$key} { padding-block-end: #{$var-name}; }
+        .#{$bp-class}\:pi-#{$escaped-key} { padding-inline: #{$var-name}; }
+        .#{$bp-class}\:pis-#{$escaped-key} { padding-inline-start: #{$var-name}; }
+        .#{$bp-class}\:pie-#{$escaped-key} { padding-inline-end: #{$var-name}; }
+        .#{$bp-class}\:pb-#{$escaped-key} { padding-block: #{$var-name}; }
+        .#{$bp-class}\:pbs-#{$escaped-key} { padding-block-start: #{$var-name}; }
+        .#{$bp-class}\:pbe-#{$escaped-key} { padding-block-end: #{$var-name}; }
       }
 
       // Responsive logical sizing
@@ -225,16 +233,6 @@
       .#{$bp-class}\:bs-auto { block-size: auto; }
       .#{$bp-class}\:bs-full { block-size: 100%; }
       .#{$bp-class}\:min-bs-screen { min-block-size: 100vh; }
-    }
-  }
-
-  // ============================================================================
-  // Dark Mode Logical Utilities
-  // ============================================================================
-  @if settings.$enable-dark-mode == true {
-    @include dm.dark-mode {
-      .dark\:is-full { inline-size: 100%; }
-      .dark\:bs-full { block-size: 100%; }
     }
   }
 }

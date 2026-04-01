@@ -2,17 +2,32 @@
 // Touch Action Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Touch action values (fixed CSS keywords)
+$touch-values: (
+  auto: auto,
+  none: none,
+  pan-x: pan-x,
+  pan-left: pan-left,
+  pan-right: pan-right,
+  pan-y: pan-y,
+  pan-up: pan-up,
+  pan-down: pan-down,
+  pinch-zoom: pinch-zoom,
+  manipulation: manipulation
+) !default;
+
+// Build utilities map
+
+$touch-utilities: ();
+
+@each $key, $value in $touch-values {
+  $touch-utilities: map.merge($touch-utilities, ('touch-#{$key}': (touch-action: $value)));
+}
 
 @if settings.$enable-interaction == true {
-  .touch-auto { touch-action: auto; }
-  .touch-none { touch-action: none; }
-  .touch-pan-x { touch-action: pan-x; }
-  .touch-pan-left { touch-action: pan-left; }
-  .touch-pan-right { touch-action: pan-right; }
-  .touch-pan-y { touch-action: pan-y; }
-  .touch-pan-up { touch-action: pan-up; }
-  .touch-pan-down { touch-action: pan-down; }
-  .touch-pinch-zoom { touch-action: pinch-zoom; }
-  .touch-manipulation { touch-action: manipulation; }
+  @include utility-mixins.generate-declaration-utilities($touch-utilities);
 }

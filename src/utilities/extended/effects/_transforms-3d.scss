@@ -1,42 +1,88 @@
 // ============================================================================
 // 3D Transform Utilities
-// Backface visibility, perspective, perspective-origin, transform-style
 // ============================================================================
+// Backface visibility, perspective, perspective-origin, transform-style
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Backface visibility values
+$backface-visibility-values: (
+  visible: visible,
+  hidden: hidden
+) !default;
+
+// Perspective values
+$perspective-values: (
+  none: none,
+  dramatic: 100px,
+  near: 300px,
+  normal: 500px,
+  midrange: 800px,
+  distant: 1200px
+) !default;
+
+// Perspective origin values
+$perspective-origin-values: (
+  center: center,
+  top: top,
+  "top-right": top right,
+  right: right,
+  "bottom-right": bottom right,
+  bottom: bottom,
+  "bottom-left": bottom left,
+  left: left,
+  "top-left": top left
+) !default;
+
+// Transform style values
+$transform-style-values: (
+  "3d": preserve-3d,
+  flat: flat
+) !default;
+
+// Transform box values
+$transform-box-values: (
+  "border-box": border-box,
+  "fill-box": fill-box,
+  "content-box": content-box,
+  "stroke-box": stroke-box,
+  "view-box": view-box
+) !default;
+
+// Build utilities maps
+$backface-visibility-utilities: ();
+$perspective-utilities: ();
+$perspective-origin-utilities: ();
+$transform-style-utilities: ();
+$transform-box-utilities: ();
+
+@each $key, $value in $backface-visibility-values {
+  $backface-visibility-utilities: map.merge($backface-visibility-utilities, ('backface-#{$key}': (backface-visibility: $value)));
+}
+
+@each $key, $value in $perspective-values {
+  $perspective-utilities: map.merge($perspective-utilities, ('perspective-#{$key}': (perspective: $value)));
+}
+
+@each $key, $value in $perspective-origin-values {
+  $perspective-origin-utilities: map.merge($perspective-origin-utilities, ('perspective-origin-#{$key}': (perspective-origin: $value)));
+}
+
+@each $key, $value in $transform-style-values {
+  $transform-style-utilities: map.merge($transform-style-utilities, ('transform-#{$key}': (transform-style: $value)));
+}
+
+@each $key, $value in $transform-box-values {
+  $transform-box-utilities: map.merge($transform-box-utilities, ('transform-box-#{$key}': (transform-box: $value)));
+}
 
 @if settings.$enable-transforms3d == true {
-  // Backface visibility
-  .backface-visible { backface-visibility: visible; }
-  .backface-hidden { backface-visibility: hidden; }
-
-  // Perspective
-  .perspective-none { perspective: none; }
-  .perspective-dramatic { perspective: 100px; }
-  .perspective-near { perspective: 300px; }
-  .perspective-normal { perspective: 500px; }
-  .perspective-midrange { perspective: 800px; }
-  .perspective-distant { perspective: 1200px; }
-
-  // Perspective origin
-  .perspective-origin-center { perspective-origin: center; }
-  .perspective-origin-top { perspective-origin: top; }
-  .perspective-origin-top-right { perspective-origin: top right; }
-  .perspective-origin-right { perspective-origin: right; }
-  .perspective-origin-bottom-right { perspective-origin: bottom right; }
-  .perspective-origin-bottom { perspective-origin: bottom; }
-  .perspective-origin-bottom-left { perspective-origin: bottom left; }
-  .perspective-origin-left { perspective-origin: left; }
-  .perspective-origin-top-left { perspective-origin: top left; }
-
-  // Transform style
-  .transform-3d { transform-style: preserve-3d; }
-  .transform-flat { transform-style: flat; }
-
-  // Transform box
-  .transform-box-border-box { transform-box: border-box; }
-  .transform-box-fill-box { transform-box: fill-box; }
-  .transform-box-content-box { transform-box: content-box; }
-  .transform-box-stroke-box { transform-box: stroke-box; }
-  .transform-box-view-box { transform-box: view-box; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($backface-visibility-utilities);
+  @include utility-mixins.generate-declaration-utilities($perspective-utilities);
+  @include utility-mixins.generate-declaration-utilities($perspective-origin-utilities);
+  @include utility-mixins.generate-declaration-utilities($transform-style-utilities);
+  @include utility-mixins.generate-declaration-utilities($transform-box-utilities);
 }

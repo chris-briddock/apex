@@ -4,27 +4,22 @@
 // These mixins generate utility classes using CSS custom properties
 // for runtime customization and theming support.
 
-@use 'sass:list';
 @use 'sass:map';
-@use 'sass:string';
-@use '../config/custom-config' as settings;
 
 // ============================================================================
-// Generate utilities from plain value maps
+// Generate declaration utilities
 // ============================================================================
+// Generates utility classes from a map of class names to declaration maps.
+// This is the primary mixin used throughout the framework.
 // Usage:
-//   @include generate-property-utilities((block: block, hidden: none), 'display');
+//   $utilities: (
+//     flex: (display: flex),
+//     hidden: (display: none)
+//   );
+//   @include generate-declaration-utilities($utilities);
 // Output:
-//   .block { display: block; }
+//   .flex { display: flex; }
 //   .hidden { display: none; }
-
-@mixin generate-property-utilities($values-map, $property, $class-prefix: '') {
-  @each $name, $value in $values-map {
-    .#{$class-prefix}#{$name} {
-      #{$property}: $value;
-    }
-  }
-}
 
 @mixin generate-declaration-utilities($utilities-map, $class-prefix: '') {
   @each $class-name, $declarations in $utilities-map {
@@ -36,132 +31,31 @@
   }
 }
 
-// Generate print-only hidden utility for compatibility with existing API
-@mixin generate-print-hidden-utility($class-name: 'no-print') {
-  @media print {
-    .#{$class-name} {
-      display: none !important;
-    }
-  }
-}
-
 // ============================================================================
-// Generate utilities from a CSS variable map
+// Generate utility map with optional prefix
 // ============================================================================
-// This mixin creates utility classes that reference CSS custom properties
-// instead of hardcoded values, enabling runtime theming.
+// Used by accessibility mixins to generate prefixed utilities.
+// The prefix is added with a dash separator.
 // Usage:
-//   @include generate-from-css-vars('text', 'font-size', (
-//     sm: '--font-size-sm',
-//     base: '--font-size-base'
-//   ));
+//   $utilities: (
+//     'transition-none': (transition: none)
+//   );
+//   @include generate-utility-map($utilities, $prefix: 'motion-reduce');
 // Output:
-//   .text-sm { font-size: var(--font-size-sm); }
-//   .text-base { font-size: var(--font-size-base); }
+//   .motion-reduce-transition-none { transition: none; }
 
-@mixin generate-from-css-vars($class-name, $property, $var-map, $prefix: '') {
-  @each $name, $var-name in $var-map {
-    .#{$prefix}#{$class-name}-#{$name} {
-      #{$property}: var(#{$var-name});
-    }
-  }
-}
-
-// ============================================================================
-// Generate color utilities from CSS variables
-// ============================================================================
-// Creates text, background, and border color utilities using CSS custom properties
-// Usage:
-//   @include generate-color-utilities('primary', '--color-primary');
-// Output:
-//   .text-primary { color: var(--color-primary); }
-//   .bg-primary { background-color: var(--color-primary); }
-//   .border-primary { border-color: var(--color-primary); }
-
-@mixin generate-color-utilities($color-name, $var-name) {
-  .text-#{$color-name} {
-    color: var(#{$var-name});
-  }
-  .bg-#{$color-name} {
-    background-color: var(#{$var-name});
-  }
-  .border-#{$color-name} {
-    border-color: var(#{$var-name});
-  }
-}
-
-// ============================================================================
-// Generate spacing utilities from CSS variables
-// ============================================================================
-// Creates margin and padding utilities using CSS custom properties
-// Usage:
-//   @include generate-spacing-utilities('m', 'margin', (
-//     1: '--spacing-1',
-//     2: '--spacing-2'
-//   ));
-// Output:
-//   .m-1 { margin: var(--spacing-1); }
-//   .m-2 { margin: var(--spacing-2); }
-//   .mt-1 { margin-top: var(--spacing-1); }
-//   etc.
-
-@mixin generate-spacing-utilities($prefix, $property, $var-map) {
-  // All sides
-  @each $name, $var-name in $var-map {
-    .#{$prefix}-#{$name} {
-      #{$property}: var(#{$var-name});
-    }
-  }
-
-  // Individual sides
-  $sides: (
-    t: top,
-    r: right,
-    b: bottom,
-    l: left
-  );
-
-  @each $side-abbr, $side-name in $sides {
-    @each $name, $var-name in $var-map {
-      .#{$prefix}#{$side-abbr}-#{$name} {
-        #{$property}-#{$side-name}: var(#{$var-name});
+@mixin generate-utility-map($utilities-map, $prefix: '') {
+  @each $class-name, $declarations in $utilities-map {
+    @if $prefix != '' {
+      .#{$prefix}-#{$class-name} {
+        @each $property, $value in $declarations {
+          #{$property}: $value;
+        }
       }
-    }
-  }
-
-  // X axis (left and right)
-  @each $name, $var-name in $var-map {
-    .#{$prefix}x-#{$name} {
-      #{$property}-left: var(#{$var-name});
-      #{$property}-right: var(#{$var-name});
-    }
-  }
-
-  // Y axis (top and bottom)
-  @each $name, $var-name in $var-map {
-    .#{$prefix}y-#{$name} {
-      #{$property}-top: var(#{$var-name});
-      #{$property}-bottom: var(#{$var-name});
-    }
-  }
-}
-
-// ============================================================================
-// Generate responsive utilities from CSS variables
-// ============================================================================
-// Creates responsive variants of utilities at all breakpoints
-// Usage:
-//   @include generate-responsive-css-vars('text', 'font-size', (
-//     sm: '--font-size-sm',
-//     base: '--font-size-base'
-//   ));
-
-@mixin generate-responsive-css-vars($class-name, $property, $var-map) {
-  @each $bp-name, $bp-value in settings.$breakpoints {
-    @media (min-width: $bp-value) {
-      @each $name, $var-name in $var-map {
-        .#{$bp-name}\:#{$class-name}-#{$name} {
-          #{$property}: var(#{$var-name});
+    } @else {
+      .#{$class-name} {
+        @each $property, $value in $declarations {
+          #{$property}: $value;
         }
       }
     }
@@ -169,39 +63,64 @@
 }
 
 // ============================================================================
-// Generate dark mode utilities from CSS variables
+// Generate responsive utilities
 // ============================================================================
-// Creates dark mode variants that swap colors automatically
+// Creates responsive variants of utilities at specified breakpoints.
+// Used throughout the framework for responsive utility generation.
 // Usage:
-//   @include generate-dark-mode-utilities('primary', '--color-primary');
+//   $utilities: (flex: (display: flex));
+//   $breakpoints: (sm: 640px, md: 768px);
+//   @include generate-responsive-declaration-utilities($utilities, $breakpoints);
+// Output:
+//   @media (min-width: 640px) { .sm\:flex { display: flex; } }
+//   @media (min-width: 768px) { .md\:flex { display: flex; } }
 
-@mixin generate-dark-mode-utilities($color-name, $var-name) {
-  @media (prefers-color-scheme: dark) {
-    .dark\:text-#{$color-name} {
-      color: var(#{$var-name});
-    }
-    .dark\:bg-#{$color-name} {
-      background-color: var(#{$var-name});
-    }
-    .dark\:border-#{$color-name} {
-      border-color: var(#{$var-name});
+@mixin generate-responsive-declaration-utilities($utilities-map, $breakpoints) {
+  @each $bp-name, $bp-value in $breakpoints {
+    @media (min-width: $bp-value) {
+      @each $class-name, $declarations in $utilities-map {
+        .#{$bp-name}\:#{$class-name} {
+          @each $property, $value in $declarations {
+            #{$property}: $value;
+          }
+        }
+      }
     }
   }
 }
 
 // ============================================================================
-// Generate opacity variants using color-mix()
+// Keyframe Animation Mixins
 // ============================================================================
-// Creates opacity variants using CSS color-mix() function
-// This is more modern than rgba() and works with CSS variables
-// Usage:
-//   @include generate-opacity-variants('bg-primary', 'var(--color-primary)');
+// Standard keyframe animations for utility classes.
+// Used by transitions module.
 
-@mixin generate-opacity-variants($class-name, $color-var, $opacities: (0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95)) {
-  @each $opacity in $opacities {
-    .#{$class-name}\/#{$opacity} {
-      background-color: color-mix(in srgb, #{$color-var} #{$opacity * 1%}, transparent);
+@mixin keyframe-animations {
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
 }
-

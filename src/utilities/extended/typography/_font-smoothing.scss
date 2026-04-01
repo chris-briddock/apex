@@ -1,0 +1,18 @@
+// ============================================================================
+// Font Smoothing Utilities
+// ============================================================================
+// -webkit-font-smoothing and -moz-osx-font-smoothing
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .subpixel-antialiased {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}

@@ -1,0 +1,24 @@
+// ============================================================================
+// Content Utilities
+// ============================================================================
+// content property for pseudo-elements
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .content-none {
+    content: 'none';
+  }
+
+  .content-before {
+    &::before {
+      content: 'before';
+    }
+  }
+
+  .content-after {
+    &::after {
+      content: 'after';
+    }
+  }
+}

@@ -2,6 +2,7 @@
 // Display Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
 @use '../../../mixins/utilities' as utility-mixins;
 
@@ -31,7 +32,20 @@ $display-values: (
   hidden: none
 ) !default;
 
+// Build display utilities map for responsive generation
+$display-utilities: ();
+
+@each $key, $value in $display-values {
+  $display-utilities: map.merge($display-utilities, ($key: (display: $value)));
+}
+
 @if settings.$enable-display == true {
-  // Base display utilities are generated from a shared mixin for consistency.
-  @include utility-mixins.generate-property-utilities($display-values, 'display');
+  // Base display utilities
+  @include utility-mixins.generate-declaration-utilities($display-utilities);
+
+  // Responsive display utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $display-utilities,
+    settings.$breakpoints
+  );
 }

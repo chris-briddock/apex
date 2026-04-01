@@ -71,5 +71,12 @@ $flexbox-utilities: (
 ) !default;
 
 @if settings.$enable-flexbox == true {
+  // Base flexbox utilities
   @include utility-mixins.generate-declaration-utilities($flexbox-utilities);
+
+  // Responsive flexbox utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $flexbox-utilities,
+    settings.$breakpoints
+  );
 }

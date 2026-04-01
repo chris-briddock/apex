@@ -1,6 +1,6 @@
 # ApexCSS Framework - LLM Documentation
-# Version: 0.3.5
-# Last Updated: 2026-03-27
+# Version: 0.3.7
+# Last Updated: 2026-03-31
 # Purpose: Comprehensive reference for AI/LLM consumption
 
 ================================================================================
@@ -21,7 +21,7 @@ KEY CHARACTERISTICS:
 - Full dark mode and RTL support
 - Accessibility-focused (screen readers, focus management, reduced motion)
 
-PROJECT STATUS: Pre-release (v0.3.5), actively developed
+PROJECT STATUS: Pre-release (v0.3.7), actively developed
 
 ================================================================================
 SECTION 2: QUICK START
@@ -883,12 +883,23 @@ SECTION 15: BUILD SYSTEM & ENTRY POINTS
 
 ENTRY FILES (src/):
 
-| Entry File             | Output File      | Contents                          |
-|------------------------|------------------|-----------------------------------|
-| src/main.scss          | dist/apex.css    | Complete framework (all modules)    |
-| src/entry-base.scss    | dist/base.css    | Base/reset styles only            |
-| src/entry-utilities.scss| dist/utilities.css | Utility classes only             |
-| src/entry-themes.scss  | dist/themes.css  | CSS custom properties only        |
+| Entry File              | Output File       | Contents                           |
+|-------------------------|-------------------|-----------------------------------|
+| src/main.scss           | dist/apex.css     | Complete framework (all modules)  |
+| src/entry-base.scss     | dist/base.css     | Base/reset styles only            |
+| src/entry-utilities.scss| dist/utilities.css| Utility classes only              |
+| src/entry-themes.scss   | dist/themes.css   | CSS custom properties only        |
+
+MODULE FORWARDING (src/utilities/core/_index.scss):
+    Core utilities are forwarded through _index.scss. When adding new utilities,
+    ensure they are @forward'd in the appropriate _index.scss file:
+    
+    Example:
+        @forward 'layout/display';    /* .block, .flex, .hidden, etc. */
+        @forward 'layout/flexbox';     /* .flex-row, .justify-center, etc. */
+        @forward 'layout/grid';        /* .grid-cols-*, .gap-*, etc. */
+        @forward 'layout/positioning'; /* .absolute, .fixed, .inset-*, etc. */
+        @forward 'layout/visibility';  /* .visible, .invisible, .collapse */
 
 NPM SCRIPTS:
     npm run build              /* Build complete framework */
@@ -915,12 +926,9 @@ src/
 │   ├── _custom-config.scss    /* Auto-generated (DO NOT EDIT) */
 │   └── _index.scss
 ├── mixins/                /* SCSS mixins */
-│   ├── _arbitrary.scss
-│   ├── _colors.scss
+│   ├── _accessibility.scss
 │   ├── _dark-mode.scss
 │   ├── _index.scss
-│   ├── _responsive-utilities.scss
-│   ├── _responsive.scss
 │   ├── _states.scss
 │   └── _utilities.scss
 ├── plugins/               /* Animation keyframes */
@@ -932,35 +940,36 @@ src/
 │   ├── _default.scss
 │   └── _index.scss
 └── utilities/             /* All utility classes */
+    ├── _functions.scss
     ├── _index.scss
-    ├── accessibility/     /* Focus, screen reader */
     ├── core/              /* Essential utilities */
-    │   ├── _index.scss
-    │   ├── _responsive.scss
-    │   ├── interaction/
-    │   ├── layout/
-    │   ├── spacing/
-    │   ├── typography/
-    │   └── visual/
+    │   ├── _index.scss    /* Forwards all core utilities */
+    │   ├── accessibility/ /* Focus, contrast, motion, screen-reader */
+    │   ├── interaction/   /* Cursor, transitions */
+    │   ├── layout/        /* Display, flexbox, grid, positioning, visibility */
+    │   ├── rtl/           /* Direction, spacing */
+    │   ├── spacing/       /* Margin, padding, sizing */
+    │   ├── typography/    /* Font utilities */
+    │   └── visual/        /* Backgrounds, borders, colors, shadows, opacity */
     ├── extended/          /* Advanced utilities */
-    │   ├── advanced/
-    │   ├── content/
-    │   ├── effects/
-    │   ├── interaction/
-    │   ├── layout/
-    │   ├── typography/
-    │   └── visual/
-    ├── rtl/               /* RTL-specific utilities */
-    └── states/            /* State variants (hover, focus) */
+    │   ├── _index.scss
+    │   ├── advanced/      /* Box, divide, logical-properties, svg, zoom */
+    │   ├── content/       /* Break, counter, list, quotes, table */
+    │   ├── effects/       /* Aspect-ratio, filters, transforms */
+    │   ├── interaction/   /* Caret, scroll, snap, touch, will-change */
+    │   ├── layout/        /* Columns, container-queries, float, isolation */
+    │   ├── typography/    /* Font-features, hyphens, text-wrap, word-break */
+    │   └── visual/        /* Accent-color, blend-modes, masks, ring, outline */
+    └── states/            /* State variants (hover, focus, active, disabled) */
 
 dist/                      /* Generated CSS output */
-├── apex.css               /* Complete framework */
-├── base.css               /* Base styles only */
-├── utilities.css          /* Utilities only */
-└── themes.css             /* Themes only */
+├── apex.css               /* Complete framework (~923KB) */
+├── base.css               /* Base styles only (~2.5KB) */
+├── utilities.css          /* Utilities only (~730KB) */
+└── themes.css             /* Themes only (~190KB) */
 
 tools/                     /* Build tools */
-├── config-builder.js      /* Generates SCSS from config */
+├── config-builder.js      /* Generates SCSS from apex.config.js */
 └── generate.js            /* Utility generators */
 
 docs/
@@ -1080,6 +1089,7 @@ ISSUE: Classes not applying
     - Verify dist/apex.css is built: npm run build
     - Check feature is enabled in apex.config.js
     - Check CSS is loaded: <link rel="stylesheet" href="...">
+    - Verify the utility module is forwarded in src/utilities/core/_index.scss
 
 ISSUE: Custom config not applying
     - Run: npm run config:build
@@ -1095,15 +1105,21 @@ ISSUE: Responsive utilities not working
     - Verify breakpoint syntax: md:flex (not md-flex)
     - Check breakpoints are defined in apex.config.js
 
+ISSUE: Missing utility classes after build
+    - Check src/utilities/core/_index.scss for missing @forward statements
+    - Each utility module must be forwarded to be included in the build
+    - Example: @forward 'layout/display'; @forward 'layout/visibility';
+
 ================================================================================
 SECTION 21: VERSION INFORMATION
 ================================================================================
 
-Current Version: 0.3.5
+Current Version: 0.3.7
 Status: Pre-release
 License: See LICENSE file
 
 CHANGELOG (Recent):
+    - v0.3.7: Big refactor, fixed missing display and visibility utility exports
     - v0.3.5: Extended utilities, improved configuration system
     - v0.3.0: Added 104 feature toggles
     - v0.2.0: OKLCH color system implementation

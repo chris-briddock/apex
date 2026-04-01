@@ -2,11 +2,25 @@
 // Caption Properties
 // ============================================================================
 // caption-side
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Caption side values
+$caption-side-values: (
+  top: top,
+  bottom: bottom
+) !default;
+
+// Build utilities map
+$caption-utilities: ();
+
+@each $key, $value in $caption-side-values {
+  $caption-utilities: map.merge($caption-utilities, ('caption-#{$key}': (caption-side: $value)));
+}
 
 @if settings.$enable-caption == true {
-  .caption-top { caption-side: top; }
-  .caption-bottom { caption-side: bottom; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($caption-utilities);
 }

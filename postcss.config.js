@@ -5,10 +5,6 @@ export default {
     // Use modern CSS features with automatic fallbacks and vendor prefixes
     postcssPresetEnv({
       stage: 2, // Use features at stage 2 or above
-      autoprefixer: {
-        grid: 'autoplace',
-        flexbox: 'no-2009'
-      },
       features: {
         'nesting-rules': true, // Enable CSS nesting
         'custom-media-queries': true,

@@ -20,7 +20,20 @@
 // ============================================================================
 // Typography Extended
 // ============================================================================
-@forward 'typography/typography-extended';
+// Basic typography utilities
+@forward 'typography/font-style';
+@forward 'typography/text-transform';
+@forward 'typography/text-decoration';
+@forward 'typography/whitespace';
+@forward 'typography/text-overflow';
+@forward 'typography/text-wrap';
+@forward 'typography/line-clamp';
+@forward 'typography/hyphens';
+@forward 'typography/font-smoothing';
+@forward 'typography/word-spacing';
+@forward 'typography/content';
+
+// Extended typography utilities
 @forward 'typography/font-extended';
 @forward 'typography/letter-spacing';
 @forward 'typography/line-height';
@@ -40,6 +53,10 @@
 @forward 'typography/word-wrap';
 @forward 'typography/writing-mode';
 @forward 'typography/unicode-bidi';
+
+// Font features (OpenType)
+@forward 'typography/font-features';
+@forward 'typography/font-variant-numeric';
 
 // ============================================================================
 // Visual Extended
@@ -98,7 +115,6 @@
 // ============================================================================
 // Advanced (Experimental, Specialized, Arbitrary)
 // ============================================================================
-@forward 'advanced/arbitrary';
 @forward 'advanced/logical-properties';
 @forward 'advanced/sizing-logical';
 @forward 'advanced/offset';

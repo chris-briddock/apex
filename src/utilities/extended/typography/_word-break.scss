@@ -1,14 +1,18 @@
 // ============================================================================
 // Word Break Properties
 // ============================================================================
-// word-break
+// word-break and overflow-wrap for text breaking behavior
 // ============================================================================
 
 @use '../../../config/custom-config' as settings;
 
 @if settings.$enable-word-break == true {
-  .break-normal { word-break: normal; }
-  .break-words { word-break: words; }
+  // break-normal sets both overflow-wrap and word-break to normal
+  .break-normal {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
   .break-all { word-break: break-all; }
   .break-keep { word-break: keep-all; }
 }

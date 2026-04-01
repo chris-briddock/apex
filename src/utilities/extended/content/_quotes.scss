@@ -2,14 +2,28 @@
 // Quotes Properties
 // ============================================================================
 // quotes
-// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Quotes values
+$quotes-values: (
+  auto: auto,
+  none: none,
+  english: '"' '"' "'" "'",
+  french: "«" "»" "‹" "›",
+  german: "»" "«" "›" "‹"
+) !default;
+
+// Build utilities map
+$quotes-utilities: ();
+
+@each $key, $value in $quotes-values {
+  $quotes-utilities: map.merge($quotes-utilities, ('quotes-#{$key}': (quotes: $value)));
+}
 
 @if settings.$enable-quotes == true {
-  .quotes-auto { quotes: auto; }
-  .quotes-none { quotes: none; }
-  .quotes-english { quotes: '"' '"' "'" "'"; }
-  .quotes-french { quotes: "«" "»" "‹" "›"; }
-  .quotes-german { quotes: "»" "«" "›" "‹"; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($quotes-utilities);
 }

@@ -2,21 +2,36 @@
 // Aspect Ratio Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
+
+// Aspect ratio values - using hyphenated keys to avoid CSS selector issues
+$aspect-ratio-values: (
+  auto: auto,
+  square: "1 / 1",
+  video: "16 / 9",
+  "4-3": "4 / 3",
+  "3-2": "3 / 2",
+  "5-4": "5 / 4",
+  "16-10": "16 / 10",
+  "21-9": "21 / 9",
+  "9-16": "9 / 16",
+  "3-4": "3 / 4",
+  "2-3": "2 / 3",
+  "4-5": "4 / 5",
+  "10-16": "10 / 16",
+  "9-21": "9 / 21"
+) !default;
+
+// Build utilities map
+$aspect-ratio-utilities: ();
+
+@each $key, $value in $aspect-ratio-values {
+  $aspect-ratio-utilities: map.merge($aspect-ratio-utilities, ('aspect-ratio-#{$key}': (aspect-ratio: #{$value})));
+}
 
 @if settings.$enable-aspect-ratio == true {
-  .aspect-ratio-auto { aspect-ratio: auto; }
-  .aspect-ratio-square { aspect-ratio: 1 / 1; }
-  .aspect-ratio-video { aspect-ratio: 16 / 9; }
-  .aspect-ratio-4\/3 { aspect-ratio: 4 / 3; }
-  .aspect-ratio-3\/2 { aspect-ratio: 3 / 2; }
-  .aspect-ratio-5\/4 { aspect-ratio: 5 / 4; }
-  .aspect-ratio-16\/10 { aspect-ratio: 16 / 10; }
-  .aspect-ratio-21\/9 { aspect-ratio: 21 / 9; }
-  .aspect-ratio-9\/16 { aspect-ratio: 9 / 16; }
-  .aspect-ratio-3\/4 { aspect-ratio: 3 / 4; }
-  .aspect-ratio-2\/3 { aspect-ratio: 2 / 3; }
-  .aspect-ratio-4\/5 { aspect-ratio: 4 / 5; }
-  .aspect-ratio-10\/16 { aspect-ratio: 10 / 16; }
-  .aspect-ratio-9\/21 { aspect-ratio: 9 / 21; }
+  // Generate utilities
+  @include utility-mixins.generate-declaration-utilities($aspect-ratio-utilities);
 }

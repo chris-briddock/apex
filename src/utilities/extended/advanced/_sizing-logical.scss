@@ -1,63 +1,44 @@
 // ============================================================================
 // Sizing Logical Properties (inline-size, block-size)
 // ============================================================================
+// Generated from configuration maps in _custom-config.scss
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../functions' as func;
 
 @if settings.$enable-sizing-logical == true {
-  // Inline size (logical width)
+  // Spacing keys for sizing utilities
+
+  // Inline size (logical width) - generated from settings.$spacing-scale
+  @each $key in map.keys(settings.$spacing-scale) {
+    $escaped-key: func.escape-class-name($key);
+    .is-#{$escaped-key} { inline-size: var(--spacing-#{$key}); }
+  }
+
+  // Inline size special values
   .is-0 { inline-size: 0; }
   .is-auto { inline-size: auto; }
   .is-full { inline-size: 100%; }
   .is-fit { inline-size: fit-content; }
   .is-max { inline-size: max-content; }
   .is-min { inline-size: min-content; }
-  .is-1 { inline-size: 0.25rem; }
-  .is-2 { inline-size: 0.5rem; }
-  .is-3 { inline-size: 0.75rem; }
-  .is-4 { inline-size: 1rem; }
-  .is-5 { inline-size: 1.25rem; }
-  .is-6 { inline-size: 1.5rem; }
-  .is-8 { inline-size: 2rem; }
-  .is-10 { inline-size: 2.5rem; }
-  .is-12 { inline-size: 3rem; }
-  .is-16 { inline-size: 4rem; }
-  .is-20 { inline-size: 5rem; }
-  .is-24 { inline-size: 6rem; }
-  .is-32 { inline-size: 8rem; }
-  .is-40 { inline-size: 10rem; }
-  .is-48 { inline-size: 12rem; }
-  .is-56 { inline-size: 14rem; }
-  .is-64 { inline-size: 16rem; }
-  .is-80 { inline-size: 20rem; }
-  .is-96 { inline-size: 24rem; }
 
-  // Block size (logical height)
+  // Block size (logical height) - generated from settings.$spacing-scale
+  @each $key in map.keys(settings.$spacing-scale) {
+    @if map.has-key(settings.$spacing-scale, $key) {
+      $escaped-key: func.escape-class-name($key);
+      .bs-#{$escaped-key} { block-size: var(--spacing-#{$key}); }
+    }
+  }
+
+  // Block size special values
   .bs-0 { block-size: 0; }
   .bs-auto { block-size: auto; }
   .bs-full { block-size: 100%; }
   .bs-fit { block-size: fit-content; }
   .bs-max { block-size: max-content; }
   .bs-min { block-size: min-content; }
-  .bs-1 { block-size: 0.25rem; }
-  .bs-2 { block-size: 0.5rem; }
-  .bs-3 { block-size: 0.75rem; }
-  .bs-4 { block-size: 1rem; }
-  .bs-5 { block-size: 1.25rem; }
-  .bs-6 { block-size: 1.5rem; }
-  .bs-8 { block-size: 2rem; }
-  .bs-10 { block-size: 2.5rem; }
-  .bs-12 { block-size: 3rem; }
-  .bs-16 { block-size: 4rem; }
-  .bs-20 { block-size: 5rem; }
-  .bs-24 { block-size: 6rem; }
-  .bs-32 { block-size: 8rem; }
-  .bs-40 { block-size: 10rem; }
-  .bs-48 { block-size: 12rem; }
-  .bs-56 { block-size: 14rem; }
-  .bs-64 { block-size: 16rem; }
-  .bs-80 { block-size: 20rem; }
-  .bs-96 { block-size: 24rem; }
 
   // Min inline size
   .min-is-0 { min-inline-size: 0; }

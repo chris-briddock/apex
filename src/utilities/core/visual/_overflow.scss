@@ -2,19 +2,36 @@
 // Overflow Utilities
 // ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities';
 
 @if settings.$enable-overflow == true {
-  .overflow-auto { overflow: auto; }
-  .overflow-hidden { overflow: hidden; }
-  .overflow-visible { overflow: visible; }
-  .overflow-scroll { overflow: scroll; }
-  .overflow-x-auto { overflow-x: auto; }
-  .overflow-x-hidden { overflow-x: hidden; }
-  .overflow-x-visible { overflow-x: visible; }
-  .overflow-x-scroll { overflow-x: scroll; }
-  .overflow-y-auto { overflow-y: auto; }
-  .overflow-y-hidden { overflow-y: hidden; }
-  .overflow-y-visible { overflow-y: visible; }
-  .overflow-y-scroll { overflow-y: scroll; }
+  // ============================================================================
+  // Configuration Maps
+  // ============================================================================
+
+  // Base overflow values
+  $overflow-values: (
+    auto: auto,
+    hidden: hidden,
+    visible: visible,
+    scroll: scroll
+  );
+
+  // Build overflow utility maps
+  $overflow-utilities: ();
+
+  @each $key, $value in $overflow-values {
+    $overflow-utilities: map.merge($overflow-utilities, (
+      'overflow-#{$key}': (overflow: $value),
+      'overflow-x-#{$key}': ('overflow-x': $value),
+      'overflow-y-#{$key}': ('overflow-y': $value)
+    ));
+  }
+
+  // ============================================================================
+  // Generate Utilities
+  // ============================================================================
+  @include utilities.generate-declaration-utilities($overflow-utilities);
 }

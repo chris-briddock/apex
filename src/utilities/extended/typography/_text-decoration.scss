@@ -1,0 +1,25 @@
+// ============================================================================
+// Text Decoration Basic Utilities
+// ============================================================================
+// text-decoration shorthand property (basic values)
+// Note: Extended text-decoration-* properties are in _text-decoration-extended.scss
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .text-decoration-none {
+    text-decoration: none;
+  }
+
+  .text-decoration-underline {
+    text-decoration: underline;
+  }
+
+  .text-decoration-line-through {
+    text-decoration: line-through;
+  }
+
+  .text-decoration-overline {
+    text-decoration: overline;
+  }
+}

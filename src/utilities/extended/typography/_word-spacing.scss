@@ -1,0 +1,28 @@
+// ============================================================================
+// Word Spacing Utilities
+// ============================================================================
+// word-spacing: normal, tight, wide, wider, widest
+
+@use '../../../config/custom-config' as settings;
+
+@if settings.$enable-typography-extended == true {
+  .word-spacing-normal {
+    word-spacing: normal;
+  }
+
+  .word-spacing-tight {
+    word-spacing: -0.05em;
+  }
+
+  .word-spacing-wide {
+    word-spacing: 0.05em;
+  }
+
+  .word-spacing-wider {
+    word-spacing: 0.1em;
+  }
+
+  .word-spacing-widest {
+    word-spacing: 0.2em;
+  }
+}
