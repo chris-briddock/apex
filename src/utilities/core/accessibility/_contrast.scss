@@ -7,15 +7,15 @@
 
 // Contrast preference utilities
 $contrast-high-utilities: (
-  'contrast-high:border': (border: 2px solid currentcolor),
-  'contrast-high:outline': (
+  'contrast-high\\:border': (border: 2px solid currentcolor),
+  'contrast-high\\:outline': (
     outline: 3px solid currentcolor,
     outline-offset: 2px,
   ),
 ) !default;
 $contrast-low-utilities: (
-  'contrast-low:border': (border: 1px solid currentcolor),
-  'contrast-low:outline': (
+  'contrast-low\\:border': (border: 1px solid currentcolor),
+  'contrast-low\\:outline': (
     outline: 1px solid currentcolor,
     outline-offset: 1px,
   ),
