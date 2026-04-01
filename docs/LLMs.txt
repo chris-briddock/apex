@@ -30,14 +30,227 @@ SECTION 2: QUICK START
 INSTALLATION:
     npm install apexcss
 
-USAGE OPTIONS:
-    Option 1: Full framework
-        <link rel="stylesheet" href="node_modules/apexcss/dist/apex.css">
+--------------------------------------------------------------------------------
+VITE PROJECT SETUP
+--------------------------------------------------------------------------------
 
-    Option 2: Individual modules (tree-shaking)
-        @use 'apexcss/dist/base.css';       /* Reset/base styles only */
-        @use 'apexcss/dist/utilities.css'; /* Utility classes only */
-        @use 'apexcss/dist/themes.css';    /* Theme variables only */
+1. INSTALL VITE (if not already installed):
+    npm install --save-dev vite
+
+2. CREATE VITE CONFIGURATION (vite.config.js):
+    import { defineConfig } from 'vite'
+
+    export default defineConfig({
+      // Vite automatically resolves bare CSS imports from node_modules
+    })
+
+3. ADD SCRIPTS TO package.json:
+    {
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+      }
+    }
+
+4. CREATE ENTRY HTML FILE (index.html):
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Apex Project</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <!-- Your content here -->
+    </body>
+    </html>
+
+--------------------------------------------------------------------------------
+IMPORT OPTIONS
+--------------------------------------------------------------------------------
+
+OPTION 1: FULL IMPORT
+    Import the complete Apex CSS framework:
+
+    /* css/main.css */
+    @import 'apexcss';
+
+OPTION 2: INDIVIDUAL LAYERS (RECOMMENDED)
+    Import specific layers with cascade layer assignment:
+
+    /* css/main.css */
+    @layer base, utilities, themes;
+
+    @import 'apexcss/base' layer(base);
+    @import 'apexcss/utilities' layer(utilities);
+    @import 'apexcss/themes' layer(themes);
+
+    This approach allows you to:
+    - Control the order of cascade layers
+    - Add your own styles to each layer
+    - Optimize bundle size by importing only what you need
+
+OPTION 3: SPECIFIC FILES
+    Import individual files directly:
+
+    @import 'apexcss/base';      /* Base styles (resets, typography) */
+    @import 'apexcss/utilities'; /* Utility classes */
+    @import 'apexcss/themes';    /* Theme variables and styles */
+
+--------------------------------------------------------------------------------
+PACKAGE EXPORTS
+--------------------------------------------------------------------------------
+
+| Export Path           | Description                           |
+|-----------------------|---------------------------------------|
+| apexcss               | Full framework (all layers combined)  |
+| apexcss/base          | Base styles, resets, typography       |
+| apexcss/utilities     | 500+ utility classes                  |
+| apexcss/themes        | Theme variables and color schemes     |
+
+--------------------------------------------------------------------------------
+RUNNING THE PROJECT
+--------------------------------------------------------------------------------
+
+Start development server:
+    npm run dev
+
+Build for production:
+    npm run build
+
+Preview production build:
+    npm run preview
+
+--------------------------------------------------------------------------------
+CASCADE LAYERS
+--------------------------------------------------------------------------------
+
+Apex CSS uses CSS Cascade Layers (@layer) for predictable specificity:
+
+1. base - Resets and foundational styles (lowest specificity)
+2. utilities - Utility classes
+3. themes - Theme variables and color schemes
+
+When using individual layer imports, define your layer order first:
+    @layer base, utilities, themes;
+
+This ensures proper cascade order regardless of import order.
+
+--------------------------------------------------------------------------------
+ADDING CUSTOM STYLES
+--------------------------------------------------------------------------------
+
+Extend Apex CSS by adding your own styles in the appropriate layer:
+    @layer base, utilities, themes;
+
+    @import 'apexcss/base' layer(base);
+    @import 'apexcss/utilities' layer(utilities);
+    @import 'apexcss/themes' layer(themes);
+
+    /* Your custom utilities */
+    @layer utilities {
+      .my-custom-class {
+        /* styles */
+      }
+    }
+
+--------------------------------------------------------------------------------
+FRAMEWORK INTEGRATION
+--------------------------------------------------------------------------------
+
+REACT (VITE):
+    1. Create project:
+       npm create vite@latest my-app -- --template react
+       cd my-app
+       npm install apexcss
+
+    2. Import in CSS (src/index.css or src/App.css):
+       @layer base, utilities, themes;
+
+       @import 'apexcss/base' layer(base);
+       @import 'apexcss/utilities' layer(utilities);
+       @import 'apexcss/themes' layer(themes);
+
+    3. Or import in entry point (src/main.jsx):
+       import 'apexcss'
+       // or individual layers:
+       // import 'apexcss/base'
+       // import 'apexcss/utilities'
+       // import 'apexcss/themes'
+
+VUE (VITE):
+    1. Create project:
+       npm create vite@latest my-app -- --template vue
+       cd my-app
+       npm install apexcss
+
+    2. Import in CSS (src/style.css):
+       @layer base, utilities, themes;
+
+       @import 'apexcss/base' layer(base);
+       @import 'apexcss/utilities' layer(utilities);
+       @import 'apexcss/themes' layer(themes);
+
+    3. Or import in entry point (src/main.js):
+       import 'apexcss'
+
+ANGULAR:
+    1. Create project:
+       ng new my-app
+       cd my-app
+       npm install apexcss
+
+    2. Add to angular.json styles array:
+       {
+         "projects": {
+           "my-app": {
+             "architect": {
+               "build": {
+                 "options": {
+                   "styles": [
+                     "node_modules/apexcss/dist/apex.css",
+                     "src/styles.css"
+                   ]
+                 }
+               }
+             }
+           }
+         }
+       }
+
+    3. Or import in global styles (src/styles.css):
+       @layer base, utilities, themes;
+
+       @import 'apexcss/base' layer(base);
+       @import 'apexcss/utilities' layer(utilities);
+       @import 'apexcss/themes' layer(themes);
+
+SVELTE (VITE):
+    1. Create project:
+       npm create vite@latest my-app -- --template svelte
+       cd my-app
+       npm install apexcss
+
+    2. Import in CSS (src/app.css):
+       @layer base, utilities, themes;
+
+       @import 'apexcss/base' layer(base);
+       @import 'apexcss/utilities' layer(utilities);
+       @import 'apexcss/themes' layer(themes);
+
+--------------------------------------------------------------------------------
+LEGACY USAGE (DIRECT LINK)
+--------------------------------------------------------------------------------
+
+Option 1: Full framework
+    <link rel="stylesheet" href="node_modules/apexcss/dist/apex.css">
+
+Option 2: Individual modules (tree-shaking)
+    @use 'apexcss/dist/base.css';       /* Reset/base styles only */
+    @use 'apexcss/dist/utilities.css'; /* Utility classes only */
+    @use 'apexcss/dist/themes.css';    /* Theme variables only */
 
 MINIMAL HTML EXAMPLE:
     <!DOCTYPE html>
@@ -893,7 +1106,7 @@ ENTRY FILES (src/):
 MODULE FORWARDING (src/utilities/core/_index.scss):
     Core utilities are forwarded through _index.scss. When adding new utilities,
     ensure they are @forward'd in the appropriate _index.scss file:
-    
+
     Example:
         @forward 'layout/display';    /* .block, .flex, .hidden, etc. */
         @forward 'layout/flexbox';     /* .flex-row, .justify-center, etc. */
@@ -1064,22 +1277,511 @@ SECTION 18: DESIGN PRINCIPLES
 SECTION 19: COMPARISON WITH TAILWIND CSS
 ================================================================================
 
-SIMILARITIES:
-    - Utility-first approach
-    - Responsive prefixes (md:, lg:)
-    - State variants (hover:, focus:)
-    - Dark mode support
-    - Arbitrary values ([100px])
+This section provides a comprehensive comparison between ApexCSS and Tailwind CSS
+(v4.0 as of 2026-04-01), based on the latest documentation from Context7.
 
-DIFFERENCES:
-    | Feature              | ApexCSS                        | Tailwind CSS              |
-    |----------------------|--------------------------------|---------------------------|
-    | Build Tool           | Sass                           | PostCSS                   |
-    | Color Space          | OKLCH                          | HSL                       |
-    | Configuration        | JavaScript (apex.config.js)    | JavaScript (tailwind.config)|
-    | CSS Variables        | Extensive use                  | Limited use               |
-    | Modular Imports      | Feature toggles (104 options)  | @use with prefixes        |
-    | Custom Utilities     | Sass mixins                    | @layer utilities          |
+--------------------------------------------------------------------------------
+19.1 PHILOSOPHY & APPROACH
+--------------------------------------------------------------------------------
+
+SIMILARITIES:
+    - Utility-first approach: Build designs directly in HTML using utility classes
+    - Responsive prefixes: Both use md:, lg:, xl: breakpoint prefixes
+    - State variants: Both support hover:, focus:, active:, disabled:
+    - Dark mode support: Both provide dark: variant for theme switching
+    - Arbitrary values: Both support bracket notation for custom values
+    - Mobile-first responsive design: Default styles for mobile, larger screens override
+
+KEY PHILOSOPHICAL DIFFERENCES:
+
+    | Aspect              | ApexCSS                                    | Tailwind CSS v4                    |
+    |---------------------|--------------------------------------------|-------------------------------------|
+    | Core Philosophy     | CSS-first with Sass build                  | CSS-native with @theme directive    |
+    | Design System       | OKLCH color space by default               | HSL/RGB, OKLCH via custom config     |
+    | Configuration       | JavaScript config → SCSS generation        | CSS-first @theme block              |
+    | Extensibility       | Sass mixins and @extend                    | @utility and @layer directives      |
+    | Target Audience     | Sass/SCSS users, design systems            | All web developers, framework-agnostic|
+
+--------------------------------------------------------------------------------
+19.2 CONFIGURATION COMPARISON
+--------------------------------------------------------------------------------
+
+APEXCSS CONFIGURATION (apex.config.js):
+    - JavaScript-based configuration file
+    - Generates SCSS variables via npm run config:build
+    - 104 feature toggles for granular control
+    - Separate build step required for config changes
+
+    Example:
+    ```javascript
+    export default {
+      features: {
+        display: true,
+        flexbox: true,
+        darkMode: true,
+        // ... 100+ more toggles
+      },
+      colors: { /* custom colors */ },
+      breakpoints: { /* custom breakpoints */ }
+    }
+    ```
+
+TAILWIND CSS v4 CONFIGURATION (CSS-first):
+    - CSS-native @theme directive (new in v4.0)
+    - No separate config file required
+    - Design tokens defined directly in CSS
+    - Zero configuration to start
+
+    Example:
+    ```css
+    @import "tailwindcss";
+
+    @theme {
+      --color-mint-500: oklch(0.72 0.11 178);
+      --font-script: Great Vibes, cursive;
+      --breakpoint-3xl: 120rem;
+      --animate-fade-in: fade-in 0.3s ease-out;
+
+      @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+    }
+    ```
+
+CONFIGURATION COMPARISON TABLE:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Config Location            | apex.config.js                       | CSS file with @theme                |
+    | Config Format              | JavaScript                           | CSS-native                          |
+    | Build Step Required        | Yes (config:build + build)           | No (zero config)                    |
+    | Feature Toggles             | 104 granular toggles                 | corePlugins in JS or CSS @layer     |
+    | Custom Colors              | JS config → SCSS variables            | @theme --color-* variables          |
+    | Custom Breakpoints         | JS config → SCSS variables            | @theme --breakpoint-* variables     |
+    | Custom Fonts               | JS config → SCSS variables            | @theme --font-* variables           |
+    | Custom Animations          | SCSS files                            | @theme with @keyframes              |
+    | Theme Variables            | CSS custom properties generated       | Native CSS custom properties        |
+    | Multiple Themes            | CSS variable switching                | CSS variable switching              |
+
+--------------------------------------------------------------------------------
+19.3 BUILD SYSTEM & PERFORMANCE
+--------------------------------------------------------------------------------
+
+APEXCSS:
+    - Build Tool: Sass/SCSS compilation (Dart Sass)
+    - Bundler: Vite, Webpack, or any Sass-compatible bundler
+    - Output: Static CSS file (dist/apex.css)
+    - PurgeCSS: Optional, configured via purgecss.config.js
+    - JIT: No JIT compilation (pre-generated classes)
+    - Bundle Size: ~50KB gzipped (full), smaller with feature toggles
+
+TAILWIND CSS v4:
+    - Build Tool: PostCSS + Lightning CSS (new in v4)
+    - Bundler: Vite, Webpack, or standalone CLI
+    - Output: JIT-compiled CSS (only used classes)
+    - PurgeCSS: Built-in content detection
+    - JIT: JIT by default (compiles only what you use)
+    - Bundle Size: ~10-30KB (depends on usage)
+
+BUILD COMPARISON TABLE:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Build Tool                 | Dart Sass                            | PostCSS + Lightning CSS             |
+    | JIT Compilation            | No (pre-generated)                   | Yes (by default)                    |
+    | Content Detection          | Manual PurgeCSS config               | Automatic @source detection         |
+    | Zero Config Setup          | Requires config file                 | Yes (@import "tailwindcss")         |
+    | Build Speed                | Fast (Sass compilation)              | Very fast (Lightning CSS)           |
+    | Watch Mode                 | Via Vite/Webpack                     | Built-in CLI watch mode             |
+    | Minification               | Via bundler                          | Built-in (--minify)                 |
+    | Source Maps                | Via bundler                          | Built-in support                    |
+    | Browser Prefixing          | Via PostCSS/Autoprefixer             | Built-in (Lightning CSS)            |
+
+--------------------------------------------------------------------------------
+19.4 UTILITY CLASS COMPARISON
+--------------------------------------------------------------------------------
+
+CORE UTILITIES (Both frameworks):
+
+    | Category          | ApexCSS Classes         | Tailwind CSS Classes      | Notes                    |
+    |-------------------|-------------------------|---------------------------|--------------------------|
+    | Display           | d-block, d-flex, etc.   | block, flex, etc.         | Apex uses d- prefix      |
+    | Flexbox           | flex-row, items-center  | flex-row, items-center    | Nearly identical         |
+    | Grid              | grid-cols-*, gap-*      | grid-cols-*, gap-*        | Nearly identical         |
+    | Spacing           | p-*, m-*, px-*, mx-*    | p-*, m-*, px-*, mx-*      | Identical scale          |
+    | Sizing            | w-*, h-*, min-w-*, max-w-*| w-*, h-*, min-w-*, max-w-*| Identical              |
+    | Typography        | text-*, font-*          | text-*, font-*            | Similar naming           |
+    | Colors            | text-*, bg-*            | text-*, bg-*              | Different color systems  |
+    | Borders           | border-*, rounded-*     | border-*, rounded-*       | Nearly identical         |
+    | Shadows           | shadow-*                | shadow-*                  | Similar scale            |
+    | Opacity           | opacity-*               | opacity-*                 | Identical                |
+    | Transitions       | transition-*            | transition-*              | Similar                  |
+
+APEXCSS-SPECIFIC UTILITIES (Not in Tailwind core):
+
+    | Category                  | Classes                              | Purpose                              |
+    |---------------------------|--------------------------------------|--------------------------------------|
+    | Logical Properties        | ms-*, me-*, ps-*, pe-*              | RTL-aware margin/padding             |
+    | Sizing Logical            | inline-size-*, block-size-*         | Logical width/height                 |
+    | Border Radius Logical     | rounded-s-*, rounded-e-*             | RTL-aware border radius              |
+    | CSS Columns               | columns-*, column-count-*            | Multi-column layouts                  |
+    | Writing Mode              | writing-mode-*                       | Vertical text, CJK support           |
+    | Print Utilities           | page-break-*, orphans-*, widows-*    | Print-specific styles                |
+    | Counter Utilities         | counter-reset-*, counter-increment-* | CSS counters                          |
+    | Quote Utilities           | quotes-*                             | Quotation mark styling               |
+    | Touch Action              | touch-*                              | Touch gesture control                |
+    | Caret Color               | caret-*                              | Text cursor color                    |
+    | Overscroll Behavior       | overscroll-*                         | Scroll chaining control              |
+    | Hyphens                   | hyphens-*                            | Word hyphenation                     |
+    | Text Orientation          | text-orientation-*                   | Vertical text orientation            |
+    | Unicode Bidi              | unicode-bidi-*                       | Bidirectional text                   |
+    | Hanging Punctuation       | hanging-punctuation-*                | Punctuation hanging                  |
+    | Initial Letter            | initial-letter-*                     | Drop caps, initial letters           |
+    | Font Variant Numeric      | font-variant-numeric-*               | Numeric typography                   |
+    | Font Features             | font-feature-settings-*             | OpenType features                    |
+    | Font Smoothing            | font-smoothing-*                    | Antialiasing control                 |
+    | Mask Utilities            | mask-*, mask-image-*                 | CSS masks                            |
+    | Color Scheme              | color-scheme-*                       | Browser color scheme                 |
+    | Field Sizing              | field-sizing-*                       | New CSS field-sizing property        |
+    | Shape Outside             | shape-outside-*                     | Text wrapping shapes                 |
+    | Zoom                       | zoom-*                               | Zoom transform                       |
+    | Marker Styling            | marker-*                             | List marker styling                  |
+    | Box Decoration Break      | box-decoration-break-*              | Fragmentation control                |
+    | Transition Behavior       | transition-behavior-*                | transition-behavior property         |
+    | Image Rendering           | image-rendering-*                   | Image scaling algorithm              |
+
+TAILWIND CSS v4-SPECIFIC FEATURES (Not in ApexCSS):
+
+    | Feature                   | Description                                                    |
+    |---------------------------|----------------------------------------------------------------|
+    | @theme Directive          | CSS-native configuration without JS config file                |
+    | @utility Directive         | Define custom utilities that work with variants               |
+    | @source Directive          | Explicit content path configuration                            |
+    | @source not Directive      | Exclude paths from content scanning                            |
+    | Lightning CSS              | Built-in vendor prefixing and modern syntax transforms         |
+    | Arbitrary Properties       | Full support for [any-css-property:any-value]                 |
+    | Arbitrary Variants         | [&:nth-child(3)]:bg-red-500 for any selector                  |
+    | Container Queries          | @container and container:* variants (Apex has this too)        |
+    | Gradient Color Stops       | Extensive gradient utilities with arbitrary stops              |
+    | Object-Position            | Object position utilities                                      |
+
+--------------------------------------------------------------------------------
+19.5 RESPONSIVE DESIGN COMPARISON
+--------------------------------------------------------------------------------
+
+BREAKPOINTS:
+
+    | Framework    | Default Breakpoints                                        |
+    |--------------|-----------------------------------------------------------|
+    | ApexCSS      | sm:320px, md:768px, lg:1024px, xl:1280px, xxl:2560px, xxxl:3840px, ultra:7680px |
+    | Tailwind v4  | sm:640px, md:768px, lg:1024px, xl:1280px, 2xl:1536px     |
+
+RESPONSIVE SYNTAX:
+
+    ApexCSS:
+        md:d-flex      /* display: flex at md breakpoint and up */
+        lg:p-8         /* padding: 2rem at lg breakpoint and up */
+        sm:hidden      /* display: none below sm breakpoint */
+
+    Tailwind CSS v4:
+        md:flex        /* display: flex at md breakpoint and up */
+        lg:p-8         /* padding: 2rem at lg breakpoint and up */
+        sm:hidden      /* display: none at sm breakpoint and up */
+
+    Note: ApexCSS uses d- prefix for display utilities; Tailwind does not.
+
+CONTAINER QUERIES (Both frameworks):
+
+    ApexCSS:
+        @container     /* Define a container query context */
+        @sm:grid-cols-2 /* Apply at container breakpoint */
+
+    Tailwind CSS v4:
+        @container     /* Define a container query context */
+        @md:grid-cols-2 /* Apply at container breakpoint */
+
+--------------------------------------------------------------------------------
+19.6 DARK MODE COMPARISON
+--------------------------------------------------------------------------------
+
+APEXCSS DARK MODE:
+    - Supports both class and media query strategies simultaneously
+    - CSS custom properties for theme switching
+    - Built-in dark theme color palette
+    - Automatic color scheme detection
+
+    Usage:
+    ```html
+    <html class="dark">
+      <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+        <!-- Content -->
+      </body>
+    </html>
+    ```
+
+TAILWIND CSS v4 DARK MODE:
+    - Supports class OR media query strategy (configurable)
+    - dark: variant for any utility
+    - Works with all variants (hover, focus, responsive)
+    - prefers-color-scheme: dark media query support
+
+    Usage:
+    ```html
+    <div class="bg-white dark:bg-gray-900">
+      <h3 class="text-gray-900 dark:text-white">Title</h3>
+    </div>
+    ```
+
+DARK MODE COMPARISON:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Strategy                   | Class + media query (both)          | Class OR media query (choose one)   |
+    | CSS Variables              | All colors as CSS custom properties  | Limited to theme colors             |
+    | Runtime Switching          | Full support (change CSS variables)  | Requires class toggle or rebuild   |
+    | Color Palette              | Built-in dark theme colors           | Uses same palette, dark: variant    |
+    | Customization              | apex.config.js colors               | @theme --color-* variables          |
+
+--------------------------------------------------------------------------------
+19.7 RTL SUPPORT COMPARISON
+--------------------------------------------------------------------------------
+
+APEXCSS RTL SUPPORT:
+    - Built-in logical properties (ms-*, me-*, ps-*, pe-*)
+    - No plugin required
+    - Full RTL support out of the box
+    - Logical border radius (rounded-s-*, rounded-e-*)
+
+    Usage:
+    ```html
+    <div class="ms-4 pe-2">  <!-- margin-start, padding-end -->
+      <!-- Automatically flips for RTL -->
+    </div>
+    ```
+
+TAILWIND CSS v4 RTL SUPPORT:
+    - Uses logical property utilities (ms-*, me-*, ps-*, pe-*)
+    - Added in v3.3+, improved in v4
+    - Works with all spacing utilities
+
+    Usage:
+    ```html
+    <div class="ms-4 pe-2">  <!-- margin-start, padding-end -->
+      <!-- Automatically flips for RTL -->
+    </div>
+    ```
+
+RTL COMPARISON:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Logical Margin             | ms-*, me-*, mi-*, mbs-*, mbe-*       | ms-*, me-*, ms-*, me-*              |
+    | Logical Padding            | ps-*, pe-*, pi-*, pbs-*, pbe-*       | ps-*, pe-*, ps-*, pe-*              |
+    | Logical Sizing             | inline-size-*, block-size-*          | Not included                        |
+    | Logical Border Radius      | rounded-s-*, rounded-e-*              | Not included                        |
+    | Plugin Required            | No                                   | No (built-in since v3.3)            |
+
+--------------------------------------------------------------------------------
+19.8 ACCESSIBILITY COMPARISON
+--------------------------------------------------------------------------------
+
+APEXCSS ACCESSIBILITY:
+    - Built-in screen reader utilities (sr-only, not-sr-only)
+    - Focus management utilities (focus-visible:*, focus-within:*)
+    - Reduced motion support (motion-reduce:*, motion-safe:*)
+    - High contrast mode utilities
+    - Color blind friendly themes
+
+    Usage:
+    ```html
+    <span class="sr-only">Screen reader only text</span>
+    <div class="motion-reduce:transition-none">
+      <!-- Respects prefers-reduced-motion -->
+    </div>
+    ```
+
+TAILWIND CSS v4 ACCESSIBILITY:
+    - Screen reader utilities (sr-only, not-sr-only)
+    - Focus utilities (focus-visible:*, focus-within:*)
+    - Reduced motion (motion-reduce:*, motion-safe:*)
+    - Requires plugins for extended accessibility
+
+    Usage:
+    ```html
+    <span class="sr-only">Screen reader only text</span>
+    <div class="motion-reduce:transition-none">
+      <!-- Respects prefers-reduced-motion -->
+    </div>
+    ```
+
+ACCESSIBILITY COMPARISON:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Screen Reader              | Built-in (sr-only)                   | Built-in (sr-only)                  |
+    | Focus Visible              | Built-in                             | Built-in                            |
+    | Reduced Motion             | Built-in                             | Built-in                            |
+    | High Contrast              | Built-in utilities                   | Requires custom config              |
+    | Color Blind Themes         | Built-in                             | Not included                        |
+    | Focus Ring                 | Built-in (ring-*)                    | Built-in (ring-*)                   |
+
+--------------------------------------------------------------------------------
+19.9 EXTENSIBILITY COMPARISON
+--------------------------------------------------------------------------------
+
+APEXCSS EXTENSIBILITY:
+    - Sass mixins for custom utilities
+    - @extend and placeholder selectors
+    - CSS @layer for custom styles
+    - Plugin system for community contributions
+
+    Example (Custom utility via Sass):
+    ```scss
+    @mixin my-custom-utility {
+      content-visibility: auto;
+    }
+
+    .my-custom-class {
+      @include my-custom-utility;
+    }
+    ```
+
+TAILWIND CSS v4 EXTENSIBILITY:
+    - @utility directive for custom utilities
+    - @layer directive for base, components, utilities
+    - Plugins (JavaScript API)
+    - @apply for component extraction
+
+    Example (Custom utility via @utility):
+    ```css
+    @utility content-auto {
+      content-visibility: auto;
+    }
+
+    /* Usage: <div class="content-auto"> */
+    ```
+
+EXTENSIBILITY COMPARISON:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Custom Utilities           | Sass mixins                          | @utility directive                  |
+    | Component Extraction       | @extend, placeholders                | @apply directive                    |
+    | Custom Base Styles         | @layer base                          | @layer base                         |
+    | Custom Components          | @layer components                    | @utility (replaces @layer components)|
+    | Plugin System              | Sass-based plugins                   | JavaScript plugin API               |
+    | Variant Stacking           | Limited                              | Full (dark:lg:hover:bg-red-500)     |
+    | Arbitrary Variants         | Limited                              | Full ([&:nth-child(3)]:bg-red-500)  |
+
+--------------------------------------------------------------------------------
+19.10 ECOSYSTEM & COMMUNITY
+--------------------------------------------------------------------------------
+
+ECOSYSTEM COMPARISON:
+
+    | Aspect                     | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Version                    | 0.3.7 (pre-release)                  | 4.0+ (stable)                       |
+    | Community Size             | Small, new                           | Large, active                       |
+    | Documentation              | LLMs.txt + CONFIG.md                 | Extensive website + guides          |
+    | UI Components              | None                                 | Tailwind UI (paid)                  |
+    | Templates                  | None                                 | Many community templates            |
+    | IDE Support                | Basic                                | Excellent (IntelliSense plugin)     |
+    | Enterprise Support         | None                                 | Available                           |
+    | GitHub Stars               | Growing                              | 80,000+                             |
+    | npm Downloads               | Growing                              | Millions/week                       |
+    | Framework Integrations      | Manual setup                         | Official integrations               |
+
+--------------------------------------------------------------------------------
+19.11 MIGRATION CONSIDERATIONS
+--------------------------------------------------------------------------------
+
+MIGRATING FROM TAILWIND TO APEXCSS:
+    - Replace display utilities (flex → d-flex, etc.)
+    - Update color references (different color system)
+    - Add apex.config.js for configuration
+    - Run config:build + build steps
+    - Review RTL utilities (Apex has more logical properties)
+
+MIGRATING FROM APEXCSS TO TAILWIND:
+    - Remove d- prefix from display utilities
+    - Convert apex.config.js to @theme directive
+    - Replace Sass mixins with @utility
+    - Use @apply instead of @extend
+    - Review missing utilities (may need plugins)
+
+--------------------------------------------------------------------------------
+19.12 SUMMARY TABLE
+--------------------------------------------------------------------------------
+
+COMPREHENSIVE FEATURE COMPARISON:
+
+    | Feature                    | ApexCSS                              | Tailwind CSS v4                    |
+    |----------------------------|--------------------------------------|-------------------------------------|
+    | Build Tool                 | Dart Sass                            | PostCSS + Lightning CSS             |
+    | Configuration              | JavaScript (apex.config.js)          | CSS-native (@theme directive)       |
+    | Color Space                | OKLCH (default)                      | HSL/RGB (OKLCH via custom)          |
+    | CSS Custom Properties      | Extensive (all design tokens)        | Theme variables only                |
+    | Feature Toggles            | 104 granular toggles                 | corePlugins or @layer               |
+    | JIT Compilation            | No (pre-generated)                   | Yes (default)                       |
+    | Zero Config                | No (requires config)                 | Yes (@import "tailwindcss")         |
+    | Arbitrary Values           | Limited                              | Full support                        |
+    | Arbitrary Variants         | No                                   | Yes                                 |
+    | Dark Mode                  | Class + media (both)                 | Class OR media (choose one)         |
+    | RTL Support                | Built-in logical properties          | Built-in (since v3.3)               |
+    | Accessibility              | Built-in (extensive)                 | Built-in (basic)                    |
+    | Container Queries          | Built-in                             | Built-in                            |
+    | Logical Properties         | Extensive (ms-, me-, inline-size)    | Basic (ms-, me-)                    |
+    | Print Utilities            | Built-in                             | Not included                        |
+    | Writing Mode               | Built-in                             | Not included                        |
+    | CSS Columns                | Built-in                             | Not included                        |
+    | Counter Utilities          | Built-in                             | Not included                        |
+    | Typography Extended        | Built-in                             | Requires plugin                     |
+    | Forms Styling              | Not included                         | Requires plugin                     |
+    | Gradient Utilities         | Basic                                | Extensive                           |
+    | Animation Keyframes        | Built-in                             | Built-in + arbitrary                |
+    | Filters                    | Built-in                             | Built-in                            |
+    | Transforms 3D              | Built-in                             | Built-in                            |
+    | Backdrop Filters          | Built-in                             | Built-in                            |
+    | Mix Blend Modes           | Built-in                             | Built-in                            |
+    | Masks                      | Built-in                             | Not included                        |
+    | Custom Utilities           | Sass mixins                          | @utility directive                  |
+    | Component Extraction       | @extend, placeholders                | @apply directive                    |
+    | Plugin System              | Sass-based                           | JavaScript API                      |
+    | Bundle Size (full)         | ~50KB gzipped                        | ~10-30KB (JIT)                      |
+    | Learning Curve             | Moderate (Sass knowledge helpful)    | Low (CSS-only)                      |
+    | Ecosystem                  | Growing                              | Mature, large                       |
+    | Enterprise Support         | None                                 | Available                           |
+
+--------------------------------------------------------------------------------
+19.13 WHEN TO USE EACH FRAMEWORK
+--------------------------------------------------------------------------------
+
+USE APEXCSS WHEN:
+    - You prefer Sass/SCSS workflow
+    - You need OKLCH color space by default
+    - You require extensive logical properties for RTL
+    - You need print, writing mode, or CSS columns utilities
+    - You want granular control over included utilities (104 toggles)
+    - You're building a design system with CSS custom properties
+    - You need runtime theming via CSS variables
+
+USE TAILWIND CSS v4 WHEN:
+    - You want zero-configuration setup
+    - You prefer CSS-native configuration (@theme)
+    - You need JIT compilation for minimal bundle size
+    - You want extensive ecosystem support and community
+    - You need arbitrary variants and values
+    - You're using a framework with Tailwind integration
+    - You want access to Tailwind UI and premium templates
+
+USE EITHER WHEN:
+    - You want utility-first CSS development
+    - You need responsive design with breakpoints
+    - You require dark mode support
+    - You need flexbox and grid utilities
+    - You want state variants (hover, focus, etc.)
 
 ================================================================================
 SECTION 20: TROUBLESHOOTING
