@@ -51,7 +51,7 @@ function parseCliArgs(argv) {
 }
 
 function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return value.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
 }
 
 function formatObjectKey(key) {
@@ -82,7 +82,7 @@ function findMatchingBrace(source, openIndex) {
 
 function blockHasKey(blockContent, key) {
   const escapedKey = escapeRegExp(key);
-  const pattern = new RegExp(`^\\s*(?:${escapedKey}|"${escapedKey}"|'${escapedKey}')\\s*:`, 'm');
+  const pattern = new RegExp(String.raw`^\s*(?:${escapedKey}|"${escapedKey}"|'${escapedKey}')\s*:`, 'm');
   return pattern.test(blockContent);
 }
 
@@ -123,9 +123,9 @@ function normalizeHex(hex) {
 
 function hexToPaletteSeed(hex) {
   const normalizedHex = normalizeHex(hex);
-  const r = parseInt(normalizedHex.slice(0, 2), 16) / 255;
-  const g = parseInt(normalizedHex.slice(2, 4), 16) / 255;
-  const b = parseInt(normalizedHex.slice(4, 6), 16) / 255;
+  const r = Number.parseInt(normalizedHex.slice(0, 2), 16) / 255;
+  const g = Number.parseInt(normalizedHex.slice(2, 4), 16) / 255;
+  const b = Number.parseInt(normalizedHex.slice(4, 6), 16) / 255;
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const delta = max - min;
@@ -288,9 +288,13 @@ function isDirectExecution() {
 }
 
 if (isDirectExecution()) {
-  run().then(code => {
+  try {
+    const code = await run();
     process.exit(code);
-  });
+  } catch (error) {
+    console.error('Unhandled error:', error);
+    process.exit(1);
+  }
 }
 
 export {

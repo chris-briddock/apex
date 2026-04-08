@@ -1,0 +1,12 @@
+services:
+  github-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: apex-github-runner
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      RUNNER_NAME: ${RUNNER_NAME:-apex-runner}
+      RUNNER_LABELS: ${RUNNER_LABELS:-self-hosted,linux,x64}

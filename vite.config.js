@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 // Plugin to clean up JS files and empty directories after build (CSS-only output)
 const cssOnlyPlugin = () => ({
@@ -33,12 +33,7 @@ const cssOnlyPlugin = () => ({
       }
       return filesRemoved;
     };
-
-    try {
       await cleanupJsFiles(outDir);
-    } catch (e) {
-      // Ignore errors if dist doesn't exist
-    }
   }
 });
 
@@ -46,12 +41,16 @@ export default defineConfig({
   plugins: [cssOnlyPlugin()],
   css: {
     postcss: './postcss.config.js',
-    devSourcemap: true
+    devSourcemap: true,
   },
   build: {
     cssCodeSplit: true,
     sourcemap: true,
+    // Use esbuild for both JS and CSS minification
+    // Note: Vite 8 defaults to LightningCSS for CSS minification, but esbuild
+    // is more compatible with complex SCSS-generated selectors
     minify: 'esbuild',
+    cssMinify: 'esbuild',
     rollupOptions: {
       input: {
         'themes': 'src/entry-themes.scss',
@@ -63,16 +62,13 @@ export default defineConfig({
         entryFileNames: '[name].js',
         assetFileNames: (assetInfo) => {
           // Ensure CSS files keep their original names
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+          // Note: Vite 8/Rolldown uses `names` array instead of deprecated `name` property
+          const name = assetInfo.names?.[0] ?? '';
+          if (name.endsWith('.css')) {
             return '[name][extname]';
           }
-          return '[name][extname]';
         },
-      }
-    }
-  },
-  server: {
-    open: true,
-    port: 3000
+      },
+    },
   }
 });

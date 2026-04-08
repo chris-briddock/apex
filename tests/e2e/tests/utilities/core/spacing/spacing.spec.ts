@@ -196,4 +196,61 @@ test.describe('Spacing Utilities', () => {
       expect(rowGap).toBe('16px');
     });
   });
+
+  test.describe('Spacing Scale', () => {
+    // Test the full spacing scale from 0 to 96
+    const spacingScale = [
+      { value: '0', expected: '0px' },
+      { value: 'px', expected: '1px' },
+      { value: '0.5', expected: '2px' },
+      { value: '1', expected: '4px' },
+      { value: '1.5', expected: '6px' },
+      { value: '2', expected: '8px' },
+      { value: '2.5', expected: '10px' },
+      { value: '3', expected: '12px' },
+      { value: '3.5', expected: '14px' },
+      { value: '4', expected: '16px' },
+      { value: '5', expected: '20px' },
+      { value: '6', expected: '24px' },
+      { value: '7', expected: '28px' },
+      { value: '8', expected: '32px' },
+      { value: '9', expected: '36px' },
+      { value: '10', expected: '40px' },
+      { value: '11', expected: '44px' },
+      { value: '12', expected: '48px' },
+      { value: '14', expected: '56px' },
+      { value: '16', expected: '64px' },
+      { value: '20', expected: '80px' },
+      { value: '24', expected: '96px' },
+      { value: '28', expected: '112px' },
+      { value: '32', expected: '128px' },
+      { value: '36', expected: '144px' },
+      { value: '40', expected: '160px' },
+      { value: '44', expected: '176px' },
+      { value: '48', expected: '192px' },
+      { value: '52', expected: '208px' },
+      { value: '56', expected: '224px' },
+      { value: '60', expected: '240px' },
+      { value: '64', expected: '256px' },
+      { value: '72', expected: '288px' },
+      { value: '80', expected: '320px' },
+      { value: '96', expected: '384px' },
+    ];
+
+    for (const { value, expected } of spacingScale) {
+      test(`p-${value} should have ${expected} padding`, async ({ page }) => {
+        const testId = await createComponent(page, { classes: `p-${value}` });
+        const top = await getComputedStyle(page, getSelector(testId), 'padding-top');
+        expect(top).toBe(expected);
+      });
+    }
+
+    for (const { value, expected } of spacingScale) {
+      test(`m-${value} should have ${expected} margin`, async ({ page }) => {
+        const testId = await createComponent(page, { classes: `m-${value}` });
+        const top = await getComputedStyle(page, getSelector(testId), 'margin-top');
+        expect(top).toBe(expected);
+      });
+    }
+  });
 });

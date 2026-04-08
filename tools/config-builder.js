@@ -17,9 +17,9 @@
  *   --help      Show help
  */
 
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -415,7 +415,7 @@ const defaultConfig = {
     // Success Green
     success: {
       hue: 145,
-      chroma: 0.20,
+      chroma: 0.2,
       lightnessScale: {
         50: 95, 100: 90, 200: 85, 300: 78, 400: 70,
         500: 62, 600: 55, 700: 45, 800: 35, 900: 25, 950: 20
@@ -451,7 +451,7 @@ const defaultConfig = {
     // Extended palette
     extended: {
       blue: { hue: 250, chroma: 0.18 },
-      green: { hue: 145, chroma: 0.20 },
+      green: { hue: 145, chroma: 0.2 },
       red: { hue: 25, chroma: 0.22 },
       yellow: { hue: 90, chroma: 0.18 },
       purple: { hue: 300, chroma: 0.22 },
@@ -915,7 +915,7 @@ function generateFeatureToggles(features) {
     output.push(`// ${category}`);
     keys.forEach(key => {
       if (key in features) {
-        const varName = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        const varName = key.replaceAll(/([A-Z])/g, '-$1').toLowerCase();
         const comment = features[key] ? 'enabled' : 'disabled';
         output.push(`$enable-${varName}: ${features[key]} !default; // ${comment}`);
       }
@@ -993,33 +993,33 @@ function generateFractionalWidths(config) {
   const widths = [];
 
   if (config.halves) {
-    widths.push('  "1\\\\/2": 50%');
+    widths.push(String.raw`  "1\\/2": 50%`);
   }
 
   if (config.thirds) {
-    widths.push('  "1\\\\/3": 33.3333%');
-    widths.push('  "2\\\\/3": 66.6667%');
+    widths.push(String.raw`  "1\\/3": 33.3333%`);
+    widths.push(String.raw`  "2\\/3": 66.6667%`);
   }
 
   if (config.quarters) {
-    widths.push('  "1\\\\/4": 25%');
-    widths.push('  "2\\\\/4": 50%');
-    widths.push('  "3\\\\/4": 75%');
+    widths.push(String.raw`  "1\\/4": 25%`);
+    widths.push(String.raw`  "2\\/4": 50%`);
+    widths.push(String.raw`  "3\\/4": 75%`);
   }
 
   if (config.fifths) {
-    widths.push('  "1\\\\/5": 20%');
-    widths.push('  "2\\\\/5": 40%');
-    widths.push('  "3\\\\/5": 60%');
-    widths.push('  "4\\\\/5": 80%');
+    widths.push(String.raw`  "1\\/5": 20%`);
+    widths.push(String.raw`  "2\\/5": 40%`);
+    widths.push(String.raw`  "3\\/5": 60%`);
+    widths.push(String.raw`  "4\\/5": 80%`);
   }
 
   if (config.sixths) {
-    widths.push('  "1\\\\/6": 16.6667%');
-    widths.push('  "2\\\\/6": 33.3333%');
-    widths.push('  "3\\\\/6": 50%');
-    widths.push('  "4\\\\/6": 66.6667%');
-    widths.push('  "5\\\\/6": 83.3333%');
+    widths.push(String.raw`  "1\\/6": 16.6667%`);
+    widths.push(String.raw`  "2\\/6": 33.3333%`);
+    widths.push(String.raw`  "3\\/6": 50%`);
+    widths.push(String.raw`  "4\\/6": 66.6667%`);
+    widths.push(String.raw`  "5\\/6": 83.3333%`);
   }
 
   if (config.twelfths) {

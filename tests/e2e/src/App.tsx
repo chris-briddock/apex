@@ -13,8 +13,8 @@ const App: React.FC = () => {
                     <Header />
                     <main className="py-8">
                         <Routes>
-                            {Routing.map(({ path, element }, key) => (
-                                <Route key={key} path={path} element={element} />
+                            {Routing.map(({ path, element }) => (
+                                <Route key={path} path={path} element={element} />
                             ))}
                         </Routes>
                     </main>

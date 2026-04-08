@@ -10,11 +10,10 @@ tests/
 *.spec.ts
 *.test.ts
 
-# Build tools
+# Build tools (keep cli/ for npm package)
 tools/
-*.config.js
-*.config.ts
-*.config.mjs
+apex.config.js
+vite.config.js
 postcss.config.js
 purgecss.config.js
 

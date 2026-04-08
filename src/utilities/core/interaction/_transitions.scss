@@ -36,20 +36,17 @@
   $transition-timing-utilities: ();
 
   @each $key, $value in settings.$transition-timing {
-    $suffix: $key;
-
-    @if $key == default {
-      $suffix: 'ease';
-    }
-
+    $class-name: 'ease-#{$key}';
     $var-name: $key;
 
     @if $key == default {
+      // For 'default' key, generate just '.ease' class (not '.ease-ease')
+      $class-name: 'ease';
       $var-name: 'ease';
     }
 
     $transition-timing-utilities: map.merge($transition-timing-utilities, (
-      'ease-#{$suffix}': (transition-timing-function: var(--transition-timing-function-#{$var-name}))
+      '#{$class-name}': (transition-timing-function: var(--transition-timing-function-#{$var-name}))
     ));
   }
 

@@ -61,4 +61,16 @@ test.describe('Display Utilities', () => {
     const display = await getComputedStyle(page, getSelector(testId), 'display');
     expect(display).toBe('none');
   });
+
+  test('contents display utility', async ({ page }) => {
+    const testId = await createComponent(page, { classes: 'contents' });
+    const display = await getComputedStyle(page, getSelector(testId), 'display');
+    expect(display).toBe('contents');
+  });
+
+  test('list-item display utility', async ({ page }) => {
+    const testId = await createComponent(page, { classes: 'list-item' });
+    const display = await getComputedStyle(page, getSelector(testId), 'display');
+    expect(display).toBe('list-item');
+  });
 });

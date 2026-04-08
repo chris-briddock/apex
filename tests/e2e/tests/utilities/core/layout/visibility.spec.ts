@@ -25,4 +25,10 @@ test.describe('Visibility Utilities', () => {
     const visibility = await getComputedStyle(page, getSelector(testId), 'visibility');
     expect(visibility).toBe('hidden');
   });
+
+  test('collapse should collapse element', async ({ page }) => {
+    const testId = await createComponent(page, { classes: 'collapse' });
+    const visibility = await getComputedStyle(page, getSelector(testId), 'visibility');
+    expect(visibility).toBe('collapse');
+  });
 });

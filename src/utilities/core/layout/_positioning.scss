@@ -31,6 +31,20 @@
     inset-x-auto: (right: auto, left: auto),
   );
 
+  // Build spacing-based inset utilities from settings.$spacing-scale
+  $inset-spacing-keys: (1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
+  
+  @each $key in $inset-spacing-keys {
+    @if map.has-key(settings.$spacing-scale, $key) {
+      $inset-utilities: map.merge($inset-utilities, ('inset-#{$key}': (inset: var(--spacing-#{$key}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-x-#{$key}': (right: var(--spacing-#{$key}), left: var(--spacing-#{$key}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-y-#{$key}': (top: var(--spacing-#{$key}), bottom: var(--spacing-#{$key}))));
+    }
+  }
+  
+  // Add pixel value
+  $inset-utilities: map.merge($inset-utilities, ('inset-px': (inset: 1px)));
+
   // Build spacing-based position utilities from settings.$spacing-scale
   $position-spacing-keys: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
   $top-utilities: ();

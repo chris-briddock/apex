@@ -50,6 +50,48 @@ test.describe('Typography Utilities', () => {
       const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
       expect(fontSize).toBe('24px');
     });
+
+    test('text-3xl should have 1.875rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-3xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('30px');
+    });
+
+    test('text-4xl should have 2.25rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-4xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('36px');
+    });
+
+    test('text-5xl should have 3rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-5xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('48px');
+    });
+
+    test('text-6xl should have 3.75rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-6xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('60px');
+    });
+
+    test('text-7xl should have 4.5rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-7xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('72px');
+    });
+
+    test('text-8xl should have 6rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-8xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('96px');
+    });
+
+    test('text-9xl should have 8rem font size', async ({ page }) => {
+      const testId = await createComponent(page, { classes: 'text-9xl' });
+      const fontSize = await getComputedStyle(page, getSelector(testId), 'font-size');
+      expect(fontSize).toBe('128px');
+    });
   });
 
   test.describe('Font Weight', () => {
