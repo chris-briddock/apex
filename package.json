@@ -15,19 +15,23 @@
     "docs/LLMs.txt"
   ],
   "exports": {
-    ".": {
-      "style": "./dist/apex.css"
-    },
-    "./base": {
-      "style": "./dist/base.css"
-    },
-    "./themes": {
-      "style": "./dist/themes.css"
-    },
-    "./utilities": {
-      "style": "./dist/utilities.css"
-    },
-    "./package.json": "./package.json"
+  ".": {
+    "style": "./dist/apex.css",
+    "default": "./dist/apex.css"
+  },
+  "./base": {
+    "style": "./dist/base.css",
+    "default": "./dist/base.css"
+  },
+  "./themes": {
+    "style": "./dist/themes.css",
+    "default": "./dist/themes.css"
+  },
+  "./utilities": {
+    "style": "./dist/utilities.css",
+    "default": "./dist/utilities.css"
+  },
+  "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public",
