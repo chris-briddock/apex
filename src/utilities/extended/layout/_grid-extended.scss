@@ -28,21 +28,9 @@
   .grid-auto-rows-max { grid-auto-rows: max-content; }
   .grid-auto-rows-fr { grid-auto-rows: 1fr; }
 
-  // Grid column (shorthand for grid-column-start and grid-column-end)
+  // Grid column utilities are defined in core/layout/_grid.scss
+  // Extended grid column utilities (only additional ones not in core)
   // ============================================================================
-  .col-auto { grid-column: auto; }
-  .col-span-1 { grid-column: span 1 / span 1; }
-  .col-span-2 { grid-column: span 2 / span 2; }
-  .col-span-3 { grid-column: span 3 / span 3; }
-  .col-span-4 { grid-column: span 4 / span 4; }
-  .col-span-5 { grid-column: span 5 / span 5; }
-  .col-span-6 { grid-column: span 6 / span 6; }
-  .col-span-7 { grid-column: span 7 / span 7; }
-  .col-span-8 { grid-column: span 8 / span 8; }
-  .col-span-9 { grid-column: span 9 / span 9; }
-  .col-span-10 { grid-column: span 10 / span 10; }
-  .col-span-11 { grid-column: span 11 / span 11; }
-  .col-span-12 { grid-column: span 12 / span 12; }
   .col-span-full { grid-column: 1 / -1; }
 
   // Grid column start
@@ -77,15 +65,9 @@
   .col-end-12 { grid-column-end: 12; }
   .col-end-auto { grid-column-end: auto; }
 
-  // Grid row (shorthand for grid-row-start and grid-row-end)
+  // Grid row utilities are defined in core/layout/_grid.scss
+  // Extended grid row utilities (only additional ones not in core)
   // ============================================================================
-  .row-auto { grid-row: auto; }
-  .row-span-1 { grid-row: span 1 / span 1; }
-  .row-span-2 { grid-row: span 2 / span 2; }
-  .row-span-3 { grid-row: span 3 / span 3; }
-  .row-span-4 { grid-row: span 4 / span 4; }
-  .row-span-5 { grid-row: span 5 / span 5; }
-  .row-span-6 { grid-row: span 6 / span 6; }
   .row-span-full { grid-row: 1 / -1; }
 
   // Grid row start

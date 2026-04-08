@@ -150,11 +150,6 @@
   // Generate Utilities
   // ============================================================================
 
-  // Base border shorthand
-  .border {
-    border: 1px solid;
-  }
-
   // Generate border utilities
   @include utilities.generate-declaration-utilities($border-width-utilities);
   @include utilities.generate-declaration-utilities($border-t-width-utilities);
