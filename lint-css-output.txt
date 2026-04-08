@@ -5,13 +5,83 @@ npm warn Unknown global config "python". This will stop working in the next majo
 
 
 dist/apex.css
-  1:405816  ✖  Unexpected unknown media feature value "high" for name "prefers-contrast"  media-feature-name-value-no-unknown
-  1:405974  ✖  Unexpected unknown media feature value "low" for name "prefers-contrast"   media-feature-name-value-no-unknown
-  1:787111  ✖  Expected selector "*" to come before selector ".space-x-0>*+*", at line 1  no-descending-specificity
+  1:353398  ✖  Unexpected duplicate selector ".border", first used at line 1                                     no-duplicate-selectors
+  1:404393  ✖  Unexpected unknown pseudo-class selector ":animate-none"                                          selector-pseudo-class-no-unknown
+  1:404436  ✖  Unexpected unknown pseudo-class selector ":transition-none"                                       selector-pseudo-class-no-unknown
+  1:404483  ✖  Unexpected unknown pseudo-class selector ":transform-none"                                        selector-pseudo-class-no-unknown
+  1:404572  ✖  Unexpected unknown pseudo-class selector ":animate-none"                                          selector-pseudo-class-no-unknown
+  1:404613  ✖  Unexpected unknown pseudo-class selector ":transition-none"                                       selector-pseudo-class-no-unknown
+  1:404658  ✖  Unexpected unknown pseudo-class selector ":transform-none"                                        selector-pseudo-class-no-unknown
+  1:412012  ✖  Unexpected duplicate selector ".col-span-full", first used at line 1                              no-duplicate-selectors
+  1:413108  ✖  Unexpected duplicate selector ".row-span-full", first used at line 1                              no-duplicate-selectors
+  1:436961  ✖  Unexpected unknown value "auto" for property "font-feature-settings"                              declaration-property-value-no-unknown
+  1:442891  ✖  Unexpected duplicate selector ".text-shadow-inner", first used at line 1                          no-duplicate-selectors
+  1:453236  ✖  Unexpected unknown value "margin-box" for property "mask-clip"                                    declaration-property-value-no-unknown
+  1:454426  ✖  Unexpected unknown value "margin-box" for property "-webkit-mask-origin"                          declaration-property-value-no-unknown
+  1:454449  ✖  Unexpected unknown value "margin-box" for property "mask-origin"                                  declaration-property-value-no-unknown
+  1:454498  ✖  Unexpected unknown value "fill-box" for property "-webkit-mask-origin"                            declaration-property-value-no-unknown
+  1:454568  ✖  Unexpected unknown value "stroke-box" for property "-webkit-mask-origin"                          declaration-property-value-no-unknown
+  1:454640  ✖  Unexpected unknown value "view-box" for property "-webkit-mask-origin"                            declaration-property-value-no-unknown
+  1:463842  ✖  Unexpected unknown value "hidden" for property "outline"                                          declaration-property-value-no-unknown
+  1:481154  ✖  Unexpected duplicate selector ".break-normal", first used at line 1                               no-duplicate-selectors
+  1:488867  ✖  Unexpected duplicate selector ".grayscale", first used at line 1                                  no-duplicate-selectors
+  1:489166  ✖  Unexpected duplicate selector ".invert", first used at line 1                                     no-duplicate-selectors
+  1:489382  ✖  Unexpected duplicate selector ".sepia", first used at line 1                                      no-duplicate-selectors
+  1:489433  ✖  Unexpected unknown value "drop-shadow(none)" for property "filter"                                declaration-property-value-no-unknown
+  1:489471  ✖  Unexpected unknown value "drop-shadow(0 1px 2px 0 rgb(0 0 0 / .1))" for property "filter"         declaration-property-value-no-unknown
+  1:489535  ✖  Unexpected unknown value "drop-shadow(0 1px 1px 0 rgb(0 0 0 / .05))" for property "filter"        declaration-property-value-no-unknown
+  1:489600  ✖  Unexpected unknown value "drop-shadow(0 4px 6px -1px rgb(0 0 0 / .1))" for property "filter"      declaration-property-value-no-unknown
+  1:489667  ✖  Unexpected unknown value "drop-shadow(0 10px 15px -3px rgb(0 0 0 / .1))" for property "filter"    declaration-property-value-no-unknown
+  1:489736  ✖  Unexpected unknown value "drop-shadow(0 20px 25px -5px rgb(0 0 0 / .1))" for property "filter"    declaration-property-value-no-unknown
+  1:489806  ✖  Unexpected unknown value "drop-shadow(0 25px 50px -12px rgb(0 0 0 / .25))" for property "filter"  declaration-property-value-no-unknown
+  1:495091  ✖  Unexpected unknown value "0" for property "orphans"                                               declaration-property-value-no-unknown
+  1:495215  ✖  Unexpected unknown value "0" for property "widows"                                                declaration-property-value-no-unknown
+  1:515145  ✖  Unexpected duplicate selector ".rounded-t", first used at line 1                                  no-duplicate-selectors
+  1:515264  ✖  Unexpected duplicate selector ".rounded-b", first used at line 1                                  no-duplicate-selectors
+  1:675025  ✖  Unexpected duplicate selector ".is-0", first used at line 1                                       no-duplicate-selectors
+  1:676441  ✖  Unexpected duplicate selector ".bs-0", first used at line 1                                       no-duplicate-selectors
+  1:677441  ✖  Unexpected duplicate selector ".min-bs-max", first used at line 1                                 no-duplicate-selectors
+  1:683271  ✖  Unexpected unknown value "none" for property "-webkit-box-reflect"                                declaration-property-value-no-unknown
+  1:786206  ✖  Expected selector "*" to come before selector ".space-x-reverse>*+*", at line 1                   no-descending-specificity
 
 dist/utilities.css
-  27982:27  ✖  Unexpected unknown media feature value "high" for name "prefers-contrast"  media-feature-name-value-no-unknown
-  27991:27  ✖  Unexpected unknown media feature value "low" for name "prefers-contrast"   media-feature-name-value-no-unknown
+  1:351116  ✖  Unexpected duplicate selector ".border", first used at line 1                                     no-duplicate-selectors
+  1:402111  ✖  Unexpected unknown pseudo-class selector ":animate-none"                                          selector-pseudo-class-no-unknown
+  1:402154  ✖  Unexpected unknown pseudo-class selector ":transition-none"                                       selector-pseudo-class-no-unknown
+  1:402201  ✖  Unexpected unknown pseudo-class selector ":transform-none"                                        selector-pseudo-class-no-unknown
+  1:402290  ✖  Unexpected unknown pseudo-class selector ":animate-none"                                          selector-pseudo-class-no-unknown
+  1:402331  ✖  Unexpected unknown pseudo-class selector ":transition-none"                                       selector-pseudo-class-no-unknown
+  1:402376  ✖  Unexpected unknown pseudo-class selector ":transform-none"                                        selector-pseudo-class-no-unknown
+  1:409730  ✖  Unexpected duplicate selector ".col-span-full", first used at line 1                              no-duplicate-selectors
+  1:410826  ✖  Unexpected duplicate selector ".row-span-full", first used at line 1                              no-duplicate-selectors
+  1:434679  ✖  Unexpected unknown value "auto" for property "font-feature-settings"                              declaration-property-value-no-unknown
+  1:440609  ✖  Unexpected duplicate selector ".text-shadow-inner", first used at line 1                          no-duplicate-selectors
+  1:450954  ✖  Unexpected unknown value "margin-box" for property "mask-clip"                                    declaration-property-value-no-unknown
+  1:452144  ✖  Unexpected unknown value "margin-box" for property "-webkit-mask-origin"                          declaration-property-value-no-unknown
+  1:452167  ✖  Unexpected unknown value "margin-box" for property "mask-origin"                                  declaration-property-value-no-unknown
+  1:452216  ✖  Unexpected unknown value "fill-box" for property "-webkit-mask-origin"                            declaration-property-value-no-unknown
+  1:452286  ✖  Unexpected unknown value "stroke-box" for property "-webkit-mask-origin"                          declaration-property-value-no-unknown
+  1:452358  ✖  Unexpected unknown value "view-box" for property "-webkit-mask-origin"                            declaration-property-value-no-unknown
+  1:461560  ✖  Unexpected unknown value "hidden" for property "outline"                                          declaration-property-value-no-unknown
+  1:478872  ✖  Unexpected duplicate selector ".break-normal", first used at line 1                               no-duplicate-selectors
+  1:486585  ✖  Unexpected duplicate selector ".grayscale", first used at line 1                                  no-duplicate-selectors
+  1:486884  ✖  Unexpected duplicate selector ".invert", first used at line 1                                     no-duplicate-selectors
+  1:487100  ✖  Unexpected duplicate selector ".sepia", first used at line 1                                      no-duplicate-selectors
+  1:487151  ✖  Unexpected unknown value "drop-shadow(none)" for property "filter"                                declaration-property-value-no-unknown
+  1:487189  ✖  Unexpected unknown value "drop-shadow(0 1px 2px 0 rgb(0 0 0 / .1))" for property "filter"         declaration-property-value-no-unknown
+  1:487253  ✖  Unexpected unknown value "drop-shadow(0 1px 1px 0 rgb(0 0 0 / .05))" for property "filter"        declaration-property-value-no-unknown
+  1:487318  ✖  Unexpected unknown value "drop-shadow(0 4px 6px -1px rgb(0 0 0 / .1))" for property "filter"      declaration-property-value-no-unknown
+  1:487385  ✖  Unexpected unknown value "drop-shadow(0 10px 15px -3px rgb(0 0 0 / .1))" for property "filter"    declaration-property-value-no-unknown
+  1:487454  ✖  Unexpected unknown value "drop-shadow(0 20px 25px -5px rgb(0 0 0 / .1))" for property "filter"    declaration-property-value-no-unknown
+  1:487524  ✖  Unexpected unknown value "drop-shadow(0 25px 50px -12px rgb(0 0 0 / .25))" for property "filter"  declaration-property-value-no-unknown
+  1:492809  ✖  Unexpected unknown value "0" for property "orphans"                                               declaration-property-value-no-unknown
+  1:492933  ✖  Unexpected unknown value "0" for property "widows"                                                declaration-property-value-no-unknown
+  1:512863  ✖  Unexpected duplicate selector ".rounded-t", first used at line 1                                  no-duplicate-selectors
+  1:512982  ✖  Unexpected duplicate selector ".rounded-b", first used at line 1                                  no-duplicate-selectors
+  1:672743  ✖  Unexpected duplicate selector ".is-0", first used at line 1                                       no-duplicate-selectors
+  1:674159  ✖  Unexpected duplicate selector ".bs-0", first used at line 1                                       no-duplicate-selectors
+  1:675159  ✖  Unexpected duplicate selector ".min-bs-max", first used at line 1                                 no-duplicate-selectors
+  1:680989  ✖  Unexpected unknown value "none" for property "-webkit-box-reflect"                                declaration-property-value-no-unknown
 
-✖ 5 problems (5 errors, 0 warnings)
+✖ 75 problems (75 errors, 0 warnings)
 

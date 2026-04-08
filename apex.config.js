@@ -119,7 +119,7 @@ export default {
     quotes: true,
     orphans: true,
     widows: true,
-    pageBreak: true,
+    pageBreak: false,
     break: true,
     verticalAlign: true,
 

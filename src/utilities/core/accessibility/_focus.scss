@@ -12,34 +12,34 @@
 
 // Focus visible utilities (prefixed with focus-visible:)
 $focus-visible-utilities: (
-  'focus-visible:outline': (
+  'focus-visible\\:outline': (
     outline: 2px solid var(--color-primary),
     outline-offset: 2px,
   ),
-  'focus-visible:outline-none': (
+  'focus-visible\\:outline-none': (
     outline: none,
   ),
-  'focus-visible:ring': (
+  'focus-visible\\:ring': (
     outline: none,
     'box-shadow': 0 0 0 3px var(--color-primary),
   ),
-  'focus-visible:ring-0': (
+  'focus-visible\\:ring-0': (
     outline: none,
     'box-shadow': none,
   ),
-  'focus-visible:ring-2': (
+  'focus-visible\\:ring-2': (
     outline: none,
     'box-shadow': 0 0 0 2px var(--color-primary),
   ),
-  'focus-visible:ring-4': (
+  'focus-visible\\:ring-4': (
     outline: none,
     'box-shadow': 0 0 0 4px var(--color-primary),
   ),
-  'focus-visible:ring-8': (
+  'focus-visible\\:ring-8': (
     outline: none,
     'box-shadow': 0 0 0 8px var(--color-primary),
   ),
-  'focus-visible:ring-inset': (
+  'focus-visible\\:ring-inset': (
     outline: none,
     'box-shadow': inset 0 0 0 2px var(--color-primary),
   ),
@@ -47,34 +47,34 @@ $focus-visible-utilities: (
 
 // Focus within utilities (prefixed with focus-within:)
 $focus-within-utilities: (
-  'focus-within:outline': (
+  'focus-within\\:outline': (
     outline: 2px solid var(--color-primary),
     outline-offset: 2px,
   ),
-  'focus-within:outline-none': (
+  'focus-within\\:outline-none': (
     outline: none,
   ),
-  'focus-within:ring': (
+  'focus-within\\:ring': (
     outline: none,
     'box-shadow': 0 0 0 3px var(--color-primary),
   ),
-  'focus-within:ring-0': (
+  'focus-within\\:ring-0': (
     outline: none,
     'box-shadow': none,
   ),
-  'focus-within:ring-2': (
+  'focus-within\\:ring-2': (
     outline: none,
     'box-shadow': 0 0 0 2px var(--color-primary),
   ),
-  'focus-within:ring-4': (
+  'focus-within\\:ring-4': (
     outline: none,
     'box-shadow': 0 0 0 4px var(--color-primary),
   ),
-  'focus-within:ring-8': (
+  'focus-within\\:ring-8': (
     outline: none,
     'box-shadow': 0 0 0 8px var(--color-primary),
   ),
-  'focus-within:ring-inset': (
+  'focus-within\\:ring-inset': (
     outline: none,
     'box-shadow': inset 0 0 0 2px var(--color-primary),
   ),
@@ -82,7 +82,7 @@ $focus-within-utilities: (
 
 // Simple focus utilities (no pseudo-class prefix)
 $focus-utilities: (
-  'focus:outline-none': (
+  'focus\\:outline-none': (
     outline: none,
   ),
 ) !default;

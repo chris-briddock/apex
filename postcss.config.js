@@ -10,6 +10,7 @@ export default {
         'custom-media-queries': true,
         'custom-properties': false, // Preserve CSS variables (don't transform to static values)
         'light-dark-function': false, // Avoid csstools color-scheme helper output for modern targets
+        'break-properties': false, // Disable break-* property fallbacks (we want clean modern CSS)
       },
       preserve: true, // Preserve original CSS alongside transformed versions
       autoprefixer: false // Disable vendor prefixes - we only use standardized CSS
