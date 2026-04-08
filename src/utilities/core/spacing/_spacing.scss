@@ -36,10 +36,10 @@
   $margin-utilities: ();
 
   @each $key, $value in $spacing-values {
-    // Escape dots in class names (e.g., 0.5 becomes 0\.5)
+    // Use hyphenated class names for decimals (e.g., 0.5 becomes 0-5)
     $escaped-key: $key;
 
-    @if $key == 0.5 { $escaped-key: '0\\.5'; } @else if $key == 1.5 { $escaped-key: '1\\.5'; } @else if $key == 2.5 { $escaped-key: '2\\.5'; } @else if $key == 3.5 { $escaped-key: '3\\.5'; }
+    @if $key == 0.5 { $escaped-key: '0-5'; } @else if $key == 1.5 { $escaped-key: '1-5'; } @else if $key == 2.5 { $escaped-key: '2-5'; } @else if $key == 3.5 { $escaped-key: '3-5'; }
 
     $margin-utilities: map.merge($margin-utilities, (
       'm-#{$escaped-key}': (margin: $value),
@@ -56,10 +56,10 @@
   $padding-utilities: ();
 
   @each $key, $value in $spacing-values {
-    // Escape dots in class names
+    // Use hyphenated class names for decimals
     $escaped-key: $key;
 
-    @if $key == 0.5 { $escaped-key: '0\\.5'; } @else if $key == 1.5 { $escaped-key: '1\\.5'; } @else if $key == 2.5 { $escaped-key: '2\\.5'; } @else if $key == 3.5 { $escaped-key: '3\\.5'; }
+    @if $key == 0.5 { $escaped-key: '0-5'; } @else if $key == 1.5 { $escaped-key: '1-5'; } @else if $key == 2.5 { $escaped-key: '2-5'; } @else if $key == 3.5 { $escaped-key: '3-5'; }
 
     $padding-utilities: map.merge($padding-utilities, (
       'p-#{$escaped-key}': (padding: $value),
@@ -76,10 +76,10 @@
   $gap-utilities: ();
 
   @each $key, $value in $spacing-values {
-    // Escape dots in class names
+    // Use hyphenated class names for decimals
     $escaped-key: $key;
 
-    @if $key == 0.5 { $escaped-key: '0\\.5'; } @else if $key == 1.5 { $escaped-key: '1\\.5'; } @else if $key == 2.5 { $escaped-key: '2\\.5'; } @else if $key == 3.5 { $escaped-key: '3\\.5'; }
+    @if $key == 0.5 { $escaped-key: '0-5'; } @else if $key == 1.5 { $escaped-key: '1-5'; } @else if $key == 2.5 { $escaped-key: '2-5'; } @else if $key == 3.5 { $escaped-key: '3-5'; }
 
     $gap-utilities: map.merge($gap-utilities, (
       'gap-#{$escaped-key}': (gap: $value),

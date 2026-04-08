@@ -17,18 +17,19 @@
     $class-key: $key;
 
     // Handle special keys for CSS variable names and class names
+    // Use hyphenated class names to avoid Turbopack parser issues with escaped dots
     @if $key == 0.5 {
       $spacing-token: '0-5';
-      $class-key: '0\\.5';
+      $class-key: '0-5';
     } @else if $key == 1.5 {
       $spacing-token: '1-5';
-      $class-key: '1\\.5';
+      $class-key: '1-5';
     } @else if $key == 2.5 {
       $spacing-token: '2-5';
-      $class-key: '2\\.5';
+      $class-key: '2-5';
     } @else if $key == 3.5 {
       $spacing-token: '3-5';
-      $class-key: '3\\.5';
+      $class-key: '3-5';
     }
 
     $space-x-utilities: map.merge($space-x-utilities, (

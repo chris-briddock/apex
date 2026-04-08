@@ -259,11 +259,10 @@
 
 // Placeholder RTL
 // ============================================================================
-.rtl\:placeholder::placeholder {
-  &[dir="rtl"],
-  .rtl & {
-    text-align: right;
-  }
+// Using :is() to avoid invalid selector after pseudo-element
+:is([dir="rtl"]) .rtl\:placeholder::placeholder,
+.rtl .rtl\:placeholder::placeholder {
+  text-align: right;
 }
 
 // Scroll RTL
