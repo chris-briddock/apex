@@ -11,7 +11,8 @@ export default {
         'custom-properties': false, // Preserve CSS variables (don't transform to static values)
         'light-dark-function': false, // Avoid csstools color-scheme helper output for modern targets
       },
-      preserve: true // Preserve original CSS alongside transformed versions
+      preserve: true, // Preserve original CSS alongside transformed versions
+      autoprefixer: false // Disable vendor prefixes - we only use standardized CSS
     })
   ]
 };

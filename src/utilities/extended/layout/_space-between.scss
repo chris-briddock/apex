@@ -46,6 +46,15 @@
     'space-y-reverse': (--space-y-reverse: 1),
   );
 
+  // Generate reverse utilities first (lower specificity)
+  @each $class, $props in $space-reverse-utilities {
+    .#{$class} > * + * {
+      @each $prop, $val in $props {
+        #{$prop}: $val;
+      }
+    }
+  }
+
   // Generate space-x utilities with child selector
   @each $class, $props in $space-x-utilities {
     .#{$class} > * + * {
@@ -57,15 +66,6 @@
 
   // Generate space-y utilities with child selector
   @each $class, $props in $space-y-utilities {
-    .#{$class} > * + * {
-      @each $prop, $val in $props {
-        #{$prop}: $val;
-      }
-    }
-  }
-
-  // Generate reverse utilities with child selector
-  @each $class, $props in $space-reverse-utilities {
     .#{$class} > * + * {
       @each $prop, $val in $props {
         #{$prop}: $val;

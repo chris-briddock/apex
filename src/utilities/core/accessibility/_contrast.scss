@@ -23,11 +23,11 @@ $contrast-low-utilities: (
 
   @if settings.$enable-accessibility == true {
 // Contrast preferences
-  @media (prefers-contrast: high) {
+  @media (prefers-contrast: more) {
     @include utilities.generate-declaration-utilities($contrast-high-utilities);
   }
 
-  @media (prefers-contrast: low) {
+  @media (prefers-contrast: less) {
     @include utilities.generate-declaration-utilities($contrast-low-utilities);
   }
 }

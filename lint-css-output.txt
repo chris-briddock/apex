@@ -1,0 +1,17 @@
+npm warn Unknown global config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> apexcss@0.4.0 lint:css
+> stylelint --config .stylelintrc-css.json 'dist/*.css'
+
+
+dist/apex.css
+  1:405816  ✖  Unexpected unknown media feature value "high" for name "prefers-contrast"  media-feature-name-value-no-unknown
+  1:405974  ✖  Unexpected unknown media feature value "low" for name "prefers-contrast"   media-feature-name-value-no-unknown
+  1:787111  ✖  Expected selector "*" to come before selector ".space-x-0>*+*", at line 1  no-descending-specificity
+
+dist/utilities.css
+  27982:27  ✖  Unexpected unknown media feature value "high" for name "prefers-contrast"  media-feature-name-value-no-unknown
+  27991:27  ✖  Unexpected unknown media feature value "low" for name "prefers-contrast"   media-feature-name-value-no-unknown
+
+✖ 5 problems (5 errors, 0 warnings)
+
