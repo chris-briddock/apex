@@ -11,12 +11,7 @@
   // ============================================================================
   @each $key, $value in settings.$ring-widths {
     .ring-#{"" + $key} {
-      --shadow: 0 0 #0000;
-      --ring-inset: ;
-      --ring-offset-width: 0px;
-      --ring-offset-color: var(--color-white);
-      --ring-color: var(--color-primary);
-      --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+      // Set the ring-shadow value; --ring-offset-shadow and --shadow are defined in :root
       --ring-shadow: 0 0 0 calc(#{$value} + var(--ring-offset-width)) var(--ring-color);
       box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
     }
@@ -27,7 +22,6 @@
   @each $key, $value in settings.$ring-widths {
     .ring-offset-#{"" + $key} {
       --ring-offset-width: #{$value};
-      --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
     }
   }
 

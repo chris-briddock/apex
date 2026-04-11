@@ -37,12 +37,14 @@
 
   // Grayscale - generated from settings.$filter-grayscale-values
   // ============================================================================
-
   @each $key, $value in settings.$filter-grayscale-values {
     @if $key == 0 {
       .grayscale-0 { filter: grayscale(0); }
-    } @else {
+    } @else if $key == default {
+      // Default grayscale (100%)
       .grayscale { filter: #{"grayscale("}#{$value}#{')'}; }
+    } @else {
+      .grayscale-#{$key} { filter: #{"grayscale("}#{$value}#{')'}; }
     }
   }
 
@@ -54,12 +56,14 @@
 
   // Invert - generated from settings.$filter-invert-values
   // ============================================================================
-
   @each $key, $value in settings.$filter-invert-values {
     @if $key == 0 {
       .invert-0 { filter: invert(0); }
-    } @else {
+    } @else if $key == default {
+      // Default invert (100%)
       .invert { filter: #{"invert("}#{$value}#{')'}; }
+    } @else {
+      .invert-#{$key} { filter: #{"invert("}#{$value}#{')'}; }
     }
   }
 
@@ -71,12 +75,14 @@
 
   // Sepia - generated from settings.$filter-sepia-values
   // ============================================================================
-
   @each $key, $value in settings.$filter-sepia-values {
     @if $key == 0 {
       .sepia-0 { filter: sepia(0); }
-    } @else {
+    } @else if $key == default {
+      // Default sepia (100%)
       .sepia { filter: #{"sepia("}#{$value}#{')'}; }
+    } @else {
+      .sepia-#{$key} { filter: #{"sepia("}#{$value}#{')'}; }
     }
   }
 
@@ -90,7 +96,9 @@
     }
 
     @if $key == none {
-      .drop-shadow-none { filter: drop-shadow(none); }
+      // Note: drop-shadow(none) is not valid CSS
+      // Using drop-shadow with transparent shadow instead
+      .drop-shadow-none { filter: drop-shadow(0 0 #0000); }
     } @else {
       .drop-shadow#{$suffix} { filter: drop-shadow(#{$value}); }
     }
@@ -128,10 +136,18 @@
     }
   }
 
-  // Backdrop grayscale
+  // Backdrop grayscale - generated from settings.$filter-grayscale-values
   // ============================================================================
-  .backdrop-grayscale-0 { backdrop-filter: grayscale(0); }
-  .backdrop-grayscale { backdrop-filter: grayscale(100%); }
+  @each $key, $value in settings.$filter-grayscale-values {
+    @if $key == 0 {
+      .backdrop-grayscale-0 { backdrop-filter: grayscale(0); }
+    } @else if $key == default {
+      // Default backdrop-grayscale (100%)
+      .backdrop-grayscale { backdrop-filter: #{"grayscale("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-grayscale-#{$key} { backdrop-filter: #{"grayscale("}#{$value}#{')'}; }
+    }
+  }
 
   // Backdrop hue rotate (limited set)
   // ============================================================================
@@ -141,10 +157,18 @@
   .backdrop-hue-rotate-n90 { backdrop-filter: hue-rotate(-90deg); }
   .backdrop-hue-rotate-n180 { backdrop-filter: hue-rotate(-180deg); }
 
-  // Backdrop invert
+  // Backdrop invert - generated from settings.$filter-invert-values
   // ============================================================================
-  .backdrop-invert-0 { backdrop-filter: invert(0); }
-  .backdrop-invert { backdrop-filter: invert(100%); }
+  @each $key, $value in settings.$filter-invert-values {
+    @if $key == 0 {
+      .backdrop-invert-0 { backdrop-filter: invert(0); }
+    } @else if $key == default {
+      // Default backdrop-invert (100%)
+      .backdrop-invert { backdrop-filter: #{"invert("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-invert-#{$key} { backdrop-filter: #{"invert("}#{$value}#{')'}; }
+    }
+  }
 
   // Backdrop opacity - generated from settings.$backdrop-opacity-values
   // ============================================================================
@@ -152,7 +176,7 @@
     .backdrop-opacity-#{$key} { backdrop-filter: #{"opacity("}#{$value}#{')'}; }
   }
 
-  // Backdrop saturate
+  // Backdrop saturate (limited set to avoid duplicates)
   // ============================================================================
   .backdrop-saturate-0 { backdrop-filter: saturate(0); }
   .backdrop-saturate-50 { backdrop-filter: saturate(0.5); }
@@ -160,8 +184,16 @@
   .backdrop-saturate-150 { backdrop-filter: saturate(1.5); }
   .backdrop-saturate-200 { backdrop-filter: saturate(2); }
 
-  // Backdrop sepia
+  // Backdrop sepia - generated from settings.$filter-sepia-values
   // ============================================================================
-  .backdrop-sepia-0 { backdrop-filter: sepia(0); }
-  .backdrop-sepia { backdrop-filter: sepia(100%); }
+  @each $key, $value in settings.$filter-sepia-values {
+    @if $key == 0 {
+      .backdrop-sepia-0 { backdrop-filter: sepia(0); }
+    } @else if $key == default {
+      // Default backdrop-sepia (100%)
+      .backdrop-sepia { backdrop-filter: #{"sepia("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-sepia-#{$key} { backdrop-filter: #{"sepia("}#{$value}#{')'}; }
+    }
+  }
 }

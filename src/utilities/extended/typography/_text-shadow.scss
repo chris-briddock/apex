@@ -23,12 +23,6 @@
     }
   }
 
-  // Inner text shadow (for glow effects)
-  // Note: 'inset' is not valid for text-shadow - using standard shadow instead
-  // ============================================================================
-
-  .text-shadow-inner { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
-
   // Colored text shadows - using theme CSS custom properties
   // ============================================================================
   .text-shadow-black { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }

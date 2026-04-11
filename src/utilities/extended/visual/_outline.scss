@@ -14,7 +14,10 @@
   .outline-dashed { outline: 2px dashed; }
   .outline-dotted { outline: 2px dotted; }
   .outline-double { outline: 2px double; }
-  .outline-hidden { outline: 2px hidden; }
+
+  // Note: 'hidden' is not a valid outline-style value per CSS spec
+  // Using 'outline: none' instead of 'outline: hidden'
+  .outline-hidden { outline: none; }
 
   // Outline width - generated from settings.$outline-widths
   // ============================================================================

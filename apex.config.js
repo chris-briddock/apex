@@ -119,7 +119,7 @@ export default {
     quotes: true,
     orphans: true,
     widows: true,
-    pageBreak: true,
+    pageBreak: false,
     break: true,
     verticalAlign: true,
 
@@ -154,6 +154,7 @@ export default {
   // Breakpoints - Customize responsive breakpoints
   // ============================================================================
   breakpoints: {
+    xs: "0px",
     sm: "320px",
     md: "768px",
     lg: "1024px",

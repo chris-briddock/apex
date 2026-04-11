@@ -18,8 +18,7 @@ $overflow-anchor-values: (
 // Note: Using different class names to avoid conflicts
 $overflow-wrap-values: (
   words: break-word,
-  anywhere: anywhere,
-  normal: normal
+  anywhere: anywhere
 ) !default;
 
 // Build utilities map
@@ -31,12 +30,9 @@ $overflow-extended-utilities: ();
 }
 
 // Add overflow-wrap utilities
+// Note: break-normal is already defined in _word-break.scss, so we don't include it here
 @each $key, $value in $overflow-wrap-values {
-  @if $key == 'words' {
-    $overflow-extended-utilities: map.merge($overflow-extended-utilities, ('break-#{$key}': (overflow-wrap: $value)));
-  } @else {
-    $overflow-extended-utilities: map.merge($overflow-extended-utilities, ('break-#{$key}': (overflow-wrap: $value)));
-  }
+  $overflow-extended-utilities: map.merge($overflow-extended-utilities, ('break-#{$key}': (overflow-wrap: $value)));
 }
 
 @if settings.$enable-overflow-extended == true {

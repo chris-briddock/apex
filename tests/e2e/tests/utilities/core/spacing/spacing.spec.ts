@@ -199,55 +199,57 @@ test.describe('Spacing Utilities', () => {
 
   test.describe('Spacing Scale', () => {
     // Test the full spacing scale from 0 to 96
+    // Use className for the actual CSS class (hyphenated for decimals like 0-5, 1-5, etc.)
+    // Use displayName for readable test names (decimal notation like 0.5, 1.5, etc.)
     const spacingScale = [
-      { value: '0', expected: '0px' },
-      { value: 'px', expected: '1px' },
-      { value: '0.5', expected: '2px' },
-      { value: '1', expected: '4px' },
-      { value: '1.5', expected: '6px' },
-      { value: '2', expected: '8px' },
-      { value: '2.5', expected: '10px' },
-      { value: '3', expected: '12px' },
-      { value: '3.5', expected: '14px' },
-      { value: '4', expected: '16px' },
-      { value: '5', expected: '20px' },
-      { value: '6', expected: '24px' },
-      { value: '7', expected: '28px' },
-      { value: '8', expected: '32px' },
-      { value: '9', expected: '36px' },
-      { value: '10', expected: '40px' },
-      { value: '11', expected: '44px' },
-      { value: '12', expected: '48px' },
-      { value: '14', expected: '56px' },
-      { value: '16', expected: '64px' },
-      { value: '20', expected: '80px' },
-      { value: '24', expected: '96px' },
-      { value: '28', expected: '112px' },
-      { value: '32', expected: '128px' },
-      { value: '36', expected: '144px' },
-      { value: '40', expected: '160px' },
-      { value: '44', expected: '176px' },
-      { value: '48', expected: '192px' },
-      { value: '52', expected: '208px' },
-      { value: '56', expected: '224px' },
-      { value: '60', expected: '240px' },
-      { value: '64', expected: '256px' },
-      { value: '72', expected: '288px' },
-      { value: '80', expected: '320px' },
-      { value: '96', expected: '384px' },
+      { className: '0', displayName: '0', expected: '0px' },
+      { className: 'px', displayName: 'px', expected: '1px' },
+      { className: '0-5', displayName: '0.5', expected: '2px' },
+      { className: '1', displayName: '1', expected: '4px' },
+      { className: '1-5', displayName: '1.5', expected: '6px' },
+      { className: '2', displayName: '2', expected: '8px' },
+      { className: '2-5', displayName: '2.5', expected: '10px' },
+      { className: '3', displayName: '3', expected: '12px' },
+      { className: '3-5', displayName: '3.5', expected: '14px' },
+      { className: '4', displayName: '4', expected: '16px' },
+      { className: '5', displayName: '5', expected: '20px' },
+      { className: '6', displayName: '6', expected: '24px' },
+      { className: '7', displayName: '7', expected: '28px' },
+      { className: '8', displayName: '8', expected: '32px' },
+      { className: '9', displayName: '9', expected: '36px' },
+      { className: '10', displayName: '10', expected: '40px' },
+      { className: '11', displayName: '11', expected: '44px' },
+      { className: '12', displayName: '12', expected: '48px' },
+      { className: '14', displayName: '14', expected: '56px' },
+      { className: '16', displayName: '16', expected: '64px' },
+      { className: '20', displayName: '20', expected: '80px' },
+      { className: '24', displayName: '24', expected: '96px' },
+      { className: '28', displayName: '28', expected: '112px' },
+      { className: '32', displayName: '32', expected: '128px' },
+      { className: '36', displayName: '36', expected: '144px' },
+      { className: '40', displayName: '40', expected: '160px' },
+      { className: '44', displayName: '44', expected: '176px' },
+      { className: '48', displayName: '48', expected: '192px' },
+      { className: '52', displayName: '52', expected: '208px' },
+      { className: '56', displayName: '56', expected: '224px' },
+      { className: '60', displayName: '60', expected: '240px' },
+      { className: '64', displayName: '64', expected: '256px' },
+      { className: '72', displayName: '72', expected: '288px' },
+      { className: '80', displayName: '80', expected: '320px' },
+      { className: '96', displayName: '96', expected: '384px' },
     ];
 
-    for (const { value, expected } of spacingScale) {
-      test(`p-${value} should have ${expected} padding`, async ({ page }) => {
-        const testId = await createComponent(page, { classes: `p-${value}` });
+    for (const { className, displayName, expected } of spacingScale) {
+      test(`p-${displayName} should have ${expected} padding`, async ({ page }) => {
+        const testId = await createComponent(page, { classes: `p-${className}` });
         const top = await getComputedStyle(page, getSelector(testId), 'padding-top');
         expect(top).toBe(expected);
       });
     }
 
-    for (const { value, expected } of spacingScale) {
-      test(`m-${value} should have ${expected} margin`, async ({ page }) => {
-        const testId = await createComponent(page, { classes: `m-${value}` });
+    for (const { className, displayName, expected } of spacingScale) {
+      test(`m-${displayName} should have ${expected} margin`, async ({ page }) => {
+        const testId = await createComponent(page, { classes: `m-${className}` });
         const top = await getComputedStyle(page, getSelector(testId), 'margin-top');
         expect(top).toBe(expected);
       });

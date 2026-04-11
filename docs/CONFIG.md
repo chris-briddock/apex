@@ -39,11 +39,14 @@ export default {
 
   breakpoints: {
     // Customize responsive breakpoints
-    sm: '640px',
+    xs: '0px',      // Base breakpoint for all screens
+    sm: '320px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
-    xxl: '1920px'  // Modified
+    xxl: '2560px',  // 2K / QHD
+    xxxl: '3840px', // 4K / UHD
+    ultra: '7680px' // 8K
   }
 }
 ```
@@ -296,13 +299,19 @@ colors: {
 
 ```javascript
 breakpoints: {
-  sm: '640px',
+  xs: '0px',    // Base for all screens (mobile-first)
+  sm: '320px',
   md: '768px',
   lg: '1024px',
   xl: '1280px',
-  xxl: '1536px'
+  xxl: '2560px',
+  xxxl: '3840px',
+  ultra: '7680px'
 }
 ```
+
+The `xs` breakpoint (0px) is the base breakpoint that applies to all screen sizes.
+It's useful for explicit mobile-first utilities that should apply universally.
 
 ### Spacing Scale
 

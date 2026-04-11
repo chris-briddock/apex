@@ -13,17 +13,17 @@
 // Motion reduce utilities (prefixed with motion-reduce:)
 // Applied when user prefers reduced motion
 $motion-reduce-utilities: (
-  'motion-reduce:animate-none': (animation: none),
-  'motion-reduce:transition-none': (transition: none),
-  'motion-reduce:transform-none': (transform: none),
+  'motion-reduce\\:animate-none': (animation: none),
+  'motion-reduce\\:transition-none': (transition: none),
+  'motion-reduce\\:transform-none': (transform: none),
 ) !default;
 
 // Motion safe utilities (prefixed with motion-safe:)
 // Applied when user has no preference for reduced motion
 $motion-safe-utilities: (
-  'motion-safe:animate-none': (animation: none),
-  'motion-safe:transition-none': (transition: none),
-  'motion-safe:transform-none': (transform: none),
+  'motion-safe\\:animate-none': (animation: none),
+  'motion-safe\\:transition-none': (transition: none),
+  'motion-safe\\:transform-none': (transform: none),
 ) !default;
 
 // ============================================================================

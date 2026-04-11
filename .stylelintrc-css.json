@@ -1,0 +1,23 @@
+{
+  "extends": ["stylelint-config-recommended"],
+  "rules": {
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
+    "no-duplicate-selectors": true,
+    "no-empty-source": true,
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "font-family-no-duplicate-names": true,
+    "unit-no-unknown": true,
+    "property-no-unknown": true,
+    "declaration-property-value-no-unknown": true,
+    "shorthand-property-no-redundant-values": true,
+    "value-no-vendor-prefix": true,
+    "selector-pseudo-class-no-unknown": true,
+    "selector-pseudo-element-no-unknown": true,
+    "media-feature-name-no-unknown": true,
+    "property-no-deprecated": true,
+    "media-feature-name-value-no-unknown": true,
+    "no-descending-specificity": true
+  }
+}

@@ -7,34 +7,28 @@
 @use '../../../config/custom-config' as settings;
 @use '../../../mixins/utilities' as utility-mixins;
 
-// Page break after values
+// Page break after values - only standard CSS values, no invalid ones
 $page-break-after-values: (
   auto: auto,
   avoid: avoid,
   always: always,
   left: left,
   right: right,
-  column: column,
-  "avoid-column": avoid-column
 ) !default;
 
-// Page break before values
+// Page break before values - only standard CSS values, no invalid ones
 $page-break-before-values: (
   auto: auto,
   avoid: avoid,
   always: always,
   left: left,
   right: right,
-  column: column,
-  "avoid-column": avoid-column
 ) !default;
 
-// Page break inside values
+// Page break inside values - only standard CSS values
 $page-break-inside-values: (
   auto: auto,
   avoid: avoid,
-  "avoid-page": avoid-page,
-  "avoid-column": avoid-column
 ) !default;
 
 // Build utilities maps

@@ -37,14 +37,14 @@
   @each $key, $width in settings.$divide-widths {
     .divide-y-#{$key} > :not([hidden]) ~ :not([hidden]) {
       --divide-y-reverse: 0;
-      border-top-width: calc(#{$width}px * calc(1 - var(--divide-y-reverse)));
-      border-bottom-width: calc(#{$width}px * var(--divide-y-reverse));
+      border-top-width: calc(#{$width} * calc(1 - var(--divide-y-reverse)));
+      border-bottom-width: calc(#{$width} * var(--divide-y-reverse));
     }
 
     .divide-x-#{$key} > :not([hidden]) ~ :not([hidden]) {
       --divide-x-reverse: 0;
-      border-right-width: calc(#{$width}px * var(--divide-x-reverse));
-      border-left-width: calc(#{$width}px * calc(1 - var(--divide-x-reverse)));
+      border-right-width: calc(#{$width} * var(--divide-x-reverse));
+      border-left-width: calc(#{$width} * calc(1 - var(--divide-x-reverse)));
     }
   }
 

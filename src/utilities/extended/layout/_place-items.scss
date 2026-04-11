@@ -1,31 +1,76 @@
 // ============================================================================
 // Place Items / Place Content / Place Self Utilities
 // ============================================================================
+// These utilities provide shorthand convenience for setting both align-* and
+// justify-* properties simultaneously. They use longhand properties internally
+// to avoid shorthand/longhand CSS conflicts.
+// Equivalent mappings:
+// - place-*-start    → align-*: start;    justify-*: start;
+// - place-*-end      → align-*: end;      justify-*: end;
+// - place-*-center   → align-*: center;   justify-*: center;
+// - place-*-stretch  → align-*: stretch;  justify-*: stretch;
+// - place-*-baseline → align-*: baseline; justify-*: baseline;
+// ============================================================================
 
+@use 'sass:map';
 @use '../../../config/custom-config' as settings;
+@use '../../../mixins/utilities' as utility-mixins;
 
 @if settings.$enable-place-items == true {
-  // Place items
-  .place-items-start { place-items: start; }
-  .place-items-end { place-items: end; }
-  .place-items-center { place-items: center; }
-  .place-items-baseline { place-items: baseline; }
-  .place-items-stretch { place-items: stretch; }
+  // Place Items utilities (shorthand for align-items + justify-items)
+  // ============================================================================
+  $place-items-values: (
+    'place-items-start': (align-items: start, justify-items: start),
+    'place-items-end': (align-items: end, justify-items: end),
+    'place-items-center': (align-items: center, justify-items: center),
+    'place-items-stretch': (align-items: stretch, justify-items: stretch),
+    'place-items-baseline': (align-items: baseline, justify-items: baseline),
+  );
 
-  // Place content
-  .place-content-center { place-content: center; }
-  .place-content-start { place-content: start; }
-  .place-content-end { place-content: end; }
-  .place-content-between { place-content: space-between; }
-  .place-content-around { place-content: space-around; }
-  .place-content-evenly { place-content: space-evenly; }
-  .place-content-baseline { place-content: baseline; }
-  .place-content-stretch { place-content: stretch; }
+  @include utility-mixins.generate-declaration-utilities($place-items-values);
 
-  // Place self
-  .place-self-auto { place-self: auto; }
-  .place-self-start { place-self: start; }
-  .place-self-end { place-self: end; }
-  .place-self-center { place-self: center; }
-  .place-self-stretch { place-self: stretch; }
+  // Responsive place-items utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $place-items-values,
+    settings.$breakpoints
+  );
+
+  // Place Content utilities (shorthand for align-content + justify-content)
+  // ============================================================================
+  $place-content-values: (
+    'place-content-start': (align-content: start, justify-content: start),
+    'place-content-end': (align-content: end, justify-content: end),
+    'place-content-center': (align-content: center, justify-content: center),
+    'place-content-stretch': (align-content: stretch, justify-content: stretch),
+    'place-content-between': (align-content: space-between, justify-content: space-between),
+    'place-content-around': (align-content: space-around, justify-content: space-around),
+    'place-content-evenly': (align-content: space-evenly, justify-content: space-evenly),
+  );
+
+  @include utility-mixins.generate-declaration-utilities($place-content-values);
+
+  // Responsive place-content utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $place-content-values,
+    settings.$breakpoints
+  );
+
+  // Place Self utilities (shorthand for align-self + justify-self)
+  // ============================================================================
+  $place-self-values: (
+    'place-self-auto': (align-self: auto, justify-self: auto),
+    'place-self-start': (align-self: start, justify-self: start),
+    'place-self-end': (align-self: end, justify-self: end),
+    'place-self-center': (align-self: center, justify-self: center),
+    'place-self-stretch': (align-self: stretch, justify-self: stretch),
+    'place-self-baseline': (align-self: baseline, justify-self: baseline),
+  );
+
+  @include utility-mixins.generate-declaration-utilities($place-self-values);
+
+  // Responsive place-self utilities
+  @include utility-mixins.generate-responsive-declaration-utilities(
+    $place-self-values,
+    settings.$breakpoints
+  );
 }
