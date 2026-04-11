@@ -261,7 +261,8 @@
 // ============================================================================
 // Placeholder text alignment for RTL contexts
 [dir="rtl"] .rtl\:placeholder::placeholder,
-.rtl .rtl\:placeholder::placeholder {
+.rtl .rtl\:placeholder::placeholder,
+.rtl\:placeholder[dir="rtl"]::placeholder {
   text-align: right;
 }
 
