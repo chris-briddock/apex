@@ -64,6 +64,8 @@ Validates responsive behavior across all breakpoints.
 - Fluid typography
 
 **Breakpoints Tested:**
+**Breakpoints Tested:**
+
 | Name | Width | Description |
 |------|-------|-------------|
 | sm | 320px | Small mobile |
