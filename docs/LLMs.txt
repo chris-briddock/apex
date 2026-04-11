@@ -2392,7 +2392,7 @@ ECOSYSTEM COMPARISON:
 
     | Aspect                     | ApexCSS                              | Tailwind CSS v4                    |
     |----------------------------|--------------------------------------|-------------------------------------|
-    | Version                    | 0.4.1 (pre-release)                  | 4.0+ (stable)                       |
+    | Version                    | 0.4.0                                | 4.0+ (stable)                       |
     | Community Size             | Small, new                           | Large, active                       |
     | Documentation              | LLMs.txt + CONFIG.md                 | Extensive website + guides          |
     | UI Components              | None                                 | Tailwind UI (paid)                  |
