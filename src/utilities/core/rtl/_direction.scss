@@ -259,8 +259,8 @@
 
 // Placeholder RTL
 // ============================================================================
-// Using :is() to avoid invalid selector after pseudo-element
-:is([dir="rtl"]) .rtl\:placeholder::placeholder,
+// Placeholder text alignment for RTL contexts
+[dir="rtl"] .rtl\:placeholder::placeholder,
 .rtl .rtl\:placeholder::placeholder {
   text-align: right;
 }
