@@ -11,7 +11,7 @@
   // ============================================================================
   @each $key, $value in settings.$ring-widths {
     .ring-#{"" + $key} {
-      // Only set the ring-shadow value; other custom props are defined in :root
+      // Set the ring-shadow value; --ring-offset-shadow and --shadow are defined in :root
       --ring-shadow: 0 0 0 calc(#{$value} + var(--ring-offset-width)) var(--ring-color);
       box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
     }

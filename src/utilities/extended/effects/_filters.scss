@@ -136,11 +136,18 @@
     }
   }
 
-  // Backdrop grayscale - avoid duplicates by only defining specific values
+  // Backdrop grayscale - generated from settings.$filter-grayscale-values
   // ============================================================================
-  .backdrop-grayscale-0 { backdrop-filter: grayscale(0); }
-
-  // .backdrop-grayscale is already generated in the loop above for default value
+  @each $key, $value in settings.$filter-grayscale-values {
+    @if $key == 0 {
+      .backdrop-grayscale-0 { backdrop-filter: grayscale(0); }
+    } @else if $key == default {
+      // Default backdrop-grayscale (100%)
+      .backdrop-grayscale { backdrop-filter: #{"grayscale("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-grayscale-#{$key} { backdrop-filter: #{"grayscale("}#{$value}#{')'}; }
+    }
+  }
 
   // Backdrop hue rotate (limited set)
   // ============================================================================
@@ -150,11 +157,18 @@
   .backdrop-hue-rotate-n90 { backdrop-filter: hue-rotate(-90deg); }
   .backdrop-hue-rotate-n180 { backdrop-filter: hue-rotate(-180deg); }
 
-  // Backdrop invert - avoid duplicates by only defining specific values
+  // Backdrop invert - generated from settings.$filter-invert-values
   // ============================================================================
-  .backdrop-invert-0 { backdrop-filter: invert(0); }
-
-  // .backdrop-invert is already generated in the loop above for default value
+  @each $key, $value in settings.$filter-invert-values {
+    @if $key == 0 {
+      .backdrop-invert-0 { backdrop-filter: invert(0); }
+    } @else if $key == default {
+      // Default backdrop-invert (100%)
+      .backdrop-invert { backdrop-filter: #{"invert("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-invert-#{$key} { backdrop-filter: #{"invert("}#{$value}#{')'}; }
+    }
+  }
 
   // Backdrop opacity - generated from settings.$backdrop-opacity-values
   // ============================================================================
@@ -170,9 +184,16 @@
   .backdrop-saturate-150 { backdrop-filter: saturate(1.5); }
   .backdrop-saturate-200 { backdrop-filter: saturate(2); }
 
-  // Backdrop sepia - avoid duplicates by only defining specific values
+  // Backdrop sepia - generated from settings.$filter-sepia-values
   // ============================================================================
-  .backdrop-sepia-0 { backdrop-filter: sepia(0); }
-
-  // .backdrop-sepia is already generated in the loop above for default value
+  @each $key, $value in settings.$filter-sepia-values {
+    @if $key == 0 {
+      .backdrop-sepia-0 { backdrop-filter: sepia(0); }
+    } @else if $key == default {
+      // Default backdrop-sepia (100%)
+      .backdrop-sepia { backdrop-filter: #{"sepia("}#{$value}#{')'}; }
+    } @else {
+      .backdrop-sepia-#{$key} { backdrop-filter: #{"sepia("}#{$value}#{')'}; }
+    }
+  }
 }

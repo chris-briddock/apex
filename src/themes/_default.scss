@@ -428,8 +428,10 @@
   // ============================================================================
   // Ring Utility Variables (Using OKLCH)
   // ============================================================================
-  // Note: --ring-offset-shadow, --ring-shadow, and --shadow are defined by
-  // individual utilities and don't need :root defaults
+  // Default shadow values for ring utilities - these are combined by ring utilities
+  --shadow: 0 0 rgb(0 0 0 / 0);
+  --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+  --ring-shadow: 0 0 rgb(0 0 0 / 0);
   --ring-inset: inset;
   --ring-offset-width: 0px;
   --ring-offset-color: oklch(100% 0 0deg);
