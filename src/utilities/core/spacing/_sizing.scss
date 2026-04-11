@@ -18,7 +18,19 @@
 
   @each $key in $width-fixed-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $width-fixed-utilities: map.merge($width-fixed-utilities, ('w-#{$key}': (width: var(--spacing-#{$key}))));
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      $width-fixed-utilities: map.merge($width-fixed-utilities, ('w-#{$key}': (width: var(--spacing-#{$spacing-token}))));
     }
   }
 
@@ -28,7 +40,19 @@
 
   @each $key in $height-fixed-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $height-fixed-utilities: map.merge($height-fixed-utilities, ('h-#{$key}': (height: var(--spacing-#{$key}))));
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      $height-fixed-utilities: map.merge($height-fixed-utilities, ('h-#{$key}': (height: var(--spacing-#{$spacing-token}))));
     }
   }
 
@@ -38,7 +62,19 @@
 
   @each $key in $max-height-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $max-height-utilities: map.merge($max-height-utilities, ('max-h-#{$key}': (max-height: var(--spacing-#{$key}))));
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      $max-height-utilities: map.merge($max-height-utilities, ('max-h-#{$key}': (max-height: var(--spacing-#{$spacing-token}))));
     }
   }
 

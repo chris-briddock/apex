@@ -33,15 +33,27 @@
 
   // Build spacing-based inset utilities from settings.$spacing-scale
   $inset-spacing-keys: (1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
-  
+
   @each $key in $inset-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $inset-utilities: map.merge($inset-utilities, ('inset-#{$key}': (inset: var(--spacing-#{$key}))));
-      $inset-utilities: map.merge($inset-utilities, ('inset-x-#{$key}': (right: var(--spacing-#{$key}), left: var(--spacing-#{$key}))));
-      $inset-utilities: map.merge($inset-utilities, ('inset-y-#{$key}': (top: var(--spacing-#{$key}), bottom: var(--spacing-#{$key}))));
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      $inset-utilities: map.merge($inset-utilities, ('inset-#{$key}': (inset: var(--spacing-#{$spacing-token}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-x-#{$key}': (right: var(--spacing-#{$spacing-token}), left: var(--spacing-#{$spacing-token}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-y-#{$key}': (top: var(--spacing-#{$spacing-token}), bottom: var(--spacing-#{$spacing-token}))));
     }
   }
-  
+
   // Add pixel value
   $inset-utilities: map.merge($inset-utilities, ('inset-px': (inset: 1px)));
 
@@ -54,10 +66,22 @@
 
   @each $key in $position-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $top-utilities: map.merge($top-utilities, ('top-#{$key}': (top: var(--spacing-#{$key}))));
-      $right-utilities: map.merge($right-utilities, ('right-#{$key}': (right: var(--spacing-#{$key}))));
-      $bottom-utilities: map.merge($bottom-utilities, ('bottom-#{$key}': (bottom: var(--spacing-#{$key}))));
-      $left-utilities: map.merge($left-utilities, ('left-#{$key}': (left: var(--spacing-#{$key}))));
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      $top-utilities: map.merge($top-utilities, ('top-#{$key}': (top: var(--spacing-#{$spacing-token}))));
+      $right-utilities: map.merge($right-utilities, ('right-#{$key}': (right: var(--spacing-#{$spacing-token}))));
+      $bottom-utilities: map.merge($bottom-utilities, ('bottom-#{$key}': (bottom: var(--spacing-#{$spacing-token}))));
+      $left-utilities: map.merge($left-utilities, ('left-#{$key}': (left: var(--spacing-#{$spacing-token}))));
     }
   }
 

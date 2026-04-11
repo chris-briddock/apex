@@ -66,16 +66,40 @@
 
   @each $key in $translate-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      .translate-x-#{$key} { transform: translateX(var(--spacing-#{$key})); }
-      .translate-y-#{$key} { transform: translateY(var(--spacing-#{$key})); }
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      .translate-x-#{$key} { transform: translateX(var(--spacing-#{$spacing-token})); }
+      .translate-y-#{$key} { transform: translateY(var(--spacing-#{$spacing-token})); }
     }
   }
 
   // Translate with negative values
   @each $key in $translate-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      .translate-x-n#{$key} { transform: translateX(calc(var(--spacing-#{$key}) * -1)); }
-      .translate-y-n#{$key} { transform: translateY(calc(var(--spacing-#{$key}) * -1)); }
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
+      .translate-x-n#{$key} { transform: translateX(calc(var(--spacing-#{$spacing-token}) * -1)); }
+      .translate-y-n#{$key} { transform: translateY(calc(var(--spacing-#{$spacing-token}) * -1)); }
     }
   }
 

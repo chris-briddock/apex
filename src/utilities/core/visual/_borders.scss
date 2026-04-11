@@ -134,8 +134,20 @@
 
   @each $key in $spacing-sizes {
     @if map.has-key(settings.$spacing-scale, $key) {
+      $spacing-token: $key;
+
+      @if $key == 0.5 {
+        $spacing-token: '0-5';
+      } @else if $key == 1.5 {
+        $spacing-token: '1-5';
+      } @else if $key == 2.5 {
+        $spacing-token: '2-5';
+      } @else if $key == 3.5 {
+        $spacing-token: '3-5';
+      }
+
       $border-spacing-utilities: map.merge($border-spacing-utilities, (
-        'border-spacing-#{$key}': ('border-spacing': var(--spacing-#{$key}))
+        'border-spacing-#{$key}': ('border-spacing': var(--spacing-#{$spacing-token}))
       ));
     }
   }

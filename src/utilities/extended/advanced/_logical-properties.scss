@@ -37,7 +37,7 @@
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
-        $var-name: var(--spacing-#{$key});
+        $var-name: var(--spacing-#{$escaped-key});
       }
       .mi-#{$escaped-key} { margin-inline: #{$var-name}; }
       .mis-#{$escaped-key} { margin-inline-start: #{$var-name}; }
@@ -52,7 +52,7 @@
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
-        $var-name: var(--spacing-#{$key});
+        $var-name: var(--spacing-#{$escaped-key});
       }
       .mby-#{$escaped-key} { margin-block: #{$var-name}; }
       .mbs-#{$escaped-key} { margin-block-start: #{$var-name}; }
@@ -78,7 +78,7 @@
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
-        $var-name: var(--spacing-#{$key});
+        $var-name: var(--spacing-#{$escaped-key});
       }
       .pi-#{$escaped-key} { padding-inline: #{$var-name}; }
       .pis-#{$escaped-key} { padding-inline-start: #{$var-name}; }
@@ -93,7 +93,7 @@
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
-        $var-name: var(--spacing-#{$key});
+        $var-name: var(--spacing-#{$escaped-key});
       }
       .pby-#{$escaped-key} { padding-block: #{$var-name}; }
       .pbs-#{$escaped-key} { padding-block-start: #{$var-name}; }
@@ -118,10 +118,10 @@
       @each $key in $spacing-keys {
         @if $key != px {
           $escaped-key: func.escape-class-name($key);
-          .bis-#{$escaped-key} { border-inline-start-width: var(--spacing-#{$key}); }
-          .bie-#{$escaped-key} { border-inline-end-width: var(--spacing-#{$key}); }
-          .bbs-#{$escaped-key} { border-block-start-width: var(--spacing-#{$key}); }
-          .bbe-#{$escaped-key} { border-block-end-width: var(--spacing-#{$key}); }
+          .bis-#{$escaped-key} { border-inline-start-width: var(--spacing-#{$escaped-key}); }
+          .bie-#{$escaped-key} { border-inline-end-width: var(--spacing-#{$escaped-key}); }
+          .bbs-#{$escaped-key} { border-block-start-width: var(--spacing-#{$escaped-key}); }
+          .bbe-#{$escaped-key} { border-block-end-width: var(--spacing-#{$escaped-key}); }
         }
       }
     }
@@ -176,7 +176,7 @@
       @if $key == px {
         $var-name: 'var(--spacing-px)';
       } @else {
-        $var-name: var(--spacing-#{$key});
+        $var-name: var(--spacing-#{$escaped-key});
       }
 
       // Inline insets
@@ -214,7 +214,7 @@
         @if $key == px {
           $var-name: 'var(--spacing-px)';
         } @else {
-          $var-name: var(--spacing-#{$key});
+          $var-name: var(--spacing-#{$escaped-key});
         }
 
         .#{$bp-class}\:mi-#{$escaped-key} { margin-inline: #{$var-name}; }
