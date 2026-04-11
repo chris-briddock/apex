@@ -1226,7 +1226,7 @@ When contributing new utilities:
 Example: Adding a new utility
     /* tests/e2e/tests/utilities/core/layout/example.spec.ts */
     import { test, expect } from '@playwright/test';
-    
+
     test.describe('Example Utility', () => {
       test('applies correct styles', async ({ page }) => {
         await page.goto('/test-page');
@@ -1335,7 +1335,7 @@ docs/
 └── LLMs.txt               /* This file */
 
 ================================================================================
-SECTION 16.5: CONTRIBUTING GUIDELINES
+SECTION 17: CONTRIBUTING GUIDELINES
 ================================================================================
 
 ApexCSS welcomes contributions from the community. This section outlines the
@@ -1491,7 +1491,7 @@ CODE OF CONDUCT
 - Follow the golden rule
 
 ================================================================================
-SECTION 17: COMMON PATTERNS
+SECTION 18: COMMON PATTERNS
 ================================================================================
 
 ----- CARD COMPONENT -----
@@ -1556,7 +1556,7 @@ SECTION 17: COMMON PATTERNS
     </script>
 
 ================================================================================
-SECTION 18: DESIGN PRINCIPLES
+SECTION 19: DESIGN PRINCIPLES
 ================================================================================
 
 1. MOBILE-FIRST: Default styles are for mobile; use responsive prefixes for larger screens
@@ -1575,7 +1575,7 @@ SECTION 18: DESIGN PRINCIPLES
 6. ACCESSIBILITY FIRST: Screen reader support, focus management, reduced motion
 
 ================================================================================
-SECTION 17.5: ADVANCED CONFIGURATION
+SECTION 20: ADVANCED CONFIGURATION
 ================================================================================
 
 This section covers advanced configuration options and programmatic usage of
@@ -1666,24 +1666,24 @@ Advanced feature configuration with conditional logic:
         spacing: true,
         typography: true,
         colors: true,
-        
+
         // Extended (optional based on project)
         flexExtended: process.env.NODE_ENV === 'production',
         gridExtended: true,
         animations: true,
         transforms: true,
         transforms3d: false,  /* Disable for smaller bundle */
-        
+
         // Specialized (project-specific)
         containerQueries: true,
         logicalProperties: true,
         darkMode: true,
         rtl: true,
-        
+
         // Accessibility (recommended)
         accessibility: true,
         reducedMotion: true,
-        
+
         // Content utilities (optional)
         list: true,
         counter: false,
@@ -1714,7 +1714,7 @@ Create custom Sass mixins for project-specific utilities:
         .#{$prefix}#{$name} {
           #{$property}: #{$value};
         }
-        
+
         @each $bp, $width in config.$breakpoints {
           @media (width >= #{$width}) {
             .#{$bp}\:#{$prefix}#{$name} {
@@ -1734,13 +1734,13 @@ Extend the build process with custom hooks:
     // apex.config.js
     export default {
       // ... standard config
-      
+
       hooks: {
         beforeBuild: async () => {
           console.log('Running pre-build tasks...');
           // Custom preprocessing
         },
-        
+
         afterBuild: async (stats) => {
           console.log(`Build complete: ${stats.fileCount} files`);
           // Post-processing, deployment, etc.
@@ -1784,7 +1784,7 @@ Build command:
     NODE_ENV=production npm run config:build -- --config=apex.config.production.js
 
 ================================================================================
-SECTION 19: MODERN CSS FEATURES
+SECTION 21: MODERN CSS FEATURES
 ================================================================================
 
 ApexCSS supports cutting-edge CSS features that enhance user experience and
@@ -1881,12 +1881,12 @@ ApexCSS @scope Integration:
         background: var(--color-surface);
         border-radius: var(--radius-lg);
       }
-      
+
       /* Only matches .title inside .card */
       .title {
         font-size: var(--text-xl);
       }
-      
+
       /* Scoped hover states */
       &:hover {
         box-shadow: var(--shadow-lg);
@@ -1981,20 +1981,20 @@ ApexCSS uses @layer for predictable cascade:
 
 Custom layer usage:
     @import 'apexcss' layer(utilities);
-    
+
     @layer components {
       .my-component { /* Your styles */ }
     }
 
 ================================================================================
-SECTION 20: COMPARISON WITH TAILWIND CSS
+SECTION 22: COMPARISON WITH TAILWIND CSS
 ================================================================================
 
 This section provides a comprehensive comparison between ApexCSS and Tailwind CSS
 (v4.0 as of 2026-04-01), based on the latest documentation from Context7.
 
 --------------------------------------------------------------------------------
-19.1 PHILOSOPHY & APPROACH
+22.1 PHILOSOPHY & APPROACH
 --------------------------------------------------------------------------------
 
 SIMILARITIES:
@@ -2015,7 +2015,7 @@ KEY PHILOSOPHICAL DIFFERENCES:
     | Target Audience     | Sass/SCSS users, design systems            | All web developers, framework-agnostic|
 
 --------------------------------------------------------------------------------
-19.2 CONFIGURATION COMPARISON
+22.2 CONFIGURATION COMPARISON
 --------------------------------------------------------------------------------
 
 APEXCSS CONFIGURATION (apex.config.js):
@@ -2077,7 +2077,7 @@ CONFIGURATION COMPARISON TABLE:
     | Multiple Themes            | CSS variable switching                | CSS variable switching              |
 
 --------------------------------------------------------------------------------
-19.3 BUILD SYSTEM & PERFORMANCE
+22.3 BUILD SYSTEM & PERFORMANCE
 --------------------------------------------------------------------------------
 
 APEXCSS:
@@ -2111,7 +2111,7 @@ BUILD COMPARISON TABLE:
     | Browser Prefixing          | Via PostCSS/Autoprefixer             | Built-in (Lightning CSS)            |
 
 --------------------------------------------------------------------------------
-19.4 UTILITY CLASS COMPARISON
+22.4 UTILITY CLASS COMPARISON
 --------------------------------------------------------------------------------
 
 CORE UTILITIES (Both frameworks):
@@ -2179,7 +2179,7 @@ TAILWIND CSS v4-SPECIFIC FEATURES (Not in ApexCSS):
     | Object-Position            | Object position utilities                                      |
 
 --------------------------------------------------------------------------------
-19.5 RESPONSIVE DESIGN COMPARISON
+22.5 RESPONSIVE DESIGN COMPARISON
 --------------------------------------------------------------------------------
 
 BREAKPOINTS:
@@ -2212,7 +2212,7 @@ CONTAINER QUERIES (Both frameworks):
         @md:grid-cols-2 /* Apply at container breakpoint */
 
 --------------------------------------------------------------------------------
-19.6 DARK MODE COMPARISON
+22.6 DARK MODE COMPARISON
 --------------------------------------------------------------------------------
 
 APEXCSS DARK MODE:
@@ -2254,7 +2254,7 @@ DARK MODE COMPARISON:
     | Customization              | apex.config.js colors               | @theme --color-* variables          |
 
 --------------------------------------------------------------------------------
-19.7 RTL SUPPORT COMPARISON
+22.7 RTL SUPPORT COMPARISON
 --------------------------------------------------------------------------------
 
 APEXCSS RTL SUPPORT:
@@ -2293,7 +2293,7 @@ RTL COMPARISON:
     | Plugin Required            | No                                   | No (built-in since v3.3)            |
 
 --------------------------------------------------------------------------------
-19.8 ACCESSIBILITY COMPARISON
+22.8 ACCESSIBILITY COMPARISON
 --------------------------------------------------------------------------------
 
 APEXCSS ACCESSIBILITY:
@@ -2337,7 +2337,7 @@ ACCESSIBILITY COMPARISON:
     | Focus Ring                 | Built-in (ring-*)                    | Built-in (ring-*)                   |
 
 --------------------------------------------------------------------------------
-19.9 EXTENSIBILITY COMPARISON
+22.9 EXTENSIBILITY COMPARISON
 --------------------------------------------------------------------------------
 
 APEXCSS EXTENSIBILITY:
@@ -2385,7 +2385,7 @@ EXTENSIBILITY COMPARISON:
     | Arbitrary Variants         | Limited                              | Full ([&:nth-child(3)]:bg-red-500)  |
 
 --------------------------------------------------------------------------------
-19.10 ECOSYSTEM & COMMUNITY
+22.10 ECOSYSTEM & COMMUNITY
 --------------------------------------------------------------------------------
 
 ECOSYSTEM COMPARISON:
@@ -2404,7 +2404,7 @@ ECOSYSTEM COMPARISON:
     | Framework Integrations      | Manual setup                         | Official integrations               |
 
 --------------------------------------------------------------------------------
-19.11 MIGRATION CONSIDERATIONS
+22.11 MIGRATION CONSIDERATIONS
 --------------------------------------------------------------------------------
 
 MIGRATING FROM TAILWIND TO APEXCSS:
@@ -2422,7 +2422,7 @@ MIGRATING FROM APEXCSS TO TAILWIND:
     - Review missing utilities (may need plugins)
 
 --------------------------------------------------------------------------------
-19.12 SUMMARY TABLE
+22.12 SUMMARY TABLE
 --------------------------------------------------------------------------------
 
 COMPREHENSIVE FEATURE COMPARISON:
@@ -2465,7 +2465,7 @@ COMPREHENSIVE FEATURE COMPARISON:
     | Enterprise Support         | None                                 | Available                           |
 
 --------------------------------------------------------------------------------
-19.13 WHEN TO USE EACH FRAMEWORK
+22.13 WHEN TO USE EACH FRAMEWORK
 --------------------------------------------------------------------------------
 
 USE APEXCSS WHEN:
@@ -2494,7 +2494,7 @@ USE EITHER WHEN:
     - You want state variants (hover, focus, etc.)
 
 ================================================================================
-SECTION 21: TROUBLESHOOTING
+SECTION 23: TROUBLESHOOTING
 ================================================================================
 
 ISSUE: Classes not applying
@@ -2523,7 +2523,7 @@ ISSUE: Missing utility classes after build
     - Example: @forward 'layout/display'; @forward 'layout/visibility';
 
 ================================================================================
-SECTION 22: CHANGELOG & MIGRATION GUIDE
+SECTION 24: CHANGELOG & MIGRATION GUIDE
 ================================================================================
 
 This section provides version history and migration instructions between
@@ -2605,7 +2605,7 @@ Initial Release:
     - Basic responsive utilities
 
 ================================================================================
-SECTION 23: VERSION INFORMATION
+SECTION 25: VERSION INFORMATION
 ================================================================================
 
 Current Version: 0.4.0
