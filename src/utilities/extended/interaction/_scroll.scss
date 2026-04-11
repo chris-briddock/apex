@@ -68,19 +68,7 @@ $scroll-utilities: ();
 @each $dir-key, $property in $scroll-margin-directions {
   @each $key in $scroll-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $spacing-token: $key;
-
-      @if $key == 0.5 {
-        $spacing-token: '0-5';
-      } @else if $key == 1.5 {
-        $spacing-token: '1-5';
-      } @else if $key == 2.5 {
-        $spacing-token: '2-5';
-      } @else if $key == 3.5 {
-        $spacing-token: '3-5';
-      }
-
-      $scroll-utilities: map.merge($scroll-utilities, ('scroll-#{$dir-key}-#{$key}': ($property: var(--spacing-#{$spacing-token}))));
+      $scroll-utilities: map.merge($scroll-utilities, ('scroll-#{$dir-key}-#{$key}': ($property: var(--spacing-#{$key}))));
     }
   }
 }
@@ -89,19 +77,7 @@ $scroll-utilities: ();
 @each $dir-key, $property in $scroll-padding-directions {
   @each $key in $scroll-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $spacing-token: $key;
-
-      @if $key == 0.5 {
-        $spacing-token: '0-5';
-      } @else if $key == 1.5 {
-        $spacing-token: '1-5';
-      } @else if $key == 2.5 {
-        $spacing-token: '2-5';
-      } @else if $key == 3.5 {
-        $spacing-token: '3-5';
-      }
-
-      $scroll-utilities: map.merge($scroll-utilities, ('scroll-#{$dir-key}-#{$key}': ($property: var(--spacing-#{$spacing-token}))));
+      $scroll-utilities: map.merge($scroll-utilities, ('scroll-#{$dir-key}-#{$key}': ($property: var(--spacing-#{$key}))));
     }
   }
 }
