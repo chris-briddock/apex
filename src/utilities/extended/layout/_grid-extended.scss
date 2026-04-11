@@ -30,8 +30,8 @@
 
   // Grid column utilities are defined in core/layout/_grid.scss
   // Extended grid column utilities (only additional ones not in core)
+  // Note: col-span-full is already defined in core/layout/_grid.scss
   // ============================================================================
-  .col-span-full { grid-column: 1 / -1; }
 
   // Grid column start
   // ============================================================================
@@ -67,8 +67,7 @@
 
   // Grid row utilities are defined in core/layout/_grid.scss
   // Extended grid row utilities (only additional ones not in core)
-  // ============================================================================
-  .row-span-full { grid-row: 1 / -1; }
+  // Note: row-span-full is already defined in core/layout/_grid.scss
 
   // Grid row start
   // ============================================================================

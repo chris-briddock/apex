@@ -9,7 +9,8 @@
   .mask-clip-content { mask-clip: content-box; }
   .mask-clip-padding { mask-clip: padding-box; }
   .mask-clip-border { mask-clip: border-box; }
-  .mask-clip-margin { mask-clip: margin-box; }
+
+  // Mask clip with box values (fill-box, stroke-box, view-box)
   .mask-clip-fill { mask-clip: fill-box; }
   .mask-clip-stroke { mask-clip: stroke-box; }
   .mask-clip-view { mask-clip: view-box; }
@@ -32,13 +33,11 @@
   .mask-mode-match-source { mask-mode: match-source; }
 
   // Mask origin
+  // Note: Only standard box values are used (content-box, padding-box, border-box)
+  // SVG box values (fill-box, stroke-box, view-box) are not supported by -webkit-mask-origin
   .mask-origin-content { mask-origin: content-box; }
   .mask-origin-padding { mask-origin: padding-box; }
   .mask-origin-border { mask-origin: border-box; }
-  .mask-origin-margin { mask-origin: margin-box; }
-  .mask-origin-fill { mask-origin: fill-box; }
-  .mask-origin-stroke { mask-origin: stroke-box; }
-  .mask-origin-view { mask-origin: view-box; }
 
   // Mask position
   .mask-center { mask-position: center; }

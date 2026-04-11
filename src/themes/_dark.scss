@@ -358,7 +358,6 @@
       @each $key, $value in $ring-widths {
         .dark\:ring-offset-#{$key} {
           --ring-offset-width: #{$value};
-          --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
         }
       }
 
@@ -428,7 +427,6 @@
     @each $key, $value in $ring-widths {
       .dark\:ring-offset-#{$key} {
         --ring-offset-width: #{$value};
-        --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
       }
     }
 

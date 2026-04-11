@@ -2,6 +2,8 @@
 // Sizing Logical Properties (inline-size, block-size)
 // ============================================================================
 // Generated from configuration maps in _custom-config.scss
+// Note: Special values (0, auto, full, fit, max, min) are defined in _logical-properties.scss
+// This file only generates utilities from the spacing scale
 
 @use 'sass:map';
 @use '../../../config/custom-config' as settings;
@@ -16,9 +18,8 @@
     .is-#{$escaped-key} { inline-size: var(--spacing-#{$key}); }
   }
 
-  // Inline size special values
-  .is-0 { inline-size: 0; }
-  .is-auto { inline-size: auto; }
+  // Inline size special values - NOTE: .is-0 and .is-auto are defined in _logical-properties.scss
+  // Only define remaining special values here
   .is-full { inline-size: 100%; }
   .is-fit { inline-size: fit-content; }
   .is-max { inline-size: max-content; }
@@ -32,16 +33,14 @@
     }
   }
 
-  // Block size special values
-  .bs-0 { block-size: 0; }
-  .bs-auto { block-size: auto; }
+  // Block size special values - NOTE: .bs-0 and .bs-auto are defined in _logical-properties.scss
+  // Only define remaining special values here
   .bs-full { block-size: 100%; }
   .bs-fit { block-size: fit-content; }
   .bs-max { block-size: max-content; }
   .bs-min { block-size: min-content; }
 
-  // Min inline size
-  .min-is-0 { min-inline-size: 0; }
+  // Min inline size - NOTE: .min-is-0 is defined in _logical-properties.scss
   .min-is-full { min-inline-size: 100%; }
   .min-is-fit { min-inline-size: fit-content; }
   .min-is-max { min-inline-size: max-content; }
@@ -65,11 +64,9 @@
   .max-is-6xl { max-inline-size: 72rem; }
   .max-is-7xl { max-inline-size: 80rem; }
 
-  // Min block size
-  .min-bs-0 { min-block-size: 0; }
+  // Min block size - NOTE: .min-bs-0 and .min-bs-max are defined in _logical-properties.scss
   .min-bs-full { min-block-size: 100%; }
   .min-bs-fit { min-block-size: fit-content; }
-  .min-bs-max { min-block-size: max-content; }
   .min-bs-min { min-block-size: min-content; }
 
   // Max block size

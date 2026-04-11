@@ -10,9 +10,8 @@
 // ============================================================================
 
 // Base screen reader utilities (simple property maps)
-// Per MDN: Use both clip and clip-path for maximum browser compatibility
-// clip: rect() is deprecated but needed for older browsers
-// clip-path: inset(50%) is the modern approach
+// Per MDN: clip-path: inset(50%) is the modern approach
+// clip: rect() is deprecated and has been removed in favor of clip-path
 $screen-reader-utilities: (
   'sr-only': (
     position: absolute,
@@ -84,7 +83,7 @@ $sr-only-focusable-utilities: (
   @include utilities.generate-declaration-utilities($screen-reader-utilities);
 
   // sr-only-focusable: base styles from sr-only
-  // Per MDN: Use both clip and clip-path for maximum browser compatibility
+  // Per MDN: Using clip-path for modern browser support
   @each $class-name, $states in $sr-only-focusable-utilities {
     .#{$class-name} {
       // Apply sr-only base styles

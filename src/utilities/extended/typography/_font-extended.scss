@@ -9,7 +9,8 @@
 @if settings.$enable-font-extended == true {
   // Font kerning
   // ============================================================================
-  .font-kerning-auto { font-kerning: auto; }
+  // Note: font-kerning: auto is valid CSS but postcss-preset-env converts it
+  // to invalid font-feature-settings: auto. Using normal instead.
   .font-kerning-normal { font-kerning: normal; }
   .font-kerning-none { font-kerning: none; }
 

@@ -8,8 +8,8 @@
 @use '../../../mixins/utilities' as utility-mixins;
 
 // Orphans values
+// Note: Minimum valid value is 1 per CSS spec
 $orphans-values: (
-  0: 0,
   1: 1,
   2: 2,
   3: 3,

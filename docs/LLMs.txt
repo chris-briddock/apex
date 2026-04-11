@@ -1,7 +1,8 @@
 # ApexCSS Framework - LLM Documentation
 # Version: 0.4.0
-# Last Updated: 2026-04-08
+# Last Updated: 2026-04-11
 # Purpose: Comprehensive reference for AI/LLM consumption
+# Format: Plain text with structured sections for LLM parsing
 
 ================================================================================
 SECTION 1: FRAMEWORK OVERVIEW
@@ -21,7 +22,7 @@ KEY CHARACTERISTICS:
 - Full dark mode and RTL support
 - Accessibility-focused (screen readers, focus management, reduced motion)
 
-PROJECT STATUS: Pre-release (v0.3.7), actively developed
+PROJECT STATUS: Pre-release, actively developed
 
 ================================================================================
 SECTION 2: QUICK START
@@ -417,6 +418,7 @@ SECTION 4: BREAKPOINT SYSTEM
 ================================================================================
 
 DEFAULT BREAKPOINTS (mobile-first):
+    xs:   0px     /* All screens (mobile-first base) */
     sm:   320px   /* Small phones & Smart Watches */
     md:   768px   /* Tablets */
     lg:   1024px  /* Small laptops */
@@ -435,12 +437,19 @@ RESPONSIVE PREFIX SYNTAX:
 
 CUSTOMIZATION (in apex.config.js):
     breakpoints: {
-        sm: '640px',
+        xs: '0px',
+        sm: '320px',
         md: '768px',
         lg: '1024px',
         xl: '1280px',
-        xxl: '1920px'
+        xxl: '2560px',
+        xxxl: '3840px',
+        ultra: '7680px'
     }
+
+NOTE: The xs breakpoint (0px) is useful for explicit mobile-first utilities
+that should apply to all screen sizes, while still allowing overrides at
+larger breakpoints.
 
 ================================================================================
 SECTION 5: SPACING SYSTEM
@@ -902,28 +911,7 @@ USAGE EXAMPLES:
     hover:md:bg-primary-600   /* Hover at md breakpoint and up */
 
 ================================================================================
-SECTION 9: ARBITRARY VALUES
-================================================================================
-
-Use arbitrary values for one-off custom values not in the default scale.
-
-SYNTAX: [property-value]
-
-EXAMPLES:
-    w-[100px]                    /* width: 100px */
-    h-[calc(100vh-4rem)]         /* height: calc(100vh - 4rem) */
-    text-[#1da1f2]               /* color: #1da1f2 */
-    bg-[url('/img/bg.png')]      /* background-image: url(...') */
-    p-[3rem]                     /* padding: 3rem */
-    m-[var(--custom-margin)]     /* margin: var(--custom-margin) */
-    gap-[2.5rem]                 /* gap: 2.5rem */
-
-RESPONSIVE ARBITRARY VALUES:
-    md:w-[50vw]                  /* width: 50vw at md and up */
-    lg:h-[calc(100%-2rem)]       /* height at lg and up */
-
-================================================================================
-SECTION 10: DARK MODE
+SECTION 9: DARK MODE
 ================================================================================
 
 DARK MODE CLASSES:
@@ -946,7 +934,7 @@ DARK MODE TOGGLE EXAMPLE:
     </button>
 
 ================================================================================
-SECTION 11: RTL (RIGHT-TO-LEFT) SUPPORT
+SECTION 10: RTL (RIGHT-TO-LEFT) SUPPORT
 ================================================================================
 
 ApexCSS provides full RTL support using logical properties.
@@ -968,7 +956,7 @@ Add dir="rtl" to html element:
     <html dir="rtl">
 
 ================================================================================
-SECTION 12: ACCESSIBILITY UTILITIES
+SECTION 11: ACCESSIBILITY UTILITIES
 ================================================================================
 
 SCREEN READER UTILITIES:
@@ -990,7 +978,7 @@ EXAMPLE:
     </div>
 
 ================================================================================
-SECTION 13: EXTENDED UTILITIES
+SECTION 12: EXTENDED UTILITIES
 ================================================================================
 
 ----- TRANSFORMS -----
@@ -1060,7 +1048,7 @@ SECTION 13: EXTENDED UTILITIES
     resize-none, resize, resize-x, resize-y
 
 ================================================================================
-SECTION 14: SASS MIXINS API
+SECTION 13: SASS MIXINS API
 ================================================================================
 
 For advanced users creating custom utilities.
@@ -1120,6 +1108,132 @@ For advanced users creating custom utilities.
 
 @include generate-rtl-utilities($utilities-map);
     /* Generates RTL variants */
+
+================================================================================
+SECTION 14: TESTING & QUALITY ASSURANCE
+================================================================================
+
+ApexCSS includes a comprehensive testing infrastructure to ensure quality,
+compatibility, and reliability across all framework features.
+
+--------------------------------------------------------------------------------
+UNIT TESTS
+--------------------------------------------------------------------------------
+
+Testing Framework: Mocha with sass-true
+Location: tests/unit/
+
+Available Commands:
+    npm run test:unit          /* Run unit tests */
+    npm run test:coverage      /* Run tests with coverage report */
+
+Test Categories:
+    - config-builder.test.js   /* Configuration generation tests */
+    - utilities-mixins.test.js /* Sass mixin functionality tests */
+    - generate-cli.test.js     /* CLI tool tests */
+
+Unit tests validate:
+    - Configuration parsing and validation
+    - SCSS variable generation
+    - Sass mixin output correctness
+    - CLI argument handling
+
+--------------------------------------------------------------------------------
+END-TO-END (E2E) TESTS
+--------------------------------------------------------------------------------
+
+Testing Framework: Playwright
+Location: tests/e2e/
+
+Setup:
+    npm run test:e2e:install   /* Install Playwright and dependencies */
+
+Available Commands:
+    npm run test:e2e           /* Run e2e tests headlessly */
+    npm run test:e2e:ui        /* Run tests with UI mode */
+
+Test Coverage:
+    - CSS custom properties (design tokens)
+    - Theme switching (light/dark modes)
+    - Responsive utilities across breakpoints
+    - Layout utilities (display, flexbox, grid)
+    - Visual utilities (colors, borders, shadows)
+    - Interaction utilities (transitions, cursor)
+    - Layer cascade ordering
+
+Test Structure:
+    tests/e2e/tests/
+    ├── base/                  /* Base layer tests */
+    ├── themes/                /* Theme and token tests */
+    └── utilities/             /* Utility class tests */
+        ├── core/              /* Essential utilities */
+        └── extended/          /* Advanced utilities */
+
+--------------------------------------------------------------------------------
+CODE QUALITY
+--------------------------------------------------------------------------------
+
+Stylelint Configuration:
+    - SCSS linting: .stylelintrc.json
+    - CSS linting: .stylelintrc-css.json
+
+Available Commands:
+    npm run lint:sass          /* Lint SCSS source files */
+    npm run lint:css           /* Lint generated CSS output */
+
+Linting Rules:
+    - scss/dollar-variable-pattern: Enforce variable naming conventions
+    - scss/at-rule-no-unknown: Validate SCSS syntax
+    - declaration-property-value-no-unknown: Catch invalid CSS values
+    - no-duplicate-selectors: Prevent selector duplication
+
+--------------------------------------------------------------------------------
+COVERAGE REPORTING
+--------------------------------------------------------------------------------
+
+Tool: c8 (V8 coverage)
+
+Coverage Command:
+    npm run test:coverage
+
+Reports generated:
+    - Text summary in console
+    - LCOV report for CI integration
+    - HTML report (coverage/)
+
+--------------------------------------------------------------------------------
+CONTINUOUS INTEGRATION
+--------------------------------------------------------------------------------
+
+GitHub Actions workflows:
+    - Automated testing on PRs
+    - Style enforcement
+    - Build verification
+    - Cross-browser compatibility checks
+
+--------------------------------------------------------------------------------
+TEST-DRIVEN DEVELOPMENT
+--------------------------------------------------------------------------------
+
+When contributing new utilities:
+
+1. Write tests first (spec.ts or .test.js)
+2. Implement the utility
+3. Run tests to verify
+4. Check coverage: npm run test:coverage
+5. Lint: npm run lint:sass
+
+Example: Adding a new utility
+    /* tests/e2e/tests/utilities/core/layout/example.spec.ts */
+    import { test, expect } from '@playwright/test';
+    
+    test.describe('Example Utility', () => {
+      test('applies correct styles', async ({ page }) => {
+        await page.goto('/test-page');
+        const element = page.locator('.test-element');
+        await expect(element).toHaveCSS('property', 'value');
+      });
+    });
 
 ================================================================================
 SECTION 15: BUILD SYSTEM & ENTRY POINTS
@@ -1221,6 +1335,162 @@ docs/
 └── LLMs.txt               /* This file */
 
 ================================================================================
+SECTION 16.5: CONTRIBUTING GUIDELINES
+================================================================================
+
+ApexCSS welcomes contributions from the community. This section outlines the
+standards and processes for contributing to the framework.
+
+--------------------------------------------------------------------------------
+DEVELOPMENT SETUP
+--------------------------------------------------------------------------------
+
+1. Fork and clone the repository:
+    git clone https://github.com/chris-briddock/apex.git
+    cd apex
+
+2. Install dependencies:
+    npm install
+
+3. Build the framework:
+    npm run config:build
+    npm run build
+
+4. Run tests to verify setup:
+    npm run test:unit
+
+--------------------------------------------------------------------------------
+SASS/SCSS STANDARDS
+--------------------------------------------------------------------------------
+
+Module System (REQUIRED):
+    /* NEVER use @import - it's deprecated */
+    @import "variables";  /* WRONG */
+
+    /* ALWAYS use @use and @forward */
+    @use "sass:math";
+    @use "../tokens" as tokens;  /* CORRECT */
+
+    /* Forward modules for public API */
+    @forward "mixins";
+    @forward "functions";
+
+Naming Conventions:
+    - Variables: $kebab-case (e.g., $primary-color)
+    - Mixins: snake_case (e.g., @mixin generate-utilities)
+    - Functions: snake_case (e.g., @function rem-calc)
+    - Partials: _kebab-case.scss (e.g., _custom-config.scss)
+
+File Organization:
+    src/utilities/category/
+    ├── _index.scss          /* Forwards all modules in category */
+    └── _feature.scss        /* Individual utility implementations */
+
+Nesting Rules:
+    - Maximum 3 levels of nesting
+    - Prefer flat, BEM-inspired naming over deep nesting
+    - Use & for pseudo-classes and modifiers
+
+Color Functions:
+    /* NEVER use deprecated functions */
+    darken($color, 10%);     /* WRONG - deprecated */
+    lighten($color, 10%);    /* WRONG - deprecated */
+
+    /* ALWAYS use color module */
+    @use "sass:color";
+    color.scale($color, $lightness: -10%);  /* CORRECT */
+
+--------------------------------------------------------------------------------
+CODE QUALITY REQUIREMENTS
+--------------------------------------------------------------------------------
+
+Before submitting a PR:
+
+1. Lint your code:
+    npm run lint:sass        /* Must pass with no errors */
+    npm run lint:css         /* After building */
+
+2. Run all tests:
+    npm run test:unit
+    npm run test:e2e
+
+3. Check test coverage:
+    npm run test:coverage    /* Maintain or improve coverage */
+
+4. Build verification:
+    npm run build            /* Must complete without errors */
+
+--------------------------------------------------------------------------------
+CONTRIBUTING WORKFLOW
+--------------------------------------------------------------------------------
+
+1. Create a feature branch:
+    git checkout -b feature/my-new-feature
+
+2. Make your changes following standards above
+
+3. Add tests for new functionality:
+    - Unit tests in tests/unit/
+    - E2E tests in tests/e2e/tests/
+
+4. Update documentation:
+    - Update docs/LLMs.txt if adding new utilities
+    - Update docs/CONFIG.md if adding configuration options
+
+5. Commit with clear messages:
+    feat: add new utility category
+    fix: resolve spacing issue in grid utilities
+    docs: update configuration examples
+    test: add coverage for color utilities
+
+6. Push and create a Pull Request
+
+--------------------------------------------------------------------------------
+PULL REQUEST REQUIREMENTS
+--------------------------------------------------------------------------------
+
+Your PR must:
+    - Pass all CI checks (lint, test, build)
+    - Include tests for new features
+    - Update relevant documentation
+    - Not break existing functionality
+    - Follow the established code style
+
+Review Process:
+    - All PRs require review before merging
+    - Address feedback promptly
+    - Squash commits if requested
+
+--------------------------------------------------------------------------------
+REPORTING ISSUES
+--------------------------------------------------------------------------------
+
+Bug Reports:
+    - Use the GitHub issue tracker
+    - Include reproduction steps
+    - Specify browser/environment
+    - Provide minimal test case
+
+Feature Requests:
+    - Describe the use case
+    - Explain why existing utilities don't suffice
+    - Consider implementation complexity
+
+Security Issues:
+    - Report privately to maintainers
+    - Do not open public issues
+
+--------------------------------------------------------------------------------
+CODE OF CONDUCT
+--------------------------------------------------------------------------------
+
+- Be respectful and inclusive
+- Welcome newcomers and help them learn
+- Focus on constructive feedback
+- Credit others for their contributions
+- Follow the golden rule
+
+================================================================================
 SECTION 17: COMMON PATTERNS
 ================================================================================
 
@@ -1305,7 +1575,419 @@ SECTION 18: DESIGN PRINCIPLES
 6. ACCESSIBILITY FIRST: Screen reader support, focus management, reduced motion
 
 ================================================================================
-SECTION 19: COMPARISON WITH TAILWIND CSS
+SECTION 17.5: ADVANCED CONFIGURATION
+================================================================================
+
+This section covers advanced configuration options and programmatic usage of
+the ApexCSS config builder and generation tools.
+
+--------------------------------------------------------------------------------
+CONFIG BUILDER API
+--------------------------------------------------------------------------------
+
+File: tools/config-builder.js
+
+The config builder provides a programmatic API for generating SCSS configuration
+from JavaScript configuration objects.
+
+CLI Usage:
+    npm run config:build       /* Build with default apex.config.js */
+    npm run config:watch       /* Watch mode for development */
+
+CLI Options:
+    --config=<path>            /* Specify custom config file path */
+    --init                     /* Create default config file */
+    --watch                    /* Watch config file for changes */
+
+--------------------------------------------------------------------------------
+PROGRAMMATIC API
+--------------------------------------------------------------------------------
+
+Import the config builder in Node.js scripts:
+
+    import { ConfigBuilder } from './tools/config-builder.js';
+
+    const builder = new ConfigBuilder({
+      configPath: './apex.config.js',
+      outputPath: './src/config/_custom-config.scss'
+    });
+
+    // Generate configuration
+    await builder.build();
+
+    // Watch for changes
+    await builder.watch();
+
+--------------------------------------------------------------------------------
+CUSTOM UTILITY GENERATION
+--------------------------------------------------------------------------------
+
+File: tools/generate.js
+
+Generate custom utilities programmatically:
+
+    import { generateUtilities } from './tools/generate.js';
+
+    // Generate from a value map
+    generateUtilities({
+      property: 'display',
+      values: {
+        block: 'block',
+        flex: 'flex',
+        grid: 'grid',
+        hidden: 'none'
+      },
+      classPrefix: '',
+      outputPath: './src/custom/utilities.scss'
+    });
+
+    // Generate responsive variants
+    generateUtilities({
+      property: 'padding',
+      values: { sm: '0.5rem', md: '1rem', lg: '2rem' },
+      classPrefix: 'p',
+      responsive: true,
+      breakpoints: ['sm', 'md', 'lg']
+    });
+
+--------------------------------------------------------------------------------
+CUSTOMIZING FEATURE TOGGLES
+--------------------------------------------------------------------------------
+
+Advanced feature configuration with conditional logic:
+
+    // apex.config.js
+    export default {
+      features: {
+        // Core (always needed)
+        display: true,
+        flexbox: true,
+        grid: true,
+        spacing: true,
+        typography: true,
+        colors: true,
+        
+        // Extended (optional based on project)
+        flexExtended: process.env.NODE_ENV === 'production',
+        gridExtended: true,
+        animations: true,
+        transforms: true,
+        transforms3d: false,  /* Disable for smaller bundle */
+        
+        // Specialized (project-specific)
+        containerQueries: true,
+        logicalProperties: true,
+        darkMode: true,
+        rtl: true,
+        
+        // Accessibility (recommended)
+        accessibility: true,
+        reducedMotion: true,
+        
+        // Content utilities (optional)
+        list: true,
+        counter: false,
+        quotes: false
+      }
+    };
+
+--------------------------------------------------------------------------------
+CUSTOM MIXINS
+--------------------------------------------------------------------------------
+
+Create custom Sass mixins for project-specific utilities:
+
+    /* src/mixins/_custom.scss */
+    @use "sass:map";
+    @use "config" as config;
+
+    @mixin custom-spacing-utilities {
+      @each $name, $value in config.$custom-spacing {
+        .space-#{$name} {
+          margin: #{$value};
+        }
+      }
+    }
+
+    @mixin generate-responsive-custom($property, $values, $prefix: '') {
+      @each $name, $value in $values {
+        .#{$prefix}#{$name} {
+          #{$property}: #{$value};
+        }
+        
+        @each $bp, $width in config.$breakpoints {
+          @media (width >= #{$width}) {
+            .#{$bp}\:#{$prefix}#{$name} {
+              #{$property}: #{$value};
+            }
+          }
+        }
+      }
+    }
+
+--------------------------------------------------------------------------------
+BUILD HOOKS
+--------------------------------------------------------------------------------
+
+Extend the build process with custom hooks:
+
+    // apex.config.js
+    export default {
+      // ... standard config
+      
+      hooks: {
+        beforeBuild: async () => {
+          console.log('Running pre-build tasks...');
+          // Custom preprocessing
+        },
+        
+        afterBuild: async (stats) => {
+          console.log(`Build complete: ${stats.fileCount} files`);
+          // Post-processing, deployment, etc.
+        }
+      }
+    };
+
+--------------------------------------------------------------------------------
+ENVIRONMENT-SPECIFIC CONFIGS
+--------------------------------------------------------------------------------
+
+Create different configurations for different environments:
+
+    // apex.config.development.js
+    export default {
+      features: {
+        // Include all for development
+        ...allFeatures,
+        arbitrary: true  /* Enable arbitrary values */
+      },
+      sourceMaps: true,
+      minify: false
+    };
+
+    // apex.config.production.js
+    export default {
+      features: {
+        // Minimal for production
+        display: true,
+        flexbox: true,
+        grid: true,
+        spacing: true,
+        colors: true,
+        // ... etc
+      },
+      minify: true,
+      purgeUnused: true
+    };
+
+Build command:
+    NODE_ENV=production npm run config:build -- --config=apex.config.production.js
+
+================================================================================
+SECTION 19: MODERN CSS FEATURES
+================================================================================
+
+ApexCSS supports cutting-edge CSS features that enhance user experience and
+enable advanced layouts and interactions.
+
+--------------------------------------------------------------------------------
+VIEW TRANSITIONS API
+--------------------------------------------------------------------------------
+
+The View Transitions API enables smooth, animated transitions between page
+states without JavaScript animation libraries.
+
+Browser Support: Chrome 126+, Edge 126+, Safari 18+ (behind flag)
+
+Usage with ApexCSS:
+    /* Enable view transitions */
+    @view-transition {
+      navigation: auto;
+    }
+
+    /* Custom transition styles */
+    ::view-transition-old(root) {
+      animation: fade-out 0.3s ease;
+    }
+
+    ::view-transition-new(root) {
+      animation: fade-in 0.3s ease;
+    }
+
+ApexCSS utilities for View Transitions:
+    view-transition-name-{name}    /* Set view-transition-name */
+    view-transition-auto           /* Enable auto transitions */
+    view-transition-none           /* Disable transitions */
+
+Example:
+    <div class="view-transition-name-card">
+      <!-- Content transitions smoothly -->
+    </div>
+
+--------------------------------------------------------------------------------
+ANCHOR POSITIONING
+--------------------------------------------------------------------------------
+
+CSS Anchor Positioning enables elements to be positioned relative to other
+elements without JavaScript calculations.
+
+Browser Support: Chrome 125+, Edge 125+, Firefox (in development)
+
+ApexCSS Anchor Positioning Utilities:
+    anchor-{name}                  /* Declare element as anchor */
+    position-anchor-{name}         /* Position relative to anchor */
+    position-area-{area}           /* Position within anchor area */
+
+Position Areas:
+    top, bottom, left, right
+    center, center-top, center-bottom
+    start, end, start-top, start-bottom
+    end-top, end-bottom
+    span-{direction}
+
+Example:
+    <!-- The anchor -->
+    <button class="anchor-menu-trigger" id="menu-btn">
+      Open Menu
+    </button>
+
+    <!-- Positioned element -->
+    <div class="position-anchor-menu-trigger position-area-bottom">
+      <!-- Menu content positioned below button -->
+    </div>
+
+Fallback Strategy:
+    @supports not (anchor-name: --menu) {
+      .position-area-bottom {
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+    }
+
+--------------------------------------------------------------------------------
+@SCOPE RULE
+--------------------------------------------------------------------------------
+
+The @scope rule enables scoped CSS styling without affecting the rest of the
+document - perfect for component isolation.
+
+Browser Support: Chrome 118+, Edge 118+, Firefox 128+, Safari 17.2+
+
+ApexCSS @scope Integration:
+    /* Scoped component styles */
+    @scope (.card) {
+      :scope { /* The .card element itself */
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+      }
+      
+      /* Only matches .title inside .card */
+      .title {
+        font-size: var(--text-xl);
+      }
+      
+      /* Scoped hover states */
+      &:hover {
+        box-shadow: var(--shadow-lg);
+      }
+    }
+
+Utility for Scoped Containers:
+    scope-isolated    /* Creates a scope boundary */
+    scope-root        /* Defines scope root element */
+
+--------------------------------------------------------------------------------
+POPOVER API
+--------------------------------------------------------------------------------
+
+Native popover functionality with CSS anchoring support.
+
+Browser Support: Chrome 114+, Edge 114+, Firefox 125+, Safari 17+
+
+ApexCSS Popover Utilities:
+    popover-auto      /* Automatic popover behavior */
+    popover-manual    /* Manual popover control */
+    popover-target    /* Defines popover target */
+
+Example:
+    <button popovertarget="my-popover" class="btn-primary">
+      Toggle Popover
+    </button>
+    <div id="my-popover" popover class="popover-auto p-4 rounded-lg shadow-xl">
+      Popover content
+    </div>
+
+--------------------------------------------------------------------------------
+SELECTLIST (EXPERIMENTAL)
+--------------------------------------------------------------------------------
+
+Stylable select dropdowns using selectlist element.
+
+Browser Support: Chrome 119+ (experimental), others pending
+
+ApexCSS Selectlist Styles:
+    selectlist        /* Base selectlist styling */
+    selectlist-button /* Custom select button */
+    selectlist-popup  /* Dropdown popup styling */
+    selectlist-option /* Individual option styling */
+
+--------------------------------------------------------------------------------
+CSS NESTING
+--------------------------------------------------------------------------------
+
+Native CSS nesting without Sass preprocessing.
+
+Browser Support: Chrome 112+, Edge 112+, Firefox 117+, Safari 16.5+
+
+ApexCSS uses native nesting in dist output:
+    /* Input (SCSS) */
+    .button {
+      background: blue;
+      &:hover { background: darkblue; }
+    }
+
+    /* Output (CSS) */
+    .button { background: blue; }
+    .button:hover { background: darkblue; }
+
+--------------------------------------------------------------------------------
+CONTAINER QUERIES
+--------------------------------------------------------------------------------
+
+Component-level responsive design.
+
+Browser Support: Chrome 105+, Edge 105+, Firefox 110+, Safari 16+
+
+ApexCSS Container Query Utilities:
+    @container-{name}    /* Define container context */
+    @sm, @md, @lg, @xl   /* Container size breakpoints */
+
+Example:
+    <div class="@container-card">
+      <div class="@md:grid-cols-2 @lg:grid-cols-3">
+        <!-- Responsive based on container, not viewport -->
+      </div>
+    </div>
+
+--------------------------------------------------------------------------------
+CASCADE LAYERS
+--------------------------------------------------------------------------------
+
+Precise specificity management.
+
+ApexCSS uses @layer for predictable cascade:
+    @layer reset, tokens, base, utilities, themes;
+
+Custom layer usage:
+    @import 'apexcss' layer(utilities);
+    
+    @layer components {
+      .my-component { /* Your styles */ }
+    }
+
+================================================================================
+SECTION 20: COMPARISON WITH TAILWIND CSS
 ================================================================================
 
 This section provides a comprehensive comparison between ApexCSS and Tailwind CSS
@@ -1320,7 +2002,6 @@ SIMILARITIES:
     - Responsive prefixes: Both use md:, lg:, xl: breakpoint prefixes
     - State variants: Both support hover:, focus:, active:, disabled:
     - Dark mode support: Both provide dark: variant for theme switching
-    - Arbitrary values: Both support bracket notation for custom values
     - Mobile-first responsive design: Default styles for mobile, larger screens override
 
 KEY PHILOSOPHICAL DIFFERENCES:
@@ -1401,7 +2082,7 @@ CONFIGURATION COMPARISON TABLE:
 
 APEXCSS:
     - Build Tool: Sass/SCSS compilation (Dart Sass)
-    - Bundler: Vite, Webpack, or any Sass-compatible bundler
+    - Bundler: Vite v8
     - Output: Static CSS file (dist/apex.css)
     - PurgeCSS: Optional, configured via purgecss.config.js
     - JIT: No JIT compilation (pre-generated classes)
@@ -1437,7 +2118,7 @@ CORE UTILITIES (Both frameworks):
 
     | Category          | ApexCSS Classes         | Tailwind CSS Classes      | Notes                    |
     |-------------------|-------------------------|---------------------------|--------------------------|
-    | Display           | d-block, d-flex, etc.   | block, flex, etc.         | Apex uses d- prefix      |
+    | Display           | block, flex, etc.       | block, flex, etc.         | Identical naming         |
     | Flexbox           | flex-row, items-center  | flex-row, items-center    | Nearly identical         |
     | Grid              | grid-cols-*, gap-*      | grid-cols-*, gap-*        | Nearly identical         |
     | Spacing           | p-*, m-*, px-*, mx-*    | p-*, m-*, px-*, mx-*      | Identical scale          |
@@ -1504,23 +2185,21 @@ TAILWIND CSS v4-SPECIFIC FEATURES (Not in ApexCSS):
 BREAKPOINTS:
 
     | Framework    | Default Breakpoints                                        |
-    |--------------|-----------------------------------------------------------|
-    | ApexCSS      | sm:320px, md:768px, lg:1024px, xl:1280px, xxl:2560px, xxxl:3840px, ultra:7680px |
-    | Tailwind v4  | sm:640px, md:768px, lg:1024px, xl:1280px, 2xl:1536px     |
+    |--------------|------------------------------------------------------------|
+    | ApexCSS      | xs: 0px, sm:320px, md:768px, lg:1024px, xl:1280px, xxl:2560px, xxxl:3840px, ultra:7680px |
+    | Tailwind v4  | sm:640px, md:768px, lg:1024px, xl:1280px, 2xl:1536px       |
 
 RESPONSIVE SYNTAX:
 
     ApexCSS:
-        md:d-flex      /* display: flex at md breakpoint and up */
+        md:flex        /* display: flex at md breakpoint and up */
         lg:p-8         /* padding: 2rem at lg breakpoint and up */
-        sm:hidden      /* display: none below sm breakpoint */
+        sm:hidden      /* display: none at sm breakpoint and up */
 
     Tailwind CSS v4:
         md:flex        /* display: flex at md breakpoint and up */
         lg:p-8         /* padding: 2rem at lg breakpoint and up */
         sm:hidden      /* display: none at sm breakpoint and up */
-
-    Note: ApexCSS uses d- prefix for display utilities; Tailwind does not.
 
 CONTAINER QUERIES (Both frameworks):
 
@@ -1713,7 +2392,7 @@ ECOSYSTEM COMPARISON:
 
     | Aspect                     | ApexCSS                              | Tailwind CSS v4                    |
     |----------------------------|--------------------------------------|-------------------------------------|
-    | Version                    | 0.3.7 (pre-release)                  | 4.0+ (stable)                       |
+    | Version                    | 0.4.1 (pre-release)                  | 4.0+ (stable)                       |
     | Community Size             | Small, new                           | Large, active                       |
     | Documentation              | LLMs.txt + CONFIG.md                 | Extensive website + guides          |
     | UI Components              | None                                 | Tailwind UI (paid)                  |
@@ -1815,7 +2494,7 @@ USE EITHER WHEN:
     - You want state variants (hover, focus, etc.)
 
 ================================================================================
-SECTION 20: TROUBLESHOOTING
+SECTION 21: TROUBLESHOOTING
 ================================================================================
 
 ISSUE: Classes not applying
@@ -1844,19 +2523,97 @@ ISSUE: Missing utility classes after build
     - Example: @forward 'layout/display'; @forward 'layout/visibility';
 
 ================================================================================
-SECTION 21: VERSION INFORMATION
+SECTION 22: CHANGELOG & MIGRATION GUIDE
 ================================================================================
 
-Current Version: 0.3.7
-Status: Pre-release
-License: See LICENSE file
+This section provides version history and migration instructions between
+major versions of ApexCSS.
 
-CHANGELOG (Recent):
-    - v0.3.7: Big refactor, fixed missing display and visibility utility exports
-    - v0.3.5: Extended utilities, improved configuration system
-    - v0.3.0: Added 104 feature toggles
-    - v0.2.0: OKLCH color system implementation
-    - v0.1.0: Initial release
+--------------------------------------------------------------------------------
+VERSION 0.4.0 (Current)
+--------------------------------------------------------------------------------
+
+Release Date: 2026-04-11
+Status: Pre-release
+
+Breaking Changes:
+    - None from v0.3.x
+
+New Features:
+    - Comprehensive LLMs.txt documentation
+    - Testing & QA infrastructure documentation
+    - Contributing guidelines
+    - Advanced configuration API documentation
+    - Modern CSS features guide (View Transitions, Anchor Positioning)
+
+Improvements:
+    - Fixed display utility naming in Tailwind comparison
+    - Standardized section numbering
+    - Enhanced troubleshooting section
+
+--------------------------------------------------------------------------------
+VERSION 0.3.7
+--------------------------------------------------------------------------------
+
+Breaking Changes:
+    - Fixed missing display and visibility utility exports
+    - Refactored utility module structure
+
+Migration:
+    - Update imports to use new module paths if using individual utilities
+    - Verify display/visibility classes work as expected
+
+--------------------------------------------------------------------------------
+VERSION 0.3.5
+--------------------------------------------------------------------------------
+
+New Features:
+    - Extended utility categories
+    - Improved configuration system
+    - Better Sass module organization
+
+--------------------------------------------------------------------------------
+VERSION 0.3.0
+--------------------------------------------------------------------------------
+
+Major Features:
+    - 104 feature toggles for granular control
+    - Complete rewrite of configuration system
+    - New build pipeline with Vite
+
+Migration from v0.2.x:
+    - Replace old config file with apex.config.js
+    - Update npm scripts to use new build commands
+    - Review feature toggles (all enabled by default)
+
+--------------------------------------------------------------------------------
+VERSION 0.2.0
+--------------------------------------------------------------------------------
+
+New Features:
+    - OKLCH color space implementation
+    - CSS custom properties for theming
+    - Dark mode support
+
+--------------------------------------------------------------------------------
+VERSION 0.1.0
+--------------------------------------------------------------------------------
+
+Initial Release:
+    - Core utility system
+    - Sass-based architecture
+    - Basic responsive utilities
+
+================================================================================
+SECTION 23: VERSION INFORMATION
+================================================================================
+
+Current Version: 0.4.0
+Status: Pre-release
+License: MIT (See LICENSE file)
+
+Repository: https://github.com/chris-briddock/apex
+NPM Package: apexcss
 
 ================================================================================
 END OF LLMs.txt DOCUMENTATION

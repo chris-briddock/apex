@@ -428,9 +428,8 @@
   // ============================================================================
   // Ring Utility Variables (Using OKLCH)
   // ============================================================================
-  --ring-offset-shadow: 0 0 #0000;
-  --ring-shadow: 0 0 #0000;
-  --shadow: 0 0 #0000;
+  // Note: --ring-offset-shadow, --ring-shadow, and --shadow are defined by
+  // individual utilities and don't need :root defaults
   --ring-inset: inset;
   --ring-offset-width: 0px;
   --ring-offset-color: oklch(100% 0 0deg);
@@ -487,12 +486,7 @@
 // Element Styling
 // ============================================================================
 
-// Scrollbar styling
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
-
+// Webkit Scrollbar styling
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -180,6 +180,7 @@ const defaultConfig = {
   // Breakpoints - Responsive design breakpoints
   // ============================================================================
   breakpoints: {
+    xs: '0px',
     sm: '320px',
     md: '768px',
     lg: '1024px',
@@ -745,12 +746,12 @@ const defaultConfig = {
 
   dropShadowValues: {
     none: '0 0 #0000',
-    default: '0 1px 2px 0 rgb(0 0 0 / 0.1)',
-    sm: '0 1px 1px 0 rgb(0 0 0 / 0.05)',
-    md: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
-    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
-    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
-    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)'
+    default: '0 1px 2px rgb(0 0 0 / 0.1)',
+    sm: '0 1px 1px rgb(0 0 0 / 0.05)',
+    md: '0 4px 6px rgb(0 0 0 / 0.1)',
+    lg: '0 10px 15px rgb(0 0 0 / 0.1)',
+    xl: '0 20px 25px rgb(0 0 0 / 0.1)',
+    '2xl': '0 25px 50px rgb(0 0 0 / 0.25)'
   },
 
   backdropOpacityValues: {
@@ -1631,6 +1632,7 @@ ${featuresSection.trim()}
   // Breakpoints - Customize responsive breakpoints
   // ============================================================================
   breakpoints: {
+    xs: '0px',
     sm: '320px',
     md: '768px',
     lg: '1024px',
