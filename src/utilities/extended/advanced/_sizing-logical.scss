@@ -15,7 +15,7 @@
   // Inline size (logical width) - generated from settings.$spacing-scale
   @each $key in map.keys(settings.$spacing-scale) {
     $escaped-key: func.escape-class-name($key);
-    .is-#{$escaped-key} { inline-size: var(--spacing-#{$key}); }
+    .is-#{$escaped-key} { inline-size: var(--spacing-#{$escaped-key}); }
   }
 
   // Inline size special values - NOTE: .is-0 and .is-auto are defined in _logical-properties.scss
@@ -29,7 +29,7 @@
   @each $key in map.keys(settings.$spacing-scale) {
     @if map.has-key(settings.$spacing-scale, $key) {
       $escaped-key: func.escape-class-name($key);
-      .bs-#{$escaped-key} { block-size: var(--spacing-#{$key}); }
+      .bs-#{$escaped-key} { block-size: var(--spacing-#{$escaped-key}); }
     }
   }
 

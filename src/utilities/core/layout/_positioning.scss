@@ -25,23 +25,23 @@
   $inset-utilities: (
     inset-0: (inset: 0),
     inset-auto: (inset: auto),
-    inset-y-0: (top: 0, bottom: 0),
-    inset-x-0: (right: 0, left: 0),
-    inset-y-auto: (top: auto, bottom: auto),
-    inset-x-auto: (right: auto, left: auto),
+    inset-y-0: (inset-block-start: 0, inset-block-end: 0),
+    inset-x-0: (inset-inline-end: 0, inset-inline-start: 0),
+    inset-y-auto: (inset-block-start: auto, inset-block-end: auto),
+    inset-x-auto: (inset-inline-end: auto, inset-inline-start: auto),
   );
 
   // Build spacing-based inset utilities from settings.$spacing-scale
   $inset-spacing-keys: (1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24);
-  
+
   @each $key in $inset-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
       $inset-utilities: map.merge($inset-utilities, ('inset-#{$key}': (inset: var(--spacing-#{$key}))));
-      $inset-utilities: map.merge($inset-utilities, ('inset-x-#{$key}': (right: var(--spacing-#{$key}), left: var(--spacing-#{$key}))));
-      $inset-utilities: map.merge($inset-utilities, ('inset-y-#{$key}': (top: var(--spacing-#{$key}), bottom: var(--spacing-#{$key}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-x-#{$key}': (inset-inline-end: var(--spacing-#{$key}), inset-inline-start: var(--spacing-#{$key}))));
+      $inset-utilities: map.merge($inset-utilities, ('inset-y-#{$key}': (inset-block-start: var(--spacing-#{$key}), inset-block-end: var(--spacing-#{$key}))));
     }
   }
-  
+
   // Add pixel value
   $inset-utilities: map.merge($inset-utilities, ('inset-px': (inset: 1px)));
 
@@ -54,33 +54,33 @@
 
   @each $key in $position-spacing-keys {
     @if map.has-key(settings.$spacing-scale, $key) {
-      $top-utilities: map.merge($top-utilities, ('top-#{$key}': (top: var(--spacing-#{$key}))));
-      $right-utilities: map.merge($right-utilities, ('right-#{$key}': (right: var(--spacing-#{$key}))));
-      $bottom-utilities: map.merge($bottom-utilities, ('bottom-#{$key}': (bottom: var(--spacing-#{$key}))));
-      $left-utilities: map.merge($left-utilities, ('left-#{$key}': (left: var(--spacing-#{$key}))));
+      $top-utilities: map.merge($top-utilities, ('top-#{$key}': (inset-block-start: var(--spacing-#{$key}))));
+      $right-utilities: map.merge($right-utilities, ('right-#{$key}': (inset-inline-end: var(--spacing-#{$key}))));
+      $bottom-utilities: map.merge($bottom-utilities, ('bottom-#{$key}': (inset-block-end: var(--spacing-#{$key}))));
+      $left-utilities: map.merge($left-utilities, ('left-#{$key}': (inset-inline-start: var(--spacing-#{$key}))));
     }
   }
 
   // Add auto and special values
   $top-utilities: map.merge($top-utilities, (
-    top-auto: (top: auto),
-    'top-1\\/2': (top: 50%),
-    top-full: (top: 100%),
+    top-auto: (inset-block-start: auto),
+    'top-1\\/2': (inset-block-start: 50%),
+    top-full: (inset-block-start: 100%),
   ));
   $right-utilities: map.merge($right-utilities, (
-    right-auto: (right: auto),
-    'right-1\\/2': (right: 50%),
-    right-full: (right: 100%),
+    right-auto: (inset-inline-end: auto),
+    'right-1\\/2': (inset-inline-end: 50%),
+    right-full: (inset-inline-end: 100%),
   ));
   $bottom-utilities: map.merge($bottom-utilities, (
-    bottom-auto: (bottom: auto),
-    'bottom-1\\/2': (bottom: 50%),
-    bottom-full: (bottom: 100%),
+    bottom-auto: (inset-block-end: auto),
+    'bottom-1\\/2': (inset-block-end: 50%),
+    bottom-full: (inset-block-end: 100%),
   ));
   $left-utilities: map.merge($left-utilities, (
-    left-auto: (left: auto),
-    'left-1\\/2': (left: 50%),
-    left-full: (left: 100%),
+    left-auto: (inset-inline-start: auto),
+    'left-1\\/2': (inset-inline-start: 50%),
+    left-full: (inset-inline-start: 100%),
   ));
 
   // Z-index utilities - generated from settings.$z-index
