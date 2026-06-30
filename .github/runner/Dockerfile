@@ -1,8 +1,8 @@
 # Same base image GitHub uses for ubuntu-latest (ubuntu-24.04)
 # Runner image reference: https://github.com/actions/runner-images
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
-ARG RUNNER_VERSION=2.333.1
+ARG RUNNER_VERSION=2.335.1
 ARG DEBIAN_FRONTEND=noninteractive
 
 LABEL org.opencontainers.image.description="Self-hosted GitHub Actions runner (ubuntu-24.04 compatible)"
