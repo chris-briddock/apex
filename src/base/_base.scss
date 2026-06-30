@@ -102,6 +102,8 @@
 
 :where(button, [type="button"], [type="reset"], [type="submit"]) {
   appearance: auto;
+  background-color: transparent;
+  background-image: none;
 
   &::-moz-focus-inner {
     border-style: none;
